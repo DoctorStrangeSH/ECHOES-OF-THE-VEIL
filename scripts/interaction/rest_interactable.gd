@@ -1,7 +1,10 @@
 @tool
 class_name RestInteractable
 extends Interactable
-## A bed or safe spot: rests and saves the game to the default slot.
+## A bed or safe spot. Opens the "rest" dialogue (save / wait / sleep), which
+## lives in data/dialogue/rest.json so the options stay data-driven.
+
+@export var dialogue_id: StringName = &"rest"
 
 
 func _init() -> void:
@@ -10,8 +13,4 @@ func _init() -> void:
 
 
 func _on_interact(_actor: Node) -> void:
-	var err := SaveService.save_game()
-	if err == OK:
-		EventHub.message_requested.emit(PackedStringArray(["REST_SAVED"]), "")
-	else:
-		EventHub.message_requested.emit(PackedStringArray(["REST_SAVE_FAILED"]), "")
+	DialogueService.start(dialogue_id)

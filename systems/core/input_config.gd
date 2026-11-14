@@ -19,6 +19,12 @@ func _button(index: JoyButton) -> InputEvent:
 	return e
 
 
+func _mouse(index: MouseButton) -> InputEvent:
+	var e := InputEventMouseButton.new()
+	e.button_index = index
+	return e
+
+
 func _axis(axis: JoyAxis, value: float) -> InputEvent:
 	var e := InputEventJoypadMotion.new()
 	e.axis = axis
@@ -34,6 +40,8 @@ func _defaults() -> Dictionary:
 		&"move_right": [_key(KEY_D), _key(KEY_RIGHT), _axis(JOY_AXIS_LEFT_X, 1.0), _button(JOY_BUTTON_DPAD_RIGHT)],
 		&"interact": [_key(KEY_E), _key(KEY_ENTER), _key(KEY_SPACE), _button(JOY_BUTTON_A)],
 		&"sprint": [_key(KEY_SHIFT), _button(JOY_BUTTON_RIGHT_SHOULDER)],
+		&"attack": [_key(KEY_J), _mouse(MOUSE_BUTTON_LEFT), _button(JOY_BUTTON_X)],
+		&"journal": [_key(KEY_TAB), _button(JOY_BUTTON_BACK)],
 		&"pause": [_key(KEY_ESCAPE), _button(JOY_BUTTON_START)],
 		&"quick_save": [_key(KEY_F5)],
 		&"quick_load": [_key(KEY_F9)],

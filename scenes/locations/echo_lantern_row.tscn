@@ -1,0 +1,148 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/location.gd" id="1_loc"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2_paint"]
+[ext_resource type="PackedScene" path="res://scenes/props/world_prop.tscn" id="3_prop"]
+[ext_resource type="Script" path="res://scripts/world/spawn_point.gd" id="4_spawn"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="5_inspect"]
+[ext_resource type="Script" path="res://scripts/interaction/door_interactable.gd" id="6_door"]
+[ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
+[ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+[ext_resource type="Script" path="res://scripts/world/conditional_visibility.gd" id="10_cond"]
+[ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
+[ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
+[ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+
+[node name="EchoLanternRow" type="Node2D"]
+script = ExtResource("1_loc")
+location_id = &"echo_lantern_row"
+name_key = "LOC_ECHO_LANTERN_ROW"
+outdoors = false
+combat_enabled = true
+fixed_tint = Color(0.74, 0.88, 0.84, 1.0)
+enter_dialogue_id = &"echo_entrance"
+enter_condition = {"not_flag": "echo.entered"}
+
+[node name="Ground" type="TileMapLayer" parent="."]
+script = ExtResource("2_paint")
+palette_id = "echo_corridor"
+layout = "##############################
+#WWWWWWWWWWWWWWWWWWWWWWWWWWWW#
+#wwwwwwwwwwwwwwwwwwwwwwwwwwww#
+#fffffffff#ffffffff#fffffffff#
+#fffffffff#ffffffff#fffffffff#
+#ffffffffffffffffffffffffffff#
+#ffffffffffffffffffffffffffff#
+#ffffffffffffffffffffffffffff#
+#ffffffffffffffffffffffffffff#
+#ffffffffffffffffffffffffffff#
+##ff##########################"
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="NpcAnchors" type="Node2D" parent="."]
+
+[node name="Wardrobe" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(72, 60)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_37.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.353,0.251,0.188, 1)
+collision_size = Vector2(28, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Lamp" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(136, 60)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_87.png"
+placeholder_size = Vector2i(16, 48)
+placeholder_color = Color(0.753,0.690,0.565, 1)
+collision_size = Vector2(8, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Photo" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(300, 44)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_420.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.627,0.690,0.753, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Drawers" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(230, 62)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_55.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.416,0.290,0.188, 1)
+collision_size = Vector2(28, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Table" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(420, 128)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_367.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.627,0.439,0.251, 1)
+collision_size = Vector2(30, 14)
+collision_offset = Vector2(0, -7)
+
+[node name="Plant" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(460, 62)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_13.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.247,0.435,0.310, 1)
+collision_size = Vector2(12, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Rug" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(300, 140)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_385.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.502,0.376,0.314, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Entrance" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(48, 150)
+script = ExtResource("4_spawn")
+spawn_id = &"entrance"
+facing = Vector2(0, -1)
+
+[node name="WayBack" type="Area2D" parent="Entities"]
+position = Vector2(48, 164)
+script = ExtResource("6_door")
+interaction_id = &"door_echo_exit"
+area_size = Vector2(30, 10)
+prompt_key = "PROMPT_LEAVE_ECHO"
+target_scene_id = &"greyford_block"
+target_spawn_id = &"plaza_door"
+
+[node name="PhotoLook" type="Area2D" parent="Entities"]
+position = Vector2(300, 56)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_echo_photo"
+area_size = Vector2(24, 14)
+dialogue_id = &"echo_photo"
+
+[node name="Hollow1" parent="Entities" instance=ExtResource("12_enemy")]
+position = Vector2(170, 110)
+enemy_id = &"lantern_row_1"
+
+[node name="Hollow2" parent="Entities" instance=ExtResource("12_enemy")]
+position = Vector2(270, 128)
+enemy_id = &"lantern_row_2"
+
+[node name="Hollow3" parent="Entities" instance=ExtResource("12_enemy")]
+position = Vector2(350, 96)
+enemy_id = &"lantern_row_3"
+
+[node name="A_kitchen" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(420, 110)
+script = ExtResource("11_anchor")
+anchor_id = &"kitchen"
+
+[node name="Encounter" type="Node" parent="."]
+script = ExtResource("13_encounter")
+clear_flag = &"echo.cleared"

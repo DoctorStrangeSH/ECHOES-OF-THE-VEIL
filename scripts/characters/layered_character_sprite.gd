@@ -4,17 +4,22 @@ extends Node2D
 ## Draws a LimeZu Character Generator character from stacked layer sheets
 ## and plays idle/walk animations in four directions.
 ##
-## Sheet layout (16x16 packs): frames are 16x32 px. Row 1 = idle, row 2 = walk,
-## each row holds 6 frames per direction in the order right, up, left, down.
+## Sheet layout (16x16 packs): frames are 16x32 px, rows are 32 px apart.
+## Row 1 = idle, 2 = walk, 14 = punch (6 frames/dir), 19 = hurt (3 frames/dir).
+## Frames are grouped per direction in the order right, up, left, down.
 ## The node origin is the character's feet (ground anchor for y-sorting).
 
 enum Dir { RIGHT = 0, UP = 1, LEFT = 2, DOWN = 3 }
 
+## Emitted when a non-looping animation reaches its last frame.
+signal animation_finished(anim: StringName)
+
 const FRAME_SIZE := Vector2i(16, 32)
-const FRAMES_PER_DIR := 6
 const ANIMATIONS := {
-	&"idle": {"row": 1, "fps": 8.0},
-	&"walk": {"row": 2, "fps": 10.0},
+	&"idle": {"row": 1, "frames": 6, "fps": 8.0, "loop": true},
+	&"walk": {"row": 2, "frames": 6, "fps": 10.0, "loop": true},
+	&"punch": {"row": 14, "frames": 6, "fps": 16.0, "loop": false},
+	&"hurt": {"row": 19, "frames": 3, "fps": 10.0, "loop": false},
 }
 
 @export var appearance: CharacterAppearance:
@@ -38,21 +43,28 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if _uses_placeholder or _layers.is_empty():
 		return
+	var spec: Dictionary = ANIMATIONS[animation]
+	if not spec["loop"] and _frame >= int(spec["frames"]) - 1:
+		return
 	_elapsed += delta
-	var step := 1.0 / float(ANIMATIONS[animation]["fps"])
+	var step := 1.0 / float(spec["fps"])
 	if _elapsed >= step:
 		_elapsed = fmod(_elapsed, step)
-		_frame = (_frame + 1) % FRAMES_PER_DIR
+		_frame += 1
+		if _frame >= int(spec["frames"]):
+			_frame = 0
 		_apply_frame()
+		if not spec["loop"] and _frame == int(spec["frames"]) - 1:
+			animation_finished.emit(animation)
 
 
-func play(anim: StringName, dir: Dir) -> void:
+func play(anim: StringName, dir: Dir, restart := false) -> void:
 	if not ANIMATIONS.has(anim):
 		push_warning("Unknown animation %s" % anim)
 		return
-	if anim == animation and dir == direction:
+	if anim == animation and dir == direction and not restart:
 		return
-	if anim != animation:
+	if anim != animation or restart:
 		_frame = 0
 		_elapsed = 0.0
 	animation = anim
@@ -98,8 +110,9 @@ func _make_sprite(tex: Texture2D, sheet: bool) -> Sprite2D:
 func _apply_frame() -> void:
 	if _uses_placeholder:
 		return
-	var row: int = ANIMATIONS[animation]["row"]
-	var col := int(direction) * FRAMES_PER_DIR + _frame
+	var spec: Dictionary = ANIMATIONS[animation]
+	var row: int = spec["row"]
+	var col := int(direction) * int(spec["frames"]) + _frame
 	var rect := Rect2(col * FRAME_SIZE.x, row * FRAME_SIZE.y, FRAME_SIZE.x, FRAME_SIZE.y)
 	for s in _layers:
 		s.region_rect = rect

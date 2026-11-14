@@ -7,10 +7,12 @@ extends Node
 @onready var menu_layer: CanvasLayer = $MenuLayer
 @onready var hud: Hud = $Hud
 @onready var pause_menu: PauseMenu = $PauseMenu
+@onready var journal: JournalScreen = $Journal
 
 
 func _ready() -> void:
 	pause_menu.setup(hud)
+	journal.setup(hud)
 	SceneFlow.register_root(self)
 	SceneFlow.show_main_menu()
 

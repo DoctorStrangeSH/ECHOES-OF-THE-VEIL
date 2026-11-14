@@ -4,7 +4,6 @@
   "PROMPT_EXIT": {"en": "Go outside", "ru": "Выйти на улицу"},
   "PROMPT_REST": {"en": "Rest (save)", "ru": "Отдохнуть (сохранить)"},
   "PROMPT_READ": {"en": "Read", "ru": "Прочитать"},
-  "PROMPT_TALK": {"en": "Talk", "ru": "Поговорить"},
 
   "DOOR_LOCKED": {"en": "It's locked.", "ru": "Заперто."},
   "REST_SAVED": {"en": "You sit on the edge of the bed for a while. The city hums outside. (Game saved.)", "ru": "Вы немного сидите на краю кровати. За окном гудит город. (Игра сохранена.)"},
@@ -34,7 +33,6 @@
   "CONDO_TEAL_1": {"en": "An intercom with twelve buttons. Eleven names. The twelfth label has been scratched off so many times the plastic is white.", "ru": "Домофон на двенадцать кнопок. Одиннадцать фамилий. Табличку двенадцатой стирали столько раз, что пластик побелел."},
   "ROOK_SHOP_1": {"en": "ROOK REPAIRS & HARDWARE. Closed.", "ru": "«РУК: РЕМОНТ И ИНСТРУМЕНТЫ». Закрыто."},
   "ROOK_SHOP_2": {"en": "A note is taped to the glass: \"Back after the tram inspection. — J.\" The tram line has been shut for decades.", "ru": "К стеклу приклеена записка: «Вернусь после проверки трамвайной линии. — Дж.» Трамвайную линию закрыли десятки лет назад."},
-  "CONDO_YELLOW_1": {"en": "Fresh paint over old paint. Under the doorbell, someone has drawn a small symbol: three lines meeting at a point.", "ru": "Свежая краска поверх старой. Под звонком кто-то нарисовал маленький знак: три линии, сходящиеся в одной точке."},
   "QUARTER_SIGN_1": {"en": "GREYFORD OLD QUARTER. Market Arcade → Municipal Archive → Waterfront.", "ru": "ГРЕЙФОРД, СТАРЫЙ КВАРТАЛ. Рыночная галерея → Городской архив → Набережная."},
   "QUARTER_SIGN_2": {"en": "A newer sticker covers the archive arrow: \"CLOSED FOR REDEVELOPMENT — Civic Renewal Office.\"", "ru": "Стрелку к архиву закрывает свежая наклейка: «ЗАКРЫТО НА РЕКОНСТРУКЦИЮ — Управление городского обновления»."},
   "FOUNTAIN_1": {"en": "Coins glint at the bottom. One of them is minted with a year that hasn't happened yet.", "ru": "На дне блестят монеты. На одной из них отчеканен год, который ещё не наступил."},
@@ -45,13 +43,11 @@
   "VEIL_DOOR_3": {"en": "Someone on the other side says a name. Yours. As if they have been waiting for a long time.", "ru": "Кто-то по ту сторону произносит имя. Ваше. Так, словно ждал очень долго."},
   "VEIL_DOOR_4": {"en": "You blink — and for a moment the plaza remembers being somewhere else.", "ru": "Вы моргаете — и на миг площадь вспоминает, что когда-то была в другом месте."},
   "VEIL_DOOR_REPEAT_1": {"en": "The door is still here. Nobody else on the plaza seems to see it.", "ru": "Дверь всё ещё здесь. Похоже, больше никто на площади её не замечает."},
-  "VEIL_DOOR_REPEAT_2": {"en": "The handle is warm.", "ru": "Ручка тёплая."},
 
   "NPC_MARA": {"en": "Mara Venn", "ru": "Мара Венн"},
   "MARA_1": {"en": "You're the new tenant in the brown house on the corner? Mara Venn. Municipal archive — well, it was, until they boarded it up.", "ru": "Вы новый жилец из коричневого дома на углу? Мара Венн. Городской архив — точнее, был, пока его не заколотили."},
   "MARA_2": {"en": "\"Redevelopment.\" They say that word the way people say \"nothing to see here.\"", "ru": "«Реконструкция». Они произносят это слово так же, как говорят «тут не на что смотреть»."},
   "MARA_3": {"en": "If you see anything... strange around here, write it down. Dates, times, exact words. Memory is a poor archive.", "ru": "Если увидите здесь что-нибудь... странное — записывайте. Даты, время, точные слова. Память — плохой архив."},
-  "MARA_REPEAT_1": {"en": "Dates, times, exact words. I mean it.", "ru": "Даты, время, точные слова. Я серьёзно."},
 
   "LANDLORD_NOTE_1": {"en": "A note from the landlord: \"Welcome to Greyford! Rent is due on the first. The radiator knocks — that's normal.\"", "ru": "Записка от хозяйки: «Добро пожаловать в Грейфорд! Оплата первого числа. Батарея стучит — это нормально»."},
   "LANDLORD_NOTE_2": {"en": "\"If you hear the tram at night: there isn't one. The line closed years ago.\"", "ru": "«Если ночью услышите трамвай — его нет. Линию закрыли много лет назад»."},

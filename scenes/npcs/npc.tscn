@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/world/npc.gd" id="1_npc"]
 [ext_resource type="Script" path="res://scripts/characters/layered_character_sprite.gd" id="2_sprite"]
-[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="3_talk"]
+[ext_resource type="Script" path="res://scripts/interaction/talk_interactable.gd" id="3_talk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(10, 6)

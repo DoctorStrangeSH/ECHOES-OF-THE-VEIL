@@ -4,7 +4,8 @@ extends Resource
 ## Data-driven look of a LimeZu "Character Generator" character.
 ## Layers are composited in the order the pack requires:
 ## body -> eyes -> outfit -> hairstyle -> accessory.
-## Alternatively `premade` points to a complete premade sheet.
+## Alternatively `premade` points to a complete premade sheet, or `custom_sheet`
+## to any sheet with the same layout (path relative to res://assets/limezu).
 ## IDs are file stems, e.g. body="Body_03", hairstyle="Hairstyle_07_03".
 
 const LAYER_FOLDERS := {
@@ -17,6 +18,7 @@ const LAYER_FOLDERS := {
 const LAYER_ORDER: PackedStringArray = ["body", "eyes", "outfit", "hairstyle", "accessory"]
 
 @export var premade: String = ""
+@export var custom_sheet: String = ""
 @export var body: String = "Body_03"
 @export var eyes: String = "Eyes_02"
 @export var outfit: String = "Outfit_05_02"
@@ -40,6 +42,9 @@ static func from_premade(premade_id: String, color: Color = Color(0.8, 0.5, 0.4)
 ## Ordered texture paths for compositing (bottom layer first).
 func layer_paths() -> PackedStringArray:
 	var out := PackedStringArray()
+	if not custom_sheet.is_empty():
+		out.append(AssetLibrary.resolve(custom_sheet))
+		return out
 	if not premade.is_empty():
 		out.append("%s/0_Premade_Characters/16x16/%s.png" % [AssetLibrary.CHARACTER_GENERATOR, premade])
 		return out
@@ -52,7 +57,7 @@ func layer_paths() -> PackedStringArray:
 
 func to_dict() -> Dictionary:
 	return {
-		"premade": premade, "body": body, "eyes": eyes, "outfit": outfit,
+		"premade": premade, "custom_sheet": custom_sheet, "body": body, "eyes": eyes, "outfit": outfit,
 		"hairstyle": hairstyle, "accessory": accessory,
 		"placeholder_color": placeholder_color.to_html(),
 	}
@@ -60,7 +65,7 @@ func to_dict() -> Dictionary:
 
 static func from_dict(data: Dictionary) -> CharacterAppearance:
 	var a := CharacterAppearance.new()
-	for key in ["premade", "body", "eyes", "outfit", "hairstyle", "accessory"]:
+	for key in ["premade", "custom_sheet", "body", "eyes", "outfit", "hairstyle", "accessory"]:
 		if data.has(key) and data[key] is String:
 			a.set(key, data[key])
 	var c: Variant = data.get("placeholder_color")

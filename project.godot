@@ -18,8 +18,11 @@ EventHub="*res://systems/core/event_hub.gd"
 InputConfig="*res://systems/core/input_config.gd"
 Localization="*res://systems/localization/localization.gd"
 GameState="*res://systems/core/game_state.gd"
+WorldClock="*res://systems/time/world_clock.gd"
+Journal="*res://systems/journal/journal.gd"
 SaveService="*res://systems/save/save_service.gd"
 SceneFlow="*res://systems/scene_flow/scene_flow.gd"
+DialogueService="*res://systems/dialogue/dialogue_service.gd"
 
 [display]
 

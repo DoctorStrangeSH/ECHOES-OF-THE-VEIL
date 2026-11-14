@@ -10,7 +10,7 @@ extends Node
 signal saved(slot: int)
 signal save_failed(slot: int, message: String)
 
-const SCHEMA_VERSION := 1
+const SCHEMA_VERSION := 2
 const DEFAULT_SLOT := 1
 const MAX_SLOTS := 3
 
@@ -18,10 +18,22 @@ const MAX_SLOTS := 3
 var save_dir := "user://saves"
 
 ## schema version -> Callable(envelope: Dictionary) -> Dictionary (returns the next version).
-var _migrations: Dictionary = {
-	# Example for the future:
-	# 1: func(env: Dictionary) -> Dictionary: env["payload"]["new_field"] = 0; return env,
-}
+var _migrations: Dictionary = {}
+
+
+func _init() -> void:
+	_migrations[1] = _migrate_1_to_2
+
+
+## v2 (M2) adds the player profile, relationships, NPC memory, journal and clock.
+func _migrate_1_to_2(env: Dictionary) -> Dictionary:
+	var p: Dictionary = env["payload"]
+	if not p.has("profile"):
+		p["profile"] = {"name": "Alex", "pronouns": "they", "background": "returning_local"}
+	for key in ["relationships", "memory", "journal", "clock"]:
+		if not p.has(key):
+			p[key] = {}
+	return env
 
 
 func slot_path(slot: int, suffix := ".json") -> String:

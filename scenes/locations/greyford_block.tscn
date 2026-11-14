@@ -9,11 +9,17 @@
 [ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
 [ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
 [ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+[ext_resource type="Script" path="res://scripts/world/conditional_visibility.gd" id="10_cond"]
+[ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
+[ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
+[ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
 
 [node name="GreyfordBlock" type="Node2D"]
 script = ExtResource("1_loc")
 location_id = &"greyford_block"
 name_key = "LOC_GREYFORD_BLOCK"
+enter_dialogue_id = &"intro"
+enter_condition = {"not_flag": "intro.done"}
 
 [node name="Ground" type="TileMapLayer" parent="."]
 script = ExtResource("2_paint")
@@ -51,6 +57,8 @@ gggggggggggggggggggggggggggggggggggggggg"
 y_sort_enabled = true
 
 [node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="NpcAnchors" type="Node2D" parent="."]
 
 [node name="Condo_3_45" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(96, 240)
@@ -94,6 +102,10 @@ collision_offset = Vector2(0, -32)
 
 [node name="Shimmer" type="Node" parent="Entities/ImpossibleDoor"]
 script = ExtResource("9_shimmer")
+
+[node name="Condition" type="Node" parent="Entities/ImpossibleDoor"]
+script = ExtResource("10_cond")
+show_if = {"not_flag": "door.vanished"}
 
 [node name="Fountain" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(328, 232)
@@ -267,6 +279,12 @@ script = ExtResource("4_spawn")
 spawn_id = &"front_home"
 facing = Vector2(0, 1)
 
+[node name="PlazaDoor" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(324, 178)
+script = ExtResource("4_spawn")
+spawn_id = &"plaza_door"
+facing = Vector2(0, 1)
+
 [node name="HomeDoor" type="Area2D" parent="Entities"]
 position = Vector2(88, 246)
 script = ExtResource("6_door")
@@ -288,14 +306,15 @@ position = Vector2(464, 246)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_rook_repairs"
 area_size = Vector2(40, 14)
-lines = PackedStringArray("ROOK_SHOP_1", "ROOK_SHOP_2")
+prompt_key = "PROMPT_READ"
+dialogue_id = &"rook_shop"
 
 [node name="YellowCondoDoor" type="Area2D" parent="Entities"]
 position = Vector2(576, 246)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_condo_yellow"
 area_size = Vector2(30, 14)
-lines = PackedStringArray("CONDO_YELLOW_1")
+dialogue_id = &"yellow_condo"
 
 [node name="InfoSignRead" type="Area2D" parent="Entities"]
 position = Vector2(290, 252)
@@ -317,11 +336,35 @@ position = Vector2(324, 152)
 script = ExtResource("5_inspect")
 interaction_id = &"veil_door_plaza"
 area_size = Vector2(20, 14)
-prompt_key = "PROMPT_INSPECT"
 priority = 20
-lines = PackedStringArray("VEIL_DOOR_1", "VEIL_DOOR_2", "VEIL_DOOR_3", "VEIL_DOOR_4")
-sets_flag = &"prologue.saw_impossible_door"
-repeat_lines = PackedStringArray("VEIL_DOOR_REPEAT_1", "VEIL_DOOR_REPEAT_2")
+dialogue_id = &"veil_door"
+
+[node name="Condition" type="Node" parent="Entities/ImpossibleDoorUse"]
+script = ExtResource("10_cond")
+show_if = {"not_flag": "door.vanished", "all": [{"not_flag": "door.reported"}]}
+
+[node name="DoorGone" type="Area2D" parent="Entities"]
+position = Vector2(328, 140)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_door_gone"
+area_size = Vector2(40, 24)
+dialogue_id = &"door_gone"
+
+[node name="Condition" type="Node" parent="Entities/DoorGone"]
+script = ExtResource("10_cond")
+show_if = {"flag": "door.vanished"}
+
+[node name="BarrierNotice" type="Area2D" parent="Entities"]
+position = Vector2(328, 188)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_barriers"
+area_size = Vector2(80, 10)
+prompt_key = "PROMPT_READ"
+dialogue_id = &"barriers"
+
+[node name="Condition" type="Node" parent="Entities/BarrierNotice"]
+script = ExtResource("10_cond")
+show_if = {"flag": "door.reported", "all": [{"not_flag": "door.vanished"}]}
 
 [node name="Harbor" type="Area2D" parent="Entities"]
 position = Vector2(480, 64)
@@ -330,12 +373,100 @@ interaction_id = &"inspect_harbor"
 area_size = Vector2(64, 10)
 lines = PackedStringArray("HARBOR_1")
 
-[node name="MaraVenn" parent="Entities" instance=ExtResource("8_npc")]
+[node name="Barrier1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(284, 184)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Traffic_Barrier_1.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.878,0.502,0.188, 1)
+collision_size = Vector2(30, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Condition" type="Node" parent="Entities/Barrier1"]
+script = ExtResource("10_cond")
+show_if = {"flag": "door.reported", "all": [{"not_flag": "door.vanished"}]}
+
+[node name="Barrier2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(316, 184)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Traffic_Barrier_1.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.878,0.502,0.188, 1)
+collision_size = Vector2(30, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Condition" type="Node" parent="Entities/Barrier2"]
+script = ExtResource("10_cond")
+show_if = {"flag": "door.reported", "all": [{"not_flag": "door.vanished"}]}
+
+[node name="Barrier3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(348, 184)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Traffic_Barrier_1.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.878,0.502,0.188, 1)
+collision_size = Vector2(30, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Condition" type="Node" parent="Entities/Barrier3"]
+script = ExtResource("10_cond")
+show_if = {"flag": "door.reported", "all": [{"not_flag": "door.vanished"}]}
+
+[node name="Barrier4" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(380, 184)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Traffic_Barrier_1.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.878,0.502,0.188, 1)
+collision_size = Vector2(30, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Condition" type="Node" parent="Entities/Barrier4"]
+script = ExtResource("10_cond")
+show_if = {"flag": "door.reported", "all": [{"not_flag": "door.vanished"}]}
+
+[node name="A_plaza_east" type="Marker2D" parent="NpcAnchors"]
 position = Vector2(364, 252)
-npc_id = &"mara_venn"
-name_key = "NPC_MARA"
-premade = "Premade_Character_10"
-facing = 2
-lines = PackedStringArray("MARA_1", "MARA_2", "MARA_3")
-repeat_lines = PackedStringArray("MARA_REPEAT_1")
-sets_flag = &"met.mara_venn"
+script = ExtResource("11_anchor")
+anchor_id = &"plaza_east"
+
+[node name="A_plaza_west" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(284, 272)
+script = ExtResource("11_anchor")
+anchor_id = &"plaza_west"
+
+[node name="A_plaza_south" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(328, 276)
+script = ExtResource("11_anchor")
+anchor_id = &"plaza_south"
+
+[node name="A_plaza_north" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(388, 150)
+script = ExtResource("11_anchor")
+anchor_id = &"plaza_north"
+
+[node name="A_harbor_rail_west" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(120, 72)
+script = ExtResource("11_anchor")
+anchor_id = &"harbor_rail_west"
+
+[node name="A_harbor_rail_east" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(520, 72)
+script = ExtResource("11_anchor")
+anchor_id = &"harbor_rail_east"
+
+[node name="A_rook_shop" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(504, 258)
+script = ExtResource("11_anchor")
+anchor_id = &"rook_shop"
+
+[node name="A_home_mailbox" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(172, 258)
+script = ExtResource("11_anchor")
+anchor_id = &"home_mailbox"
+
+[node name="A_park_bench_west" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(150, 412)
+script = ExtResource("11_anchor")
+anchor_id = &"park_bench_west"
+
+[node name="A_park_bench_east" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(558, 412)
+script = ExtResource("11_anchor")
+anchor_id = &"park_bench_east"
