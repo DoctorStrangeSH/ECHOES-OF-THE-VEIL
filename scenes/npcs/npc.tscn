@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/npc.gd" id="1_npc"]
+[ext_resource type="Script" path="res://scripts/characters/layered_character_sprite.gd" id="2_sprite"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="3_talk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(10, 6)
+
+[node name="Npc" type="StaticBody2D"]
+script = ExtResource("1_npc")
+
+[node name="Sprite" type="Node2D" parent="."]
+script = ExtResource("2_sprite")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="Talk" type="Area2D" parent="."]
+position = Vector2(0, -8)
+script = ExtResource("3_talk")
+area_size = Vector2(20, 22)

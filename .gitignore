@@ -1,0 +1,20 @@
+# Godot
+.godot/
+*.translation
+export/
+export_presets.cfg
+*.tmp
+
+# Purchased third-party assets: licensed for use, NOT for redistribution.
+# Recreate locally with: python tools/import_limezu.py --source <folder with zips>
+/assets/limezu/
+/resources/tilesets/limezu/
+*.zip
+*.exe
+
+# OS / editors
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+__pycache__/

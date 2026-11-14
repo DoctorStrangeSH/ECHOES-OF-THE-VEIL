@@ -1,0 +1,341 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/location.gd" id="1_loc"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2_paint"]
+[ext_resource type="PackedScene" path="res://scenes/props/world_prop.tscn" id="3_prop"]
+[ext_resource type="Script" path="res://scripts/world/spawn_point.gd" id="4_spawn"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="5_inspect"]
+[ext_resource type="Script" path="res://scripts/interaction/door_interactable.gd" id="6_door"]
+[ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
+[ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+
+[node name="GreyfordBlock" type="Node2D"]
+script = ExtResource("1_loc")
+location_id = &"greyford_block"
+name_key = "LOC_GREYFORD_BLOCK"
+
+[node name="Ground" type="TileMapLayer" parent="."]
+script = ExtResource("2_paint")
+palette_id = "greyford_exterior"
+layout = "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+oooooooooooooooooooooooooooooooooooooooo
+ssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssss
+sssssssssssssssssbbbbbbbssssssssssssssss
+sssssssssssssssssbbbbbbbssssssssssssssss
+sssssssssssssssssbbbbbbbssssssssssssssss
+sssssssssssssssssbbbbbbbssssssssssssssss
+sssssssssssssssssbbbbbbbssssssssssssssss
+sssssssssssssssssbbbbbbbssssssssssssssss
+sssssssssssssssssbbbbbbbssssssssssssssss
+sssssssssssssssssbbbbbbbssssssssssssssss
+sssssssssssssssssbbbbbbbssssssssssssssss
+rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+ssssssssssssssssssssssssssssssssssssssss
+gggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggg"
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Condo_3_45" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(96, 240)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/4_Generic_Building_Singles_16x16/ME_Singles_Generic_Building_16x16_Condo_3_45.png"
+placeholder_size = Vector2i(96, 160)
+placeholder_color = Color(0.545,0.435,0.333, 1)
+collision_size = Vector2(96, 150)
+collision_offset = Vector2(0, -75)
+
+[node name="Condo_5_1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(208, 240)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/4_Generic_Building_Singles_16x16/ME_Singles_Generic_Building_16x16_Condo_5_1.png"
+placeholder_size = Vector2i(96, 176)
+placeholder_color = Color(0.373,0.639,0.710, 1)
+collision_size = Vector2(96, 166)
+collision_offset = Vector2(0, -83)
+
+[node name="Hardware_Store_Example" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(464, 240)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/4_Generic_Building_Singles_16x16/ME_Singles_Generic_Building_16x16_Hardware_Store_Example.png"
+placeholder_size = Vector2i(128, 144)
+placeholder_color = Color(0.608,0.608,0.659, 1)
+collision_size = Vector2(128, 134)
+collision_offset = Vector2(0, -67)
+
+[node name="Condo_5_3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(576, 240)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/4_Generic_Building_Singles_16x16/ME_Singles_Generic_Building_16x16_Condo_5_3.png"
+placeholder_size = Vector2i(96, 176)
+placeholder_color = Color(0.788,0.698,0.353, 1)
+collision_size = Vector2(96, 166)
+collision_offset = Vector2(0, -83)
+
+[node name="ImpossibleDoor" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(328, 160)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/4_Generic_Building_Singles_16x16/ME_Singles_Generic_Building_16x16_Condo_4_13.png"
+placeholder_size = Vector2i(80, 64)
+placeholder_color = Color(0.435,0.498,0.690, 1)
+collision_size = Vector2(76, 36)
+collision_offset = Vector2(0, -32)
+
+[node name="Shimmer" type="Node" parent="Entities/ImpossibleDoor"]
+script = ExtResource("9_shimmer")
+
+[node name="Fountain" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(328, 232)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Fountain_1.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.478,0.655,0.780, 1)
+collision_size = Vector2(28, 16)
+collision_offset = Vector2(0, -8)
+
+[node name="InfoSign" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(290, 248)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Info_Sign_2.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.816,0.816,0.816, 1)
+collision_size = Vector2(10, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="Mailbox" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(150, 252)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Mailbox_1.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.541,0.353,0.227, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Trashbin" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(392, 252)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Trashbin_7.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.333,0.333,0.333, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="StreetLamp1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(40, 282)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Street_Lamp_5.png"
+placeholder_size = Vector2i(16, 64)
+placeholder_color = Color(0.267,0.267,0.333, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="StreetLamp2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(248, 282)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Street_Lamp_5.png"
+placeholder_size = Vector2i(16, 64)
+placeholder_color = Color(0.267,0.267,0.333, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="StreetLamp3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(408, 282)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Street_Lamp_5.png"
+placeholder_size = Vector2i(16, 64)
+placeholder_color = Color(0.267,0.267,0.333, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="StreetLamp4" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(600, 282)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Street_Lamp_5.png"
+placeholder_size = Vector2i(16, 64)
+placeholder_color = Color(0.267,0.267,0.333, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="Tree1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(40, 404)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Tree_11.png"
+placeholder_size = Vector2i(48, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(216, 404)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Tree_11.png"
+placeholder_size = Vector2i(48, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(440, 404)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Tree_11.png"
+placeholder_size = Vector2i(48, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree4" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(616, 404)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Tree_11.png"
+placeholder_size = Vector2i(48, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Bench1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(120, 396)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Bench_2.png"
+placeholder_size = Vector2i(48, 32)
+placeholder_color = Color(0.627,0.439,0.251, 1)
+collision_size = Vector2(44, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Bench2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(528, 396)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Bench_2.png"
+placeholder_size = Vector2i(48, 32)
+placeholder_color = Color(0.627,0.439,0.251, 1)
+collision_size = Vector2(44, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Flowers1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(168, 392)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Flower_Bush_1.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.816,0.439,0.565, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Flowers2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(312, 392)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Flower_Bush_1.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.816,0.439,0.565, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Flowers3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(368, 392)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Flower_Bush_1.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.816,0.439,0.565, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Flowers4" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(488, 392)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Flower_Bush_1.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.816,0.439,0.565, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="ParkedCar" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(520, 322)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/10_Vehicles_Singles_16x16/ME_Singles_Vehicles_16x16_Car_Left_1.png"
+placeholder_size = Vector2i(64, 48)
+placeholder_color = Color(0.690,0.188,0.188, 1)
+collision_size = Vector2(60, 24)
+collision_offset = Vector2(0, -12)
+
+[node name="BusStop" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(300, 366)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/10_Vehicles_Singles_16x16/ME_Singles_Vehicles_16x16_Bus_Stop_Sign_1.png"
+placeholder_size = Vector2i(16, 48)
+placeholder_color = Color(0.188,0.376,0.627, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="Arrival" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(320, 372)
+script = ExtResource("4_spawn")
+spawn_id = &"arrival"
+facing = Vector2(0, -1)
+
+[node name="FrontHome" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(88, 258)
+script = ExtResource("4_spawn")
+spawn_id = &"front_home"
+facing = Vector2(0, 1)
+
+[node name="HomeDoor" type="Area2D" parent="Entities"]
+position = Vector2(88, 246)
+script = ExtResource("6_door")
+interaction_id = &"door_home_street"
+area_size = Vector2(18, 14)
+target_scene_id = &"rented_room"
+target_spawn_id = &"from_street"
+
+[node name="ApartmentDoor" type="Area2D" parent="Entities"]
+position = Vector2(208, 246)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_condo_teal"
+area_size = Vector2(30, 14)
+prompt_key = "PROMPT_INSPECT"
+lines = PackedStringArray("CONDO_TEAL_1")
+
+[node name="HardwareDoor" type="Area2D" parent="Entities"]
+position = Vector2(464, 246)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_rook_repairs"
+area_size = Vector2(40, 14)
+lines = PackedStringArray("ROOK_SHOP_1", "ROOK_SHOP_2")
+
+[node name="YellowCondoDoor" type="Area2D" parent="Entities"]
+position = Vector2(576, 246)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_condo_yellow"
+area_size = Vector2(30, 14)
+lines = PackedStringArray("CONDO_YELLOW_1")
+
+[node name="InfoSignRead" type="Area2D" parent="Entities"]
+position = Vector2(290, 252)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_quarter_sign"
+area_size = Vector2(18, 14)
+prompt_key = "PROMPT_READ"
+lines = PackedStringArray("QUARTER_SIGN_1", "QUARTER_SIGN_2")
+
+[node name="FountainLook" type="Area2D" parent="Entities"]
+position = Vector2(328, 238)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_fountain"
+area_size = Vector2(34, 12)
+lines = PackedStringArray("FOUNTAIN_1")
+
+[node name="ImpossibleDoorUse" type="Area2D" parent="Entities"]
+position = Vector2(324, 152)
+script = ExtResource("5_inspect")
+interaction_id = &"veil_door_plaza"
+area_size = Vector2(20, 14)
+prompt_key = "PROMPT_INSPECT"
+priority = 20
+lines = PackedStringArray("VEIL_DOOR_1", "VEIL_DOOR_2", "VEIL_DOOR_3", "VEIL_DOOR_4")
+sets_flag = &"prologue.saw_impossible_door"
+repeat_lines = PackedStringArray("VEIL_DOOR_REPEAT_1", "VEIL_DOOR_REPEAT_2")
+
+[node name="Harbor" type="Area2D" parent="Entities"]
+position = Vector2(480, 64)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_harbor"
+area_size = Vector2(64, 10)
+lines = PackedStringArray("HARBOR_1")
+
+[node name="MaraVenn" parent="Entities" instance=ExtResource("8_npc")]
+position = Vector2(364, 252)
+npc_id = &"mara_venn"
+name_key = "NPC_MARA"
+premade = "Premade_Character_10"
+facing = 2
+lines = PackedStringArray("MARA_1", "MARA_2", "MARA_3")
+repeat_lines = PackedStringArray("MARA_REPEAT_1")
+sets_flag = &"met.mara_venn"
