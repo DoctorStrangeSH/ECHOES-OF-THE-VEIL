@@ -48,7 +48,7 @@ var _preview: LayeredCharacterSprite
 var _name_edit: LineEdit
 var _pronoun_button: Button
 var _bg_desc: Label
-var _bg_buttons: Dictionary = {}
+var _bg_button: Button
 var _preview_dir := 3
 var _preview_timer := 0.0
 
@@ -122,7 +122,7 @@ func _select_defaults() -> void:
 		var si := row.styles.find(style)
 		if si >= 0:
 			row.style_idx = si
-			row.var_idx = maxi(0, (row.variants[style] as Array).find(want))
+			row.var_idx = 0 if style.is_empty() else maxi(0, (row.variants[style] as Array).find(want))
 
 
 func _apply() -> void:
@@ -189,10 +189,16 @@ func _cycle_color() -> void:
 
 func _set_background(id: String) -> void:
 	_background = id
-	for bid: String in _bg_buttons:
-		(_bg_buttons[bid] as Button).button_pressed = bid == id
 	var def: Dictionary = _backgrounds.get(id, {})
+	_bg_button.text = tr(def.get("name", id))
 	_bg_desc.text = tr(def.get("desc", ""))
+
+
+func _cycle_background() -> void:
+	if _background_ids.is_empty():
+		return
+	var i := _background_ids.find(_background)
+	_set_background(_background_ids[(i + 1) % _background_ids.size()])
 
 
 func _on_begin() -> void:
@@ -216,13 +222,23 @@ func _build() -> void:
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
 
+	# Everything must fit the 480x270 viewport (tested); the scroll container
+	# is only a safety net for long translations.
+	var scroll := ScrollContainer.new()
+	scroll.set_anchors_preset(Control.PRESET_FULL_RECT)
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	scroll.follow_focus = true
+	add_child(scroll)
 	var margin := MarginContainer.new()
-	margin.set_anchors_preset(Control.PRESET_FULL_RECT)
-	for side in ["left", "right", "top", "bottom"]:
+	margin.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	margin.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	for side in ["left", "right"]:
 		margin.add_theme_constant_override("margin_" + side, 12)
-	add_child(margin)
+	for side in ["top", "bottom"]:
+		margin.add_theme_constant_override("margin_" + side, 6)
+	scroll.add_child(margin)
 	var root := VBoxContainer.new()
-	root.add_theme_constant_override("separation", 6)
+	root.add_theme_constant_override("separation", 4)
 	margin.add_child(root)
 
 	var title := Label.new()
@@ -238,16 +254,17 @@ func _build() -> void:
 
 	# Preview + identity
 	var left := VBoxContainer.new()
-	left.custom_minimum_size = Vector2(150, 0)
+	left.custom_minimum_size = Vector2(160, 0)
+	left.add_theme_constant_override("separation", 3)
 	top.add_child(left)
 	var stage := PanelContainer.new()
-	stage.custom_minimum_size = Vector2(150, 100)
+	stage.custom_minimum_size = Vector2(160, 84)
 	left.add_child(stage)
 	var holder := Control.new()
 	stage.add_child(holder)
 	_preview = LayeredCharacterSprite.new()
-	_preview.scale = Vector2(3, 3)
-	_preview.position = Vector2(67, 94)
+	_preview.scale = Vector2(2.5, 2.5)
+	_preview.position = Vector2(72, 80)
 	holder.add_child(_preview)
 
 	_name_edit = LineEdit.new()
@@ -261,18 +278,15 @@ func _build() -> void:
 	_difficulty_button = Button.new()
 	_difficulty_button.pressed.connect(_cycle_difficulty)
 	left.add_child(_labeled(tr("CC_DIFFICULTY"), _difficulty_button))
-	_difficulty_desc = Label.new()
-	_difficulty_desc.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_difficulty_desc.add_theme_font_size_override("font_size", 8)
-	_difficulty_desc.add_theme_color_override("font_color", UiTheme.INK_DIM)
-	_difficulty_desc.custom_minimum_size = Vector2(150, 0)
-	left.add_child(_difficulty_desc)
-	_show_difficulty()
+	_bg_button = Button.new()
+	_bg_button.pressed.connect(_cycle_background)
+	_bg_button.clip_text = true
+	left.add_child(_labeled(tr("CC_BACKGROUND"), _bg_button))
 
-	# Look
+	# Look + what the choices mean
 	var right := VBoxContainer.new()
 	right.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	right.add_theme_constant_override("separation", 3)
+	right.add_theme_constant_override("separation", 2)
 	top.add_child(right)
 	if _has_assets:
 		for row in _rows:
@@ -291,24 +305,11 @@ func _build() -> void:
 	rnd.text = tr("CC_RANDOM")
 	rnd.pressed.connect(_randomize)
 	right.add_child(rnd)
-
-	# Background
-	var bg_row := HBoxContainer.new()
-	bg_row.add_theme_constant_override("separation", 4)
-	root.add_child(bg_row)
-	for id in _background_ids:
-		var b := Button.new()
-		b.toggle_mode = true
-		b.text = tr(_backgrounds[id].get("name", id))
-		b.pressed.connect(_set_background.bind(id))
-		bg_row.add_child(b)
-		_bg_buttons[id] = b
-	_bg_desc = Label.new()
-	_bg_desc.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_bg_desc.custom_minimum_size = Vector2(0, 22)
-	_bg_desc.add_theme_font_size_override("font_size", 8)
-	_bg_desc.add_theme_color_override("font_color", UiTheme.INK_DIM)
-	root.add_child(_bg_desc)
+	_difficulty_desc = _note()
+	right.add_child(_difficulty_desc)
+	_bg_desc = _note()
+	right.add_child(_bg_desc)
+	_show_difficulty()
 
 	var actions := HBoxContainer.new()
 	actions.alignment = BoxContainer.ALIGNMENT_END
@@ -323,6 +324,15 @@ func _build() -> void:
 	actions.add_child(begin)
 	_set_background(_background)
 	_name_edit.grab_focus.call_deferred()
+
+
+func _note() -> Label:
+	var l := Label.new()
+	l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	l.add_theme_font_size_override("font_size", 8)
+	l.add_theme_color_override("font_color", UiTheme.INK_DIM)
+	l.custom_minimum_size = Vector2(10, 0)
+	return l
 
 
 func _labeled(text: String, control: Control) -> HBoxContainer:

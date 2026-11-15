@@ -1376,3 +1376,30 @@ func test_incident_npcs_can_be_found_after_the_ending() -> void:
 		var npc := StringName(Incidents.def(id)["npc"])
 		check(not NpcRegistry.resolve(npc).is_empty(), "%s is somewhere at noon after the ending" % npc)
 	GameState.reset_for_new_game()
+
+
+# --- Playtest fixes ----------------------------------------------------------------
+
+## Every button of the full-screen menus must be on screen at 480x270 in every
+## language (the character creator once pushed "Arrive" off the bottom).
+func test_menus_fit_the_screen() -> void:
+	var old := TranslationServer.get_locale()
+	for locale: String in ["en", "ru"]:
+		TranslationServer.set_locale(locale)
+		for path: String in ["res://scripts/ui/character_creator.gd", "res://scripts/ui/main_menu.gd"]:
+			var ui: Control = load(path).new()
+			ui.size = Vector2(480, 270)
+			add_child(ui)
+			for i in 6:
+				await get_tree().process_frame
+			var screen := Rect2(Vector2.ZERO, Vector2(480, 270)).grow(0.5)
+			var stack: Array[Node] = [ui]
+			while not stack.is_empty():
+				var n: Node = stack.pop_back()
+				stack.append_array(n.get_children())
+				if (n is Button or n is LineEdit) and (n as Control).is_visible_in_tree():
+					var r := (n as Control).get_global_rect()
+					check(screen.encloses(r), "%s [%s]: '%s' at %s is off screen" % [path.get_file(), locale, n.get("text"), r])
+			ui.queue_free()
+			await get_tree().process_frame
+	TranslationServer.set_locale(old)

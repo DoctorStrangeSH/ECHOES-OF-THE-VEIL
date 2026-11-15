@@ -231,5 +231,6 @@
   "ECHO_WHO_1": {"en": "\"Someone who was erased politely. With paperwork.\" She smiles. \"They called it a census. A quiet one.\"", "ru": "«Та, кого стёрли вежливо. С бумагами». Она улыбается. «Они называли это переписью. Тихой»."},
   "ECHO_NAME_1": {"en": "\"You lived three doors down. Before.\" The tea in her cup ripples, though nothing touched it.", "ru": "«Вы жили через три дома. Раньше». Чай в её чашке подрагивает, хотя его никто не трогал."},
   "ECHO_WOMAN_4": {"en": "\"Go back now. The door won't hold much longer — and you're not ready for the rest of us yet.\"", "ru": "«Возвращайтесь. Дверь долго не продержится — а к остальным из нас вы пока не готовы»."},
-  "ECHO_WOMAN_AFTER": {"en": "She is already looking at something you can't see.", "ru": "Она уже смотрит на что-то, чего вам не видно."}
+  "ECHO_WOMAN_AFTER": {"en": "She is already looking at something you can't see.", "ru": "Она уже смотрит на что-то, чего вам не видно."},
+  "CC_BACKGROUND": {"en": "Past", "ru": "Прошлое"}
 }
