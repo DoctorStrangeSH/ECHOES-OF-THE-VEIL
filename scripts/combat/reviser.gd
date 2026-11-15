@@ -53,7 +53,7 @@ func _ready() -> void:
 	sprite.modulate = tint
 	sprite.play(&"idle", LayeredCharacterSprite.Dir.DOWN)
 	health = Health.new()
-	health.max_health = GameState.enemy_health(max_health)
+	health.max_health = GameState.enemy_health(int(DataFiles.boss_stat(String(boss_id), "health", max_health)))
 	health.invulnerability_time = 0.15
 	add_child(health)
 	health.died.connect(_on_died)

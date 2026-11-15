@@ -288,6 +288,32 @@
       "next": "anchor_no"
      },
      {
+      "text": "MARA_ASK_AGNES",
+      "if": {
+       "quest_done": "case_eleventh",
+       "flag": "rel.mara_venn.friend",
+       "all": [
+        {
+         "flag": "act.act3"
+        },
+        {
+         "not_quest_started": "case_agnes"
+        }
+       ]
+      },
+      "next": "ag1"
+     },
+     {
+      "text": "MARA_TELL_AGNES",
+      "if": {
+       "quest_stage": [
+        "case_agnes",
+        "tell"
+       ]
+      },
+      "next": "agt"
+     },
+     {
       "text": "BYE",
       "next": null
      }
@@ -789,6 +815,117 @@
     "speaker": "NPC_MARA",
     "text": "ANCHOR_NO_MARA",
     "next": "hub"
+   },
+   "ag1": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_AGNES_1",
+    "next": "ag2"
+   },
+   "ag2": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_AGNES_2",
+    "effects": [
+     {
+      "quest_start": "case_agnes"
+     }
+    ],
+    "next": "hub"
+   },
+   "agt": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_AGNES_TELL",
+    "choices": [
+     {
+      "text": "AGNES_SAY_KEEPER",
+      "if": {
+       "evidence": "e_agnes_ivo"
+      },
+      "effects": [
+       {
+        "quest_complete": [
+         "case_agnes",
+         "keeper"
+        ]
+       },
+       {
+        "relationship": [
+         "mara_venn",
+         3
+        ]
+       },
+       {
+        "faction": [
+         "unwritten",
+         1
+        ]
+       },
+       {
+        "remember": [
+         "mara_venn",
+         "told_her_about_the_register"
+        ]
+       }
+      ],
+      "next": "ag_keeper"
+     },
+     {
+      "text": "AGNES_SAY_BOTH",
+      "effects": [
+       {
+        "quest_complete": [
+         "case_agnes",
+         "both"
+        ]
+       },
+       {
+        "relationship": [
+         "mara_venn",
+         2
+        ]
+       },
+       {
+        "remember": [
+         "mara_venn",
+         "told_her_both_were_true"
+        ]
+       }
+      ],
+      "next": "ag_both"
+     },
+     {
+      "text": "AGNES_SAY_DISMISS",
+      "effects": [
+       {
+        "quest_complete": [
+         "case_agnes",
+         "dismissed"
+        ]
+       },
+       {
+        "relationship": [
+         "mara_venn",
+         -1
+        ]
+       }
+      ],
+      "next": "ag_dismiss"
+     }
+    ]
+   },
+   "ag_keeper": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_AGNES_KEEPER",
+    "next": null
+   },
+   "ag_both": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_AGNES_BOTH",
+    "next": null
+   },
+   "ag_dismiss": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_AGNES_DISMISS",
+    "next": null
    }
   }
  },
@@ -1173,6 +1310,21 @@
       "next": "anchor_no"
      },
      {
+      "text": "JONAH_ASK_ROSALIND_UP",
+      "if": {
+       "flag": "rosalind.reunited",
+       "all": [
+        {
+         "flag": "rel.jonah_rook.friend"
+        },
+        {
+         "not_quest_started": "case_rook_and_rook"
+        }
+       ]
+      },
+      "next": "rr1"
+     },
+     {
       "text": "BYE",
       "next": null
      }
@@ -1515,6 +1667,21 @@
    "anchor_no": {
     "speaker": "NPC_JONAH",
     "text": "ANCHOR_NO_JONAH",
+    "next": "hub"
+   },
+   "rr1": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_RR_1",
+    "next": "rr2"
+   },
+   "rr2": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_RR_2",
+    "effects": [
+     {
+      "quest_start": "case_rook_and_rook"
+     }
+    ],
     "next": "hub"
    }
   }
@@ -2274,6 +2441,22 @@
       "next": "anchor_no"
      },
      {
+      "text": "IVO_ASK_AGNES",
+      "if": {
+       "quest_stage": [
+        "case_agnes",
+        "tell"
+       ],
+       "not_evidence": "e_agnes_ivo"
+      },
+      "effects": [
+       {
+        "add_evidence": "e_agnes_ivo"
+       }
+      ],
+      "next": "agnes"
+     },
+     {
       "text": "BYE",
       "next": null
      }
@@ -2577,6 +2760,11 @@
    "anchor_no": {
     "speaker": "NPC_IVO",
     "text": "ANCHOR_NO_IVO",
+    "next": "hub"
+   },
+   "agnes": {
+    "speaker": "NPC_IVO",
+    "text": "IVO_AGNES",
     "next": "hub"
    }
   }
@@ -3111,6 +3299,24 @@
       "next": "ward_pike"
      },
      {
+      "text": "PIKE_ASK_STAMP",
+      "if": {
+       "quest_stage": [
+        "case_rook_and_rook",
+        "stamp"
+       ],
+       "flag": "storeroom.bricked",
+       "all": [
+        {
+         "not": {
+          "has_item": "rook_stamp"
+         }
+        }
+       ]
+      },
+      "next": "stamp1"
+     },
+     {
       "text": "BYE",
       "next": null
      }
@@ -3325,6 +3531,51 @@
    "ward_deny": {
     "speaker": "NPC_PIKE",
     "text": "PIKE_WARD_DENY_1",
+    "next": "hub"
+   },
+   "stamp1": {
+    "speaker": "NPC_PIKE",
+    "text": "PIKE_STAMP_1",
+    "choices": [
+     {
+      "text": "PIKE_STAMP_FAVOUR",
+      "if": {
+       "faction_at_least": [
+        "civic",
+        1
+       ]
+      },
+      "effects": [
+       {
+        "give_item": "rook_stamp"
+       }
+      ],
+      "next": "stamp_ok"
+     },
+     {
+      "text": "PIKE_STAMP_PAY",
+      "if": {
+       "money_at_least": 30
+      },
+      "effects": [
+       {
+        "spend_money": 30
+       },
+       {
+        "give_item": "rook_stamp"
+       }
+      ],
+      "next": "stamp_ok"
+     },
+     {
+      "text": "PIKE_STAMP_LATER",
+      "next": "hub"
+     }
+    ]
+   },
+   "stamp_ok": {
+    "speaker": "NPC_PIKE",
+    "text": "PIKE_STAMP_OK",
     "next": "hub"
    }
   }

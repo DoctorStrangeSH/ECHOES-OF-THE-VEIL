@@ -14,7 +14,7 @@ The spine is data: `data/story/campaign.json` lists the acts, the condition that
 | M7d | **Act IV** — the Index: three memory-sites, testimony verdicts, three Revisions, Dr Vale's choice | done |
 | M7e | **Quest system and challenge rework** — no fail-forward, objectives, failable quests, mandatory bosses, difficulty (see roadmap) | done |
 | M7f | **Act V** — the anchor; Director Wren; three endings and epilogues | done |
-| M7g | Campaign pass: balance, full playthrough per difficulty, companion personal quests | next |
+| M7g | Campaign pass: boss tuning as data, fairness tests, companion personal quests (Agnes's Last Card, Rook & Rook) | done; manual playtest next |
 
 ## What already exists (M1–M6)
 
@@ -104,3 +104,8 @@ Original plan:
 - New content goes in its own files (`*_act2.json`, …) and region specs; GDScript changes only for genuinely new mechanics (followers, evidence verdicts, endings), each with tests.
 - Every act adds a smoke-test section that plays it from the previous act's end.
 - Saves from the previous stage must load and continue (the campaign derives the current act from flags, so a save made before an act existed simply starts it on load).
+
+## Companion personal quests (M7g)
+
+- **Agnes's Last Card** (Mara: friend, after *The Eleventh House*, from Act III): find Agnes Venn's card in the Keepers' index beneath the archive — "reclassified 1963 for refusing to sign further lists; witnessed E. Wren, clerk". Optional: Ivo remembers she gave the Keepers her list — the first page of the Ward's register. Tell Mara within 3 days (she was both / she started the register / let her go) or fail. Reward: Mara's pin slows two echoes, every 8 s.
+- **Rook & Rook** (Jonah: friend, after Rosalind is reunited): an echo can cross holding something from its own time. Arthur Rook's stamp is in the storeroom echo after dark — or, if the storeroom was bricked up, at the council's lost property (Pike: Civic favour or £30). Bring Jonah and the stamp to Rosalind in the Ward after dark within 6 days, or her echo fades for good. Reward: Jonah heals 3, every 30 s.

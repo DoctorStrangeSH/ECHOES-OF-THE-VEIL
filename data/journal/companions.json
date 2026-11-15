@@ -1,0 +1,184 @@
+{
+ "cases": {
+  "case_agnes": {
+   "title": "CASE_AG_TITLE",
+   "summary": "CASE_AG_SUMMARY",
+   "first_stage": "card",
+   "stages": {
+    "card": "CASE_AG_CARD",
+    "tell": "CASE_AG_TELL"
+   },
+   "transitions": {
+    "card": [
+     "tell"
+    ]
+   },
+   "deadlines": [
+    {
+     "stage": "tell",
+     "days": 3,
+     "outcome": "silent",
+     "note": "FAIL_AGNES",
+     "effects": [
+      {
+       "relationship": [
+        "mara_venn",
+        -2
+       ]
+      },
+      {
+       "remember": [
+        "mara_venn",
+        "never_told_about_agnes"
+       ]
+      }
+     ]
+    }
+   ],
+   "outcomes": {
+    "both": "CASE_AG_BOTH",
+    "keeper": "CASE_AG_KEEPER",
+    "dismissed": "CASE_AG_DISMISSED",
+    "silent": "CASE_AG_SILENT"
+   },
+   "objectives": {
+    "card": [
+     {
+      "id": "card",
+      "text": "OBJ_AG_CARD",
+      "done_if": {
+       "evidence": "e_agnes_card"
+      }
+     }
+    ],
+    "tell": [
+     {
+      "id": "ivo",
+      "text": "OBJ_AG_IVO",
+      "optional": true,
+      "done_if": {
+       "evidence": "e_agnes_ivo"
+      },
+      "reward": [
+       {
+        "give_resonance": 2
+       }
+      ]
+     },
+     {
+      "id": "tell",
+      "text": "OBJ_AG_TELL",
+      "done_if": {
+       "quest_done": "case_agnes"
+      }
+     }
+    ]
+   }
+  },
+  "case_rook_and_rook": {
+   "title": "CASE_RR_TITLE",
+   "summary": "CASE_RR_SUMMARY",
+   "first_stage": "stamp",
+   "stages": {
+    "stamp": "CASE_RR_STAMP",
+    "evening": "CASE_RR_EVENING"
+   },
+   "transitions": {
+    "stamp": [
+     "evening"
+    ]
+   },
+   "deadlines": [
+    {
+     "stage": "evening",
+     "days": 6,
+     "outcome": "faded",
+     "note": "FAIL_ROOK",
+     "effects": [
+      {
+       "set_flag": "rosalind.faded"
+      },
+      {
+       "relationship": [
+        "jonah_rook",
+        -2
+       ]
+      },
+      {
+       "remember": [
+        "jonah_rook",
+        "rosalind_faded"
+       ]
+      }
+     ]
+    }
+   ],
+   "outcomes": {
+    "visited": "CASE_RR_VISITED",
+    "faded": "CASE_RR_FADED"
+   },
+   "objectives": {
+    "stamp": [
+     {
+      "id": "stamp",
+      "text": "OBJ_RR_STAMP",
+      "done_if": {
+       "has_item": "rook_stamp"
+      }
+     }
+    ],
+    "evening": [
+     {
+      "id": "jonah",
+      "text": "OBJ_RR_JONAH",
+      "done_if": {
+       "companion": "jonah_rook"
+      }
+     },
+     {
+      "id": "go",
+      "text": "OBJ_RR_GO",
+      "done_if": {
+       "quest_done": "case_rook_and_rook"
+      }
+     }
+    ]
+   }
+  }
+ },
+ "evidence": {
+  "e_agnes_card": {
+   "case": "case_agnes",
+   "kind": "recorded",
+   "source": "keepers_index",
+   "source_name": "SRC_KEEPERS_INDEX",
+   "title": "EV_AGNES_CARD_TITLE",
+   "body": "EV_AGNES_CARD_BODY",
+   "advance": [
+    "case_agnes",
+    "tell"
+   ]
+  },
+  "e_agnes_ivo": {
+   "case": "case_agnes",
+   "kind": "reported",
+   "source": "ivo_calder",
+   "source_name": "NPC_IVO",
+   "title": "EV_AGNES_IVO_TITLE",
+   "body": "EV_AGNES_IVO_BODY"
+  },
+  "e_rook_stamp": {
+   "case": "case_rook_and_rook",
+   "kind": "observed",
+   "source": "player",
+   "source_name": "SRC_YOU",
+   "title": "EV_ROOK_STAMP_TITLE",
+   "body": "EV_ROOK_STAMP_BODY",
+   "advance": [
+    "case_rook_and_rook",
+    "evening"
+   ]
+  }
+ },
+ "hypotheses": {}
+}

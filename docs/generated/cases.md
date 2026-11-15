@@ -123,6 +123,36 @@ flowchart LR
   case_anchor_START(("start")) --> case_anchor_gather
 ```
 
+## case_agnes — Agnes's Last Card
+
+```mermaid
+flowchart LR
+  case_agnes_card["card<br/>Find Agnes Venn's card in the Keepers' …"]
+  case_agnes_tell["tell<br/>Tell Mara what the card says before the…"]
+  case_agnes_card --> case_agnes_tell
+  case_agnes_out_both(["outcome: both<br/>You told Mara her grandmother…"])
+  case_agnes_out_keeper(["outcome: keeper<br/>Mara knows Agnes started the …"])
+  case_agnes_out_dismissed(["outcome: dismissed<br/>You told Mara to let her gran…"])
+  case_agnes_out_silent(["outcome: silent<br/>The anniversary passed and yo…"])
+  case_agnes_START(("start")) --> case_agnes_card
+```
+
+Evidence that advances this case: `e_agnes_card`
+
+## case_rook_and_rook — Rook & Rook
+
+```mermaid
+flowchart LR
+  case_rook_and_rook_stamp["stamp<br/>Find Arthur Rook's repair stamp: in the…"]
+  case_rook_and_rook_evening["evening<br/>Bring Jonah and the stamp to Rosalind i…"]
+  case_rook_and_rook_stamp --> case_rook_and_rook_evening
+  case_rook_and_rook_out_visited(["outcome: visited<br/>Rosalind crossed into Greyfor…"])
+  case_rook_and_rook_out_faded(["outcome: faded<br/>You waited too long. Rosalind…"])
+  case_rook_and_rook_START(("start")) --> case_rook_and_rook_stamp
+```
+
+Evidence that advances this case: `e_rook_stamp`
+
 ## case_door — The Door That Shouldn't Be There
 
 ```mermaid

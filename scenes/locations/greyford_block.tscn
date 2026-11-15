@@ -722,7 +722,7 @@ target_spawn_id = &"entrance"
 
 [node name="Condition" type="Node" parent="Entities/StoreroomDoor"]
 script = ExtResource("10_cond")
-show_if = {"all": [{"quest_active": "case_storeroom"}, {"period": ["evening", "night"]}]}
+show_if = {"all": [{"any": [{"quest_active": "case_storeroom"}, {"quest_stage": ["case_rook_and_rook", "stamp"], "not_flag": "storeroom.bricked"}]}, {"period": ["evening", "night"]}]}
 
 [node name="StoreroomWall" type="Area2D" parent="Entities"]
 position = Vector2(422, 250)
@@ -755,7 +755,7 @@ script = ExtResource("5_inspect")
 interaction_id = &"read_harbour_timetable"
 area_size = Vector2(18, 12)
 prompt_key = "PROMPT_READ"
-lines = PackedStringArray("TIMETABLE_1")
+dialogue_id = &"harbour_timetable"
 
 [node name="WardGate" type="Area2D" parent="Entities"]
 position = Vector2(572, 76)

@@ -182,3 +182,14 @@ position = Vector2(336, 148)
 script = ExtResource("4_spawn")
 spawn_id = &"anchor_return"
 facing = Vector2(0, 1)
+
+[node name="CardIndex" type="Area2D" parent="Entities"]
+position = Vector2(60, 82)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_card_index"
+area_size = Vector2(40, 12)
+dialogue_id = &"agnes_card"
+
+[node name="Condition" type="Node" parent="Entities/CardIndex"]
+script = ExtResource("10_cond")
+show_if = {"quest_stage": ["case_agnes", "card"]}

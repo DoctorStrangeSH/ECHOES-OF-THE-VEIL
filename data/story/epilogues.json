@@ -59,6 +59,22 @@
   },
   {
    "group": "jonah",
+   "if": {
+    "flag": "rosalind.faded"
+   },
+   "text": "EPI_JONAH_FADED",
+   "title": "EPI_T_JONAH"
+  },
+  {
+   "group": "jonah",
+   "if": {
+    "flag": "rosalind.visits_greyford"
+   },
+   "text": "EPI_JONAH_VISITS",
+   "title": "EPI_T_JONAH"
+  },
+  {
+   "group": "jonah",
    "text": "EPI_JONAH_ROSALIND",
    "title": "EPI_T_JONAH",
    "if": {
@@ -147,6 +163,17 @@
    "if": {
     "flag": "world.lamp_quiet"
    }
+  },
+  {
+   "group": "mara",
+   "if": {
+    "quest_outcome": [
+     "case_agnes",
+     "keeper"
+    ]
+   },
+   "text": "EPI_MARA_AGNES",
+   "title": "EPI_T_MARA"
   },
   {
    "group": "mara",

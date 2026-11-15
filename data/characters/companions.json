@@ -1,5 +1,5 @@
 {
- "_doc": "Companions (Party). requires: when they will come along; ability: patch_up | pin; camp_dialogue: what talking to them says while they follow you.",
+ "_doc": "Companions (Party). requires: when they will come along; ability: patch_up | pin; power: heal amount / echoes slowed; upgrade: better power/cooldown once a condition holds (personal quests); camp_dialogue: what talking to them says while they follow you.",
  "jonah_rook": {
   "name": "NPC_JONAH",
   "ability": "patch_up",
@@ -7,6 +7,14 @@
   "camp_dialogue": "camp_jonah",
   "requires": {
    "flag": "ward.open"
+  },
+  "power": 2,
+  "upgrade": {
+   "if": {
+    "quest_done": "case_rook_and_rook"
+   },
+   "power": 3,
+   "cooldown": 30
   }
  },
  "mara_venn": {
@@ -16,6 +24,14 @@
   "camp_dialogue": "camp_mara",
   "requires": {
    "flag": "ward.open"
+  },
+  "power": 1,
+  "upgrade": {
+   "if": {
+    "quest_done": "case_agnes"
+   },
+   "power": 2,
+   "cooldown": 8
   }
  }
 }

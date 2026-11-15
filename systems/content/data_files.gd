@@ -57,6 +57,17 @@ static func defs(base: String) -> Dictionary:
 	return out
 
 
+static var _bosses: Dictionary = {}
+
+
+## A tuning value for a boss from data/enemies/bosses.json (fallback when absent).
+static func boss_stat(boss: String, stat: String, fallback: Variant) -> Variant:
+	if _bosses.is_empty():
+		var d: Variant = read_json("res://data/enemies/bosses.json")
+		_bosses = d if d is Dictionary else {"_": {}}
+	return (_bosses.get(boss, {}) as Dictionary).get(stat, fallback)
+
+
 ## scene id -> path for every location scene (exported builds list *.tscn.remap).
 static func location_scenes() -> Dictionary:
 	var out := {}

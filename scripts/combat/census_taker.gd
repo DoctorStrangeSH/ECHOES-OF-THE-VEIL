@@ -46,7 +46,7 @@ func _ready() -> void:
 	sprite.play(&"idle", LayeredCharacterSprite.Dir.DOWN)
 
 	health = Health.new()
-	health.max_health = GameState.enemy_health(MAX_HEALTH)
+	health.max_health = GameState.enemy_health(int(DataFiles.boss_stat("census_taker", "health", MAX_HEALTH)))
 	health.invulnerability_time = 0.15
 	add_child(health)
 	health.died.connect(_on_died)

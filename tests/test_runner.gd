@@ -1147,3 +1147,109 @@ func test_act_five_follows_act_four() -> void:
 	check(Journal.pinned == &"case_anchor", "and pins itself")
 	GameState.is_playing = false
 	GameState.reset_for_new_game()
+
+
+# --- M7g: campaign pass ---------------------------------------------------------------
+
+func test_boss_tuning_is_data() -> void:
+	for id in ["census_taker", "conductor", "archivist", "matron", "lodger", "stationmaster", "director"]:
+		check(int(DataFiles.boss_stat(id, "health", 0)) > 0, "%s health in bosses.json" % id)
+	GameState.reset_for_new_game()
+	var c := (load("res://scenes/combat/conductor.tscn") as PackedScene).instantiate() as Conductor
+	add_child(c)
+	check(c.health.max_health == int(DataFiles.boss_stat("conductor", "health", 0)), "bosses read their health from data")
+	c.queue_free()
+
+
+func test_final_fight_always_leaves_a_safe_place() -> void:
+	GameState.reset_for_new_game()
+	var d := (load("res://scenes/combat/director.tscn") as PackedScene).instantiate() as Director
+	add_child(d)
+	await get_tree().process_frame
+	var dummy := Node2D.new()
+	add_child(dummy)
+	for hp in [d.health.max_health, 1]:
+		d.health.health = hp
+		d.mechanics = ["grid"]
+		d.grid.clear_all()
+		d._begin_cast(dummy)
+		var marked := 0
+		var free_rows := 0
+		for y in d.grid.rows:
+			var row_marked := 0
+			for x in d.grid.cols:
+				if d.grid._cells.has(Vector2i(x, y)):
+					row_marked += 1
+			marked += row_marked
+			free_rows += int(row_marked == 0)
+		check(marked > 0 and free_rows >= 1, "a rewrite always leaves a free row (phase %d)" % d.phase())
+		var before := get_children().filter(func(n: Node) -> bool: return n is LaneSweep).size()
+		d.mechanics = ["lanes"]
+		d._begin_cast(dummy)
+		var lanes := d.get_parent().get_children().filter(func(n: Node) -> bool: return n is LaneSweep).size() - before
+		check(lanes >= 1 and lanes <= 2, "at most two of three lanes are called")
+	for n in get_children():
+		if n is LaneSweep:
+			n.queue_free()
+	d.grid.queue_free()
+	d.queue_free()
+	dummy.queue_free()
+	var a := (load("res://scenes/combat/archivist.tscn") as PackedScene).instantiate() as Archivist
+	check(not a.islands.is_empty(), "the flood has islands")
+	for r: Rect2 in a.islands:
+		check(Rect2(Vector2.ZERO, a.arena_size).encloses(r), "islands are inside the arena")
+	a.free()
+
+
+func test_companion_upgrades_from_personal_quests() -> void:
+	GameState.reset_for_new_game()
+	for id in [&"jonah_rook", &"mara_venn"]:
+		var npc := (load("res://scenes/npcs/npc.tscn") as PackedScene).instantiate() as Npc
+		npc.npc_id = id
+		var f := Follower.new()
+		f.setup(npc, Party.def_of(id))
+		var before := f.power
+		var quest := StringName(Party.def_of(id)["upgrade"]["if"]["quest_done"])
+		Journal.start_case(quest)
+		Journal.complete_case(quest, &"x")
+		var g := Follower.new()
+		g.setup(npc, Party.def_of(id))
+		check(g.power > before and g.cooldown <= f.cooldown, "%s improves after their personal quest" % id)
+		npc.free()
+		Journal.reset()
+	GameState.reset_for_new_game()
+
+
+func test_agnes_and_rook_and_rook() -> void:
+	GameState.reset_for_new_game()
+	Journal.start_case(&"case_agnes")
+	Journal.add_evidence(&"e_agnes_card")
+	check(Journal.case_stage(&"case_agnes") == &"tell", "the card moves it on")
+	var tell: Array = DialogueService.dialogues[&"mara"]["nodes"]["agt"]["choices"]
+	check(not StoryRules.evaluate(tell[0]["if"]), "the register answer needs Ivo")
+	Journal.add_evidence(&"e_agnes_ivo")
+	check(StoryRules.evaluate(tell[0]["if"]), "after Ivo it opens")
+	for i in 3:
+		WorldClock.sleep_until_hour(7)
+	check(Journal.case_status(&"case_agnes") == Journal.STATUS_FAILED, "three days of silence fail it")
+	GameState.reset_for_new_game()
+	GameState.set_flag(&"storeroom.bricked")
+	Journal.start_case(&"case_rook_and_rook")
+	Inventory.money = 40
+	var stamp: Dictionary = DialogueService.dialogues[&"pike"]["nodes"]["stamp1"]
+	StoryRules.apply(stamp["choices"][1]["effects"])
+	check(Inventory.money == 10 and Inventory.count(&"rook_stamp") == 1, "lost property, for a fee")
+	check(Journal.case_stage(&"case_rook_and_rook") == &"evening", "the stamp moves it on")
+	GameState.set_flag(&"rosalind.reunited")
+	Journal.start_case(&"case_misplaced")
+	Journal.complete_case(&"case_misplaced", &"reunited")
+	var ros: Dictionary = DialogueService.dialogues[&"rosalind"]
+	WorldClock.wait_until_hour(21)
+	check(DialogueService.entry_node(ros) == "up_wait", "not without Jonah")
+	Party.set_companion(&"jonah_rook")
+	check(DialogueService.entry_node(ros) == "up1", "with Jonah and the stamp after dark she can cross")
+	Party.set_companion(&"")
+	for i in 6:
+		WorldClock.sleep_until_hour(7)
+	check(Journal.case_status(&"case_rook_and_rook") == Journal.STATUS_FAILED and NpcRegistry.resolve(&"rosalind_rook").is_empty(), "too late: she fades")
+	GameState.reset_for_new_game()
