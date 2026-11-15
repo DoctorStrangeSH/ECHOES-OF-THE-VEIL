@@ -1,29 +1,50 @@
 class_name EchoEnemy
 extends CharacterBody2D
-## "Hollow" — a fragment of an erased resident, looping one gesture.
-## Readable state machine: drift -> chase -> wind-up (clear telegraph) ->
-## lunge -> recover. Takes knockback and flinches when hit. Stays defeated
-## once beaten (flag "defeated.<enemy_id>").
+## The Hollow family — fragments of erased residents, looping one gesture.
+## One script, three tuned variants (set in the scene or by `variant`):
+##   hollow  - steady melee lunger (3 HP)
+##   clinger - small, fast, fragile, short wind-up (1 HP)
+##   wailer  - keeps its distance and throws memory shards (2 HP)
+## Readable state machine: drift -> chase -> wind-up (clear glow telegraph) ->
+## lunge/shoot -> recover. Hit flash, knockback, stun from the Lantern Flash.
+## Stays defeated once beaten (flag "defeated.<enemy_id>"). Drops Resonance.
 
-enum State { DRIFT, CHASE, WINDUP, LUNGE, RECOVER, HURT, DEAD }
+enum State { DRIFT, CHASE, WINDUP, LUNGE, RECOVER, HURT, STUNNED, DEAD }
 
 const SHEET := "modern_exteriors/Modern_Exteriors_16x16/Character_Generator_Addons_16x16/Body_10_Ghost_White_16x16.png"
-const BASE_TINT := Color(0.75, 0.95, 1.0, 0.82)
 const WINDUP_TINT := Color(1.6, 1.6, 1.9, 1.0)
+const SHARD_SCENE := preload("res://scenes/combat/memory_shard.tscn")
+const MOTE_SCENE := preload("res://scenes/combat/resonance_mote.tscn")
+
+const VARIANTS := {
+	"hollow": {"max_health": 3, "move_speed": 34.0, "chase_speed": 52.0, "lunge_speed": 190.0, "windup_time": 0.55,
+		"attack_range": 26.0, "scale": 1.0, "tint": Color(0.75, 0.95, 1.0, 0.82), "resonance": 2},
+	"clinger": {"max_health": 1, "move_speed": 50.0, "chase_speed": 78.0, "lunge_speed": 230.0, "windup_time": 0.3,
+		"attack_range": 22.0, "scale": 0.8, "tint": Color(1.0, 0.8, 0.85, 0.8), "resonance": 1},
+	"wailer": {"max_health": 2, "move_speed": 30.0, "chase_speed": 40.0, "lunge_speed": 0.0, "windup_time": 0.7,
+		"attack_range": 110.0, "scale": 1.0, "tint": Color(0.8, 0.75, 1.0, 0.8), "resonance": 2, "ranged": true},
+}
 
 @export var enemy_id: StringName = &""
-@export var max_health: int = 3
-@export var move_speed: float = 34.0
-@export var chase_speed: float = 52.0
-@export var lunge_speed: float = 190.0
-@export var sight_range: float = 110.0
-@export var attack_range: float = 26.0
-@export var windup_time: float = 0.55
+@export_enum("hollow", "clinger", "wailer") var variant: String = "hollow"
+@export var sight_range: float = 120.0
 @export var lunge_time: float = 0.2
 @export var recover_time: float = 0.6
+## Chance to drop a consumable on defeat.
+@export var item_drop_chance: float = 0.12
 
 var state: State = State.DRIFT
 var health: Health
+var max_health := 3
+var move_speed := 34.0
+var chase_speed := 52.0
+var lunge_speed := 190.0
+var windup_time := 0.55
+var attack_range := 26.0
+var ranged := false
+var resonance_drop := 2
+var base_tint := Color.WHITE
+
 var _timer := 0.0
 var _lunge_dir := Vector2.ZERO
 var _drift_dir := Vector2.ZERO
@@ -32,6 +53,8 @@ var _dir: LayeredCharacterSprite.Dir = LayeredCharacterSprite.Dir.DOWN
 var _hit_this_lunge := false
 var _hitbox: Hitbox
 var _home := Vector2.ZERO
+var _flash := 0.0
+var _bar: Node2D
 
 @onready var sprite: LayeredCharacterSprite = $Sprite
 
@@ -40,6 +63,7 @@ func _ready() -> void:
 	if enemy_id != &"" and GameState.has_flag(StringName("defeated.%s" % enemy_id)):
 		queue_free()
 		return
+	_apply_variant()
 	add_to_group(&"echo_enemy")
 	collision_layer = 0
 	collision_mask = 1  # world only: echoes pass through the player's body
@@ -49,11 +73,11 @@ func _ready() -> void:
 	look.custom_sheet = SHEET
 	look.placeholder_color = Color(0.7, 0.9, 1.0)
 	sprite.appearance = look
-	sprite.modulate = BASE_TINT
+	sprite.modulate = base_tint
 
 	health = Health.new()
 	health.max_health = max_health
-	health.invulnerability_time = 0.25
+	health.invulnerability_time = 0.2
 	add_child(health)
 	health.died.connect(_on_died)
 
@@ -70,7 +94,25 @@ func _ready() -> void:
 	_hitbox.knockback = 160.0
 	_hitbox.add_child(_rect_shape(Vector2(14, 14), Vector2(0, -8)))
 	add_child(_hitbox)
+
+	_bar = EnemyHealthBar.new()
+	_bar.position = Vector2(0, -36 * sprite.scale.y)
+	add_child(_bar)
 	_pick_drift()
+
+
+func _apply_variant() -> void:
+	var v: Dictionary = VARIANTS.get(variant, VARIANTS["hollow"])
+	max_health = int(v["max_health"])
+	move_speed = float(v["move_speed"])
+	chase_speed = float(v["chase_speed"])
+	lunge_speed = float(v["lunge_speed"])
+	windup_time = float(v["windup_time"])
+	attack_range = float(v["attack_range"])
+	ranged = bool(v.get("ranged", false))
+	resonance_drop = int(v["resonance"])
+	base_tint = v["tint"]
+	sprite.scale = Vector2.ONE * float(v["scale"])
 
 
 func _physics_process(delta: float) -> void:
@@ -91,22 +133,36 @@ func _physics_process(delta: float) -> void:
 			if player != null and dist < sight_range and not blocked:
 				state = State.CHASE
 		State.CHASE:
-			if player == null or dist > sight_range * 1.4 or blocked:
+			if player == null or dist > sight_range * 1.5 or blocked:
 				state = State.DRIFT
+			elif ranged:
+				# Keep a comfortable distance, then shoot.
+				if dist < attack_range * 0.55:
+					desired = -to_player.normalized() * chase_speed
+				elif dist > attack_range:
+					desired = to_player.normalized() * chase_speed
+				elif _timer <= 0.0:
+					_start_windup(to_player)
+				else:
+					desired = to_player.orthogonal().normalized() * move_speed * (1.0 if int(_home.x) % 2 == 0 else -1.0)
 			elif dist < attack_range:
 				_start_windup(to_player)
 			else:
 				desired = to_player.normalized() * chase_speed
 		State.WINDUP:
-			# Telegraph: freeze and glow. The player has time to step aside.
 			var k := 1.0 - clampf(_timer / windup_time, 0.0, 1.0)
-			sprite.modulate = BASE_TINT.lerp(WINDUP_TINT, k)
+			sprite.modulate = base_tint.lerp(WINDUP_TINT, k)
 			if _timer <= 0.0:
-				state = State.LUNGE
-				_timer = lunge_time
-				_hit_this_lunge = false
-				sprite.modulate = BASE_TINT
-				sprite.play(&"punch", _dir, true)
+				sprite.modulate = base_tint
+				if ranged:
+					_shoot(player)
+					state = State.RECOVER
+					_timer = recover_time + 1.2
+				else:
+					state = State.LUNGE
+					_timer = lunge_time
+					_hit_this_lunge = false
+					sprite.play(&"punch", _dir, true)
 		State.LUNGE:
 			desired = _lunge_dir * lunge_speed
 			if not _hit_this_lunge and _hitbox.strike() > 0:
@@ -114,9 +170,10 @@ func _physics_process(delta: float) -> void:
 			if _timer <= 0.0:
 				state = State.RECOVER
 				_timer = recover_time
-		State.RECOVER, State.HURT:
+		State.RECOVER, State.HURT, State.STUNNED:
 			if _timer <= 0.0:
 				state = State.CHASE
+				sprite.modulate = base_tint
 	velocity = desired
 	if _knockback.length_squared() > 1.0:
 		velocity += _knockback
@@ -126,6 +183,20 @@ func _physics_process(delta: float) -> void:
 		if desired != Vector2.ZERO:
 			_dir = LayeredCharacterSprite.dir_from_vector(desired, _dir)
 		sprite.play(&"walk" if desired != Vector2.ZERO else &"idle", _dir)
+	if state == State.STUNNED:
+		sprite.modulate = base_tint.lerp(Color(1.4, 1.35, 0.8), 0.5 + 0.5 * sin(Time.get_ticks_msec() / 60.0))
+	if _flash > 0.0:
+		_flash -= delta
+		sprite.modulate = Color(3, 3, 3, 1) if _flash > 0.0 else base_tint
+
+
+## Lantern Flash: interrupts any attack.
+func stun(seconds: float) -> void:
+	if state == State.DEAD:
+		return
+	state = State.STUNNED
+	_timer = seconds
+	_hitbox.position = Vector2.ZERO
 
 
 func _start_windup(to_player: Vector2) -> void:
@@ -135,6 +206,18 @@ func _start_windup(to_player: Vector2) -> void:
 	_dir = LayeredCharacterSprite.dir_from_vector(to_player, _dir)
 	_hitbox.position = _lunge_dir * 10.0
 	sprite.play(&"idle", _dir)
+	if ranged:
+		Sfx.play(&"stamp_warn", 0.1, -6.0)
+
+
+func _shoot(player: Node2D) -> void:
+	if player == null:
+		return
+	var shard: MemoryShard = SHARD_SCENE.instantiate()
+	shard.direction = (player.global_position + Vector2(0, -8) - (global_position + Vector2(0, -12))).normalized()
+	shard.global_position = global_position + Vector2(0, -12)
+	get_parent().add_child(shard)
+	Sfx.play(&"shard")
 
 
 func _pick_drift() -> void:
@@ -146,14 +229,17 @@ func _pick_drift() -> void:
 		_drift_dir = Vector2.from_angle(randf() * TAU) if randf() < 0.7 else Vector2.ZERO
 
 
-func _on_hit(_damage: int, from_position: Vector2, knockback: float) -> void:
+func _on_hit(damage: int, from_position: Vector2, knockback: float) -> void:
 	if state == State.DEAD:
 		return
 	_knockback = (global_position - from_position).normalized() * knockback
-	state = State.HURT
-	_timer = 0.3
-	sprite.modulate = BASE_TINT
+	if state != State.STUNNED:
+		state = State.HURT
+		_timer = 0.3
+	_flash = 0.06
 	sprite.play(&"hurt", _dir, true)
+	(_bar as EnemyHealthBar).show_health(health.health, health.max_health)
+	CombatFx.damage_number(get_parent(), global_position, damage)
 
 
 func _on_died() -> void:
@@ -162,11 +248,25 @@ func _on_died() -> void:
 	if enemy_id != &"":
 		GameState.set_flag(StringName("defeated.%s" % enemy_id), true)
 	remove_from_group(&"echo_enemy")
+	Sfx.play(&"enemy_death")
+	_drop_rewards()
 	var t := create_tween()
 	t.set_parallel(true)
 	t.tween_property(self, "modulate:a", 0.0, 0.6)
 	t.tween_property(self, "position:y", position.y - 8.0, 0.6)
 	t.chain().tween_callback(queue_free)
+
+
+func _drop_rewards() -> void:
+	for i in resonance_drop:
+		var mote: ResonanceMote = MOTE_SCENE.instantiate()
+		mote.global_position = global_position + Vector2(randf_range(-8, 8), randf_range(-6, 2))
+		get_parent().add_child.call_deferred(mote)
+	if randf() < item_drop_chance:
+		var mote: ResonanceMote = MOTE_SCENE.instantiate()
+		mote.item_id = &"sandwich"
+		mote.global_position = global_position
+		get_parent().add_child.call_deferred(mote)
 
 
 static func _rect_shape(size: Vector2, offset: Vector2) -> CollisionShape2D:

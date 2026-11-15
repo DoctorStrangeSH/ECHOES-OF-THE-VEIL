@@ -84,6 +84,9 @@ func add_evidence(id: StringName) -> void:
 	var case_id := StringName(def.get("case", ""))
 	if case_id != &"" and case_status(case_id) == STATUS_NONE:
 		start_case(case_id)
+	var adv: Variant = def.get("advance")
+	if adv is Array and adv.size() == 2:
+		set_case_stage(StringName(adv[0]), StringName(adv[1]))
 	evidence_added.emit(id)
 	EventHub.toast_requested.emit(tr("JOURNAL_NEW_EVIDENCE") % tr(def.get("title", "")))
 	_recheck_corroboration()

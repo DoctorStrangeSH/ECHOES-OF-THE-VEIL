@@ -1,15 +1,26 @@
 class_name Player
 extends CharacterBody2D
-## Player controller: 8-direction movement with normalized diagonals,
-## 4-direction sprite facing, interaction with the best target in reach, and
-## (only in Veil locations) a short melee strike with knockback and i-frames.
-## Owner: player. Manual tests: docs/technical/m1-test-plan.md, m2-test-plan.md.
+## Player controller.
+## Town: 8-direction movement, sprint, interaction.
+## Veil locations (combat_enabled): weapon combo (3 hits, finisher), dodge with
+## short i-frames, "Lantern Flash" stun ability, quick heal, hit-stop and shake.
+## Stats come from the equipped weapon/trinket and Attunements (Inventory.stat).
+## Owner: player. Manual tests: docs/technical/m3-test-plan.md.
 
 const LAYER_WORLD := 1 << 0
 const LAYER_PLAYER := 1 << 1
 const LAYER_NPC := 1 << 3
-const MAX_HEALTH := 5
+const BASE_MAX_HEALTH := 5
 const COURIER_SPRINT_BONUS := 1.12
+
+const COMBO_WINDOW := 0.5
+const DODGE_SPEED := 250.0
+const DODGE_TIME := 0.16
+const DODGE_IFRAMES := 0.22
+const DODGE_COOLDOWN := 0.75
+const FLASH_RADIUS := 50.0
+const FLASH_STUN := 1.6
+const FLASH_COOLDOWN := 6.0
 
 @export var walk_speed: float = 72.0
 @export var sprint_speed: float = 118.0
@@ -17,22 +28,27 @@ const COURIER_SPRINT_BONUS := 1.12
 @export var friction: float = 1200.0
 ## Distance in front of the feet where the interaction sensor sits.
 @export var reach: float = 10.0
-@export var attack_cooldown: float = 0.38
-## Delay from pressing attack to the impact frame.
-@export var attack_impact_delay: float = 0.1
 
 var facing: Vector2 = Vector2.DOWN
 var combat_enabled := false
+var health: Health
+var hurtbox: Hurtbox
+var hitbox: Hitbox
+
 var _focused: Interactable = null
 var _dir: LayeredCharacterSprite.Dir = LayeredCharacterSprite.Dir.DOWN
 var _action_anim_time := 0.0  # while > 0, punch/hurt animation owns the sprite
 var _attack_ready_at := 0.0
+var _combo_index := 0
+var _combo_expires_at := 0.0
 var _knockback := Vector2.ZERO
 var _fainting := false
-
-var health: Health
-var hurtbox: Hurtbox
-var hitbox: Hitbox
+var _dodge_time := 0.0
+var _dodge_dir := Vector2.ZERO
+var _dodge_ready_at := 0.0
+var _flash_ready_at := 0.0
+var _afterimage_timer := 0.0
+var _shake := 0.0
 
 @onready var sprite: LayeredCharacterSprite = $Sprite
 @onready var sensor: Area2D = $InteractionSensor
@@ -53,11 +69,15 @@ func _ready() -> void:
 	_face(facing)
 	sprite.play(&"idle", _dir)
 	EventHub.player_heal_requested.connect(_on_heal_requested)
+	EventHub.player_heal_requested_amount.connect(_on_heal_amount)
+	EventHub.player_stats_changed.connect(_apply_stats)
+	EventHub.camera_shake_requested.connect(shake)
+	Inventory.changed.connect(_apply_stats)
 
 
 func _build_combat() -> void:
 	health = Health.new()
-	health.max_health = MAX_HEALTH
+	health.max_health = max_health()
 	health.invulnerability_time = 0.9
 	add_child(health)
 	health.changed.connect(_on_health_changed)
@@ -66,26 +86,38 @@ func _build_combat() -> void:
 	hurtbox = Hurtbox.new()
 	hurtbox.team = &"player"
 	hurtbox.health = health
-	var hs := CollisionShape2D.new()
-	var hr := RectangleShape2D.new()
-	hr.size = Vector2(10, 18)
-	hs.shape = hr
-	hs.position = Vector2(0, -9)
-	hurtbox.add_child(hs)
+	hurtbox.add_child(EchoEnemy._rect_shape(Vector2(10, 18), Vector2(0, -9)))
 	add_child(hurtbox)
 	hurtbox.hit.connect(_on_hit)
 
 	hitbox = Hitbox.new()
 	hitbox.team = &"player"
-	hitbox.damage = 1
-	var ks := CollisionShape2D.new()
-	var kr := RectangleShape2D.new()
-	kr.size = Vector2(16, 16)
-	ks.shape = kr
-	hitbox.add_child(ks)
+	hitbox.add_child(EchoEnemy._rect_shape(Vector2(16, 16), Vector2.ZERO))
 	add_child(hitbox)
-	EventHub.player_health_changed.emit(MAX_HEALTH if combat_enabled else 0, MAX_HEALTH if combat_enabled else 0)
+	_emit_health()
 
+
+func max_health() -> int:
+	return BASE_MAX_HEALTH + int(Inventory.stat("max_health"))
+
+
+func _apply_stats() -> void:
+	var m := max_health()
+	if m != health.max_health:
+		var gained := maxi(0, m - health.max_health)
+		health.max_health = m
+		health.health = clampi(health.health + gained, 1, m)
+		_emit_health()
+
+
+func _emit_health() -> void:
+	if combat_enabled:
+		EventHub.player_health_changed.emit(health.health, health.max_health)
+	else:
+		EventHub.player_health_changed.emit(0, 0)
+
+
+# --- Frame ---------------------------------------------------------------------
 
 func _physics_process(delta: float) -> void:
 	var input := Vector2.ZERO
@@ -96,7 +128,15 @@ func _physics_process(delta: float) -> void:
 	if _action_anim_time > 0.0:
 		_action_anim_time -= delta
 		speed *= 0.35  # committed to the swing
-	if input != Vector2.ZERO:
+
+	if _dodge_time > 0.0:
+		_dodge_time -= delta
+		velocity = _dodge_dir * DODGE_SPEED * Inventory.stat("dodge_distance_mult")
+		_afterimage_timer -= delta
+		if _afterimage_timer <= 0.0:
+			_afterimage_timer = 0.035
+			CombatFx.afterimage(sprite, get_parent())
+	elif input != Vector2.ZERO:
 		velocity = velocity.move_toward(input * speed, acceleration * delta)
 		if _action_anim_time <= 0.0:
 			_face(input)
@@ -107,9 +147,12 @@ func _physics_process(delta: float) -> void:
 		_knockback = _knockback.move_toward(Vector2.ZERO, 900.0 * delta)
 	move_and_slide()
 	if _action_anim_time <= 0.0:
-		sprite.play(&"walk" if input != Vector2.ZERO else &"idle", _dir)
+		sprite.play(&"walk" if velocity.length() > 8.0 else &"idle", _dir)
 	_update_blink()
 	_update_focus()
+	_update_shake(delta)
+	if combat_enabled:
+		_report_cooldowns()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -119,21 +162,103 @@ func _unhandled_input(event: InputEvent) -> void:
 		if _focused != null and is_instance_valid(_focused):
 			get_viewport().set_input_as_handled()
 			_focused.interact(self)
-	elif event.is_action_pressed(&"attack") and combat_enabled:
+	elif not combat_enabled:
+		return
+	elif event.is_action_pressed(&"attack"):
 		get_viewport().set_input_as_handled()
 		_attack()
+	elif event.is_action_pressed(&"dodge"):
+		get_viewport().set_input_as_handled()
+		_dodge()
+	elif event.is_action_pressed(&"ability"):
+		get_viewport().set_input_as_handled()
+		_flash()
+	elif event.is_action_pressed(&"quick_heal"):
+		get_viewport().set_input_as_handled()
+		_quick_heal()
+
+
+# --- Actions -------------------------------------------------------------------
+
+func _now() -> float:
+	return Time.get_ticks_msec() / 1000.0
 
 
 func _attack() -> void:
-	var now := Time.get_ticks_msec() / 1000.0
-	if now < _attack_ready_at:
+	var now := _now()
+	if now < _attack_ready_at or _dodge_time > 0.0:
 		return
-	_attack_ready_at = now + attack_cooldown
-	_action_anim_time = attack_cooldown * 0.8
+	var w := Inventory.weapon()
+	var combo: Array = w.get("combo", [1, 1, 2])
+	if now > _combo_expires_at:
+		_combo_index = 0
+	var damage := int(combo[_combo_index % combo.size()])
+	var is_finisher := _combo_index % combo.size() == combo.size() - 1
+	if is_finisher:
+		damage += int(Inventory.stat("finisher_bonus"))
+	var cooldown := float(w.get("cooldown", 0.36)) * (1.35 if is_finisher else 1.0)
+	_attack_ready_at = now + cooldown
+	_combo_expires_at = now + cooldown + COMBO_WINDOW
+	_combo_index = (_combo_index + 1) % combo.size()
+	_action_anim_time = cooldown * 0.8
+	var weapon_reach := float(w.get("reach", 12))
+	hitbox.position = facing * (weapon_reach * 0.9) + Vector2(0, -10)
+	hitbox.scale = Vector2.ONE * clampf(weapon_reach / 12.0, 0.8, 1.5)
+	hitbox.damage = damage
+	hitbox.knockback = float(w.get("knockback", 140)) * (1.5 if is_finisher else 1.0)
 	sprite.play(&"punch", _dir, true)
-	await get_tree().create_timer(attack_impact_delay, false).timeout
-	if is_inside_tree() and not _fainting:
-		hitbox.strike()
+	Sfx.play(&"swing", 0.1)
+	await get_tree().create_timer(0.09, false).timeout
+	if not is_inside_tree() or _fainting:
+		return
+	var hits := hitbox.strike()
+	if hits > 0:
+		Sfx.play(&"hit_heavy" if is_finisher else &"hit")
+		CombatFx.hitstop(0.07 if is_finisher else 0.04)
+		shake(3.0 if is_finisher else 1.5)
+
+
+func _dodge() -> void:
+	var now := _now()
+	if now < _dodge_ready_at or _dodge_time > 0.0:
+		return
+	var input := Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")
+	_dodge_dir = input.normalized() if input != Vector2.ZERO else facing
+	_dodge_time = DODGE_TIME
+	_dodge_ready_at = now + DODGE_COOLDOWN * Inventory.stat("dodge_cooldown_mult")
+	_action_anim_time = 0.0
+	_knockback = Vector2.ZERO
+	health.grant_invulnerability(DODGE_IFRAMES)
+	Sfx.play(&"dodge")
+
+
+func _flash() -> void:
+	var now := _now()
+	if now < _flash_ready_at:
+		return
+	_flash_ready_at = now + FLASH_COOLDOWN * Inventory.stat("flash_cooldown_mult")
+	var radius := FLASH_RADIUS * Inventory.stat("flash_radius_mult")
+	var stun := FLASH_STUN + Inventory.stat("flash_stun_bonus")
+	var pulse := FlashPulse.new()
+	pulse.radius = radius
+	pulse.global_position = global_position
+	get_parent().add_child(pulse)
+	Sfx.play(&"flash", 0.02)
+	shake(1.0)
+	for group in [&"echo_enemy", &"boss"]:
+		for e in get_tree().get_nodes_in_group(group):
+			var n := e as Node2D
+			if n != null and n.global_position.distance_to(global_position) <= radius + 8.0 and n.has_method("stun"):
+				n.call("stun", stun)
+
+
+func _quick_heal() -> void:
+	if health.health >= health.max_health:
+		return
+	for id: StringName in [&"sandwich", &"tea_flask"]:
+		if Inventory.has(id) and Inventory.use(id):
+			return
+	EventHub.toast_requested.emit(tr("TOAST_NO_HEALING"))
 
 
 ## Places the player (used by Location when spawning / loading).
@@ -158,14 +283,33 @@ func set_camera_limits(rect: Rect2i) -> void:
 	camera.limit_bottom = rect.end.y
 
 
+func shake(strength: float) -> void:
+	_shake = maxf(_shake, strength)
+
+
+func _update_shake(delta: float) -> void:
+	if _shake <= 0.05:
+		camera.offset = Vector2.ZERO
+		_shake = 0.0
+		return
+	camera.offset = Vector2(randf_range(-_shake, _shake), randf_range(-_shake, _shake)).round()
+	_shake = move_toward(_shake, 0.0, 18.0 * delta)
+
+
+func _report_cooldowns() -> void:
+	var now := _now()
+	var dodge_total := DODGE_COOLDOWN * Inventory.stat("dodge_cooldown_mult")
+	var flash_total := FLASH_COOLDOWN * Inventory.stat("flash_cooldown_mult")
+	EventHub.ability_cooldown.emit("dodge", clampf((_dodge_ready_at - now) / dodge_total, 0.0, 1.0))
+	EventHub.ability_cooldown.emit("flash", clampf((_flash_ready_at - now) / flash_total, 0.0, 1.0))
+
+
 func _face(dir: Vector2) -> void:
 	if dir == Vector2.ZERO:
 		return
 	facing = dir.normalized()
 	_dir = LayeredCharacterSprite.dir_from_vector(dir, _dir)
 	sensor.position = Vector2(facing.x, facing.y) * reach + Vector2(0, -4)
-	if hitbox != null:
-		hitbox.position = Vector2(facing.x, facing.y) * 12.0 + Vector2(0, -10)
 
 
 func _is_blocked() -> bool:
@@ -181,7 +325,7 @@ func _update_focus() -> void:
 			if it == null or not it.can_interact(self):
 				continue
 			var dist := it.global_position.distance_to(sensor.global_position)
-			var score := it.priority * 1000.0 - dist
+			var score := it.interaction_priority * 1000.0 - dist
 			if score > best_score:
 				best_score = score
 				best = it
@@ -192,22 +336,26 @@ func _update_focus() -> void:
 
 # --- Combat reactions ----------------------------------------------------------
 
-func _on_hit(_damage: int, from_position: Vector2, knockback: float) -> void:
+func _on_hit(damage: int, from_position: Vector2, knockback: float) -> void:
 	var away := (global_position - from_position).normalized()
 	if away == Vector2.ZERO:
 		away = -facing
 	_knockback = away * knockback
 	_action_anim_time = 0.3
+	_dodge_time = 0.0
 	sprite.play(&"hurt", _dir, true)
+	Sfx.play(&"hurt")
+	shake(4.0)
+	CombatFx.hitstop(0.08)
+	CombatFx.damage_number(get_parent(), global_position, damage, Color(1, 0.45, 0.45))
 
 
-func _on_health_changed(h: int, m: int) -> void:
-	if combat_enabled:
-		EventHub.player_health_changed.emit(h, m)
+func _on_health_changed(_h: int, _m: int) -> void:
+	_emit_health()
 
 
 func _update_blink() -> void:
-	if health != null and health.is_invulnerable() and not health.is_dead():
+	if health != null and health.is_invulnerable() and not health.is_dead() and _dodge_time <= 0.0:
 		sprite.visible = int(Time.get_ticks_msec() / 80) % 2 == 0
 	else:
 		sprite.visible = true
@@ -215,6 +363,11 @@ func _update_blink() -> void:
 
 func _on_heal_requested() -> void:
 	health.heal_full()
+
+
+func _on_heal_amount(amount: int) -> void:
+	health.heal(amount)
+	CombatFx.damage_number(get_parent(), global_position, amount, Color(0.5, 1, 0.6))
 
 
 ## Fail-forward: fainting in the Veil returns the player to their room.

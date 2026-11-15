@@ -30,6 +30,11 @@ extends StaticBody2D
 	set(value):
 		collision_offset = value
 		_refresh()
+## Optional sub-rectangle of the texture (for objects cut from a tile sheet).
+@export var region: Rect2 = Rect2():
+	set(value):
+		region = value
+		_refresh()
 @export var flip_h: bool = false:
 	set(value):
 		flip_h = value
@@ -56,11 +61,15 @@ func _refresh() -> void:
 		_shape = CollisionShape2D.new()
 		add_child(_shape, false, Node.INTERNAL_MODE_FRONT)
 	var tex := AssetLibrary.load_texture(texture_path)
+	var use_region := tex != null and region.has_area()
 	if tex == null:
 		tex = AssetLibrary.placeholder(placeholder_size, placeholder_color)
 	_sprite.texture = tex
 	_sprite.flip_h = flip_h
-	var size := tex.get_size()
+	_sprite.region_enabled = use_region
+	if use_region:
+		_sprite.region_rect = region
+	var size := region.size if use_region else tex.get_size()
 	_sprite.offset = Vector2(-floorf(size.x / 2.0), -size.y)
 	if collision_size.x > 0.0 and collision_size.y > 0.0:
 		var rect := RectangleShape2D.new()

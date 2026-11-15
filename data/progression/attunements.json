@@ -1,0 +1,10 @@
+{
+  "_doc": "Attunements: bought with Resonance (memory motes from echoes). Horizontal choices, small effects. mods are combined with equipment mods.",
+  "steady_heart": {"name": "ATT_STEADY_HEART", "desc": "ATT_STEADY_HEART_DESC", "cost": 4, "mods": {"max_health": 1}},
+  "steady_heart_2": {"name": "ATT_STEADY_HEART_2", "desc": "ATT_STEADY_HEART_2_DESC", "cost": 8, "requires": "steady_heart", "mods": {"max_health": 1}},
+  "quick_step": {"name": "ATT_QUICK_STEP", "desc": "ATT_QUICK_STEP_DESC", "cost": 4, "mods": {"dodge_cooldown_mult": 0.8, "dodge_distance_mult": 1.15}},
+  "bright_lantern": {"name": "ATT_BRIGHT_LANTERN", "desc": "ATT_BRIGHT_LANTERN_DESC", "cost": 5, "mods": {"flash_radius_mult": 1.4}},
+  "lingering_light": {"name": "ATT_LINGERING_LIGHT", "desc": "ATT_LINGERING_LIGHT_DESC", "cost": 6, "requires": "bright_lantern", "mods": {"flash_stun_bonus": 1.0}},
+  "heavy_hand": {"name": "ATT_HEAVY_HAND", "desc": "ATT_HEAVY_HAND_DESC", "cost": 6, "mods": {"finisher_bonus": 1}},
+  "keepsake": {"name": "ATT_KEEPSAKE", "desc": "ATT_KEEPSAKE_DESC", "cost": 5, "mods": {"heal_bonus": 1}}
+}

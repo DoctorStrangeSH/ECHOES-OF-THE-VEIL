@@ -133,7 +133,7 @@ func test_localization_complete() -> void:
 
 
 func test_input_actions_registered() -> void:
-	for a in [&"move_up", &"move_down", &"move_left", &"move_right", &"interact", &"attack", &"journal", &"pause", &"quick_save", &"quick_load"]:
+	for a in [&"move_up", &"move_down", &"move_left", &"move_right", &"interact", &"attack", &"dodge", &"ability", &"quick_heal", &"journal", &"inventory", &"pause", &"quick_save", &"quick_load"]:
 		check(InputMap.has_action(a) and not InputMap.action_get_events(a).is_empty(), "action %s" % a)
 
 
@@ -142,7 +142,7 @@ func test_tile_painter() -> void:
 	check(TilePainter.pick_index(1, 0, 4, Vector2i(2, 2)) == 1, "grid 1,0")
 	check(TilePainter.pick_index(2, 1, 4, Vector2i(2, 2)) == 2, "grid wraps")
 	check(TilePainter.pick_variant(5, 7, 3) == TilePainter.pick_variant(5, 7, 3), "variant stable")
-	for palette_id in ["greyford_exterior", "rented_room", "echo_corridor"]:
+	for palette_id in ["greyford_exterior", "rented_room", "echo_corridor", "tram_platform"]:
 		var palette := TilePainter.load_palette(palette_id)
 		check(not palette.is_empty(), "palette %s exists" % palette_id)
 		var built := TilePainter.build_tileset(palette)
@@ -341,3 +341,96 @@ func test_creator_style_parsing() -> void:
 	check(CharacterCreator.style_of("Hairstyle_07_03") == "Hairstyle_07", "hair style")
 	check(CharacterCreator.style_of("Body_03") == "Body_03", "body has no colour variant")
 	check(CharacterCreator.style_of("Accessory_01_Ladybug_02") == "Accessory_01_Ladybug", "accessory")
+
+
+# --- M3: inventory, progression, combat ------------------------------------------
+
+func test_inventory_items_and_equipment() -> void:
+	GameState.reset_for_new_game()
+	check(Inventory.equipped["weapon"] == Inventory.DEFAULT_WEAPON, "fists by default")
+	Inventory.add(&"wrench", 1, false)
+	Inventory.equip(&"wrench")
+	var combo: Array = Inventory.weapon().get("combo", [])
+	check(combo.size() == 3 and int(combo[2]) == 3, "wrench combo")
+	Inventory.add(&"tram_token", 1, false)
+	Inventory.equip(&"tram_token")
+	check(int(Inventory.stat("max_health")) == 1, "trinket mod applies")
+	Inventory.remove(&"tram_token")
+	check(Inventory.equipped["trinket"] == &"", "removing an item unequips it")
+	Inventory.add(&"tea_flask", 20, false)
+	check(Inventory.count(&"tea_flask") == 9, "stack cap")
+	check(Inventory.use(&"tea_flask") and Inventory.count(&"tea_flask") == 8, "consumable used")
+	check(not Inventory.use(&"wrench"), "weapons are not consumable")
+	GameState.reset_for_new_game()
+
+
+func test_attunements_and_stats() -> void:
+	GameState.reset_for_new_game()
+	check(not Inventory.can_attune(&"steady_heart"), "costs resonance")
+	Inventory.add_resonance(20)
+	check(not Inventory.can_attune(&"steady_heart_2"), "requires the first heart")
+	check(Inventory.attune(&"steady_heart") and Inventory.attune(&"steady_heart_2"), "chain bought")
+	check(int(Inventory.stat("max_health")) == 2, "two hearts")
+	Inventory.attune(&"quick_step")
+	Inventory.add(&"brass_compass", 1, false)
+	Inventory.equip(&"brass_compass")
+	check(is_equal_approx(Inventory.stat("dodge_cooldown_mult"), 0.8 * 0.7), "multipliers multiply")
+	check(Inventory.resonance == 20 - 4 - 8 - 4, "resonance spent")
+	var saved := Inventory.to_dict()
+	Inventory.reset()
+	Inventory.from_dict(JSON.parse_string(JSON.stringify(saved)))
+	check(Inventory.has_attunement(&"steady_heart_2") and Inventory.equipped["trinket"] == &"brass_compass", "survives save")
+	GameState.reset_for_new_game()
+
+
+func test_money_and_shop_rules() -> void:
+	GameState.reset_for_new_game()
+	Inventory.money = 5
+	check(StoryRules.evaluate({"money_at_least": 4}), "can afford")
+	StoryRules.apply([{"spend_money": 4}, {"give_item": ["tea_flask", 1]}])
+	check(Inventory.money == 1 and Inventory.has(&"tea_flask"), "bought")
+	check(not StoryRules.evaluate({"money_at_least": 4}), "cannot afford twice")
+	check(not Inventory.spend_money(4), "no debt")
+	GameState.reset_for_new_game()
+
+
+func test_item_evidence_advances_case() -> void:
+	GameState.reset_for_new_game()
+	Journal.start_case(&"case_rosalind")
+	Inventory.add(&"ledger_page", 1, false)
+	check(Journal.has_evidence(&"e_census_page"), "key item grants its evidence")
+	check(Journal.case_stage(&"case_rosalind") == &"page", "evidence advances the case")
+	GameState.reset_for_new_game()
+
+
+func test_health_iframes_and_heal() -> void:
+	var h := Health.new()
+	h.max_health = 5
+	h.invulnerability_time = 0.0
+	add_child(h)
+	check(h.take_damage(2, Vector2.ZERO) and h.health == 3, "damage")
+	h.grant_invulnerability(10.0)
+	check(not h.take_damage(1, Vector2.ZERO) and h.health == 3, "i-frames block damage")
+	h.heal(5)
+	check(h.health == 5, "heal clamps to max")
+	h.queue_free()
+
+
+func test_enemy_variants_defined() -> void:
+	for v: String in ["hollow", "clinger", "wailer"]:
+		check(EchoEnemy.VARIANTS.has(v), "variant %s" % v)
+	check(bool(EchoEnemy.VARIANTS["wailer"].get("ranged", false)), "wailer is ranged")
+
+
+func test_save_migration_from_v2() -> void:
+	var dir := _fresh_save_dir()
+	var v2 := SaveService.make_envelope(GameState.to_dict())
+	v2["schema_version"] = 2
+	v2["payload"].erase("inventory")
+	DirAccess.make_dir_recursive_absolute(dir)
+	var f := FileAccess.open(SaveService.slot_path(1), FileAccess.WRITE)
+	f.store_string(JSON.stringify(v2))
+	f.close()
+	var r := SaveService.read_slot(1)
+	check(r["ok"] and r["envelope"]["payload"].has("inventory"), "v2 save gains an inventory")
+	_cleanup(dir)

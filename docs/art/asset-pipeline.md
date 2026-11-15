@@ -4,7 +4,21 @@
 
 The project uses the owner's purchased LimeZu packs (Modern Interiors, Modern Exteriors, Modern User Interface, Modern Farm, Modern Office). They are audited in [limezu-inventory-2026-11-14.md](limezu-inventory-2026-11-14.md).
 
-## Import step (every developer, once)
+## Where the art lives
+
+The extracted packs and generated TileSets are stored in a **private GitHub repository** (`echoes-of-the-veil-art`), attached to this public repository as a git submodule at `assets/limezu`. Nothing has to be installed by hand on a new computer:
+
+```
+git clone --recurse-submodules https://github.com/DoctorStrangeSH/ECHOES-OF-THE-VEIL
+# or, in an existing clone:
+git submodule update --init
+```
+
+Only accounts with access to the private repository receive the art; for everyone else (and for CI) the submodule stays empty and the game runs with placeholders. Size: ~34k files, ~210 MB, no file above 50 MB, so plain git is enough (no Git LFS quotas).
+
+Exported builds include the art inside the game's .pck, which is the normal, licensed use.
+
+## Import step (only to rebuild or update the art repository)
 
 ```
 python tools/import_limezu.py --source <folder with the LimeZu zips> [--scales 16 32 48]
@@ -13,8 +27,8 @@ python tools/import_limezu.py --source <folder with the LimeZu zips> [--scales 1
 - Extracts the requested scales into `assets/limezu/<pack>/`, keeping the original folder layout (provenance stays obvious), plus each pack's license file and a `MANIFEST.json` with archive SHA-256 hashes.
 - Skips installers (`.exe`), Aseprite sources, GIF previews, nested ZIPs and RPG Maker variants.
 - Splits sheets above Godot's 16384 px texture limit (`Interiors_16x16.png`) into `_partN.png` files.
-- Generates one TileSet per tile sheet in `resources/tilesets/limezu/<scale>/<pack>/`, registering every non-empty cell, so sheets can be painted in the TileMapLayer editor immediately. Collision is painted per tile in the editor (physics layer 0 = world).
-- Both output folders are git-ignored. Code refers to art through `AssetLibrary` paths relative to `res://assets/limezu`, and every lookup falls back to a placeholder when a file is missing.
+- Generates one TileSet per tile sheet in `assets/limezu/tilesets/<scale>/<pack>/`, registering every non-empty cell, so sheets can be painted in the TileMapLayer editor immediately. Collision is painted per tile in the editor (physics layer 0 = world).
+- Everything lands inside `assets/limezu/`; commit and push there (the private submodule), then commit the new submodule pointer in the game repository. Code refers to art through `AssetLibrary` paths relative to `res://assets/limezu`, and every lookup falls back to a placeholder when a file is missing.
 
 ## Engine conventions (implemented in M1)
 

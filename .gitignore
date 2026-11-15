@@ -5,8 +5,9 @@ export/
 export_presets.cfg
 *.tmp
 
-# Purchased third-party assets: licensed for use, NOT for redistribution.
-# Recreate locally with: python tools/import_limezu.py --source <folder with zips>
+# Purchased third-party assets live in a PRIVATE submodule at assets/limezu
+# (licensed for use, NOT for public redistribution). See docs/art/asset-pipeline.md.
+# Ignored until the submodule is registered in .gitmodules.
 /assets/limezu/
 /resources/tilesets/limezu/
 *.zip

@@ -11,6 +11,7 @@ extends RefCounted
 ##   {"not_quest_started": "id"}
 ##   {"period": "night" | ["morning", "afternoon"]}  {"weather": "rain"}
 ##   {"relationship_at_least": ["npc", 2]}  {"remembers": ["npc", "event"]}
+##   {"has_item": "id" | ["id", n]}  {"money_at_least": n}
 ##   {"all": [c, ...]}  {"any": [c, ...]}  {"not": c}
 ##
 ## Effects (applied in order):
@@ -19,6 +20,8 @@ extends RefCounted
 ##   {"relationship": ["npc", delta]}  {"remember": ["npc", "event"]}
 ##   {"toast": "KEY"}  {"advance_minutes": n}  {"sleep_until_hour": h}  {"wait_until_hour": h}
 ##   {"save_game": true}  {"travel": ["scene_id", "spawn_id"]}  {"heal_player": true}
+##   {"give_item": ["id", n]}  {"take_item": ["id", n]}  {"give_money": n}  {"spend_money": n}
+##   {"give_resonance": n}
 
 
 static func evaluate(cond: Variant) -> bool:
@@ -74,6 +77,12 @@ static func _check(key: String, arg: Variant) -> bool:
 			return GameState.get_relationship(StringName(arg[0])) >= int(arg[1])
 		"remembers":
 			return GameState.npc_remembers(StringName(arg[0]), String(arg[1]))
+		"has_item":
+			if arg is Array:
+				return Inventory.has(StringName(arg[0]), int(arg[1]))
+			return Inventory.has(StringName(arg))
+		"money_at_least":
+			return Inventory.money >= int(arg)
 		"all":
 			for c: Variant in arg:
 				if not evaluate(c):
@@ -138,5 +147,15 @@ static func _apply_one(key: String, arg: Variant, whole: Dictionary) -> void:
 			SceneFlow.travel(StringName(arg[0]), StringName(arg[1]))
 		"heal_player":
 			EventHub.player_heal_requested.emit()
+		"give_item":
+			Inventory.add(StringName(arg[0]), int(arg[1]) if arg.size() > 1 else 1)
+		"take_item":
+			Inventory.remove(StringName(arg[0]), int(arg[1]) if arg.size() > 1 else 1)
+		"give_money":
+			Inventory.add_money(int(arg))
+		"spend_money":
+			Inventory.spend_money(int(arg))
+		"give_resonance":
+			Inventory.add_resonance(int(arg))
 		_:
 			push_warning("StoryRules: unknown effect '%s'" % key)

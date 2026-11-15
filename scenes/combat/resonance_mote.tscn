@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/resonance_mote.gd" id="1_mote"]
+
+[node name="ResonanceMote" type="Area2D"]
+script = ExtResource("1_mote")

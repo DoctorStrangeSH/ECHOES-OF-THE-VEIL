@@ -1,180 +1,1326 @@
 {
-  "mara": {
-    "entries": [
-      {"if": {"not_flag": "met.mara_venn"}, "node": "intro1"},
-      {"if": {"flag": "door.reported", "not_flag": "mara.reacted_report"}, "node": "reported"},
-      {"if": {"flag": "door.vanished", "not_flag": "mara.heard_echo", "all": [{"flag": "door.shared_with_mara"}]}, "node": "echo_shared"},
-      {"if": {"flag": "door.vanished", "not_flag": "mara.heard_echo"}, "node": "echo_secret"},
-      {"if": {"hypothesis": "lantern_row_fragment", "not_flag": "door.decided", "all": [{"not_flag": "door.shared_with_mara"}, {"not_flag": "mara.kept_out"}]}, "node": "decide"}
+ "mara": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "met.mara_venn"
+    },
+    "node": "intro1"
+   },
+   {
+    "if": {
+     "flag": "door.reported",
+     "not_flag": "mara.reacted_report"
+    },
+    "node": "reported"
+   },
+   {
+    "if": {
+     "flag": "door.vanished",
+     "not_flag": "mara.heard_echo",
+     "all": [
+      {
+       "flag": "door.shared_with_mara"
+      }
+     ]
+    },
+    "node": "echo_shared"
+   },
+   {
+    "if": {
+     "flag": "door.vanished",
+     "not_flag": "mara.heard_echo"
+    },
+    "node": "echo_secret"
+   },
+   {
+    "if": {
+     "hypothesis": "lantern_row_fragment",
+     "not_flag": "door.decided",
+     "all": [
+      {
+       "not_flag": "door.shared_with_mara"
+      },
+      {
+       "not_flag": "mara.kept_out"
+      }
+     ]
+    },
+    "node": "decide"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "intro1": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_1",
+    "next": "intro2"
+   },
+   "intro2": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_2",
+    "next": "intro3"
+   },
+   "intro3": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_3",
+    "effects": [
+     {
+      "set_flag": "met.mara_venn"
+     },
+     {
+      "relationship": [
+       "mara_venn",
+       1
+      ]
+     }
     ],
-    "start": "hub",
-    "nodes": {
-      "intro1": {"speaker": "NPC_MARA", "text": "MARA_1", "next": "intro2"},
-      "intro2": {"speaker": "NPC_MARA", "text": "MARA_2", "next": "intro3"},
-      "intro3": {"speaker": "NPC_MARA", "text": "MARA_3", "effects": [{"set_flag": "met.mara_venn"}, {"relationship": ["mara_venn", 1]}], "next": null},
-      "hub": {"speaker": "NPC_MARA", "text": "MARA_HUB", "choices": [
-        {"text": "MARA_ASK_PLAZA", "if": {"evidence": "e_door_observed", "not_evidence": "e_mara_lantern_row"}, "next": "plaza1"},
-        {"text": "MARA_ASK_ARCHIVE", "if": {"not_flag": "mara.archive_talk"}, "next": "archive1"},
-        {"text": "MARA_SHOW_MAP", "if": {"evidence": "e_city_map", "not_flag": "mara.saw_map"}, "next": "map1"},
-        {"text": "MARA_TELL_LATER", "if": {"flag": "mara.kept_out", "not_flag": "door.decided", "all": [{"not_flag": "door.shared_with_mara"}]}, "next": "tell1"},
-        {"text": "BYE", "next": null}
-      ]},
-      "plaza1": {"speaker": "NPC_MARA", "text": "MARA_PLAZA_1", "next": "plaza2"},
-      "plaza2": {"speaker": "NPC_MARA", "text": "MARA_PLAZA_2", "next": "plaza3"},
-      "plaza3": {"speaker": "NPC_MARA", "text": "MARA_PLAZA_3", "effects": [{"add_evidence": "e_mara_lantern_row"}], "next": "hub"},
-      "archive1": {"speaker": "NPC_MARA", "text": "MARA_ARCHIVE_1", "next": "archive2"},
-      "archive2": {"speaker": "NPC_MARA", "text": "MARA_ARCHIVE_2", "effects": [{"set_flag": "mara.archive_talk"}], "next": "hub"},
-      "map1": {"speaker": "NPC_MARA", "text": "MARA_MAP_1", "effects": [{"set_flag": "mara.saw_map"}, {"relationship": ["mara_venn", 1]}], "next": "hub"},
-      "decide": {"speaker": "NPC_MARA", "text": "MARA_DECIDE_1", "choices": [
-        {"text": "MARA_TELL", "next": "tell1"},
-        {"text": "MARA_KEEP", "effects": [{"set_flag": "mara.kept_out"}], "next": "keep1"}
-      ]},
-      "tell1": {"speaker": "NPC_MARA", "text": "MARA_TELL_1", "next": "tell2"},
-      "tell2": {"speaker": "NPC_MARA", "text": "MARA_TELL_2", "effects": [{"set_flag": "door.shared_with_mara"}, {"relationship": ["mara_venn", 2]}, {"remember": ["mara_venn", "trusted_with_door"]}], "next": null},
-      "keep1": {"speaker": "NPC_MARA", "text": "MARA_KEEP_1", "next": null},
-      "reported": {"speaker": "NPC_MARA", "text": "MARA_REPORTED_1", "effects": [{"set_flag": "mara.reacted_report"}, {"relationship": ["mara_venn", -2]}, {"remember": ["mara_venn", "reported_door"]}], "next": null},
-      "echo_shared": {"speaker": "NPC_MARA", "text": "MARA_ECHO_1", "effects": [{"set_flag": "mara.heard_echo"}, {"relationship": ["mara_venn", 1]}, {"remember": ["mara_venn", "shared_echo"]}], "next": "echo_shared2"},
-      "echo_shared2": {"speaker": "NPC_MARA", "text": "MARA_ECHO_2", "next": null},
-      "echo_secret": {"speaker": "NPC_MARA", "text": "MARA_ECHO_SECRET", "effects": [{"set_flag": "mara.heard_echo"}, {"relationship": ["mara_venn", -1]}], "next": null}
-    }
-  },
-  "jonah": {
-    "entries": [
-      {"if": {"not_flag": "met.jonah_rook"}, "node": "intro1"},
-      {"if": {"quest_stage": ["case_radio", "deliver"]}, "node": "remind"},
-      {"if": {"quest_stage": ["case_radio", "return"]}, "node": "reward1"}
+    "next": null
+   },
+   "hub": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_HUB",
+    "choices": [
+     {
+      "text": "MARA_ASK_PLAZA",
+      "if": {
+       "evidence": "e_door_observed",
+       "not_evidence": "e_mara_lantern_row"
+      },
+      "next": "plaza1"
+     },
+     {
+      "text": "MARA_ASK_ARCHIVE",
+      "if": {
+       "not_flag": "mara.archive_talk"
+      },
+      "next": "archive1"
+     },
+     {
+      "text": "MARA_SHOW_MAP",
+      "if": {
+       "evidence": "e_city_map",
+       "not_flag": "mara.saw_map"
+      },
+      "next": "map1"
+     },
+     {
+      "text": "MARA_TELL_LATER",
+      "if": {
+       "flag": "mara.kept_out",
+       "not_flag": "door.decided",
+       "all": [
+        {
+         "not_flag": "door.shared_with_mara"
+        }
+       ]
+      },
+      "next": "tell1"
+     },
+     {
+      "text": "MARA_GIVE_PAGE",
+      "if": {
+       "has_item": "ledger_page",
+       "flag": "rosalind.spared"
+      },
+      "next": "page1"
+     },
+     {
+      "text": "BYE",
+      "next": null
+     }
+    ]
+   },
+   "plaza1": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_PLAZA_1",
+    "next": "plaza2"
+   },
+   "plaza2": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_PLAZA_2",
+    "next": "plaza3"
+   },
+   "plaza3": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_PLAZA_3",
+    "effects": [
+     {
+      "add_evidence": "e_mara_lantern_row"
+     }
     ],
-    "start": "hub",
-    "nodes": {
-      "intro1": {"speaker": "NPC_JONAH", "text": "JONAH_1", "effects": [{"set_flag": "met.jonah_rook"}], "next": "intro2"},
-      "intro2": {"speaker": "NPC_JONAH", "text": "JONAH_2", "next": "offer"},
-      "offer": {"speaker": "NPC_JONAH", "text": "JONAH_3", "choices": [
-        {"text": "JONAH_ACCEPT", "effects": [{"quest_start": "case_radio"}, {"set_flag": "has_radio"}, {"relationship": ["jonah_rook", 1]}], "next": "accept1"},
-        {"text": "JONAH_TECH", "if": {"background": "repair_technician"}, "effects": [{"quest_start": "case_radio"}, {"set_flag": "has_radio"}, {"set_flag": "radio.tech_noticed"}, {"relationship": ["jonah_rook", 2]}, {"remember": ["jonah_rook", "noticed_dial"]}], "next": "tech1"},
-        {"text": "JONAH_DECLINE", "next": "decline1"}
-      ]},
-      "accept1": {"speaker": "NPC_JONAH", "text": "JONAH_ACCEPT_1", "next": null},
-      "tech1": {"text": "JONAH_TECH_1", "next": "tech2"},
-      "tech2": {"speaker": "NPC_JONAH", "text": "JONAH_TECH_2", "next": null},
-      "decline1": {"speaker": "NPC_JONAH", "text": "JONAH_DECLINE_1", "next": null},
-      "remind": {"speaker": "NPC_JONAH", "text": "JONAH_REMIND", "next": null},
-      "reward1": {"speaker": "NPC_JONAH", "text": "JONAH_REWARD_1", "next": "reward2"},
-      "reward2": {"speaker": "NPC_JONAH", "text": "JONAH_REWARD_2", "next": "reward3"},
-      "reward3": {"speaker": "NPC_JONAH", "text": "JONAH_REWARD_3", "effects": [{"add_evidence": "e_city_map"}, {"quest_complete": ["case_radio", "delivered"]}, {"relationship": ["jonah_rook", 1]}, {"remember": ["jonah_rook", "delivered_radio"]}], "next": null},
-      "hub": {"speaker": "NPC_JONAH", "text": "JONAH_HUB", "choices": [
-        {"text": "JONAH_ASK_TRAM", "next": "tram1"},
-        {"text": "JONAH_ASK_RADIO", "if": {"not_quest_started": "case_radio"}, "next": "offer"},
-        {"text": "BYE", "next": null}
-      ]},
-      "tram1": {"speaker": "NPC_JONAH", "text": "JONAH_TRAM_1", "next": "tram2"},
-      "tram2": {"speaker": "NPC_JONAH", "text": "JONAH_TRAM_2", "next": "hub"}
-    }
-  },
-  "halloway": {
-    "entries": [
-      {"if": {"flag": "has_radio", "quest_stage": ["case_radio", "deliver"]}, "node": "radio1"},
-      {"if": {"not_flag": "met.edda_halloway", "background": "returning_local"}, "node": "local1"},
-      {"if": {"not_flag": "met.edda_halloway"}, "node": "intro1"}
+    "next": "hub"
+   },
+   "archive1": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_ARCHIVE_1",
+    "next": "archive2"
+   },
+   "archive2": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_ARCHIVE_2",
+    "effects": [
+     {
+      "set_flag": "mara.archive_talk"
+     }
     ],
-    "start": "hub",
-    "nodes": {
-      "intro1": {"speaker": "NPC_HALLOWAY", "text": "HALLOWAY_1", "effects": [{"set_flag": "met.edda_halloway"}], "next": null},
-      "local1": {"speaker": "NPC_HALLOWAY", "text": "HALLOWAY_LOCAL_1", "next": "local2"},
-      "local2": {"speaker": "NPC_HALLOWAY", "text": "HALLOWAY_LOCAL_2", "effects": [{"set_flag": "met.edda_halloway"}, {"relationship": ["edda_halloway", 1]}, {"set_flag": "halloway.forgot_your_street"}], "next": null},
-      "radio1": {"speaker": "NPC_HALLOWAY", "text": "HALLOWAY_RADIO_1", "effects": [{"set_flag": "met.edda_halloway"}], "next": "radio2"},
-      "radio2": {"text": "HALLOWAY_RADIO_2", "effects": [{"add_evidence": "e_radio_announcement"}], "next": "radio3"},
-      "radio3": {"text": "HALLOWAY_RADIO_3", "next": "radio4"},
-      "radio4": {"speaker": "NPC_HALLOWAY", "text": "HALLOWAY_RADIO_4", "effects": [{"add_evidence": "e_halloway_lantern_row"}, {"clear_flag": "has_radio"}, {"quest_stage": ["case_radio", "return"]}, {"relationship": ["edda_halloway", 1]}], "next": null},
-      "hub": {"speaker": "NPC_HALLOWAY", "text": "HALLOWAY_HUB", "choices": [
-        {"text": "HALLOWAY_ASK_NOTE", "if": {"evidence": "e_landlord_note", "not_flag": "halloway.note_talk"}, "next": "note1"},
-        {"text": "BYE", "next": null}
-      ]},
-      "note1": {"speaker": "NPC_HALLOWAY", "text": "HALLOWAY_NOTE_1", "effects": [{"set_flag": "halloway.note_talk"}], "next": "hub"}
-    }
-  },
-  "ivo": {
-    "entries": [
-      {"if": {"not_flag": "met.ivo_calder"}, "node": "intro1"},
-      {"if": {"flag": "door.reported", "not_flag": "ivo.reacted_report"}, "node": "reported"},
-      {"if": {"flag": "door.vanished", "not_flag": "ivo.reacted_echo"}, "node": "echo"}
+    "next": "hub"
+   },
+   "map1": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_MAP_1",
+    "effects": [
+     {
+      "set_flag": "mara.saw_map"
+     },
+     {
+      "relationship": [
+       "mara_venn",
+       1
+      ]
+     }
     ],
-    "start": "hub",
-    "nodes": {
-      "intro1": {"speaker": "NPC_IVO", "text": "IVO_1", "next": "intro2"},
-      "intro2": {"speaker": "NPC_IVO", "text": "IVO_2", "effects": [{"set_flag": "met.ivo_calder"}], "next": null},
-      "hub": {"speaker": "NPC_IVO", "text": "IVO_HUB", "choices": [
-        {"text": "IVO_ASK_DOOR", "if": {"evidence": "e_door_observed", "not_evidence": "e_ivo_warning", "all": [{"not_flag": "door.vanished"}]}, "next": "door1"},
-        {"text": "IVO_ASK_SYMBOL", "if": {"hypothesis": "greyford_keeps_quiet", "not_flag": "ivo.symbol_asked"}, "next": "sym1"},
-        {"text": "BYE", "next": null}
-      ]},
-      "door1": {"speaker": "NPC_IVO", "text": "IVO_DOOR_1", "next": "door2"},
-      "door2": {"speaker": "NPC_IVO", "text": "IVO_DOOR_2", "effects": [{"add_evidence": "e_ivo_warning"}], "next": "hub"},
-      "sym1": {"speaker": "NPC_IVO", "text": "IVO_SYM_1", "effects": [{"set_flag": "ivo.symbol_asked"}, {"remember": ["ivo_calder", "asked_about_marks"]}], "next": "hub"},
-      "reported": {"speaker": "NPC_IVO", "text": "IVO_REPORTED_1", "effects": [{"set_flag": "ivo.reacted_report"}, {"relationship": ["ivo_calder", 1]}], "next": null},
-      "echo": {"speaker": "NPC_IVO", "text": "IVO_ECHO_1", "effects": [{"set_flag": "ivo.reacted_echo"}, {"relationship": ["ivo_calder", -1]}, {"remember": ["ivo_calder", "opened_a_door"]}], "next": null}
-    }
-  },
-  "nadiya": {
-    "entries": [
-      {"if": {"not_flag": "met.nadiya_sol"}, "node": "intro1"},
-      {"if": {"flag": "door.reported", "not_flag": "nadiya.reacted_report"}, "node": "reported"},
-      {"if": {"flag": "door.vanished", "not_flag": "nadiya.reacted_echo"}, "node": "echo"}
+    "next": "hub"
+   },
+   "decide": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_DECIDE_1",
+    "choices": [
+     {
+      "text": "MARA_TELL",
+      "next": "tell1"
+     },
+     {
+      "text": "MARA_KEEP",
+      "effects": [
+       {
+        "set_flag": "mara.kept_out"
+       }
+      ],
+      "next": "keep1"
+     }
+    ]
+   },
+   "tell1": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_TELL_1",
+    "next": "tell2"
+   },
+   "tell2": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_TELL_2",
+    "effects": [
+     {
+      "set_flag": "door.shared_with_mara"
+     },
+     {
+      "relationship": [
+       "mara_venn",
+       2
+      ]
+     },
+     {
+      "remember": [
+       "mara_venn",
+       "trusted_with_door"
+      ]
+     }
     ],
-    "start": "hub",
-    "nodes": {
-      "intro1": {"speaker": "NPC_NADIYA", "text": "NADIYA_1", "next": "intro2"},
-      "intro2": {"speaker": "NPC_NADIYA", "text": "NADIYA_2", "effects": [{"set_flag": "met.nadiya_sol"}], "next": null},
-      "hub": {"speaker": "NPC_NADIYA", "text": "NADIYA_HUB", "choices": [
-        {"text": "NADIYA_ASK_DOOR", "if": {"evidence": "e_door_observed", "not_flag": "nadiya.door_talk", "all": [{"not_flag": "door.vanished"}]}, "next": "door1"},
-        {"text": "NADIYA_ASK_WORK", "next": "work1"},
-        {"text": "BYE", "next": null}
-      ]},
-      "door1": {"speaker": "NPC_NADIYA", "text": "NADIYA_DOOR_1", "next": "door2"},
-      "door2": {"speaker": "NPC_NADIYA", "text": "NADIYA_DOOR_2", "effects": [{"set_flag": "nadiya.door_talk"}, {"relationship": ["nadiya_sol", 1]}], "next": "hub"},
-      "work1": {"speaker": "NPC_NADIYA", "text": "NADIYA_WORK_1", "next": "hub"},
-      "reported": {"speaker": "NPC_NADIYA", "text": "NADIYA_REPORTED_1", "effects": [{"set_flag": "nadiya.reacted_report"}, {"relationship": ["nadiya_sol", -2]}, {"remember": ["nadiya_sol", "reported_door"]}], "next": null},
-      "echo": {"speaker": "NPC_NADIYA", "text": "NADIYA_ECHO_1", "effects": [{"set_flag": "nadiya.reacted_echo"}, {"relationship": ["nadiya_sol", 1]}], "next": null}
-    }
-  },
-  "pike": {
-    "entries": [
-      {"if": {"not_flag": "met.dana_pike"}, "node": "intro1"}
+    "next": null
+   },
+   "keep1": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_KEEP_1",
+    "next": null
+   },
+   "reported": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_REPORTED_1",
+    "effects": [
+     {
+      "set_flag": "mara.reacted_report"
+     },
+     {
+      "relationship": [
+       "mara_venn",
+       -2
+      ]
+     },
+     {
+      "remember": [
+       "mara_venn",
+       "reported_door"
+      ]
+     }
     ],
-    "start": "hub",
-    "nodes": {
-      "intro1": {"speaker": "NPC_PIKE", "text": "PIKE_1", "next": "intro2"},
-      "intro2": {"speaker": "NPC_PIKE", "text": "PIKE_2", "effects": [{"set_flag": "met.dana_pike"}], "next": "hub"},
-      "hub": {"speaker": "NPC_PIKE", "text": "PIKE_HUB", "choices": [
-        {"text": "PIKE_REPORT", "if": {"evidence": "e_door_observed", "not_flag": "door.reported", "all": [{"not_flag": "door.vanished"}]}, "next": "confirm"},
-        {"text": "PIKE_ASK_ARCHIVE", "next": "archive1"},
-        {"text": "BYE", "next": null}
-      ]},
-      "confirm": {"text": "PIKE_REPORT_CONFIRM", "choices": [
-        {"text": "PIKE_REPORT_YES", "next": "report1"},
-        {"text": "PIKE_REPORT_NO", "next": "hub"}
-      ]},
-      "report1": {"speaker": "NPC_PIKE", "text": "PIKE_REPORT_1", "next": "report2"},
-      "report2": {"speaker": "NPC_PIKE", "text": "PIKE_REPORT_2", "effects": [{"set_flag": "door.reported"}, {"set_flag": "door.decided"}, {"quest_complete": ["case_door", "reported"]}, {"relationship": ["dana_pike", 2]}, {"remember": ["dana_pike", "reported_door"]}], "next": null},
-      "archive1": {"speaker": "NPC_PIKE", "text": "PIKE_ARCHIVE_1", "next": "hub"}
-    }
-  },
-  "echo_woman": {
-    "entries": [{"if": {"evidence": "e_echo_resident"}, "node": "after"}],
-    "start": "1",
-    "nodes": {
-      "1": {"text": "ECHO_WOMAN_1", "next": "2"},
-      "2": {"speaker": "NPC_ECHO_WOMAN", "text": "ECHO_WOMAN_2", "next": "3"},
-      "3": {"speaker": "NPC_ECHO_WOMAN", "text": "ECHO_WOMAN_3", "choices": [
-        {"text": "ECHO_ASK_WHO", "next": "who"},
-        {"text": "ECHO_ASK_NAME", "next": "name"}
-      ]},
-      "who": {"speaker": "NPC_ECHO_WOMAN", "text": "ECHO_WHO_1", "next": "end"},
-      "name": {"speaker": "NPC_ECHO_WOMAN", "text": "ECHO_NAME_1", "next": "end"},
-      "end": {"speaker": "NPC_ECHO_WOMAN", "text": "ECHO_WOMAN_4", "effects": [
-        {"add_evidence": "e_echo_resident"}, {"set_flag": "door.vanished"}, {"set_flag": "door.decided"},
-        {"quest_complete": ["case_door", "opened"]}, {"remember": ["echo_woman", "met_again"]}
-      ], "next": null},
-      "after": {"speaker": "NPC_ECHO_WOMAN", "text": "ECHO_WOMAN_AFTER", "next": null}
-    }
+    "next": null
+   },
+   "echo_shared": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_ECHO_1",
+    "effects": [
+     {
+      "set_flag": "mara.heard_echo"
+     },
+     {
+      "relationship": [
+       "mara_venn",
+       1
+      ]
+     },
+     {
+      "remember": [
+       "mara_venn",
+       "shared_echo"
+      ]
+     }
+    ],
+    "next": "echo_shared2"
+   },
+   "echo_shared2": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_ECHO_2",
+    "next": null
+   },
+   "echo_secret": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_ECHO_SECRET",
+    "effects": [
+     {
+      "set_flag": "mara.heard_echo"
+     },
+     {
+      "relationship": [
+       "mara_venn",
+       -1
+      ]
+     }
+    ],
+    "next": null
+   },
+   "page1": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_PAGE_1",
+    "next": "page2"
+   },
+   "page2": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_PAGE_2",
+    "effects": [
+     {
+      "take_item": [
+       "ledger_page",
+       1
+      ]
+     },
+     {
+      "set_flag": "rosalind.archived"
+     },
+     {
+      "relationship": [
+       "mara_venn",
+       2
+      ]
+     },
+     {
+      "remember": [
+       "mara_venn",
+       "archived_census_page"
+      ]
+     },
+     {
+      "give_item": [
+       "paper_lantern",
+       1
+      ]
+     }
+    ],
+    "next": null
+   }
   }
+ },
+ "jonah": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "met.jonah_rook"
+    },
+    "node": "intro1"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_radio",
+      "deliver"
+     ]
+    },
+    "node": "remind"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_radio",
+      "return"
+     ]
+    },
+    "node": "reward1"
+   },
+   {
+    "if": {
+     "has_item": "ledger_page",
+     "quest_active": "case_rosalind"
+    },
+    "node": "page1"
+   },
+   {
+    "if": {
+     "quest_done": "case_door",
+     "not_quest_started": "case_rosalind"
+    },
+    "node": "sister1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "intro1": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_1",
+    "effects": [
+     {
+      "set_flag": "met.jonah_rook"
+     }
+    ],
+    "next": "intro2"
+   },
+   "intro2": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_2",
+    "next": "offer"
+   },
+   "offer": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_3",
+    "choices": [
+     {
+      "text": "JONAH_ACCEPT",
+      "effects": [
+       {
+        "quest_start": "case_radio"
+       },
+       {
+        "set_flag": "has_radio"
+       },
+       {
+        "relationship": [
+         "jonah_rook",
+         1
+        ]
+       }
+      ],
+      "next": "accept1"
+     },
+     {
+      "text": "JONAH_TECH",
+      "if": {
+       "background": "repair_technician"
+      },
+      "effects": [
+       {
+        "quest_start": "case_radio"
+       },
+       {
+        "set_flag": "has_radio"
+       },
+       {
+        "set_flag": "radio.tech_noticed"
+       },
+       {
+        "relationship": [
+         "jonah_rook",
+         2
+        ]
+       },
+       {
+        "remember": [
+         "jonah_rook",
+         "noticed_dial"
+        ]
+       }
+      ],
+      "next": "tech1"
+     },
+     {
+      "text": "JONAH_DECLINE",
+      "next": "decline1"
+     }
+    ]
+   },
+   "accept1": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_ACCEPT_1",
+    "next": null
+   },
+   "tech1": {
+    "text": "JONAH_TECH_1",
+    "next": "tech2"
+   },
+   "tech2": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_TECH_2",
+    "next": null
+   },
+   "decline1": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_DECLINE_1",
+    "next": null
+   },
+   "remind": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_REMIND",
+    "next": null
+   },
+   "reward1": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_REWARD_1",
+    "next": "reward2"
+   },
+   "reward2": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_REWARD_2",
+    "next": "reward3"
+   },
+   "reward3": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_REWARD_3",
+    "effects": [
+     {
+      "add_evidence": "e_city_map"
+     },
+     {
+      "quest_complete": [
+       "case_radio",
+       "delivered"
+      ]
+     },
+     {
+      "relationship": [
+       "jonah_rook",
+       1
+      ]
+     },
+     {
+      "remember": [
+       "jonah_rook",
+       "delivered_radio"
+      ]
+     },
+     {
+      "give_money": 10
+     }
+    ],
+    "next": null
+   },
+   "hub": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_HUB",
+    "choices": [
+     {
+      "text": "JONAH_ASK_TRAM",
+      "next": "tram1"
+     },
+     {
+      "text": "JONAH_ASK_RADIO",
+      "if": {
+       "not_quest_started": "case_radio"
+      },
+      "next": "offer"
+     },
+     {
+      "text": "JONAH_BUY_TEA",
+      "if": {
+       "money_at_least": 4
+      },
+      "effects": [
+       {
+        "spend_money": 4
+       },
+       {
+        "give_item": [
+         "tea_flask",
+         1
+        ]
+       }
+      ],
+      "next": "bought"
+     },
+     {
+      "text": "JONAH_ASK_SISTER",
+      "if": {
+       "quest_active": "case_rosalind"
+      },
+      "next": "sister_remind"
+     },
+     {
+      "text": "BYE",
+      "next": null
+     }
+    ]
+   },
+   "tram1": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_TRAM_1",
+    "next": "tram2"
+   },
+   "tram2": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_TRAM_2",
+    "next": "hub"
+   },
+   "bought": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_BOUGHT",
+    "next": "hub"
+   },
+   "sister1": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_SISTER_1",
+    "next": "sister2"
+   },
+   "sister2": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_SISTER_2",
+    "next": "sister3"
+   },
+   "sister3": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_SISTER_3",
+    "next": "sister4"
+   },
+   "sister4": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_SISTER_4",
+    "effects": [
+     {
+      "quest_start": "case_rosalind"
+     },
+     {
+      "give_item": [
+       "wrench",
+       1
+      ]
+     },
+     {
+      "relationship": [
+       "jonah_rook",
+       1
+      ]
+     },
+     {
+      "remember": [
+       "jonah_rook",
+       "asked_about_rosalind"
+      ]
+     }
+    ],
+    "next": null
+   },
+   "sister_remind": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_SISTER_REMIND",
+    "next": "hub"
+   },
+   "page1": {
+    "text": "JONAH_PAGE_1",
+    "choices": [
+     {
+      "text": "JONAH_TELL_TRUTH",
+      "next": "truth1"
+     },
+     {
+      "text": "JONAH_SPARE",
+      "next": "spare1"
+     }
+    ]
+   },
+   "truth1": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_TRUTH_1",
+    "next": "truth2"
+   },
+   "truth2": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_TRUTH_2",
+    "effects": [
+     {
+      "take_item": [
+       "ledger_page",
+       1
+      ]
+     },
+     {
+      "quest_complete": [
+       "case_rosalind",
+       "told"
+      ]
+     },
+     {
+      "relationship": [
+       "jonah_rook",
+       3
+      ]
+     },
+     {
+      "remember": [
+       "jonah_rook",
+       "told_truth_about_rosalind"
+      ]
+     },
+     {
+      "give_item": [
+       "tram_token",
+       1
+      ]
+     }
+    ],
+    "next": null
+   },
+   "spare1": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_SPARE_1",
+    "effects": [
+     {
+      "set_flag": "rosalind.spared"
+     },
+     {
+      "quest_complete": [
+       "case_rosalind",
+       "spared"
+      ]
+     },
+     {
+      "relationship": [
+       "jonah_rook",
+       1
+      ]
+     },
+     {
+      "remember": [
+       "jonah_rook",
+       "spared_about_rosalind"
+      ]
+     }
+    ],
+    "next": null
+   }
+  }
+ },
+ "halloway": {
+  "entries": [
+   {
+    "if": {
+     "flag": "has_radio",
+     "quest_stage": [
+      "case_radio",
+      "deliver"
+     ]
+    },
+    "node": "radio1"
+   },
+   {
+    "if": {
+     "not_flag": "met.edda_halloway",
+     "background": "returning_local"
+    },
+    "node": "local1"
+   },
+   {
+    "if": {
+     "not_flag": "met.edda_halloway"
+    },
+    "node": "intro1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "intro1": {
+    "speaker": "NPC_HALLOWAY",
+    "text": "HALLOWAY_1",
+    "effects": [
+     {
+      "set_flag": "met.edda_halloway"
+     }
+    ],
+    "next": null
+   },
+   "local1": {
+    "speaker": "NPC_HALLOWAY",
+    "text": "HALLOWAY_LOCAL_1",
+    "next": "local2"
+   },
+   "local2": {
+    "speaker": "NPC_HALLOWAY",
+    "text": "HALLOWAY_LOCAL_2",
+    "effects": [
+     {
+      "set_flag": "met.edda_halloway"
+     },
+     {
+      "relationship": [
+       "edda_halloway",
+       1
+      ]
+     },
+     {
+      "set_flag": "halloway.forgot_your_street"
+     }
+    ],
+    "next": null
+   },
+   "radio1": {
+    "speaker": "NPC_HALLOWAY",
+    "text": "HALLOWAY_RADIO_1",
+    "effects": [
+     {
+      "set_flag": "met.edda_halloway"
+     }
+    ],
+    "next": "radio2"
+   },
+   "radio2": {
+    "text": "HALLOWAY_RADIO_2",
+    "effects": [
+     {
+      "add_evidence": "e_radio_announcement"
+     }
+    ],
+    "next": "radio3"
+   },
+   "radio3": {
+    "text": "HALLOWAY_RADIO_3",
+    "next": "radio4"
+   },
+   "radio4": {
+    "speaker": "NPC_HALLOWAY",
+    "text": "HALLOWAY_RADIO_4",
+    "effects": [
+     {
+      "add_evidence": "e_halloway_lantern_row"
+     },
+     {
+      "clear_flag": "has_radio"
+     },
+     {
+      "quest_stage": [
+       "case_radio",
+       "return"
+      ]
+     },
+     {
+      "relationship": [
+       "edda_halloway",
+       1
+      ]
+     },
+     {
+      "give_item": [
+       "sandwich",
+       2
+      ]
+     }
+    ],
+    "next": null
+   },
+   "hub": {
+    "speaker": "NPC_HALLOWAY",
+    "text": "HALLOWAY_HUB",
+    "choices": [
+     {
+      "text": "HALLOWAY_ASK_NOTE",
+      "if": {
+       "evidence": "e_landlord_note",
+       "not_flag": "halloway.note_talk"
+      },
+      "next": "note1"
+     },
+     {
+      "text": "BYE",
+      "next": null
+     }
+    ]
+   },
+   "note1": {
+    "speaker": "NPC_HALLOWAY",
+    "text": "HALLOWAY_NOTE_1",
+    "effects": [
+     {
+      "set_flag": "halloway.note_talk"
+     }
+    ],
+    "next": "hub"
+   }
+  }
+ },
+ "ivo": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "met.ivo_calder"
+    },
+    "node": "intro1"
+   },
+   {
+    "if": {
+     "flag": "door.reported",
+     "not_flag": "ivo.reacted_report"
+    },
+    "node": "reported"
+   },
+   {
+    "if": {
+     "flag": "door.vanished",
+     "not_flag": "ivo.reacted_echo"
+    },
+    "node": "echo"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "intro1": {
+    "speaker": "NPC_IVO",
+    "text": "IVO_1",
+    "next": "intro2"
+   },
+   "intro2": {
+    "speaker": "NPC_IVO",
+    "text": "IVO_2",
+    "effects": [
+     {
+      "set_flag": "met.ivo_calder"
+     }
+    ],
+    "next": null
+   },
+   "hub": {
+    "speaker": "NPC_IVO",
+    "text": "IVO_HUB",
+    "choices": [
+     {
+      "text": "IVO_ASK_DOOR",
+      "if": {
+       "evidence": "e_door_observed",
+       "not_evidence": "e_ivo_warning",
+       "all": [
+        {
+         "not_flag": "door.vanished"
+        }
+       ]
+      },
+      "next": "door1"
+     },
+     {
+      "text": "IVO_ASK_SYMBOL",
+      "if": {
+       "hypothesis": "greyford_keeps_quiet",
+       "not_flag": "ivo.symbol_asked"
+      },
+      "next": "sym1"
+     },
+     {
+      "text": "BYE",
+      "next": null
+     }
+    ]
+   },
+   "door1": {
+    "speaker": "NPC_IVO",
+    "text": "IVO_DOOR_1",
+    "next": "door2"
+   },
+   "door2": {
+    "speaker": "NPC_IVO",
+    "text": "IVO_DOOR_2",
+    "effects": [
+     {
+      "add_evidence": "e_ivo_warning"
+     }
+    ],
+    "next": "hub"
+   },
+   "sym1": {
+    "speaker": "NPC_IVO",
+    "text": "IVO_SYM_1",
+    "effects": [
+     {
+      "set_flag": "ivo.symbol_asked"
+     },
+     {
+      "remember": [
+       "ivo_calder",
+       "asked_about_marks"
+      ]
+     }
+    ],
+    "next": "hub"
+   },
+   "reported": {
+    "speaker": "NPC_IVO",
+    "text": "IVO_REPORTED_1",
+    "effects": [
+     {
+      "set_flag": "ivo.reacted_report"
+     },
+     {
+      "relationship": [
+       "ivo_calder",
+       1
+      ]
+     }
+    ],
+    "next": null
+   },
+   "echo": {
+    "speaker": "NPC_IVO",
+    "text": "IVO_ECHO_1",
+    "effects": [
+     {
+      "set_flag": "ivo.reacted_echo"
+     },
+     {
+      "relationship": [
+       "ivo_calder",
+       -1
+      ]
+     },
+     {
+      "remember": [
+       "ivo_calder",
+       "opened_a_door"
+      ]
+     }
+    ],
+    "next": null
+   }
+  }
+ },
+ "nadiya": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "met.nadiya_sol"
+    },
+    "node": "intro1"
+   },
+   {
+    "if": {
+     "flag": "door.reported",
+     "not_flag": "nadiya.reacted_report"
+    },
+    "node": "reported"
+   },
+   {
+    "if": {
+     "flag": "door.vanished",
+     "not_flag": "nadiya.reacted_echo"
+    },
+    "node": "echo"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "intro1": {
+    "speaker": "NPC_NADIYA",
+    "text": "NADIYA_1",
+    "next": "intro2"
+   },
+   "intro2": {
+    "speaker": "NPC_NADIYA",
+    "text": "NADIYA_2",
+    "effects": [
+     {
+      "set_flag": "met.nadiya_sol"
+     }
+    ],
+    "next": null
+   },
+   "hub": {
+    "speaker": "NPC_NADIYA",
+    "text": "NADIYA_HUB",
+    "choices": [
+     {
+      "text": "NADIYA_ASK_DOOR",
+      "if": {
+       "evidence": "e_door_observed",
+       "not_flag": "nadiya.door_talk",
+       "all": [
+        {
+         "not_flag": "door.vanished"
+        }
+       ]
+      },
+      "next": "door1"
+     },
+     {
+      "text": "NADIYA_ASK_WORK",
+      "next": "work1"
+     },
+     {
+      "text": "BYE",
+      "next": null
+     }
+    ]
+   },
+   "door1": {
+    "speaker": "NPC_NADIYA",
+    "text": "NADIYA_DOOR_1",
+    "next": "door2"
+   },
+   "door2": {
+    "speaker": "NPC_NADIYA",
+    "text": "NADIYA_DOOR_2",
+    "effects": [
+     {
+      "set_flag": "nadiya.door_talk"
+     },
+     {
+      "relationship": [
+       "nadiya_sol",
+       1
+      ]
+     }
+    ],
+    "next": "hub"
+   },
+   "work1": {
+    "speaker": "NPC_NADIYA",
+    "text": "NADIYA_WORK_1",
+    "next": "hub"
+   },
+   "reported": {
+    "speaker": "NPC_NADIYA",
+    "text": "NADIYA_REPORTED_1",
+    "effects": [
+     {
+      "set_flag": "nadiya.reacted_report"
+     },
+     {
+      "relationship": [
+       "nadiya_sol",
+       -2
+      ]
+     },
+     {
+      "remember": [
+       "nadiya_sol",
+       "reported_door"
+      ]
+     }
+    ],
+    "next": null
+   },
+   "echo": {
+    "speaker": "NPC_NADIYA",
+    "text": "NADIYA_ECHO_1",
+    "effects": [
+     {
+      "set_flag": "nadiya.reacted_echo"
+     },
+     {
+      "relationship": [
+       "nadiya_sol",
+       1
+      ]
+     }
+    ],
+    "next": null
+   }
+  }
+ },
+ "pike": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "met.dana_pike"
+    },
+    "node": "intro1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "intro1": {
+    "speaker": "NPC_PIKE",
+    "text": "PIKE_1",
+    "next": "intro2"
+   },
+   "intro2": {
+    "speaker": "NPC_PIKE",
+    "text": "PIKE_2",
+    "effects": [
+     {
+      "set_flag": "met.dana_pike"
+     }
+    ],
+    "next": "hub"
+   },
+   "hub": {
+    "speaker": "NPC_PIKE",
+    "text": "PIKE_HUB",
+    "choices": [
+     {
+      "text": "PIKE_REPORT",
+      "if": {
+       "evidence": "e_door_observed",
+       "not_flag": "door.reported",
+       "all": [
+        {
+         "not_flag": "door.vanished"
+        }
+       ]
+      },
+      "next": "confirm"
+     },
+     {
+      "text": "PIKE_ASK_ARCHIVE",
+      "next": "archive1"
+     },
+     {
+      "text": "BYE",
+      "next": null
+     }
+    ]
+   },
+   "confirm": {
+    "text": "PIKE_REPORT_CONFIRM",
+    "choices": [
+     {
+      "text": "PIKE_REPORT_YES",
+      "next": "report1"
+     },
+     {
+      "text": "PIKE_REPORT_NO",
+      "next": "hub"
+     }
+    ]
+   },
+   "report1": {
+    "speaker": "NPC_PIKE",
+    "text": "PIKE_REPORT_1",
+    "next": "report2"
+   },
+   "report2": {
+    "speaker": "NPC_PIKE",
+    "text": "PIKE_REPORT_2",
+    "effects": [
+     {
+      "set_flag": "door.reported"
+     },
+     {
+      "set_flag": "door.decided"
+     },
+     {
+      "quest_complete": [
+       "case_door",
+       "reported"
+      ]
+     },
+     {
+      "relationship": [
+       "dana_pike",
+       2
+      ]
+     },
+     {
+      "remember": [
+       "dana_pike",
+       "reported_door"
+      ]
+     }
+    ],
+    "next": null
+   },
+   "archive1": {
+    "speaker": "NPC_PIKE",
+    "text": "PIKE_ARCHIVE_1",
+    "next": "hub"
+   }
+  }
+ },
+ "echo_woman": {
+  "entries": [
+   {
+    "if": {
+     "evidence": "e_echo_resident"
+    },
+    "node": "after"
+   }
+  ],
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "ECHO_WOMAN_1",
+    "next": "2"
+   },
+   "2": {
+    "speaker": "NPC_ECHO_WOMAN",
+    "text": "ECHO_WOMAN_2",
+    "next": "3"
+   },
+   "3": {
+    "speaker": "NPC_ECHO_WOMAN",
+    "text": "ECHO_WOMAN_3",
+    "choices": [
+     {
+      "text": "ECHO_ASK_WHO",
+      "next": "who"
+     },
+     {
+      "text": "ECHO_ASK_NAME",
+      "next": "name"
+     }
+    ]
+   },
+   "who": {
+    "speaker": "NPC_ECHO_WOMAN",
+    "text": "ECHO_WHO_1",
+    "next": "end"
+   },
+   "name": {
+    "speaker": "NPC_ECHO_WOMAN",
+    "text": "ECHO_NAME_1",
+    "next": "end"
+   },
+   "end": {
+    "speaker": "NPC_ECHO_WOMAN",
+    "text": "ECHO_WOMAN_4",
+    "effects": [
+     {
+      "add_evidence": "e_echo_resident"
+     },
+     {
+      "set_flag": "door.vanished"
+     },
+     {
+      "set_flag": "door.decided"
+     },
+     {
+      "quest_complete": [
+       "case_door",
+       "opened"
+      ]
+     },
+     {
+      "remember": [
+       "echo_woman",
+       "met_again"
+      ]
+     }
+    ],
+    "next": null
+   },
+   "after": {
+    "speaker": "NPC_ECHO_WOMAN",
+    "text": "ECHO_WOMAN_AFTER",
+    "next": null
+   }
+  }
+ }
 }

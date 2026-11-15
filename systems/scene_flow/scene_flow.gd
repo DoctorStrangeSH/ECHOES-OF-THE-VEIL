@@ -15,6 +15,7 @@ const LOCATIONS := {
 	&"greyford_block": "res://scenes/locations/greyford_block.tscn",
 	&"rented_room": "res://scenes/locations/rented_room.tscn",
 	&"echo_lantern_row": "res://scenes/locations/echo_lantern_row.tscn",
+	&"phantom_platform": "res://scenes/locations/phantom_platform.tscn",
 }
 const MAIN_MENU := "res://scenes/ui/main_menu.tscn"
 const CHARACTER_CREATOR := "res://scenes/ui/character_creator.tscn"
@@ -67,6 +68,7 @@ func begin_new_game(profile: Dictionary) -> void:
 	if profile.get("appearance") is CharacterAppearance:
 		GameState.player_appearance = profile["appearance"]
 	GameState.set_flag(StringName("background.%s" % GameState.background), true)
+	Inventory.money = 20
 	enter_game_from_state()
 
 

@@ -50,6 +50,7 @@ func reset_for_new_game() -> void:
 	_player_locks.clear()
 	Journal.reset()
 	WorldClock.reset()
+	Inventory.reset()
 
 
 func lock_player(reason: StringName) -> void:
@@ -130,6 +131,7 @@ func to_dict(player_node: Node2D = null) -> Dictionary:
 		"memory": _string_keys(npc_memory),
 		"journal": Journal.to_dict(),
 		"clock": WorldClock.to_dict(),
+		"inventory": Inventory.to_dict(),
 	}
 
 
@@ -167,3 +169,4 @@ func from_dict(data: Dictionary) -> void:
 		npc_memory[StringName(k)] = Array(mem[k])
 	Journal.from_dict(data.get("journal", {}))
 	WorldClock.from_dict(data.get("clock", {}))
+	Inventory.from_dict(data.get("inventory", {}))

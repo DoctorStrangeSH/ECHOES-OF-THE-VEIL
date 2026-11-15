@@ -15,6 +15,8 @@ var _more_label: Label
 var _choices_box: VBoxContainer
 var _clock_label: Label
 var _hearts: HeartBar
+var _combat: CombatHud
+var _wallet: Label
 var _toast_label: Label
 var _toast_queue: Array[String] = []
 var _toast_busy := false
@@ -45,6 +47,10 @@ func _process(delta: float) -> void:
 	if WorldClock.weather == "rain":
 		clock += "  " + tr("WEATHER_RAIN")
 	_clock_label.text = clock
+	var wallet := "£%d" % Inventory.money
+	if Inventory.resonance > 0 or _hearts.visible:
+		wallet += "  ·  " + tr("HUD_RESONANCE") % Inventory.resonance
+	_wallet.text = wallet
 	if _dialogue_panel.visible and _text_label.visible_ratio < 1.0:
 		var total := maxf(1.0, float(_text_label.get_total_character_count()))
 		_text_label.visible_ratio = minf(1.0, _text_label.visible_ratio + delta * CHARS_PER_SECOND / total)
@@ -205,6 +211,20 @@ func _build() -> void:
 	_hearts = HeartBar.new()
 	_hearts.position = Vector2(8, 8)
 	root.add_child(_hearts)
+
+	_combat = CombatHud.new()
+	root.add_child(_combat)
+	_combat.visible = false
+
+	_wallet = Label.new()
+	_wallet.add_theme_font_size_override("font_size", 8)
+	_wallet.add_theme_color_override("font_outline_color", Color.BLACK)
+	_wallet.add_theme_constant_override("outline_size", 3)
+	root.add_child(_wallet)
+	_wallet.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT, Control.PRESET_MODE_MINSIZE, 6)
+	_wallet.grow_horizontal = Control.GROW_DIRECTION_BEGIN
+	_wallet.offset_top = 16
+	_wallet.offset_bottom = 28
 
 	_toast_label = Label.new()
 	_toast_label.position = Vector2(10, 22)

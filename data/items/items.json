@@ -1,0 +1,20 @@
+{
+  "_doc": "Items: stable id -> definition. category: weapon | trinket | consumable | key. icon: path relative to res://assets/limezu (optional; a coloured placeholder is drawn otherwise). weapon.combo = damage per hit of the combo; mods are summed/multiplied by Inventory.stat().",
+  "fists": {"category": "weapon", "name": "ITEM_FISTS", "desc": "ITEM_FISTS_DESC", "color": "#d8b090", "value": 0, "default": true,
+    "weapon": {"combo": [1, 1, 2], "cooldown": 0.34, "reach": 11, "knockback": 130}},
+  "wrench": {"category": "weapon", "name": "ITEM_WRENCH", "desc": "ITEM_WRENCH_DESC", "color": "#9aa4b0", "value": 12,
+    "weapon": {"combo": [1, 1, 3], "cooldown": 0.3, "reach": 13, "knockback": 150}},
+  "signal_rod": {"category": "weapon", "name": "ITEM_SIGNAL_ROD", "desc": "ITEM_SIGNAL_ROD_DESC", "color": "#c0503a", "value": 20,
+    "weapon": {"combo": [2, 2, 3], "cooldown": 0.46, "reach": 17, "knockback": 210}},
+  "tram_token": {"category": "trinket", "name": "ITEM_TRAM_TOKEN", "desc": "ITEM_TRAM_TOKEN_DESC", "color": "#d0a040", "value": 8,
+    "mods": {"max_health": 1}},
+  "brass_compass": {"category": "trinket", "name": "ITEM_COMPASS", "desc": "ITEM_COMPASS_DESC", "color": "#b08840", "value": 10,
+    "mods": {"dodge_cooldown_mult": 0.7}},
+  "paper_lantern": {"category": "trinket", "name": "ITEM_PAPER_LANTERN", "desc": "ITEM_PAPER_LANTERN_DESC", "color": "#e8d080", "value": 10,
+    "mods": {"flash_cooldown_mult": 0.65}},
+  "tea_flask": {"category": "consumable", "name": "ITEM_TEA", "desc": "ITEM_TEA_DESC", "color": "#a06a40", "value": 4, "stack": 9,
+    "use": {"heal": 2}},
+  "sandwich": {"category": "consumable", "name": "ITEM_SANDWICH", "desc": "ITEM_SANDWICH_DESC", "color": "#e0c080", "value": 2, "stack": 9,
+    "use": {"heal": 1}},
+  "ledger_page": {"category": "key", "name": "ITEM_LEDGER_PAGE", "desc": "ITEM_LEDGER_PAGE_DESC", "color": "#e8e0c8", "value": 0, "stack": 1, "evidence": "e_census_page"}
+}

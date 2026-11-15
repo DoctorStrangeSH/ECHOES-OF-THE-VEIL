@@ -13,6 +13,9 @@
 [ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
 [ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
 [ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+[ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
+[ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
+[ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
 
 [node name="EchoLanternRow" type="Node2D"]
 script = ExtResource("1_loc")

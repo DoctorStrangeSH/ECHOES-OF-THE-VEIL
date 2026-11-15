@@ -1,0 +1,16 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/memory_shard.gd" id="1_shard"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_shard"]
+radius = 3.0
+
+[node name="MemoryShard" type="Area2D"]
+script = ExtResource("1_shard")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_shard")
+
+[node name="Core" type="Polygon2D" parent="."]
+color = Color(0.85, 0.8, 1, 0.95)
+polygon = PackedVector2Array(5, 0, 0, 2.5, -4, 0, 0, -2.5)

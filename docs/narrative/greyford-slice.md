@@ -50,3 +50,17 @@ Clues: the three-line symbol under the yellow condo's doorbell (Observed), the l
 ## Fairness check (story bible §11)
 
 The Lantern Row reveal has environmental (door, symbol), dialogue (Mara, Halloway, Ivo) and systemic/document (radio broadcast, survey plan) clue paths. No single line is missable: every clue stays available until the case closes, and NPCs repeat their hubs.
+
+## Case 4 — The Girl Who Wasn't Counted (M3)
+
+Unlocked after Case 1 closes (either outcome). Jonah asks you to look for his sister Rosalind, erased from every record in 1989, and gives you his wrench.
+
+1. The **ghost tram stop** appears at the harbour promenade in the evening, at night or in rain → `e_tram_stop` (Observed).
+2. Board it → **Lantern Row stop** (echo): Hollows, Clingers and a Wailer; signal lamp rod and tea on the platform.
+3. Miniboss **the Census Taker** (three phases, all telegraphed). He drops the **Census ledger page** → `e_census_page` (Recorded): "ROOK, Rosalind — reclassified: NOT RESIDENT", stamped with the three-line mark (links to *Greyford Keeps Quiet*).
+4. Choice with Jonah:
+   - **Show him the page** — he finally knows she was real and that someone erased her on purpose. Jonah +3, remembers `told_truth_about_rosalind`; he gives you Rosalind's tram token (+1 max health).
+   - **Say you found nothing** — Jonah +1, remembers `spared_about_rosalind`; you keep the page and can give it to Mara for the real archive (Mara +2, paper lantern charm).
+
+## Economy (first pass)
+Sources: £20 at start, £10 radio reward, Resonance from echoes. Sinks: Jonah's tea (£4), Attunements (Resonance). More sinks arrive with M5 (rent, repairs, business).

@@ -1,0 +1,418 @@
+{
+ "HUD_RESONANCE": {
+  "en": "Resonance %d",
+  "ru": "Резонанс %d"
+ },
+ "PROMPT_PICK_UP": {
+  "en": "Pick up",
+  "ru": "Подобрать"
+ },
+ "TOAST_ITEM_GAINED": {
+  "en": "Got: %s ×%d",
+  "ru": "Получено: %s ×%d"
+ },
+ "TOAST_MONEY_GAINED": {
+  "en": "+£%d",
+  "ru": "+£%d"
+ },
+ "TOAST_NO_HEALING": {
+  "en": "Nothing to heal with",
+  "ru": "Нечем лечиться"
+ },
+ "MENU_INVENTORY": {
+  "en": "Inventory",
+  "ru": "Инвентарь"
+ },
+ "MENU_JOURNAL": {
+  "en": "Journal",
+  "ru": "Журнал"
+ },
+ "INV_TITLE": {
+  "en": "Inventory",
+  "ru": "Инвентарь"
+ },
+ "INV_HINT": {
+  "en": "I / Esc — close",
+  "ru": "I / Esc — закрыть"
+ },
+ "INV_SUMMARY": {
+  "en": "Weapon: %s · Trinket: %s · £%d · Resonance %d",
+  "ru": "Оружие: %s · Амулет: %s · £%d · Резонанс %d"
+ },
+ "INV_TAB_ITEMS": {
+  "en": "Items",
+  "ru": "Вещи"
+ },
+ "INV_TAB_ATTUNEMENTS": {
+  "en": "Attunements",
+  "ru": "Настройки"
+ },
+ "INV_FILTER_ALL": {
+  "en": "All",
+  "ru": "Все"
+ },
+ "INV_FILTER_WEAPON": {
+  "en": "Weapons",
+  "ru": "Оружие"
+ },
+ "INV_FILTER_TRINKET": {
+  "en": "Trinkets",
+  "ru": "Амулеты"
+ },
+ "INV_FILTER_CONSUMABLE": {
+  "en": "Consumables",
+  "ru": "Расходники"
+ },
+ "INV_FILTER_KEY": {
+  "en": "Key items",
+  "ru": "Важное"
+ },
+ "INV_CATEGORY_WEAPON": {
+  "en": "Weapon",
+  "ru": "Оружие"
+ },
+ "INV_CATEGORY_TRINKET": {
+  "en": "Trinket",
+  "ru": "Амулет"
+ },
+ "INV_CATEGORY_CONSUMABLE": {
+  "en": "Consumable",
+  "ru": "Расходник"
+ },
+ "INV_CATEGORY_KEY": {
+  "en": "Key item",
+  "ru": "Важный предмет"
+ },
+ "INV_EMPTY": {
+  "en": "Nothing here.",
+  "ru": "Здесь пусто."
+ },
+ "INV_EQUIP": {
+  "en": "Equip",
+  "ru": "Надеть"
+ },
+ "INV_UNEQUIP": {
+  "en": "Take off",
+  "ru": "Снять"
+ },
+ "INV_USE": {
+  "en": "Use",
+  "ru": "Использовать"
+ },
+ "INV_WEAPON_STATS": {
+  "en": "Combo damage %s · reach %d · swing %.2fs",
+  "ru": "Урон комбо %s · дальность %d · замах %.2f с"
+ },
+ "INV_RESONANCE_NOTE": {
+  "en": "Resonance: %d. Echoes leave it behind when they fade.",
+  "ru": "Резонанс: %d. Его оставляют угасающие эхо."
+ },
+ "INV_COST": {
+  "en": "Cost: %d Resonance",
+  "ru": "Цена: %d Резонанса"
+ },
+ "INV_REQUIRES": {
+  "en": "Requires: %s",
+  "ru": "Нужно сначала: %s"
+ },
+ "INV_ATTUNED": {
+  "en": "Attuned",
+  "ru": "Настроено"
+ },
+ "INV_ATTUNE": {
+  "en": "Attune",
+  "ru": "Настроиться"
+ },
+ "BOSS_CENSUS_TAKER": {
+  "en": "The Census Taker",
+  "ru": "Переписчик"
+ },
+ "ITEM_FISTS": {
+  "en": "Bare hands",
+  "ru": "Голые руки"
+ },
+ "ITEM_FISTS_DESC": {
+  "en": "Better than nothing. Barely.",
+  "ru": "Лучше, чем ничего. Едва ли."
+ },
+ "ITEM_WRENCH": {
+  "en": "Jonah's wrench",
+  "ru": "Ключ Джоны"
+ },
+ "ITEM_WRENCH_DESC": {
+  "en": "Heavy, well-oiled, quick in the hand. The third swing lands hard.",
+  "ru": "Тяжёлый, смазанный, удобный. Третий удар бьёт сильно."
+ },
+ "ITEM_SIGNAL_ROD": {
+  "en": "Signal lamp rod",
+  "ru": "Сигнальный жезл"
+ },
+ "ITEM_SIGNAL_ROD_DESC": {
+  "en": "A tram signalman's rod with a dead lamp. Slow, long, and it hits like a closing door.",
+  "ru": "Жезл трамвайного сигнальщика с погасшей лампой. Медленный, длинный и бьёт, как захлопнутая дверь."
+ },
+ "ITEM_TRAM_TOKEN": {
+  "en": "Rosalind's tram token",
+  "ru": "Жетон Розалинды"
+ },
+ "ITEM_TRAM_TOKEN_DESC": {
+  "en": "Worn smooth by someone's thumb. +1 maximum health.",
+  "ru": "Стёрт чьим-то большим пальцем до гладкости. +1 к максимуму здоровья."
+ },
+ "ITEM_COMPASS": {
+  "en": "Brass compass",
+  "ru": "Латунный компас"
+ },
+ "ITEM_COMPASS_DESC": {
+  "en": "It points somewhere other than north. Dodge recovers 30% faster.",
+  "ru": "Показывает куда угодно, только не на север. Рывок восстанавливается на 30% быстрее."
+ },
+ "ITEM_PAPER_LANTERN": {
+  "en": "Paper lantern charm",
+  "ru": "Бумажный фонарик"
+ },
+ "ITEM_PAPER_LANTERN_DESC": {
+  "en": "From a 1971 street party. Lantern Flash recharges 35% faster.",
+  "ru": "С уличного праздника 1971 года. Вспышка перезаряжается на 35% быстрее."
+ },
+ "ITEM_TEA": {
+  "en": "Flask of tea",
+  "ru": "Термос с чаем"
+ },
+ "ITEM_TEA_DESC": {
+  "en": "Strong, sweet, still hot. Restores 2 health (R).",
+  "ru": "Крепкий, сладкий, всё ещё горячий. Восстанавливает 2 здоровья (R)."
+ },
+ "ITEM_SANDWICH": {
+  "en": "Mrs Halloway's sandwich",
+  "ru": "Бутерброд миссис Холлоуэй"
+ },
+ "ITEM_SANDWICH_DESC": {
+  "en": "Fish paste. Restores 1 health (R).",
+  "ru": "С рыбным паштетом. Восстанавливает 1 здоровье (R)."
+ },
+ "ITEM_LEDGER_PAGE": {
+  "en": "Census ledger page",
+  "ru": "Страница переписи"
+ },
+ "ITEM_LEDGER_PAGE_DESC": {
+  "en": "\"ROOK, Rosalind — reclassified: NOT RESIDENT. Census Office, 1989.\"",
+  "ru": "«РУК, Розалинда — переквалифицирована: НЕ ПРОЖИВАЕТ. Бюро переписи, 1989»."
+ },
+ "ATT_STEADY_HEART": {
+  "en": "Steady heart",
+  "ru": "Ровное сердце"
+ },
+ "ATT_STEADY_HEART_DESC": {
+  "en": "+1 maximum health.",
+  "ru": "+1 к максимуму здоровья."
+ },
+ "ATT_STEADY_HEART_2": {
+  "en": "Steadier heart",
+  "ru": "Ещё ровнее"
+ },
+ "ATT_STEADY_HEART_2_DESC": {
+  "en": "Another +1 maximum health.",
+  "ru": "Ещё +1 к максимуму здоровья."
+ },
+ "ATT_QUICK_STEP": {
+  "en": "Quick step",
+  "ru": "Быстрый шаг"
+ },
+ "ATT_QUICK_STEP_DESC": {
+  "en": "Dodge recovers 20% faster and carries you 15% further.",
+  "ru": "Рывок восстанавливается на 20% быстрее и уносит на 15% дальше."
+ },
+ "ATT_BRIGHT_LANTERN": {
+  "en": "Bright lantern",
+  "ru": "Яркий фонарь"
+ },
+ "ATT_BRIGHT_LANTERN_DESC": {
+  "en": "Lantern Flash reaches 40% further.",
+  "ru": "Вспышка достаёт на 40% дальше."
+ },
+ "ATT_LINGERING_LIGHT": {
+  "en": "Lingering light",
+  "ru": "Долгий свет"
+ },
+ "ATT_LINGERING_LIGHT_DESC": {
+  "en": "Lantern Flash stuns for 1 second longer.",
+  "ru": "Вспышка оглушает на 1 секунду дольше."
+ },
+ "ATT_HEAVY_HAND": {
+  "en": "Heavy hand",
+  "ru": "Тяжёлая рука"
+ },
+ "ATT_HEAVY_HAND_DESC": {
+  "en": "The last hit of every combo deals +1 damage.",
+  "ru": "Последний удар каждого комбо наносит +1 урона."
+ },
+ "ATT_KEEPSAKE": {
+  "en": "Keepsake",
+  "ru": "Памятная вещь"
+ },
+ "ATT_KEEPSAKE_DESC": {
+  "en": "Food and tea heal 1 extra health.",
+  "ru": "Еда и чай лечат на 1 здоровье больше."
+ },
+ "CASE_ROSALIND_TITLE": {
+  "en": "The Girl Who Wasn't Counted",
+  "ru": "Девочка, которую не посчитали"
+ },
+ "CASE_ROSALIND_SUMMARY": {
+  "en": "Jonah's older sister Rosalind vanished from every record in 1989.",
+  "ru": "Старшая сестра Джоны, Розалинда, в 1989 году исчезла из всех записей."
+ },
+ "CASE_ROSALIND_START": {
+  "en": "The ghost tram stops at the harbour in the evening, at night, or in the rain. Ride it and look for Rosalind.",
+  "ru": "Призрачный трамвай останавливается у гавани вечером, ночью или в дождь. Сядьте в него и ищите Розалинду."
+ },
+ "CASE_ROSALIND_PAGE": {
+  "en": "You have a Census page with her name. Decide what to tell Jonah.",
+  "ru": "У вас страница переписи с её именем. Решите, что сказать Джоне."
+ },
+ "CASE_ROSALIND_TOLD": {
+  "en": "You showed Jonah the page. Rosalind was real, and now he knows someone erased her on purpose.",
+  "ru": "Вы показали Джоне страницу. Розалинда была настоящей — и теперь он знает, что её стёрли намеренно."
+ },
+ "CASE_ROSALIND_SPARED": {
+  "en": "You told Jonah you found nothing. The page is still in your pocket.",
+  "ru": "Вы сказали Джоне, что ничего не нашли. Страница всё ещё у вас в кармане."
+ },
+ "EV_TRAM_STOP_TITLE": {
+  "en": "The ghost tram stop",
+  "ru": "Призрачная остановка"
+ },
+ "EV_TRAM_STOP_BODY": {
+  "en": "A stop sign at the harbour reading LANTERN ROW. It is there only after dark or in the rain, and a bell rings.",
+  "ru": "Знак остановки у гавани с надписью ЛАНТЕРН-РОУ. Он появляется только в темноте или в дождь, и звенит колокольчик."
+ },
+ "EV_CENSUS_PAGE_TITLE": {
+  "en": "Census ledger page, 1989",
+  "ru": "Страница переписи, 1989"
+ },
+ "EV_CENSUS_PAGE_BODY": {
+  "en": "\"ROOK, Rosalind — reclassified: NOT RESIDENT.\" A neat signature. A stamp that looks like three lines meeting at a point.",
+  "ru": "«РУК, Розалинда — переквалифицирована: НЕ ПРОЖИВАЕТ». Аккуратная подпись. Штамп, похожий на три линии, сходящиеся в точке."
+ },
+ "SRC_LEDGER": {
+  "en": "Census Office ledger",
+  "ru": "книга Бюро переписи"
+ },
+ "JONAH_BUY_TEA": {
+  "en": "Buy a flask of tea (£4)",
+  "ru": "Купить термос чая (£4)"
+ },
+ "JONAH_BOUGHT": {
+  "en": "\"Mind, it's hot. Like the rest of my prices.\"",
+  "ru": "«Осторожно, горячий. Как и мои цены»."
+ },
+ "JONAH_ASK_SISTER": {
+  "en": "About Rosalind...",
+  "ru": "Насчёт Розалинды..."
+ },
+ "JONAH_SISTER_1": {
+  "en": "Jonah watches you for a long moment. \"You've been somewhere. Lantern Row, isn't it. I can tell.\"",
+  "ru": "Джона долго смотрит на вас. «Вы где-то побывали. На Лантерн-Роу, да? Я вижу»."
+ },
+ "JONAH_SISTER_2": {
+  "en": "\"I had a sister. Rosalind. Older than me. In '89 she just... stopped being in any record. School, hospital, Mum's address book.\"",
+  "ru": "«У меня была сестра. Розалинда. Старше меня. В восемьдесят девятом она просто... исчезла из всех записей. Школа, больница, мамина записная книжка»."
+ },
+ "JONAH_SISTER_3": {
+  "en": "\"When it rains, or after dark, the tram bell rings at the harbour. If that's her line — look for her. Please.\"",
+  "ru": "«Когда идёт дождь или темнеет, у гавани звенит трамвай. Если это её линия — поищите её. Пожалуйста»."
+ },
+ "JONAH_SISTER_4": {
+  "en": "\"And take this. You'll want something better than your fists.\" He presses a heavy wrench into your hands.",
+  "ru": "«И возьмите вот это. Кулаков вам будет мало». Он вкладывает вам в руки тяжёлый гаечный ключ."
+ },
+ "JONAH_SISTER_REMIND": {
+  "en": "\"Evenings, nights, rain. The stop by the harbour.\" He doesn't say her name again.",
+  "ru": "«Вечером, ночью, в дождь. Остановка у гавани». Её имени он больше не произносит."
+ },
+ "JONAH_PAGE_1": {
+  "en": "Jonah sees the paper in your hand before you say anything.",
+  "ru": "Джона замечает бумагу у вас в руке раньше, чем вы успеваете что-то сказать."
+ },
+ "JONAH_TELL_TRUTH": {
+  "en": "Show him the page",
+  "ru": "Показать ему страницу"
+ },
+ "JONAH_SPARE": {
+  "en": "Tell him you found nothing",
+  "ru": "Сказать, что ничего не нашли"
+ },
+ "JONAH_TRUTH_1": {
+  "en": "He reads it three times. \"Not resident.\" A laugh with nothing in it. \"So she was real. I wasn't making her up.\"",
+  "ru": "Он перечитывает трижды. «Не проживает». Смешок, в котором ничего нет. «Значит, она была. Я её не выдумал»."
+ },
+ "JONAH_TRUTH_2": {
+  "en": "\"Somebody signed this. Somebody stamped it.\" He presses something into your palm. \"Her tram token. She gave it to me the day before. Keep it — you're the one still riding.\"",
+  "ru": "«Кто-то это подписал. Кто-то поставил штамп». Он вкладывает вам что-то в ладонь. «Её трамвайный жетон. Она отдала его мне накануне. Оставьте себе — это вы теперь ездите»."
+ },
+ "JONAH_SPARE_1": {
+  "en": "He nods slowly. \"Thanks for looking. Really.\" He goes back to his workbench and doesn't pick anything up.",
+  "ru": "Он медленно кивает. «Спасибо, что искали. Правда». Он возвращается к верстаку и ни к чему не прикасается."
+ },
+ "MARA_GIVE_PAGE": {
+  "en": "Give Mara the Census page",
+  "ru": "Отдать Маре страницу переписи"
+ },
+ "MARA_PAGE_1": {
+  "en": "\"A Census Office ledger.\" Her hands are perfectly steady. \"They told us every one of these was pulped in 1990.\"",
+  "ru": "«Книга Бюро переписи». Руки у неё совершенно не дрожат. «Нам говорили, что все такие книги пустили в переработку в 1990-м»."
+ },
+ "MARA_PAGE_2": {
+  "en": "\"It's safe with me. It goes in the archive — the real one.\" She gives you a paper lantern charm from her drawer. \"From the '71 party. Someone should carry it.\"",
+  "ru": "«У меня она в безопасности. Она пойдёт в архив — настоящий». Она достаёт из ящика бумажный фонарик. «С праздника семьдесят первого. Кто-то должен его носить»."
+ },
+ "TRAM_STOP_1": {
+  "en": "A bell rings out over the water. A tram that isn't there slows at a stop that isn't there.",
+  "ru": "Над водой звенит колокольчик. Трамвай, которого нет, тормозит у остановки, которой нет."
+ },
+ "TRAM_STOP_2": {
+  "en": "The sign reads LANTERN ROW. Under it, someone has scratched three lines meeting at a point.",
+  "ru": "На табличке написано ЛАНТЕРН-РОУ. Под ней кто-то процарапал три линии, сходящиеся в точке."
+ },
+ "TRAM_STOP_AGAIN": {
+  "en": "The bell rings. The doors are open. Nobody else on the promenade seems to hear it.",
+  "ru": "Звенит колокольчик. Двери открыты. Похоже, больше никто на набережной его не слышит."
+ },
+ "TRAM_STOP_ASK": {
+  "en": "The doors are waiting.",
+  "ru": "Двери ждут."
+ },
+ "TRAM_STOP_BOARD": {
+  "en": "Board the tram",
+  "ru": "Сесть в трамвай"
+ },
+ "TRAM_STOP_WAIT": {
+  "en": "Stay on the promenade",
+  "ru": "Остаться на набережной"
+ },
+ "PLATFORM_ENTER_1": {
+  "en": "The doors fold open onto a platform lit by lamps that run on nothing. Posters advertise a street party, summer 1971.",
+  "ru": "Двери открываются на платформу, освещённую лампами, которым не нужен ток. Афиши зовут на уличный праздник, лето 1971-го."
+ },
+ "PLATFORM_ENTER_2": {
+  "en": "Somewhere ahead, a pen scratches. Someone is still taking the census.",
+  "ru": "Где-то впереди скрипит перо. Кто-то всё ещё проводит перепись."
+ },
+ "PLATFORM_ENTER_3": {
+  "en": "(Space / K — dodge. Q — Lantern Flash stuns echoes. R — eat or drink. I — inventory.)",
+  "ru": "(Пробел / K — рывок. Q — Вспышка фонаря оглушает эхо. R — поесть или выпить. I — инвентарь.)"
+ },
+ "PLATFORM_MAP_1": {
+  "en": "A route map. Every stop has a name you know — except one, between the harbour and the plaza: LANTERN ROW.",
+  "ru": "Схема маршрута. Все остановки вам знакомы, кроме одной — между гаванью и площадью: ЛАНТЕРН-РОУ."
+ },
+ "PLATFORM_MAP_2": {
+  "en": "Someone has written in the margin, in careful capitals: COUNTED — 19 HOUSES. RECOUNTED — 0.",
+  "ru": "На полях аккуратными заглавными буквами выведено: ПОСЧИТАНО — 19 ДОМОВ. ПЕРЕСЧИТАНО — 0."
+ },
+ "LOC_PHANTOM_PLATFORM": {
+  "en": "Lantern Row stop (echo)",
+  "ru": "Остановка «Лантерн-Роу» (эхо)"
+ }
+}

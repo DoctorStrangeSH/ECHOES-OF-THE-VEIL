@@ -9,7 +9,7 @@ extends Interactable
 
 func _init() -> void:
 	prompt_key = "PROMPT_REST"
-	priority = 10
+	interaction_priority = 10
 
 
 func _on_interact(_actor: Node) -> void:
