@@ -50,6 +50,7 @@
   {"kind": "enemy", "name": "Clinger2", "id": "platform_clinger_2", "x": 320, "y": 170, "variant": "clinger"},
   {"kind": "enemy", "name": "Wailer1", "id": "platform_wailer_1", "x": 300, "y": 130, "variant": "wailer"},
   {"kind": "boss", "name": "CensusTaker", "x": 560, "y": 190},
-  {"kind": "arena", "boss": "CensusTaker", "flag": "boss.census_taker.engaged", "x": 552, "y": 200, "size": [320, 140]}
+  {"kind": "arena", "boss": "CensusTaker", "flag": "boss.census_taker.engaged", "x": 552, "y": 200, "size": [320, 140]},
+  {"kind": "pickup", "name": "RelayOnTrack", "x": 424, "y": 96, "item": "tram_relay", "flag": "pickup.tram_relay_platform", "show_if": {"quest_active": "case_bell", "not_flag": "pickup.tram_relay_platform", "all": [{"not": {"has_item": "tram_relay"}}]}}
  ]
 }

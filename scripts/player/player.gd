@@ -100,7 +100,7 @@ func _build_combat() -> void:
 
 
 func max_health() -> int:
-	return BASE_MAX_HEALTH + int(Inventory.stat("max_health"))
+	return BASE_MAX_HEALTH + int(Inventory.stat("max_health")) + GameState.player_health_bonus()
 
 
 func _apply_stats() -> void:
@@ -373,9 +373,11 @@ func _on_heal_amount(amount: int) -> void:
 	CombatFx.damage_number(get_parent(), global_position, amount, Color(0.5, 1, 0.6))
 
 
-## Fail-forward: fainting in the Veil returns the player to their room.
+## Fainting returns the player to their room; money and Resonance stay
+## behind in a satchel where they fell (GameState.drop_satchel).
 func _on_died() -> void:
 	_fainting = true
+	GameState.drop_satchel(GameState.current_scene_id, global_position)
 	GameState.set_flag(&"veil.fainted_once", true)
 	var t := create_tween()
 	t.tween_property(sprite, "modulate:a", 0.0, 0.8)

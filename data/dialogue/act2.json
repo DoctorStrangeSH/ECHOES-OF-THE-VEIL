@@ -1235,5 +1235,38 @@
     "node": "not_here"
    }
   ]
+ },
+ "harbour_timetable": {
+  "entries": [
+   {
+    "if": {
+     "quest_stage": [
+      "case_misplaced",
+      "ward"
+     ],
+     "period": [
+      "evening",
+      "night"
+     ]
+    },
+    "node": "strip"
+   }
+  ],
+  "start": "plain",
+  "nodes": {
+   "plain": {
+    "text": "TIMETABLE_PLAIN",
+    "next": null
+   },
+   "strip": {
+    "text": "TIMETABLE_1",
+    "effects": [
+     {
+      "set_flag": "ward.timetable"
+     }
+    ],
+    "next": null
+   }
+  }
  }
 }

@@ -226,6 +226,17 @@
       "next": "join"
      },
      {
+      "text": "MARA_ASK_HAND",
+      "if": {
+       "quest_stage": [
+        "case_two_maps",
+        "hand"
+       ],
+       "not_evidence": "e_rent_book"
+      },
+      "next": "hand1"
+     },
+     {
       "text": "BYE",
       "next": null
      }
@@ -707,6 +718,16 @@
      }
     ],
     "next": null
+   },
+   "hand1": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_HAND_1",
+    "effects": [
+     {
+      "add_evidence": "e_rent_book"
+     }
+    ],
+    "next": "hub"
    }
   }
  },
@@ -1917,6 +1938,16 @@
     "if": {
      "quest_stage": [
       "case_kindness",
+      "pact"
+     ],
+     "not_flag": "archive.key"
+    },
+    "node": "pact_key"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_kindness",
       "truth"
      ],
      "flag": "act3.confessor_ivo",
@@ -2319,6 +2350,16 @@
        "case_kindness",
        "decide"
       ]
+     }
+    ],
+    "next": null
+   },
+   "pact_key": {
+    "speaker": "NPC_IVO",
+    "text": "IVO_PACT_KEY",
+    "effects": [
+     {
+      "set_flag": "archive.key"
      }
     ],
     "next": null

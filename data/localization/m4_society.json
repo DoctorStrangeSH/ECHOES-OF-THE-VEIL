@@ -28,8 +28,6 @@
   "TOAST_MILESTONE_FRIEND": {"en": "%s now considers you a friend", "ru": "%s теперь считает вас другом"},
   "TOAST_MILESTONE_CONFIDANT": {"en": "%s trusts you completely", "ru": "%s полностью вам доверяет"},
   "TOAST_MILESTONE_DISTRUST": {"en": "%s no longer trusts you", "ru": "%s больше вам не доверяет"},
-  "FF_RADIO": {"en": "Mrs Halloway got tired of waiting and collected the radio herself.", "ru": "Миссис Холлоуэй надоело ждать, и она сама забрала радио."},
-  "FF_RELAY": {"en": "Jonah left a note: \"Found a relay at a car boot sale. Don't ask.\"", "ru": "Джона оставил записку: «Нашёл реле на барахолке. Не спрашивай»."},
   "LOC_ARCHIVE": {"en": "Municipal Archive (sealed)", "ru": "Городской архив (опечатан)"},
   "SRC_ARCHIVE": {"en": "Municipal Archive, drawer L", "ru": "Городской архив, ящик «Л»"},
   "SRC_REPLY": {"en": "a letter from Lantern Row", "ru": "письмо с Лантерн-Роу"},

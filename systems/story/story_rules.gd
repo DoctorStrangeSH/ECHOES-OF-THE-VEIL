@@ -10,7 +10,7 @@ extends RefCounted
 ##   {"companion": "id" | ""}  {"can_join": "id"}
 ##   {"quest_outcome": ["id", "outcome"]}  {"verdict": ["e", "edited"]}  {"judged": ["e1", ...]}
 ##   {"verdicts_correct_at_least": [["e1", "e2", "e3"], 2]}
-##   {"quest_active": "id"}  {"quest_done": "id"}  {"quest_stage": ["id", "stage"]} (open cases only)
+##   {"quest_active": "id"}  {"quest_done": "id"}  {"quest_failed": "id"}  {"quest_stage": ["id", "stage"]} (open cases only)
 ##   {"not_quest_started": "id"}
 ##   {"period": "night" | ["morning", "afternoon"]}  {"weather": "rain"}
 ##   {"relationship_at_least": ["npc", 2]}  {"remembers": ["npc", "event"]}
@@ -78,6 +78,8 @@ static func _check(key: String, arg: Variant) -> bool:
 			return Party.companion == StringName(arg)
 		"can_join":
 			return Party.can_join(StringName(arg))
+		"quest_failed":
+			return Journal.case_status(StringName(arg)) == Journal.STATUS_FAILED
 		"verdict":  # ["evidence", "authentic" | "edited" | "unreliable"]
 			return Journal.verdict_of(StringName(arg[0])) == String(arg[1])
 		"judged":  # every listed testimony has a verdict

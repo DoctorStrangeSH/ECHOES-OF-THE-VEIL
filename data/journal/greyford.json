@@ -21,7 +21,8 @@
     "decide": [
      "inside"
     ]
-   }
+   },
+   "main": true
   },
   "case_radio": {
    "title": "CASE_RADIO_TITLE",
@@ -32,29 +33,50 @@
     "return": "CASE_RADIO_RETURN"
    },
    "outcomes": {
-    "delivered": "CASE_RADIO_DONE"
+    "delivered": "CASE_RADIO_DONE",
+    "late": "CASE_RADIO_LATE"
    },
    "transitions": {
     "deliver": [
      "return"
     ]
    },
-   "fail_forward": [
+   "deadlines": [
     {
      "stage": "deliver",
-     "after_days": 2,
-     "to": "return",
-     "note": "FF_RADIO",
+     "days": 3,
+     "outcome": "late",
+     "note": "FAIL_RADIO",
      "effects": [
       {
        "clear_flag": "has_radio"
       },
       {
-       "set_flag": "radio.self_collected"
+       "relationship": [
+        "edda_halloway",
+        -1
+       ]
+      },
+      {
+       "remember": [
+        "edda_halloway",
+        "radio_was_late"
+       ]
       }
      ]
     }
-   ]
+   ],
+   "objectives": {
+    "deliver": [
+     {
+      "id": "deliver",
+      "text": "OBJ_RADIO",
+      "done_if": {
+       "not_flag": "has_radio"
+      }
+     }
+    ]
+   }
   },
   "case_quiet": {
    "title": "CASE_QUIET_TITLE",
@@ -133,24 +155,28 @@
      "ring"
     ]
    },
-   "fail_forward": [
-    {
-     "stage": "parts",
-     "after_days": 3,
-     "note": "FF_RELAY",
-     "effects": [
-      {
-       "give_item": [
-        "tram_relay",
-        1
-       ]
-      }
-     ]
-    }
-   ],
    "outcomes": {
     "waiting": "CASE_BELL_WAITING",
     "home": "CASE_BELL_HOME"
+   },
+   "objectives": {
+    "parts": [
+     {
+      "id": "parts",
+      "text": "OBJ_BELL_PARTS",
+      "progress": [
+       {
+        "has_item": "bell_clapper"
+       },
+       {
+        "has_item": "copper_wire"
+       },
+       {
+        "has_item": "tram_relay"
+       }
+      ]
+     }
+    ]
    }
   },
   "case_letters": {

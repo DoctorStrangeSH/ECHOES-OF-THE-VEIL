@@ -38,6 +38,9 @@ var _backgrounds: Dictionary = {}
 var _background_ids: Array[String] = []
 var _background := "returning_local"
 var _pronoun_idx := 0
+var _difficulty_idx := 1  # normal
+var _difficulty_button: Button
+var _difficulty_desc: Label
 var _color_idx := 0
 var _has_assets := false
 
@@ -168,6 +171,17 @@ func _cycle_pronouns() -> void:
 	_pronoun_button.text = tr("CC_PRONOUN_" + String(PRONOUNS[_pronoun_idx]).to_upper())
 
 
+func _cycle_difficulty() -> void:
+	_difficulty_idx = (_difficulty_idx + 1) % GameState.DIFFICULTIES.size()
+	_show_difficulty()
+
+
+func _show_difficulty() -> void:
+	var d := GameState.DIFFICULTIES[_difficulty_idx].to_upper()
+	_difficulty_button.text = tr("CC_DIFFICULTY_" + d)
+	_difficulty_desc.text = tr("CC_DIFFICULTY_" + d + "_DESC")
+
+
 func _cycle_color() -> void:
 	_color_idx = (_color_idx + 1) % PLACEHOLDER_COLORS.size()
 	_apply()
@@ -188,6 +202,7 @@ func _on_begin() -> void:
 	SceneFlow.begin_new_game({
 		"name": player_name.left(18),
 		"pronouns": PRONOUNS[_pronoun_idx],
+		"difficulty": GameState.DIFFICULTIES[_difficulty_idx],
 		"background": _background,
 		"appearance": appearance,
 	})
@@ -243,6 +258,16 @@ func _build() -> void:
 	_pronoun_button.pressed.connect(_cycle_pronouns)
 	_pronoun_button.text = tr("CC_PRONOUN_" + String(PRONOUNS[_pronoun_idx]).to_upper())
 	left.add_child(_labeled(tr("CC_PRONOUNS"), _pronoun_button))
+	_difficulty_button = Button.new()
+	_difficulty_button.pressed.connect(_cycle_difficulty)
+	left.add_child(_labeled(tr("CC_DIFFICULTY"), _difficulty_button))
+	_difficulty_desc = Label.new()
+	_difficulty_desc.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_difficulty_desc.add_theme_font_size_override("font_size", 8)
+	_difficulty_desc.add_theme_color_override("font_color", UiTheme.INK_DIM)
+	_difficulty_desc.custom_minimum_size = Vector2(150, 0)
+	left.add_child(_difficulty_desc)
+	_show_difficulty()
 
 	# Look
 	var right := VBoxContainer.new()

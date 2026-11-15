@@ -496,21 +496,22 @@ func test_relationship_milestones_and_factions() -> void:
 	GameState.reset_for_new_game()
 
 
-func test_fail_forward_moves_stalled_case() -> void:
+func test_late_radio_fails_the_case() -> void:
 	GameState.reset_for_new_game()
 	WorldClock.reset()
 	Journal.start_case(&"case_radio")
 	GameState.set_flag(&"has_radio")
+	for i in 2:
+		WorldClock.sleep_until_hour(7)
+	check(Journal.case_status(&"case_radio") == Journal.STATUS_ACTIVE and Journal.days_left(&"case_radio") == 1, "a day left")
 	WorldClock.sleep_until_hour(7)
-	check(Journal.case_stage(&"case_radio") == &"deliver", "one day is not enough")
-	WorldClock.sleep_until_hour(7)
-	check(Journal.case_stage(&"case_radio") == &"return", "fail-forward after two days")
-	check(not GameState.has_flag(&"has_radio"), "fail-forward effects applied")
+	check(Journal.case_status(&"case_radio") == Journal.STATUS_FAILED, "too late: the case fails")
+	check(not GameState.has_flag(&"has_radio") and GameState.get_relationship(&"edda_halloway") < 0, "and it costs you")
 	GameState.reset_for_new_game()
 
 
-func test_lantern_row_clues_not_missable_after_fail_forward() -> void:
-	# Even if the radio delivery is missed, Mrs Halloway and the map still supply clues.
+func test_lantern_row_clues_not_missable_after_failed_radio() -> void:
+	# Even if the radio delivery fails, Mrs Halloway and the map still supply clues.
 	var hub: Array = DialogueService.dialogues[&"halloway"]["nodes"]["hub"]["choices"]
 	var has_direct_question := false
 	for c: Dictionary in hub:
@@ -747,23 +748,6 @@ func test_act_one_incidents_lead_to_the_map() -> void:
 	GameState.reset_for_new_game()
 
 
-func test_act_one_fail_forward_never_blocks() -> void:
-	GameState.reset_for_new_game()
-	Journal.start_case(&"case_two_maps")
-	Journal.set_case_stage(&"case_two_maps", &"map")
-	for i in 3:
-		WorldClock.sleep_until_hour(7)
-	check(Journal.has_evidence(&"e_two_maps") and Journal.case_stage(&"case_two_maps") == &"hand", "Theo brings the map")
-	for i in 2:
-		WorldClock.sleep_until_hour(7)
-	check(Journal.case_stage(&"case_two_maps") == &"turn", "Mara recognises the hand")
-	Journal.start_case(&"case_storeroom")
-	for i in 3:
-		WorldClock.sleep_until_hour(7)
-	check(Journal.case_stage(&"case_storeroom") == &"tell", "Jonah photographs the crate")
-	GameState.reset_for_new_game()
-
-
 func test_closed_cases_do_not_replay_their_last_stage() -> void:
 	GameState.reset_for_new_game()
 	Journal.start_case(&"case_radio")
@@ -857,31 +841,6 @@ func test_save_migration_from_v5() -> void:
 	_cleanup(dir)
 
 
-func test_act_two_never_blocks() -> void:
-	GameState.reset_for_new_game()
-	Journal.start_case(&"case_misplaced")
-	for i in 2:
-		WorldClock.sleep_until_hour(7)
-	check(GameState.has_flag(&"ward.timetable"), "the timetable shows the Ward without Ivo or Nadiya")
-	Journal.set_case_stage(&"case_misplaced", &"residents")
-	for i in 3:
-		WorldClock.sleep_until_hour(7)
-	check(Journal.case_stage(&"case_misplaced") == &"depot", "the Alderman sends you on")
-	for i in 4:
-		WorldClock.sleep_until_hour(7)
-	check(GameState.has_flag(&"boss.conductor.defeated") and GameState.has_flag(&"depot.cleared"), "the depot opens without a fight if you never go")
-	check(NpcRegistry.resolve(&"rosalind_rook").get("scene", "") == "depot_platform", "Rosalind waits on the platform")
-	Journal.set_case_stage(&"case_misplaced", &"rosalind")
-	Journal.set_case_stage(&"case_misplaced", &"bring")
-	for i in 3:
-		WorldClock.sleep_until_hour(7)
-	check(Journal.case_status(&"case_misplaced") == Journal.STATUS_DONE and GameState.has_flag(&"rosalind.reunited"), "Jonah finds her himself")
-	check(NpcRegistry.resolve(&"rosalind_rook").get("scene", "") == "echo_ward", "then she lives in the Ward")
-	GameState.reset_for_new_game()
-
-
-# --- M7c: act III, the flood ----------------------------------------------------------
-
 func test_first_match_and_outcomes() -> void:
 	GameState.reset_for_new_game()
 	Journal.start_case(&"case_two_maps")
@@ -940,26 +899,6 @@ func test_flood_water_and_islands() -> void:
 	a.water.queue_free()
 	a.queue_free()
 
-
-func test_act_three_never_blocks() -> void:
-	GameState.reset_for_new_game()
-	Journal.start_case(&"case_kindness")
-	for i in 2:
-		WorldClock.sleep_until_hour(7)
-	check(Journal.case_stage(&"case_kindness") == &"quay" and Journal.has_evidence(&"e_keepers_pact"), "Ivo's letter explains the pact")
-	for i in 3:
-		WorldClock.sleep_until_hour(7)
-	check(Journal.case_stage(&"case_kindness") == &"underpass", "Nadiya points the way")
-	for i in 4:
-		WorldClock.sleep_until_hour(7)
-	check(Journal.case_stage(&"case_kindness") == &"truth" and Inventory.count(&"resonator") == 1, "the resonator turns up without the fight")
-	for i in 3:
-		WorldClock.sleep_until_hour(7)
-	check(Journal.case_stage(&"case_kindness") == &"decide", "the decision is never withheld")
-	GameState.reset_for_new_game()
-
-
-# --- M7d: act IV, verdicts, the Reviser -----------------------------------------------
 
 func test_testimony_verdicts() -> void:
 	GameState.reset_for_new_game()
@@ -1031,3 +970,115 @@ func test_reviser_always_leaves_safe_cells() -> void:
 		r.stun(1.0)
 		r.grid.queue_free()
 		r.queue_free()
+
+
+
+# --- M7e: quests without fail-forward ---------------------------------------------------
+
+func test_waiting_never_advances_anything() -> void:
+	for id: StringName in Journal.case_defs:
+		var def: Dictionary = Journal.case_defs[id]
+		check(not def.has("fail_forward"), "%s has no fail-forward" % id)
+		for stage: String in def.get("stages", {}):
+			GameState.reset_for_new_game()
+			Journal.start_case(id)
+			Journal.cases[id]["stage"] = StringName(stage)
+			var deadline := Journal.deadline_for(id)
+			for i in 30:
+				WorldClock.sleep_until_hour(7)
+			if deadline.is_empty():
+				check(Journal.case_status(id) == Journal.STATUS_ACTIVE and Journal.case_stage(id) == StringName(stage), "%s/%s: thirty days change nothing" % [id, stage])
+			else:
+				check(Journal.case_status(id) == Journal.STATUS_FAILED and Journal.cases[id]["outcome"] == StringName(deadline["outcome"]), "%s/%s: the deadline fails it" % [id, stage])
+	GameState.reset_for_new_game()
+
+
+func test_failable_side_quests_share() -> void:
+	var side := 0
+	var failable := 0
+	for id: StringName in Journal.case_defs:
+		var def: Dictionary = Journal.case_defs[id]
+		if def.get("main", false):
+			check(not def.has("deadlines"), "%s: the main story can't be failed by time" % id)
+			continue
+		side += 1
+		if def.has("deadlines"):
+			failable += 1
+	check(failable * 4 >= side, "at least a quarter of side quests can fail (%d of %d)" % [failable, side])
+
+
+func test_main_story_survives_failed_incidents() -> void:
+	GameState.reset_for_new_game()
+	for c in [&"case_two_maps", &"case_storeroom", &"case_larger_house"]:
+		Journal.start_case(c)
+	Journal.fail_case(&"case_storeroom", &"bricked")
+	Journal.fail_case(&"case_larger_house", &"closed")
+	check(not Journal.can_form(&"incidents_share_mark"), "two failed incidents leave a gap")
+	Journal.add_evidence(&"e_census_page")
+	Journal.add_evidence(&"e_house_mark")
+	check(Journal.can_form(&"incidents_share_mark"), "the tram stop and what you saw before the room closed still count")
+	check(not StoryRules.evaluate({"quest_active": "case_storeroom"}), "a bricked storeroom stays shut")
+	GameState.reset_for_new_game()
+
+
+func test_objectives_progress_and_rewards() -> void:
+	GameState.reset_for_new_game()
+	Journal.start_case(&"case_misplaced")
+	Journal.set_case_stage(&"case_misplaced", &"residents")
+	check(Journal.pinned == &"case_misplaced", "main cases pin themselves")
+	var objs := Journal.objectives_for(&"case_misplaced")
+	check(objs.size() == 2 and objs[0]["have"] == 0 and objs[0]["need"] == 3, "residents heard 0/3")
+	GameState.set_flag(&"ward.heard_bea")
+	GameState.set_flag(&"ward.heard_abel")
+	check(Journal.objective_text(Journal.objectives_for(&"case_misplaced")[0]).ends_with("(2/3)"), "progress shows 2/3")
+	var res := Inventory.resonance
+	for f in [&"ward.heard_ellie", &"ward.bea_message", &"ward.abel_left", &"ward.ellie_hopes"]:
+		GameState.set_flag(f)
+	Journal._check_objectives()
+	check(Inventory.resonance == res + 2 and GameState.has_flag(&"obj.case_misplaced.answered"), "the optional objective pays once")
+	Journal._check_objectives()
+	check(Inventory.resonance == res + 2, "and only once")
+	check(Journal.current_objective_text(&"case_misplaced") == tr("CASE_MP_RESIDENTS"), "with every objective met the stage text shows")
+	var saved := Journal.to_dict()
+	Journal.reset()
+	Journal.from_dict(saved)
+	check(Journal.pinned == &"case_misplaced", "the pin is saved")
+	GameState.reset_for_new_game()
+
+
+func test_difficulty_and_the_satchel() -> void:
+	GameState.reset_for_new_game()
+	for d in GameState.DIFFICULTIES:
+		GameState.difficulty = d
+		check(GameState.enemy_health(10) == {"story": 7, "normal": 10, "hard": 13}[d], "%s enemy health" % d)
+		check(GameState.incoming_damage(1) == (2 if d == "hard" else 1), "%s incoming damage" % d)
+	GameState.difficulty = "normal"
+	Inventory.money = 40
+	Inventory.resonance = 6
+	GameState.drop_satchel(&"echo_ward", Vector2(10, 20))
+	check(Inventory.money == 20 and Inventory.resonance == 0 and int(GameState.satchel["money"]) == 20, "half the money and all Resonance stay behind")
+	var saved := GameState.to_dict()
+	GameState.reset_for_new_game()
+	GameState.from_dict(saved)
+	check(GameState.difficulty == "normal" and GameState.satchel.get("scene") == "echo_ward", "difficulty and satchel are saved")
+	GameState.recover_satchel()
+	check(Inventory.money == 40 and Inventory.resonance == 6 and GameState.satchel.is_empty(), "picked up again")
+	GameState.difficulty = "story"
+	GameState.drop_satchel(&"echo_ward", Vector2.ZERO)
+	check(Inventory.money == 40 and GameState.satchel.is_empty(), "story mode loses nothing")
+	GameState.reset_for_new_game()
+
+
+func test_save_migration_from_v6() -> void:
+	var dir := _fresh_save_dir()
+	var v6 := SaveService.make_envelope(GameState.to_dict())
+	v6["schema_version"] = 6
+	v6["payload"]["profile"].erase("difficulty")
+	v6["payload"].erase("satchel")
+	DirAccess.make_dir_recursive_absolute(dir)
+	var f := FileAccess.open(SaveService.slot_path(1), FileAccess.WRITE)
+	f.store_string(JSON.stringify(v6))
+	f.close()
+	var r := SaveService.read_slot(1)
+	check(r["ok"] and r["envelope"]["payload"]["profile"]["difficulty"] == "normal" and r["envelope"]["payload"].has("satchel"), "v6 saves play on normal")
+	_cleanup(dir)

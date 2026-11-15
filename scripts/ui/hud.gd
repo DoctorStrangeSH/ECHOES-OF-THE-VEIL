@@ -17,6 +17,8 @@ var _clock_label: Label
 var _hearts: HeartBar
 var _combat: CombatHud
 var _wallet: Label
+var _objective: Label
+var _objective_t := 0.0
 var _toast_label: Label
 var _toast_queue: Array[String] = []
 var _toast_busy := false
@@ -39,6 +41,18 @@ func _ready() -> void:
 	SceneFlow.transition_started.connect(func() -> void: _on_focus_changed(""))
 
 
+## The pinned case's current objective, plus its deadline if it has one.
+func _objective_line() -> String:
+	var id := Journal.pinned
+	if id == &"" or Journal.case_status(id) != Journal.STATUS_ACTIVE:
+		return ""
+	var line := Journal.current_objective_text(id)
+	var left := Journal.days_left(id)
+	if left >= 0:
+		line += "  " + tr("JOURNAL_DAYS_LEFT") % left
+	return line
+
+
 func _process(delta: float) -> void:
 	visible = GameState.is_playing
 	if not visible:
@@ -51,6 +65,11 @@ func _process(delta: float) -> void:
 	if Inventory.resonance > 0 or _hearts.visible:
 		wallet += "  ·  " + tr("HUD_RESONANCE") % Inventory.resonance
 	_wallet.text = wallet
+	_objective_t -= delta
+	if _objective_t <= 0.0:
+		_objective_t = 0.4
+		_objective.text = _objective_line()
+	_objective.visible = not _dialogue_panel.visible and _objective.text != ""
 	if _dialogue_panel.visible and _text_label.visible_ratio < 1.0:
 		var total := maxf(1.0, float(_text_label.get_total_character_count()))
 		_text_label.visible_ratio = minf(1.0, _text_label.visible_ratio + delta * CHARS_PER_SECOND / total)
@@ -225,6 +244,20 @@ func _build() -> void:
 	_wallet.grow_horizontal = Control.GROW_DIRECTION_BEGIN
 	_wallet.offset_top = 16
 	_wallet.offset_bottom = 28
+
+	_objective = Label.new()
+	_objective.add_theme_font_size_override("font_size", 8)
+	_objective.add_theme_color_override("font_color", UiTheme.ACCENT)
+	_objective.add_theme_color_override("font_outline_color", Color.BLACK)
+	_objective.add_theme_constant_override("outline_size", 3)
+	_objective.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_objective.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	root.add_child(_objective)
+	_objective.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+	_objective.offset_left = -190
+	_objective.offset_right = -6
+	_objective.offset_top = 30
+	_objective.offset_bottom = 60
 
 	_toast_label = Label.new()
 	_toast_label.position = Vector2(10, 22)

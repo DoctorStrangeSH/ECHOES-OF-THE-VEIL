@@ -28,7 +28,7 @@ Source of truth: `data/characters/npcs.json`. Story changes during a conversatio
    - **Report it to Warden Pike** (possible as soon as you have seen the door). Civic Renewal fences off the plaza; the door is gone for good. Mara −2 and remembers; Nadiya −2; Ivo +1; Pike +2. Case closes: *reported*.
    - **Confide in Mara** (optional, before opening). Mara +2, remembers `trusted_with_door`; she reacts warmly afterwards and reveals her grandmother lived at no. 11.
    - **Open the door** (requires the hypothesis). Enter the echo of Lantern Row.
-5. **Inside the echo**: three Hollows (telegraphed lunge, 3 hits each). Fainting is fail-forward: you wake in your room an hour later. Once they are gone, the woman in green appears in the kitchen. She knows your name; the door vanishes. Case closes: *opened*; **Lantern Row** case opens (to be continued).
+5. **Inside the echo**: three Hollows (telegraphed lunge, 3 hits each). Fainting returns you to your room an hour later; since M7e your money and Resonance stay behind in a satchel where you fell (normal/hard). Once they are gone, the woman in green appears in the kitchen. She knows your name; the door vanishes. Case closes: *opened*; **Lantern Row** case opens (to be continued).
 
 Reactions after the outcome: Mara (warm if told first, hurt if not), Ivo (disapproves of opening), Nadiya (approves of opening).
 
@@ -77,7 +77,7 @@ Sources: £20 at start, £10 radio reward, Resonance from echoes. Sinks: Jonah's
 Night break-in to the sealed Municipal Archive. Drawer L: Agnes Venn, Mara's grandmother, was a Census enumerator who signed Lantern Row's reclassification — the same hand as Rosalind's page (story bible: Mara conceals a document implicating her family). Outcomes: **publish** (Open Hand +2, Civic −2, flyer on the plaza, Ivo disapproves), **seal together** (Keepers +2, shared secret), **lie** (keep the file; if it later reaches Civic Renewal, gossip tells Mara and she confronts you).
 
 ### The Bell at Harbour Stop (Jonah, after the truth about Rosalind)
-Collect clapper (platform echo), copper flex (Mrs Halloway), relay (Pike with Civic ≥ 1; fail-forward after 3 days). Ring it at night: Rosalind appears in the water, twelve and seventy at once (bible: each sighting contradicts the last). Answer "he's waiting" or "go home".
+Collect clapper (platform echo), copper flex (Mrs Halloway), relay (Pike with Civic ≥ 1, or on the tracks in the phantom platform echo). Ring it at night: Rosalind appears in the water, twelve and seventy at once (bible: each sighting contradicts the last). Answer "he's waiting" or "go home".
 
 ### Letters to No One (Nadiya, after the door case)
 Three letters: Mrs Halloway learns she had a sister, Bea, who is happy where she is; the platform's emergency box brings back a reply — "We are not lost. Please stop trying to bring us back."; Ivo reveals he writes to the erased every winter. Nadiya must face that some echoes do not want to return (her bible arc). Respect their choice (Unwritten +2) or keep going (Open Hand +2, Unwritten −1).
@@ -98,16 +98,23 @@ West of the harbour promenade, steps lead down to a beach, a sea wall and an aut
 - **Case: The Light That Counts.** Since spring the lamp sweeps seven times, stops over empty water, and repeats. Ask Hester → watch from the end of the sea wall at night (lights on the water where no boat is) → the archive's harbour register for 1962: the *Margaret Ellery*, crew of seven, page cut out → tell Hester.
   - *Real*: she keeps the count with the lamp; +Keepers, +Unwritten, Resonance; the fact spreads to the Keepers, Halloway and Jonah (Jonah: his grandad tapped the table seven times).
   - *Fault*: the council fixes the relay; +Civic, £10; she sleeps at night.
-  - Fail-forward: Hester's own count after 2 days of watching; Mara's copy of the register index after 2 days at the registry stage (so the archive key is never required).
+  - Since M7e: you have three nights to watch, or the lamp stops counting and the case fails. The register is in the archive or, for 3 scrap, in the lifeboat locker under the sea wall.
 - The signpost's sanded-off arm: a ferry, seven minutes across, erased from the timetable.
 - Work: the sea-wall lamp job (after meeting Hester), a junk heap by the bins, two pieces of sea glass (Jonah buys them).
 
 ## M7 — Act I: The City Has Two Maps
 
-Starts with an act card when the door case closes. Full beat sheet and fail-forwards: `docs/production/campaign-plan.md`.
+Starts with an act card when the door case closes. Full beat sheet: `docs/production/campaign-plan.md`.
 
 - **Theo Marsh** (new): mornings on the west park bench, afternoons at the yellow building's door, evenings and nights in his armchair once you've met. His flat (`theo_flat`) is a corridor forty strides long behind a twelve-stride front; the newest room (`theo_new_room`) is an echo of a child's bedroom.
 - **Jonah's storeroom** (`rook_storeroom`): ask Jonah "Anything strange?"; the door in the side wall of Rook Repairs exists only in the evening and at night.
 - **The pencil map** is in the newest room's desk once the incidents are linked (Mara explains the mark).
 - **Mrs Halloway** recognises her own sevens. The three answers set up Act III: secrecy (Keepers), Mara (Open Hand; Mara learns of the map), or Ivo's Sunday visits.
 - **Act II** opens *The People We Misplaced*: Ivo promises to take you to the Ward "when the tides line up" (next stage of the campaign).
+
+## M7e — Quests without a safety net
+
+- Nothing moves on by itself. Side quests with deadlines fail: Jonah's radio (3 days), the storeroom (4 days, bricked up), Theo's newest room (5 days, it closes), Hester's light (3 nights). Failures stay in the journal and in people's memories.
+- Every stage lists objectives with progress; optional objectives pay Resonance, money or standing once.
+- One case is shown on screen (main cases pin themselves; pin another in the journal).
+- Difficulty at new game: Story / Normal / Hard. Fainting leaves a satchel (half your money — all on Hard — and your Resonance) where you fell; faint again first and the old one is gone.

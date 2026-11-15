@@ -25,62 +25,111 @@
      "bring"
     ]
    },
-   "fail_forward": [
-    {
-     "stage": "ward",
-     "after_days": 2,
-     "note": "FF_MP_WARD",
-     "effects": [
-      {
-       "set_flag": "ward.timetable"
-      }
-     ]
-    },
-    {
-     "stage": "residents",
-     "after_days": 3,
-     "note": "FF_MP_RESIDENTS",
-     "to": "depot"
-    },
-    {
-     "stage": "depot",
-     "after_days": 4,
-     "note": "FF_MP_DEPOT",
-     "effects": [
-      {
-       "set_flag": "depot.cleared"
-      },
-      {
-       "set_flag": "boss.conductor.defeated"
-      }
-     ]
-    },
-    {
-     "stage": "bring",
-     "after_days": 3,
-     "note": "FF_MP_BRING",
-     "effects": [
-      {
-       "quest_complete": [
-        "case_misplaced",
-        "reunited"
-       ]
-      },
-      {
-       "set_flag": "rosalind.reunited"
-      },
-      {
-       "relationship": [
-        "jonah_rook",
-        2
-       ]
-      }
-     ]
-    }
-   ],
    "outcomes": {
     "reunited": "CASE_MP_REUNITED",
     "apart": "CASE_MP_APART"
+   },
+   "main": true,
+   "objectives": {
+    "ward": [
+     {
+      "id": "way",
+      "text": "OBJ_MP_WAY",
+      "done_if": {
+       "flag": "ward.open"
+      }
+     }
+    ],
+    "residents": [
+     {
+      "id": "heard",
+      "text": "OBJ_MP_HEARD",
+      "progress": [
+       {
+        "flag": "ward.heard_bea"
+       },
+       {
+        "flag": "ward.heard_abel"
+       },
+       {
+        "flag": "ward.heard_ellie"
+       }
+      ]
+     },
+     {
+      "id": "answered",
+      "text": "OBJ_MP_ANSWERED",
+      "optional": true,
+      "progress": [
+       {
+        "any": [
+         {
+          "flag": "ward.bea_message"
+         },
+         {
+          "flag": "ward.bea_wait"
+         }
+        ]
+       },
+       {
+        "any": [
+         {
+          "flag": "ward.abel_left"
+         },
+         {
+          "flag": "ward.abel_message"
+         }
+        ]
+       },
+       {
+        "any": [
+         {
+          "flag": "ward.ellie_hopes"
+         },
+         {
+          "flag": "ward.ellie_angry"
+         }
+        ]
+       }
+      ],
+      "reward": [
+       {
+        "give_resonance": 2
+       },
+       {
+        "faction": [
+         "unwritten",
+         1
+        ]
+       }
+      ]
+     }
+    ],
+    "depot": [
+     {
+      "id": "hall",
+      "text": "OBJ_MP_HALL",
+      "done_if": {
+       "flag": "depot.cleared"
+      }
+     },
+     {
+      "id": "boss",
+      "text": "OBJ_MP_BOSS",
+      "done_if": {
+       "flag": "boss.conductor.defeated"
+      }
+     }
+    ],
+    "bring": [
+     {
+      "id": "jonah",
+      "text": "OBJ_MP_JONAH",
+      "done_if": {
+       "companion": "jonah_rook"
+      }
+     }
+    ]
    }
   }
  },

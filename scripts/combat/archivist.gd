@@ -50,7 +50,7 @@ func _ready() -> void:
 	sprite.modulate = TINT
 	sprite.play(&"idle", LayeredCharacterSprite.Dir.DOWN)
 	health = Health.new()
-	health.max_health = MAX_HEALTH
+	health.max_health = GameState.enemy_health(MAX_HEALTH)
 	health.invulnerability_time = 0.15
 	add_child(health)
 	health.died.connect(_on_died)
@@ -82,7 +82,7 @@ func engage() -> void:
 
 
 func phase() -> int:
-	var f := float(health.health) / MAX_HEALTH
+	var f := float(health.health) / health.max_health
 	if f > 0.66:
 		return 1
 	if f > 0.33:
@@ -190,7 +190,7 @@ func _on_hit(damage: int, _from: Vector2, _knockback: float) -> void:
 
 
 func _emit_bar() -> void:
-	EventHub.boss_health_changed.emit("BOSS_ARCHIVIST", health.health, MAX_HEALTH)
+	EventHub.boss_health_changed.emit("BOSS_ARCHIVIST", health.health, health.max_health)
 
 
 func _on_died() -> void:

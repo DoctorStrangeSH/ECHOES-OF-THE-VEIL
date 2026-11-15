@@ -3,13 +3,10 @@
  "name_key": "LOC_LIGHTHOUSE_POINT",
  "palette": "lighthouse_point",
  "options": {},
- "layout": {"generator": "bands", "width": 36, "bands": [["w", 4], ["o", 1], ["d", 13], ["g", 4]],
-            "carve": [["g", 0, 12, 10, 6], ["s", 7, 15, 29, 2], ["s", 10, 5, 2, 10]]},
+ "layout": {"generator": "bands", "width": 36, "bands": [["w", 4], ["o", 1], ["d", 13], ["g", 4]], "carve": [["g", 0, 12, 10, 6], ["s", 7, 15, 29, 2], ["s", 10, 5, 2, 10]]},
  "nodes": [
-  {"template": "building", "tex": "@beach/Example_Lighthouse.png", "x": 80, "y": 280, "name": "Lighthouse", "color": "#d8d0c0", "inset": 48, "depth": 36,
-   "inspect": {"id": "lighthouse_door", "dialogue": "lighthouse_door", "width": 26}},
-  {"template": "fixture", "tex": "@city/Street_Lamp_5.png", "x": 300, "y": 84, "name": "SeaWallLamp", "color": "#444455", "col": [6, 4],
-   "use": {"kind": "spot", "id": "spot_point_lamp", "spot": "point_lamp", "y": 94}},
+  {"template": "building", "tex": "@beach/Example_Lighthouse.png", "x": 80, "y": 280, "name": "Lighthouse", "color": "#d8d0c0", "inset": 48, "depth": 36, "inspect": {"id": "lighthouse_door", "dialogue": "lighthouse_door", "width": 26}},
+  {"template": "fixture", "tex": "@city/Street_Lamp_5.png", "x": 300, "y": 84, "name": "SeaWallLamp", "color": "#444455", "col": [6, 4], "use": {"kind": "spot", "id": "spot_point_lamp", "spot": "point_lamp", "y": 94}},
   {"kind": "inspect", "name": "WatchTheLight", "id": "watch_the_light", "x": 196, "y": 88, "area": [40, 14], "priority": 20, "dialogue": "lighthouse_watch"},
   {"template": "sign", "tex": "@beach/Direction_Pole_Big.png", "x": 520, "y": 236, "id": "read_point_signpost", "name": "Signpost", "dialogue": "point_signpost", "color": "#9a7a50"},
   {"kind": "prop", "name": "Bench", "tex": "@city/Bench_2.png", "x": 420, "y": 226, "col": [44, 10], "off": [0, -5], "color": "#a07040"},
@@ -26,6 +23,7 @@
   {"kind": "inspect", "name": "RocksLook", "id": "inspect_point_rocks", "x": 150, "y": 92, "area": [50, 12], "lines": ["POINT_ROCKS"]},
   {"kind": "spawn", "name": "FromGreyford", "id": "from_greyford", "x": 548, "y": 256, "facing": [-1, 0]},
   {"kind": "door", "name": "StepsUp", "id": "door_point_greyford", "x": 570, "y": 256, "area": [14, 32], "scene": "greyford_block", "spawn": "point_steps", "prompt": "PROMPT_TO_GREYFORD"},
-  {"template": "anchors", "points": {"keeper_door": [112, 296], "bench": [420, 238], "sea_wall": [212, 92]}}
+  {"template": "anchors", "points": {"keeper_door": [112, 296], "bench": [420, 238], "sea_wall": [212, 92]}},
+  {"kind": "inspect", "name": "LifeboatLocker", "id": "inspect_lifeboat_locker", "x": 330, "y": 92, "area": [26, 12], "dialogue": "lifeboat_locker", "show_if": {"quest_stage": ["case_lighthouse", "registry"]}}
  ]
 }

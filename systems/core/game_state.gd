@@ -34,8 +34,53 @@ func _process(delta: float) -> void:
 		play_time_seconds += delta
 
 
+## Story / normal / hard (chosen at a new game, D-055).
+const DIFFICULTIES: Array[String] = ["story", "normal", "hard"]
+const ENEMY_HEALTH := {"story": 0.7, "normal": 1.0, "hard": 1.3}
+var difficulty := "normal"
+## Money and Resonance dropped where the player last fainted:
+## {"scene": id, "x": float, "y": float, "money": int, "resonance": int} or {}.
+var satchel: Dictionary = {}
+
+
+func enemy_health(base: int) -> int:
+	return maxi(1, int(round(base * float(ENEMY_HEALTH.get(difficulty, 1.0)))))
+
+
+func incoming_damage(damage: int) -> int:
+	return damage + (1 if difficulty == "hard" and damage > 0 else 0)
+
+
+func player_health_bonus() -> int:
+	return 3 if difficulty == "story" else 0
+
+
+## Fainting drops half your money (all of it on hard) and all carried Resonance
+## where you fell; an older satchel is lost for good. Nothing on story.
+func drop_satchel(scene_id: StringName, at: Vector2) -> void:
+	if difficulty == "story":
+		satchel = {}
+		return
+	var money := Inventory.money if difficulty == "hard" else Inventory.money / 2
+	var res := Inventory.resonance
+	Inventory.money -= money
+	Inventory.resonance = 0
+	satchel = {"scene": String(scene_id), "x": at.x, "y": at.y, "money": money, "resonance": res} if money + res > 0 else {}
+
+
+func recover_satchel() -> void:
+	if satchel.is_empty():
+		return
+	Inventory.money += int(satchel["money"])
+	Inventory.add_resonance(int(satchel["resonance"]))
+	EventHub.toast_requested.emit(tr("TOAST_SATCHEL") % [int(satchel["money"]), int(satchel["resonance"])])
+	satchel = {}
+
+
 func reset_for_new_game() -> void:
 	flags.clear()
+	difficulty = "normal"
+	satchel = {}
 	current_scene_id = NEW_GAME_SCENE
 	current_spawn_id = NEW_GAME_SPAWN
 	pending_position = null
@@ -131,7 +176,8 @@ func to_dict(player_node: Node2D = null) -> Dictionary:
 		"facing": [facing.x, facing.y],
 		"play_time_seconds": play_time_seconds,
 		"appearance": player_appearance.to_dict(),
-		"profile": {"name": player_name, "pronouns": pronouns, "background": String(background)},
+		"profile": {"name": player_name, "pronouns": pronouns, "background": String(background), "difficulty": difficulty},
+		"satchel": satchel.duplicate(),
 		"relationships": _string_keys(relationships),
 		"memory": _string_keys(npc_memory),
 		"journal": Journal.to_dict(),
@@ -167,6 +213,8 @@ func from_dict(data: Dictionary) -> void:
 	player_name = String(profile.get("name", "Alex"))
 	pronouns = String(profile.get("pronouns", "they"))
 	background = StringName(profile.get("background", "returning_local"))
+	difficulty = String(profile.get("difficulty", "normal"))
+	satchel = (data.get("satchel", {}) as Dictionary).duplicate()
 	relationships.clear()
 	var rel: Dictionary = data.get("relationships", {})
 	for k: String in rel:

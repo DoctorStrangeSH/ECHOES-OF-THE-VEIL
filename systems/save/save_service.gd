@@ -10,7 +10,7 @@ extends Node
 signal saved(slot: int)
 signal save_failed(slot: int, message: String)
 
-const SCHEMA_VERSION := 6
+const SCHEMA_VERSION := 7
 const DEFAULT_SLOT := 1
 const MAX_SLOTS := 3
 
@@ -27,9 +27,23 @@ func _init() -> void:
 	_migrations[3] = _migrate_3_to_4
 	_migrations[4] = _migrate_4_to_5
 	_migrations[5] = _migrate_5_to_6
+	_migrations[6] = _migrate_6_to_7
 
 
 ## v5 (M5) adds work and ownership: repair skill, jobs, rent, home, stall.
+## v7 (M7e): difficulty (old saves play on normal), the faint satchel, and
+## cases that used to move on by themselves now wait for the player.
+func _migrate_6_to_7(env: Dictionary) -> Dictionary:
+	var p: Dictionary = env["payload"]
+	var profile: Dictionary = p.get("profile", {})
+	if not profile.has("difficulty"):
+		profile["difficulty"] = "normal"
+	p["profile"] = profile
+	if not p.has("satchel"):
+		p["satchel"] = {}
+	return env
+
+
 ## v6 (M7b) adds the party (current companion).
 func _migrate_5_to_6(env: Dictionary) -> Dictionary:
 	var p: Dictionary = env["payload"]

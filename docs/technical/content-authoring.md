@@ -70,7 +70,11 @@ A `remember` effect needs a `MEM_<EVENT>` string — it is what the People tab s
 
 ## Cases (quests)
 
-`data/journal/<file>.json` holds `cases`, `evidence` and `hypotheses`. A case declares `stages`, `first_stage`, `transitions` (allowed moves), `outcomes`, and `fail_forward` rules: after `after_days` stuck on `stage`, apply `effects`, show `note`, optionally move `to` a stage. Every critical step should have a fail-forward so nothing is missable. Evidence can `advance` a case when found. Check the graph in `docs/generated/cases.md`.
+`data/journal/<file>.json` holds `cases`, `evidence` and `hypotheses`. A case declares `stages`, `first_stage`, `transitions` (allowed moves), `outcomes`, `"main": true` for the story spine, and optionally:
+- `objectives`: per stage, `[{"id", "text", "done_if": cond | "progress": [conds], "need": n, "optional": bool, "reward": [effects]}]` — shown in the journal and on the HUD; rewards only on optional ones, paid once.
+- `deadlines`: `[{"stage", "days", "outcome", "note", "effects"}]` — the case **fails** with that outcome if still at that stage after `days`. Side quests only.
+
+**Never** `fail_forward` (D-052): nothing may advance because time passed, and the validator fails any stage that no player action reaches. Give important steps two or more player-driven routes instead. Evidence can `advance` a case when found; testimony can carry `"testimony": true, "truth": "authentic|edited|unreliable"`. Check the graph in `docs/generated/cases.md`.
 
 ## Items, jobs, shops, enemies
 

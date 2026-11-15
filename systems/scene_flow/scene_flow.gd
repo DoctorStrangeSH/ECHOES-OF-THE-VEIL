@@ -61,6 +61,7 @@ func begin_new_game(profile: Dictionary) -> void:
 	GameState.player_name = String(profile.get("name", "Alex"))
 	GameState.pronouns = String(profile.get("pronouns", "they"))
 	GameState.background = StringName(profile.get("background", "returning_local"))
+	GameState.difficulty = String(profile.get("difficulty", "normal"))
 	if profile.get("appearance") is CharacterAppearance:
 		GameState.player_appearance = profile["appearance"]
 	GameState.set_flag(StringName("background.%s" % GameState.background), true)

@@ -111,7 +111,7 @@ func _apply_variant() -> void:
 	if not all.has(StringName(variant)):
 		push_error("EchoEnemy %s: unknown variant '%s'" % [enemy_id, variant])
 	var v: Dictionary = all.get(StringName(variant), all.get(&"hollow", {}))
-	max_health = int(v["max_health"])
+	max_health = GameState.enemy_health(int(v["max_health"]))
 	move_speed = float(v["move_speed"])
 	chase_speed = float(v["chase_speed"])
 	lunge_speed = float(v["lunge_speed"])

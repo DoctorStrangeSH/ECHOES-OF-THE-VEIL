@@ -1,21 +1,113 @@
 {
  "cases": {
   "case_lighthouse": {
-   "title": "CASE_LH_TITLE", "summary": "CASE_LH_SUMMARY", "first_stage": "ask",
-   "stages": {"ask": "CASE_LH_ASK", "watch": "CASE_LH_WATCH", "registry": "CASE_LH_REGISTRY", "answer": "CASE_LH_ANSWER"},
-   "transitions": {"ask": ["watch"], "watch": ["registry"], "registry": ["answer"]},
-   "fail_forward": [
-    {"stage": "watch", "after_days": 2, "note": "FF_LH_COUNT", "effects": [{"add_evidence": "e_hester_log"}], "to": "registry"},
-    {"stage": "registry", "after_days": 2, "note": "FF_LH_REGISTER", "effects": [{"add_evidence": "e_ship_register"}], "to": "answer"}
+   "title": "CASE_LH_TITLE",
+   "summary": "CASE_LH_SUMMARY",
+   "first_stage": "ask",
+   "stages": {
+    "ask": "CASE_LH_ASK",
+    "watch": "CASE_LH_WATCH",
+    "registry": "CASE_LH_REGISTRY",
+    "answer": "CASE_LH_ANSWER"
+   },
+   "transitions": {
+    "ask": [
+     "watch"
+    ],
+    "watch": [
+     "registry"
+    ],
+    "registry": [
+     "answer"
+    ]
+   },
+   "outcomes": {
+    "remembered": "CASE_LH_REMEMBERED",
+    "rested": "CASE_LH_RESTED",
+    "missed": "CASE_LH_MISSED"
+   },
+   "deadlines": [
+    {
+     "stage": "watch",
+     "days": 3,
+     "outcome": "missed",
+     "note": "FAIL_LIGHTHOUSE",
+     "effects": [
+      {
+       "set_flag": "world.lamp_quiet"
+      },
+      {
+       "remember": [
+        "hester_ashby",
+        "never_came_to_watch"
+       ]
+      }
+     ]
+    }
    ],
-   "outcomes": {"remembered": "CASE_LH_REMEMBERED", "rested": "CASE_LH_RESTED"}
+   "objectives": {
+    "watch": [
+     {
+      "id": "count",
+      "text": "OBJ_LH_COUNT",
+      "done_if": {
+       "evidence": "e_flash_count"
+      }
+     }
+    ],
+    "registry": [
+     {
+      "id": "register",
+      "text": "OBJ_LH_REGISTER",
+      "done_if": {
+       "evidence": "e_ship_register"
+      }
+     }
+    ]
+   }
   }
  },
  "evidence": {
-  "e_hester_count": {"case": "case_lighthouse", "kind": "reported", "source": "hester_ashby", "source_name": "NPC_HESTER", "title": "EV_HESTER_COUNT_TITLE", "body": "EV_HESTER_COUNT_BODY"},
-  "e_flash_count": {"case": "case_lighthouse", "kind": "observed", "source": "player", "source_name": "SRC_YOU", "title": "EV_FLASH_TITLE", "body": "EV_FLASH_BODY", "advance": ["case_lighthouse", "registry"]},
-  "e_hester_log": {"case": "case_lighthouse", "kind": "recorded", "source": "hester_log", "source_name": "SRC_HESTER_LOG", "title": "EV_HESTER_LOG_TITLE", "body": "EV_HESTER_LOG_BODY"},
-  "e_ship_register": {"case": "case_lighthouse", "kind": "recorded", "source": "harbour_register", "source_name": "SRC_HARBOUR_REGISTER", "title": "EV_REGISTER_TITLE", "body": "EV_REGISTER_BODY", "advance": ["case_lighthouse", "answer"]}
+  "e_hester_count": {
+   "case": "case_lighthouse",
+   "kind": "reported",
+   "source": "hester_ashby",
+   "source_name": "NPC_HESTER",
+   "title": "EV_HESTER_COUNT_TITLE",
+   "body": "EV_HESTER_COUNT_BODY"
+  },
+  "e_flash_count": {
+   "case": "case_lighthouse",
+   "kind": "observed",
+   "source": "player",
+   "source_name": "SRC_YOU",
+   "title": "EV_FLASH_TITLE",
+   "body": "EV_FLASH_BODY",
+   "advance": [
+    "case_lighthouse",
+    "registry"
+   ]
+  },
+  "e_hester_log": {
+   "case": "case_lighthouse",
+   "kind": "recorded",
+   "source": "hester_log",
+   "source_name": "SRC_HESTER_LOG",
+   "title": "EV_HESTER_LOG_TITLE",
+   "body": "EV_HESTER_LOG_BODY"
+  },
+  "e_ship_register": {
+   "case": "case_lighthouse",
+   "kind": "recorded",
+   "source": "harbour_register",
+   "source_name": "SRC_HARBOUR_REGISTER",
+   "title": "EV_REGISTER_TITLE",
+   "body": "EV_REGISTER_BODY",
+   "advance": [
+    "case_lighthouse",
+    "answer"
+   ]
+  }
  },
  "hypotheses": {}
 }
