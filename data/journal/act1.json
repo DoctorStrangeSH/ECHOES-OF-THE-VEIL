@@ -120,15 +120,6 @@
     "remembered": "CASE_LH2_REMEMBERED",
     "settled": "CASE_LH2_SETTLED"
    }
-  },
-  "case_misplaced": {
-   "title": "CASE_MP_TITLE",
-   "summary": "CASE_MP_SUMMARY",
-   "first_stage": "ward",
-   "stages": {
-    "ward": "CASE_MP_WARD"
-   },
-   "transitions": {}
   }
  },
  "evidence": {

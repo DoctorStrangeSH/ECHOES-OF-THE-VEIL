@@ -2,7 +2,7 @@
 
 A single-player, top-down pixel-art narrative RPG built with Godot 4.x.
 
-> **Project status:** M7 — Act I: three incidents (a vanished storeroom, a flat that grows a room every week, the ghost tram stop), a map of streets that aren't there, and whose handwriting is on it. Earlier: M6 — content pipeline and a second region, Lighthouse Point (a keeper, a lighthouse that counts, a new case). Earlier: M5 — life and work: repair profession with a minigame, odd jobs for neighbours, scrap salvaging, crafting, Jonah's shop, room upgrades, rent, and a repair-cart business. Earlier: M4 — society: factions, NPC knowledge and gossip, relationship milestones, quest graphs with fail-forward, three character stories (Mara, Jonah, Nadiya) and the Municipal Archive. Earlier: M3 — core RPG loop on top of the Greyford slice: weapon combos, dodge, Lantern Flash, the Hollow enemy family, the Census Taker miniboss, inventory/equipment, Resonance and Attunements, generated sound effects. M2: Character creator, six scheduled NPCs, branching dialogue, an investigation journal with evidence provenance and hypotheses, a day clock with weather, a main case with a meaningful choice, a local quest, and the first Veil echo with a short combat encounter. English and Russian.
+> **Project status:** M7 — Act II: the Echo Ward, a neighbourhood erased in 1962 and still lit; Jonah and Mara as companions; the Conductor; Rosalind. Before that, Act I: three incidents (a vanished storeroom, a flat that grows a room every week, the ghost tram stop), a map of streets that aren't there, and whose handwriting is on it. Earlier: M6 — content pipeline and a second region, Lighthouse Point (a keeper, a lighthouse that counts, a new case). Earlier: M5 — life and work: repair profession with a minigame, odd jobs for neighbours, scrap salvaging, crafting, Jonah's shop, room upgrades, rent, and a repair-cart business. Earlier: M4 — society: factions, NPC knowledge and gossip, relationship milestones, quest graphs with fail-forward, three character stories (Mara, Jonah, Nadiya) and the Municipal Archive. Earlier: M3 — core RPG loop on top of the Greyford slice: weapon combos, dodge, Lantern Flash, the Hollow enemy family, the Census Taker miniboss, inventory/equipment, Resonance and Attunements, generated sound effects. M2: Character creator, six scheduled NPCs, branching dialogue, an investigation journal with evidence provenance and hypotheses, a day clock with weather, a main case with a meaningful choice, a local quest, and the first Veil echo with a short combat encounter. English and Russian.
 
 ## High concept
 
@@ -62,7 +62,7 @@ python3 tools/loc.py status              # translation coverage
 python3 tools/content_graphs.py          # regenerate docs/generated diagrams
 python3 tools/regions/build_regions.py   # rebuild location scenes from data/regions (needs the art)
 ```
-Exit code 0 means success; the smoke test must also print `SMOKE TEST FINISHED` with no `SCRIPT ERROR`. GitHub Actions runs all three on every pull request (`.github/workflows/tests.yml`). Manual checks: [M1](docs/technical/m1-test-plan.md), [M2](docs/technical/m2-test-plan.md), [M3](docs/technical/m3-test-plan.md), [M4](docs/technical/m4-test-plan.md), [M5](docs/technical/m5-test-plan.md), [M6](docs/technical/m6-test-plan.md), [M7 Act I](docs/technical/m7-act1-test-plan.md). Making content: [authoring guide](docs/technical/content-authoring.md); diagrams: [dialogue](docs/generated/dialogue.md), [cases](docs/generated/cases.md). Story content map: [Greyford slice](docs/narrative/greyford-slice.md).
+Exit code 0 means success; the smoke test must also print `SMOKE TEST FINISHED` with no `SCRIPT ERROR`. GitHub Actions runs all three on every pull request (`.github/workflows/tests.yml`). Manual checks: [M1](docs/technical/m1-test-plan.md), [M2](docs/technical/m2-test-plan.md), [M3](docs/technical/m3-test-plan.md), [M4](docs/technical/m4-test-plan.md), [M5](docs/technical/m5-test-plan.md), [M6](docs/technical/m6-test-plan.md), [M7 Act I](docs/technical/m7-act1-test-plan.md), [M7 Act II](docs/technical/m7-act2-test-plan.md). Making content: [authoring guide](docs/technical/content-authoring.md); diagrams: [dialogue](docs/generated/dialogue.md), [cases](docs/generated/cases.md). Story content map: [Greyford slice](docs/narrative/greyford-slice.md).
 
 ## Audio
 
@@ -95,7 +95,7 @@ Build and validate a small, compelling vertical slice before scaling content. A 
 
 ## Current milestone
 
-**M7 — Campaign production** (in progress): the campaign spine and **Act I — The City Has Two Maps** are playable; Acts II–V follow the [campaign plan](docs/production/campaign-plan.md). Done before: M6 content pipeline (regions as data, validators, Lighthouse Point).
+**M7 — Campaign production** (in progress): the campaign spine, **Act I — The City Has Two Maps** and **Act II — The People We Misplaced** (the Echo Ward, companions, the Conductor) are playable; Acts II–V follow the [campaign plan](docs/production/campaign-plan.md). Done before: M6 content pipeline (regions as data, validators, Lighthouse Point).
 
 ## License and third-party assets
 

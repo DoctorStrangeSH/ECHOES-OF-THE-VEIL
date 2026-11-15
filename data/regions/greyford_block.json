@@ -112,6 +112,9 @@
   {"kind": "anchor", "name": "A_theo_door", "id": "theo_door", "x": 610, "y": 264},
   {"kind": "door", "name": "StoreroomDoor", "id": "door_rook_storeroom", "x": 422, "y": 250, "area": [14, 14], "scene": "rook_storeroom", "spawn": "entrance", "prompt": "PROMPT_STOREROOM", "show_if": {"all": [{"quest_active": "case_storeroom"}, {"period": ["evening", "night"]}]}},
   {"kind": "inspect", "name": "StoreroomWall", "id": "inspect_storeroom_wall", "x": 422, "y": 250, "area": [14, 14], "lines": ["STOREROOM_WALL_DAY"], "show_if": {"all": [{"quest_active": "case_storeroom"}, {"period": ["morning", "afternoon"]}]}},
-  {"kind": "spawn", "name": "StoreroomFront", "id": "storeroom_front", "x": 422, "y": 266, "facing": [0, 1]}
+  {"kind": "spawn", "name": "StoreroomFront", "id": "storeroom_front", "x": 422, "y": 266, "facing": [0, 1]},
+  {"template": "sign", "tex": "@vehicle/Bus_Stop_Sign_2.png", "x": 548, "y": 72, "id": "read_harbour_timetable", "name": "HarbourTimetable", "lines": ["TIMETABLE_1"], "color": "#9090a0"},
+  {"kind": "door", "name": "WardGate", "id": "door_greyford_ward", "x": 572, "y": 76, "area": [16, 14], "scene": "echo_ward", "spawn": "gate", "prompt": "PROMPT_WARD_GATE", "show_if": {"all": [{"any": [{"flag": "ward.ivo_invite"}, {"flag": "ward.nadiya_invite"}, {"flag": "ward.timetable"}, {"flag": "ward.open"}]}, {"period": ["evening", "night"]}]}},
+  {"kind": "spawn", "name": "WardReturn", "id": "ward_return", "x": 572, "y": 92, "facing": [0, 1]}
  ]
 }

@@ -1,0 +1,978 @@
+{
+ "ward_enter": {
+  "entries": [
+   {
+    "if": {
+     "flag": "ward.ivo_invite"
+    },
+    "node": "ivo1"
+   },
+   {
+    "if": {
+     "flag": "ward.nadiya_invite"
+    },
+    "node": "nad1"
+   }
+  ],
+  "start": "alone1",
+  "nodes": {
+   "ivo1": {
+    "text": "WARD_ENTER_IVO_1",
+    "next": "ivo2"
+   },
+   "ivo2": {
+    "speaker": "NPC_IVO",
+    "text": "WARD_ENTER_IVO_2",
+    "effects": [
+     {
+      "faction": [
+       "keepers",
+       1
+      ]
+     },
+     {
+      "relationship": [
+       "ivo_calder",
+       1
+      ]
+     }
+    ],
+    "next": "common"
+   },
+   "nad1": {
+    "text": "WARD_ENTER_NAD_1",
+    "next": "nad2"
+   },
+   "nad2": {
+    "speaker": "NPC_NADIYA",
+    "text": "WARD_ENTER_NAD_2",
+    "effects": [
+     {
+      "faction": [
+       "open_hand",
+       1
+      ]
+     },
+     {
+      "relationship": [
+       "nadiya_sol",
+       1
+      ]
+     }
+    ],
+    "next": "common"
+   },
+   "alone1": {
+    "text": "WARD_ENTER_ALONE",
+    "next": "common"
+   },
+   "common": {
+    "text": "WARD_ENTER_COMMON",
+    "effects": [
+     {
+      "set_flag": "ward.open"
+     },
+     {
+      "quest_stage": [
+       "case_misplaced",
+       "residents"
+      ]
+     }
+    ],
+    "next": null
+   }
+  }
+ },
+ "depot_enter": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "DEPOT_ENTER_1",
+    "next": "2"
+   },
+   "2": {
+    "text": "DEPOT_ENTER_2",
+    "effects": [
+     {
+      "set_flag": "depot.entered"
+     }
+    ],
+    "next": null
+   }
+  }
+ },
+ "platform_conductor": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "CONDUCTOR_ENTER_1",
+    "next": "2"
+   },
+   "2": {
+    "speaker": "BOSS_CONDUCTOR",
+    "text": "CONDUCTOR_ENTER_2",
+    "effects": [
+     {
+      "add_evidence": "e_conductor_seen"
+     }
+    ],
+    "next": null
+   }
+  }
+ },
+ "alderman": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "met.alderman"
+    },
+    "node": "intro1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "intro1": {
+    "speaker": "NPC_ALDERMAN",
+    "text": "ALD_1",
+    "next": "intro2"
+   },
+   "intro2": {
+    "speaker": "NPC_ALDERMAN",
+    "text": "ALD_2",
+    "effects": [
+     {
+      "set_flag": "met.alderman"
+     },
+     {
+      "add_evidence": "e_ward_census"
+     },
+     {
+      "publish": "ward_census"
+     }
+    ],
+    "next": "intro3"
+   },
+   "intro3": {
+    "speaker": "NPC_ALDERMAN",
+    "text": "ALD_3",
+    "next": "hub"
+   },
+   "hub": {
+    "speaker": "NPC_ALDERMAN",
+    "text": "ALD_HUB",
+    "choices": [
+     {
+      "text": "ALD_ASK_WARD",
+      "next": "lore"
+     },
+     {
+      "text": "ALD_HEARD",
+      "if": {
+       "quest_stage": [
+        "case_misplaced",
+        "residents"
+       ],
+       "flag": "ward.heard_bea",
+       "all": [
+        {
+         "flag": "ward.heard_abel"
+        },
+        {
+         "flag": "ward.heard_ellie"
+        }
+       ]
+      },
+      "next": "depot1"
+     },
+     {
+      "text": "ALD_ASK_DEPOT",
+      "if": {
+       "quest_stage": [
+        "case_misplaced",
+        "depot"
+       ]
+      },
+      "next": "depot2"
+     },
+     {
+      "text": "ALD_AFTER",
+      "if": {
+       "quest_done": "case_misplaced"
+      },
+      "next": "after"
+     },
+     {
+      "text": "BYE",
+      "next": null
+     }
+    ]
+   },
+   "lore": {
+    "speaker": "NPC_ALDERMAN",
+    "text": "ALD_LORE",
+    "next": "hub"
+   },
+   "depot1": {
+    "speaker": "NPC_ALDERMAN",
+    "text": "ALD_DEPOT_1",
+    "next": "depot2b"
+   },
+   "depot2b": {
+    "speaker": "NPC_ALDERMAN",
+    "text": "ALD_DEPOT_2",
+    "effects": [
+     {
+      "quest_stage": [
+       "case_misplaced",
+       "depot"
+      ]
+     }
+    ],
+    "next": "hub"
+   },
+   "depot2": {
+    "speaker": "NPC_ALDERMAN",
+    "text": "ALD_DEPOT_2",
+    "next": "hub"
+   },
+   "after": {
+    "speaker": "NPC_ALDERMAN",
+    "text": "ALD_AFTER_1",
+    "next": "hub"
+   }
+  }
+ },
+ "bea": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "ward.heard_bea"
+    },
+    "node": "intro1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "intro1": {
+    "speaker": "NPC_BEA",
+    "text": "BEA_1",
+    "next": "intro2"
+   },
+   "intro2": {
+    "speaker": "NPC_BEA",
+    "text": "BEA_2",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "ward.heard_bea"
+     }
+    ]
+   },
+   "hub": {
+    "speaker": "NPC_BEA",
+    "text": "BEA_HUB",
+    "choices": [
+     {
+      "text": "BEA_TELL_EDDA",
+      "if": {
+       "not_flag": "ward.bea_message",
+       "all": [
+        {
+         "not_flag": "ward.bea_wait"
+        }
+       ]
+      },
+      "effects": [
+       {
+        "set_flag": "ward.bea_message"
+       },
+       {
+        "faction": [
+         "unwritten",
+         1
+        ]
+       },
+       {
+        "relationship": [
+         "bea_halloway",
+         1
+        ]
+       }
+      ],
+      "next": "edda"
+     },
+     {
+      "text": "BEA_NOT_READY",
+      "if": {
+       "not_flag": "ward.bea_message",
+       "all": [
+        {
+         "not_flag": "ward.bea_wait"
+        }
+       ]
+      },
+      "effects": [
+       {
+        "set_flag": "ward.bea_wait"
+       },
+       {
+        "faction": [
+         "civic",
+         1
+        ]
+       }
+      ],
+      "next": "wait"
+     },
+     {
+      "text": "BYE",
+      "next": null
+     }
+    ]
+   },
+   "edda": {
+    "speaker": "NPC_BEA",
+    "text": "BEA_EDDA",
+    "next": "hub"
+   },
+   "wait": {
+    "speaker": "NPC_BEA",
+    "text": "BEA_WAIT",
+    "next": "hub"
+   }
+  }
+ },
+ "abel": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "ward.heard_abel"
+    },
+    "node": "intro1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "intro1": {
+    "speaker": "NPC_ABEL",
+    "text": "ABEL_1",
+    "next": "intro2"
+   },
+   "intro2": {
+    "speaker": "NPC_ABEL",
+    "text": "ABEL_2",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "ward.heard_abel"
+     }
+    ]
+   },
+   "hub": {
+    "speaker": "NPC_ABEL",
+    "text": "ABEL_HUB",
+    "choices": [
+     {
+      "text": "ABEL_LEAVE",
+      "if": {
+       "not_flag": "ward.abel_left"
+      },
+      "effects": [
+       {
+        "set_flag": "ward.abel_left"
+       },
+       {
+        "faction": [
+         "unwritten",
+         1
+        ]
+       },
+       {
+        "relationship": [
+         "abel_crane",
+         1
+        ]
+       }
+      ],
+      "next": "leave"
+     },
+     {
+      "text": "ABEL_HESTER",
+      "if": {
+       "flag": "world.lamp_counts",
+       "not_flag": "ward.abel_message"
+      },
+      "effects": [
+       {
+        "set_flag": "ward.abel_message"
+       },
+       {
+        "relationship": [
+         "abel_crane",
+         1
+        ]
+       }
+      ],
+      "next": "hester"
+     },
+     {
+      "text": "BYE",
+      "next": null
+     }
+    ]
+   },
+   "leave": {
+    "speaker": "NPC_ABEL",
+    "text": "ABEL_LEFT",
+    "next": "hub"
+   },
+   "hester": {
+    "speaker": "NPC_ABEL",
+    "text": "ABEL_HESTER_1",
+    "next": "hub"
+   }
+  }
+ },
+ "ellie": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "ward.heard_ellie"
+    },
+    "node": "intro1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "intro1": {
+    "speaker": "NPC_ELLIE",
+    "text": "ELLIE_1",
+    "next": "intro2"
+   },
+   "intro2": {
+    "speaker": "NPC_ELLIE",
+    "text": "ELLIE_2",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "ward.heard_ellie"
+     }
+    ]
+   },
+   "hub": {
+    "speaker": "NPC_ELLIE",
+    "text": "ELLIE_HUB",
+    "choices": [
+     {
+      "text": "ELLIE_THEO",
+      "if": {
+       "flag": "world.theo_remembers",
+       "not_flag": "ward.ellie_hopes"
+      },
+      "effects": [
+       {
+        "set_flag": "ward.ellie_hopes"
+       },
+       {
+        "faction": [
+         "unwritten",
+         1
+        ]
+       },
+       {
+        "relationship": [
+         "ellie_marsh",
+         2
+        ]
+       }
+      ],
+      "next": "theo"
+     },
+     {
+      "text": "ELLIE_SOMEONE",
+      "if": {
+       "not_flag": "world.theo_remembers",
+       "all": [
+        {
+         "not_flag": "ward.ellie_angry"
+        }
+       ]
+      },
+      "effects": [
+       {
+        "set_flag": "ward.ellie_angry"
+       },
+       {
+        "faction": [
+         "open_hand",
+         1
+        ]
+       }
+      ],
+      "next": "angry"
+     },
+     {
+      "text": "BYE",
+      "next": null
+     }
+    ]
+   },
+   "theo": {
+    "speaker": "NPC_ELLIE",
+    "text": "ELLIE_THEO_1",
+    "next": "hub"
+   },
+   "angry": {
+    "speaker": "NPC_ELLIE",
+    "text": "ELLIE_ANGRY",
+    "next": "hub"
+   }
+  }
+ },
+ "vale": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "met.sera_vale"
+    },
+    "node": "intro1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "intro1": {
+    "speaker": "NPC_VALE",
+    "text": "VALE_1",
+    "next": "intro2"
+   },
+   "intro2": {
+    "speaker": "NPC_VALE",
+    "text": "VALE_2",
+    "effects": [
+     {
+      "set_flag": "met.sera_vale"
+     }
+    ],
+    "next": "hub"
+   },
+   "hub": {
+    "speaker": "NPC_VALE",
+    "text": "VALE_HUB",
+    "choices": [
+     {
+      "text": "VALE_ASK",
+      "next": "ask"
+     },
+     {
+      "text": "VALE_HELP",
+      "if": {
+       "not_flag": "vale.helped",
+       "all": [
+        {
+         "not_flag": "vale.refused"
+        }
+       ]
+      },
+      "effects": [
+       {
+        "set_flag": "vale.helped"
+       },
+       {
+        "faction": [
+         "meridian",
+         2
+        ]
+       },
+       {
+        "give_money": 20
+       },
+       {
+        "relationship": [
+         "sera_vale",
+         1
+        ]
+       }
+      ],
+      "next": "help"
+     },
+     {
+      "text": "VALE_REFUSE",
+      "if": {
+       "not_flag": "vale.helped",
+       "all": [
+        {
+         "not_flag": "vale.refused"
+        }
+       ]
+      },
+      "effects": [
+       {
+        "set_flag": "vale.refused"
+       },
+       {
+        "faction": [
+         "meridian",
+         -1
+        ]
+       },
+       {
+        "faction": [
+         "unwritten",
+         1
+        ]
+       }
+      ],
+      "next": "refuse"
+     },
+     {
+      "text": "BYE",
+      "next": null
+     }
+    ]
+   },
+   "ask": {
+    "speaker": "NPC_VALE",
+    "text": "VALE_ASK_1",
+    "next": "hub"
+   },
+   "help": {
+    "speaker": "NPC_VALE",
+    "text": "VALE_HELP_1",
+    "next": "hub"
+   },
+   "refuse": {
+    "speaker": "NPC_VALE",
+    "text": "VALE_REFUSE_1",
+    "next": "hub"
+   }
+  }
+ },
+ "rosalind": {
+  "entries": [
+   {
+    "if": {
+     "quest_stage": [
+      "case_misplaced",
+      "depot"
+     ]
+    },
+    "node": "meet1"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_misplaced",
+      "rosalind"
+     ]
+    },
+    "node": "choice"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_misplaced",
+      "bring"
+     ],
+     "companion": "jonah_rook"
+    },
+    "node": "reunite1"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_misplaced",
+      "bring"
+     ]
+    },
+    "node": "wait"
+   },
+   {
+    "if": {
+     "flag": "rosalind.reunited"
+    },
+    "node": "after_reunited"
+   }
+  ],
+  "start": "after_apart",
+  "nodes": {
+   "meet1": {
+    "speaker": "NPC_ROSALIND",
+    "text": "ROS_1",
+    "next": "meet2"
+   },
+   "meet2": {
+    "speaker": "NPC_ROSALIND",
+    "text": "ROS_2",
+    "next": "meet3"
+   },
+   "meet3": {
+    "speaker": "NPC_ROSALIND",
+    "text": "ROS_3",
+    "effects": [
+     {
+      "add_evidence": "e_rosalind_memory"
+     },
+     {
+      "quest_stage": [
+       "case_misplaced",
+       "rosalind"
+      ]
+     },
+     {
+      "publish": "rosalind_found"
+     }
+    ],
+    "next": "choice"
+   },
+   "choice": {
+    "speaker": "NPC_ROSALIND",
+    "text": "ROS_CHOICE",
+    "choices": [
+     {
+      "text": "ROS_SAY_HERE",
+      "if": {
+       "companion": "jonah_rook"
+      },
+      "next": "reunite1"
+     },
+     {
+      "text": "ROS_SAY_BRING",
+      "if": {
+       "quest_stage": [
+        "case_misplaced",
+        "rosalind"
+       ]
+      },
+      "effects": [
+       {
+        "quest_stage": [
+         "case_misplaced",
+         "bring"
+        ]
+       }
+      ],
+      "next": "bring"
+     },
+     {
+      "text": "ROS_SAY_BOTH",
+      "effects": [
+       {
+        "quest_complete": [
+         "case_misplaced",
+         "apart"
+        ]
+       },
+       {
+        "set_flag": "rosalind.apart"
+       },
+       {
+        "faction": [
+         "unwritten",
+         1
+        ]
+       },
+       {
+        "remember": [
+         "rosalind_rook",
+         "let_her_choose"
+        ]
+       }
+      ],
+      "next": "apart"
+     }
+    ]
+   },
+   "bring": {
+    "speaker": "NPC_ROSALIND",
+    "text": "ROS_BRING",
+    "next": null
+   },
+   "wait": {
+    "speaker": "NPC_ROSALIND",
+    "text": "ROS_WAIT",
+    "choices": [
+     {
+      "text": "ROS_SAY_SOON",
+      "next": null
+     },
+     {
+      "text": "ROS_SAY_BOTH",
+      "effects": [
+       {
+        "quest_complete": [
+         "case_misplaced",
+         "apart"
+        ]
+       },
+       {
+        "set_flag": "rosalind.apart"
+       },
+       {
+        "faction": [
+         "unwritten",
+         1
+        ]
+       },
+       {
+        "remember": [
+         "rosalind_rook",
+         "let_her_choose"
+        ]
+       }
+      ],
+      "next": "apart"
+     }
+    ]
+   },
+   "reunite1": {
+    "text": "ROS_REUNITE_1",
+    "next": "reunite2"
+   },
+   "reunite2": {
+    "speaker": "NPC_JONAH",
+    "text": "ROS_REUNITE_2",
+    "next": "reunite3"
+   },
+   "reunite3": {
+    "speaker": "NPC_ROSALIND",
+    "text": "ROS_REUNITE_3",
+    "effects": [
+     {
+      "quest_complete": [
+       "case_misplaced",
+       "reunited"
+      ]
+     },
+     {
+      "set_flag": "rosalind.reunited"
+     },
+     {
+      "relationship": [
+       "jonah_rook",
+       3
+      ]
+     },
+     {
+      "relationship": [
+       "rosalind_rook",
+       2
+      ]
+     },
+     {
+      "remember": [
+       "jonah_rook",
+       "brought_rosalind"
+      ]
+     },
+     {
+      "faction": [
+       "unwritten",
+       1
+      ]
+     }
+    ],
+    "next": null
+   },
+   "apart": {
+    "speaker": "NPC_ROSALIND",
+    "text": "ROS_APART",
+    "next": null
+   },
+   "after_reunited": {
+    "speaker": "NPC_ROSALIND",
+    "text": "ROS_AFTER_REUNITED",
+    "next": null
+   },
+   "after_apart": {
+    "speaker": "NPC_ROSALIND",
+    "text": "ROS_AFTER_APART",
+    "next": null
+   }
+  }
+ },
+ "camp_jonah": {
+  "start": "hub",
+  "nodes": {
+   "hub": {
+    "speaker": "NPC_JONAH",
+    "text": "CAMP_JONAH_HUB",
+    "choices": [
+     {
+      "text": "CAMP_HOW",
+      "next": "how"
+     },
+     {
+      "text": "JONAH_TRADE",
+      "effects": [
+       {
+        "open_screen": "shop:jonah"
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "CAMP_GO_HOME",
+      "effects": [
+       {
+        "companion": ""
+       }
+      ],
+      "next": "home"
+     },
+     {
+      "text": "CAMP_KEEP_GOING",
+      "next": null
+     }
+    ]
+   },
+   "how": {
+    "speaker": "NPC_JONAH",
+    "text": "CAMP_JONAH_HOW",
+    "next": "hub"
+   },
+   "home": {
+    "speaker": "NPC_JONAH",
+    "text": "CAMP_JONAH_HOME",
+    "next": null
+   }
+  }
+ },
+ "camp_mara": {
+  "start": "hub",
+  "nodes": {
+   "hub": {
+    "speaker": "NPC_MARA",
+    "text": "CAMP_MARA_HUB",
+    "choices": [
+     {
+      "text": "CAMP_HOW",
+      "next": "how"
+     },
+     {
+      "text": "CAMP_GO_HOME",
+      "effects": [
+       {
+        "companion": ""
+       }
+      ],
+      "next": "home"
+     },
+     {
+      "text": "CAMP_KEEP_GOING",
+      "next": null
+     }
+    ]
+   },
+   "how": {
+    "speaker": "NPC_MARA",
+    "text": "CAMP_MARA_HOW",
+    "next": "hub"
+   },
+   "home": {
+    "speaker": "NPC_MARA",
+    "text": "CAMP_MARA_HOME",
+    "next": null
+   }
+  }
+ }
+}

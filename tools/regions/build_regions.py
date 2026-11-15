@@ -120,6 +120,9 @@ def write_tscn(path, loc_id, name_key, palette, layout, nodes, margin=0, opts=No
          ('Script','res://scripts/combat/boss_arena.gd','15_arena'),('PackedScene','res://scenes/world/item_pickup.tscn','16_pickup'),
          ('PackedScene','res://scenes/world/repair_spot.tscn','17_spot'),('PackedScene','res://scenes/world/screen_interactable.tscn','18_screen'),
          ('PackedScene','res://scenes/world/junk_pile.tscn','19_junk')]
+    for n in nodes:  # bosses other than the Census Taker bring their own scene
+        if n['kind'] == 'boss' and n.get('scene') and not any(e[1] == n['scene'] for e in ext):
+            ext.append(('PackedScene', n['scene'], f'{len(ext) + 1}_boss_{n["name"].lower()}'))
     L=['[gd_scene format=3]','']
     for t,p,i in ext: L.append(f'[ext_resource type="{t}" path="{p}" id="{i}"]')
     L+=['',f'[node name="{loc_id.title().replace("_","")}" type="Node2D"]','script = ExtResource("1_loc")',f'location_id = &"{loc_id}"',f'name_key = "{name_key}"']
@@ -173,7 +176,8 @@ def write_tscn(path, loc_id, name_key, palette, layout, nodes, margin=0, opts=No
             L+=[f'[node name="{n["name"]}" parent="Entities" instance=ExtResource("12_enemy")]',f'position = {v(n["x"],n["y"])}',f'enemy_id = &"{n["id"]}"']
             if n.get('variant'): L.append(f'variant = "{n["variant"]}"')
         elif k=='boss':
-            L+=[f'[node name="{n["name"]}" parent="Entities" instance=ExtResource("14_boss")]',f'position = {v(n["x"],n["y"])}']
+            bid = next(e[2] for e in ext if e[1] == n['scene']) if n.get('scene') else '14_boss'
+            L+=[f'[node name="{n["name"]}" parent="Entities" instance=ExtResource("{bid}")]',f'position = {v(n["x"],n["y"])}']
         elif k=='arena':
             L+=[f'[node name="BossArena" type="Area2D" parent="."]',f'position = {v(n["x"],n["y"])}','script = ExtResource("15_arena")',
                 f'boss_path = NodePath("../Entities/{n["boss"]}")',f'engaged_flag = &"{n["flag"]}"',f'area_size = {v(*n["size"])}']

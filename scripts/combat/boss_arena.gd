@@ -23,9 +23,10 @@ func _ready() -> void:
 func _on_body_entered(body: Node) -> void:
 	if not body.is_in_group(&"player") or GameState.has_flag(engaged_flag):
 		return
-	var boss := get_node_or_null(boss_path) as CensusTaker
-	if boss == null or not is_instance_valid(boss):
+	# Any boss with engage() and a Health named `health` (CensusTaker, Conductor...).
+	var boss := get_node_or_null(boss_path)
+	if boss == null or not is_instance_valid(boss) or not boss.has_method(&"engage"):
 		return
 	GameState.set_flag(engaged_flag, true)
-	boss.engage()
-	boss.health.died.connect(func() -> void: GameState.clear_flag(engaged_flag))
+	boss.call(&"engage")
+	(boss.get(&"health") as Health).died.connect(func() -> void: GameState.clear_flag(engaged_flag))

@@ -7,6 +7,7 @@ extends RefCounted
 ##   {"flag": "id"}  {"not_flag": "id"}  {"flag_equals": ["id", value]}
 ##   {"background": "courier"}  {"evidence": "id"}  {"not_evidence": "id"}
 ##   {"hypothesis": "id"}  {"not_hypothesis": "id"}
+##   {"companion": "id" | ""}  {"can_join": "id"}
 ##   {"quest_active": "id"}  {"quest_done": "id"}  {"quest_stage": ["id", "stage"]} (open cases only)
 ##   {"not_quest_started": "id"}
 ##   {"period": "night" | ["morning", "afternoon"]}  {"weather": "rain"}
@@ -24,6 +25,7 @@ extends RefCounted
 ##   {"save_game": true}  {"travel": ["scene_id", "spawn_id"]}  {"heal_player": true}
 ##   {"give_item": ["id", n]}  {"take_item": ["id", n]}  {"give_money": n}  {"spend_money": n}
 ##   {"open_screen": "shop:jonah" | "jobs" | "workbench" | "business"}
+##   {"companion": "id" | ""}  (recruit a companion / send them home)
 ##   {"give_resonance": n}  {"faction": ["keepers", delta]}  {"tell": ["npc", "fact"]}  {"publish": "fact"}
 
 
@@ -68,6 +70,10 @@ static func _check(key: String, arg: Variant) -> bool:
 			return Journal.case_status(StringName(arg)) == Journal.STATUS_DONE
 		"not_quest_started":
 			return Journal.case_status(StringName(arg)) == Journal.STATUS_NONE
+		"companion":  # "" means nobody
+			return Party.companion == StringName(arg)
+		"can_join":
+			return Party.can_join(StringName(arg))
 		"quest_stage":  # only while the case is open: a closed case keeps its last stage
 			return Journal.case_status(StringName(arg[0])) == Journal.STATUS_ACTIVE \
 				and Journal.case_stage(StringName(arg[0])) == StringName(arg[1])
@@ -180,5 +186,7 @@ static func _apply_one(key: String, arg: Variant, whole: Dictionary) -> void:
 			Society.publish(StringName(arg))
 		"open_screen":
 			EventHub.screen_requested.emit(String(arg))
+		"companion":
+			Party.set_companion(StringName(arg))
 		_:
 			push_warning("StoryRules: unknown effect '%s'" % key)

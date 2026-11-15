@@ -1,0 +1,9 @@
+{
+ "last_ticket": {
+  "category": "key",
+  "name": "ITEM_LAST_TICKET",
+  "desc": "ITEM_LAST_TICKET_DESC",
+  "color": "#d0c080",
+  "evidence": "e_last_ticket"
+ }
+}

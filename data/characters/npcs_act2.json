@@ -1,0 +1,118 @@
+{
+ "_doc": "Act II (M7b): residents of the Echo Ward, Dr Vale, Rosalind. The Ward has no clock: residents keep no schedule periods.",
+ "alderman_penhallow": {
+  "name": "NPC_ALDERMAN",
+  "premade": "Premade_Character_05",
+  "color": "#7a7aa0",
+  "dialogue": "alderman",
+  "tint": "#d8e0ffe0",
+  "factions": [
+   "unwritten"
+  ],
+  "schedule": [
+   {
+    "scene": "echo_ward",
+    "anchor": "hall_steps",
+    "facing": "down"
+   }
+  ]
+ },
+ "bea_halloway": {
+  "name": "NPC_BEA",
+  "premade": "Premade_Character_06",
+  "color": "#c08080",
+  "dialogue": "bea",
+  "tint": "#d8e0ffe0",
+  "factions": [
+   "unwritten"
+  ],
+  "schedule": [
+   {
+    "scene": "echo_ward",
+    "anchor": "bakery_door",
+    "facing": "down"
+   }
+  ]
+ },
+ "abel_crane": {
+  "name": "NPC_ABEL",
+  "premade": "Premade_Character_03",
+  "color": "#708060",
+  "dialogue": "abel",
+  "tint": "#d8e0ffe0",
+  "factions": [
+   "unwritten"
+  ],
+  "schedule": [
+   {
+    "scene": "echo_ward",
+    "anchor": "quay",
+    "facing": "up"
+   }
+  ]
+ },
+ "ellie_marsh": {
+  "name": "NPC_ELLIE",
+  "premade": "Premade_Character_01",
+  "color": "#a0a0c0",
+  "dialogue": "ellie",
+  "tint": "#d8e0ffe0",
+  "factions": [
+   "unwritten"
+  ],
+  "schedule": [
+   {
+    "scene": "echo_ward",
+    "anchor": "no11_door",
+    "facing": "down"
+   }
+  ]
+ },
+ "sera_vale": {
+  "name": "NPC_VALE",
+  "premade": "Premade_Character_16",
+  "color": "#60a080",
+  "dialogue": "vale",
+  "factions": [
+   "meridian"
+  ],
+  "schedule": [
+   {
+    "if": {
+     "flag": "ward.open"
+    },
+    "scene": "echo_ward",
+    "anchor": "promenade",
+    "facing": "up"
+   }
+  ]
+ },
+ "rosalind_rook": {
+  "name": "NPC_ROSALIND",
+  "premade": "Premade_Character_04",
+  "color": "#c06040",
+  "dialogue": "rosalind",
+  "tint": "#f0e8ffeb",
+  "factions": [
+   "unwritten"
+  ],
+  "schedule": [
+   {
+    "if": {
+     "quest_done": "case_misplaced"
+    },
+    "scene": "echo_ward",
+    "anchor": "shelter",
+    "facing": "down"
+   },
+   {
+    "if": {
+     "flag": "boss.conductor.defeated"
+    },
+    "scene": "depot_platform",
+    "anchor": "platform_bench",
+    "facing": "down"
+   }
+  ]
+ }
+}

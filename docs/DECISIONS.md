@@ -50,6 +50,9 @@ Decisions are recorded with date, status, and rationale. Revisit only when evide
 | D-044 | `quest_stage` as a condition is true only while the case is open. | Accepted | Closed cases keep their last stage; matching it re-ran Jonah's radio reward on every conversation (money and relationship exploit). |
 | D-045 | A dialogue entry that ends the conversation without changing anything is a validation error. | Accepted | It hid Jonah's and Mara's hubs (shop, jobs, new cases) while a delivery was pending. |
 | D-046 | The lighthouse keeper is renamed Hester Ashby. | Accepted | "Wren" is Director Elias Wren in the story bible. |
+| D-047 | One companion at a time (`Party`, `data/characters/companions.json`); a companion leaves their schedule and follows as an Npc with a `Follower` brain; one ability each (Jonah: patch up; Mara: pin). Save schema 6 adds `party`. | Accepted | Smallest party model that supports the bible's companions and per-act camp talk. |
+| D-048 | Bosses are any node with `engage()` and a `health`; the region generator takes a boss `scene`. | Accepted | Second boss without copying the arena code. |
+| D-049 | Act II fail-forward can open the depot without the boss fight after four days. | Accepted | Story bible §11: nothing critical is gated behind combat skill. |
 
 ## Open questions
 

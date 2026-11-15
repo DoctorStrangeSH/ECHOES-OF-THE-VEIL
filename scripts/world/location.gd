@@ -34,6 +34,7 @@ const TINT_KEYS := [
 
 var player: Player
 var _npcs: Dictionary = {}  # npc_id -> Npc
+var _follower: Npc = null
 var _anchors: Dictionary = {}  # anchor_id -> NpcAnchor
 var _tint: CanvasModulate
 var _npc_refresh_pending := false
@@ -59,6 +60,8 @@ func _ready() -> void:
 	player.set_camera_limits(bounds.grow(margin))
 	_place_player()
 	_refresh_npcs(false)
+	_refresh_follower()
+	Party.companion_changed.connect(_on_companion_changed)
 	WorldClock.time_changed.connect(_on_time_changed)
 	WorldClock.period_changed.connect(_on_story_changed)
 	EventHub.flag_changed.connect(_on_flag_changed)
@@ -93,6 +96,22 @@ func find_spawn(spawn_id: StringName) -> SpawnPoint:
 
 # --- NPC schedules -------------------------------------------------------------
 
+func _refresh_follower() -> void:
+	var id := Party.companion
+	if _follower != null and is_instance_valid(_follower) and _follower.npc_id != id:
+		_follower.fade_out_and_free()
+		_follower = null
+	if id == &"" or (_follower != null and is_instance_valid(_follower)):
+		return
+	if Party.def_of(id).get("stays_in", []).has(String(location_id)):
+		return
+	_follower = NPC_SCENE.instantiate()
+	entities.add_child(_follower)
+	_follower.npc_id = id
+	(Follower.new()).setup(_follower, Party.def_of(id))
+	_follower.fade_in()
+
+
 func _refresh_npcs(animate: bool = true) -> void:
 	for id: StringName in NpcRegistry.defs():
 		var entry := NpcRegistry.resolve(id)
@@ -124,6 +143,11 @@ func _refresh_npcs(animate: bool = true) -> void:
 
 ## Story changes during a conversation are applied when it ends, so NPCs do
 ## not vanish mid-sentence.
+func _on_companion_changed(_id: StringName) -> void:
+	_refresh_npcs(true)
+	_refresh_follower()
+
+
 func _on_story_changed(_arg: Variant = null) -> void:
 	if DialogueService.is_active:
 		_npc_refresh_pending = true

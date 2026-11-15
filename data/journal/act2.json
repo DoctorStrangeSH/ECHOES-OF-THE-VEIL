@@ -1,0 +1,149 @@
+{
+ "cases": {
+  "case_misplaced": {
+   "title": "CASE_MP_TITLE",
+   "summary": "CASE_MP_SUMMARY",
+   "first_stage": "ward",
+   "stages": {
+    "ward": "CASE_MP_WARD",
+    "residents": "CASE_MP_RESIDENTS",
+    "depot": "CASE_MP_DEPOT",
+    "rosalind": "CASE_MP_ROSALIND",
+    "bring": "CASE_MP_BRING"
+   },
+   "transitions": {
+    "ward": [
+     "residents"
+    ],
+    "residents": [
+     "depot"
+    ],
+    "depot": [
+     "rosalind"
+    ],
+    "rosalind": [
+     "bring"
+    ]
+   },
+   "fail_forward": [
+    {
+     "stage": "ward",
+     "after_days": 2,
+     "note": "FF_MP_WARD",
+     "effects": [
+      {
+       "set_flag": "ward.timetable"
+      }
+     ]
+    },
+    {
+     "stage": "residents",
+     "after_days": 3,
+     "note": "FF_MP_RESIDENTS",
+     "to": "depot"
+    },
+    {
+     "stage": "depot",
+     "after_days": 4,
+     "note": "FF_MP_DEPOT",
+     "effects": [
+      {
+       "set_flag": "depot.cleared"
+      },
+      {
+       "set_flag": "boss.conductor.defeated"
+      }
+     ]
+    },
+    {
+     "stage": "bring",
+     "after_days": 3,
+     "note": "FF_MP_BRING",
+     "effects": [
+      {
+       "quest_complete": [
+        "case_misplaced",
+        "reunited"
+       ]
+      },
+      {
+       "set_flag": "rosalind.reunited"
+      },
+      {
+       "relationship": [
+        "jonah_rook",
+        2
+       ]
+      }
+     ]
+    }
+   ],
+   "outcomes": {
+    "reunited": "CASE_MP_REUNITED",
+    "apart": "CASE_MP_APART"
+   }
+  }
+ },
+ "evidence": {
+  "e_ward_census": {
+   "case": "case_misplaced",
+   "kind": "recorded",
+   "source": "ward_register",
+   "source_name": "SRC_WARD_REGISTER",
+   "title": "EV_WARD_CENSUS_TITLE",
+   "body": "EV_WARD_CENSUS_BODY"
+  },
+  "e_conductor_seen": {
+   "case": "case_misplaced",
+   "kind": "observed",
+   "source": "player",
+   "source_name": "SRC_YOU",
+   "title": "EV_CONDUCTOR_TITLE",
+   "body": "EV_CONDUCTOR_BODY"
+  },
+  "e_last_ticket": {
+   "case": "case_misplaced",
+   "kind": "recorded",
+   "source": "conductor",
+   "source_name": "SRC_CONDUCTOR",
+   "title": "EV_TICKET_TITLE",
+   "body": "EV_TICKET_BODY"
+  },
+  "e_rosalind_memory": {
+   "case": "case_misplaced",
+   "kind": "reported",
+   "source": "rosalind_rook",
+   "source_name": "NPC_ROSALIND",
+   "title": "EV_ROS_MEM_TITLE",
+   "body": "EV_ROS_MEM_BODY"
+  }
+ },
+ "hypotheses": {
+  "two_rooks": {
+   "case": "case_misplaced",
+   "title": "HYP_TWO_ROOKS_TITLE",
+   "body": "HYP_TWO_ROOKS_BODY",
+   "requires_all": [
+    "e_rosalind_memory"
+   ],
+   "requires_any": [
+    "e_rook_ledger",
+    "e_census_page",
+    "e_storeroom_mark"
+   ],
+   "min_any": 1,
+   "corroborate_sources": 2,
+   "effects": [
+    {
+     "give_resonance": 2
+    },
+    {
+     "faction": [
+      "unwritten",
+      1
+     ]
+    }
+   ]
+  }
+ }
+}

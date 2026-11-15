@@ -651,7 +651,7 @@ func test_location_budgets() -> void:
 				got["interactables"] += 1
 			elif n is Npc:
 				got["npcs"] += 1
-			elif n is EchoEnemy or n is CensusTaker:
+			elif n is EchoEnemy or n is CensusTaker or n is Conductor:
 				got["enemies"] += 1
 			elif n is TilePainter:
 				got["tiles"] += (n as TilePainter).layout.replace("\n", "").replace(" ", "").replace(".", "").length()
@@ -772,4 +772,109 @@ func test_closed_cases_do_not_replay_their_last_stage() -> void:
 	Journal.complete_case(&"case_radio", &"delivered")
 	check(not StoryRules.evaluate({"quest_stage": ["case_radio", "return"]}), "a closed case is at no stage")
 	check(DialogueService.entry_node(DialogueService.dialogues[&"jonah"]) != "reward1", "Jonah does not pay the radio reward twice")
+	GameState.reset_for_new_game()
+
+
+# --- M7b: companions, the Conductor, act II -----------------------------------------
+
+func test_party_companion_lifecycle() -> void:
+	GameState.reset_for_new_game()
+	check(Party.companion == &"", "nobody at the start")
+	check(not Party.can_join(&"jonah_rook"), "companions wait for the Ward")
+	GameState.set_flag(&"ward.open")
+	check(Party.can_join(&"jonah_rook") and StoryRules.evaluate({"can_join": "mara_venn"}), "the Ward opens the party")
+	StoryRules.apply([{"companion": "jonah_rook"}])
+	check(Party.is_companion(&"jonah_rook") and StoryRules.evaluate({"companion": "jonah_rook"}), "recruited by story effect")
+	check(NpcRegistry.resolve(&"jonah_rook").is_empty(), "a companion leaves their schedule")
+	var saved := GameState.to_dict()
+	GameState.reset_for_new_game()
+	check(Party.companion == &"", "reset clears the party")
+	GameState.from_dict(saved)
+	check(Party.is_companion(&"jonah_rook"), "the party survives save and load")
+	Party.set_companion(&"nobody")
+	check(Party.is_companion(&"jonah_rook"), "unknown companions are refused")
+	StoryRules.apply([{"companion": ""}])
+	check(Party.companion == &"" and not NpcRegistry.resolve(&"jonah_rook").is_empty(), "sent home, back on schedule")
+	GameState.reset_for_new_game()
+
+
+func test_jonah_patches_you_up() -> void:
+	GameState.reset_for_new_game()
+	var npc := (load("res://scenes/npcs/npc.tscn") as PackedScene).instantiate() as Npc
+	add_child(npc)
+	npc.npc_id = &"jonah_rook"
+	var f := Follower.new()
+	f.setup(npc, Party.def_of(&"jonah_rook"))
+	var healed: Array[int] = []
+	var on_heal := func(amount: int) -> void: healed.append(amount)
+	EventHub.player_heal_requested_amount.connect(on_heal)
+	EventHub.player_health_changed.emit(3, 5)
+	check(healed.is_empty(), "no help while healthy")
+	EventHub.player_health_changed.emit(1, 5)
+	check(healed == [2], "patched up at 1 health")
+	EventHub.player_health_changed.emit(1, 5)
+	check(healed.size() == 1, "then on cooldown")
+	EventHub.player_heal_requested_amount.disconnect(on_heal)
+	check(npc.collision_layer == 0, "a follower never blocks the player")
+	npc.queue_free()
+
+
+func test_slow_and_conductor_lanes() -> void:
+	var e := (load("res://scenes/combat/echo_enemy.tscn") as PackedScene).instantiate() as EchoEnemy
+	add_child(e)
+	check(not e.is_slowed(), "not slowed by default")
+	e.slow(2.0)
+	check(e.is_slowed(), "Mara's pin slows")
+	e.queue_free()
+	var c := (load("res://scenes/combat/conductor.tscn") as PackedScene).instantiate() as Conductor
+	add_child(c)
+	var dummy := Node2D.new()
+	add_child(dummy)
+	for lane in c.lane_offsets.size():
+		dummy.global_position = c.global_position + Vector2(0, c.lane_offsets[lane])
+		for count in [1, 2, 3]:
+			var picked := c._pick_lanes(dummy, count)
+			check(picked.has(lane), "the player's lane is always called")
+			check(picked.size() < c.lane_offsets.size(), "one lane is always safe")
+	check(c.phase() == 1, "full health is phase one")
+	c.health.health = 9
+	check(c.phase() == 3, "low health is phase three")
+	dummy.queue_free()
+	c.queue_free()
+
+
+func test_save_migration_from_v5() -> void:
+	var dir := _fresh_save_dir()
+	var v5 := SaveService.make_envelope(GameState.to_dict())
+	v5["schema_version"] = 5
+	v5["payload"].erase("party")
+	DirAccess.make_dir_recursive_absolute(dir)
+	var f := FileAccess.open(SaveService.slot_path(1), FileAccess.WRITE)
+	f.store_string(JSON.stringify(v5))
+	f.close()
+	var r := SaveService.read_slot(1)
+	check(r["ok"] and r["envelope"]["payload"].has("party"), "v5 save gains the party")
+	_cleanup(dir)
+
+
+func test_act_two_never_blocks() -> void:
+	GameState.reset_for_new_game()
+	Journal.start_case(&"case_misplaced")
+	for i in 2:
+		WorldClock.sleep_until_hour(7)
+	check(GameState.has_flag(&"ward.timetable"), "the timetable shows the Ward without Ivo or Nadiya")
+	Journal.set_case_stage(&"case_misplaced", &"residents")
+	for i in 3:
+		WorldClock.sleep_until_hour(7)
+	check(Journal.case_stage(&"case_misplaced") == &"depot", "the Alderman sends you on")
+	for i in 4:
+		WorldClock.sleep_until_hour(7)
+	check(GameState.has_flag(&"boss.conductor.defeated") and GameState.has_flag(&"depot.cleared"), "the depot opens without a fight if you never go")
+	check(NpcRegistry.resolve(&"rosalind_rook").get("scene", "") == "depot_platform", "Rosalind waits on the platform")
+	Journal.set_case_stage(&"case_misplaced", &"rosalind")
+	Journal.set_case_stage(&"case_misplaced", &"bring")
+	for i in 3:
+		WorldClock.sleep_until_hour(7)
+	check(Journal.case_status(&"case_misplaced") == Journal.STATUS_DONE and GameState.has_flag(&"rosalind.reunited"), "Jonah finds her himself")
+	check(NpcRegistry.resolve(&"rosalind_rook").get("scene", "") == "echo_ward", "then she lives in the Ward")
 	GameState.reset_for_new_game()
