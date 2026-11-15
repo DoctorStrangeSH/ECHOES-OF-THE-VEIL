@@ -61,6 +61,7 @@ func _ready() -> void:
 	_place_player()
 	_refresh_npcs(false)
 	_refresh_follower()
+	_place_satchel()
 	Party.companion_changed.connect(_on_companion_changed)
 	WorldClock.time_changed.connect(_on_time_changed)
 	WorldClock.period_changed.connect(_on_story_changed)
@@ -95,6 +96,15 @@ func find_spawn(spawn_id: StringName) -> SpawnPoint:
 
 
 # --- NPC schedules -------------------------------------------------------------
+
+func _place_satchel() -> void:
+	var s := GameState.satchel
+	if s.is_empty() or StringName(s.get("scene", "")) != location_id:
+		return
+	var bag := Satchel.new()
+	bag.position = Vector2(float(s["x"]), float(s["y"]))
+	entities.add_child(bag)
+
 
 func _refresh_follower() -> void:
 	var id := Party.companion

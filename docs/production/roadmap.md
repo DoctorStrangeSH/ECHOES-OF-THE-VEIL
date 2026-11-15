@@ -78,9 +78,9 @@ This roadmap is milestone-based, not a promise of fixed calendar dates. Estimate
 
 ## M7 — Campaign production (in progress: Acts I–IV implemented — see campaign-plan.md)
 
-Stages: M7a Act I · M7b Act II · M7c Act III · M7d Act IV (done) → **M7e quest system and challenge rework** (next) → M7f Act V and endings → M7g campaign pass.
+Stages: M7a Act I · M7b Act II · M7c Act III · M7d Act IV · M7e quest system and challenge rework (done) → **M7f Act V and endings** (next) → M7g campaign pass.
 
-### M7e — Quest system and challenge rework (next, before Act V)
+### M7e — Quest system and challenge rework (implemented)
 
 Owner's direction (2026-11-15): the game must not play itself. No story progress or clue may arrive because time passed; no free hints; bosses cannot be skipped; mistakes have consequences. This replaces the fail-forward approach used in M2–M7c.
 

@@ -201,17 +201,60 @@ for c, v in J['cases'].items():
         for t in [a] + targets:
             if t not in v.get('stages', {}):
                 err(f'case {c}: transition uses unknown stage {t}')
-    walk(v.get('fail_forward', []), f'case {c}')
-    for ff in v.get('fail_forward', []):
-        key(ff.get('note'), f'case {c} fail-forward')
-        if ff.get('stage') not in v.get('stages', {}) or (ff.get('to') and ff['to'] not in v.get('stages', {})):
-            err(f'case {c}: fail-forward uses an unknown stage')
+
 CAMPAIGN = load('data/story/campaign.json')
 for a in CAMPAIGN.get('acts', []):
     for k in ('title', 'subtitle'):
         key(a.get(k), f'act {a.get("id")}')
     walk(a.get('begins_if', {}), f'act {a.get("id")}')
     walk(a.get('effects', []), f'act {a.get("id")}')
+# --- D-052: no progress by waiting; every stage reachable by player action ----
+targets = set()  # (case, stage) moved to by an effect, evidence or hypothesis
+
+
+def effect_targets(o):
+    if isinstance(o, dict):
+        for k, v in o.items():
+            if k in ('effects', 'do', 'reward') and isinstance(v, list):
+                for e in v:
+                    if isinstance(e, dict) and 'quest_stage' in e:
+                        targets.add(tuple(e['quest_stage']))
+            effect_targets(v)
+    elif isinstance(o, list):
+        for x in o:
+            effect_targets(x)
+
+
+for blob in (D, J, CAMPAIGN, JOBS, N):
+    effect_targets(blob)
+for e, v in J['evidence'].items():
+    if isinstance(v.get('advance'), list):
+        targets.add(tuple(v['advance']))
+for c, v in J['cases'].items():
+    if 'fail_forward' in v:
+        err(f'case {c}: fail_forward is not allowed — nothing may advance by waiting (D-052)')
+    for st in v.get('stages', {}):
+        if st != v.get('first_stage') and (c, st) not in targets:
+            err(f'case {c}: no player action ever moves it to stage {st}')
+    for rule in v.get('deadlines', []):
+        key(rule.get('note'), f'case {c} deadline')
+        if rule.get('stage') not in v.get('stages', {}) or rule.get('outcome') not in v.get('outcomes', {}):
+            err(f'case {c}: deadline needs a known stage and a failure outcome')
+        walk(rule.get('effects', []), f'case {c} deadline')
+    for st, objs in v.get('objectives', {}).items():
+        if st not in v.get('stages', {}):
+            err(f'case {c}: objectives for unknown stage {st}')
+        ids = [o.get('id') for o in objs]
+        if len(set(ids)) != len(ids):
+            err(f'case {c}: duplicate objective ids at {st}')
+        for o in objs:
+            key(o.get('text'), f'case {c} objective')
+            walk(o.get('done_if', {}), f'case {c} objective')
+            walk(o.get('progress', []), f'case {c} objective')
+            walk(o.get('reward', []), f'case {c} objective')
+            if o.get('reward') and not o.get('optional'):
+                warn(f'case {c}: objective {o.get("id")} pays a reward but is required')
+
 for h, v in J['hypotheses'].items():
     key(v.get('title'), f'hypothesis {h}')
     key(v.get('body'), f'hypothesis {h}')

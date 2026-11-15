@@ -375,6 +375,17 @@ flowchart TD
   camp_mara_not_here["not_here<br/>Mara Venn: 'Not here. Meet me under the archive. There's s…"]
 ```
 
+### harbour_timetable
+
+```mermaid
+flowchart TD
+  harbour_timetable_START(("start"))
+  harbour_timetable_START --> harbour_timetable_plain
+  harbour_timetable_START -->|"{quest_stage: [case_misplaced, ward], p…"| harbour_timetable_strip
+  harbour_timetable_plain["plain<br/>The harbour timetable. Buses, the last tram sto…"]
+  harbour_timetable_strip["strip<br/>The harbour timetable. Under the last stop some…"]
+```
+
 ## act3.json
 
 ### keepers_enter
@@ -787,6 +798,21 @@ flowchart TD
   point_signpost_2["2<br/>Underneath, someone has carved: FERRY — 7 MIN."]
 ```
 
+### lifeboat_locker
+
+```mermaid
+flowchart TD
+  lifeboat_locker_START(("start"))
+  lifeboat_locker_START --> lifeboat_locker_locked
+  lifeboat_locker_START -->|"{has_item: [scrap, 3]}"| lifeboat_locker_force
+  lifeboat_locker_locked["locked<br/>A lifeboat station locker under the sea wall, r…"]
+  lifeboat_locker_force["force<br/>The lifeboat station's locker. The hinges are r…"]
+  lifeboat_locker_force -->|"Force it open (3 scrap)"| lifeboat_locker_found
+  lifeboat_locker_force_end_1(["end"])
+  lifeboat_locker_force -->|"Leave it"| lifeboat_locker_force_end_1
+  lifeboat_locker_found["found<br/>Inside, wrapped in oilcloth: the lifeboat crew'…"]
+```
+
 ## people.json
 
 ### mara
@@ -820,8 +846,9 @@ flowchart TD
   mara_hub -->|"Give Mara the Census page ⟨{has_item: ledger_page, flag: rosalind.…⟩"| mara_page1
   mara_hub -->|"The same mark is in all three… ⟨{quest_stage: [case_two_maps, map]}⟩"| mara_mark1
   mara_hub -->|"Come with me for a while? ⟨{can_join: mara_venn}⟩"| mara_join
-  mara_hub_end_7(["end"])
-  mara_hub -->|"Goodbye."| mara_hub_end_7
+  mara_hub -->|"Do you recognise this handwri… ⟨{quest_stage: [case_two_maps, hand], no…⟩"| mara_hand1
+  mara_hub_end_8(["end"])
+  mara_hub -->|"Goodbye."| mara_hub_end_8
   mara_plaza1["plaza1<br/>Mara Venn: 'Before the plaza? A car park. Before that—' Sh…"]
   mara_plaza1 --> mara_plaza2
   mara_plaza2["plaza2<br/>Mara Venn: 'The rate books list a street. Lantern Row. Nin…"]
@@ -880,6 +907,8 @@ flowchart TD
   mara_kn_leave2["kn_leave2<br/>Mara Venn: 'It wasn't. My grandmother was a Keeper. I've k…"]
   mara_kn_leave2 --> mara_kn_leave3
   mara_kn_leave3["kn_leave3<br/>Mara Venn: 'Right.' She closes the notebook. 'Then I'll ge…"]
+  mara_hand1["hand1<br/>Mara Venn: Mara looks for a long time. 'Those sevens. I've…"]
+  mara_hand1 --> mara_hub
 ```
 
 ### jonah
@@ -1059,6 +1088,7 @@ flowchart TD
 flowchart TD
   ivo_START(("start"))
   ivo_START --> ivo_hub
+  ivo_START -->|"{quest_stage: [case_kindness, pact], no…"| ivo_pact_key
   ivo_START -->|"{quest_stage: [case_kindness, truth], f…"| ivo_kn_stay1
   ivo_START -->|"{quest_stage: [case_kindness, truth], f…"| ivo_kn_leave1
   ivo_START -->|"{not_flag: met.ivo_calder}"| ivo_intro1
@@ -1108,6 +1138,7 @@ flowchart TD
   ivo_kn_leave2["kn_leave2<br/>Ivo Calder: 'I knew about the Ward before you ever saw the …"]
   ivo_kn_leave2 --> ivo_kn_leave3
   ivo_kn_leave3["kn_leave3<br/>Ivo Calder: 'You won't forgive this. You shouldn't.' He put…"]
+  ivo_pact_key["pact_key<br/>Ivo Calder: Ivo presses an old brass key into your hand. 'T…"]
 ```
 
 ### nadiya

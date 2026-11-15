@@ -314,5 +314,53 @@
     "next": null
    }
   }
+ },
+ "lifeboat_locker": {
+  "entries": [
+   {
+    "if": {
+     "has_item": [
+      "scrap",
+      3
+     ]
+    },
+    "node": "force"
+   }
+  ],
+  "start": "locked",
+  "nodes": {
+   "locked": {
+    "text": "LOCKER_LOCKED",
+    "next": null
+   },
+   "force": {
+    "text": "LOCKER_1",
+    "choices": [
+     {
+      "text": "LOCKER_FORCE",
+      "effects": [
+       {
+        "take_item": [
+         "scrap",
+         3
+        ]
+       },
+       {
+        "add_evidence": "e_ship_register"
+       }
+      ],
+      "next": "found"
+     },
+     {
+      "text": "LOCKER_LEAVE",
+      "next": null
+     }
+    ]
+   },
+   "found": {
+    "text": "LOCKER_FOUND",
+    "next": null
+   }
+  }
  }
 }

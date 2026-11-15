@@ -22,6 +22,8 @@ func _ready() -> void:
 
 
 func receive(damage: int, from_position: Vector2, knockback: float) -> bool:
+	if team == &"player":
+		damage = GameState.incoming_damage(damage)
 	if health != null and not health.take_damage(damage, from_position):
 		return false
 	hit.emit(damage, from_position, knockback)

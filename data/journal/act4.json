@@ -21,11 +21,66 @@
      "vale"
     ]
    },
-   "fail_forward": [],
    "outcomes": {
     "turned": "CASE_IX_TURNED",
     "continued": "CASE_IX_CONTINUED",
     "stopped": "CASE_IX_STOPPED"
+   },
+   "main": true,
+   "objectives": {
+    "sites": [
+     {
+      "id": "nights",
+      "text": "OBJ_IX_NIGHTS",
+      "progress": [
+       {
+        "flag": "site.hospital.done"
+       },
+       {
+        "flag": "site.home.done"
+       },
+       {
+        "flag": "site.station.done"
+       }
+      ]
+     },
+     {
+      "id": "true",
+      "text": "OBJ_IX_TRUE",
+      "optional": true,
+      "progress": [
+       {
+        "flag": "site.hospital.true"
+       },
+       {
+        "flag": "site.home.true"
+       },
+       {
+        "flag": "site.station.true"
+       }
+      ],
+      "reward": [
+       {
+        "give_resonance": 5
+       },
+       {
+        "faction": [
+         "unwritten",
+         1
+        ]
+       }
+      ]
+     }
+    ],
+    "index": [
+     {
+      "id": "ald",
+      "text": "OBJ_IX_ALDERMAN",
+      "done_if": {
+       "evidence": "e_index_truth"
+      }
+     }
+    ]
    }
   }
  },

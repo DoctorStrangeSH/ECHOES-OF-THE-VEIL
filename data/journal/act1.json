@@ -21,39 +21,86 @@
      "turn"
     ]
    },
-   "fail_forward": [
-    {
-     "stage": "incidents",
-     "after_days": 4,
-     "note": "FF_TM_INCIDENTS"
-    },
-    {
-     "stage": "map",
-     "after_days": 3,
-     "note": "FF_TM_MAP",
-     "effects": [
-      {
-       "add_evidence": "e_two_maps"
-      }
-     ],
-     "to": "hand"
-    },
-    {
-     "stage": "hand",
-     "after_days": 2,
-     "note": "FF_TM_HAND",
-     "effects": [
-      {
-       "add_evidence": "e_rent_book"
-      }
-     ],
-     "to": "turn"
-    }
-   ],
    "outcomes": {
     "kept": "CASE_TM_KEPT",
     "shared": "CASE_TM_SHARED",
     "questioned": "CASE_TM_QUESTIONED"
+   },
+   "main": true,
+   "objectives": {
+    "incidents": [
+     {
+      "id": "marks",
+      "text": "OBJ_TM_MARKS",
+      "progress": [
+       {
+        "evidence": "e_storeroom_mark"
+       },
+       {
+        "evidence": "e_house_mark"
+       },
+       {
+        "evidence": "e_census_page"
+       }
+      ],
+      "need": 2
+     },
+     {
+      "id": "pattern",
+      "text": "OBJ_TM_PATTERN",
+      "done_if": {
+       "hypothesis": "incidents_share_mark"
+      }
+     },
+     {
+      "id": "all_three",
+      "text": "OBJ_TM_ALL_THREE",
+      "optional": true,
+      "progress": [
+       {
+        "evidence": "e_storeroom_mark"
+       },
+       {
+        "evidence": "e_house_mark"
+       },
+       {
+        "evidence": "e_census_page"
+       }
+      ],
+      "reward": [
+       {
+        "give_resonance": 3
+       }
+      ]
+     }
+    ],
+    "map": [
+     {
+      "id": "map",
+      "text": "OBJ_TM_MAP",
+      "done_if": {
+       "evidence": "e_two_maps"
+      }
+     }
+    ],
+    "hand": [
+     {
+      "id": "hand",
+      "text": "OBJ_TM_HAND",
+      "done_if": {
+       "hypothesis": "halloway_drew_map"
+      }
+     }
+    ],
+    "turn": [
+     {
+      "id": "show",
+      "text": "OBJ_TM_SHOW",
+      "done_if": {
+       "quest_done": "case_two_maps"
+      }
+     }
+    ]
    }
   },
   "case_storeroom": {
@@ -69,21 +116,66 @@
      "tell"
     ]
    },
-   "fail_forward": [
+   "outcomes": {
+    "told": "CASE_SR_TOLD",
+    "bricked": "CASE_SR_BRICKED"
+   },
+   "deadlines": [
     {
      "stage": "wall",
-     "after_days": 3,
-     "note": "FF_SR_WALL",
+     "days": 4,
+     "outcome": "bricked",
+     "note": "FAIL_STOREROOM",
      "effects": [
       {
-       "add_evidence": "e_storeroom_mark"
+       "set_flag": "storeroom.bricked"
+      },
+      {
+       "relationship": [
+        "jonah_rook",
+        -1
+       ]
       }
-     ],
-     "to": "tell"
+     ]
     }
    ],
-   "outcomes": {
-    "told": "CASE_SR_TOLD"
+   "objectives": {
+    "wall": [
+     {
+      "id": "door",
+      "text": "OBJ_SR_DOOR",
+      "done_if": {
+       "flag": "storeroom.entered"
+      }
+     },
+     {
+      "id": "clear",
+      "text": "OBJ_SR_CLEAR",
+      "done_if": {
+       "flag": "storeroom.cleared"
+      }
+     },
+     {
+      "id": "stencil",
+      "text": "OBJ_SR_STENCIL",
+      "done_if": {
+       "evidence": "e_storeroom_mark"
+      }
+     },
+     {
+      "id": "ledger",
+      "text": "OBJ_SR_LEDGER",
+      "optional": true,
+      "done_if": {
+       "evidence": "e_rook_ledger"
+      },
+      "reward": [
+       {
+        "give_resonance": 1
+       }
+      ]
+     }
+    ]
    }
   },
   "case_larger_house": {
@@ -103,22 +195,56 @@
      "tell"
     ]
    },
-   "fail_forward": [
-    {
-     "stage": "room",
-     "after_days": 3,
-     "note": "FF_LH2_ROOM",
-     "effects": [
-      {
-       "add_evidence": "e_house_mark"
-      }
-     ],
-     "to": "tell"
-    }
-   ],
    "outcomes": {
     "remembered": "CASE_LH2_REMEMBERED",
-    "settled": "CASE_LH2_SETTLED"
+    "settled": "CASE_LH2_SETTLED",
+    "closed": "CASE_LH2_CLOSED"
+   },
+   "deadlines": [
+    {
+     "stage": "room",
+     "days": 5,
+     "outcome": "closed",
+     "note": "FAIL_HOUSE",
+     "effects": [
+      {
+       "set_flag": "house.room_closed"
+      },
+      {
+       "relationship": [
+        "theo_marsh",
+        -1
+       ]
+      }
+     ]
+    }
+   ],
+   "objectives": {
+    "measure": [
+     {
+      "id": "walk",
+      "text": "OBJ_LH2_WALK",
+      "done_if": {
+       "evidence": "e_house_longer"
+      }
+     }
+    ],
+    "room": [
+     {
+      "id": "clear",
+      "text": "OBJ_LH2_CLEAR",
+      "done_if": {
+       "flag": "house.cleared"
+      }
+     },
+     {
+      "id": "bed",
+      "text": "OBJ_LH2_BED",
+      "done_if": {
+       "evidence": "e_house_mark"
+      }
+     }
+    ]
    }
   }
  },

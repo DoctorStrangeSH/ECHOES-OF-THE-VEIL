@@ -25,53 +25,84 @@
      "decide"
     ]
    },
-   "fail_forward": [
-    {
-     "stage": "pact",
-     "after_days": 2,
-     "note": "FF_K_PACT",
-     "effects": [
-      {
-       "add_evidence": "e_keepers_pact"
-      }
-     ],
-     "to": "quay"
-    },
-    {
-     "stage": "quay",
-     "after_days": 3,
-     "note": "FF_K_QUAY",
-     "to": "underpass"
-    },
-    {
-     "stage": "underpass",
-     "after_days": 4,
-     "note": "FF_K_UNDERPASS",
-     "effects": [
-      {
-       "set_flag": "underpass.cleared"
-      },
-      {
-       "set_flag": "boss.archivist.defeated"
-      },
-      {
-       "give_item": "resonator"
-      }
-     ],
-     "to": "truth"
-    },
-    {
-     "stage": "truth",
-     "after_days": 3,
-     "note": "FF_K_TRUTH",
-     "to": "decide"
-    }
-   ],
    "outcomes": {
     "sealed": "CASE_K_SEALED",
     "opened": "CASE_K_OPENED",
     "sold": "CASE_K_SOLD",
     "broken": "CASE_K_BROKEN"
+   },
+   "main": true,
+   "objectives": {
+    "pact": [
+     {
+      "id": "key",
+      "text": "OBJ_K_KEY",
+      "done_if": {
+       "flag": "archive.key"
+      }
+     },
+     {
+      "id": "down",
+      "text": "OBJ_K_DOWN",
+      "done_if": {
+       "flag": "keepers.entered"
+      }
+     }
+    ],
+    "quay": [
+     {
+      "id": "nadiya",
+      "text": "OBJ_K_NADIYA",
+      "done_if": {
+       "evidence": "e_open_hand_plan"
+      }
+     }
+    ],
+    "underpass": [
+     {
+      "id": "clear",
+      "text": "OBJ_K_CLEAR",
+      "done_if": {
+       "flag": "underpass.cleared"
+      }
+     },
+     {
+      "id": "boss",
+      "text": "OBJ_K_BOSS",
+      "done_if": {
+       "flag": "boss.archivist.defeated"
+      }
+     },
+     {
+      "id": "resonator",
+      "text": "OBJ_K_RESONATOR",
+      "done_if": {
+       "evidence": "e_resonator"
+      }
+     },
+     {
+      "id": "cover",
+      "text": "OBJ_K_COVER",
+      "optional": true,
+      "done_if": {
+       "hypothesis": "flood_was_a_cover"
+      },
+      "reward": [
+       {
+        "give_money": 25
+       }
+      ]
+     }
+    ],
+    "decide": [
+     {
+      "id": "seal",
+      "text": "OBJ_K_SEAL",
+      "done_if": {
+       "quest_done": "case_kindness"
+      }
+     }
+    ]
    }
   }
  },

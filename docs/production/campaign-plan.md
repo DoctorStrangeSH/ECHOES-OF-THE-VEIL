@@ -12,8 +12,8 @@ The spine is data: `data/story/campaign.json` lists the acts, the condition that
 | M7b | **Act II** — the Echo Ward, companions, the Conductor, Rosalind found | done |
 | M7c | **Act III** — the Keepers' pact, North Quay, the Archivist of Floods, the ally who knew | done |
 | M7d | **Act IV** — the Index: three memory-sites, testimony verdicts, three Revisions, Dr Vale's choice | done |
-| M7e | **Quest system and challenge rework** — no fail-forward, objectives, failable quests, mandatory bosses, difficulty (see roadmap) | next |
-| M7f | **Act V** — the anchor; endings and epilogues | |
+| M7e | **Quest system and challenge rework** — no fail-forward, objectives, failable quests, mandatory bosses, difficulty (see roadmap) | done |
+| M7f | **Act V** — the anchor; endings and epilogues | next |
 | M7g | Campaign pass: balance, full playthrough tests | |
 
 ## What already exists (M1–M6)
@@ -35,13 +35,13 @@ Starts when the door case closes (either outcome). Main case `case_two_maps`:
 4. **The hand** — hypothesis *Mrs Halloway drew the second map* (the map + her note or her rent book).
 5. **Act turn** (bible: "annotations in a handwriting matching a living NPC") — she has never drawn a map; some mornings her pencils are blunt. Keep her secret (Keepers +1), take it to Mara (Open Hand +1; Mara learns), or ask who visits — *Ivo, for tea on Sundays, who tidies her desk* (sets up Act III).
 
-Fail-forward: Mara's hint (incidents), Theo brings the map (3 days), Mara recognises the sevens (2 days), Jonah photographs the crate (3 days), Theo's note about the headboard (3 days). Nothing requires combat, the archive key or a side story.
+Since M7e: no step moves on by itself. Routes: two of three incidents give the pattern (the storeroom and the growing room can each be *failed* by waiting too long — the council bricks up the wall after 4 days, the newest door closes after 5); the handwriting from the note in your room or by asking Mara. The main case itself has no deadline.
 
 ## Act II — The People We Misplaced (M7b, built)
 
-As built: the Ward is reached from the harbour stop after dark — with Ivo (Keepers), with Nadiya (Open Hand; also the route if you asked Ivo about his Sundays), or alone once the timetable shows it (fail-forward). The Alderman's register (214 names) and three claims — **Bea Halloway** (wants a Thursday in Edda's kitchen; Edda leaves the back door on the latch), **Abel Crane** of the *Margaret Ellery* (wants to be left alone; can send thanks to Hester), **Ellie Marsh** (No. 11 is hers; Theo lives in it). **Dr Sera Vale** introduces Meridian. Pike asks you to report "the anomaly" (Civic +2, Unwritten −2). The depot hall and **the Conductor** on Platform Eleven: three tram lanes, at least one always safe; passengers board in phase 2; he stops to check his machine after every tram. **Rosalind** remembers Jonah as the one who vanished; reunite them (bring Jonah as your companion) or let her choose. Companions: **Jonah** (patches you up at 1 health) and **Mara** (slows the nearest echo), recruited from their usual conversation once the Ward is open; talking to them while they follow gives camp lines and lets you send them home.
+As built: the Ward is reached from the harbour stop after dark — with Ivo (Keepers), with Nadiya (Open Hand; also the route if you asked Ivo about his Sundays), or alone by reading the harbour timetable after dark. The Alderman's register (214 names) and three claims — **Bea Halloway** (wants a Thursday in Edda's kitchen; Edda leaves the back door on the latch), **Abel Crane** of the *Margaret Ellery* (wants to be left alone; can send thanks to Hester), **Ellie Marsh** (No. 11 is hers; Theo lives in it). **Dr Sera Vale** introduces Meridian. Pike asks you to report "the anomaly" (Civic +2, Unwritten −2). The depot hall and **the Conductor** on Platform Eleven: three tram lanes, at least one always safe; passengers board in phase 2; he stops to check his machine after every tram. **Rosalind** remembers Jonah as the one who vanished; reunite them (bring Jonah as your companion) or let her choose. Companions: **Jonah** (patches you up at 1 health) and **Mara** (slows the nearest echo), recruited from their usual conversation once the Ward is open; talking to them while they follow gives camp lines and lets you send them home.
 
-Original plan:
+Original plan (before M7e, mentions of fail-forward no longer apply):
 
 **Region:** the **Echo Ward** — the neighbourhood removed in the Quiet Census, stable enough to live in. A hub with residents (Unwritten), not a corridor of enemies. Built from region templates with an echo palette; day/night inverted (the Ward is busiest at night).
 
@@ -56,11 +56,11 @@ Original plan:
 
 **Companions begin:** Jonah and Mara can accompany the player in the Ward (follower + one combat/utility ability each, a camp conversation per act). Companion approval is the existing relationship value; milestones gate personal quests.
 
-## Act III — A Kindness Built on a Lie (M7c, built)
+## Act III — A Kindness Built on a Lie (M7c, built; since M7e Ivo hands you the archive key and the Archivist cannot be skipped)
 
 As built: starts when Act II closes; the campaign picks the **ally who knew** at that moment with `first_match` — Mara if *The Eleventh House* was sealed, else Mrs Halloway if her map was kept secret, else Ivo. Stairs appear in the municipal archive down to **the Keepers' rooms** (the Seal Engine; the pact: every echo half-shut forever). **North Quay** opens at the east end of the promenade: Nadiya explains the Open Hand's plan, Dr Vale wants Meridian's resonator back. The **flooded underpass** holds the 1962 records the flood supposedly destroyed (hypothesis *The flood was the cover story*), then **the Archivist of Floods**: the arena floods in cycles, stacks of files are dry islands, water slows you and deep water hurts; he can only be hit on the surface. The confession (stays if they are your friend, walks out otherwise), then the resonator at the Seal Engine: Keepers (seal holds), Open Hand (the Ward will open), Meridian (£60), or break it. Faction swings of ±3.
 
-Original plan:
+Original plan (before M7e, mentions of fail-forward no longer apply):
 
 **Region:** **North Quay** (industrial waterfront; Meridian's research annex) and the Keepers' rooms beneath the old Custodians' hall.
 
@@ -73,7 +73,7 @@ Original plan:
 
 As built: starts when Act III closes. Dr Vale (Ward promenade) explains that Meridian switched on three of the Index's nodes; three doors open at the bottom of the Ward's street. Each memory-site is the night of 11 November 1962 — **St Agnes hospital**, **the Okafor kitchen on Lantern Row**, **Lantern Row station** — guarded by a **Revision** (the Matron, the Lodger, the Stationmaster): one boss class that rewrites the floor in its own pattern (rows / columns / checkerboard; one row, column or colour is always safe; the Lantern Flash breaks the channel). After the fight the three testimonies can be read and **judged — authentic, edited or unreliable** (re-read to change your mind). Reconstructing the night with at least two correct verdicts gives the *true night*; otherwise it stays *distorted* for good. The Alderman's register rewrites itself into PLEASE DON'T FORGET ME (act turn). Dr Vale: show her the true nights (needs two true sites) and she shuts the nodes down herself, tell her to finish carefully, or hand her work to the Keepers. Nothing in this act moves on by itself.
 
-Original plan:
+Original plan (before M7e, mentions of fail-forward no longer apply):
 
 **Regions:** three short memory-sites reached from the Ward, each a version of the same 1962 night: the hospital archive, the family home, the abandoned station. Each presents testimony that conflicts; the player marks traces as authentic, edited or unreliable (new journal verdict on evidence — a small extension of hypotheses).
 

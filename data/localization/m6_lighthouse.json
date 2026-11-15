@@ -45,8 +45,6 @@
   "CASE_LH_ANSWER": {"en": "Tell Hester what the light is counting.", "ru": "Рассказать Хестер, что считает свет."},
   "CASE_LH_REMEMBERED": {"en": "You told Hester about the Margaret Ellery. The lamp still counts seven every night, and now someone counts with it.", "ru": "Вы рассказали Хестер о «Маргарет Эллери». Маяк по-прежнему каждую ночь считает до семи — и теперь кто-то считает вместе с ним."},
   "CASE_LH_RESTED": {"en": "You told Hester it was a fault. The council fixed the relay; the lamp turns like any other lamp now.", "ru": "Вы сказали Хестер, что это неисправность. Совет заменил реле; маяк теперь светит как любой другой."},
-  "FF_LH_COUNT": {"en": "Hester pushed a page under your door: her own count from last night. Seven, pause, seven.", "ru": "Хестер подсунула вам под дверь листок: её собственный подсчёт за прошлую ночь. Семь, пауза, семь."},
-  "FF_LH_REGISTER": {"en": "Mara found you a copy of the harbour register index, \"since you seem to be collecting holes\".", "ru": "Мара нашла для вас копию указателя портового регистра — «раз уж вы коллекционируете дыры»."},
   "EV_HESTER_COUNT_TITLE": {"en": "Hester: the lamp counts to seven", "ru": "Хестер: маяк считает до семи"},
   "EV_HESTER_COUNT_BODY": {"en": "Since spring the automated lamp sweeps seven times, stops over empty water, and repeats, from two to four in the morning.", "ru": "С весны автоматический маяк делает семь проходов, останавливается над пустой водой и повторяет — с двух до четырёх ночи."},
   "EV_FLASH_TITLE": {"en": "Seven sweeps, and lights on the water", "ru": "Семь проходов и огни на воде"},

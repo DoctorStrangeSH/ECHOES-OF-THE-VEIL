@@ -94,8 +94,11 @@ func _refresh() -> void:
 	var first_button: Button = null
 	for id in Journal.case_order:
 		var b := Button.new()
-		var done := Journal.case_status(id) == Journal.STATUS_DONE
-		b.text = ("[x] " if done else "[ ] ") + tr(Journal.case_defs[id].get("title", ""))
+		var st := Journal.case_status(id)
+		var mark := "[x] " if st == Journal.STATUS_DONE else ("[-] " if st == Journal.STATUS_FAILED else ("[*] " if id == Journal.pinned else "[ ] "))
+		b.text = mark + tr(Journal.case_defs[id].get("title", ""))
+		if st == Journal.STATUS_FAILED:
+			b.add_theme_color_override("font_color", UiTheme.INK_DIM)
 		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		b.toggle_mode = true
 		b.button_pressed = id == _selected
@@ -108,6 +111,11 @@ func _refresh() -> void:
 	_show_case(_selected)
 
 
+func _toggle_pin(id: StringName) -> void:
+	Journal.pinned = &"" if Journal.pinned == id else id
+	_refresh()
+
+
 func _select(id: StringName) -> void:
 	_selected = id
 	_refresh()
@@ -117,8 +125,21 @@ func _show_case(id: StringName) -> void:
 	var def: Dictionary = Journal.case_defs.get(id, {})
 	_detail.add_child(_label(tr(def.get("title", "")), UiTheme.ACCENT, 11))
 	_detail.add_child(_label(tr(def.get("summary", "")), UiTheme.INK_DIM))
-	var status_key := "JOURNAL_STATUS_DONE" if Journal.case_status(id) == Journal.STATUS_DONE else "JOURNAL_OBJECTIVE"
+	var st := Journal.case_status(id)
+	var status_key := "JOURNAL_STATUS_DONE" if st == Journal.STATUS_DONE else ("JOURNAL_STATUS_FAILED" if st == Journal.STATUS_FAILED else "JOURNAL_OBJECTIVE")
 	_detail.add_child(_label("%s: %s" % [tr(status_key), tr(Journal.objective_key(id))], UiTheme.INK))
+	if st == Journal.STATUS_ACTIVE:
+		var left := Journal.days_left(id)
+		if left >= 0:
+			_detail.add_child(_label(tr("JOURNAL_DAYS_LEFT") % left, Color(1.0, 0.6, 0.5)))
+		for o in Journal.objectives_for(id):
+			var tick := "[x] " if o["done"] else "[ ] "
+			var opt := (tr("JOURNAL_OPTIONAL") + " ") if o["optional"] else ""
+			_detail.add_child(_label(tick + opt + Journal.objective_text(o), UiTheme.INK_DIM if o["done"] else UiTheme.INK, 8))
+		var pin := Button.new()
+		pin.text = tr("JOURNAL_UNPIN") if Journal.pinned == id else tr("JOURNAL_PIN")
+		pin.pressed.connect(_toggle_pin.bind(id))
+		_detail.add_child(pin)
 
 	_detail.add_child(_label(tr("JOURNAL_EVIDENCE"), UiTheme.ACCENT))
 	var ev := Journal.evidence_for_case(id)

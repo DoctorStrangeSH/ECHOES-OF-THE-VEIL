@@ -165,6 +165,7 @@ func _ready() -> void:
 	_step = "act I: the city has two maps"
 	_assert(Campaign.has_started(&"act1"), "act I started after the door case")
 	_assert(Journal.case_status(&"case_two_maps") == Journal.STATUS_ACTIVE, "act I main case open")
+	_assert(Journal.pinned == &"case_two_maps" and (get_child(0).get_node("Hud") as Hud)._objective_line() != "", "the HUD shows the act's objective")
 	await _wait_card()
 	await _talk(&"jonah", {"npc": &"jonah_rook"}, ["JONAH_ASK_STRANGE"])
 	_assert(Journal.case_stage(&"case_storeroom") == &"wall", "Jonah's storeroom case")
@@ -363,6 +364,25 @@ func _ready() -> void:
 	await _talk(&"vale", {"npc": &"sera_vale"}, ["VALE_FINAL", "VALE_SHOW_TRUTH"])
 	_assert(Journal.case_status(&"case_index") == Journal.STATUS_DONE and GameState.has_flag(&"vale.turned"), "Vale turned")
 	_assert(Campaign.current_act() == &"act4", "act V is not out yet")
+
+	_step = "fainting leaves a satchel"
+	SceneFlow.travel(&"ward_depot", &"entrance")
+	await _wait_location(&"ward_depot")
+	await _frames(10)
+	Inventory.money = 30
+	var p := get_tree().get_first_node_in_group(&"player") as Player
+	p.health.take_damage(99, p.global_position + Vector2(10, 0))
+	await _wait_location(&"rented_room")
+	await _frames(10)
+	_assert(GameState.satchel.get("scene", "") == "ward_depot" and Inventory.money == 15, "half the money stayed in the depot")
+	SceneFlow.travel(&"ward_depot", &"entrance")
+	await _wait_location(&"ward_depot")
+	await _frames(10)
+	var bag := _find_node_of(SceneFlow.current_location, "Satchel") as Satchel
+	_assert(bag != null, "the satchel lies where you fell")
+	if bag != null:
+		bag._on_interact(get_tree().get_first_node_in_group(&"player"))
+	_assert(Inventory.money == 30 and GameState.satchel.is_empty(), "and can be picked up")
 	SceneFlow.travel(&"greyford_block", &"ward_return")
 	await _wait_location(&"greyford_block")
 	WorldClock.wait_until_hour(9)

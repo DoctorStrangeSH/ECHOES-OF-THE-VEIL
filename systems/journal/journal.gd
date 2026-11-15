@@ -21,6 +21,7 @@ const DATA_DIR := "res://data/journal"
 const STATUS_NONE := &"none"
 const STATUS_ACTIVE := &"active"
 const STATUS_DONE := &"done"
+const STATUS_FAILED := &"failed"
 const HYP_LOCKED := "locked"
 const HYP_AVAILABLE := "available"
 const HYP_INFERRED := "inferred"
@@ -40,6 +41,9 @@ var hypotheses: Dictionary = {}
 ## Evidence with "testimony": true in its definition can be judged; its hidden
 ## "truth" says which verdict is right.
 var verdicts: Dictionary = {}
+## The case whose current objective the HUD shows.
+var pinned: StringName = &""
+var _objective_check_queued := false
 ## Order in which cases were started (for the journal UI).
 var case_order: Array[StringName] = []
 
@@ -50,6 +54,16 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	WorldClock.day_started.connect(_on_day_started)
+	EventHub.flag_changed.connect(_queue_objective_check.unbind(2))
+	case_changed.connect(_queue_objective_check.unbind(1))
+	evidence_added.connect(_queue_objective_check.unbind(1))
+	hypothesis_changed.connect(_queue_objective_check.unbind(2))
+	verdict_changed.connect(_queue_objective_check.unbind(2))
+	_connect_inventory.call_deferred()  # Inventory is loaded after the journal
+
+
+func _connect_inventory() -> void:
+	Inventory.changed.connect(_queue_objective_check)
 
 
 func load_definitions() -> void:
@@ -76,6 +90,7 @@ func reset() -> void:
 	cases.clear()
 	hypotheses.clear()
 	verdicts.clear()
+	pinned = &""
 	case_order.clear()
 
 
@@ -131,6 +146,8 @@ func start_case(id: StringName) -> void:
 	var first: StringName = StringName(case_defs[id].get("first_stage", "start"))
 	cases[id] = {"status": STATUS_ACTIVE, "stage": first, "outcome": &"", "stage_day": WorldClock.day}
 	case_order.append(id)
+	if case_defs[id].get("main", false) or pinned == &"" or case_status(pinned) != STATUS_ACTIVE:
+		pinned = id
 	case_changed.emit(id)
 	EventHub.toast_requested.emit(tr("JOURNAL_NEW_CASE") % tr(case_defs[id].get("title", "")))
 
@@ -160,22 +177,107 @@ func complete_case(id: StringName, outcome: StringName = &"") -> void:
 	EventHub.toast_requested.emit(tr("JOURNAL_CASE_CLOSED") % tr(case_defs[id].get("title", "")))
 
 
-## Fail-forward: a stage waiting longer than `after_days` moves on by itself.
-func _on_day_started(day: int) -> void:
+## Failing a case: it is closed with a failure outcome and stays failed.
+func fail_case(id: StringName, outcome: StringName) -> void:
+	if case_status(id) != STATUS_ACTIVE:
+		return
+	cases[id]["status"] = STATUS_FAILED
+	cases[id]["outcome"] = outcome
+	case_changed.emit(id)
+	EventHub.toast_requested.emit(tr("JOURNAL_CASE_FAILED") % tr(case_defs[id].get("title", "")))
+
+
+## Deadlines: {"stage", "days", "outcome", "note", "effects"} - if the case is
+## still at that stage after `days` days, it fails. Nothing ever moves forward
+## by itself (D-052): time only takes things away.
+func deadline_for(id: StringName) -> Dictionary:
+	for rule: Dictionary in case_defs.get(id, {}).get("deadlines", []):
+		if String(rule.get("stage", "")) == String(case_stage(id)):
+			return rule
+	return {}
+
+
+func days_left(id: StringName) -> int:
+	var rule := deadline_for(id)
+	if rule.is_empty() or case_status(id) != STATUS_ACTIVE:
+		return -1
+	return int(cases[id].get("stage_day", WorldClock.day)) + int(rule.get("days", 1)) - WorldClock.day
+
+
+func _on_day_started(_day: int) -> void:
 	for id: StringName in cases.keys():
 		if case_status(id) != STATUS_ACTIVE:
 			continue
-		for rule: Dictionary in case_defs[id].get("fail_forward", []):
-			if String(rule.get("stage", "")) != String(case_stage(id)):
+		var rule := deadline_for(id)
+		if rule.is_empty() or days_left(id) > 0:
+			continue
+		StoryRules.apply(rule.get("effects", []))
+		if rule.has("note"):
+			EventHub.toast_requested.emit(tr(String(rule["note"])))
+		fail_case(id, StringName(rule.get("outcome", "failed")))
+
+
+# --- Objectives --------------------------------------------------------------
+## "objectives": {"stage": [{"id", "text", "done_if" | "progress": [conds], "need": n,
+##                "optional": bool, "reward": [effects]}]}
+## Objectives are read from the world, never stored; the first time one is met
+## it sets flag obj.<case>.<id>, shows a toast and pays its reward.
+
+func objectives_for(id: StringName, stage: StringName = &"") -> Array[Dictionary]:
+	var st := String(stage if stage != &"" else case_stage(id))
+	var out: Array[Dictionary] = []
+	for o: Dictionary in case_defs.get(id, {}).get("objectives", {}).get(st, []):
+		var have := 0
+		var need := 1
+		if o.has("progress"):
+			for c: Variant in o["progress"]:
+				if StoryRules.evaluate(c):
+					have += 1
+			need = int(o.get("need", (o["progress"] as Array).size()))
+		else:
+			have = 1 if StoryRules.evaluate(o.get("done_if")) else 0
+		out.append({"id": String(o["id"]), "text": String(o["text"]), "optional": bool(o.get("optional", false)),
+			"have": mini(have, need), "need": need, "done": have >= need,
+			"has_progress": o.has("progress"), "reward": o.get("reward", [])})
+	return out
+
+
+func objective_text(o: Dictionary) -> String:
+	var t := tr(o["text"])
+	if o["has_progress"]:
+		t += " (%d/%d)" % [o["have"], o["need"]]
+	return t
+
+
+## The first unfinished required objective of a case, or its stage text.
+func current_objective_text(id: StringName) -> String:
+	if case_status(id) != STATUS_ACTIVE:
+		return ""
+	for o in objectives_for(id):
+		if not o["done"] and not o["optional"]:
+			return objective_text(o)
+	return tr(objective_key(id))
+
+
+func _queue_objective_check() -> void:
+	if not _objective_check_queued:
+		_objective_check_queued = true
+		_check_objectives.call_deferred()
+
+
+func _check_objectives() -> void:
+	_objective_check_queued = false
+	for id: StringName in cases.keys():
+		if case_status(id) != STATUS_ACTIVE:
+			continue
+		for o in objectives_for(id):
+			var flag := StringName("obj.%s.%s" % [id, o["id"]])
+			if not o["done"] or GameState.has_flag(flag):
 				continue
-			if day - int(cases[id].get("stage_day", day)) < int(rule.get("after_days", 2)):
-				continue
-			StoryRules.apply(rule.get("effects", []))
-			if rule.has("to"):
-				set_case_stage(id, StringName(rule["to"]))
-			if rule.has("note"):
-				EventHub.toast_requested.emit(tr(String(rule["note"])))
-			break
+			GameState.set_flag(flag)
+			var key := "JOURNAL_BONUS_DONE" if o["optional"] else "JOURNAL_OBJECTIVE_DONE"
+			EventHub.toast_requested.emit(tr(key) % tr(o["text"]))
+			StoryRules.apply(o["reward"])
 
 
 ## Problems in the case graphs (unknown stages, unreachable stages). For tests.
@@ -194,18 +296,17 @@ func validate_graphs() -> PackedStringArray:
 			for to: String in trans[from]:
 				if not stages.has(to):
 					problems.append("%s: transition to unknown stage '%s'" % [id, to])
-		for rule: Dictionary in def.get("fail_forward", []):
-			if not stages.has(String(rule.get("stage", ""))) or (rule.has("to") and not stages.has(String(rule["to"]))):
-				problems.append("%s: fail_forward refers to unknown stage" % id)
+		if def.has("fail_forward"):
+			problems.append("%s: fail_forward is not allowed (D-052)" % id)
+		for rule: Dictionary in def.get("deadlines", []):
+			if not stages.has(String(rule.get("stage", ""))) or not def.get("outcomes", {}).has(String(rule.get("outcome", ""))):
+				problems.append("%s: deadline refers to an unknown stage or outcome" % id)
 		# Every stage must be reachable from the first one.
 		var seen := {first: true}
 		var queue: Array = [first]
 		while not queue.is_empty():
 			var s: String = queue.pop_front()
 			var nexts: Array = Array(trans.get(s, []))
-			for rule: Dictionary in def.get("fail_forward", []):
-				if String(rule.get("stage", "")) == s and rule.has("to"):
-					nexts.append(rule["to"])
 			for n: Variant in nexts:
 				if not seen.has(String(n)):
 					seen[String(n)] = true
@@ -219,7 +320,7 @@ func validate_graphs() -> PackedStringArray:
 ## Player-facing objective text key for the current stage (or outcome when done).
 func objective_key(id: StringName) -> String:
 	var def: Dictionary = case_defs.get(id, {})
-	if case_status(id) == STATUS_DONE:
+	if case_status(id) in [STATUS_DONE, STATUS_FAILED]:
 		var outcomes: Dictionary = def.get("outcomes", {})
 		return outcomes.get(String(cases[id]["outcome"]), def.get("done", ""))
 	return def.get("stages", {}).get(String(case_stage(id)), "")
@@ -346,7 +447,7 @@ func to_dict() -> Dictionary:
 	var v := {}
 	for id: StringName in verdicts:
 		v[String(id)] = verdicts[id]
-	return {"found": f, "cases": c, "hypotheses": h, "case_order": order, "verdicts": v}
+	return {"found": f, "cases": c, "hypotheses": h, "case_order": order, "verdicts": v, "pinned": String(pinned)}
 
 
 func from_dict(data: Dictionary) -> void:
@@ -369,6 +470,7 @@ func from_dict(data: Dictionary) -> void:
 	var h: Dictionary = data.get("hypotheses", {})
 	for id: String in h:
 		hypotheses[StringName(id)] = String(h[id])
+	pinned = StringName(data.get("pinned", ""))
 	var v: Dictionary = data.get("verdicts", {})  # absent before M7d: nothing judged yet
 	for id: String in v:
 		if evidence_defs.get(StringName(id), {}).get("testimony", false):

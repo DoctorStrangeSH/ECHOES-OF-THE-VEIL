@@ -18,14 +18,6 @@ flowchart LR
   case_two_maps_out_shared(["outcome: shared<br/>You took the map to Mara. Mrs…"])
   case_two_maps_out_questioned(["outcome: questioned<br/>Ivo Calder visits Mrs Hallowa…"])
   case_two_maps_START(("start")) --> case_two_maps_incidents
-  case_two_maps_ff_0{{"help: Mara: 'Jonah's storeroom, the Marsh fla…"}}
-  case_two_maps_incidents -.->|"stuck 4 days"| case_two_maps_ff_0
-  case_two_maps_ff_1{{"help: Theo Marsh left a folded paper with Mrs…"}}
-  case_two_maps_map -.->|"stuck 3 days"| case_two_maps_ff_1
-  case_two_maps_ff_1 -.-> case_two_maps_hand
-  case_two_maps_ff_2{{"help: Mara, glancing at the map: 'I've seen t…"}}
-  case_two_maps_hand -.->|"stuck 2 days"| case_two_maps_ff_2
-  case_two_maps_ff_2 -.-> case_two_maps_turn
 ```
 
 Evidence that advances this case: `e_two_maps`
@@ -38,10 +30,8 @@ flowchart LR
   case_storeroom_tell["tell<br/>Tell Jonah what you found in the storer…"]
   case_storeroom_wall --> case_storeroom_tell
   case_storeroom_out_told(["outcome: told<br/>Jonah knows the crates said R…"])
+  case_storeroom_out_bricked(["outcome: bricked<br/>The council bricked up the si…"])
   case_storeroom_START(("start")) --> case_storeroom_wall
-  case_storeroom_ff_0{{"help: Jonah: 'The wall was a door for a minut…"}}
-  case_storeroom_wall -.->|"stuck 3 days"| case_storeroom_ff_0
-  case_storeroom_ff_0 -.-> case_storeroom_tell
 ```
 
 Evidence that advances this case: `e_storeroom_mark`
@@ -57,10 +47,8 @@ flowchart LR
   case_larger_house_room --> case_larger_house_tell
   case_larger_house_out_remembered(["outcome: remembered<br/>Theo remembered a daughter, E…"])
   case_larger_house_out_settled(["outcome: settled<br/>You told Theo it was old plan…"])
+  case_larger_house_out_closed(["outcome: closed<br/>The newest door in Theo's cor…"])
   case_larger_house_START(("start")) --> case_larger_house_measure
-  case_larger_house_ff_0{{"help: Theo pushed a note under your door: 'Th…"}}
-  case_larger_house_room -.->|"stuck 3 days"| case_larger_house_ff_0
-  case_larger_house_ff_0 -.-> case_larger_house_tell
 ```
 
 Evidence that advances this case: `e_house_longer`, `e_house_mark`
@@ -81,15 +69,6 @@ flowchart LR
   case_misplaced_out_reunited(["outcome: reunited<br/>Jonah and Rosalind Rook found…"])
   case_misplaced_out_apart(["outcome: apart<br/>Rosalind will go up to Greyfo…"])
   case_misplaced_START(("start")) --> case_misplaced_ward
-  case_misplaced_ff_0{{"help: At the harbour stop someone has pasted …"}}
-  case_misplaced_ward -.->|"stuck 2 days"| case_misplaced_ff_0
-  case_misplaced_ff_1{{"help: A note from the Alderman: 'You've heard…"}}
-  case_misplaced_residents -.->|"stuck 3 days"| case_misplaced_ff_1
-  case_misplaced_ff_1 -.-> case_misplaced_depot
-  case_misplaced_ff_2{{"help: The Ward's trams stopped running last n…"}}
-  case_misplaced_depot -.->|"stuck 4 days"| case_misplaced_ff_2
-  case_misplaced_ff_3{{"help: Jonah went to the harbour stop on his o…"}}
-  case_misplaced_bring -.->|"stuck 3 days"| case_misplaced_ff_3
 ```
 
 ## case_kindness — A Kindness Built on a Lie
@@ -110,18 +89,6 @@ flowchart LR
   case_kindness_out_sold(["outcome: sold<br/>You returned the resonator to…"])
   case_kindness_out_broken(["outcome: broken<br/>You broke the resonator. Nobo…"])
   case_kindness_START(("start")) --> case_kindness_pact
-  case_kindness_ff_0{{"help: A letter from Ivo, in a Keeper's carefu…"}}
-  case_kindness_pact -.->|"stuck 2 days"| case_kindness_ff_0
-  case_kindness_ff_0 -.-> case_kindness_quay
-  case_kindness_ff_1{{"help: Nadiya, at your door before breakfast: …"}}
-  case_kindness_quay -.->|"stuck 3 days"| case_kindness_ff_1
-  case_kindness_ff_1 -.-> case_kindness_underpass
-  case_kindness_ff_2{{"help: The tide went out of the underpass over…"}}
-  case_kindness_underpass -.->|"stuck 4 days"| case_kindness_ff_2
-  case_kindness_ff_2 -.-> case_kindness_truth
-  case_kindness_ff_3{{"help: A note under your door: 'I'm sorry I di…"}}
-  case_kindness_truth -.->|"stuck 3 days"| case_kindness_ff_3
-  case_kindness_ff_3 -.-> case_kindness_decide
 ```
 
 ## case_index — The Index
@@ -164,10 +131,8 @@ flowchart LR
   case_radio_return["return<br/>Tell Jonah the radio was delivered (aft…"]
   case_radio_deliver --> case_radio_return
   case_radio_out_delivered(["outcome: delivered<br/>Delivered. Jonah gave you a 1…"])
+  case_radio_out_late(["outcome: late<br/>You never brought the radio. …"])
   case_radio_START(("start")) --> case_radio_deliver
-  case_radio_ff_0{{"help: Mrs Halloway got tired of waiting and c…"}}
-  case_radio_deliver -.->|"stuck 2 days"| case_radio_ff_0
-  case_radio_ff_0 -.-> case_radio_return
 ```
 
 ## case_quiet — Greyford Keeps Quiet
@@ -229,8 +194,6 @@ flowchart LR
   case_bell_out_waiting(["outcome: waiting<br/>You told Rosalind that Jonah …"])
   case_bell_out_home(["outcome: home<br/>You told Rosalind to go home …"])
   case_bell_START(("start")) --> case_bell_parts
-  case_bell_ff_0{{"help: Jonah left a note: 'Found a relay at a …"}}
-  case_bell_parts -.->|"stuck 3 days"| case_bell_ff_0
 ```
 
 ## case_letters — Letters to No One
@@ -258,13 +221,8 @@ flowchart LR
   case_lighthouse_registry --> case_lighthouse_answer
   case_lighthouse_out_remembered(["outcome: remembered<br/>You told Hester about the Mar…"])
   case_lighthouse_out_rested(["outcome: rested<br/>You told Hester it was a faul…"])
+  case_lighthouse_out_missed(["outcome: missed<br/>You never came to watch. The …"])
   case_lighthouse_START(("start")) --> case_lighthouse_ask
-  case_lighthouse_ff_0{{"help: Hester pushed a page under your door: h…"}}
-  case_lighthouse_watch -.->|"stuck 2 days"| case_lighthouse_ff_0
-  case_lighthouse_ff_0 -.-> case_lighthouse_registry
-  case_lighthouse_ff_1{{"help: Mara found you a copy of the harbour re…"}}
-  case_lighthouse_registry -.->|"stuck 2 days"| case_lighthouse_ff_1
-  case_lighthouse_ff_1 -.-> case_lighthouse_answer
 ```
 
 Evidence that advances this case: `e_flash_count`, `e_ship_register`
