@@ -689,3 +689,87 @@ func test_enemy_variants_are_data() -> void:
 	add_child(e)
 	check(e.max_health == 1 and is_equal_approx(e.sprite.scale.x, 0.8), "clinger stats come from data")
 	e.queue_free()
+
+
+# --- M7: campaign -------------------------------------------------------------------
+
+func test_campaign_acts_start_in_order() -> void:
+	GameState.reset_for_new_game()
+	GameState.is_playing = true
+	Campaign.check()
+	check(Campaign.current_act() == &"prologue", "a new game is in the prologue")
+	check(not Campaign.has_started(&"act1"), "act I waits for the door")
+	Journal.start_case(&"case_door")
+	Journal.complete_case(&"case_door", &"opened")
+	Campaign.check()
+	check(Campaign.current_act() == &"act1", "closing the door case starts act I")
+	check(Journal.case_status(&"case_two_maps") == Journal.STATUS_ACTIVE, "act I opens its main case")
+	Campaign.check()
+	check(Journal.case_status(&"case_two_maps") == Journal.STATUS_ACTIVE and Campaign.current_act() == &"act1", "checking again changes nothing")
+	Journal.complete_case(&"case_two_maps", &"kept")
+	Campaign.check()
+	check(Campaign.current_act() == &"act2" and Journal.case_status(&"case_misplaced") == Journal.STATUS_ACTIVE, "act II follows act I")
+	for i in 3:
+		Campaign.check()
+	check(Campaign.current_act() == &"act2", "planned acts never start")
+	GameState.is_playing = false
+	GameState.reset_for_new_game()
+
+
+func test_campaign_data_is_consistent() -> void:
+	var ids := {}
+	for a: Dictionary in Campaign.acts:
+		check(not ids.has(a["id"]), "act %s is unique" % a["id"])
+		ids[a["id"]] = true
+		for k in ["title", "subtitle"]:
+			check(tr(String(a[k])) != String(a[k]), "%s %s translated" % [a["id"], k])
+	check(Campaign.acts.size() == 6 and Campaign.acts[0]["id"] == "prologue", "prologue plus five acts")
+
+
+func test_act_one_incidents_lead_to_the_map() -> void:
+	GameState.reset_for_new_game()
+	Journal.start_case(&"case_two_maps")
+	Journal.start_case(&"case_storeroom")
+	Journal.start_case(&"case_larger_house")
+	check(not Journal.can_form(&"incidents_share_mark"), "one incident is not a pattern")
+	Journal.add_evidence(&"e_storeroom_mark")
+	check(Journal.case_stage(&"case_storeroom") == &"tell", "the stencil advances the storeroom")
+	Journal.add_evidence(&"e_house_longer")
+	Journal.add_evidence(&"e_house_mark")
+	check(Journal.case_stage(&"case_larger_house") == &"tell", "the bed advances the house")
+	check(Journal.form_hypothesis(&"incidents_share_mark"), "two marked incidents form the pattern")
+	check(Journal.case_stage(&"case_two_maps") == &"map", "the pattern points to the map")
+	Journal.add_evidence(&"e_two_maps")
+	check(Journal.case_stage(&"case_two_maps") == &"hand", "the map asks whose hand")
+	check(not Journal.can_form(&"halloway_drew_map") or Journal.has_evidence(&"e_landlord_note"), "the hand needs a sample")
+	Journal.add_evidence(&"e_rent_book")
+	check(Journal.form_hypothesis(&"halloway_drew_map") and Journal.case_stage(&"case_two_maps") == &"turn", "handwriting identified")
+	GameState.reset_for_new_game()
+
+
+func test_act_one_fail_forward_never_blocks() -> void:
+	GameState.reset_for_new_game()
+	Journal.start_case(&"case_two_maps")
+	Journal.set_case_stage(&"case_two_maps", &"map")
+	for i in 3:
+		WorldClock.sleep_until_hour(7)
+	check(Journal.has_evidence(&"e_two_maps") and Journal.case_stage(&"case_two_maps") == &"hand", "Theo brings the map")
+	for i in 2:
+		WorldClock.sleep_until_hour(7)
+	check(Journal.case_stage(&"case_two_maps") == &"turn", "Mara recognises the hand")
+	Journal.start_case(&"case_storeroom")
+	for i in 3:
+		WorldClock.sleep_until_hour(7)
+	check(Journal.case_stage(&"case_storeroom") == &"tell", "Jonah photographs the crate")
+	GameState.reset_for_new_game()
+
+
+func test_closed_cases_do_not_replay_their_last_stage() -> void:
+	GameState.reset_for_new_game()
+	Journal.start_case(&"case_radio")
+	Journal.set_case_stage(&"case_radio", &"return")
+	check(StoryRules.evaluate({"quest_stage": ["case_radio", "return"]}), "stage matches while open")
+	Journal.complete_case(&"case_radio", &"delivered")
+	check(not StoryRules.evaluate({"quest_stage": ["case_radio", "return"]}), "a closed case is at no stage")
+	check(DialogueService.entry_node(DialogueService.dialogues[&"jonah"]) != "reward1", "Jonah does not pay the radio reward twice")
+	GameState.reset_for_new_game()

@@ -83,7 +83,7 @@
   {"kind": "prop", "name": "MissingPoster", "tex": "@subway/Single_Poster.png", "x": 430, "y": 238, "col": [0, 0], "off": [0, 0], "color": "#e0e0e0", "show_if": {"remembers": ["jonah_rook", "told_truth_about_rosalind"]}},
   {"kind": "inspect", "name": "MissingPosterRead", "id": "read_missing_poster", "x": 430, "y": 244, "area": [18, 12], "prompt": "PROMPT_READ", "dialogue": "missing_poster", "show_if": {"remembers": ["jonah_rook", "told_truth_about_rosalind"]}},
   {"kind": "inspect", "name": "HardwareDoor", "id": "inspect_rook_repairs", "x": 464, "y": 246, "area": [40, 14], "dialogue": "rook_shop", "prompt": "PROMPT_READ"},
-  {"kind": "inspect", "name": "YellowCondoDoor", "id": "inspect_condo_yellow", "x": 576, "y": 246, "area": [30, 14], "dialogue": "yellow_condo"},
+  {"kind": "inspect", "name": "YellowCondoDoor", "id": "inspect_condo_yellow", "x": 568, "y": 246, "area": [18, 14], "dialogue": "yellow_condo"},
   {"kind": "inspect", "name": "InfoSignRead", "id": "inspect_quarter_sign", "x": 290, "y": 252, "area": [18, 14], "prompt": "PROMPT_READ", "lines": ["QUARTER_SIGN_1", "QUARTER_SIGN_2"]},
   {"kind": "inspect", "name": "FountainLook", "id": "inspect_fountain", "x": 328, "y": 238, "area": [34, 12], "lines": ["FOUNTAIN_1"]},
   {"kind": "inspect", "name": "ImpossibleDoorUse", "id": "veil_door_plaza", "x": 324, "y": 152, "area": [20, 14], "priority": 20, "dialogue": "veil_door", "show_if": {"not_flag": "door.vanished", "all": [{"not_flag": "door.reported"}]}},
@@ -106,6 +106,12 @@
   {"kind": "anchor", "name": "A_park_bench_east", "id": "park_bench_east", "x": 558, "y": 412},
   {"template": "sign", "tex": "@beach/Direction_Pole_Small.png", "x": 30, "y": 80, "id": "read_point_steps_sign", "name": "PointStepsSign", "lines": ["POINT_STEPS_SIGN"], "color": "#9a7a50"},
   {"kind": "door", "name": "PointSteps", "id": "door_greyford_point", "x": 8, "y": 84, "area": [16, 24], "scene": "lighthouse_point", "spawn": "from_greyford", "prompt": "PROMPT_TO_POINT"},
-  {"kind": "spawn", "name": "PointStepsArrival", "id": "point_steps", "x": 24, "y": 100, "facing": [1, 0]}
+  {"kind": "spawn", "name": "PointStepsArrival", "id": "point_steps", "x": 24, "y": 100, "facing": [1, 0]},
+  {"kind": "door", "name": "TheoDoor", "id": "door_theo_flat", "x": 590, "y": 250, "area": [14, 14], "scene": "theo_flat", "spawn": "from_street", "prompt": "PROMPT_THEO_DOOR", "show_if": {"flag": "met.theo_marsh"}},
+  {"kind": "spawn", "name": "TheoFront", "id": "theo_front", "x": 590, "y": 266, "facing": [0, 1]},
+  {"kind": "anchor", "name": "A_theo_door", "id": "theo_door", "x": 610, "y": 264},
+  {"kind": "door", "name": "StoreroomDoor", "id": "door_rook_storeroom", "x": 422, "y": 250, "area": [14, 14], "scene": "rook_storeroom", "spawn": "entrance", "prompt": "PROMPT_STOREROOM", "show_if": {"all": [{"quest_active": "case_storeroom"}, {"period": ["evening", "night"]}]}},
+  {"kind": "inspect", "name": "StoreroomWall", "id": "inspect_storeroom_wall", "x": 422, "y": 250, "area": [14, 14], "lines": ["STOREROOM_WALL_DAY"], "show_if": {"all": [{"quest_active": "case_storeroom"}, {"period": ["morning", "afternoon"]}]}},
+  {"kind": "spawn", "name": "StoreroomFront", "id": "storeroom_front", "x": 422, "y": 266, "facing": [0, 1]}
  ]
 }

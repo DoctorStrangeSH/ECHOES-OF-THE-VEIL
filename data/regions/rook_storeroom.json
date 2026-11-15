@@ -1,0 +1,23 @@
+{
+ "id": "rook_storeroom",
+ "name_key": "LOC_ROOK_STOREROOM",
+ "palette": "echo_corridor",
+ "options": {"outdoors": false, "combat_enabled": true, "fixed_tint": {"color": [0.86, 0.8, 0.7, 1.0]}, "enter_dialogue_id": "storeroom_enter", "enter_condition": {"not_flag": "storeroom.entered"}},
+ "layout": {"generator": "room", "width": 16, "height": 11, "door_x": 7},
+ "nodes": [
+  {"template": "row", "prop": {"tex": "@basement/64.png", "color": "#8a6a40", "col": [28, 10], "off": [0, -5]}, "at": {"xs": [40, 88, 168, 216], "y": 64}, "name": "Rack"},
+  {"template": "scatter", "tex": "@basement/41.png", "name": "Boxes", "points": [[48, 120], [200, 104]], "color": "#b08a50", "col": [28, 10]},
+  {"kind": "prop", "name": "BoxStack", "tex": "@basement/41.png", "x": 120, "y": 80, "col": [28, 12], "off": [0, -6], "color": "#b08a50"},
+  {"kind": "prop", "name": "Barrel", "tex": "@basement/16.png", "x": 232, "y": 140, "col": [12, 8], "off": [0, -4], "color": "#7a5a3a"},
+  {"kind": "prop", "name": "StencilCrate", "tex": "@basement/43.png", "x": 176, "y": 136, "col": [28, 10], "off": [0, -5], "color": "#a07a40"},
+  {"kind": "inspect", "name": "StencilLook", "id": "inspect_storeroom_crate", "x": 176, "y": 146, "area": [30, 12], "dialogue": "storeroom_crate", "show_if": {"flag": "storeroom.cleared"}},
+  {"kind": "prop", "name": "Ledger", "tex": "@basement/44.png", "x": 72, "y": 144, "col": [28, 10], "off": [0, -5], "color": "#a07a40"},
+  {"kind": "inspect", "name": "LedgerLook", "id": "inspect_storeroom_ledger", "x": 72, "y": 154, "area": [30, 12], "dialogue": "storeroom_ledger", "show_if": {"flag": "storeroom.cleared"}},
+  {"kind": "enemy", "name": "Hollow1", "id": "storeroom_hollow", "x": 128, "y": 120},
+  {"kind": "enemy", "name": "Clinger1", "id": "storeroom_clinger_1", "x": 72, "y": 104, "variant": "clinger"},
+  {"kind": "enemy", "name": "Clinger2", "id": "storeroom_clinger_2", "x": 200, "y": 128, "variant": "clinger"},
+  {"kind": "encounter", "flag": "storeroom.cleared"},
+  {"kind": "spawn", "name": "Entrance", "id": "entrance", "x": 128, "y": 154, "facing": [0, -1]},
+  {"kind": "door", "name": "WayBack", "id": "door_storeroom_exit", "x": 128, "y": 164, "area": [30, 10], "scene": "greyford_block", "spawn": "storeroom_front", "prompt": "PROMPT_LEAVE_ECHO"}
+ ]
+}

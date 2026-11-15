@@ -45,6 +45,11 @@ Decisions are recorded with date, status, and rationale. Revisit only when evide
 | D-039 | Content is validated by a Python tool in CI before Godot runs; dialogue and case graphs are generated as Mermaid and checked for freshness. | Accepted | Fast feedback for writers; reviewable on GitHub without the game. |
 | D-040 | Per-location budgets (nodes, props, tiles, NPCs, enemies, instancing time) are data and enforced by tests. | Accepted | Keeps regions cheap as content scales. |
 | D-041 | Translation round-trips through CSV (`tools/loc.py`); imports refuse placeholder mismatches. | Accepted | Translators work in spreadsheets; format bugs are caught at import. |
+| D-042 | The campaign spine is data (`data/story/campaign.json`): acts start in order once their condition holds; the current act is derived from `act.<id>` flags, so no save migration is needed. Unwritten acts are `planned` and never start. | Accepted | Each stage ships playable; old saves start the new act on load. |
+| D-043 | Acts are built and merged one at a time (M7a–M7f, `docs/production/campaign-plan.md`). | Accepted | Keeps every merge playable end to end. |
+| D-044 | `quest_stage` as a condition is true only while the case is open. | Accepted | Closed cases keep their last stage; matching it re-ran Jonah's radio reward on every conversation (money and relationship exploit). |
+| D-045 | A dialogue entry that ends the conversation without changing anything is a validation error. | Accepted | It hid Jonah's and Mara's hubs (shop, jobs, new cases) while a delivery was pending. |
+| D-046 | The lighthouse keeper is renamed Hester Ashby. | Accepted | "Wren" is Director Elias Wren in the story bible. |
 
 ## Open questions
 

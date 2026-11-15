@@ -1,0 +1,36 @@
+{
+ "_doc": "Act I (M7). Same format as npcs.json.",
+ "theo_marsh": {
+  "name": "NPC_THEO",
+  "premade": "Premade_Character_09",
+  "color": "#8a8a7a",
+  "dialogue": "theo",
+  "factions": [],
+  "schedule": [
+   {
+    "period": "morning",
+    "scene": "greyford_block",
+    "anchor": "park_bench_west",
+    "facing": "down"
+   },
+   {
+    "period": "afternoon",
+    "scene": "greyford_block",
+    "anchor": "theo_door",
+    "facing": "left"
+   },
+   {
+    "period": [
+     "evening",
+     "night"
+    ],
+    "if": {
+     "flag": "met.theo_marsh"
+    },
+    "scene": "theo_flat",
+    "anchor": "armchair",
+    "facing": "down"
+   }
+  ]
+ }
+}

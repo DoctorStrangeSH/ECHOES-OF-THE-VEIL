@@ -72,6 +72,9 @@ func _set_tab(tab: String) -> void:
 
 func _refresh() -> void:
 	_title.text = tr("JOURNAL_TITLE")
+	var act_key := Campaign.current_title_key()
+	if act_key != "":
+		_title.text += "  ·  " + tr(act_key)
 	_hint.text = tr("JOURNAL_CLOSE_HINT")
 	(_tabs.get_child(0) as Button).text = tr("JOURNAL_TAB_CASES")
 	(_tabs.get_child(1) as Button).text = tr("JOURNAL_TAB_PEOPLE")
