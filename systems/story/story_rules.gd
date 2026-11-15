@@ -8,6 +8,7 @@ extends RefCounted
 ##   {"background": "courier"}  {"evidence": "id"}  {"not_evidence": "id"}
 ##   {"hypothesis": "id"}  {"not_hypothesis": "id"}
 ##   {"companion": "id" | ""}  {"can_join": "id"}
+##   {"quest_outcome": ["id", "outcome"]}
 ##   {"quest_active": "id"}  {"quest_done": "id"}  {"quest_stage": ["id", "stage"]} (open cases only)
 ##   {"not_quest_started": "id"}
 ##   {"period": "night" | ["morning", "afternoon"]}  {"weather": "rain"}
@@ -23,8 +24,9 @@ extends RefCounted
 ##   {"relationship": ["npc", delta]}  {"remember": ["npc", "event"]}
 ##   {"toast": "KEY"}  {"advance_minutes": n}  {"sleep_until_hour": h}  {"wait_until_hour": h}
 ##   {"save_game": true}  {"travel": ["scene_id", "spawn_id"]}  {"heal_player": true}
-##   {"give_item": ["id", n]}  {"take_item": ["id", n]}  {"give_money": n}  {"spend_money": n}
+##   {"give_item": "id" | ["id", n]}  {"take_item": "id" | ["id", n]}  {"give_money": n}  {"spend_money": n}
 ##   {"open_screen": "shop:jonah" | "jobs" | "workbench" | "business"}
+##   {"first_match": [{"if": cond, "do": [effects]}, ...]}  (first branch that holds)
 ##   {"companion": "id" | ""}  (recruit a companion / send them home)
 ##   {"give_resonance": n}  {"faction": ["keepers", delta]}  {"tell": ["npc", "fact"]}  {"publish": "fact"}
 
@@ -74,6 +76,9 @@ static func _check(key: String, arg: Variant) -> bool:
 			return Party.companion == StringName(arg)
 		"can_join":
 			return Party.can_join(StringName(arg))
+		"quest_outcome":  # ["case", "outcome"]: closed with that outcome
+			return Journal.case_status(StringName(arg[0])) == Journal.STATUS_DONE \
+				and StringName(Journal.cases.get(StringName(arg[0]), {}).get("outcome", &"")) == StringName(arg[1])
 		"quest_stage":  # only while the case is open: a closed case keeps its last stage
 			return Journal.case_status(StringName(arg[0])) == Journal.STATUS_ACTIVE \
 				and Journal.case_stage(StringName(arg[0])) == StringName(arg[1])
@@ -137,6 +142,11 @@ static func apply(effects: Variant) -> void:
 
 static func _apply_one(key: String, arg: Variant, whole: Dictionary) -> void:
 	match key:
+		"first_match":  # [{"if": cond, "do": [effects]}, ...]: runs the first branch whose if holds
+			for branch: Dictionary in arg:
+				if evaluate(branch.get("if")):
+					apply(branch.get("do", []))
+					break
 		"set_flag":
 			GameState.set_flag(StringName(arg), whole.get("value", true))
 		"clear_flag":
@@ -168,10 +178,12 @@ static func _apply_one(key: String, arg: Variant, whole: Dictionary) -> void:
 			SceneFlow.travel(StringName(arg[0]), StringName(arg[1]))
 		"heal_player":
 			EventHub.player_heal_requested.emit()
-		"give_item":
-			Inventory.add(StringName(arg[0]), int(arg[1]) if arg.size() > 1 else 1)
+		"give_item":  # "id" or ["id", n]
+			var g: Array = arg if arg is Array else [arg]
+			Inventory.add(StringName(g[0]), int(g[1]) if g.size() > 1 else 1)
 		"take_item":
-			Inventory.remove(StringName(arg[0]), int(arg[1]) if arg.size() > 1 else 1)
+			var t: Array = arg if arg is Array else [arg]
+			Inventory.remove(StringName(t[0]), int(t[1]) if t.size() > 1 else 1)
 		"give_money":
 			Inventory.add_money(int(arg))
 		"spend_money":

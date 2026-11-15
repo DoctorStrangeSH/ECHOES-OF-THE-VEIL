@@ -24,6 +24,8 @@ const FLASH_COOLDOWN := 6.0
 
 @export var walk_speed: float = 72.0
 @export var sprint_speed: float = 118.0
+## Set by hazards such as flood water (1.0 = normal).
+var wading := 1.0
 @export var acceleration: float = 900.0
 @export var friction: float = 1200.0
 ## Distance in front of the feet where the interaction sensor sits.
@@ -128,6 +130,7 @@ func _physics_process(delta: float) -> void:
 	if _action_anim_time > 0.0:
 		_action_anim_time -= delta
 		speed *= 0.35  # committed to the swing
+	speed *= wading
 
 	if _dodge_time > 0.0:
 		_dodge_time -= delta

@@ -1,0 +1,134 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/location.gd" id="1_loc"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2_paint"]
+[ext_resource type="PackedScene" path="res://scenes/props/world_prop.tscn" id="3_prop"]
+[ext_resource type="Script" path="res://scripts/world/spawn_point.gd" id="4_spawn"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="5_inspect"]
+[ext_resource type="Script" path="res://scripts/interaction/door_interactable.gd" id="6_door"]
+[ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
+[ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+[ext_resource type="Script" path="res://scripts/world/conditional_visibility.gd" id="10_cond"]
+[ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
+[ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
+[ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+[ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
+[ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
+[ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
+[ext_resource type="PackedScene" path="res://scenes/world/repair_spot.tscn" id="17_spot"]
+[ext_resource type="PackedScene" path="res://scenes/world/screen_interactable.tscn" id="18_screen"]
+[ext_resource type="PackedScene" path="res://scenes/world/junk_pile.tscn" id="19_junk"]
+[ext_resource type="PackedScene" path="res://scenes/combat/archivist.tscn" id="20_boss_archivist"]
+
+[node name="UnderpassArchive" type="Node2D"]
+script = ExtResource("1_loc")
+location_id = &"underpass_archive"
+name_key = "LOC_UNDERPASS_ARCHIVE"
+outdoors = false
+combat_enabled = true
+fixed_tint = Color(0.72, 0.82, 1.0, 1.0)
+enter_dialogue_id = &"archivist_enter"
+enter_condition = {"not_flag": "boss.archivist.defeated", "not_evidence": "e_archivist_seen"}
+
+[node name="Ground" type="TileMapLayer" parent="."]
+script = ExtResource("2_paint")
+palette_id = "underpass"
+layout = "############################
+############################
+gggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggg
+############################"
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="NpcAnchors" type="Node2D" parent="."]
+
+[node name="FilesWest" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(96, 190)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_41.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.690,0.541,0.314, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="FilesNorth" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(224, 116)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_41.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.690,0.541,0.314, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="FilesEast" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(352, 190)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_41.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.690,0.541,0.314, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Gate" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(28, 152)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Turnstile_Closed.png"
+placeholder_size = Vector2i(32, 64)
+placeholder_color = Color(0.376,0.376,0.439, 1)
+collision_size = Vector2(28, 40)
+collision_offset = Vector2(0, -20)
+
+[node name="Condition" type="Node" parent="Entities/Gate"]
+script = ExtResource("10_cond")
+show_if = {"flag": "boss.archivist.engaged", "not_flag": "boss.archivist.defeated"}
+
+[node name="Archivist" parent="Entities" instance=ExtResource("20_boss_archivist")]
+position = Vector2(224, 136)
+
+[node name="BossArena" type="Area2D" parent="."]
+position = Vector2(224, 136)
+script = ExtResource("15_arena")
+boss_path = NodePath("../Entities/Archivist")
+engaged_flag = &"boss.archivist.engaged"
+area_size = Vector2(370, 180)
+
+[node name="ResonatorLook" type="Area2D" parent="Entities"]
+position = Vector2(224, 140)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_resonator"
+area_size = Vector2(30, 16)
+interaction_priority = 30
+dialogue_id = &"resonator_found"
+
+[node name="Condition" type="Node" parent="Entities/ResonatorLook"]
+script = ExtResource("10_cond")
+show_if = {"flag": "boss.archivist.defeated", "not_evidence": "e_resonator"}
+
+[node name="FromHall" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(20, 136)
+script = ExtResource("4_spawn")
+spawn_id = &"from_hall"
+facing = Vector2(1, 0)
+
+[node name="WayBack" type="Area2D" parent="Entities"]
+position = Vector2(5, 136)
+script = ExtResource("6_door")
+interaction_id = &"door_archive_hall"
+area_size = Vector2(10, 30)
+prompt_key = "PROMPT_LEAVE_ECHO"
+target_scene_id = &"flooded_underpass"
+target_spawn_id = &"from_archive"

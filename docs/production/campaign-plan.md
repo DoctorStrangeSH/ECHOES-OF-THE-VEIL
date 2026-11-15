@@ -10,8 +10,8 @@ The spine is data: `data/story/campaign.json` lists the acts, the condition that
 |---|---|---|
 | M7a | Campaign spine, act cards; **Act I** complete | done |
 | M7b | **Act II** — the Echo Ward, companions, the Conductor, Rosalind found | done |
-| M7c | **Act III** — the Keepers' pact; the ally who knew | next |
-| M7d | **Act IV** — the Index: three memory-sites, Meridian | |
+| M7c | **Act III** — the Keepers' pact, North Quay, the Archivist of Floods, the ally who knew | done |
+| M7d | **Act IV** — the Index: three memory-sites, Meridian | next |
 | M7e | **Act V** — the anchor; endings and epilogues | |
 | M7f | Campaign pass: balance, fail-forward audit, full playthrough tests | |
 
@@ -55,7 +55,11 @@ Original plan:
 
 **Companions begin:** Jonah and Mara can accompany the player in the Ward (follower + one combat/utility ability each, a camp conversation per act). Companion approval is the existing relationship value; milestones gate personal quests.
 
-## Act III — A Kindness Built on a Lie (M7c)
+## Act III — A Kindness Built on a Lie (M7c, built)
+
+As built: starts when Act II closes; the campaign picks the **ally who knew** at that moment with `first_match` — Mara if *The Eleventh House* was sealed, else Mrs Halloway if her map was kept secret, else Ivo. Stairs appear in the municipal archive down to **the Keepers' rooms** (the Seal Engine; the pact: every echo half-shut forever). **North Quay** opens at the east end of the promenade: Nadiya explains the Open Hand's plan, Dr Vale wants Meridian's resonator back. The **flooded underpass** holds the 1962 records the flood supposedly destroyed (hypothesis *The flood was the cover story*), then **the Archivist of Floods**: the arena floods in cycles, stacks of files are dry islands, water slows you and deep water hurts; he can only be hit on the surface. The confession (stays if they are your friend, walks out otherwise), then the resonator at the Seal Engine: Keepers (seal holds), Open Hand (the Ward will open), Meridian (£60), or break it. Faction swings of ±3.
+
+Original plan:
 
 **Region:** **North Quay** (industrial waterfront; Meridian's research annex) and the Keepers' rooms beneath the old Custodians' hall.
 

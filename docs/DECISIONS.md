@@ -53,6 +53,8 @@ Decisions are recorded with date, status, and rationale. Revisit only when evide
 | D-047 | One companion at a time (`Party`, `data/characters/companions.json`); a companion leaves their schedule and follows as an Npc with a `Follower` brain; one ability each (Jonah: patch up; Mara: pin). Save schema 6 adds `party`. | Accepted | Smallest party model that supports the bible's companions and per-act camp talk. |
 | D-048 | Bosses are any node with `engage()` and a `health`; the region generator takes a boss `scene`. | Accepted | Second boss without copying the arena code. |
 | D-049 | Act II fail-forward can open the depot without the boss fight after four days. | Accepted | Story bible §11: nothing critical is gated behind combat skill. |
+| D-050 | Conditional effects (`first_match`) and `quest_outcome` conditions; `give_item`/`take_item` accept a bare id. | Accepted | Lets the campaign choose the Act III confessor from earlier endings in data. |
+| D-051 | Hazards slow the player through `Player.wading`; flood water is a drawn overlay, not tiles. | Accepted | The water level must move every few seconds. |
 
 ## Open questions
 

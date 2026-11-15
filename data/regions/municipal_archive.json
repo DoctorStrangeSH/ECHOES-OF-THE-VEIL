@@ -34,6 +34,9 @@
   {"kind": "door", "name": "WayOut", "id": "door_archive_exit", "x": 176, "y": 196, "area": [30, 10], "scene": "greyford_block", "spawn": "archive_front", "prompt": "PROMPT_EXIT"},
   {"kind": "inspect", "name": "CabinetUse", "id": "inspect_census_cabinet", "x": 200, "y": 72, "area": [22, 12], "priority": 20, "dialogue": "census_cabinet"},
   {"kind": "inspect", "name": "ShelvesLook", "id": "inspect_archive_shelves", "x": 96, "y": 148, "area": [30, 10], "dialogue": "archive_shelves"},
-  {"kind": "anchor", "name": "A_desk", "id": "desk", "x": 190, "y": 108}
+  {"kind": "anchor", "name": "A_desk", "id": "desk", "x": 190, "y": 108},
+  {"kind": "prop", "name": "StairsDown", "tex": "@basement/240.png", "x": 40, "y": 160, "col": [0, 0], "off": [0, 0], "color": "#4a3a30", "show_if": {"flag": "act.act3"}},
+  {"kind": "door", "name": "KeepersStairs", "id": "door_archive_keepers", "x": 40, "y": 170, "area": [20, 14], "scene": "keepers_rooms", "spawn": "stairs", "prompt": "PROMPT_STAIRS_DOWN", "show_if": {"flag": "act.act3"}},
+  {"kind": "spawn", "name": "KeepersReturn", "id": "keepers_return", "x": 64, "y": 176, "facing": [1, 0]}
  ]
 }

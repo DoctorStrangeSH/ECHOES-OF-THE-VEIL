@@ -775,3 +775,22 @@ position = Vector2(572, 92)
 script = ExtResource("4_spawn")
 spawn_id = &"ward_return"
 facing = Vector2(0, 1)
+
+[node name="QuayPath" type="Area2D" parent="Entities"]
+position = Vector2(634, 76)
+script = ExtResource("6_door")
+interaction_id = &"door_greyford_quay"
+area_size = Vector2(12, 24)
+prompt_key = "PROMPT_TO_QUAY"
+target_scene_id = &"north_quay"
+target_spawn_id = &"from_greyford"
+
+[node name="Condition" type="Node" parent="Entities/QuayPath"]
+script = ExtResource("10_cond")
+show_if = {"flag": "act.act3"}
+
+[node name="QuayReturn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(616, 78)
+script = ExtResource("4_spawn")
+spawn_id = &"quay_return"
+facing = Vector2(-1, 0)

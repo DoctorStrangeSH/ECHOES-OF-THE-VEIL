@@ -625,6 +625,13 @@
       "next": "refuse"
      },
      {
+      "text": "VALE_ASK_RESONATOR",
+      "if": {
+       "quest_active": "case_kindness"
+      },
+      "next": "res"
+     },
+     {
       "text": "BYE",
       "next": null
      }
@@ -643,6 +650,11 @@
    "refuse": {
     "speaker": "NPC_VALE",
     "text": "VALE_REFUSE_1",
+    "next": "hub"
+   },
+   "res": {
+    "speaker": "NPC_VALE",
+    "text": "VALE_RESONATOR",
     "next": "hub"
    }
   }
@@ -972,7 +984,29 @@
     "speaker": "NPC_MARA",
     "text": "CAMP_MARA_HOME",
     "next": null
+   },
+   "not_here": {
+    "speaker": "NPC_MARA",
+    "text": "CAMP_MARA_NOT_HERE",
+    "effects": [
+     {
+      "companion": ""
+     }
+    ],
+    "next": null
    }
-  }
+  },
+  "entries": [
+   {
+    "if": {
+     "quest_stage": [
+      "case_kindness",
+      "truth"
+     ],
+     "flag": "act3.confessor_mara"
+    },
+    "node": "not_here"
+   }
+  ]
  }
 }

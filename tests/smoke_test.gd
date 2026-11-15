@@ -268,6 +268,61 @@ func _ready() -> void:
 	await _wait_location(&"greyford_block")
 	WorldClock.wait_until_hour(9)
 
+	_step = "act III: a kindness built on a lie"
+	await _frames(10)
+	_assert(Campaign.current_act() == &"act3" and Journal.case_stage(&"case_kindness") == &"pact", "act III begins")
+	await _wait_card()
+	SceneFlow.travel(&"keepers_rooms", &"stairs")
+	await _wait_location(&"keepers_rooms")
+	await _frames(10)
+	await _finish_dialogue()
+	_assert(Journal.case_stage(&"case_kindness") == &"quay", "the pact explained")
+	SceneFlow.travel(&"north_quay", &"from_greyford")
+	await _wait_location(&"north_quay")
+	await _frames(10)
+	await _talk(&"nadiya", {"npc": &"nadiya_sol"}, ["NADIYA_ASK_PLAN"])
+	_assert(Journal.case_stage(&"case_kindness") == &"underpass", "the Open Hand's plan")
+	SceneFlow.travel(&"flooded_underpass", &"entrance")
+	await _wait_location(&"flooded_underpass")
+	await _frames(10)
+	await _finish_dialogue()
+	await _clear_enemies()
+	_assert(GameState.has_flag(&"underpass.cleared"), "underpass cleared")
+	SceneFlow.travel(&"underpass_archive", &"from_hall")
+	await _wait_location(&"underpass_archive")
+	await _frames(10)
+	await _finish_dialogue()
+	var archivist := _find_node_of(SceneFlow.current_location, "Archivist") as Archivist
+	_assert(archivist != null, "the Archivist waits")
+	if archivist != null:
+		archivist.engage()
+		for i in 900:
+			await _frames(4)
+			if not is_instance_valid(archivist) or archivist.state == Archivist.State.DEAD:
+				break
+			EventHub.player_heal_requested_amount.emit(5)  # this test is about the flow, not dodging
+			if not archivist.is_submerged():
+				archivist.health.take_damage(1, archivist.global_position + Vector2(12, 0))
+	await _frames(40)
+	_assert(GameState.has_flag(&"boss.archivist.defeated"), "the Archivist is beaten")
+	DialogueService.start(&"resonator_found")
+	await _finish_dialogue()
+	_assert(Inventory.count(&"resonator") == 1 and Journal.case_stage(&"case_kindness") == &"truth", "the resonator")
+	_assert(Journal.form_hypothesis(&"flood_was_a_cover"), "the flood was a cover")
+	var confessor := &"ivo"
+	if GameState.has_flag(&"act3.confessor_mara"):
+		confessor = &"mara"
+	elif GameState.has_flag(&"act3.confessor_halloway"):
+		confessor = &"halloway"
+	await _talk(confessor, {}, [])
+	_assert(Journal.case_stage(&"case_kindness") == &"decide", "the ally who knew (%s)" % confessor)
+	await _talk(&"seal_engine", {}, ["SEAL_BREAK"])
+	_assert(Journal.case_status(&"case_kindness") == Journal.STATUS_DONE and Inventory.count(&"resonator") == 0, "the resonator broken")
+	_assert(Campaign.current_act() == &"act3", "act IV is not out yet")
+	SceneFlow.travel(&"greyford_block", &"quay_return")
+	await _wait_location(&"greyford_block")
+	WorldClock.wait_until_hour(9)
+
 	_step = "work: jobs, repair, shop, workbench, stall"
 	var gr2 := get_child(0)
 	Inventory.money = 200
