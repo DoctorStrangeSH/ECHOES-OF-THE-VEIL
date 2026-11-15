@@ -124,6 +124,23 @@ flowchart LR
   case_kindness_ff_3 -.-> case_kindness_decide
 ```
 
+## case_index — The Index
+
+```mermaid
+flowchart LR
+  case_index_nodes["nodes<br/>Ask Dr Vale in the Ward what Meridian h…"]
+  case_index_sites["sites<br/>Three doors have opened at the bottom o…"]
+  case_index_index["index<br/>All three nights are put back together.…"]
+  case_index_vale["vale<br/>Decide what to say to Dr Vale."]
+  case_index_nodes --> case_index_sites
+  case_index_sites --> case_index_index
+  case_index_index --> case_index_vale
+  case_index_out_turned(["outcome: turned<br/>You showed Dr Vale the true n…"])
+  case_index_out_continued(["outcome: continued<br/>You told Dr Vale to finish he…"])
+  case_index_out_stopped(["outcome: stopped<br/>You handed Dr Vale's work to …"])
+  case_index_START(("start")) --> case_index_nodes
+```
+
 ## case_door — The Door That Shouldn't Be There
 
 ```mermaid

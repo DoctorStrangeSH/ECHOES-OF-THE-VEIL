@@ -42,7 +42,7 @@
 - testimony is consistent with each NPC's knowledge state;
 - choices have documented immediate and delayed consequences;
 - journal distinguishes fact, report, record, and hypothesis;
-- no critical progression depends on a single missable line.
+- no critical progression depends on a single missable line, and none advances by waiting (D-052).
 
 ## Playtest questions
 

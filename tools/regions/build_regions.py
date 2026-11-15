@@ -178,6 +178,8 @@ def write_tscn(path, loc_id, name_key, palette, layout, nodes, margin=0, opts=No
         elif k=='boss':
             bid = next(e[2] for e in ext if e[1] == n['scene']) if n.get('scene') else '14_boss'
             L+=[f'[node name="{n["name"]}" parent="Entities" instance=ExtResource("{bid}")]',f'position = {v(n["x"],n["y"])}']
+            for k, val in n.get('set', {}).items():  # per-instance exports, e.g. a boss's pattern
+                L.append(f'{k} = ' + (f'"{val}"' if isinstance(val, str) else json.dumps(val)))
         elif k=='arena':
             L+=[f'[node name="BossArena" type="Area2D" parent="."]',f'position = {v(n["x"],n["y"])}','script = ExtResource("15_arena")',
                 f'boss_path = NodePath("../Entities/{n["boss"]}")',f'engaged_flag = &"{n["flag"]}"',f'area_size = {v(*n["size"])}']

@@ -1,0 +1,21 @@
+{
+ "id": "memory_hospital",
+ "name_key": "LOC_MEMORY_HOSPITAL",
+ "palette": "echo_corridor",
+ "options": {"outdoors": false, "combat_enabled": true, "fixed_tint": {"color": [0.82, 0.95, 0.88, 1.0]}, "enter_dialogue_id": "hospital_enter", "enter_condition": {"not_flag": "memory_hospital.entered"}},
+ "layout": {"generator": "room", "width": 22, "height": 14, "door_x": 10},
+ "nodes": [
+  {"kind": "prop", "name": "FilingW", "tex": "@library/57.png", "x": 40, "y": 64, "color": "#6a6a60"},
+  {"kind": "prop", "name": "FilingE", "tex": "@library/71.png", "x": 312, "y": 64, "color": "#6a6a60"},
+  {"kind": "prop", "name": "Cot", "tex": "@bedroom/141.png", "x": 32, "y": 180, "col": [14, 40], "off": [0, -20], "color": "#d0d8d0"},
+  {"kind": "prop", "name": "Cot2", "tex": "@bedroom/141.png", "x": 320, "y": 180, "col": [14, 40], "off": [0, -20], "color": "#d0d8d0"},
+  {"kind": "inspect", "name": "Testimony1", "id": "inspect_t_nurse_log", "x": 96, "y": 76, "area": [30, 14], "dialogue": "t_nurse_log", "show_if": {"flag": "boss.matron.defeated"}},
+  {"kind": "inspect", "name": "Testimony2", "id": "inspect_t_admissions", "x": 176, "y": 76, "area": [30, 14], "dialogue": "t_admissions", "show_if": {"flag": "boss.matron.defeated"}},
+  {"kind": "inspect", "name": "Testimony3", "id": "inspect_t_doctor", "x": 256, "y": 76, "area": [30, 14], "dialogue": "t_doctor", "show_if": {"flag": "boss.matron.defeated"}},
+  {"kind": "boss", "name": "Reviser", "x": 176, "y": 124, "scene": "res://scenes/combat/reviser.tscn", "set": {"boss_id": "matron", "name_key": "BOSS_MATRON", "premade": "Premade_Character_13", "pattern": "rows", "summon_variant": "clinger"}},
+  {"kind": "arena", "boss": "Reviser", "flag": "boss.matron.engaged", "x": 176, "y": 124, "size": [288, 128]},
+  {"kind": "inspect", "name": "Reconstruct", "id": "inspect_recon_memory_hospital", "x": 176, "y": 124, "area": [40, 20], "dialogue": "recon_memory_hospital", "priority": 30, "show_if": {"flag": "boss.matron.defeated"}},
+  {"kind": "spawn", "name": "Entrance", "id": "entrance", "x": 176, "y": 196, "facing": [0, -1]},
+  {"kind": "door", "name": "WayBack", "id": "door_memory_hospital_exit", "x": 176, "y": 212, "area": [30, 10], "scene": "echo_ward", "spawn": "from_memory_hospital", "prompt": "PROMPT_LEAVE_MEMORY"}
+ ]
+}

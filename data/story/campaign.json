@@ -89,7 +89,14 @@
    "id": "act4",
    "title": "ACT_4",
    "subtitle": "ACT_4_SUB",
-   "planned": true
+   "begins_if": {
+    "quest_done": "case_kindness"
+   },
+   "effects": [
+    {
+     "quest_start": "case_index"
+    }
+   ]
   },
   {
    "id": "act5",

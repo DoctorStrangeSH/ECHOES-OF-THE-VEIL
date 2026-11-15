@@ -651,7 +651,7 @@ func test_location_budgets() -> void:
 				got["interactables"] += 1
 			elif n is Npc:
 				got["npcs"] += 1
-			elif n is EchoEnemy or n is CensusTaker or n is Conductor or n is Archivist:
+			elif n is EchoEnemy or n is CensusTaker or n is Conductor or n is Archivist or n is Reviser:
 				got["enemies"] += 1
 			elif n is TilePainter:
 				got["tiles"] += (n as TilePainter).layout.replace("\n", "").replace(" ", "").replace(".", "").length()
@@ -957,3 +957,77 @@ func test_act_three_never_blocks() -> void:
 		WorldClock.sleep_until_hour(7)
 	check(Journal.case_stage(&"case_kindness") == &"decide", "the decision is never withheld")
 	GameState.reset_for_new_game()
+
+
+# --- M7d: act IV, verdicts, the Reviser -----------------------------------------------
+
+func test_testimony_verdicts() -> void:
+	GameState.reset_for_new_game()
+	Journal.add_evidence(&"e_t_nurse_log")
+	StoryRules.apply([{"verdict": ["e_t_nurse_log", "authentic"]}])
+	check(Journal.verdict_of(&"e_t_nurse_log") == "authentic" and Journal.is_verdict_correct(&"e_t_nurse_log"), "judged, and right")
+	Journal.set_verdict(&"e_t_admissions", "authentic")
+	check(not Journal.is_verdict_correct(&"e_t_admissions"), "the register was edited")
+	check(not StoryRules.evaluate({"judged": ["e_t_nurse_log", "e_t_admissions", "e_t_doctor"]}), "not all judged")
+	Journal.set_verdict(&"e_t_doctor", "unreliable")
+	check(StoryRules.evaluate({"judged": ["e_t_nurse_log", "e_t_admissions", "e_t_doctor"]}), "all judged")
+	check(StoryRules.evaluate({"verdicts_correct_at_least": [["e_t_nurse_log", "e_t_admissions", "e_t_doctor"], 2]}), "two of three right")
+	Journal.set_verdict(&"e_t_doctor", "authentic")
+	check(not StoryRules.evaluate({"verdicts_correct_at_least": [["e_t_nurse_log", "e_t_admissions", "e_t_doctor"], 2]}), "verdicts can be changed")
+	var saved := Journal.to_dict()
+	Journal.reset()
+	Journal.from_dict(saved)
+	check(Journal.verdict_of(&"e_t_doctor") == "authentic", "verdicts are saved")
+	Journal.set_verdict(&"e_ward_census", "edited")
+	check(Journal.verdict_of(&"e_ward_census") == "", "only testimony can be judged")
+	GameState.reset_for_new_game()
+
+
+func test_every_testimony_has_a_truth() -> void:
+	for id: StringName in Journal.evidence_defs:
+		var d: Dictionary = Journal.evidence_defs[id]
+		if d.get("testimony", false):
+			check(Journal.VERDICTS.has(String(d.get("truth", ""))), "%s has a hidden truth" % id)
+
+
+func test_reconstruction_true_or_distorted() -> void:
+	for right in [true, false]:
+		GameState.reset_for_new_game()
+		Journal.start_case(&"case_index")
+		Journal.set_case_stage(&"case_index", &"sites")
+		for t in ["e_t_nurse_log", "e_t_admissions", "e_t_doctor"]:
+			Journal.add_evidence(StringName(t))
+			var truth := String(Journal.evidence_defs[StringName(t)]["truth"])
+			Journal.set_verdict(StringName(t), truth if right else ("edited" if truth != "edited" else "authentic"))
+		var d: Dictionary = DialogueService.dialogues[&"recon_memory_hospital"]
+		check(DialogueService.entry_node(d) == "r1", "the night can be put back together")
+		StoryRules.apply(d["nodes"]["r1"]["effects"])
+		check(GameState.has_flag(&"site.hospital.true") == right and GameState.has_flag(&"site.hospital.distorted") == (not right), "true night only with good verdicts")
+		check(Journal.case_stage(&"case_index") == &"sites", "one site is not enough")
+		check(DialogueService.entry_node(d) == "after", "a reconstruction is final")
+	GameState.reset_for_new_game()
+
+
+func test_act_four_has_no_free_progress() -> void:
+	GameState.reset_for_new_game()
+	Journal.start_case(&"case_index")
+	for i in 10:
+		WorldClock.sleep_until_hour(7)
+	check(Journal.case_stage(&"case_index") == &"nodes", "waiting changes nothing")
+	GameState.reset_for_new_game()
+
+
+func test_reviser_always_leaves_safe_cells() -> void:
+	for pattern in ["rows", "columns", "checker"]:
+		var r := (load("res://scenes/combat/reviser.tscn") as PackedScene).instantiate() as Reviser
+		r.pattern = pattern
+		add_child(r)
+		await get_tree().process_frame
+		for hp in [r.max_health, r.max_health / 2, 3]:
+			r.health.health = hp
+			for i in 4:
+				var cells := r.pick_cells()
+				check(cells.size() > 0 and cells.size() < r.cols * r.rows, "%s phase %d leaves safe cells" % [pattern, r.phase()])
+		r.stun(1.0)
+		r.grid.queue_free()
+		r.queue_free()

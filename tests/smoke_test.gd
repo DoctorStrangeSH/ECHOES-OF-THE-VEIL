@@ -318,8 +318,52 @@ func _ready() -> void:
 	_assert(Journal.case_stage(&"case_kindness") == &"decide", "the ally who knew (%s)" % confessor)
 	await _talk(&"seal_engine", {}, ["SEAL_BREAK"])
 	_assert(Journal.case_status(&"case_kindness") == Journal.STATUS_DONE and Inventory.count(&"resonator") == 0, "the resonator broken")
-	_assert(Campaign.current_act() == &"act3", "act IV is not out yet")
-	SceneFlow.travel(&"greyford_block", &"quay_return")
+	await _frames(10)
+	_assert(Campaign.current_act() == &"act4" and Journal.case_stage(&"case_index") == &"nodes", "act IV begins")
+	await _wait_card()
+
+	_step = "act IV: the index"
+	SceneFlow.travel(&"echo_ward", &"gate")
+	await _wait_location(&"echo_ward")
+	await _frames(10)
+	await _talk(&"vale", {"npc": &"sera_vale"}, ["VALE_ASK_NODES"])
+	_assert(Journal.case_stage(&"case_index") == &"sites", "Vale opens the sites")
+	_assert(_visible_in_location(&"HospitalDoor"), "memory doors in the Ward")
+	var sites := {"memory_hospital": ["t_nurse_log", "t_admissions", "t_doctor"], "memory_home": ["t_child_diary", "t_eviction", "t_neighbour"], "memory_station": ["t_station_log", "t_letter", "t_porter"]}
+	for site: String in sites:
+		SceneFlow.travel(StringName(site), &"entrance")
+		await _wait_location(StringName(site))
+		await _frames(10)
+		await _finish_dialogue()
+		var reviser := _find_node_of(SceneFlow.current_location, "Reviser") as Reviser
+		_assert(reviser != null, "%s: the revision waits" % site)
+		if reviser != null:
+			reviser.engage()
+			for i in 600:
+				await _frames(4)
+				if not is_instance_valid(reviser) or reviser.state == Reviser.State.DEAD:
+					break
+				EventHub.player_heal_requested_amount.emit(5)
+				reviser.health.take_damage(1, reviser.global_position + Vector2(12, 0))
+		await _frames(30)
+		var right := site != "memory_home"  # judge one site wrongly on purpose
+		for t: String in sites[site]:
+			var truth := String(Journal.evidence_defs[StringName("e_" + t)]["truth"])
+			var say := truth if right else ("edited" if truth != "edited" else "authentic")
+			await _talk(StringName(t), {}, ["VERDICT_SAY_" + say.to_upper()])
+		await _talk(StringName("recon_" + site), {}, [])
+		_assert(GameState.has_flag(StringName("site.%s.done" % site.trim_prefix("memory_"))), "%s put back together" % site)
+		SceneFlow.travel(&"echo_ward", StringName("from_" + site))
+		await _wait_location(&"echo_ward")
+		await _frames(5)
+	_assert(GameState.has_flag(&"site.hospital.true") and GameState.has_flag(&"site.home.distorted"), "verdicts decide each night")
+	_assert(Journal.case_stage(&"case_index") == &"index", "all three nights")
+	await _talk(&"alderman", {"npc": &"alderman_penhallow"}, ["ALD_INDEX"])
+	_assert(Journal.form_hypothesis(&"the_lattice"), "the Index is a prison made of remembrance")
+	await _talk(&"vale", {"npc": &"sera_vale"}, ["VALE_FINAL", "VALE_SHOW_TRUTH"])
+	_assert(Journal.case_status(&"case_index") == Journal.STATUS_DONE and GameState.has_flag(&"vale.turned"), "Vale turned")
+	_assert(Campaign.current_act() == &"act4", "act V is not out yet")
+	SceneFlow.travel(&"greyford_block", &"ward_return")
 	await _wait_location(&"greyford_block")
 	WorldClock.wait_until_hour(9)
 

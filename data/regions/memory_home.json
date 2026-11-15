@@ -1,0 +1,21 @@
+{
+ "id": "memory_home",
+ "name_key": "LOC_MEMORY_HOME",
+ "palette": "rented_room",
+ "options": {"outdoors": false, "combat_enabled": true, "fixed_tint": {"color": [1.0, 0.9, 0.8, 1.0]}, "enter_dialogue_id": "home_enter", "enter_condition": {"not_flag": "memory_home.entered"}},
+ "layout": {"generator": "room", "width": 22, "height": 14, "door_x": 10},
+ "nodes": [
+  {"kind": "prop", "name": "Dresser", "tex": "@living/55.png", "x": 40, "y": 64, "color": "#8a6040"},
+  {"kind": "prop", "name": "Lamp", "tex": "@living/87.png", "x": 312, "y": 64, "col": [8, 6], "off": [0, -3], "color": "#e0d0b0"},
+  {"kind": "prop", "name": "Bed", "tex": "@bedroom/141.png", "x": 32, "y": 180, "col": [14, 40], "off": [0, -20], "color": "#d0a0b0"},
+  {"kind": "prop", "name": "Toys", "tex": "@bedroom/301.png", "x": 320, "y": 180, "col": [0, 0], "off": [0, 0], "color": "#a07050"},
+  {"kind": "inspect", "name": "Testimony1", "id": "inspect_t_child_diary", "x": 96, "y": 76, "area": [30, 14], "dialogue": "t_child_diary", "show_if": {"flag": "boss.lodger.defeated"}},
+  {"kind": "inspect", "name": "Testimony2", "id": "inspect_t_eviction", "x": 176, "y": 76, "area": [30, 14], "dialogue": "t_eviction", "show_if": {"flag": "boss.lodger.defeated"}},
+  {"kind": "inspect", "name": "Testimony3", "id": "inspect_t_neighbour", "x": 256, "y": 76, "area": [30, 14], "dialogue": "t_neighbour", "show_if": {"flag": "boss.lodger.defeated"}},
+  {"kind": "boss", "name": "Reviser", "x": 176, "y": 124, "scene": "res://scenes/combat/reviser.tscn", "set": {"boss_id": "lodger", "name_key": "BOSS_LODGER", "premade": "Premade_Character_17", "pattern": "columns", "summon_variant": "hollow"}},
+  {"kind": "arena", "boss": "Reviser", "flag": "boss.lodger.engaged", "x": 176, "y": 124, "size": [288, 128]},
+  {"kind": "inspect", "name": "Reconstruct", "id": "inspect_recon_memory_home", "x": 176, "y": 124, "area": [40, 20], "dialogue": "recon_memory_home", "priority": 30, "show_if": {"flag": "boss.lodger.defeated"}},
+  {"kind": "spawn", "name": "Entrance", "id": "entrance", "x": 176, "y": 196, "facing": [0, -1]},
+  {"kind": "door", "name": "WayBack", "id": "door_memory_home_exit", "x": 176, "y": 212, "area": [30, 10], "scene": "echo_ward", "spawn": "from_memory_home", "prompt": "PROMPT_LEAVE_MEMORY"}
+ ]
+}
