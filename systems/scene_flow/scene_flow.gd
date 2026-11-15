@@ -16,6 +16,7 @@ const LOCATIONS := {
 	&"rented_room": "res://scenes/locations/rented_room.tscn",
 	&"echo_lantern_row": "res://scenes/locations/echo_lantern_row.tscn",
 	&"phantom_platform": "res://scenes/locations/phantom_platform.tscn",
+	&"municipal_archive": "res://scenes/locations/municipal_archive.tscn",
 }
 const MAIN_MENU := "res://scenes/ui/main_menu.tscn"
 const CHARACTER_CREATOR := "res://scenes/ui/character_creator.tscn"

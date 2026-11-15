@@ -3,13 +3,58 @@
   "entries": [
    {
     "if": {
+     "flag": "mara.lied",
+     "knows": [
+      "mara_venn",
+      "agnes_signed"
+     ],
+     "all": [
+      {
+       "not_flag": "mara.confronted"
+      }
+     ]
+    },
+    "node": "lie_found"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_eleventh",
+      "start"
+     ]
+    },
+    "node": "arch_in1"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_eleventh",
+      "search"
+     ]
+    },
+    "node": "arch_wait"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_eleventh",
+      "choice"
+     ]
+    },
+    "node": "file_ask"
+   },
+   {
+    "if": {
      "not_flag": "met.mara_venn"
     },
     "node": "intro1"
    },
    {
     "if": {
-     "flag": "door.reported",
+     "knows": [
+      "mara_venn",
+      "reported_door"
+     ],
      "not_flag": "mara.reacted_report"
     },
     "node": "reported"
@@ -47,6 +92,14 @@
      ]
     },
     "node": "decide"
+   },
+   {
+    "if": {
+     "flag": "rel.mara_venn.friend",
+     "quest_done": "case_door",
+     "not_quest_started": "case_eleventh"
+    },
+    "node": "eleventh1"
    }
   ],
   "start": "hub",
@@ -336,6 +389,197 @@
      }
     ],
     "next": null
+   },
+   "eleventh1": {
+    "text": "MARA_ELEVENTH_1",
+    "next": "eleventh2",
+    "speaker": "NPC_MARA"
+   },
+   "eleventh2": {
+    "text": "MARA_ELEVENTH_2",
+    "next": "eleventh3",
+    "speaker": "NPC_MARA"
+   },
+   "eleventh3": {
+    "text": "MARA_ELEVENTH_3",
+    "next": null,
+    "speaker": "NPC_MARA",
+    "effects": [
+     {
+      "quest_start": "case_eleventh"
+     },
+     {
+      "set_flag": "archive.key"
+     }
+    ]
+   },
+   "arch_in1": {
+    "text": "MARA_ARCH_IN_1",
+    "next": null,
+    "speaker": "NPC_MARA",
+    "effects": [
+     {
+      "quest_stage": [
+       "case_eleventh",
+       "search"
+      ]
+     }
+    ]
+   },
+   "arch_wait": {
+    "text": "MARA_ARCH_WAIT",
+    "next": null,
+    "speaker": "NPC_MARA"
+   },
+   "file_ask": {
+    "text": "MARA_FILE_ASK",
+    "speaker": "NPC_MARA",
+    "choices": [
+     {
+      "text": "MARA_FILE_SHOW",
+      "next": "show1"
+     },
+     {
+      "text": "MARA_FILE_SEAL",
+      "next": "seal1"
+     },
+     {
+      "text": "MARA_FILE_LIE",
+      "next": "lie1"
+     }
+    ]
+   },
+   "show1": {
+    "text": "MARA_SHOW_1",
+    "next": "show2",
+    "speaker": "NPC_MARA"
+   },
+   "show2": {
+    "text": "MARA_SHOW_2",
+    "next": null,
+    "speaker": "NPC_MARA",
+    "effects": [
+     {
+      "take_item": [
+       "agnes_file",
+       1
+      ]
+     },
+     {
+      "quest_complete": [
+       "case_eleventh",
+       "published"
+      ]
+     },
+     {
+      "relationship": [
+       "mara_venn",
+       2
+      ]
+     },
+     {
+      "remember": [
+       "mara_venn",
+       "faced_truth"
+      ]
+     },
+     {
+      "faction": [
+       "open_hand",
+       2
+      ]
+     },
+     {
+      "faction": [
+       "civic",
+       -2
+      ]
+     },
+     {
+      "set_flag": "world.records_published"
+     },
+     {
+      "publish": "agnes_signed"
+     }
+    ]
+   },
+   "seal1": {
+    "text": "MARA_SEAL_1",
+    "next": null,
+    "speaker": "NPC_MARA",
+    "effects": [
+     {
+      "take_item": [
+       "agnes_file",
+       1
+      ]
+     },
+     {
+      "quest_complete": [
+       "case_eleventh",
+       "sealed"
+      ]
+     },
+     {
+      "relationship": [
+       "mara_venn",
+       1
+      ]
+     },
+     {
+      "remember": [
+       "mara_venn",
+       "sealed_file_together"
+      ]
+     },
+     {
+      "faction": [
+       "keepers",
+       2
+      ]
+     },
+     {
+      "set_flag": "world.records_sealed"
+     }
+    ]
+   },
+   "lie1": {
+    "text": "MARA_LIE_1",
+    "next": null,
+    "speaker": "NPC_MARA",
+    "effects": [
+     {
+      "quest_complete": [
+       "case_eleventh",
+       "hidden"
+      ]
+     },
+     {
+      "set_flag": "mara.lied"
+     }
+    ]
+   },
+   "lie_found": {
+    "text": "MARA_LIE_FOUND",
+    "next": null,
+    "speaker": "NPC_MARA",
+    "effects": [
+     {
+      "set_flag": "mara.confronted"
+     },
+     {
+      "relationship": [
+       "mara_venn",
+       -4
+      ]
+     },
+     {
+      "remember": [
+       "mara_venn",
+       "you_lied_about_agnes"
+      ]
+     }
+    ]
    }
   }
  },
@@ -378,6 +622,41 @@
      "not_quest_started": "case_rosalind"
     },
     "node": "sister1"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_bell",
+      "parts"
+     ],
+     "has_item": "bell_clapper",
+     "all": [
+      {
+       "has_item": "copper_wire"
+      },
+      {
+       "has_item": "tram_relay"
+      }
+     ]
+    },
+    "node": "bell_fix"
+   },
+   {
+    "if": {
+     "remembers": [
+      "jonah_rook",
+      "told_truth_about_rosalind"
+     ],
+     "not_quest_started": "case_bell"
+    },
+    "node": "bell1"
+   },
+   {
+    "if": {
+     "quest_done": "case_bell",
+     "not_flag": "jonah.bell_thanks"
+    },
+    "node": "bell_after"
    }
   ],
   "start": "hub",
@@ -561,6 +840,16 @@
       "next": "sister_remind"
      },
      {
+      "text": "JONAH_ASK_PARTS",
+      "if": {
+       "quest_stage": [
+        "case_bell",
+        "parts"
+       ]
+      },
+      "next": "parts_hint"
+     },
+     {
       "text": "BYE",
       "next": null
      }
@@ -711,6 +1000,84 @@
      }
     ],
     "next": null
+   },
+   "bell1": {
+    "text": "JONAH_BELL_1",
+    "next": "bell2",
+    "speaker": "NPC_JONAH"
+   },
+   "bell2": {
+    "text": "JONAH_BELL_2",
+    "next": "bell3",
+    "speaker": "NPC_JONAH"
+   },
+   "bell3": {
+    "text": "JONAH_BELL_3",
+    "next": null,
+    "speaker": "NPC_JONAH",
+    "effects": [
+     {
+      "quest_start": "case_bell"
+     }
+    ]
+   },
+   "parts_hint": {
+    "text": "JONAH_PARTS_HINT",
+    "next": "hub",
+    "speaker": "NPC_JONAH"
+   },
+   "bell_fix": {
+    "text": "JONAH_BELL_FIX",
+    "next": null,
+    "speaker": "NPC_JONAH",
+    "effects": [
+     {
+      "take_item": [
+       "bell_clapper",
+       1
+      ]
+     },
+     {
+      "take_item": [
+       "copper_wire",
+       1
+      ]
+     },
+     {
+      "take_item": [
+       "tram_relay",
+       1
+      ]
+     },
+     {
+      "quest_stage": [
+       "case_bell",
+       "ring"
+      ]
+     },
+     {
+      "relationship": [
+       "jonah_rook",
+       1
+      ]
+     }
+    ]
+   },
+   "bell_after": {
+    "text": "JONAH_BELL_AFTER",
+    "next": null,
+    "speaker": "NPC_JONAH",
+    "effects": [
+     {
+      "set_flag": "jonah.bell_thanks"
+     },
+     {
+      "relationship": [
+       "jonah_rook",
+       1
+      ]
+     }
+    ]
    }
   }
  },
@@ -738,6 +1105,16 @@
      "not_flag": "met.edda_halloway"
     },
     "node": "intro1"
+   },
+   {
+    "if": {
+     "knows": [
+      "edda_halloway",
+      "rosalind_erased"
+     ],
+     "not_flag": "halloway.rosalind_talk"
+    },
+    "node": "rosalind"
    }
   ],
   "start": "hub",
@@ -843,6 +1220,36 @@
       "next": "note1"
      },
      {
+      "text": "HALLOWAY_ASK_LR",
+      "if": {
+       "evidence": "e_door_observed",
+       "not_evidence": "e_halloway_lantern_row"
+      },
+      "next": "lr1"
+     },
+     {
+      "text": "HALLOWAY_ASK_WIRE",
+      "if": {
+       "quest_stage": [
+        "case_bell",
+        "parts"
+       ],
+       "all": [
+        {
+         "not_flag": "halloway.gave_wire"
+        }
+       ]
+      },
+      "next": "wire1"
+     },
+     {
+      "text": "HALLOWAY_GIVE_LETTER",
+      "if": {
+       "has_item": "letter_halloway"
+      },
+      "next": "letter1"
+     },
+     {
       "text": "BYE",
       "next": null
      }
@@ -857,6 +1264,84 @@
      }
     ],
     "next": "hub"
+   },
+   "lr1": {
+    "text": "HALLOWAY_LR_1",
+    "next": null,
+    "speaker": "NPC_HALLOWAY",
+    "effects": [
+     {
+      "add_evidence": "e_halloway_lantern_row"
+     }
+    ]
+   },
+   "wire1": {
+    "text": "HALLOWAY_WIRE_1",
+    "next": "hub",
+    "speaker": "NPC_HALLOWAY",
+    "effects": [
+     {
+      "give_item": [
+       "copper_wire",
+       1
+      ]
+     },
+     {
+      "set_flag": "halloway.gave_wire"
+     },
+     {
+      "relationship": [
+       "edda_halloway",
+       1
+      ]
+     }
+    ]
+   },
+   "letter1": {
+    "text": "HALLOWAY_LETTER_1",
+    "next": "letter2",
+    "speaker": "NPC_HALLOWAY"
+   },
+   "letter2": {
+    "text": "HALLOWAY_LETTER_2",
+    "next": null,
+    "speaker": "NPC_HALLOWAY",
+    "effects": [
+     {
+      "take_item": [
+       "letter_halloway",
+       1
+      ]
+     },
+     {
+      "set_flag": "letters.halloway"
+     },
+     {
+      "add_evidence": "e_bea_letter"
+     },
+     {
+      "relationship": [
+       "edda_halloway",
+       2
+      ]
+     },
+     {
+      "remember": [
+       "edda_halloway",
+       "brought_beas_letter"
+      ]
+     }
+    ]
+   },
+   "rosalind": {
+    "text": "HALLOWAY_ROSALIND",
+    "next": null,
+    "speaker": "NPC_HALLOWAY",
+    "effects": [
+     {
+      "set_flag": "halloway.rosalind_talk"
+     }
+    ]
    }
   }
  },
@@ -870,17 +1355,30 @@
    },
    {
     "if": {
-     "flag": "door.reported",
+     "knows": [
+      "ivo_calder",
+      "reported_door"
+     ],
      "not_flag": "ivo.reacted_report"
     },
     "node": "reported"
    },
    {
     "if": {
-     "flag": "door.vanished",
+     "knows": [
+      "ivo_calder",
+      "opened_door"
+     ],
      "not_flag": "ivo.reacted_echo"
     },
     "node": "echo"
+   },
+   {
+    "if": {
+     "flag": "world.records_published",
+     "not_flag": "ivo.reacted_records"
+    },
+    "node": "records"
    }
   ],
   "start": "hub",
@@ -924,6 +1422,13 @@
        "not_flag": "ivo.symbol_asked"
       },
       "next": "sym1"
+     },
+     {
+      "text": "IVO_GIVE_LETTER",
+      "if": {
+       "has_item": "letter_ivo"
+      },
+      "next": "letter1"
      },
      {
       "text": "BYE",
@@ -999,6 +1504,96 @@
      }
     ],
     "next": null
+   },
+   "letter1": {
+    "text": "IVO_LETTER_1",
+    "speaker": "NPC_IVO",
+    "choices": [
+     {
+      "text": "IVO_LETTER_PRESS",
+      "next": "letter2"
+     },
+     {
+      "text": "IVO_LETTER_LEAVE",
+      "effects": [
+       {
+        "take_item": [
+         "letter_ivo",
+         1
+        ]
+       },
+       {
+        "set_flag": "letters.ivo"
+       },
+       {
+        "relationship": [
+         "ivo_calder",
+         1
+        ]
+       }
+      ],
+      "next": null
+     }
+    ]
+   },
+   "letter2": {
+    "text": "IVO_LETTER_2",
+    "next": null,
+    "speaker": "NPC_IVO",
+    "effects": [
+     {
+      "take_item": [
+       "letter_ivo",
+       1
+      ]
+     },
+     {
+      "set_flag": "letters.ivo"
+     },
+     {
+      "add_evidence": "e_ivo_letters"
+     },
+     {
+      "relationship": [
+       "ivo_calder",
+       2
+      ]
+     },
+     {
+      "faction": [
+       "keepers",
+       1
+      ]
+     },
+     {
+      "remember": [
+       "ivo_calder",
+       "shared_his_letters"
+      ]
+     }
+    ]
+   },
+   "records": {
+    "text": "IVO_RECORDS",
+    "next": null,
+    "speaker": "NPC_IVO",
+    "effects": [
+     {
+      "set_flag": "ivo.reacted_records"
+     },
+     {
+      "relationship": [
+       "ivo_calder",
+       -1
+      ]
+     },
+     {
+      "faction": [
+       "keepers",
+       -1
+      ]
+     }
+    ]
    }
   }
  },
@@ -1012,7 +1607,10 @@
    },
    {
     "if": {
-     "flag": "door.reported",
+     "knows": [
+      "nadiya_sol",
+      "reported_door"
+     ],
      "not_flag": "nadiya.reacted_report"
     },
     "node": "reported"
@@ -1023,6 +1621,41 @@
      "not_flag": "nadiya.reacted_echo"
     },
     "node": "echo"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_letters",
+      "deliver"
+     ],
+     "flag": "letters.halloway",
+     "all": [
+      {
+       "flag": "letters.lantern"
+      },
+      {
+       "flag": "letters.ivo"
+      }
+     ]
+    },
+    "node": "letters_back"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_letters",
+      "report"
+     ]
+    },
+    "node": "report1"
+   },
+   {
+    "if": {
+     "flag": "met.nadiya_sol",
+     "quest_done": "case_door",
+     "not_quest_started": "case_letters"
+    },
+    "node": "letters1"
    }
   ],
   "start": "hub",
@@ -1132,6 +1765,176 @@
      }
     ],
     "next": null
+   },
+   "letters1": {
+    "text": "NADIYA_LETTERS_1",
+    "next": "letters2",
+    "speaker": "NPC_NADIYA"
+   },
+   "letters2": {
+    "text": "NADIYA_LETTERS_2",
+    "next": null,
+    "speaker": "NPC_NADIYA",
+    "effects": [
+     {
+      "quest_start": "case_letters"
+     },
+     {
+      "give_item": [
+       "letter_halloway",
+       1
+      ]
+     },
+     {
+      "give_item": [
+       "letter_lantern",
+       1
+      ]
+     },
+     {
+      "give_item": [
+       "letter_ivo",
+       1
+      ]
+     }
+    ]
+   },
+   "letters_back": {
+    "text": "NADIYA_LETTERS_BACK",
+    "next": "report1",
+    "speaker": "NPC_NADIYA",
+    "effects": [
+     {
+      "quest_stage": [
+       "case_letters",
+       "report"
+      ]
+     }
+    ]
+   },
+   "report1": {
+    "text": "NADIYA_REPORT_1",
+    "speaker": "NPC_NADIYA",
+    "choices": [
+     {
+      "text": "NADIYA_SHOW_REPLY",
+      "if": {
+       "has_item": "letter_reply"
+      },
+      "next": "reply1"
+     },
+     {
+      "text": "NADIYA_NO_REPLY",
+      "if": {
+       "not": {
+        "has_item": "letter_reply"
+       }
+      },
+      "next": "noreply"
+     }
+    ]
+   },
+   "noreply": {
+    "text": "NADIYA_NO_REPLY_1",
+    "next": null,
+    "speaker": "NPC_NADIYA"
+   },
+   "reply1": {
+    "text": "NADIYA_REPLY_1",
+    "next": "reply2",
+    "speaker": "NPC_NADIYA"
+   },
+   "reply2": {
+    "text": "NADIYA_REPLY_2",
+    "speaker": "NPC_NADIYA",
+    "choices": [
+     {
+      "text": "NADIYA_RESPECT",
+      "effects": [
+       {
+        "quest_complete": [
+         "case_letters",
+         "respected"
+        ]
+       },
+       {
+        "relationship": [
+         "nadiya_sol",
+         2
+        ]
+       },
+       {
+        "faction": [
+         "unwritten",
+         2
+        ]
+       },
+       {
+        "remember": [
+         "nadiya_sol",
+         "respected_their_choice"
+        ]
+       }
+      ],
+      "next": "respect1"
+     },
+     {
+      "text": "NADIYA_PERSIST",
+      "effects": [
+       {
+        "quest_complete": [
+         "case_letters",
+         "persisted"
+        ]
+       },
+       {
+        "relationship": [
+         "nadiya_sol",
+         1
+        ]
+       },
+       {
+        "faction": [
+         "open_hand",
+         2
+        ]
+       },
+       {
+        "faction": [
+         "unwritten",
+         -1
+        ]
+       },
+       {
+        "remember": [
+         "nadiya_sol",
+         "kept_going"
+        ]
+       }
+      ],
+      "next": "persist1"
+     }
+    ]
+   },
+   "respect1": {
+    "text": "NADIYA_RESPECT_1",
+    "next": null,
+    "speaker": "NPC_NADIYA",
+    "effects": [
+     {
+      "publish": "letters_delivered"
+     }
+    ]
+   },
+   "persist1": {
+    "text": "NADIYA_PERSIST_1",
+    "next": null,
+    "speaker": "NPC_NADIYA",
+    "effects": [
+     {
+      "publish": "letters_delivered"
+     }
+    ]
    }
   }
  },
@@ -1181,6 +1984,26 @@
      {
       "text": "PIKE_ASK_ARCHIVE",
       "next": "archive1"
+     },
+     {
+      "text": "PIKE_ASK_RELAY",
+      "if": {
+       "quest_stage": [
+        "case_bell",
+        "parts"
+       ],
+       "not": {
+        "has_item": "tram_relay"
+       }
+      },
+      "next": "relay"
+     },
+     {
+      "text": "PIKE_GIVE_FILE",
+      "if": {
+       "has_item": "agnes_file"
+      },
+      "next": "file1"
      },
      {
       "text": "BYE",
@@ -1233,6 +2056,21 @@
        "dana_pike",
        "reported_door"
       ]
+     },
+     {
+      "faction": [
+       "civic",
+       2
+      ]
+     },
+     {
+      "tell": [
+       "dana_pike",
+       "reported_door"
+      ]
+     },
+     {
+      "publish": "reported_door"
      }
     ],
     "next": null
@@ -1241,6 +2079,87 @@
     "speaker": "NPC_PIKE",
     "text": "PIKE_ARCHIVE_1",
     "next": "hub"
+   },
+   "relay": {
+    "text": "PIKE_RELAY_ASK",
+    "speaker": "NPC_PIKE",
+    "choices": [
+     {
+      "text": "PIKE_RELAY_OK",
+      "if": {
+       "faction_at_least": [
+        "civic",
+        1
+       ]
+      },
+      "effects": [
+       {
+        "give_item": [
+         "tram_relay",
+         1
+        ]
+       },
+       {
+        "relationship": [
+         "dana_pike",
+         1
+        ]
+       }
+      ],
+      "next": "relay_yes"
+     },
+     {
+      "text": "PIKE_RELAY_FORM",
+      "next": "relay_no"
+     }
+    ]
+   },
+   "relay_yes": {
+    "text": "PIKE_RELAY_YES",
+    "next": "hub",
+    "speaker": "NPC_PIKE"
+   },
+   "relay_no": {
+    "text": "PIKE_RELAY_NO",
+    "next": "hub",
+    "speaker": "NPC_PIKE"
+   },
+   "file1": {
+    "text": "PIKE_FILE_1",
+    "next": null,
+    "speaker": "NPC_PIKE",
+    "effects": [
+     {
+      "take_item": [
+       "agnes_file",
+       1
+      ]
+     },
+     {
+      "faction": [
+       "civic",
+       3
+      ]
+     },
+     {
+      "faction": [
+       "open_hand",
+       -2
+      ]
+     },
+     {
+      "relationship": [
+       "dana_pike",
+       2
+      ]
+     },
+     {
+      "publish": "agnes_signed"
+     },
+     {
+      "set_flag": "world.file_to_civic"
+     }
+    ]
    }
   }
  },
@@ -1312,6 +2231,12 @@
        "echo_woman",
        "met_again"
       ]
+     },
+     {
+      "publish": "opened_door"
+     },
+     {
+      "set_flag": "met.echo_woman"
      }
     ],
     "next": null

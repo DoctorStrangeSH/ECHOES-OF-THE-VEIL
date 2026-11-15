@@ -17,6 +17,9 @@ func _ready() -> void:
 	Journal.evidence_added.connect(_on_evidence_added)
 	Journal.hypothesis_changed.connect(_on_hypothesis_changed)
 	WorldClock.period_changed.connect(_on_period_changed)
+	Journal.case_changed.connect(_on_case_changed)
+	Inventory.changed.connect(refresh)
+	Society.fact_learned.connect(_on_fact_learned)
 	refresh.call_deferred()
 
 
@@ -33,6 +36,14 @@ func _on_hypothesis_changed(_id: StringName, _s: String) -> void:
 
 
 func _on_period_changed(_p: String) -> void:
+	refresh()
+
+
+func _on_case_changed(_id: StringName) -> void:
+	refresh()
+
+
+func _on_fact_learned(_npc: StringName, _fact: StringName) -> void:
 	refresh()
 
 

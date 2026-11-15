@@ -36,7 +36,7 @@ This roadmap is milestone-based, not a promise of fixed calendar dates. Estimate
 
 **Exit gate:** 30–60 minute coherent experience; external testers understand the hook and can complete it without developer guidance.
 
-## M3 — Core RPG loop (implemented, in review)
+## M3 — Core RPG loop (implemented)
 **Build**
 - health, damage, hit reactions, dodge / weapon feel;
 - one weapon discipline and one utility ability;
@@ -46,7 +46,7 @@ This roadmap is milestone-based, not a promise of fixed calendar dates. Estimate
 
 **Exit gate:** combat is enjoyable with placeholder art and remains readable with final effects.
 
-## M4 — Narrative and NPC foundation
+## M4 — Narrative and NPC foundation (implemented, in review)
 **Build**
 - evidence provenance and hypothesis journal;
 - quest state graph and fail-forward handling;

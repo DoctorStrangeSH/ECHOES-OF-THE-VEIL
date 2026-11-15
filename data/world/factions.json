@@ -1,0 +1,7 @@
+{
+  "_doc": "Factions (story bible §6). Standing -10..10; tiers are labels for the UI and conditions use numbers. No faction is wholly right.",
+  "civic": {"name": "FACTION_CIVIC", "desc": "FACTION_CIVIC_DESC"},
+  "keepers": {"name": "FACTION_KEEPERS", "desc": "FACTION_KEEPERS_DESC"},
+  "open_hand": {"name": "FACTION_OPEN_HAND", "desc": "FACTION_OPEN_HAND_DESC"},
+  "unwritten": {"name": "FACTION_UNWRITTEN", "desc": "FACTION_UNWRITTEN_DESC"}
+}

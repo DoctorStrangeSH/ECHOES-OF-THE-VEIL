@@ -1,50 +1,195 @@
 {
-  "_doc": "Named NPCs. Schedule: first entry whose period (and optional 'if' condition) matches wins; no match = absent. Anchors are NpcAnchor nodes in the scene. See scripts/world/npc_registry.gd.",
-  "mara_venn": {
-    "name": "NPC_MARA", "premade": "Premade_Character_10", "color": "#c98a6a", "dialogue": "mara",
-    "schedule": [
-      {"period": ["morning", "afternoon"], "scene": "greyford_block", "anchor": "plaza_east", "facing": "left"},
-      {"period": "evening", "scene": "greyford_block", "anchor": "harbor_rail_west", "facing": "up"}
-    ]
-  },
-  "jonah_rook": {
-    "name": "NPC_JONAH", "premade": "Premade_Character_07", "color": "#6a8ac9", "dialogue": "jonah",
-    "schedule": [
-      {"period": "morning", "scene": "greyford_block", "anchor": "harbor_rail_east", "facing": "up"},
-      {"period": ["afternoon", "evening"], "scene": "greyford_block", "anchor": "rook_shop", "facing": "left"}
-    ]
-  },
-  "edda_halloway": {
-    "name": "NPC_HALLOWAY", "premade": "Premade_Character_14", "color": "#a07ab0", "dialogue": "halloway",
-    "schedule": [
-      {"period": "morning", "scene": "greyford_block", "anchor": "home_mailbox", "facing": "left"},
-      {"period": "afternoon", "scene": "greyford_block", "anchor": "park_bench_west", "facing": "down"}
-    ]
-  },
-  "ivo_calder": {
-    "name": "NPC_IVO", "premade": "Premade_Character_19", "color": "#7a9a6a", "dialogue": "ivo",
-    "schedule": [
-      {"period": "afternoon", "scene": "greyford_block", "anchor": "plaza_west", "facing": "right"},
-      {"period": "evening", "scene": "greyford_block", "anchor": "park_bench_east", "facing": "down"}
-    ]
-  },
-  "nadiya_sol": {
-    "name": "NPC_NADIYA", "premade": "Premade_Character_15", "color": "#c9b06a", "dialogue": "nadiya",
-    "schedule": [
-      {"period": "evening", "scene": "greyford_block", "anchor": "plaza_west", "facing": "right"},
-      {"period": "night", "scene": "greyford_block", "anchor": "plaza_north", "facing": "left"}
-    ]
-  },
-  "dana_pike": {
-    "name": "NPC_PIKE", "premade": "Premade_Character_12", "color": "#5a6a8a", "dialogue": "pike",
-    "schedule": [
-      {"period": ["morning", "afternoon"], "scene": "greyford_block", "anchor": "plaza_south", "facing": "up"}
-    ]
-  },
-  "echo_woman": {
-    "name": "NPC_ECHO_WOMAN", "premade": "Premade_Character_02", "color": "#6ab0a0", "dialogue": "echo_woman", "tint": "#cfe8ffd9",
-    "schedule": [
-      {"if": {"flag": "echo.cleared"}, "scene": "echo_lantern_row", "anchor": "kitchen", "facing": "down"}
-    ]
-  }
+ "_doc": "Named NPCs. Schedule: first entry whose period (and optional 'if' condition) matches wins; no match = absent. Anchors are NpcAnchor nodes in the scene. See scripts/world/npc_registry.gd. factions: memberships used by gossip and the People tab. milestones default to friend at 3, confidant at 6, distrust at -3.",
+ "mara_venn": {
+  "name": "NPC_MARA",
+  "premade": "Premade_Character_10",
+  "color": "#c98a6a",
+  "dialogue": "mara",
+  "schedule": [
+   {
+    "period": "night",
+    "if": {
+     "any": [
+      {
+       "quest_stage": [
+        "case_eleventh",
+        "start"
+       ]
+      },
+      {
+       "quest_stage": [
+        "case_eleventh",
+        "search"
+       ]
+      },
+      {
+       "quest_stage": [
+        "case_eleventh",
+        "choice"
+       ]
+      }
+     ]
+    },
+    "scene": "municipal_archive",
+    "anchor": "desk",
+    "facing": "down"
+   },
+   {
+    "period": [
+     "morning",
+     "afternoon"
+    ],
+    "scene": "greyford_block",
+    "anchor": "plaza_east",
+    "facing": "left"
+   },
+   {
+    "period": "evening",
+    "scene": "greyford_block",
+    "anchor": "harbor_rail_west",
+    "facing": "up"
+   }
+  ],
+  "factions": []
+ },
+ "jonah_rook": {
+  "name": "NPC_JONAH",
+  "premade": "Premade_Character_07",
+  "color": "#6a8ac9",
+  "dialogue": "jonah",
+  "schedule": [
+   {
+    "period": "morning",
+    "scene": "greyford_block",
+    "anchor": "harbor_rail_east",
+    "facing": "up"
+   },
+   {
+    "period": [
+     "afternoon",
+     "evening"
+    ],
+    "scene": "greyford_block",
+    "anchor": "rook_shop",
+    "facing": "left"
+   }
+  ],
+  "factions": []
+ },
+ "edda_halloway": {
+  "name": "NPC_HALLOWAY",
+  "premade": "Premade_Character_14",
+  "color": "#a07ab0",
+  "dialogue": "halloway",
+  "schedule": [
+   {
+    "period": "morning",
+    "scene": "greyford_block",
+    "anchor": "home_mailbox",
+    "facing": "left"
+   },
+   {
+    "period": "afternoon",
+    "scene": "greyford_block",
+    "anchor": "park_bench_west",
+    "facing": "down"
+   }
+  ],
+  "factions": []
+ },
+ "ivo_calder": {
+  "name": "NPC_IVO",
+  "premade": "Premade_Character_19",
+  "color": "#7a9a6a",
+  "dialogue": "ivo",
+  "schedule": [
+   {
+    "period": "afternoon",
+    "scene": "greyford_block",
+    "anchor": "plaza_west",
+    "facing": "right"
+   },
+   {
+    "period": "evening",
+    "scene": "greyford_block",
+    "anchor": "park_bench_east",
+    "facing": "down"
+   }
+  ],
+  "factions": [
+   "keepers"
+  ]
+ },
+ "nadiya_sol": {
+  "name": "NPC_NADIYA",
+  "premade": "Premade_Character_15",
+  "color": "#c9b06a",
+  "dialogue": "nadiya",
+  "schedule": [
+   {
+    "period": "evening",
+    "scene": "greyford_block",
+    "anchor": "plaza_west",
+    "facing": "right"
+   },
+   {
+    "period": "night",
+    "scene": "greyford_block",
+    "anchor": "plaza_north",
+    "facing": "left"
+   }
+  ],
+  "factions": [
+   "open_hand"
+  ]
+ },
+ "dana_pike": {
+  "name": "NPC_PIKE",
+  "premade": "Premade_Character_12",
+  "color": "#5a6a8a",
+  "dialogue": "pike",
+  "schedule": [
+   {
+    "period": [
+     "morning",
+     "afternoon"
+    ],
+    "scene": "greyford_block",
+    "anchor": "plaza_south",
+    "facing": "up"
+   },
+   {
+    "period": "evening",
+    "if": {
+     "flag": "door.reported"
+    },
+    "scene": "greyford_block",
+    "anchor": "plaza_south",
+    "facing": "up"
+   }
+  ],
+  "factions": [
+   "civic"
+  ]
+ },
+ "echo_woman": {
+  "name": "NPC_ECHO_WOMAN",
+  "premade": "Premade_Character_02",
+  "color": "#6ab0a0",
+  "dialogue": "echo_woman",
+  "tint": "#cfe8ffd9",
+  "schedule": [
+   {
+    "if": {
+     "flag": "echo.cleared"
+    },
+    "scene": "echo_lantern_row",
+    "anchor": "kitchen",
+    "facing": "down"
+   }
+  ],
+  "factions": [
+   "unwritten"
+  ]
+ }
 }

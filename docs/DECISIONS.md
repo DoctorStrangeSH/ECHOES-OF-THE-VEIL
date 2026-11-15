@@ -29,6 +29,10 @@ Decisions are recorded with date, status, and rationale. Revisit only when evide
 | D-023 | Progression is horizontal: Resonance from echoes buys small Attunements; equipment modifies play style (combo shape, cooldowns), not big stat inflation. | Accepted | Keeps balance tractable and choices meaningful. |
 | D-024 | Sound effects are synthesised by a committed script (no third-party samples). | Accepted | License-clean in a public repo; easy to iterate. |
 | D-025 | Save schema 3 adds inventory, money, Resonance and Attunements (migration 2→3). | Accepted | |
+| D-026 | Factions are standings per group (−10..10) moved by specific choices; no single morality meter. | Accepted | Story bible §6 and world-and-quest-design.md. |
+| D-027 | NPC knowledge: facts with audiences spread one time-of-day period after being published; reactions read who knows. | Accepted | Consequences become visible and believable without simulating conversations. |
+| D-028 | Cases declare stage transitions and fail-forward rules; tests verify reachability. | Accepted | Prevents soft-locks and missable critical clues. |
+| D-029 | Save schema 4 adds faction standing, NPC knowledge and pending gossip (migration 3→4). | Accepted | |
 
 ## Open questions
 

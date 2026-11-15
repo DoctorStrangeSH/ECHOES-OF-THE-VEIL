@@ -8,6 +8,9 @@ extends Node
 ## "inferred" once the player forms it, and "corroborated" when its supporting
 ## evidence comes from enough *independent sources* (two people repeating the
 ## same rumour share one source).
+## Cases are small state graphs: "transitions" lists the allowed next stages,
+## "fail_forward" moves a stalled case on after N in-game days (with a note),
+## so no case can soft-lock when the player misses a window.
 ## Definitions: res://data/journal/*.json. Owner: journal. Tests: tests/test_runner.gd.
 
 signal evidence_added(evidence_id: StringName)
@@ -39,6 +42,10 @@ var case_order: Array[StringName] = []
 
 func _enter_tree() -> void:
 	load_definitions()
+
+
+func _ready() -> void:
+	WorldClock.day_started.connect(_on_day_started)
 
 
 func load_definitions() -> void:
@@ -117,7 +124,7 @@ func start_case(id: StringName) -> void:
 	if case_status(id) != STATUS_NONE:
 		return
 	var first: StringName = StringName(case_defs[id].get("first_stage", "start"))
-	cases[id] = {"status": STATUS_ACTIVE, "stage": first, "outcome": &""}
+	cases[id] = {"status": STATUS_ACTIVE, "stage": first, "outcome": &"", "stage_day": WorldClock.day}
 	case_order.append(id)
 	case_changed.emit(id)
 	EventHub.toast_requested.emit(tr("JOURNAL_NEW_CASE") % tr(case_defs[id].get("title", "")))
@@ -128,7 +135,11 @@ func set_case_stage(id: StringName, stage: StringName) -> void:
 		start_case(id)
 	if case_status(id) != STATUS_ACTIVE or case_stage(id) == stage:
 		return
+	var allowed: Array = case_defs[id].get("transitions", {}).get(String(case_stage(id)), [])
+	if not allowed.is_empty() and not allowed.has(String(stage)):
+		push_warning("Journal: %s moves %s -> %s outside its declared graph" % [id, case_stage(id), stage])
 	cases[id]["stage"] = stage
+	cases[id]["stage_day"] = WorldClock.day
 	case_changed.emit(id)
 	EventHub.toast_requested.emit(tr("JOURNAL_CASE_UPDATED") % tr(case_defs[id].get("title", "")))
 
@@ -142,6 +153,62 @@ func complete_case(id: StringName, outcome: StringName = &"") -> void:
 	cases[id]["outcome"] = outcome
 	case_changed.emit(id)
 	EventHub.toast_requested.emit(tr("JOURNAL_CASE_CLOSED") % tr(case_defs[id].get("title", "")))
+
+
+## Fail-forward: a stage waiting longer than `after_days` moves on by itself.
+func _on_day_started(day: int) -> void:
+	for id: StringName in cases.keys():
+		if case_status(id) != STATUS_ACTIVE:
+			continue
+		for rule: Dictionary in case_defs[id].get("fail_forward", []):
+			if String(rule.get("stage", "")) != String(case_stage(id)):
+				continue
+			if day - int(cases[id].get("stage_day", day)) < int(rule.get("after_days", 2)):
+				continue
+			StoryRules.apply(rule.get("effects", []))
+			if rule.has("to"):
+				set_case_stage(id, StringName(rule["to"]))
+			if rule.has("note"):
+				EventHub.toast_requested.emit(tr(String(rule["note"])))
+			break
+
+
+## Problems in the case graphs (unknown stages, unreachable stages). For tests.
+func validate_graphs() -> PackedStringArray:
+	var problems := PackedStringArray()
+	for id: StringName in case_defs:
+		var def: Dictionary = case_defs[id]
+		var stages: Dictionary = def.get("stages", {})
+		var trans: Dictionary = def.get("transitions", {})
+		var first := String(def.get("first_stage", "start"))
+		if not stages.has(first):
+			problems.append("%s: first stage '%s' undefined" % [id, first])
+		for from: String in trans:
+			if not stages.has(from):
+				problems.append("%s: transition from unknown stage '%s'" % [id, from])
+			for to: String in trans[from]:
+				if not stages.has(to):
+					problems.append("%s: transition to unknown stage '%s'" % [id, to])
+		for rule: Dictionary in def.get("fail_forward", []):
+			if not stages.has(String(rule.get("stage", ""))) or (rule.has("to") and not stages.has(String(rule["to"]))):
+				problems.append("%s: fail_forward refers to unknown stage" % id)
+		# Every stage must be reachable from the first one.
+		var seen := {first: true}
+		var queue: Array = [first]
+		while not queue.is_empty():
+			var s: String = queue.pop_front()
+			var nexts: Array = Array(trans.get(s, []))
+			for rule: Dictionary in def.get("fail_forward", []):
+				if String(rule.get("stage", "")) == s and rule.has("to"):
+					nexts.append(rule["to"])
+			for n: Variant in nexts:
+				if not seen.has(String(n)):
+					seen[String(n)] = true
+					queue.append(String(n))
+		for s: String in stages:
+			if not seen.has(s):
+				problems.append("%s: stage '%s' is unreachable" % [id, s])
+	return problems
 
 
 ## Player-facing objective text key for the current stage (or outcome when done).
@@ -229,7 +296,8 @@ func to_dict() -> Dictionary:
 	var c := {}
 	for id: StringName in cases:
 		var st: Dictionary = cases[id]
-		c[String(id)] = {"status": String(st["status"]), "stage": String(st["stage"]), "outcome": String(st["outcome"])}
+		c[String(id)] = {"status": String(st["status"]), "stage": String(st["stage"]), "outcome": String(st["outcome"]),
+			"stage_day": int(st.get("stage_day", 1))}
 	var f := {}
 	for id: StringName in found:
 		f[String(id)] = found[id]
@@ -257,6 +325,7 @@ func from_dict(data: Dictionary) -> void:
 			"status": StringName(st.get("status", "active")),
 			"stage": StringName(st.get("stage", "start")),
 			"outcome": StringName(st.get("outcome", "")),
+			"stage_day": int(st.get("stage_day", 1)),
 		}
 	var h: Dictionary = data.get("hypotheses", {})
 	for id: String in h:

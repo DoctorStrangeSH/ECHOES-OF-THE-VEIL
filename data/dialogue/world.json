@@ -445,5 +445,245 @@
     "next": null
    }
   }
+ },
+ "archive_door_locked": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "ARCHIVE_DOOR_LOCKED",
+    "next": null
+   }
+  }
+ },
+ "census_cabinet": {
+  "entries": [
+   {
+    "if": {
+     "quest_stage": [
+      "case_eleventh",
+      "search"
+     ]
+    },
+    "node": "1"
+   },
+   {
+    "if": {
+     "evidence": "e_agnes_file"
+    },
+    "node": "after"
+   }
+  ],
+  "start": "idle",
+  "nodes": {
+   "idle": {
+    "text": "ARCH_CABINET_IDLE",
+    "next": null
+   },
+   "1": {
+    "text": "ARCH_CABINET_1",
+    "next": "2"
+   },
+   "2": {
+    "text": "ARCH_CABINET_2",
+    "next": null,
+    "effects": [
+     {
+      "give_item": [
+       "agnes_file",
+       1
+      ]
+     }
+    ]
+   },
+   "after": {
+    "text": "ARCH_CABINET_AFTER",
+    "next": null
+   }
+  }
+ },
+ "archive_shelves": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "ARCH_SHELVES_1",
+    "next": null
+   }
+  }
+ },
+ "sos_box": {
+  "entries": [
+   {
+    "if": {
+     "has_item": "letter_lantern"
+    },
+    "node": "post"
+   }
+  ],
+  "start": "idle",
+  "nodes": {
+   "idle": {
+    "text": "SOS_BOX_IDLE",
+    "next": null
+   },
+   "post": {
+    "text": "SOS_BOX_POST",
+    "next": null,
+    "effects": [
+     {
+      "take_item": [
+       "letter_lantern",
+       1
+      ]
+     },
+     {
+      "set_flag": "letters.lantern"
+     }
+    ]
+   }
+  }
+ },
+ "old_bell": {
+  "entries": [
+   {
+    "if": {
+     "quest_stage": [
+      "case_bell",
+      "ring"
+     ],
+     "period": "night"
+    },
+    "node": "ring1"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_bell",
+      "ring"
+     ]
+    },
+    "node": "wait"
+   }
+  ],
+  "start": "idle",
+  "nodes": {
+   "idle": {
+    "text": "BELL_IDLE",
+    "next": null
+   },
+   "wait": {
+    "text": "BELL_WAIT",
+    "next": null
+   },
+   "ring1": {
+    "text": "BELL_RING_1",
+    "next": "ring2"
+   },
+   "ring2": {
+    "text": "BELL_RING_2",
+    "next": "ring3",
+    "effects": [
+     {
+      "add_evidence": "e_reflection"
+     }
+    ]
+   },
+   "ring3": {
+    "text": "BELL_RING_3",
+    "choices": [
+     {
+      "text": "BELL_SAY_WAITING",
+      "effects": [
+       {
+        "quest_complete": [
+         "case_bell",
+         "waiting"
+        ]
+       },
+       {
+        "relationship": [
+         "jonah_rook",
+         2
+        ]
+       },
+       {
+        "faction": [
+         "unwritten",
+         2
+        ]
+       },
+       {
+        "remember": [
+         "jonah_rook",
+         "rang_the_bell"
+        ]
+       },
+       {
+        "publish": "bell_rang"
+       }
+      ],
+      "next": "waiting"
+     },
+     {
+      "text": "BELL_SAY_HOME",
+      "effects": [
+       {
+        "quest_complete": [
+         "case_bell",
+         "home"
+        ]
+       },
+       {
+        "relationship": [
+         "jonah_rook",
+         1
+        ]
+       },
+       {
+        "faction": [
+         "unwritten",
+         1
+        ]
+       },
+       {
+        "remember": [
+         "jonah_rook",
+         "rang_the_bell"
+        ]
+       },
+       {
+        "publish": "bell_rang"
+       }
+      ],
+      "next": "home"
+     }
+    ]
+   },
+   "waiting": {
+    "text": "BELL_WAITING",
+    "next": null
+   },
+   "home": {
+    "text": "BELL_HOME",
+    "next": null
+   }
+  }
+ },
+ "records_flyer": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "FLYER_RECORDS",
+    "next": null
+   }
+  }
+ },
+ "missing_poster": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "POSTER_MISSING",
+    "next": null
+   }
+  }
  }
 }

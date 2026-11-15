@@ -1,0 +1,43 @@
+{
+ "_doc": "Facts NPCs can know. 'publish' spreads a fact to its audience after delay_periods (gossip moves one time-of-day period at a time). audience: NPC ids and/or 'faction:<id>' (NPCs list their factions in npcs.json) or 'all'.",
+ "reported_door": {
+  "audience": [
+   "all"
+  ],
+  "delay_periods": 1
+ },
+ "opened_door": {
+  "audience": [
+   "faction:keepers",
+   "faction:open_hand"
+  ],
+  "delay_periods": 1
+ },
+ "rosalind_erased": {
+  "audience": [
+   "edda_halloway",
+   "mara_venn"
+  ],
+  "delay_periods": 1
+ },
+ "agnes_signed": {
+  "audience": [
+   "faction:open_hand",
+   "faction:civic",
+   "mara_venn"
+  ],
+  "delay_periods": 2
+ },
+ "letters_delivered": {
+  "audience": [
+   "faction:keepers"
+  ],
+  "delay_periods": 1
+ },
+ "bell_rang": {
+  "audience": [
+   "all"
+  ],
+  "delay_periods": 1
+ }
+}
