@@ -1,0 +1,89 @@
+{
+ "_doc": "Repair jobs. Each day up to Livelihood.JOBS_PER_DAY jobs are offered (deterministic per day). spot: RepairSpot id in a scene. difficulty 1-3 sets needle speed and hits needed. once: story jobs offered until done, then never again. requires: StoryRules condition. effects: applied on success.",
+ "radiator": {
+  "name": "JOB_RADIATOR",
+  "desc": "JOB_RADIATOR_DESC",
+  "client": "edda_halloway",
+  "spot": "room_radiator",
+  "difficulty": 1,
+  "scrap": 1,
+  "pay": 6,
+  "xp": 2
+ },
+ "fountain_pump": {
+  "name": "JOB_FOUNTAIN",
+  "desc": "JOB_FOUNTAIN_DESC",
+  "client": "mara_venn",
+  "spot": "plaza_fountain",
+  "difficulty": 2,
+  "scrap": 2,
+  "pay": 10,
+  "xp": 3,
+  "once": true,
+  "effects": [
+   {
+    "set_flag": "world.fountain_fixed"
+   }
+  ]
+ },
+ "street_lamp": {
+  "name": "JOB_LAMP",
+  "desc": "JOB_LAMP_DESC",
+  "client": "ivo_calder",
+  "spot": "street_lamp",
+  "difficulty": 1,
+  "scrap": 1,
+  "pay": 5,
+  "xp": 2
+ },
+ "pike_radio": {
+  "name": "JOB_PIKE_RADIO",
+  "desc": "JOB_PIKE_RADIO_DESC",
+  "client": "dana_pike",
+  "spot": "pike_radio",
+  "difficulty": 2,
+  "scrap": 2,
+  "pay": 12,
+  "xp": 3,
+  "effects": [
+   {
+    "faction": [
+     "civic",
+     1
+    ]
+   }
+  ]
+ },
+ "mailbox": {
+  "name": "JOB_MAILBOX",
+  "desc": "JOB_MAILBOX_DESC",
+  "client": "nadiya_sol",
+  "spot": "mailbox",
+  "difficulty": 1,
+  "scrap": 1,
+  "pay": 5,
+  "xp": 2
+ },
+ "echo_clock": {
+  "name": "JOB_ECHO_CLOCK",
+  "desc": "JOB_ECHO_CLOCK_DESC",
+  "client": "ivo_calder",
+  "spot": "bench_clock",
+  "difficulty": 3,
+  "scrap": 3,
+  "pay": 15,
+  "xp": 5,
+  "resonance": 3,
+  "requires": {
+   "flag": "repair.level_2"
+  },
+  "effects": [
+   {
+    "faction": [
+     "keepers",
+     1
+    ]
+   }
+  ]
+ }
+}

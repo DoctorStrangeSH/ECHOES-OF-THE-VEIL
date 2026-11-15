@@ -1,5 +1,5 @@
 {
- "_doc": "Items: stable id -> definition. category: weapon | trinket | consumable | key. icon: path relative to res://assets/limezu (optional; a coloured placeholder is drawn otherwise). weapon.combo = damage per hit of the combo; mods are summed/multiplied by Inventory.stat().",
+ "_doc": "Items: stable id -> definition. category: weapon | trinket | consumable | key. icon: path relative to res://assets/limezu (optional; a coloured placeholder is drawn otherwise). weapon.combo = damage per hit of the combo; mods are summed/multiplied by Inventory.stat(). category material: crafting inputs. value: base worth; shops buy at Economy.SELL_RATIO of it.",
  "fists": {
   "category": "weapon",
   "name": "ITEM_FISTS",
@@ -178,5 +178,24 @@
   "value": 0,
   "stack": 1,
   "evidence": "e_lantern_reply"
+ },
+ "scrap": {
+  "category": "material",
+  "name": "ITEM_SCRAP",
+  "desc": "ITEM_SCRAP_DESC",
+  "color": "#8a8a90",
+  "value": 1,
+  "stack": 99
+ },
+ "repair_kit": {
+  "category": "consumable",
+  "name": "ITEM_REPAIR_KIT",
+  "desc": "ITEM_REPAIR_KIT_DESC",
+  "color": "#c08040",
+  "value": 3,
+  "stack": 20,
+  "use": {
+   "repair_bonus": 0.08
+  }
  }
 }

@@ -1,0 +1,39 @@
+{
+ "_doc": "Shops. buy: what the player can buy here (item or home upgrade) and the price. sells_to: true if the shop buys items from the player at value * Economy.SELL_RATIO. Rule (tested): no item can be bought anywhere for less than any shop pays for it.",
+ "jonah": {
+  "name": "SHOP_JONAH",
+  "buy": [
+   {
+    "item": "scrap",
+    "price": 2
+   },
+   {
+    "item": "tea_flask",
+    "price": 4
+   },
+   {
+    "item": "repair_kit",
+    "price": 6
+   }
+  ],
+  "sells_to": true
+ },
+ "halloway": {
+  "name": "SHOP_HALLOWAY",
+  "buy": [
+   {
+    "upgrade": "workbench",
+    "price": 40
+   },
+   {
+    "upgrade": "good_bed",
+    "price": 30
+   },
+   {
+    "upgrade": "lantern_shelf",
+    "price": 25
+   }
+  ],
+  "sells_to": false
+ }
+}

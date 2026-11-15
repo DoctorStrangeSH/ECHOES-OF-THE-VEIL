@@ -46,7 +46,7 @@ This roadmap is milestone-based, not a promise of fixed calendar dates. Estimate
 
 **Exit gate:** combat is enjoyable with placeholder art and remains readable with final effects.
 
-## M4 — Narrative and NPC foundation (implemented, in review)
+## M4 — Narrative and NPC foundation (implemented)
 **Build**
 - evidence provenance and hypothesis journal;
 - quest state graph and fail-forward handling;
@@ -56,7 +56,7 @@ This roadmap is milestone-based, not a promise of fixed calendar dates. Estimate
 
 **Exit gate:** choices produce visible, tested consequences; no critical clue is accidentally missable.
 
-## M5 — Life, work, and ownership
+## M5 — Life, work, and ownership (implemented, in review)
 **Build**
 - day clock and weather;
 - one profession loop (gardening or repair);

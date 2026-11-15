@@ -3,7 +3,7 @@ extends CanvasLayer
 ## Inventory (I): items by category with details, equip/use, and the
 ## Attunements tab where Resonance is spent. Pauses the game while open.
 
-const FILTERS: PackedStringArray = ["", "weapon", "trinket", "consumable", "key"]
+const FILTERS: PackedStringArray = ["", "weapon", "trinket", "consumable", "material", "key"]
 
 var _dim: ColorRect
 var _title: Label

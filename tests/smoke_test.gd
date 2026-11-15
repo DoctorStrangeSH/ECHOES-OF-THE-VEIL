@@ -132,6 +132,51 @@ func _ready() -> void:
 	await _wait_location(&"greyford_block")
 	await _frames(20)
 
+	_step = "work: jobs, repair, shop, workbench, stall"
+	var gr2 := get_child(0)
+	Inventory.money = 200
+	Inventory.add(&"scrap", 10, false)
+	EventHub.screen_requested.emit("shop:jonah")
+	await _frames(5)
+	Economy.buy(&"jonah", 0)
+	(gr2.get_node("Work") as WorkScreen)._set_sell(true)
+	await _frames(3)
+	(gr2.get_node("Work") as WorkScreen).close()
+	EventHub.screen_requested.emit("shop:halloway")
+	await _frames(5)
+	Economy.buy(&"halloway", 0)
+	(gr2.get_node("Work") as WorkScreen).close()
+	EventHub.screen_requested.emit("jobs")
+	await _frames(5)
+	var job: StringName = Livelihood.offered[0] if not Livelihood.offered.is_empty() else &""
+	if job != &"":
+		Livelihood.accept(job)
+	(gr2.get_node("Work") as WorkScreen).close()
+	await _frames(5)
+	if job != &"":
+		var mg := gr2.get_node("Repair") as RepairMinigame
+		mg.start(job)
+		await _frames(5)
+		for i in 400:
+			if not mg._active:
+				break
+			if absf(mg._needle - mg._zone_center) <= mg._zone_width / 2.5:
+				mg._try()
+			await get_tree().process_frame
+		_assert(Livelihood.done_today.has(job), "repair job completed")
+	EventHub.screen_requested.emit("workbench")
+	await _frames(3)
+	Economy.craft(&"repair_kit")
+	(gr2.get_node("Work") as WorkScreen).close()
+	GameState.set_flag(&"biz.unlocked")
+	EventHub.screen_requested.emit("business")
+	await _frames(3)
+	Livelihood.stock_stall(99)
+	Livelihood.set_stall_open(true)
+	(gr2.get_node("Work") as WorkScreen).close()
+	WorldClock.sleep_until_hour(8)
+	await _frames(10)
+
 	_step = "save/load"
 	_assert(SaveService.save_game() == OK, "save ok")
 	await _frames(5)

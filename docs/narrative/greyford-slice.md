@@ -81,3 +81,11 @@ Collect clapper (platform echo), copper flex (Mrs Halloway), relay (Pike with Ci
 
 ### Letters to No One (Nadiya, after the door case)
 Three letters: Mrs Halloway learns she had a sister, Bea, who is happy where she is; the platform's emergency box brings back a reply — "We are not lost. Please stop trying to bring us back."; Ivo reveals he writes to the erased every winter. Nadiya must face that some echoes do not want to return (her bible arc). Respect their choice (Unwritten +2) or keep going (Open Hand +2, Unwritten −1).
+
+## M5 — Work and ownership
+
+- **Jonah** sells scrap, tea and repair kits and buys items back at half value ("Let's trade"). "Got any work?" points to the **odd-jobs board** (cork board on the yellow building) and the **scrap heap** by the bins (once a day); once, he gives 4 scrap to start.
+- **Jobs** (up to 3 a day): Halloway's radiator (your room), the plaza fountain (Mara; once — the fountain stays fixed), the condo street lamp (Ivo), Pike's radio, Nadiya's mailbox, and the park bench clock (Ivo, repair level 2, pays Resonance, +Keepers).
+- **Repair skill** levels 1–5 widen the minigame's green zone. Repair kits (2 scrap at the workbench) widen it once more and are used automatically.
+- **Mrs Halloway** ("About my room...") sells room improvements: workbench (£40), a proper mattress (+1 max health, £30), a lantern shelf (Flash recharges 15% faster, £25). Rent is £15 a week; unpaid rent waits as debt.
+- **Repair cart:** at repair level 3 and Jonah's friendship, Jonah offers the old food cart. Stock it with kits, choose fair / normal / premium prices; sales happen overnight. Fair prices build reputation; upgrades (sign, toolbox, Jonah on Saturdays — needs his full trust) add customers.

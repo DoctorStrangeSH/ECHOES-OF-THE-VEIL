@@ -16,6 +16,9 @@
 [ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
 [ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
 [ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
+[ext_resource type="PackedScene" path="res://scenes/world/repair_spot.tscn" id="17_spot"]
+[ext_resource type="PackedScene" path="res://scenes/world/screen_interactable.tscn" id="18_screen"]
+[ext_resource type="PackedScene" path="res://scenes/world/junk_pile.tscn" id="19_junk"]
 
 [node name="GreyfordBlock" type="Node2D"]
 script = ExtResource("1_loc")
@@ -293,6 +296,69 @@ position = Vector2(600, 80)
 script = ExtResource("4_spawn")
 spawn_id = &"harbor_stop"
 facing = Vector2(0, 1)
+
+[node name="JobBoard" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(548, 236)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_33.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.690,0.502,0.314, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="JobBoardUse" parent="Entities" instance=ExtResource("18_screen")]
+position = Vector2(548, 248)
+interaction_id = &"use_job_board"
+screen = "jobs"
+
+[node name="JunkStreet" parent="Entities" instance=ExtResource("19_junk")]
+position = Vector2(404, 262)
+interaction_id = &"junk_street"
+
+[node name="RepairCart" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(300, 286)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/10_Vehicles_Singles_16x16/ME_Singles_Vehicles_16x16_Street_Food_Cart_1.png"
+placeholder_size = Vector2i(48, 48)
+placeholder_color = Color(0.627,0.376,0.188, 1)
+collision_size = Vector2(40, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Condition" type="Node" parent="Entities/RepairCart"]
+script = ExtResource("10_cond")
+show_if = {"flag": "biz.unlocked"}
+
+[node name="StallUse" parent="Entities" instance=ExtResource("18_screen")]
+position = Vector2(300, 290)
+interaction_id = &"use_stall"
+screen = "business"
+
+[node name="Condition" type="Node" parent="Entities/StallUse"]
+script = ExtResource("10_cond")
+show_if = {"flag": "biz.unlocked"}
+
+[node name="SpotFountain" parent="Entities" instance=ExtResource("17_spot")]
+position = Vector2(310, 244)
+interaction_id = &"spot_fountain"
+spot_id = &"plaza_fountain"
+
+[node name="SpotLamp" parent="Entities" instance=ExtResource("17_spot")]
+position = Vector2(248, 288)
+interaction_id = &"spot_lamp"
+spot_id = &"street_lamp"
+
+[node name="SpotPikeRadio" parent="Entities" instance=ExtResource("17_spot")]
+position = Vector2(346, 282)
+interaction_id = &"spot_pike_radio"
+spot_id = &"pike_radio"
+
+[node name="SpotMailbox" parent="Entities" instance=ExtResource("17_spot")]
+position = Vector2(164, 258)
+interaction_id = &"spot_mailbox"
+spot_id = &"mailbox"
+
+[node name="SpotBenchClock" parent="Entities" instance=ExtResource("17_spot")]
+position = Vector2(540, 406)
+interaction_id = &"spot_bench_clock"
+spot_id = &"bench_clock"
 
 [node name="GhostTramStop" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(616, 66)

@@ -31,3 +31,5 @@ signal boss_health_changed(name_key: String, health: int, max_health: int)
 signal ability_cooldown(ability: String, fraction: float)
 ## Camera shake request (strength in pixels).
 signal camera_shake_requested(strength: float)
+## Open a work/trade screen: "shop:<id>", "jobs", "workbench", "business".
+signal screen_requested(screen: String)

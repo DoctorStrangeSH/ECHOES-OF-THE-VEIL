@@ -531,3 +531,99 @@ func test_save_migration_from_v3() -> void:
 	var r := SaveService.read_slot(1)
 	check(r["ok"] and r["envelope"]["payload"].has("society"), "v3 save gains society")
 	_cleanup(dir)
+
+
+# --- M5: work, ownership, economy ------------------------------------------------
+
+func test_economy_has_no_exploits() -> void:
+	var problems := Economy.validate()
+	check(problems.is_empty(), "economy problems: %s" % "; ".join(problems))
+	for id: StringName in Inventory.item_defs:
+		var buy := Economy.cheapest_price(id)
+		if buy > 0:
+			check(Economy.sell_price(id) < buy, "%s cannot be flipped for profit" % id)
+
+
+func test_jobs_board_is_deterministic_and_pays() -> void:
+	GameState.reset_for_new_game()
+	var first := Livelihood.offered.duplicate()
+	Livelihood._offer_jobs(WorldClock.day)
+	check(Livelihood.offered == first, "same day, same board")
+	check(Livelihood.offered.size() > 0 and Livelihood.offered.size() <= Livelihood.JOBS_PER_DAY, "some jobs offered")
+	check(not Livelihood.offered.has(&"echo_clock"), "level-gated job hidden at level 1")
+	var job := Livelihood.offered[0]
+	check(Livelihood.accept(job), "accept")
+	var spot := StringName(Livelihood.job(job)["spot"])
+	check(Livelihood.active_job_for_spot(spot) == job, "spot becomes active")
+	Inventory.add(&"scrap", 5, false)
+	var money := Inventory.money
+	Livelihood.complete(job)
+	check(Inventory.money == money + int(Livelihood.job(job)["pay"]), "paid")
+	check(Inventory.count(&"scrap") == 5 - int(Livelihood.job(job)["scrap"]), "scrap used")
+	check(Livelihood.repair_xp > 0, "xp gained")
+	GameState.reset_for_new_game()
+
+
+func test_repair_levels_widen_zone() -> void:
+	GameState.reset_for_new_game()
+	var z1 := Livelihood.repair_zone(2)
+	Livelihood.add_repair_xp(16)
+	check(Livelihood.repair_level() == 3 and GameState.has_flag(&"repair.level_3"), "level 3 at 16 xp")
+	check(Livelihood.repair_zone(2) > z1, "zone grows with skill")
+	Livelihood._offer_jobs(WorldClock.day + 1)
+	GameState.reset_for_new_game()
+
+
+func test_rent_and_debt_are_gentle() -> void:
+	GameState.reset_for_new_game()
+	Inventory.money = 10
+	for i in 7:
+		WorldClock.sleep_until_hour(7)
+	check(WorldClock.day == 8, "a week passed")
+	check(Inventory.money == 0 and Livelihood.rent_debt == 5, "short rent becomes debt, not eviction")
+	Inventory.money = 20
+	WorldClock.sleep_until_hour(7)
+	check(Livelihood.rent_debt == 0 and Inventory.money == 15, "debt collected when possible")
+	GameState.reset_for_new_game()
+
+
+func test_stall_income_is_bounded() -> void:
+	GameState.reset_for_new_game()
+	GameState.set_flag(&"biz.unlocked")
+	Livelihood.stall["stock"] = 100
+	Livelihood.set_stall_open(true)
+	for tier in ["fair", "normal", "premium"]:
+		Livelihood.set_stall_tier(tier)
+		var r := Livelihood.resolve_stall_day()
+		check(int(r["sold"]) <= int(Livelihood.business_def["max_customers"]), "%s sales capped" % tier)
+	var fair := Livelihood.expected_customers("fair")
+	var premium := Livelihood.expected_customers("premium")
+	check(fair >= premium, "fair prices draw more customers")
+	GameState.reset_for_new_game()
+
+
+func test_home_upgrades_and_crafting() -> void:
+	GameState.reset_for_new_game()
+	Inventory.money = 100
+	check(Economy.buy(&"halloway", 1), "buy the bed")
+	check(Livelihood.has_home_upgrade(&"good_bed") and int(Inventory.stat("max_health")) == 1, "bed gives +1 health")
+	check(not Economy.buy(&"halloway", 1), "cannot buy twice")
+	Inventory.add(&"scrap", 4, false)
+	check(Economy.craft(&"repair_kit") and Inventory.count(&"repair_kit") == 1, "craft a kit")
+	check(not Inventory.use(&"repair_kit"), "kits are not used by hand")
+	check(Economy.sell(&"repair_kit") and Inventory.count(&"repair_kit") == 0, "sell a kit")
+	GameState.reset_for_new_game()
+
+
+func test_save_migration_from_v4() -> void:
+	var dir := _fresh_save_dir()
+	var v4 := SaveService.make_envelope(GameState.to_dict())
+	v4["schema_version"] = 4
+	v4["payload"].erase("life")
+	DirAccess.make_dir_recursive_absolute(dir)
+	var f := FileAccess.open(SaveService.slot_path(1), FileAccess.WRITE)
+	f.store_string(JSON.stringify(v4))
+	f.close()
+	var r := SaveService.read_slot(1)
+	check(r["ok"] and r["envelope"]["payload"].has("life"), "v4 save gains life")
+	_cleanup(dir)
