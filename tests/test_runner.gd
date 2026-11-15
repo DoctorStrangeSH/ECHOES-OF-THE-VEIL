@@ -1321,3 +1321,58 @@ func test_shard_trinkets_need_shards_and_the_index() -> void:
 	GameState.set_flag(&"expedition.index_complete")
 	check(Economy.craft(&"bound_index") and Inventory.has(&"bound_index"), "crafted once the Index is whole")
 	GameState.reset_for_new_game()
+
+
+# --- M8b: world incidents ---------------------------------------------------------
+
+func _ending(outcome: String) -> void:
+	GameState.reset_for_new_game()
+	DebugStart.apply_history("act5")
+	Journal.complete_case(&"case_anchor", StringName(outcome))
+	GameState.set_flag(&"game.completed")
+
+
+func test_incidents_depend_on_the_ending() -> void:
+	GameState.reset_for_new_game()
+	check(Incidents.eligible().is_empty() and Incidents.try_start() == &"", "nothing before the ending")
+	for outcome: String in ["open_record", "custodians", "accord"]:
+		_ending(outcome)
+		var pool := Incidents.eligible()
+		check(pool.has(&"names") == (outcome == "open_record"), "names only after the open record")
+		check(pool.has(&"seal") == (outcome == "custodians"), "seal only under the custodians")
+		check(pool.has(&"patrol") == (outcome == "accord"), "patrol only under the accord")
+		check(pool.has(&"lanterns") and pool.has(&"storeroom"), "town incidents always possible")
+	GameState.reset_for_new_game()
+
+
+func test_incident_lifecycle_and_consequence() -> void:
+	_ending("accord")
+	var first := Incidents.try_start()
+	check(first == &"lanterns" and Incidents.active() == &"lanterns", "first incident starts")
+	check(Incidents.try_start() == &"", "one at a time")
+	Incidents.mark_cleared(&"lanterns")
+	check(Journal.case_stage(&"case_inc_lanterns") == &"report", "cleared: report")
+	var mara: Dictionary = DialogueService.dialogues[&"mara"]
+	check(DialogueService.entry_node(mara) == "inc_lanterns", "Mara wants to hear")
+	var shards := Inventory.count(&"veil_shard")
+	StoryRules.apply(mara["nodes"]["inc_lanterns"]["effects"])
+	check(Journal.case_status(&"case_inc_lanterns") == Journal.STATUS_DONE and Inventory.count(&"veil_shard") == shards + 3, "reported and paid")
+	check(Incidents.try_start() == &"", "cooldown after an incident")
+	var rel := int(GameState.relationships.get(&"jonah_rook", 0))
+	WorldClock.sleep_until_hour(8)
+	WorldClock.sleep_until_hour(8)
+	check(Incidents.active() == &"storeroom", "the next one starts after the cooldown")
+	for i in 4:
+		WorldClock.sleep_until_hour(8)
+	check(Journal.case_status(&"case_inc_storeroom") == Journal.STATUS_FAILED, "ignored: it fails")
+	check(GameState.has_flag(&"incident.storeroom.missed") and int(GameState.relationships.get(&"jonah_rook", 0)) < rel, "and it costs something")
+	GameState.reset_for_new_game()
+
+
+func test_incident_npcs_can_be_found_after_the_ending() -> void:
+	_ending("custodians")
+	WorldClock.wait_until_hour(12)
+	for id: StringName in Incidents.defs():
+		var npc := StringName(Incidents.def(id)["npc"])
+		check(not NpcRegistry.resolve(npc).is_empty(), "%s is somewhere at noon after the ending" % npc)
+	GameState.reset_for_new_game()

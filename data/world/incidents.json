@@ -1,0 +1,182 @@
+{
+ "_doc": "Post-ending incidents (M8b), in the order they can start. requires: extra condition (endings). spawns: echoes placed while the case is at stage 'clear'. See systems/world/incidents.gd.",
+ "lanterns": {
+  "case": "case_inc_lanterns",
+  "scene": "echo_lantern_row",
+  "npc": "mara_venn",
+  "requires": {},
+  "spawns": [
+   {
+    "variant": "wailer",
+    "x": 170,
+    "y": 110
+   },
+   {
+    "variant": "wailer",
+    "x": 350,
+    "y": 96
+   },
+   {
+    "variant": "hollow",
+    "x": 270,
+    "y": 128
+   }
+  ],
+  "arrive_toast": "INC_ARRIVE"
+ },
+ "storeroom": {
+  "case": "case_inc_storeroom",
+  "scene": "rook_storeroom",
+  "npc": "jonah_rook",
+  "requires": {},
+  "spawns": [
+   {
+    "variant": "clinger",
+    "x": 72,
+    "y": 104
+   },
+   {
+    "variant": "clinger",
+    "x": 200,
+    "y": 128
+   },
+   {
+    "variant": "hollow",
+    "x": 128,
+    "y": 120
+   }
+  ],
+  "arrive_toast": "INC_ARRIVE"
+ },
+ "last_tram": {
+  "case": "case_inc_last_tram",
+  "scene": "phantom_platform",
+  "npc": "ivo_calder",
+  "requires": {},
+  "spawns": [
+   {
+    "variant": "clinger",
+    "x": 180,
+    "y": 240
+   },
+   {
+    "variant": "clinger",
+    "x": 320,
+    "y": 170
+   },
+   {
+    "variant": "wailer",
+    "x": 300,
+    "y": 130
+   },
+   {
+    "variant": "hollow",
+    "x": 260,
+    "y": 190
+   }
+  ],
+  "arrive_toast": "INC_ARRIVE"
+ },
+ "names": {
+  "case": "case_inc_names",
+  "scene": "underpass_archive",
+  "npc": "alderman_penhallow",
+  "requires": {
+   "quest_outcome": [
+    "case_anchor",
+    "open_record"
+   ]
+  },
+  "spawns": [
+   {
+    "variant": "wailer",
+    "x": 190,
+    "y": 110
+   },
+   {
+    "variant": "hollow",
+    "x": 260,
+    "y": 150
+   },
+   {
+    "variant": "hollow",
+    "x": 224,
+    "y": 100
+   },
+   {
+    "variant": "clinger",
+    "x": 200,
+    "y": 160
+   }
+  ],
+  "arrive_toast": "INC_ARRIVE"
+ },
+ "seal": {
+  "case": "case_inc_seal",
+  "scene": "flooded_underpass",
+  "npc": "ivo_calder",
+  "requires": {
+   "quest_outcome": [
+    "case_anchor",
+    "custodians"
+   ]
+  },
+  "spawns": [
+   {
+    "variant": "wailer",
+    "x": 260,
+    "y": 60
+   },
+   {
+    "variant": "wailer",
+    "x": 420,
+    "y": 140
+   },
+   {
+    "variant": "clinger",
+    "x": 110,
+    "y": 170
+   },
+   {
+    "variant": "hollow",
+    "x": 200,
+    "y": 96
+   }
+  ],
+  "arrive_toast": "INC_ARRIVE"
+ },
+ "patrol": {
+  "case": "case_inc_patrol",
+  "scene": "ward_depot",
+  "npc": "sera_vale",
+  "requires": {
+   "quest_outcome": [
+    "case_anchor",
+    "accord"
+   ]
+  },
+  "spawns": [
+   {
+    "variant": "clinger",
+    "x": 260,
+    "y": 190
+   },
+   {
+    "variant": "clinger",
+    "x": 140,
+    "y": 190
+   },
+   {
+    "variant": "wailer",
+    "x": 420,
+    "y": 110
+   },
+   {
+    "variant": "hollow",
+    "x": 320,
+    "y": 160
+   }
+  ],
+  "arrive_toast": "INC_ARRIVE"
+ }
+}

@@ -253,6 +253,78 @@ flowchart LR
   case_letters_START(("start")) --> case_letters_deliver
 ```
 
+## case_inc_lanterns — Lantern Row Is Singing
+
+```mermaid
+flowchart LR
+  case_inc_lanterns_clear["clear<br/>Quiet the echoes on Lantern Row."]
+  case_inc_lanterns_report["report<br/>Tell Mara the row is quiet."]
+  case_inc_lanterns_clear --> case_inc_lanterns_report
+  case_inc_lanterns_out_resolved(["outcome: resolved<br/>Done, and reported."])
+  case_inc_lanterns_out_missed(["outcome: missed<br/>Someone else had to go down t…"])
+  case_inc_lanterns_START(("start")) --> case_inc_lanterns_clear
+```
+
+## case_inc_storeroom — Something in the Stock
+
+```mermaid
+flowchart LR
+  case_inc_storeroom_clear["clear<br/>Clear the Rook storeroom."]
+  case_inc_storeroom_report["report<br/>Tell Jonah the storeroom is safe."]
+  case_inc_storeroom_clear --> case_inc_storeroom_report
+  case_inc_storeroom_out_resolved(["outcome: resolved<br/>Done, and reported."])
+  case_inc_storeroom_out_missed(["outcome: missed<br/>The storeroom stays bricked u…"])
+  case_inc_storeroom_START(("start")) --> case_inc_storeroom_clear
+```
+
+## case_inc_last_tram — The 11:40 Runs Again
+
+```mermaid
+flowchart LR
+  case_inc_last_tram_clear["clear<br/>Clear the phantom platform."]
+  case_inc_last_tram_report["report<br/>Report to Ivo."]
+  case_inc_last_tram_clear --> case_inc_last_tram_report
+  case_inc_last_tram_out_resolved(["outcome: resolved<br/>Done, and reported."])
+  case_inc_last_tram_out_missed(["outcome: missed<br/>The bell rang again. Ivo stop…"])
+  case_inc_last_tram_START(("start")) --> case_inc_last_tram_clear
+```
+
+## case_inc_names — The Queue of Names
+
+```mermaid
+flowchart LR
+  case_inc_names_clear["clear<br/>Settle the echoes in the underpass arch…"]
+  case_inc_names_report["report<br/>Tell the Alderman."]
+  case_inc_names_clear --> case_inc_names_report
+  case_inc_names_out_resolved(["outcome: resolved<br/>Done, and reported."])
+  case_inc_names_out_missed(["outcome: missed<br/>The names in the archive drow…"])
+  case_inc_names_START(("start")) --> case_inc_names_clear
+```
+
+## case_inc_seal — Pressure on the Seal
+
+```mermaid
+flowchart LR
+  case_inc_seal_clear["clear<br/>Clear the flooded underpass."]
+  case_inc_seal_report["report<br/>Report the seal to Ivo."]
+  case_inc_seal_clear --> case_inc_seal_report
+  case_inc_seal_out_resolved(["outcome: resolved<br/>Done, and reported."])
+  case_inc_seal_out_missed(["outcome: missed<br/>The seal held, barely. The Ke…"])
+  case_inc_seal_START(("start")) --> case_inc_seal_clear
+```
+
+## case_inc_patrol — The First Joint Patrol
+
+```mermaid
+flowchart LR
+  case_inc_patrol_clear["clear<br/>Clear the Ward depot."]
+  case_inc_patrol_report["report<br/>Tell Sera Vale."]
+  case_inc_patrol_clear --> case_inc_patrol_report
+  case_inc_patrol_out_resolved(["outcome: resolved<br/>Done, and reported."])
+  case_inc_patrol_out_missed(["outcome: missed<br/>The first patrol was a shouti…"])
+  case_inc_patrol_START(("start")) --> case_inc_patrol_clear
+```
+
 ## case_lighthouse — The Light That Counts
 
 ```mermaid
