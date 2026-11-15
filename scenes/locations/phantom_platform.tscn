@@ -16,6 +16,9 @@
 [ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
 [ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
 [ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
+[ext_resource type="PackedScene" path="res://scenes/world/repair_spot.tscn" id="17_spot"]
+[ext_resource type="PackedScene" path="res://scenes/world/screen_interactable.tscn" id="18_screen"]
+[ext_resource type="PackedScene" path="res://scenes/world/junk_pile.tscn" id="19_junk"]
 
 [node name="PhantomPlatform" type="Node2D"]
 script = ExtResource("1_loc")
@@ -208,6 +211,10 @@ position = Vector2(200, 170)
 interaction_id = &"pickup_signal_rod"
 item_id = &"signal_rod"
 pickup_flag = &"pickup.signal_rod"
+
+[node name="JunkPlatform" parent="Entities" instance=ExtResource("19_junk")]
+position = Vector2(40, 140)
+interaction_id = &"junk_platform"
 
 [node name="TeaFlask" parent="Entities" instance=ExtResource("16_pickup")]
 position = Vector2(300, 252)

@@ -1,0 +1,21 @@
+{
+ "_doc": "Home upgrades for the rented room. Bought from Mrs Halloway; each sets flag home.<id> (room props appear) and may grant mods (summed into Inventory.stat).",
+ "workbench": {
+  "name": "UPG_WORKBENCH",
+  "desc": "UPG_WORKBENCH_DESC"
+ },
+ "good_bed": {
+  "name": "UPG_GOOD_BED",
+  "desc": "UPG_GOOD_BED_DESC",
+  "mods": {
+   "max_health": 1
+  }
+ },
+ "lantern_shelf": {
+  "name": "UPG_LANTERN_SHELF",
+  "desc": "UPG_LANTERN_SHELF_DESC",
+  "mods": {
+   "flash_cooldown_mult": 0.85
+  }
+ }
+}

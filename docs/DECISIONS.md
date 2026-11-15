@@ -33,6 +33,12 @@ Decisions are recorded with date, status, and rationale. Revisit only when evide
 | D-027 | NPC knowledge: facts with audiences spread one time-of-day period after being published; reactions read who knows. | Accepted | Consequences become visible and believable without simulating conversations. |
 | D-028 | Cases declare stage transitions and fail-forward rules; tests verify reachability. | Accepted | Prevents soft-locks and missable critical clues. |
 | D-029 | Save schema 4 adds faction standing, NPC knowledge and pending gossip (migration 3→4). | Accepted | |
+| D-030 | The first profession is **repair** (not gardening): a timing minigame whose green zone grows with skill level (5 levels by XP). | Accepted | Fits Jonah's workshop, the "fix what's broken" theme and the town's broken objects; reuses world props. |
+| D-031 | Economy rules are data (`data/economy/`) and checked by `Economy.validate()`: nothing can be bought and resold for profit, and no recipe outputs more value than its inputs at shop prices. | Accepted | Exploit tests from the M5 exit gate. |
+| D-032 | Rent (£15 weekly) becomes debt when unpaid, collected later; there is no eviction or penalty. | Accepted | A money sink that never soft-locks or punishes a story-focused player. |
+| D-033 | The business is a repair cart: price tier, stock and upgrades set daily customers, resolved deterministically at dawn; fair prices raise reputation. | Accepted | Small, testable business prototype linked to Jonah's relationship. |
+| D-034 | Odd jobs: up to 3 a day, chosen deterministically from the day number; each pays money, XP and +1 with the client; some change the world (the fountain). | Accepted | Ties non-combat work to NPC needs (exit gate). |
+| D-035 | Save schema 5 adds `life` (skill, jobs, stall, rent debt, home upgrades), migration 4→5. | Accepted | |
 
 ## Open questions
 

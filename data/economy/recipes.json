@@ -1,0 +1,13 @@
+{
+ "_doc": "Workbench recipes. Rule (tested): crafting never yields more sale value than the cheapest purchase cost of its inputs.",
+ "repair_kit": {
+  "name": "ITEM_REPAIR_KIT",
+  "inputs": {
+   "scrap": 2
+  },
+  "output": {
+   "repair_kit": 1
+  },
+  "min_level": 1
+ }
+}

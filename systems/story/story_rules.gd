@@ -23,6 +23,7 @@ extends RefCounted
 ##   {"toast": "KEY"}  {"advance_minutes": n}  {"sleep_until_hour": h}  {"wait_until_hour": h}
 ##   {"save_game": true}  {"travel": ["scene_id", "spawn_id"]}  {"heal_player": true}
 ##   {"give_item": ["id", n]}  {"take_item": ["id", n]}  {"give_money": n}  {"spend_money": n}
+##   {"open_screen": "shop:jonah" | "jobs" | "workbench" | "business"}
 ##   {"give_resonance": n}  {"faction": ["keepers", delta]}  {"tell": ["npc", "fact"]}  {"publish": "fact"}
 
 
@@ -83,6 +84,8 @@ static func _check(key: String, arg: Variant) -> bool:
 			if arg is Array:
 				return Inventory.has(StringName(arg[0]), int(arg[1]))
 			return Inventory.has(StringName(arg))
+		"repair_level_at_least":
+			return Livelihood.repair_level() >= int(arg)
 		"money_at_least":
 			return Inventory.money >= int(arg)
 		"faction_at_least":
@@ -173,5 +176,7 @@ static func _apply_one(key: String, arg: Variant, whole: Dictionary) -> void:
 			Society.tell(StringName(arg[0]), StringName(arg[1]))
 		"publish":
 			Society.publish(StringName(arg))
+		"open_screen":
+			EventHub.screen_requested.emit(String(arg))
 		_:
 			push_warning("StoryRules: unknown effect '%s'" % key)

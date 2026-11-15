@@ -8,7 +8,7 @@ signal changed
 
 const ITEMS_PATH := "res://data/items/items.json"
 const ATTUNEMENTS_PATH := "res://data/progression/attunements.json"
-const CATEGORIES: PackedStringArray = ["weapon", "trinket", "consumable", "key"]
+const CATEGORIES: PackedStringArray = ["weapon", "trinket", "consumable", "material", "key"]
 const DEFAULT_WEAPON := &"fists"
 ## Additive stats default to 0, multipliers to 1.
 const MULT_STATS: PackedStringArray = ["dodge_cooldown_mult", "dodge_distance_mult", "flash_cooldown_mult", "flash_radius_mult"]
@@ -133,6 +133,8 @@ func use(id: StringName) -> bool:
 	if d.get("category") != "consumable" or not has(id):
 		return false
 	var effect: Dictionary = d.get("use", {})
+	if not effect.has("heal"):
+		return false  # e.g. repair kits are spent by the repair minigame
 	if effect.has("heal"):
 		EventHub.player_heal_requested_amount.emit(int(effect["heal"]) + int(stat("heal_bonus")))
 	remove(id)
@@ -201,6 +203,7 @@ func stat(stat_name: String) -> float:
 		sources.append(def(trinket).get("mods", {}))
 	for a: StringName in attunements:
 		sources.append(attunement_defs.get(a, {}).get("mods", {}))
+	sources.append_array(Livelihood.home_mods())
 	for mods: Dictionary in sources:
 		if mods.has(stat_name):
 			v = v * float(mods[stat_name]) if mult else v + float(mods[stat_name])

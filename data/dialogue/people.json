@@ -657,6 +657,18 @@
      "not_flag": "jonah.bell_thanks"
     },
     "node": "bell_after"
+   },
+   {
+    "if": {
+     "repair_level_at_least": 3,
+     "flag": "rel.jonah_rook.friend",
+     "all": [
+      {
+       "not_flag": "biz.unlocked"
+      }
+     ]
+    },
+    "node": "stall1"
    }
   ],
   "start": "hub",
@@ -808,29 +820,32 @@
       "next": "tram1"
      },
      {
+      "text": "JONAH_TRADE",
+      "effects": [
+       {
+        "open_screen": "shop:jonah"
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "JONAH_ASK_JOBS",
+      "next": "jobs1"
+     },
+     {
+      "text": "JONAH_ASK_SCRAP",
+      "if": {
+       "flag": "jobs.intro",
+       "not_flag": "jobs.scrap_gift"
+      },
+      "next": "jobs_gift"
+     },
+     {
       "text": "JONAH_ASK_RADIO",
       "if": {
        "not_quest_started": "case_radio"
       },
       "next": "offer"
-     },
-     {
-      "text": "JONAH_BUY_TEA",
-      "if": {
-       "money_at_least": 4
-      },
-      "effects": [
-       {
-        "spend_money": 4
-       },
-       {
-        "give_item": [
-         "tea_flask",
-         1
-        ]
-       }
-      ],
-      "next": "bought"
      },
      {
       "text": "JONAH_ASK_SISTER",
@@ -863,11 +878,6 @@
    "tram2": {
     "speaker": "NPC_JONAH",
     "text": "JONAH_TRAM_2",
-    "next": "hub"
-   },
-   "bought": {
-    "speaker": "NPC_JONAH",
-    "text": "JONAH_BOUGHT",
     "next": "hub"
    },
    "sister1": {
@@ -1078,6 +1088,58 @@
       ]
      }
     ]
+   },
+   "jobs1": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_JOBS_1",
+    "next": "jobs2"
+   },
+   "jobs2": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_JOBS_2",
+    "effects": [
+     {
+      "set_flag": "jobs.intro"
+     }
+    ],
+    "next": "hub"
+   },
+   "jobs_gift": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_JOBS_GIFT",
+    "effects": [
+     {
+      "set_flag": "jobs.scrap_gift"
+     },
+     {
+      "give_item": [
+       "scrap",
+       4
+      ]
+     }
+    ],
+    "next": "hub"
+   },
+   "stall1": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_STALL_1",
+    "next": "stall2"
+   },
+   "stall2": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_STALL_2",
+    "effects": [
+     {
+      "set_flag": "biz.unlocked"
+     },
+     {
+      "relationship": [
+       "jonah_rook",
+       1
+      ]
+     }
+    ],
+    "next": null
    }
   }
  },
@@ -1248,6 +1310,15 @@
        "has_item": "letter_halloway"
       },
       "next": "letter1"
+     },
+     {
+      "text": "HALLOWAY_ROOM",
+      "effects": [
+       {
+        "open_screen": "shop:halloway"
+       }
+      ],
+      "next": null
      },
      {
       "text": "BYE",

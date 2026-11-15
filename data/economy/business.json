@@ -1,0 +1,46 @@
+{
+ "_doc": "The repair stall (light business layer). Each day it was open with stock, customers = clamp(base + reputation/2 + upgrades) * demand of the price tier, capped. Kits sold come from stall stock.",
+ "base_customers": 2,
+ "max_customers": 6,
+ "rent_per_day": 1,
+ "price_tiers": {
+  "fair": {
+   "price": 5,
+   "demand": 1.3,
+   "reputation": 1
+  },
+  "normal": {
+   "price": 7,
+   "demand": 1.0,
+   "reputation": 0
+  },
+  "premium": {
+   "price": 10,
+   "demand": 0.6,
+   "reputation": -1
+  }
+ },
+ "upgrades": {
+  "sign": {
+   "name": "BIZ_UPG_SIGN",
+   "desc": "BIZ_UPG_SIGN_DESC",
+   "price": 30,
+   "customers": 1
+  },
+  "toolbox": {
+   "name": "BIZ_UPG_TOOLBOX",
+   "desc": "BIZ_UPG_TOOLBOX_DESC",
+   "price": 50,
+   "customers": 1
+  },
+  "jonah_help": {
+   "name": "BIZ_UPG_JONAH",
+   "desc": "BIZ_UPG_JONAH_DESC",
+   "price": 0,
+   "customers": 1,
+   "requires": {
+    "flag": "rel.jonah_rook.confidant"
+   }
+  }
+ }
+}
