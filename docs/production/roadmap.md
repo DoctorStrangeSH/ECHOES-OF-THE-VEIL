@@ -2,7 +2,7 @@
 
 This roadmap is milestone-based, not a promise of fixed calendar dates. Estimates should be revised after the first playable slice and asset audit. A solo developer using AI assistance should expect a substantial multi-year project if the intended scope remains large.
 
-## M0 — Pre-production foundation (current)
+## M0 — Pre-production foundation (done)
 **Deliverables**
 - repository structure and project vision;
 - narrative / lore bible and story pillars;
@@ -13,7 +13,7 @@ This roadmap is milestone-based, not a promise of fixed calendar dates. Estimate
 
 **Exit gate:** scope is coherent, the first slice is small enough to build, and source assets are audited.
 
-## M1 — Technical proof
+## M1 — Technical proof (implemented, in review)
 **Build**
 - pinned Godot 4.x project;
 - boot flow and main menu;

@@ -2,7 +2,7 @@
 
 A single-player, top-down pixel-art narrative RPG built with Godot 4.x.
 
-> **Project status:** pre-production. The repository was empty at bootstrap. This repository currently contains project planning and design documentation; playable systems and LimeZu asset integration are not yet implemented.
+> **Project status:** M1 — technical proof. A playable prototype exists: main menu, a Greyford street block and the player's rented room, 8-direction movement, interaction, doors between scenes, dialogue, save/load with backups, pause menu, English/Russian text.
 
 ## High concept
 
@@ -18,9 +18,38 @@ The player can investigate the mystery while building an independent life throug
 4. **Discovery over grind:** handcrafted story spaces combined with systemic expeditions and replayable endgame challenges.
 5. **A coherent identity:** modern everyday life collides with ancient, uncanny fantasy; all visual additions must respect the purchased asset packs' licenses and style.
 
+## Getting started
+
+1. Install **Godot 4.7** (standard build, not .NET).
+2. Put your purchased LimeZu ZIP archives in one folder (outside this repo) and import them:
+   ```
+   python tools/import_limezu.py --source "C:/path/to/limezu-zips"
+   ```
+   This extracts the 16x16 art into `assets/limezu/` and generates ready-to-paint TileSets in `resources/tilesets/limezu/`. Both folders are git-ignored: the packs may be used in the game but not redistributed, so every developer imports their own copies. Add `--scales 16 32 48` to also import the larger variants. Pillow (`pip install pillow`) is recommended.
+3. Open `project.godot` in Godot. The first import of ~34k textures takes a few minutes.
+4. Press F5. Without the art packs the game still runs with coloured placeholders.
+
+### Controls
+
+| Action | Keyboard | Gamepad |
+|---|---|---|
+| Move | WASD / arrows | Left stick / D-pad |
+| Sprint | Shift | RB |
+| Interact / next line | E, Enter, Space | A |
+| Pause menu | Esc | Start |
+| Quick save / load | F5 / F9 | — |
+
+### Tests
+
+```
+godot --headless --path . --import
+godot --headless --path . res://tests/test_runner.tscn
+```
+Exit code 0 means all tests passed. Manual checks: [M1 test plan](docs/technical/m1-test-plan.md).
+
 ## Technology
 
-- Engine: Godot 4.x (exact minor version to be pinned after environment verification).
+- Engine: Godot 4.7.
 - Target: Windows PC / Steam first.
 - Mode: offline single-player.
 - Presentation: top-down 2D pixel art.
@@ -37,6 +66,7 @@ The player can investigate the mystery while building an independent life throug
 - [Quality strategy](docs/production/quality-and-testing.md)
 - [Release and audience strategy](docs/production/release-strategy.md)
 - [Decision log](docs/DECISIONS.md)
+- [M1 test plan](docs/technical/m1-test-plan.md)
 
 ## Production rule
 
@@ -44,7 +74,7 @@ Build and validate a small, compelling vertical slice before scaling content. A 
 
 ## Current milestone
 
-**M0 — Pre-production foundation:** establish the narrative promise, technical constraints, content pipeline, and a testable first-slice plan. The next implementation milestone is the player-and-interaction prototype in a small Greyford block.
+**M1 — Technical proof** (in review): engine pinned, boot flow, movement, camera, collision, interaction contract, scene transitions with spawn IDs, versioned save/load with backup, automated tests. Next: **M2 — Greyford vertical slice** (character creator, NPC schedules, journal, first investigation chain).
 
 ## License and third-party assets
 

@@ -2,7 +2,25 @@
 
 ## Source assets
 
-The project intends to use the user's purchased LimeZu packs. The ZIP archives have not yet been supplied to this repository or audited. Until they are received, do not assume exact pack contents, tile sizes, animation sets, or license terms.
+The project uses the owner's purchased LimeZu packs (Modern Interiors, Modern Exteriors, Modern User Interface, Modern Farm, Modern Office). They are audited in [limezu-inventory-2026-11-14.md](limezu-inventory-2026-11-14.md).
+
+## Import step (every developer, once)
+
+```
+python tools/import_limezu.py --source <folder with the LimeZu zips> [--scales 16 32 48]
+```
+
+- Extracts the requested scales into `assets/limezu/<pack>/`, keeping the original folder layout (provenance stays obvious), plus each pack's license file and a `MANIFEST.json` with archive SHA-256 hashes.
+- Skips installers (`.exe`), Aseprite sources, GIF previews, nested ZIPs and RPG Maker variants.
+- Splits sheets above Godot's 16384 px texture limit (`Interiors_16x16.png`) into `_partN.png` files.
+- Generates one TileSet per tile sheet in `resources/tilesets/limezu/<scale>/<pack>/`, registering every non-empty cell, so sheets can be painted in the TileMapLayer editor immediately. Collision is painted per tile in the editor (physics layer 0 = world).
+- Both output folders are git-ignored. Code refers to art through `AssetLibrary` paths relative to `res://assets/limezu`, and every lookup falls back to a placeholder when a file is missing.
+
+## Engine conventions (implemented in M1)
+
+- Tile size 16; characters are 16x32 frames with the origin at the feet.
+- Props (`WorldProp`) are anchored at the bottom-centre of the sprite; their collision box sits at the base. The `Entities` node of each location is y-sorted.
+- Quick prototype maps use `TilePainter` (a text layout + brushes in `data/tiles/palettes.json`); hand-made maps use a normal TileMapLayer with a generated TileSet.
 
 ## Intake checklist
 
