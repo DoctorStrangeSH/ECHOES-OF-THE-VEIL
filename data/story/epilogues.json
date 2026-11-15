@@ -1,0 +1,228 @@
+{
+ "_doc": "Epilogue cards: the ending, then the first card per group whose `if` holds (no `if` = fallback). EpilogueScreen.",
+ "endings": [
+  {
+   "id": "open_record",
+   "title": "ENDING_OPEN_TITLE",
+   "text": "ENDING_OPEN_TEXT"
+  },
+  {
+   "id": "custodians",
+   "title": "ENDING_CUSTODIANS_TITLE",
+   "text": "ENDING_CUSTODIANS_TEXT"
+  },
+  {
+   "id": "accord",
+   "title": "ENDING_ACCORD_TITLE",
+   "text": "ENDING_ACCORD_TEXT"
+  }
+ ],
+ "cards": [
+  {
+   "group": "stayed",
+   "text": "EPI_STAYED",
+   "title": "EPI_T_STAYED",
+   "if": {
+    "any": [
+     {
+      "flag": "ward.abel_left"
+     },
+     {
+      "flag": "rosalind.apart"
+     },
+     {
+      "flag": "ward.abel_message"
+     }
+    ]
+   }
+  },
+  {
+   "group": "wren",
+   "text": "EPI_WREN_OPEN",
+   "title": "EPI_T_WREN",
+   "if": {
+    "flag": "ending.open_record"
+   }
+  },
+  {
+   "group": "wren",
+   "text": "EPI_WREN_CUSTODIANS",
+   "title": "EPI_T_WREN",
+   "if": {
+    "flag": "ending.custodians"
+   }
+  },
+  {
+   "group": "wren",
+   "text": "EPI_WREN_ACCORD",
+   "title": "EPI_T_WREN"
+  },
+  {
+   "group": "jonah",
+   "text": "EPI_JONAH_ROSALIND",
+   "title": "EPI_T_JONAH",
+   "if": {
+    "flag": "rosalind.reunited"
+   }
+  },
+  {
+   "group": "jonah",
+   "text": "EPI_JONAH",
+   "title": "EPI_T_JONAH"
+  },
+  {
+   "group": "halloway",
+   "text": "EPI_EDDA_BEA",
+   "title": "EPI_T_HALLOWAY",
+   "if": {
+    "flag": "halloway.heard_bea"
+   }
+  },
+  {
+   "group": "halloway",
+   "text": "EPI_EDDA_KEPT",
+   "title": "EPI_T_HALLOWAY",
+   "if": {
+    "quest_outcome": [
+     "case_two_maps",
+     "kept"
+    ]
+   }
+  },
+  {
+   "group": "halloway",
+   "text": "EPI_EDDA",
+   "title": "EPI_T_HALLOWAY"
+  },
+  {
+   "group": "theo",
+   "text": "EPI_THEO_CLOSED",
+   "title": "EPI_T_THEO",
+   "if": {
+    "flag": "house.room_closed"
+   }
+  },
+  {
+   "group": "theo",
+   "text": "EPI_THEO_ELLIE",
+   "title": "EPI_T_THEO",
+   "if": {
+    "flag": "world.theo_remembers",
+    "not_flag": "ending.custodians"
+   }
+  },
+  {
+   "group": "theo",
+   "text": "EPI_THEO_DOOR",
+   "title": "EPI_T_THEO",
+   "if": {
+    "flag": "world.theo_remembers"
+   }
+  },
+  {
+   "group": "theo",
+   "text": "EPI_THEO",
+   "title": "EPI_T_THEO"
+  },
+  {
+   "group": "hester",
+   "text": "EPI_HESTER_COUNTS",
+   "title": "EPI_T_HESTER",
+   "if": {
+    "flag": "world.lamp_counts"
+   }
+  },
+  {
+   "group": "hester",
+   "text": "EPI_HESTER_MISSED",
+   "title": "EPI_T_HESTER",
+   "if": {
+    "quest_failed": "case_lighthouse"
+   }
+  },
+  {
+   "group": "hester",
+   "text": "EPI_HESTER_SLEEPS",
+   "title": "EPI_T_HESTER",
+   "if": {
+    "flag": "world.lamp_quiet"
+   }
+  },
+  {
+   "group": "mara",
+   "text": "EPI_MARA_ALLY",
+   "title": "EPI_T_MARA",
+   "if": {
+    "flag": "anchor.ally.mara_venn"
+   }
+  },
+  {
+   "group": "mara",
+   "text": "EPI_MARA",
+   "title": "EPI_T_MARA"
+  },
+  {
+   "group": "ivo",
+   "text": "EPI_IVO_ALLY",
+   "title": "EPI_T_IVO",
+   "if": {
+    "flag": "anchor.ally.ivo_calder"
+   }
+  },
+  {
+   "group": "ivo",
+   "text": "EPI_IVO",
+   "title": "EPI_T_IVO"
+  },
+  {
+   "group": "vale",
+   "text": "EPI_VALE_TURNED",
+   "title": "EPI_T_VALE",
+   "if": {
+    "flag": "vale.turned"
+   }
+  },
+  {
+   "group": "vale",
+   "text": "EPI_VALE_CONTINUES",
+   "title": "EPI_T_VALE",
+   "if": {
+    "flag": "vale.continues"
+   }
+  },
+  {
+   "group": "vale",
+   "text": "EPI_VALE_STOPPED",
+   "title": "EPI_T_VALE",
+   "if": {
+    "flag": "vale.stopped"
+   }
+  },
+  {
+   "group": "ward",
+   "text": "EPI_WARD_TRUE",
+   "title": "EPI_T_WARD",
+   "if": {
+    "count_at_least": [
+     [
+      {
+       "flag": "site.hospital.true"
+      },
+      {
+       "flag": "site.home.true"
+      },
+      {
+       "flag": "site.station.true"
+      }
+     ],
+     2
+    ]
+   }
+  },
+  {
+   "group": "ward",
+   "text": "EPI_WARD_DISTORTED",
+   "title": "EPI_T_WARD"
+  }
+ ]
+}

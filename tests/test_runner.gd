@@ -652,7 +652,7 @@ func test_location_budgets() -> void:
 				got["interactables"] += 1
 			elif n is Npc:
 				got["npcs"] += 1
-			elif n is EchoEnemy or n is CensusTaker or n is Conductor or n is Archivist or n is Reviser:
+			elif n is EchoEnemy or n is CensusTaker or n is Conductor or n is Archivist or n is Reviser or n is Director:
 				got["enemies"] += 1
 			elif n is TilePainter:
 				got["tiles"] += (n as TilePainter).layout.replace("\n", "").replace(" ", "").replace(".", "").length()
@@ -1082,3 +1082,68 @@ func test_save_migration_from_v6() -> void:
 	var r := SaveService.read_slot(1)
 	check(r["ok"] and r["envelope"]["payload"]["profile"]["difficulty"] == "normal" and r["envelope"]["payload"].has("satchel"), "v6 saves play on normal")
 	_cleanup(dir)
+
+
+# --- M7f: act V, the Director, endings --------------------------------------------------
+
+func test_director_is_shaped_by_allies_and_evidence() -> void:
+	GameState.reset_for_new_game()
+	var full := Director.health_for_conditions()
+	GameState.set_flag(&"site.hospital.true")
+	GameState.set_flag(&"site.station.true")
+	check(Director.health_for_conditions() < full, "true nights weaken him")
+	for a in Director.ALLIES:
+		GameState.set_flag(StringName("anchor.ally.%s" % a))
+	check(Director.health_for_conditions() >= int(round(Director.BASE_HEALTH * 0.4)), "but never below 40%")
+	var d := (load("res://scenes/combat/director.tscn") as PackedScene).instantiate() as Director
+	add_child(d)
+	await get_tree().process_frame
+	check(d.mechanics == ["stamps"] and d.telegraph_mult > 1.0, "allies take his tricks away, not the fight")
+	d.engage()
+	check(d.state == Director.State.STALK, "he still has to be beaten")
+	d.grid.queue_free()
+	d.queue_free()
+	GameState.reset_for_new_game()
+
+
+func test_endings_and_the_accord_threshold() -> void:
+	GameState.reset_for_new_game()
+	var choices: Array = DialogueService.dialogues[&"anchor_heart"]["nodes"]["choose"]["choices"]
+	var accord: Dictionary = choices.filter(func(c: Dictionary) -> bool: return c["text"] == "ENDING_ACCORD_CHOICE")[0]
+	check(not StoryRules.evaluate(accord["if"]), "the accord has to be earned")
+	Society.standing[&"unwritten"] = 4
+	for f in [&"site.hospital.true", &"site.home.true", &"anchor.ally.jonah_rook", &"anchor.ally.mara_venn", &"anchor.ally.sera_vale",
+			&"rosalind.reunited", &"world.theo_remembers", &"world.lamp_counts"]:
+		GameState.set_flag(f)
+	check(StoryRules.evaluate(accord["if"]), "trust, truth, allies and true nights open it")
+	check(StoryRules.evaluate({"count_at_least": [[{"flag": "rosalind.reunited"}, {"flag": "nope"}], 1]}), "count_at_least")
+	GameState.reset_for_new_game()
+
+
+func test_epilogue_cards() -> void:
+	GameState.reset_for_new_game()
+	GameState.set_flag(&"ending.custodians")
+	GameState.set_flag(&"rosalind.reunited")
+	GameState.set_flag(&"world.lamp_counts")
+	var cards := EpilogueScreen.build_cards()
+	check(cards[0]["title"] == "ENDING_CUSTODIANS_TITLE", "the ending comes first")
+	check(cards[-1]["text"] == "EPI_END", "and the end card last")
+	var texts := cards.map(func(c: Dictionary) -> String: return String(c["text"]))
+	check(texts.has("EPI_JONAH_ROSALIND") and not texts.has("EPI_JONAH"), "one card per person, the first that fits")
+	check(texts.has("EPI_WREN_CUSTODIANS") and texts.has("EPI_HESTER_COUNTS"), "cards follow what happened")
+	check(texts.has("EPI_WARD_DISTORTED"), "no true nights: a distorted record")
+	GameState.reset_for_new_game()
+
+
+func test_act_five_follows_act_four() -> void:
+	GameState.reset_for_new_game()
+	GameState.is_playing = true
+	for c in [&"case_door", &"case_two_maps", &"case_misplaced", &"case_kindness", &"case_index"]:
+		Journal.start_case(c)
+		Journal.complete_case(c, &"x")
+	for i in 5:
+		Campaign.check()
+	check(Campaign.current_act() == &"act5" and Journal.case_status(&"case_anchor") == Journal.STATUS_ACTIVE, "act V begins")
+	check(Journal.pinned == &"case_anchor", "and pins itself")
+	GameState.is_playing = false
+	GameState.reset_for_new_game()

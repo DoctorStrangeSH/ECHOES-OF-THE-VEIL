@@ -176,8 +176,10 @@ flowchart TD
   alderman_hub -->|"The depot again? ⟨{quest_stage: [case_misplaced, depot]}⟩"| alderman_depot2
   alderman_hub -->|"The depot is quiet now. ⟨{quest_done: case_misplaced}⟩"| alderman_after
   alderman_hub -->|"The three nights are put back… ⟨{quest_stage: [case_index, index]}⟩"| alderman_index1
-  alderman_hub_end_5(["end"])
-  alderman_hub -->|"Goodbye."| alderman_hub_end_5
+  alderman_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| alderman_anchor_yes
+  alderman_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| alderman_anchor_no
+  alderman_hub_end_7(["end"])
+  alderman_hub -->|"Goodbye."| alderman_hub_end_7
   alderman_lore["lore<br/>Alderman Penhallow: 'Badly, and every day. Nobody ages, nothing bre…"]
   alderman_lore --> alderman_hub
   alderman_depot1["depot1<br/>Alderman Penhallow: 'Then you know we don't agree about anything. E…"]
@@ -194,6 +196,10 @@ flowchart TD
   alderman_index2 --> alderman_index3
   alderman_index3["index3<br/>Alderman Penhallow: 'That's what we asked for. That night, every on…"]
   alderman_index3 --> alderman_hub
+  alderman_anchor_yes["anchor_yes<br/>Alderman Penhallow: 'The Ward will come. Two hundred and fourteen o…"]
+  alderman_anchor_yes --> alderman_hub
+  alderman_anchor_no["anchor_no<br/>Alderman Penhallow: 'The Ward doesn't know you well enough to go do…"]
+  alderman_anchor_no --> alderman_hub
 ```
 
 ### bea
@@ -280,8 +286,10 @@ flowchart TD
   vale_hub -->|"Your resonator is in the unde… ⟨{quest_active: case_kindness}⟩"| vale_res
   vale_hub -->|"What has Meridian done? ⟨{quest_stage: [case_index, nodes]}⟩"| vale_nodes1
   vale_hub -->|"About the Index. ⟨{quest_stage: [case_index, vale]}⟩"| vale_final1
-  vale_hub_end_6(["end"])
-  vale_hub -->|"Goodbye."| vale_hub_end_6
+  vale_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| vale_anchor_yes
+  vale_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| vale_anchor_no
+  vale_hub_end_8(["end"])
+  vale_hub -->|"Goodbye."| vale_hub_end_8
   vale_ask["ask<br/>Dr Sera Vale: 'To measure it. Then to make it safe. Then — I'…"]
   vale_ask --> vale_hub
   vale_help["help<br/>Dr Sera Vale: The instrument hums against your palm. The lamp…"]
@@ -301,6 +309,10 @@ flowchart TD
   vale_turned["turned<br/>Dr Sera Vale: She reads Annie's diary twice. Then she takes t…"]
   vale_continued["continued<br/>Dr Sera Vale: 'Carefully,' she agrees, and you can hear her d…"]
   vale_stopped["stopped<br/>Dr Sera Vale: 'The Keepers.' She laughs once. 'The people who…"]
+  vale_anchor_yes["anchor_yes<br/>Dr Sera Vale: 'I know how the Lattice reads. I'll call out wh…"]
+  vale_anchor_yes --> vale_hub
+  vale_anchor_no["anchor_no<br/>Dr Sera Vale: 'Meridian's lawyers would never let me. And I'm…"]
+  vale_anchor_no --> vale_hub
 ```
 
 ### rosalind
@@ -350,11 +362,17 @@ flowchart TD
   camp_jonah_hub_end_1(["end"])
   camp_jonah_hub -->|"Let's trade."| camp_jonah_hub_end_1
   camp_jonah_hub -->|"Go home for now."| camp_jonah_home
-  camp_jonah_hub_end_3(["end"])
-  camp_jonah_hub -->|"Let's keep going."| camp_jonah_hub_end_3
+  camp_jonah_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| camp_jonah_anchor_yes
+  camp_jonah_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| camp_jonah_anchor_no
+  camp_jonah_hub_end_5(["end"])
+  camp_jonah_hub -->|"Let's keep going."| camp_jonah_hub_end_5
   camp_jonah_how["how<br/>Jonah Rook: 'Half of me wants to find her. The other half's…"]
   camp_jonah_how --> camp_jonah_hub
   camp_jonah_home["home<br/>Jonah Rook: 'Shout if anything needs fixing.'"]
+  camp_jonah_anchor_yes["anchor_yes<br/>Jonah Rook: 'You found my sister. I'd follow you into worse…"]
+  camp_jonah_anchor_yes --> camp_jonah_hub
+  camp_jonah_anchor_no["anchor_no<br/>Jonah Rook: 'I've got a shop and a lot of questions about y…"]
+  camp_jonah_anchor_no --> camp_jonah_hub
 ```
 
 ### camp_mara
@@ -367,12 +385,18 @@ flowchart TD
   camp_mara_hub["hub<br/>Mara Venn: 'I'm taking notes. Go on.'"]
   camp_mara_hub -->|"How are you holding up?"| camp_mara_how
   camp_mara_hub -->|"Go home for now."| camp_mara_home
-  camp_mara_hub_end_2(["end"])
-  camp_mara_hub -->|"Let's keep going."| camp_mara_hub_end_2
+  camp_mara_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| camp_mara_anchor_yes
+  camp_mara_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| camp_mara_anchor_no
+  camp_mara_hub_end_4(["end"])
+  camp_mara_hub -->|"Let's keep going."| camp_mara_hub_end_4
   camp_mara_how["how<br/>Mara Venn: 'Every record I've ever kept is wrong by two hu…"]
   camp_mara_how --> camp_mara_hub
   camp_mara_home["home<br/>Mara Venn: 'I'll be at the archive. Write things down.'"]
   camp_mara_not_here["not_here<br/>Mara Venn: 'Not here. Meet me under the archive. There's s…"]
+  camp_mara_anchor_yes["anchor_yes<br/>Mara Venn: 'Somebody has to write down what happens. It sh…"]
+  camp_mara_anchor_yes --> camp_mara_hub
+  camp_mara_anchor_no["anchor_no<br/>Mara Venn: 'I'll read about it afterwards. I'm not sure I …"]
+  camp_mara_anchor_no --> camp_mara_hub
 ```
 
 ### harbour_timetable
@@ -720,6 +744,61 @@ flowchart TD
   recon_memory_station_r1["r1<br/>You lay the three accounts side by side and let…"]
 ```
 
+## act5.json
+
+### anchor_enter
+
+```mermaid
+flowchart TD
+  anchor_enter_START(("start"))
+  anchor_enter_START --> anchor_enter_1
+  anchor_enter_1["1<br/>Under the Seal Engine, under the Keepers' hall,…"]
+  anchor_enter_1 --> anchor_enter_2
+  anchor_enter_2["2<br/>Director Elias Wren: 'Elias Wren. Civic Renewal.' He doesn't turn ro…"]
+  anchor_enter_2 --> anchor_enter_3
+  anchor_enter_3["3<br/>Director Elias Wren: 'Forty thousand people live on top of this. I c…"]
+  anchor_enter_3 --> anchor_enter_4
+  anchor_enter_4["4<br/>Director Elias Wren: He turns, finally, and the anchor turns with hi…"]
+```
+
+### anchor_heart
+
+```mermaid
+flowchart TD
+  anchor_heart_START(("start"))
+  anchor_heart_START --> anchor_heart_idle
+  anchor_heart_START -->|"{quest_stage: [case_anchor, confront], …"| anchor_heart_h1
+  anchor_heart_START -->|"{quest_stage: [case_anchor, choose]}"| anchor_heart_choose
+  anchor_heart_START -->|"{quest_done: case_anchor}"| anchor_heart_after
+  anchor_heart_idle["idle<br/>The anchor hums one note under every other note…"]
+  anchor_heart_after["after<br/>The anchor hums. It sounds different now. You c…"]
+  anchor_heart_h1["h1<br/>Director Elias Wren: Wren is on his knees by the anchor, coat torn, …"]
+  anchor_heart_h1 --> anchor_heart_h2
+  anchor_heart_h2["h2<br/>Your hand on the anchor. It shows you everythin…"]
+  anchor_heart_h2 --> anchor_heart_choose
+  anchor_heart_choose["choose<br/>What happens to the Index?"]
+  anchor_heart_choose -->|"Release it. Let every communi…"| anchor_heart_said_open
+  anchor_heart_choose -->|"Rebuild the seal — with every…"| anchor_heart_said_custodians
+  anchor_heart_choose -->|"Share it. The Ward and Greyfo… ⟨{faction_at_least: [unwritten, 4], all:…⟩"| anchor_heart_said_accord
+  anchor_heart_choose -->|"Try to make them share it. ⟨{not: {faction_at_least: [unwritten, 4]…⟩"| anchor_heart_accord_no
+  anchor_heart_accord_no["accord_no<br/>The anchor shows you why it won't hold: not eno…"]
+  anchor_heart_accord_no --> anchor_heart_choose
+  anchor_heart_said_open["said_open<br/>You open your hand. The hum climbs until it isn…"]
+  anchor_heart_said_custodians["said_custodians<br/>You close your hand around it, slowly. The note…"]
+  anchor_heart_said_accord["said_accord<br/>Other hands join yours on the brass — the ones …"]
+```
+
+### wren
+
+```mermaid
+flowchart TD
+  wren_START(("start"))
+  wren_START --> wren_before
+  wren_START -->|"{quest_done: case_anchor}"| wren_after
+  wren_before["before<br/>Director Elias Wren: 'Decide. I'll accept whatever you choose. I'm v…"]
+  wren_after["after<br/>Director Elias Wren: 'I'll testify. Every minute, every name. It won…"]
+```
+
 ## lighthouse.json
 
 ### hester
@@ -847,8 +926,10 @@ flowchart TD
   mara_hub -->|"The same mark is in all three… ⟨{quest_stage: [case_two_maps, map]}⟩"| mara_mark1
   mara_hub -->|"Come with me for a while? ⟨{can_join: mara_venn}⟩"| mara_join
   mara_hub -->|"Do you recognise this handwri… ⟨{quest_stage: [case_two_maps, hand], no…⟩"| mara_hand1
-  mara_hub_end_8(["end"])
-  mara_hub -->|"Goodbye."| mara_hub_end_8
+  mara_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| mara_anchor_yes
+  mara_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| mara_anchor_no
+  mara_hub_end_10(["end"])
+  mara_hub -->|"Goodbye."| mara_hub_end_10
   mara_plaza1["plaza1<br/>Mara Venn: 'Before the plaza? A car park. Before that—' Sh…"]
   mara_plaza1 --> mara_plaza2
   mara_plaza2["plaza2<br/>Mara Venn: 'The rate books list a street. Lantern Row. Nin…"]
@@ -909,6 +990,10 @@ flowchart TD
   mara_kn_leave3["kn_leave3<br/>Mara Venn: 'Right.' She closes the notebook. 'Then I'll ge…"]
   mara_hand1["hand1<br/>Mara Venn: Mara looks for a long time. 'Those sevens. I've…"]
   mara_hand1 --> mara_hub
+  mara_anchor_yes["anchor_yes<br/>Mara Venn: 'Somebody has to write down what happens. It sh…"]
+  mara_anchor_yes --> mara_hub
+  mara_anchor_no["anchor_no<br/>Mara Venn: 'I'll read about it afterwards. I'm not sure I …"]
+  mara_anchor_no --> mara_hub
 ```
 
 ### jonah
@@ -959,8 +1044,10 @@ flowchart TD
   jonah_hub -->|"Anything strange happen to yo… ⟨{quest_active: case_two_maps, not_quest…⟩"| jonah_strange1
   jonah_hub -->|"I made it into your storeroom. ⟨{quest_stage: [case_storeroom, tell]}⟩"| jonah_sr1
   jonah_hub -->|"Come with me for a while? ⟨{can_join: jonah_rook}⟩"| jonah_join
-  jonah_hub_end_11(["end"])
-  jonah_hub -->|"Goodbye."| jonah_hub_end_11
+  jonah_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| jonah_anchor_yes
+  jonah_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| jonah_anchor_no
+  jonah_hub_end_13(["end"])
+  jonah_hub -->|"Goodbye."| jonah_hub_end_13
   jonah_tram1["tram1<br/>Jonah Rook: 'The line closed in '89. But when it rains, peo…"]
   jonah_tram1 --> jonah_tram2
   jonah_tram2["tram2<br/>Jonah Rook: 'So I go and check. Every time. Nothing's ever …"]
@@ -1010,6 +1097,10 @@ flowchart TD
   jonah_sr2["sr2<br/>Jonah Rook: 'Dad never had a daughter. Not on paper.' He op…"]
   jonah_sr2 --> jonah_hub
   jonah_join["join<br/>Jonah Rook: 'Shop can mind itself. You can't.' He picks up …"]
+  jonah_anchor_yes["anchor_yes<br/>Jonah Rook: 'You found my sister. I'd follow you into worse…"]
+  jonah_anchor_yes --> jonah_hub
+  jonah_anchor_no["anchor_no<br/>Jonah Rook: 'I've got a shop and a lot of questions about y…"]
+  jonah_anchor_no --> jonah_hub
 ```
 
 ### halloway
@@ -1103,8 +1194,10 @@ flowchart TD
   ivo_hub -->|"Someone draws three lines und… ⟨{hypothesis: greyford_keeps_quiet, not_…⟩"| ivo_sym1
   ivo_hub -->|"Nadiya asked me to give you t… ⟨{has_item: letter_ivo}⟩"| ivo_letter1
   ivo_hub -->|"What is the Ward? ⟨{quest_stage: [case_misplaced, ward], n…⟩"| ivo_ward1
-  ivo_hub_end_4(["end"])
-  ivo_hub -->|"Goodbye."| ivo_hub_end_4
+  ivo_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| ivo_anchor_yes
+  ivo_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| ivo_anchor_no
+  ivo_hub_end_6(["end"])
+  ivo_hub -->|"Goodbye."| ivo_hub_end_6
   ivo_door1["door1<br/>Ivo Calder: He is quiet for a while. 'Doors like that close…"]
   ivo_door1 --> ivo_door2
   ivo_door2["door2<br/>Ivo Calder: 'Whatever's on the other side has waited a long…"]
@@ -1139,6 +1232,10 @@ flowchart TD
   ivo_kn_leave2 --> ivo_kn_leave3
   ivo_kn_leave3["kn_leave3<br/>Ivo Calder: 'You won't forgive this. You shouldn't.' He put…"]
   ivo_pact_key["pact_key<br/>Ivo Calder: Ivo presses an old brass key into your hand. 'T…"]
+  ivo_anchor_yes["anchor_yes<br/>Ivo Calder: 'The Keepers will hold the seal while you do wh…"]
+  ivo_anchor_yes --> ivo_hub
+  ivo_anchor_no["anchor_no<br/>Ivo Calder: 'The Keepers don't follow people they don't tru…"]
+  ivo_anchor_no --> ivo_hub
 ```
 
 ### nadiya
@@ -1161,8 +1258,10 @@ flowchart TD
   nadiya_hub -->|"What do you deliver at night?"| nadiya_work1
   nadiya_hub -->|"Do you know a way into the Wa… ⟨{quest_stage: [case_misplaced, ward], n…⟩"| nadiya_ward_nad
   nadiya_hub -->|"What is the Open Hand plannin… ⟨{quest_stage: [case_kindness, quay]}⟩"| nadiya_plan1
-  nadiya_hub_end_4(["end"])
-  nadiya_hub -->|"Goodbye."| nadiya_hub_end_4
+  nadiya_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| nadiya_anchor_yes
+  nadiya_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| nadiya_anchor_no
+  nadiya_hub_end_6(["end"])
+  nadiya_hub -->|"Goodbye."| nadiya_hub_end_6
   nadiya_door1["door1<br/>Nadiya Sol: 'You see it too? Good. Most people's eyes just …"]
   nadiya_door1 --> nadiya_door2
   nadiya_door2["door2<br/>Nadiya Sol: 'They tore down a whole street and told everyon…"]
@@ -1193,6 +1292,10 @@ flowchart TD
   nadiya_plan1 --> nadiya_plan2
   nadiya_plan2["plan2<br/>Nadiya Sol: 'They moved it through the old underpass when t…"]
   nadiya_plan2 --> nadiya_hub
+  nadiya_anchor_yes["anchor_yes<br/>Nadiya Sol: 'The Open Hand will hold the tram lines. Nobody…"]
+  nadiya_anchor_yes --> nadiya_hub
+  nadiya_anchor_no["anchor_no<br/>Nadiya Sol: 'You haven't given the Open Hand much reason to…"]
+  nadiya_anchor_no --> nadiya_hub
 ```
 
 ### pike

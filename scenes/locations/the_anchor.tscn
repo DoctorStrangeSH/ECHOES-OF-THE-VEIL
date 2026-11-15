@@ -1,0 +1,188 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/location.gd" id="1_loc"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2_paint"]
+[ext_resource type="PackedScene" path="res://scenes/props/world_prop.tscn" id="3_prop"]
+[ext_resource type="Script" path="res://scripts/world/spawn_point.gd" id="4_spawn"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="5_inspect"]
+[ext_resource type="Script" path="res://scripts/interaction/door_interactable.gd" id="6_door"]
+[ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
+[ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+[ext_resource type="Script" path="res://scripts/world/conditional_visibility.gd" id="10_cond"]
+[ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
+[ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
+[ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+[ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
+[ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
+[ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
+[ext_resource type="PackedScene" path="res://scenes/world/repair_spot.tscn" id="17_spot"]
+[ext_resource type="PackedScene" path="res://scenes/world/screen_interactable.tscn" id="18_screen"]
+[ext_resource type="PackedScene" path="res://scenes/world/junk_pile.tscn" id="19_junk"]
+[ext_resource type="PackedScene" path="res://scenes/combat/director.tscn" id="20_boss_director"]
+
+[node name="TheAnchor" type="Node2D"]
+script = ExtResource("1_loc")
+location_id = &"the_anchor"
+name_key = "LOC_THE_ANCHOR"
+outdoors = false
+combat_enabled = true
+fixed_tint = Color(0.82, 0.78, 1.0, 1.0)
+enter_dialogue_id = &"anchor_enter"
+enter_condition = {"not_flag": "anchor.entered"}
+
+[node name="Ground" type="TileMapLayer" parent="."]
+script = ExtResource("2_paint")
+palette_id = "echo_corridor"
+layout = "##########################
+#WWWWWWWWWWWWWWWWWWWWWWWW#
+#wwwwwwwwwwwwwwwwwwwwwwww#
+#ffffffffffffffffffffffff#
+#ffffffffffffffffffffffff#
+#ffffffffffffffffffffffff#
+#ffffffffffffffffffffffff#
+#ffffffffffffffffffffffff#
+#ffffffffffffffffffffffff#
+#ffffffffffffffffffffffff#
+#ffffffffffffffffffffffff#
+#ffffffffffffffffffffffff#
+#ffffffffffffffffffffffff#
+#ffffffffffffffffffffffff#
+#ffffffffffffffffffffffff#
+############ff############"
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="NpcAnchors" type="Node2D" parent="."]
+
+[node name="Anchor" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(208, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_1.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.627,0.565,0.753, 1)
+collision_size = Vector2(28, 12)
+collision_offset = Vector2(0, -6)
+
+[node name="Shimmer" type="Node" parent="Entities/Anchor"]
+script = ExtResource("9_shimmer")
+
+[node name="Pillar1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(32, 96)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Big_Pillar.png"
+placeholder_size = Vector2i(16, 80)
+placeholder_color = Color(0.439,0.408,0.565, 1)
+collision_size = Vector2(14, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Pillar2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(384, 96)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Big_Pillar.png"
+placeholder_size = Vector2i(16, 80)
+placeholder_color = Color(0.439,0.408,0.565, 1)
+collision_size = Vector2(14, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Pillar3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(32, 200)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Big_Pillar.png"
+placeholder_size = Vector2i(16, 80)
+placeholder_color = Color(0.439,0.408,0.565, 1)
+collision_size = Vector2(14, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Pillar4" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(384, 200)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Big_Pillar.png"
+placeholder_size = Vector2i(16, 80)
+placeholder_color = Color(0.439,0.408,0.565, 1)
+collision_size = Vector2(14, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Director" parent="Entities" instance=ExtResource("20_boss_director")]
+position = Vector2(208, 136)
+
+[node name="BossArena" type="Area2D" parent="."]
+position = Vector2(208, 136)
+script = ExtResource("15_arena")
+boss_path = NodePath("../Entities/Director")
+engaged_flag = &"boss.director.engaged"
+area_size = Vector2(320, 160)
+
+[node name="Heart" type="Area2D" parent="Entities"]
+position = Vector2(208, 76)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_anchor_heart"
+area_size = Vector2(40, 14)
+interaction_priority = 30
+dialogue_id = &"anchor_heart"
+
+[node name="Condition" type="Node" parent="Entities/Heart"]
+script = ExtResource("10_cond")
+show_if = {"flag": "boss.director.defeated"}
+
+[node name="Gate" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(208, 236)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Turnstile_Closed.png"
+placeholder_size = Vector2i(32, 64)
+placeholder_color = Color(0.376,0.376,0.439, 1)
+collision_size = Vector2(40, 12)
+collision_offset = Vector2(0, -6)
+
+[node name="Condition" type="Node" parent="Entities/Gate"]
+script = ExtResource("10_cond")
+show_if = {"flag": "boss.director.engaged", "not_flag": "boss.director.defeated"}
+
+[node name="Entrance" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(208, 224)
+script = ExtResource("4_spawn")
+spawn_id = &"entrance"
+facing = Vector2(0, -1)
+
+[node name="WayBack" type="Area2D" parent="Entities"]
+position = Vector2(208, 248)
+script = ExtResource("6_door")
+interaction_id = &"door_anchor_exit"
+area_size = Vector2(30, 10)
+prompt_key = "PROMPT_STAIRS_UP"
+target_scene_id = &"keepers_rooms"
+target_spawn_id = &"anchor_return"
+
+[node name="A_ally_jonah_rook" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(64, 226)
+script = ExtResource("11_anchor")
+anchor_id = &"ally_jonah_rook"
+
+[node name="A_ally_mara_venn" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(120, 214)
+script = ExtResource("11_anchor")
+anchor_id = &"ally_mara_venn"
+
+[node name="A_ally_ivo_calder" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(176, 226)
+script = ExtResource("11_anchor")
+anchor_id = &"ally_ivo_calder"
+
+[node name="A_ally_nadiya_sol" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(232, 214)
+script = ExtResource("11_anchor")
+anchor_id = &"ally_nadiya_sol"
+
+[node name="A_ally_sera_vale" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(288, 226)
+script = ExtResource("11_anchor")
+anchor_id = &"ally_sera_vale"
+
+[node name="A_ally_alderman_penhallow" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(344, 214)
+script = ExtResource("11_anchor")
+anchor_id = &"ally_alderman_penhallow"
+
+[node name="A_heart" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(232, 90)
+script = ExtResource("11_anchor")
+anchor_id = &"heart"

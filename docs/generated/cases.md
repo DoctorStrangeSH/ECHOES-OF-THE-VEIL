@@ -108,6 +108,21 @@ flowchart LR
   case_index_START(("start")) --> case_index_nodes
 ```
 
+## case_anchor — What We Choose to Remember
+
+```mermaid
+flowchart LR
+  case_anchor_gather["gather<br/>Ask who will stand with you, then go do…"]
+  case_anchor_confront["confront<br/>Stop Director Wren at the anchor."]
+  case_anchor_choose["choose<br/>Decide what happens to the Index."]
+  case_anchor_gather --> case_anchor_confront
+  case_anchor_confront --> case_anchor_choose
+  case_anchor_out_open_record(["outcome: open_record<br/>You released the Index. Greyf…"])
+  case_anchor_out_custodians(["outcome: custodians<br/>You rebuilt the seal in the o…"])
+  case_anchor_out_accord(["outcome: accord<br/>The Ward and Greyford hold th…"])
+  case_anchor_START(("start")) --> case_anchor_gather
+```
+
 ## case_door — The Door That Shouldn't Be There
 
 ```mermaid

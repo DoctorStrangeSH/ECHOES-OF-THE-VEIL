@@ -11,6 +11,20 @@
   ],
   "schedule": [
    {
+    "if": {
+     "flag": "anchor.ally.alderman_penhallow",
+     "quest_active": "case_anchor",
+     "all": [
+      {
+       "flag": "anchor.entered"
+      }
+     ]
+    },
+    "scene": "the_anchor",
+    "anchor": "ally_alderman_penhallow",
+    "facing": "up"
+   },
+   {
     "scene": "echo_ward",
     "anchor": "hall_steps",
     "facing": "down"
@@ -77,6 +91,20 @@
    "meridian"
   ],
   "schedule": [
+   {
+    "if": {
+     "flag": "anchor.ally.sera_vale",
+     "quest_active": "case_anchor",
+     "all": [
+      {
+       "flag": "anchor.entered"
+      }
+     ]
+    },
+    "scene": "the_anchor",
+    "anchor": "ally_sera_vale",
+    "facing": "up"
+   },
    {
     "if": {
      "quest_active": "case_kindness"

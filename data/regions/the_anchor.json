@@ -1,0 +1,18 @@
+{
+ "id": "the_anchor",
+ "name_key": "LOC_THE_ANCHOR",
+ "palette": "echo_corridor",
+ "options": {"outdoors": false, "combat_enabled": true, "fixed_tint": {"color": [0.82, 0.78, 1.0, 1.0]}, "enter_dialogue_id": "anchor_enter", "enter_condition": {"not_flag": "anchor.entered"}},
+ "layout": {"generator": "room", "width": 26, "height": 16, "door_x": 12},
+ "nodes": [
+  {"kind": "prop", "name": "Anchor", "tex": "@basement/1.png", "x": 208, "y": 64, "col": [28, 12], "off": [0, -6], "color": "#a090c0", "children": ["Shimmer"]},
+  {"template": "row", "prop": {"tex": "@subway/Big_Pillar.png", "color": "#706890", "col": [14, 10], "off": [0, -5]}, "at": [[32, 96], [384, 96], [32, 200], [384, 200]], "name": "Pillar"},
+  {"kind": "boss", "name": "Director", "x": 208, "y": 136, "scene": "res://scenes/combat/director.tscn"},
+  {"kind": "arena", "boss": "Director", "flag": "boss.director.engaged", "x": 208, "y": 136, "size": [320, 160]},
+  {"kind": "inspect", "name": "Heart", "id": "inspect_anchor_heart", "x": 208, "y": 76, "area": [40, 14], "dialogue": "anchor_heart", "priority": 30, "show_if": {"flag": "boss.director.defeated"}},
+  {"kind": "prop", "name": "Gate", "tex": "@subway/Turnstile_Closed.png", "x": 208, "y": 236, "col": [40, 12], "off": [0, -6], "color": "#606070", "show_if": {"flag": "boss.director.engaged", "not_flag": "boss.director.defeated"}},
+  {"kind": "spawn", "name": "Entrance", "id": "entrance", "x": 208, "y": 224, "facing": [0, -1]},
+  {"kind": "door", "name": "WayBack", "id": "door_anchor_exit", "x": 208, "y": 248, "area": [30, 10], "scene": "keepers_rooms", "spawn": "anchor_return", "prompt": "PROMPT_STAIRS_UP"},
+  {"template": "anchors", "points": {"ally_jonah_rook": [64, 226], "ally_mara_venn": [120, 214], "ally_ivo_calder": [176, 226], "ally_nadiya_sol": [232, 214], "ally_sera_vale": [288, 226], "ally_alderman_penhallow": [344, 214], "heart": [232, 90]}}
+ ]
+}

@@ -13,8 +13,8 @@ The spine is data: `data/story/campaign.json` lists the acts, the condition that
 | M7c | **Act III** — the Keepers' pact, North Quay, the Archivist of Floods, the ally who knew | done |
 | M7d | **Act IV** — the Index: three memory-sites, testimony verdicts, three Revisions, Dr Vale's choice | done |
 | M7e | **Quest system and challenge rework** — no fail-forward, objectives, failable quests, mandatory bosses, difficulty (see roadmap) | done |
-| M7f | **Act V** — the anchor; endings and epilogues | next |
-| M7g | Campaign pass: balance, full playthrough tests | |
+| M7f | **Act V** — the anchor; Director Wren; three endings and epilogues | done |
+| M7g | Campaign pass: balance, full playthrough per difficulty, companion personal quests | next |
 
 ## What already exists (M1–M6)
 
@@ -81,7 +81,11 @@ Original plan (before M7e, mentions of fail-forward no longer apply):
 - **Bosses:** one per site, each a "revision" of a person — mechanics built on the site's edit (the boss rewrites the arena).
 - **Act turn:** the Lattice learned to preserve the memories of people who begged not to be forgotten, and could not tell remembrance from imprisonment.
 
-## Act V — What We Choose to Remember (M7e)
+## Act V — What We Choose to Remember (M7f, built)
+
+As built: starts when Act IV closes. **Gather**: ask Jonah, Mara, Ivo, Nadiya, Dr Vale and the Alderman to stand with you — each says yes only if you've earned it (friendship, Rosalind, Keepers / Open Hand / Unwritten standing, Vale turned); allies wait at the anchor. A stair opens beside the Seal Engine. **Director Elias Wren** (Civic Renewal) means to collapse the cracked anchor and every echo with it. The fight cycles the campaign's mechanics — stamps, tram lanes, floor rewrites, summoned echoes; allies remove tricks (Mara: rewrites, Nadiya: lanes, the Alderman: summons, Vale: slower telegraphs, Jonah: heals at each phase, Ivo: −25% health) and each true night costs him 10% — never below 40%, never skippable. **The choice** at the anchor's heart: **Open Record**, **The New Custodians**, or **The Living Accord** (needs Unwritten ≥ 4, two true nights, three allies and three truths told to the living — otherwise the anchor shows you why it won't hold). **Epilogue** cards: the ending, then one card each for Wren, Jonah, Edda, Theo, Hester, Mara, Ivo, Vale and the Ward, plus a hidden card if some echoes chose to stay. Afterwards the world goes on (flag `game.completed`) for M8.
+
+Original plan:
 
 **Region:** the anchor beneath Greyford.
 
