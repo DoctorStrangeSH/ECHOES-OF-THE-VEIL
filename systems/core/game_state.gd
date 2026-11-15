@@ -53,6 +53,7 @@ func reset_for_new_game() -> void:
 	Inventory.reset()
 	Society.reset()
 	Livelihood.reset()
+	Party.reset()
 
 
 func lock_player(reason: StringName) -> void:
@@ -138,6 +139,7 @@ func to_dict(player_node: Node2D = null) -> Dictionary:
 		"inventory": Inventory.to_dict(),
 		"society": Society.to_dict(),
 		"life": Livelihood.to_dict(),
+		"party": Party.to_dict(),
 	}
 
 
@@ -178,3 +180,4 @@ func from_dict(data: Dictionary) -> void:
 	Inventory.from_dict(data.get("inventory", {}))
 	Society.from_dict(data.get("society", {}))
 	Livelihood.from_dict(data.get("life", {}))
+	Party.from_dict(data.get("party", {}))

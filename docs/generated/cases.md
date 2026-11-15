@@ -70,7 +70,26 @@ Evidence that advances this case: `e_house_longer`, `e_house_mark`
 ```mermaid
 flowchart LR
   case_misplaced_ward["ward<br/>Find out what the Ward is. Ivo Calder k…"]
+  case_misplaced_residents["residents<br/>Meet the Ward. The Alderman asks you to…"]
+  case_misplaced_depot["depot<br/>People go missing from the Ward into th…"]
+  case_misplaced_rosalind["rosalind<br/>Rosalind Rook is on Platform Eleven. Sh…"]
+  case_misplaced_bring["bring<br/>Bring Jonah to Platform Eleven (ask him…"]
+  case_misplaced_ward --> case_misplaced_residents
+  case_misplaced_residents --> case_misplaced_depot
+  case_misplaced_depot --> case_misplaced_rosalind
+  case_misplaced_rosalind --> case_misplaced_bring
+  case_misplaced_out_reunited(["outcome: reunited<br/>Jonah and Rosalind Rook found…"])
+  case_misplaced_out_apart(["outcome: apart<br/>Rosalind will go up to Greyfo…"])
   case_misplaced_START(("start")) --> case_misplaced_ward
+  case_misplaced_ff_0{{"help: At the harbour stop someone has pasted …"}}
+  case_misplaced_ward -.->|"stuck 2 days"| case_misplaced_ff_0
+  case_misplaced_ff_1{{"help: A note from the Alderman: 'You've heard…"}}
+  case_misplaced_residents -.->|"stuck 3 days"| case_misplaced_ff_1
+  case_misplaced_ff_1 -.-> case_misplaced_depot
+  case_misplaced_ff_2{{"help: The Ward's trams stopped running last n…"}}
+  case_misplaced_depot -.->|"stuck 4 days"| case_misplaced_ff_2
+  case_misplaced_ff_3{{"help: Jonah went to the harbour stop on his o…"}}
+  case_misplaced_bring -.->|"stuck 3 days"| case_misplaced_ff_3
 ```
 
 ## case_door — The Door That Shouldn't Be There

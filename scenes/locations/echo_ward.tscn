@@ -1,0 +1,278 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/location.gd" id="1_loc"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2_paint"]
+[ext_resource type="PackedScene" path="res://scenes/props/world_prop.tscn" id="3_prop"]
+[ext_resource type="Script" path="res://scripts/world/spawn_point.gd" id="4_spawn"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="5_inspect"]
+[ext_resource type="Script" path="res://scripts/interaction/door_interactable.gd" id="6_door"]
+[ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
+[ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+[ext_resource type="Script" path="res://scripts/world/conditional_visibility.gd" id="10_cond"]
+[ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
+[ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
+[ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+[ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
+[ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
+[ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
+[ext_resource type="PackedScene" path="res://scenes/world/repair_spot.tscn" id="17_spot"]
+[ext_resource type="PackedScene" path="res://scenes/world/screen_interactable.tscn" id="18_screen"]
+[ext_resource type="PackedScene" path="res://scenes/world/junk_pile.tscn" id="19_junk"]
+
+[node name="EchoWard" type="Node2D"]
+script = ExtResource("1_loc")
+location_id = &"echo_ward"
+name_key = "LOC_ECHO_WARD"
+outdoors = true
+fixed_tint = Color(0.66, 0.72, 0.95, 1.0)
+enter_dialogue_id = &"ward_enter"
+enter_condition = {"not_flag": "ward.open"}
+
+[node name="Ground" type="TileMapLayer" parent="."]
+script = ExtResource("2_paint")
+palette_id = "greyford_exterior"
+layout = "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+oooooooooooooooooooooooooooooooooooooooo
+ssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssss
+rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+ssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssss"
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="NpcAnchors" type="Node2D" parent="."]
+
+[node name="TallHouseWest" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(40, 256)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/4_Generic_Building_Singles_16x16/ME_Singles_Generic_Building_16x16_Condo_1_1.png"
+placeholder_size = Vector2i(48, 192)
+placeholder_color = Color(0.784,0.659,0.376, 1)
+collision_size = Vector2(48, 192)
+collision_offset = Vector2(0, -96)
+
+[node name="WardHall" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(136, 256)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/4_Generic_Building_Singles_16x16/ME_Singles_Generic_Building_16x16_Condo_4_1.png"
+placeholder_size = Vector2i(112, 80)
+placeholder_color = Color(0.627,0.314,0.251, 1)
+collision_size = Vector2(112, 80)
+collision_offset = Vector2(0, -40)
+
+[node name="WardHallLook" type="Area2D" parent="Entities"]
+position = Vector2(136, 262)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_ward_hall"
+area_size = Vector2(30, 14)
+lines = PackedStringArray("WARD_HALL_LOOK")
+
+[node name="Bakery" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(256, 256)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/9_Shopping_Center_and_Markets_Singles_16x16/ME_Singles_Shopping_Center_and_Markets_16x16_Market_Small_1.png"
+placeholder_size = Vector2i(80, 128)
+placeholder_color = Color(0.753,0.314,0.376, 1)
+collision_size = Vector2(80, 128)
+collision_offset = Vector2(0, -64)
+
+[node name="BakeryLook" type="Area2D" parent="Entities"]
+position = Vector2(256, 262)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_bakery"
+area_size = Vector2(24, 14)
+lines = PackedStringArray("WARD_BAKERY_LOOK")
+
+[node name="TallHouseMid" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(336, 256)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/4_Generic_Building_Singles_16x16/ME_Singles_Generic_Building_16x16_Condo_2_1.png"
+placeholder_size = Vector2i(48, 192)
+placeholder_color = Color(0.565,0.565,0.627, 1)
+collision_size = Vector2(48, 192)
+collision_offset = Vector2(0, -96)
+
+[node name="NumberEleven" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(416, 256)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/4_Generic_Building_Singles_16x16/ME_Singles_Generic_Building_16x16_Condo_4_10.png"
+placeholder_size = Vector2i(80, 80)
+placeholder_color = Color(0.627,0.314,0.251, 1)
+collision_size = Vector2(80, 80)
+collision_offset = Vector2(0, -40)
+
+[node name="NumberElevenLook" type="Area2D" parent="Entities"]
+position = Vector2(416, 262)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_number_eleven"
+area_size = Vector2(24, 14)
+lines = PackedStringArray("WARD_NO11_LOOK")
+
+[node name="TallHouseEast" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(496, 256)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/4_Generic_Building_Singles_16x16/ME_Singles_Generic_Building_16x16_Condo_1_1.png"
+placeholder_size = Vector2i(48, 192)
+placeholder_color = Color(0.784,0.659,0.376, 1)
+collision_size = Vector2(48, 192)
+collision_offset = Vector2(0, -96)
+
+[node name="TramShelter" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(584, 262)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/10_Vehicles_Singles_16x16/ME_Singles_Vehicles_16x16_Bus_Stop_1.png"
+placeholder_size = Vector2i(80, 48)
+placeholder_color = Color(0.376,0.439,0.502, 1)
+collision_size = Vector2(76, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="DepotGate" type="Area2D" parent="Entities"]
+position = Vector2(584, 272)
+script = ExtResource("6_door")
+interaction_id = &"door_ward_depot"
+area_size = Vector2(30, 14)
+prompt_key = "PROMPT_DEPOT"
+target_scene_id = &"ward_depot"
+target_spawn_id = &"entrance"
+
+[node name="Condition" type="Node" parent="Entities/DepotGate"]
+script = ExtResource("10_cond")
+show_if = {"any": [{"quest_stage": ["case_misplaced", "depot"]}, {"quest_stage": ["case_misplaced", "rosalind"]}, {"quest_stage": ["case_misplaced", "bring"]}, {"quest_done": "case_misplaced"}]}
+
+[node name="DepotFront" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(584, 296)
+script = ExtResource("4_spawn")
+spawn_id = &"depot_front"
+facing = Vector2(0, 1)
+
+[node name="Ferry" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(200, 44)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/10_Vehicles_Singles_16x16/ME_Singles_Vehicles_16x16_Boat_1_Left_1.png"
+placeholder_size = Vector2i(64, 32)
+placeholder_color = Color(0.502,0.376,0.251, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="WardLamp1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(96, 92)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Street_Lamp_1.png"
+placeholder_size = Vector2i(32, 64)
+placeholder_color = Color(0.267,0.267,0.333, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="Shimmer" type="Node" parent="Entities/WardLamp1"]
+script = ExtResource("9_shimmer")
+
+[node name="WardLamp2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(320, 92)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Street_Lamp_1.png"
+placeholder_size = Vector2i(32, 64)
+placeholder_color = Color(0.267,0.267,0.333, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="Shimmer" type="Node" parent="Entities/WardLamp2"]
+script = ExtResource("9_shimmer")
+
+[node name="WardLamp3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(544, 92)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Street_Lamp_1.png"
+placeholder_size = Vector2i(32, 64)
+placeholder_color = Color(0.267,0.267,0.333, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="Shimmer" type="Node" parent="Entities/WardLamp3"]
+script = ExtResource("9_shimmer")
+
+[node name="WardNotice" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(64, 282)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/10_Vehicles_Singles_16x16/ME_Singles_Vehicles_16x16_Bus_Stop_Sign_1.png"
+placeholder_size = Vector2i(16, 48)
+placeholder_color = Color(0.816,0.816,0.816, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="WardNoticeRead" type="Area2D" parent="Entities"]
+position = Vector2(64, 288)
+script = ExtResource("5_inspect")
+interaction_id = &"read_ward_notice"
+area_size = Vector2(18, 12)
+prompt_key = "PROMPT_READ"
+lines = PackedStringArray("WARD_NOTICE_1", "WARD_NOTICE_2")
+
+[node name="Bench" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(300, 356)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Bench_2.png"
+placeholder_size = Vector2i(48, 32)
+placeholder_color = Color(0.627,0.439,0.251, 1)
+collision_size = Vector2(44, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Gate" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(36, 312)
+script = ExtResource("4_spawn")
+spawn_id = &"gate"
+facing = Vector2(1, 0)
+
+[node name="WayBack" type="Area2D" parent="Entities"]
+position = Vector2(8, 312)
+script = ExtResource("6_door")
+interaction_id = &"door_ward_greyford"
+area_size = Vector2(14, 40)
+prompt_key = "PROMPT_WARD_LEAVE"
+target_scene_id = &"greyford_block"
+target_spawn_id = &"ward_return"
+
+[node name="A_hall_steps" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(136, 272)
+script = ExtResource("11_anchor")
+anchor_id = &"hall_steps"
+
+[node name="A_bakery_door" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(256, 274)
+script = ExtResource("11_anchor")
+anchor_id = &"bakery_door"
+
+[node name="A_quay" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(200, 74)
+script = ExtResource("11_anchor")
+anchor_id = &"quay"
+
+[node name="A_no11_door" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(436, 272)
+script = ExtResource("11_anchor")
+anchor_id = &"no11_door"
+
+[node name="A_promenade" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(380, 84)
+script = ExtResource("11_anchor")
+anchor_id = &"promenade"
+
+[node name="A_shelter" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(560, 280)
+script = ExtResource("11_anchor")
+anchor_id = &"shelter"
+
+[node name="A_bench" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(300, 368)
+script = ExtResource("11_anchor")
+anchor_id = &"bench"

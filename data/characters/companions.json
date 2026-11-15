@@ -1,0 +1,21 @@
+{
+ "_doc": "Companions (Party). requires: when they will come along; ability: patch_up | pin; camp_dialogue: what talking to them says while they follow you.",
+ "jonah_rook": {
+  "name": "NPC_JONAH",
+  "ability": "patch_up",
+  "cooldown": 45,
+  "camp_dialogue": "camp_jonah",
+  "requires": {
+   "flag": "ward.open"
+  }
+ },
+ "mara_venn": {
+  "name": "NPC_MARA",
+  "ability": "pin",
+  "cooldown": 10,
+  "camp_dialogue": "camp_mara",
+  "requires": {
+   "flag": "ward.open"
+  }
+ }
+}

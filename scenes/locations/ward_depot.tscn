@@ -1,0 +1,168 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/location.gd" id="1_loc"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2_paint"]
+[ext_resource type="PackedScene" path="res://scenes/props/world_prop.tscn" id="3_prop"]
+[ext_resource type="Script" path="res://scripts/world/spawn_point.gd" id="4_spawn"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="5_inspect"]
+[ext_resource type="Script" path="res://scripts/interaction/door_interactable.gd" id="6_door"]
+[ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
+[ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+[ext_resource type="Script" path="res://scripts/world/conditional_visibility.gd" id="10_cond"]
+[ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
+[ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
+[ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+[ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
+[ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
+[ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
+[ext_resource type="PackedScene" path="res://scenes/world/repair_spot.tscn" id="17_spot"]
+[ext_resource type="PackedScene" path="res://scenes/world/screen_interactable.tscn" id="18_screen"]
+[ext_resource type="PackedScene" path="res://scenes/world/junk_pile.tscn" id="19_junk"]
+
+[node name="WardDepot" type="Node2D"]
+script = ExtResource("1_loc")
+location_id = &"ward_depot"
+name_key = "LOC_WARD_DEPOT"
+outdoors = false
+combat_enabled = true
+fixed_tint = Color(0.72, 0.76, 0.92, 1.0)
+enter_dialogue_id = &"depot_enter"
+enter_condition = {"not_flag": "depot.entered"}
+
+[node name="Ground" type="TileMapLayer" parent="."]
+script = ExtResource("2_paint")
+palette_id = "tram_platform"
+layout = "##############################
+##############################
+rrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+rrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+yyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+##############pp##############"
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="NpcAnchors" type="Node2D" parent="."]
+
+[node name="TramCar" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(120, 72)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_16x16.png"
+placeholder_size = Vector2i(128, 64)
+placeholder_color = Color(0.314,0.376,0.439, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+region = Rect2(0, 592, 128, 64)
+
+[node name="Pillar1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(96, 120)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Big_Pillar.png"
+placeholder_size = Vector2i(16, 80)
+placeholder_color = Color(0.502,0.502,0.565, 1)
+collision_size = Vector2(14, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Pillar2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(96, 184)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Big_Pillar.png"
+placeholder_size = Vector2i(16, 80)
+placeholder_color = Color(0.502,0.502,0.565, 1)
+collision_size = Vector2(14, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Pillar3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(384, 120)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Big_Pillar.png"
+placeholder_size = Vector2i(16, 80)
+placeholder_color = Color(0.502,0.502,0.565, 1)
+collision_size = Vector2(14, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Pillar4" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(384, 184)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Big_Pillar.png"
+placeholder_size = Vector2i(16, 80)
+placeholder_color = Color(0.502,0.502,0.565, 1)
+collision_size = Vector2(14, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Bench" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(240, 104)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Three_Seats_Green_Bench_Frontal_1.png"
+placeholder_size = Vector2i(48, 16)
+placeholder_color = Color(0.251,0.439,0.314, 1)
+collision_size = Vector2(44, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Hollow1" parent="Entities" instance=ExtResource("12_enemy")]
+position = Vector2(180, 140)
+enemy_id = &"depot_hollow_1"
+
+[node name="Hollow2" parent="Entities" instance=ExtResource("12_enemy")]
+position = Vector2(320, 160)
+enemy_id = &"depot_hollow_2"
+
+[node name="Wailer1" parent="Entities" instance=ExtResource("12_enemy")]
+position = Vector2(420, 110)
+enemy_id = &"depot_wailer"
+variant = "wailer"
+
+[node name="Clinger1" parent="Entities" instance=ExtResource("12_enemy")]
+position = Vector2(260, 190)
+enemy_id = &"depot_clinger_1"
+variant = "clinger"
+
+[node name="Clinger2" parent="Entities" instance=ExtResource("12_enemy")]
+position = Vector2(140, 190)
+enemy_id = &"depot_clinger_2"
+variant = "clinger"
+
+[node name="Encounter" type="Node" parent="."]
+script = ExtResource("13_encounter")
+clear_flag = &"depot.cleared"
+
+[node name="Entrance" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(240, 196)
+script = ExtResource("4_spawn")
+spawn_id = &"entrance"
+facing = Vector2(0, -1)
+
+[node name="FromPlatform" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(448, 144)
+script = ExtResource("4_spawn")
+spawn_id = &"from_platform"
+facing = Vector2(-1, 0)
+
+[node name="WayBack" type="Area2D" parent="Entities"]
+position = Vector2(240, 216)
+script = ExtResource("6_door")
+interaction_id = &"door_depot_exit"
+area_size = Vector2(30, 10)
+prompt_key = "PROMPT_LEAVE_ECHO"
+target_scene_id = &"echo_ward"
+target_spawn_id = &"depot_front"
+
+[node name="ToPlatform" type="Area2D" parent="Entities"]
+position = Vector2(472, 144)
+script = ExtResource("6_door")
+interaction_id = &"door_depot_platform"
+area_size = Vector2(14, 30)
+prompt_key = "PROMPT_PLATFORM"
+target_scene_id = &"depot_platform"
+target_spawn_id = &"from_hall"
+
+[node name="Condition" type="Node" parent="Entities/ToPlatform"]
+script = ExtResource("10_cond")
+show_if = {"flag": "depot.cleared"}

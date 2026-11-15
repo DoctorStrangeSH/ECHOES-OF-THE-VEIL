@@ -8,9 +8,9 @@ The spine is data: `data/story/campaign.json` lists the acts, the condition that
 
 | Stage | Content | State |
 |---|---|---|
-| M7a | Campaign spine, act cards; **Act I** complete | this PR |
-| M7b | **Act II** — the Echo Ward (first stable Veil site), Rosalind found | next |
-| M7c | **Act III** — the Keepers' pact; the ally who knew | |
+| M7a | Campaign spine, act cards; **Act I** complete | done |
+| M7b | **Act II** — the Echo Ward, companions, the Conductor, Rosalind found | done |
+| M7c | **Act III** — the Keepers' pact; the ally who knew | next |
 | M7d | **Act IV** — the Index: three memory-sites, Meridian | |
 | M7e | **Act V** — the anchor; endings and epilogues | |
 | M7f | Campaign pass: balance, fail-forward audit, full playthrough tests | |
@@ -36,7 +36,11 @@ Starts when the door case closes (either outcome). Main case `case_two_maps`:
 
 Fail-forward: Mara's hint (incidents), Theo brings the map (3 days), Mara recognises the sevens (2 days), Jonah photographs the crate (3 days), Theo's note about the headboard (3 days). Nothing requires combat, the archive key or a side story.
 
-## Act II — The People We Misplaced (M7b)
+## Act II — The People We Misplaced (M7b, built)
+
+As built: the Ward is reached from the harbour stop after dark — with Ivo (Keepers), with Nadiya (Open Hand; also the route if you asked Ivo about his Sundays), or alone once the timetable shows it (fail-forward). The Alderman's register (214 names) and three claims — **Bea Halloway** (wants a Thursday in Edda's kitchen; Edda leaves the back door on the latch), **Abel Crane** of the *Margaret Ellery* (wants to be left alone; can send thanks to Hester), **Ellie Marsh** (No. 11 is hers; Theo lives in it). **Dr Sera Vale** introduces Meridian. Pike asks you to report "the anomaly" (Civic +2, Unwritten −2). The depot hall and **the Conductor** on Platform Eleven: three tram lanes, at least one always safe; passengers board in phase 2; he stops to check his machine after every tram. **Rosalind** remembers Jonah as the one who vanished; reunite them (bring Jonah as your companion) or let her choose. Companions: **Jonah** (patches you up at 1 health) and **Mara** (slows the nearest echo), recruited from their usual conversation once the Ward is open; talking to them while they follow gives camp lines and lets you send them home.
+
+Original plan:
 
 **Region:** the **Echo Ward** — the neighbourhood removed in the Quiet Census, stable enough to live in. A hub with residents (Unwritten), not a corridor of enemies. Built from region templates with an echo palette; day/night inverted (the Ward is busiest at night).
 

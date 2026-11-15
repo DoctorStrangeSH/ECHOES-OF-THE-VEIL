@@ -214,6 +214,58 @@ func _ready() -> void:
 	_assert((get_child(0).get_node("ActCard") as ActCard).is_showing(), "act card shown")
 	await _wait_card()
 	await _talk(&"ivo", {"npc": &"ivo_calder"}, ["IVO_ASK_WARD"])
+
+	_step = "act II: the people we misplaced"
+	await _talk(&"nadiya", {"npc": &"nadiya_sol"}, ["NADIYA_ASK_WARD"])
+	_assert(GameState.has_flag(&"ward.nadiya_invite"), "Nadiya knows a way in")
+	WorldClock.wait_until_hour(21)
+	await _frames(5)
+	_assert(_visible_in_location(&"WardGate"), "the Ward gate shows at night")
+	SceneFlow.travel(&"echo_ward", &"gate")
+	await _wait_location(&"echo_ward")
+	await _frames(10)
+	await _finish_dialogue()
+	_assert(GameState.has_flag(&"ward.open") and Journal.case_stage(&"case_misplaced") == &"residents", "into the Ward")
+	await _talk(&"alderman", {"npc": &"alderman_penhallow"}, [])
+	await _talk(&"bea", {"npc": &"bea_halloway"}, ["BEA_TELL_EDDA"])
+	await _talk(&"abel", {"npc": &"abel_crane"}, ["ABEL_LEAVE"])
+	await _talk(&"ellie", {"npc": &"ellie_marsh"}, ["ELLIE_THEO"])
+	await _talk(&"vale", {"npc": &"sera_vale"}, ["VALE_HELP"])
+	await _talk(&"alderman", {"npc": &"alderman_penhallow"}, ["ALD_HEARD"])
+	_assert(Journal.case_stage(&"case_misplaced") == &"depot", "the depot is next")
+	await _talk(&"jonah", {"npc": &"jonah_rook"}, ["COMPANION_ASK"])
+	await _frames(10)
+	_assert(Party.is_companion(&"jonah_rook"), "Jonah comes along")
+	_assert(is_instance_valid((SceneFlow.current_location as Location)._follower), "Jonah follows in the Ward")
+	SceneFlow.travel(&"ward_depot", &"entrance")
+	await _wait_location(&"ward_depot")
+	await _frames(10)
+	await _finish_dialogue()
+	_assert(is_instance_valid((SceneFlow.current_location as Location)._follower), "and into the depot")
+	await _clear_enemies()
+	_assert(GameState.has_flag(&"depot.cleared"), "depot hall cleared")
+	SceneFlow.travel(&"depot_platform", &"from_hall")
+	await _wait_location(&"depot_platform")
+	await _frames(10)
+	await _finish_dialogue()
+	var conductor := _find_node_of(SceneFlow.current_location, "Conductor") as Conductor
+	_assert(conductor != null, "the Conductor waits")
+	if conductor != null:
+		conductor.engage()
+		for i in 120:
+			await _frames(4)
+			if not is_instance_valid(conductor) or conductor.state == Conductor.State.DEAD:
+				break
+			conductor.health.take_damage(1, conductor.global_position + Vector2(12, 0))
+	await _frames(40)
+	_assert(GameState.has_flag(&"boss.conductor.defeated"), "the Conductor is beaten")
+	await _talk(&"rosalind", {"npc": &"rosalind_rook"}, ["ROS_SAY_HERE"])
+	_assert(Journal.case_status(&"case_misplaced") == Journal.STATUS_DONE and GameState.has_flag(&"rosalind.reunited"), "Jonah and Rosalind reunited")
+	_assert(Journal.form_hypothesis(&"two_rooks"), "the Census cut the family in two")
+	await _talk(&"camp_jonah", {"npc": &"jonah_rook"}, ["CAMP_GO_HOME"])
+	_assert(Party.companion == &"", "Jonah goes home")
+	SceneFlow.travel(&"greyford_block", &"ward_return")
+	await _wait_location(&"greyford_block")
 	WorldClock.wait_until_hour(9)
 
 	_step = "work: jobs, repair, shop, workbench, stall"
@@ -377,6 +429,26 @@ func _clear_enemies() -> void:
 			break
 		await _frames(30)
 	await _frames(20)
+
+
+func _find_node_of(root: Node, cls: String) -> Node:
+	var stack: Array[Node] = [root]
+	while not stack.is_empty():
+		var n: Node = stack.pop_back()
+		if n.get_script() != null and (n.get_script() as Script).get_global_name() == cls:
+			return n
+		stack.append_array(n.get_children())
+	return null
+
+
+func _visible_in_location(node_name: String) -> bool:
+	var stack: Array[Node] = [SceneFlow.current_location]
+	while not stack.is_empty():
+		var n: Node = stack.pop_back()
+		if n.name == node_name:
+			return (n as CanvasItem).visible if n is CanvasItem else true
+		stack.append_array(n.get_children())
+	return false
 
 
 func _wait_card() -> void:

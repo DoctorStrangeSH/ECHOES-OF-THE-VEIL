@@ -32,6 +32,8 @@ static func get_def(id: StringName) -> Dictionary:
 
 ## Current schedule entry, or {} if the NPC is absent.
 static func resolve(id: StringName) -> Dictionary:
+	if Party.is_companion(id):
+		return {}  # walking with the player instead
 	for entry: Dictionary in get_def(id).get("schedule", []):
 		var p: Variant = entry.get("period")
 		if p != null:

@@ -189,6 +189,18 @@
       "next": "mark1"
      },
      {
+      "text": "COMPANION_ASK",
+      "if": {
+       "can_join": "mara_venn"
+      },
+      "effects": [
+       {
+        "companion": "mara_venn"
+       }
+      ],
+      "next": "join"
+     },
+     {
       "text": "BYE",
       "next": null
      }
@@ -595,6 +607,11 @@
     "speaker": "NPC_MARA",
     "text": "MARA_MARK_1",
     "next": "hub"
+   },
+   "join": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_JOIN",
+    "next": null
    }
   }
  },
@@ -906,6 +923,18 @@
        ]
       },
       "next": "sr1"
+     },
+     {
+      "text": "COMPANION_ASK",
+      "if": {
+       "can_join": "jonah_rook"
+      },
+      "effects": [
+       {
+        "companion": "jonah_rook"
+       }
+      ],
+      "next": "join"
      },
      {
       "text": "BYE",
@@ -1236,6 +1265,11 @@
      }
     ],
     "next": "hub"
+   },
+   "join": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_JOIN",
+    "next": null
    }
   }
  },
@@ -1425,6 +1459,31 @@
        ]
       },
       "next": "map1"
+     },
+     {
+      "text": "HALLOWAY_BEA",
+      "if": {
+       "flag": "ward.bea_message",
+       "not_flag": "halloway.heard_bea"
+      },
+      "effects": [
+       {
+        "set_flag": "halloway.heard_bea"
+       },
+       {
+        "relationship": [
+         "edda_halloway",
+         1
+        ]
+       },
+       {
+        "remember": [
+         "edda_halloway",
+         "brought_word_of_bea"
+        ]
+       }
+      ],
+      "next": "bea1"
      },
      {
       "text": "BYE",
@@ -1649,6 +1708,16 @@
     "speaker": "NPC_HALLOWAY",
     "text": "HALLOWAY_MAP_WHO_1",
     "next": null
+   },
+   "bea1": {
+    "speaker": "NPC_HALLOWAY",
+    "text": "HALLOWAY_BEA_1",
+    "next": "bea2"
+   },
+   "bea2": {
+    "speaker": "NPC_HALLOWAY",
+    "text": "HALLOWAY_BEA_2",
+    "next": "hub"
    }
   }
  },
@@ -1740,7 +1809,16 @@
      {
       "text": "IVO_ASK_WARD",
       "if": {
-       "quest_active": "case_misplaced"
+       "quest_stage": [
+        "case_misplaced",
+        "ward"
+       ],
+       "not_flag": "ward.ivo_invite",
+       "all": [
+        {
+         "not_flag": "ward.ivo_refused"
+        }
+       ]
       },
       "next": "ward1"
      },
@@ -1917,6 +1995,47 @@
    "ward2": {
     "speaker": "NPC_IVO",
     "text": "IVO_WARD_2",
+    "choices": [
+     {
+      "text": "IVO_WARD_YES",
+      "if": {
+       "not_flag": "act1.ivo_tends_halloway"
+      },
+      "effects": [
+       {
+        "set_flag": "ward.ivo_invite"
+       }
+      ],
+      "next": "ward_ok"
+     },
+     {
+      "text": "IVO_WARD_SUNDAYS",
+      "if": {
+       "flag": "act1.ivo_tends_halloway"
+      },
+      "effects": [
+       {
+        "set_flag": "ward.ivo_refused"
+       },
+       {
+        "relationship": [
+         "ivo_calder",
+         -1
+        ]
+       }
+      ],
+      "next": "ward_no"
+     }
+    ]
+   },
+   "ward_ok": {
+    "speaker": "NPC_IVO",
+    "text": "IVO_WARD_OK",
+    "next": "hub"
+   },
+   "ward_no": {
+    "speaker": "NPC_IVO",
+    "text": "IVO_WARD_NO",
     "next": "hub"
    }
   }
@@ -2019,6 +2138,22 @@
      {
       "text": "NADIYA_ASK_WORK",
       "next": "work1"
+     },
+     {
+      "text": "NADIYA_ASK_WARD",
+      "if": {
+       "quest_stage": [
+        "case_misplaced",
+        "ward"
+       ],
+       "not_flag": "ward.nadiya_invite"
+      },
+      "effects": [
+       {
+        "set_flag": "ward.nadiya_invite"
+       }
+      ],
+      "next": "ward_nad"
      },
      {
       "text": "BYE",
@@ -2259,6 +2394,11 @@
       "publish": "letters_delivered"
      }
     ]
+   },
+   "ward_nad": {
+    "speaker": "NPC_NADIYA",
+    "text": "NADIYA_WARD_1",
+    "next": "hub"
    }
   }
  },
@@ -2328,6 +2468,14 @@
        "has_item": "agnes_file"
       },
       "next": "file1"
+     },
+     {
+      "text": "PIKE_ASK_WARD",
+      "if": {
+       "flag": "ward.open",
+       "not_flag": "pike.ward_talk"
+      },
+      "next": "ward_pike"
      },
      {
       "text": "BYE",
@@ -2484,6 +2632,67 @@
       "set_flag": "world.file_to_civic"
      }
     ]
+   },
+   "ward_pike": {
+    "speaker": "NPC_PIKE",
+    "text": "PIKE_WARD_1",
+    "choices": [
+     {
+      "text": "PIKE_WARD_REPORT",
+      "effects": [
+       {
+        "set_flag": "pike.ward_talk"
+       },
+       {
+        "set_flag": "ward.reported"
+       },
+       {
+        "faction": [
+         "civic",
+         2
+        ]
+       },
+       {
+        "faction": [
+         "unwritten",
+         -2
+        ]
+       },
+       {
+        "remember": [
+         "dana_pike",
+         "reported_the_ward"
+        ]
+       }
+      ],
+      "next": "ward_rep"
+     },
+     {
+      "text": "PIKE_WARD_DENY",
+      "effects": [
+       {
+        "set_flag": "pike.ward_talk"
+       },
+       {
+        "faction": [
+         "civic",
+         -1
+        ]
+       }
+      ],
+      "next": "ward_deny"
+     }
+    ]
+   },
+   "ward_rep": {
+    "speaker": "NPC_PIKE",
+    "text": "PIKE_WARD_REP",
+    "next": "hub"
+   },
+   "ward_deny": {
+    "speaker": "NPC_PIKE",
+    "text": "PIKE_WARD_DENY_1",
+    "next": "hub"
    }
   }
  },

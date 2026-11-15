@@ -1,0 +1,18 @@
+{
+ "ward_census": {
+  "audience": [
+   "faction:unwritten",
+   "faction:keepers",
+   "mara_venn"
+  ],
+  "delay_periods": 2
+ },
+ "rosalind_found": {
+  "audience": [
+   "jonah_rook",
+   "edda_halloway",
+   "faction:unwritten"
+  ],
+  "delay_periods": 1
+ }
+}

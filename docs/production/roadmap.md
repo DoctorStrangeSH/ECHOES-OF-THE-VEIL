@@ -76,7 +76,7 @@ This roadmap is milestone-based, not a promise of fixed calendar dates. Estimate
 
 **Exit gate:** a second region can be produced faster and with fewer bespoke code changes than the first.
 
-## M7 — Campaign production (in progress: Act I implemented — see campaign-plan.md)
+## M7 — Campaign production (in progress: Acts I–II implemented — see campaign-plan.md)
 **Build**
 - remaining acts and regions in a staged content plan;
 - companion arcs and faction conflicts;

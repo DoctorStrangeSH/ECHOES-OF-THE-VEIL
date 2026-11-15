@@ -40,6 +40,7 @@ var attack_range := 26.0
 var ranged := false
 var resonance_drop := 2
 var base_tint := Color.WHITE
+var _slow_until := 0.0
 var contact_damage := 1
 var sheet := SHEET
 
@@ -185,7 +186,7 @@ func _physics_process(delta: float) -> void:
 			if _timer <= 0.0:
 				state = State.CHASE
 				sprite.modulate = base_tint
-	velocity = desired
+	velocity = desired * (0.5 if is_slowed() else 1.0)
 	if _knockback.length_squared() > 1.0:
 		velocity += _knockback
 		_knockback = _knockback.move_toward(Vector2.ZERO, 700.0 * delta)
@@ -199,9 +200,20 @@ func _physics_process(delta: float) -> void:
 	if _flash > 0.0:
 		_flash -= delta
 		sprite.modulate = Color(3, 3, 3, 1) if _flash > 0.0 else base_tint
+	elif is_slowed() and state in [State.DRIFT, State.CHASE]:
+		sprite.modulate = base_tint.lerp(Color(0.5, 0.7, 1.4), 0.5)
 
 
 ## Lantern Flash: interrupts any attack.
+## Slowed by an ally (Mara's "pin"): moves at half speed and shows blue.
+func slow(seconds: float) -> void:
+	_slow_until = Time.get_ticks_msec() / 1000.0 + seconds
+
+
+func is_slowed() -> bool:
+	return Time.get_ticks_msec() / 1000.0 < _slow_until
+
+
 func stun(seconds: float) -> void:
 	if state == State.DEAD:
 		return

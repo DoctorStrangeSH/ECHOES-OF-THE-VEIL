@@ -740,3 +740,38 @@ position = Vector2(422, 266)
 script = ExtResource("4_spawn")
 spawn_id = &"storeroom_front"
 facing = Vector2(0, 1)
+
+[node name="HarbourTimetable" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(548, 72)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/10_Vehicles_Singles_16x16/ME_Singles_Vehicles_16x16_Bus_Stop_Sign_2.png"
+placeholder_size = Vector2i(16, 48)
+placeholder_color = Color(0.565,0.565,0.627, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="HarbourTimetableRead" type="Area2D" parent="Entities"]
+position = Vector2(548, 78)
+script = ExtResource("5_inspect")
+interaction_id = &"read_harbour_timetable"
+area_size = Vector2(18, 12)
+prompt_key = "PROMPT_READ"
+lines = PackedStringArray("TIMETABLE_1")
+
+[node name="WardGate" type="Area2D" parent="Entities"]
+position = Vector2(572, 76)
+script = ExtResource("6_door")
+interaction_id = &"door_greyford_ward"
+area_size = Vector2(16, 14)
+prompt_key = "PROMPT_WARD_GATE"
+target_scene_id = &"echo_ward"
+target_spawn_id = &"gate"
+
+[node name="Condition" type="Node" parent="Entities/WardGate"]
+script = ExtResource("10_cond")
+show_if = {"all": [{"any": [{"flag": "ward.ivo_invite"}, {"flag": "ward.nadiya_invite"}, {"flag": "ward.timetable"}, {"flag": "ward.open"}]}, {"period": ["evening", "night"]}]}
+
+[node name="WardReturn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(572, 92)
+script = ExtResource("4_spawn")
+spawn_id = &"ward_return"
+facing = Vector2(0, 1)

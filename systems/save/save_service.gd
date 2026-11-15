@@ -10,7 +10,7 @@ extends Node
 signal saved(slot: int)
 signal save_failed(slot: int, message: String)
 
-const SCHEMA_VERSION := 5
+const SCHEMA_VERSION := 6
 const DEFAULT_SLOT := 1
 const MAX_SLOTS := 3
 
@@ -26,9 +26,18 @@ func _init() -> void:
 	_migrations[2] = _migrate_2_to_3
 	_migrations[3] = _migrate_3_to_4
 	_migrations[4] = _migrate_4_to_5
+	_migrations[5] = _migrate_5_to_6
 
 
 ## v5 (M5) adds work and ownership: repair skill, jobs, rent, home, stall.
+## v6 (M7b) adds the party (current companion).
+func _migrate_5_to_6(env: Dictionary) -> Dictionary:
+	var p: Dictionary = env["payload"]
+	if not p.has("party"):
+		p["party"] = {}
+	return env
+
+
 func _migrate_4_to_5(env: Dictionary) -> Dictionary:
 	var p: Dictionary = env["payload"]
 	if not p.has("life"):
