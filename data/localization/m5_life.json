@@ -1,314 +1,80 @@
 {
- "PROMPT_REPAIR": {
-  "en": "Repair",
-  "ru": "Чинить"
- },
- "PROMPT_SALVAGE": {
-  "en": "Salvage",
-  "ru": "Покопаться"
- },
- "PROMPT_USE": {
-  "en": "Use",
-  "ru": "Использовать"
- },
- "ITEM_SCRAP": {
-  "en": "Scrap",
-  "ru": "Металлолом"
- },
- "ITEM_SCRAP_DESC": {
-  "en": "Bolts, springs, bits of brass. Every repair eats some.",
-  "ru": "Болты, пружины, латунные обрезки. Любой ремонт что-то съедает."
- },
- "ITEM_REPAIR_KIT": {
-  "en": "Repair kit",
-  "ru": "Ремкомплект"
- },
- "ITEM_REPAIR_KIT_DESC": {
-  "en": "Made at your workbench. Used automatically: widens the green zone of the next repair. Customers buy them at your stall.",
-  "ru": "Собирается на верстаке. Тратится сам: расширяет зелёную зону при следующем ремонте. Покупатели берут их на вашем прилавке."
- },
- "INV_FILTER_MATERIAL": {
-  "en": "Materials",
-  "ru": "Материалы"
- },
- "INV_CATEGORY_MATERIAL": {
-  "en": "Material",
-  "ru": "Материал"
- },
- "WORK_HINT": {
-  "en": "Esc — close",
-  "ru": "Esc — закрыть"
- },
- "WORK_SUMMARY": {
-  "en": "£%d · scrap %d · repair kits %d · repair level %d",
-  "ru": "£%d · лом %d · ремкомплекты %d · уровень ремонта %d"
- },
- "SHOP_JONAH": {
-  "en": "Rook Repairs — counter",
-  "ru": "Мастерская Рука — прилавок"
- },
- "SHOP_HALLOWAY": {
-  "en": "Your room — Mrs Halloway's improvements",
-  "ru": "Ваша комната — улучшения от миссис Холлоуэй"
- },
- "SHOP_BUY": {
-  "en": "Buy",
-  "ru": "Купить"
- },
- "SHOP_SELL": {
-  "en": "Sell",
-  "ru": "Продать"
- },
- "SHOP_OWNED": {
-  "en": "done",
-  "ru": "есть"
- },
- "SHOP_NOTHING_TO_SELL": {
-  "en": "Nothing Jonah wants to buy.",
-  "ru": "Ничего такого, что Джона купил бы."
- },
- "JOBS_TITLE": {
-  "en": "Odd jobs board",
-  "ru": "Доска заказов"
- },
- "JOBS_ACTIVE": {
-  "en": "Taken (%d/%d)",
-  "ru": "Взято (%d/%d)"
- },
- "JOBS_TODAY": {
-  "en": "Today's notes",
-  "ru": "Сегодняшние записки"
- },
- "JOBS_NONE": {
-  "en": "Nothing new today. Check tomorrow.",
-  "ru": "Сегодня ничего нового. Загляните завтра."
- },
- "JOBS_SCRAP": {
-  "en": "scrap",
-  "ru": "лом"
- },
- "JOBS_ABANDON": {
-  "en": "Give it back",
-  "ru": "Вернуть заказ"
- },
- "WORKBENCH_TITLE": {
-  "en": "Workbench",
-  "ru": "Верстак"
- },
- "BIZ_TITLE": {
-  "en": "Repair cart",
-  "ru": "Ремонтная тележка"
- },
- "BIZ_REPORT": {
-  "en": "Yesterday: %d kits sold, £%d taken, £%d pitch fee.",
-  "ru": "Вчера: продано %d комплектов, выручка £%d, плата за место £%d."
- },
- "BIZ_STATUS": {
-  "en": "Stock: %d repair kits · reputation %d/10",
-  "ru": "Запас: %d ремкомплектов · репутация %d/10"
- },
- "BIZ_OPEN": {
-  "en": "Open the cart tomorrow",
-  "ru": "Открыть тележку с завтрашнего дня"
- },
- "BIZ_CLOSE": {
-  "en": "Close the cart",
-  "ru": "Закрыть тележку"
- },
- "BIZ_PRICES": {
-  "en": "Prices (expected customers per day)",
-  "ru": "Цены (ожидаемых покупателей в день)"
- },
- "BIZ_TIER_FAIR": {
-  "en": "Fair",
-  "ru": "Честная"
- },
- "BIZ_TIER_NORMAL": {
-  "en": "Normal",
-  "ru": "Обычная"
- },
- "BIZ_TIER_PREMIUM": {
-  "en": "Premium",
-  "ru": "Высокая"
- },
- "BIZ_STOCK": {
-  "en": "Put all your repair kits on the cart (%d)",
-  "ru": "Выложить все ремкомплекты на тележку (%d)"
- },
- "BIZ_UPGRADES": {
-  "en": "Improvements",
-  "ru": "Улучшения"
- },
- "BIZ_UPG_SIGN": {
-  "en": "Painted sign",
-  "ru": "Расписная вывеска"
- },
- "BIZ_UPG_SIGN_DESC": {
-  "en": "People notice you. +1 customer a day.",
-  "ru": "Вас замечают. +1 покупатель в день."
- },
- "BIZ_UPG_TOOLBOX": {
-  "en": "Proper toolbox",
-  "ru": "Хороший ящик с инструментами"
- },
- "BIZ_UPG_TOOLBOX_DESC": {
-  "en": "You fix things on the spot. +1 customer a day.",
-  "ru": "Чините прямо на месте. +1 покупатель в день."
- },
- "BIZ_UPG_JONAH": {
-  "en": "Jonah on Saturdays",
-  "ru": "Джона по субботам"
- },
- "BIZ_UPG_JONAH_DESC": {
-  "en": "Needs Jonah to trust you completely. +1 customer a day, and he won't take a penny.",
-  "ru": "Нужно полное доверие Джоны. +1 покупатель в день, и денег он не берёт."
- },
- "UPG_WORKBENCH": {
-  "en": "Workbench",
-  "ru": "Верстак"
- },
- "UPG_WORKBENCH_DESC": {
-  "en": "Craft repair kits from scrap at home.",
-  "ru": "Дома можно собирать ремкомплекты из лома."
- },
- "UPG_GOOD_BED": {
-  "en": "A proper mattress",
-  "ru": "Нормальный матрас"
- },
- "UPG_GOOD_BED_DESC": {
-  "en": "You sleep better. +1 maximum health.",
-  "ru": "Спится лучше. +1 к максимуму здоровья."
- },
- "UPG_LANTERN_SHELF": {
-  "en": "Lantern shelf",
-  "ru": "Полка для фонаря"
- },
- "UPG_LANTERN_SHELF_DESC": {
-  "en": "Somewhere to keep the lantern trimmed. Lantern Flash recharges 15% faster.",
-  "ru": "Место, где фонарь всегда в порядке. Вспышка перезаряжается на 15% быстрее."
- },
- "REPAIR_STATUS": {
-  "en": "Fixed %d/%d · tries left %d",
-  "ru": "Готово %d/%d · попыток %d"
- },
- "REPAIR_KIT_USED": {
-  "en": "(repair kit used)",
-  "ru": "(использован ремкомплект)"
- },
- "TOAST_NEED_SCRAP": {
-  "en": "You need %d scrap for this repair",
-  "ru": "Для ремонта нужно лома: %d"
- },
- "TOAST_REPAIR_FAILED": {
-  "en": "It's still broken. Try again.",
-  "ru": "Всё ещё сломано. Попробуйте снова."
- },
- "TOAST_JOB_DONE": {
-  "en": "Job done: %s",
-  "ru": "Заказ выполнен: %s"
- },
- "TOAST_REPAIR_LEVEL": {
-  "en": "Repair skill: level %d",
-  "ru": "Навык ремонта: уровень %d"
- },
- "TOAST_HOME_UPGRADE": {
-  "en": "Your room: %s",
-  "ru": "Ваша комната: %s"
- },
- "TOAST_RENT_PAID": {
-  "en": "Rent paid: £%d",
-  "ru": "Аренда оплачена: £%d"
- },
- "TOAST_RENT_SHORT": {
-  "en": "Rent short by £%d — Mrs Halloway will wait",
-  "ru": "Не хватило £%d на аренду — миссис Холлоуэй подождёт"
- },
- "TOAST_STALL_REPORT": {
-  "en": "Cart: %d sold, £%d",
-  "ru": "Тележка: продано %d, £%d"
- },
- "JOB_RADIATOR": {
-  "en": "Knocking radiator",
-  "ru": "Стучащая батарея"
- },
- "JOB_RADIATOR_DESC": {
-  "en": "Mrs Halloway: \"It's normal, but it's normal louder than usual.\" (your room)",
-  "ru": "Миссис Холлоуэй: «Это нормально, но громче, чем нормально». (ваша комната)"
- },
- "JOB_FOUNTAIN": {
-  "en": "Plaza fountain pump",
-  "ru": "Насос фонтана на площади"
- },
- "JOB_FOUNTAIN_DESC": {
-  "en": "Mara: \"The fountain's been silent since the archive closed. I'd like one thing in this square to work.\"",
-  "ru": "Мара: «Фонтан молчит с тех пор, как закрыли архив. Хоть что-то на этой площади должно работать»."
- },
- "JOB_LAMP": {
-  "en": "Flickering street lamp",
-  "ru": "Мигающий фонарь"
- },
- "JOB_LAMP_DESC": {
-  "en": "Ivo: \"The lamp by the condos. Residents' association can pay. Barely.\"",
-  "ru": "Иво: «Фонарь у многоэтажек. Совет жильцов заплатит. Еле-еле»."
- },
- "JOB_PIKE_RADIO": {
-  "en": "Warden's radio",
-  "ru": "Рация смотрительницы"
- },
- "JOB_PIKE_RADIO_DESC": {
-  "en": "Pike: \"It picks up a station that doesn't exist. Make it stop.\" (plaza, south)",
-  "ru": "Пайк: «Ловит станцию, которой не существует. Сделайте, чтобы перестала». (юг площади)"
- },
- "JOB_MAILBOX": {
-  "en": "Jammed mailbox",
-  "ru": "Заклинивший почтовый ящик"
- },
- "JOB_MAILBOX_DESC": {
-  "en": "Nadiya: \"The box by the brown house eats letters. I'd like them back.\"",
-  "ru": "Надия: «Ящик у коричневого дома ест письма. Хочу их обратно»."
- },
- "JOB_ECHO_CLOCK": {
-  "en": "The bench clock",
-  "ru": "Часы у скамейки"
- },
- "JOB_ECHO_CLOCK_DESC": {
-  "en": "Ivo: \"The old clock in the park runs backwards on wet nights. You have the touch for that sort of thing now.\" (park, east)",
-  "ru": "Иво: «Старые часы в парке в сырые ночи идут назад. У вас теперь есть чутьё на такие вещи». (парк, восток)"
- },
- "JONAH_TRADE": {
-  "en": "Let's trade.",
-  "ru": "Давай поторгуем."
- },
- "JONAH_ASK_JOBS": {
-  "en": "Got any work?",
-  "ru": "Есть работа?"
- },
- "JONAH_JOBS_1": {
-  "en": "\"Plenty. Half of Greyford rattles, the other half leaks.\" He nods at the cork board on the yellow building. \"People pin jobs there. Take what you can handle.\"",
-  "ru": "«Навалом. Пол-Грейфорда дребезжит, вторая половина течёт». Он кивает на пробковую доску на жёлтом доме. «Люди вешают туда заказы. Бери, что потянешь»."
- },
- "JONAH_JOBS_2": {
-  "en": "\"You'll need scrap. I sell it, or dig through the heap by the bins — once a day, before the council clears it.\"",
-  "ru": "«Понадобится металлолом. Я продаю, или покопайся в куче у мусорных баков — раз в день, пока совет её не вывез»."
- },
- "JONAH_ASK_SCRAP": {
-  "en": "Could you spare some scrap to start?",
-  "ru": "Не дашь немного лома для начала?"
- },
- "JONAH_JOBS_GIFT": {
-  "en": "\"Here. First four are on the house. After that I'm a businessman.\"",
-  "ru": "«Держи. Первые четыре — бесплатно. Дальше я бизнесмен»."
- },
- "JONAH_STALL_1": {
-  "en": "\"You've fixed half the street.\" He looks almost proud. \"There's an old food cart rusting behind the shop.\"",
-  "ru": "«Пол-улицы уже на тебе держится». Вид у него почти гордый. «За мастерской ржавеет старая тележка с едой»."
- },
- "JONAH_STALL_2": {
-  "en": "\"Take it. Sell repair kits on the plaza. Fair prices — people here remember who was fair.\"",
-  "ru": "«Забирай. Продавай ремкомплекты на площади. По честной цене — здесь помнят, кто был честен»."
- },
- "HALLOWAY_ROOM": {
-  "en": "About my room...",
-  "ru": "Насчёт моей комнаты..."
- }
+  "PROMPT_REPAIR": {"en": "Repair", "ru": "Чинить"},
+  "PROMPT_SALVAGE": {"en": "Salvage", "ru": "Покопаться"},
+  "PROMPT_USE": {"en": "Use", "ru": "Использовать"},
+  "ITEM_SCRAP": {"en": "Scrap", "ru": "Металлолом"},
+  "ITEM_SCRAP_DESC": {"en": "Bolts, springs, bits of brass. Every repair eats some.", "ru": "Болты, пружины, латунные обрезки. Любой ремонт что-то съедает."},
+  "ITEM_REPAIR_KIT": {"en": "Repair kit", "ru": "Ремкомплект"},
+  "ITEM_REPAIR_KIT_DESC": {"en": "Made at your workbench. Used automatically: widens the green zone of the next repair. Customers buy them at your stall.", "ru": "Собирается на верстаке. Тратится сам: расширяет зелёную зону при следующем ремонте. Покупатели берут их на вашем прилавке."},
+  "INV_FILTER_MATERIAL": {"en": "Materials", "ru": "Материалы"},
+  "INV_CATEGORY_MATERIAL": {"en": "Material", "ru": "Материал"},
+  "WORK_HINT": {"en": "Esc — close", "ru": "Esc — закрыть"},
+  "WORK_SUMMARY": {"en": "£%d · scrap %d · repair kits %d · repair level %d", "ru": "£%d · лом %d · ремкомплекты %d · уровень ремонта %d"},
+  "SHOP_JONAH": {"en": "Rook Repairs — counter", "ru": "Мастерская Рука — прилавок"},
+  "SHOP_HALLOWAY": {"en": "Your room — Mrs Halloway's improvements", "ru": "Ваша комната — улучшения от миссис Холлоуэй"},
+  "SHOP_BUY": {"en": "Buy", "ru": "Купить"},
+  "SHOP_SELL": {"en": "Sell", "ru": "Продать"},
+  "SHOP_OWNED": {"en": "done", "ru": "есть"},
+  "SHOP_NOTHING_TO_SELL": {"en": "Nothing Jonah wants to buy.", "ru": "Ничего такого, что Джона купил бы."},
+  "JOBS_TITLE": {"en": "Odd jobs board", "ru": "Доска заказов"},
+  "JOBS_ACTIVE": {"en": "Taken (%d/%d)", "ru": "Взято (%d/%d)"},
+  "JOBS_TODAY": {"en": "Today's notes", "ru": "Сегодняшние записки"},
+  "JOBS_NONE": {"en": "Nothing new today. Check tomorrow.", "ru": "Сегодня ничего нового. Загляните завтра."},
+  "JOBS_SCRAP": {"en": "scrap", "ru": "лом"},
+  "JOBS_ABANDON": {"en": "Give it back", "ru": "Вернуть заказ"},
+  "WORKBENCH_TITLE": {"en": "Workbench", "ru": "Верстак"},
+  "BIZ_TITLE": {"en": "Repair cart", "ru": "Ремонтная тележка"},
+  "BIZ_REPORT": {"en": "Yesterday: %d kits sold, £%d taken, £%d pitch fee.", "ru": "Вчера: продано %d комплектов, выручка £%d, плата за место £%d."},
+  "BIZ_STATUS": {"en": "Stock: %d repair kits · reputation %d/10", "ru": "Запас: %d ремкомплектов · репутация %d/10"},
+  "BIZ_OPEN": {"en": "Open the cart tomorrow", "ru": "Открыть тележку с завтрашнего дня"},
+  "BIZ_CLOSE": {"en": "Close the cart", "ru": "Закрыть тележку"},
+  "BIZ_PRICES": {"en": "Prices (expected customers per day)", "ru": "Цены (ожидаемых покупателей в день)"},
+  "BIZ_TIER_FAIR": {"en": "Fair", "ru": "Честная"},
+  "BIZ_TIER_NORMAL": {"en": "Normal", "ru": "Обычная"},
+  "BIZ_TIER_PREMIUM": {"en": "Premium", "ru": "Высокая"},
+  "BIZ_STOCK": {"en": "Put all your repair kits on the cart (%d)", "ru": "Выложить все ремкомплекты на тележку (%d)"},
+  "BIZ_UPGRADES": {"en": "Improvements", "ru": "Улучшения"},
+  "BIZ_UPG_SIGN": {"en": "Painted sign", "ru": "Расписная вывеска"},
+  "BIZ_UPG_SIGN_DESC": {"en": "People notice you. +1 customer a day.", "ru": "Вас замечают. +1 покупатель в день."},
+  "BIZ_UPG_TOOLBOX": {"en": "Proper toolbox", "ru": "Хороший ящик с инструментами"},
+  "BIZ_UPG_TOOLBOX_DESC": {"en": "You fix things on the spot. +1 customer a day.", "ru": "Чините прямо на месте. +1 покупатель в день."},
+  "BIZ_UPG_JONAH": {"en": "Jonah on Saturdays", "ru": "Джона по субботам"},
+  "BIZ_UPG_JONAH_DESC": {"en": "Needs Jonah to trust you completely. +1 customer a day, and he won't take a penny.", "ru": "Нужно полное доверие Джоны. +1 покупатель в день, и денег он не берёт."},
+  "UPG_WORKBENCH": {"en": "Workbench", "ru": "Верстак"},
+  "UPG_WORKBENCH_DESC": {"en": "Craft repair kits from scrap at home.", "ru": "Дома можно собирать ремкомплекты из лома."},
+  "UPG_GOOD_BED": {"en": "A proper mattress", "ru": "Нормальный матрас"},
+  "UPG_GOOD_BED_DESC": {"en": "You sleep better. +1 maximum health.", "ru": "Спится лучше. +1 к максимуму здоровья."},
+  "UPG_LANTERN_SHELF": {"en": "Lantern shelf", "ru": "Полка для фонаря"},
+  "UPG_LANTERN_SHELF_DESC": {"en": "Somewhere to keep the lantern trimmed. Lantern Flash recharges 15% faster.", "ru": "Место, где фонарь всегда в порядке. Вспышка перезаряжается на 15% быстрее."},
+  "REPAIR_STATUS": {"en": "Fixed %d/%d · tries left %d", "ru": "Готово %d/%d · попыток %d"},
+  "REPAIR_KIT_USED": {"en": "(repair kit used)", "ru": "(использован ремкомплект)"},
+  "TOAST_NEED_SCRAP": {"en": "You need %d scrap for this repair", "ru": "Для ремонта нужно лома: %d"},
+  "TOAST_REPAIR_FAILED": {"en": "It's still broken. Try again.", "ru": "Всё ещё сломано. Попробуйте снова."},
+  "TOAST_JOB_DONE": {"en": "Job done: %s", "ru": "Заказ выполнен: %s"},
+  "TOAST_REPAIR_LEVEL": {"en": "Repair skill: level %d", "ru": "Навык ремонта: уровень %d"},
+  "TOAST_HOME_UPGRADE": {"en": "Your room: %s", "ru": "Ваша комната: %s"},
+  "TOAST_RENT_PAID": {"en": "Rent paid: £%d", "ru": "Аренда оплачена: £%d"},
+  "TOAST_RENT_SHORT": {"en": "Rent short by £%d — Mrs Halloway will wait", "ru": "Не хватило £%d на аренду — миссис Холлоуэй подождёт"},
+  "TOAST_STALL_REPORT": {"en": "Cart: %d sold, £%d", "ru": "Тележка: продано %d, £%d"},
+  "JOB_RADIATOR": {"en": "Knocking radiator", "ru": "Стучащая батарея"},
+  "JOB_RADIATOR_DESC": {"en": "Mrs Halloway: \"It's normal, but it's normal louder than usual.\" (your room)", "ru": "Миссис Холлоуэй: «Это нормально, но громче, чем нормально». (ваша комната)"},
+  "JOB_FOUNTAIN": {"en": "Plaza fountain pump", "ru": "Насос фонтана на площади"},
+  "JOB_FOUNTAIN_DESC": {"en": "Mara: \"The fountain's been silent since the archive closed. I'd like one thing in this square to work.\"", "ru": "Мара: «Фонтан молчит с тех пор, как закрыли архив. Хоть что-то на этой площади должно работать»."},
+  "JOB_LAMP": {"en": "Flickering street lamp", "ru": "Мигающий фонарь"},
+  "JOB_LAMP_DESC": {"en": "Ivo: \"The lamp by the condos. Residents' association can pay. Barely.\"", "ru": "Иво: «Фонарь у многоэтажек. Совет жильцов заплатит. Еле-еле»."},
+  "JOB_PIKE_RADIO": {"en": "Warden's radio", "ru": "Рация смотрительницы"},
+  "JOB_PIKE_RADIO_DESC": {"en": "Pike: \"It picks up a station that doesn't exist. Make it stop.\" (plaza, south)", "ru": "Пайк: «Ловит станцию, которой не существует. Сделайте, чтобы перестала». (юг площади)"},
+  "JOB_MAILBOX": {"en": "Jammed mailbox", "ru": "Заклинивший почтовый ящик"},
+  "JOB_MAILBOX_DESC": {"en": "Nadiya: \"The box by the brown house eats letters. I'd like them back.\"", "ru": "Надия: «Ящик у коричневого дома ест письма. Хочу их обратно»."},
+  "JOB_ECHO_CLOCK": {"en": "The bench clock", "ru": "Часы у скамейки"},
+  "JOB_ECHO_CLOCK_DESC": {"en": "Ivo: \"The old clock in the park runs backwards on wet nights. You have the touch for that sort of thing now.\" (park, east)", "ru": "Иво: «Старые часы в парке в сырые ночи идут назад. У вас теперь есть чутьё на такие вещи». (парк, восток)"},
+  "JONAH_TRADE": {"en": "Let's trade.", "ru": "Давай поторгуем."},
+  "JONAH_ASK_JOBS": {"en": "Got any work?", "ru": "Есть работа?"},
+  "JONAH_JOBS_1": {"en": "\"Plenty. Half of Greyford rattles, the other half leaks.\" He nods at the cork board on the yellow building. \"People pin jobs there. Take what you can handle.\"", "ru": "«Навалом. Пол-Грейфорда дребезжит, вторая половина течёт». Он кивает на пробковую доску на жёлтом доме. «Люди вешают туда заказы. Бери, что потянешь»."},
+  "JONAH_JOBS_2": {"en": "\"You'll need scrap. I sell it, or dig through the heap by the bins — once a day, before the council clears it.\"", "ru": "«Понадобится металлолом. Я продаю, или покопайся в куче у мусорных баков — раз в день, пока совет её не вывез»."},
+  "JONAH_ASK_SCRAP": {"en": "Could you spare some scrap to start?", "ru": "Не дашь немного лома для начала?"},
+  "JONAH_JOBS_GIFT": {"en": "\"Here. First four are on the house. After that I'm a businessman.\"", "ru": "«Держи. Первые четыре — бесплатно. Дальше я бизнесмен»."},
+  "JONAH_STALL_1": {"en": "\"You've fixed half the street.\" He looks almost proud. \"There's an old food cart rusting behind the shop.\"", "ru": "«Пол-улицы уже на тебе держится». Вид у него почти гордый. «За мастерской ржавеет старая тележка с едой»."},
+  "JONAH_STALL_2": {"en": "\"Take it. Sell repair kits on the plaza. Fair prices — people here remember who was fair.\"", "ru": "«Забирай. Продавай ремкомплекты на площади. По честной цене — здесь помнят, кто был честен»."},
+  "HALLOWAY_ROOM": {"en": "About my room...", "ru": "Насчёт моей комнаты..."}
 }

@@ -1,7 +1,7 @@
 class_name EchoEnemy
 extends CharacterBody2D
 ## The Hollow family — fragments of erased residents, looping one gesture.
-## One script, three tuned variants (set in the scene or by `variant`):
+## One script; variants are data in data/enemies/enemies*.json (set `variant`):
 ##   hollow  - steady melee lunger (3 HP)
 ##   clinger - small, fast, fragile, short wind-up (1 HP)
 ##   wailer  - keeps its distance and throws memory shards (2 HP)
@@ -16,17 +16,13 @@ const WINDUP_TINT := Color(1.6, 1.6, 1.9, 1.0)
 const SHARD_SCENE := preload("res://scenes/combat/memory_shard.tscn")
 const MOTE_SCENE := preload("res://scenes/combat/resonance_mote.tscn")
 
-const VARIANTS := {
-	"hollow": {"max_health": 3, "move_speed": 34.0, "chase_speed": 52.0, "lunge_speed": 190.0, "windup_time": 0.55,
-		"attack_range": 26.0, "scale": 1.0, "tint": Color(0.75, 0.95, 1.0, 0.82), "resonance": 2},
-	"clinger": {"max_health": 1, "move_speed": 50.0, "chase_speed": 78.0, "lunge_speed": 230.0, "windup_time": 0.3,
-		"attack_range": 22.0, "scale": 0.8, "tint": Color(1.0, 0.8, 0.85, 0.8), "resonance": 1},
-	"wailer": {"max_health": 2, "move_speed": 30.0, "chase_speed": 40.0, "lunge_speed": 0.0, "windup_time": 0.7,
-		"attack_range": 110.0, "scale": 1.0, "tint": Color(0.8, 0.75, 1.0, 0.8), "resonance": 2, "ranged": true},
-}
+const VARIANTS_PATH := "res://data/enemies/enemies"
+
+static var _variants: Dictionary = {}
 
 @export var enemy_id: StringName = &""
-@export_enum("hollow", "clinger", "wailer") var variant: String = "hollow"
+## Id from data/enemies/enemies*.json.
+@export var variant: String = "hollow"
 @export var sight_range: float = 120.0
 @export var lunge_time: float = 0.2
 @export var recover_time: float = 0.6
@@ -44,6 +40,8 @@ var attack_range := 26.0
 var ranged := false
 var resonance_drop := 2
 var base_tint := Color.WHITE
+var contact_damage := 1
+var sheet := SHEET
 
 var _timer := 0.0
 var _lunge_dir := Vector2.ZERO
@@ -70,7 +68,7 @@ func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	_home = global_position
 	var look := CharacterAppearance.new()
-	look.custom_sheet = SHEET
+	look.custom_sheet = sheet
 	look.placeholder_color = Color(0.7, 0.9, 1.0)
 	sprite.appearance = look
 	sprite.modulate = base_tint
@@ -90,7 +88,7 @@ func _ready() -> void:
 
 	_hitbox = Hitbox.new()
 	_hitbox.team = &"enemy"
-	_hitbox.damage = 1
+	_hitbox.damage = contact_damage
 	_hitbox.knockback = 160.0
 	_hitbox.add_child(_rect_shape(Vector2(14, 14), Vector2(0, -8)))
 	add_child(_hitbox)
@@ -101,8 +99,17 @@ func _ready() -> void:
 	_pick_drift()
 
 
+static func variants() -> Dictionary:
+	if _variants.is_empty():
+		_variants = DataFiles.defs(VARIANTS_PATH)
+	return _variants
+
+
 func _apply_variant() -> void:
-	var v: Dictionary = VARIANTS.get(variant, VARIANTS["hollow"])
+	var all := variants()
+	if not all.has(StringName(variant)):
+		push_error("EchoEnemy %s: unknown variant '%s'" % [enemy_id, variant])
+	var v: Dictionary = all.get(StringName(variant), all.get(&"hollow", {}))
 	max_health = int(v["max_health"])
 	move_speed = float(v["move_speed"])
 	chase_speed = float(v["chase_speed"])
@@ -111,7 +118,11 @@ func _apply_variant() -> void:
 	attack_range = float(v["attack_range"])
 	ranged = bool(v.get("ranged", false))
 	resonance_drop = int(v["resonance"])
-	base_tint = v["tint"]
+	var t: Array = v.get("tint", [1, 1, 1, 1])
+	base_tint = Color(float(t[0]), float(t[1]), float(t[2]), float(t[3]))
+	contact_damage = int(v.get("damage", 1))
+	sheet = String(v.get("sheet", SHEET))
+	item_drop_chance = float(v.get("drop_chance", item_drop_chance))
 	sprite.scale = Vector2.ONE * float(v["scale"])
 
 

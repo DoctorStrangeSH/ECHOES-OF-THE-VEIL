@@ -39,6 +39,12 @@ Decisions are recorded with date, status, and rationale. Revisit only when evide
 | D-033 | The business is a repair cart: price tier, stock and upgrades set daily customers, resolved deterministically at dawn; fair prices raise reputation. | Accepted | Small, testable business prototype linked to Jonah's relationship. |
 | D-034 | Odd jobs: up to 3 a day, chosen deterministically from the day number; each pays money, XP and +1 with the client; some change the world (the fountain). | Accepted | Ties non-combat work to NPC needs (exit gate). |
 | D-035 | Save schema 5 adds `life` (skill, jobs, stall, rent debt, home upgrades), migration 4→5. | Accepted | |
+| D-036 | Regions are data: `data/regions/<id>.json` (layout + nodes + templates) built into `.tscn` by `tools/regions/build_regions.py`; generated scenes are committed. | Accepted | Scenes stay hand-editable in Godot, but the spec is the source of truth; the older five scenes rebuild byte-for-byte. The tool needs the private art (sprite sizes); the game does not. |
+| D-037 | Definitions merge by file prefix (`items.json` + `items_*.json`); locations register by file name in `scenes/locations`. | Accepted | A new region adds its own files and never edits shared code. Duplicate ids are errors. |
+| D-038 | Echo enemy variants are data (`data/enemies/`); bosses stay bespoke scenes. | Accepted | Regular enemies are tuning; bosses are design work. |
+| D-039 | Content is validated by a Python tool in CI before Godot runs; dialogue and case graphs are generated as Mermaid and checked for freshness. | Accepted | Fast feedback for writers; reviewable on GitHub without the game. |
+| D-040 | Per-location budgets (nodes, props, tiles, NPCs, enemies, instancing time) are data and enforced by tests. | Accepted | Keeps regions cheap as content scales. |
+| D-041 | Translation round-trips through CSV (`tools/loc.py`); imports refuse placeholder mismatches. | Accepted | Translators work in spreadsheets; format bugs are caught at import. |
 
 ## Open questions
 

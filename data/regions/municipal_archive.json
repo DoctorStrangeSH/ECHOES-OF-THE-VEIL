@@ -1,0 +1,39 @@
+{
+ "id": "municipal_archive",
+ "name_key": "LOC_ARCHIVE",
+ "palette": "echo_corridor",
+ "options": {"outdoors": false},
+ "layout": [
+  "########################",
+  "#WWWWWWWWWWWWWWWWWWWWWW#",
+  "#wwwwwwwwwwwwwwwwwwwwww#",
+  "#ffffffffffffffffffffff#",
+  "#ffffffffffffffffffffff#",
+  "#ffffffffffffffffffffff#",
+  "#ffffffffffffffffffffff#",
+  "#ffffffffffffffffffffff#",
+  "#ffffffffffffffffffffff#",
+  "#ffffffffffffffffffffff#",
+  "#ffffffffffffffffffffff#",
+  "#ffffffffffffffffffffff#",
+  "##########ff############"
+ ],
+ "nodes": [
+  {"kind": "prop", "name": "Shelf1", "tex": "@library/57.png", "x": 40, "y": 64, "col": [30, 10], "off": [0, -5], "color": "#8a5a30"},
+  {"kind": "prop", "name": "Shelf2", "tex": "@library/58.png", "x": 80, "y": 64, "col": [30, 10], "off": [0, -5], "color": "#8a5a30"},
+  {"kind": "prop", "name": "Shelf3", "tex": "@library/64.png", "x": 128, "y": 64, "col": [30, 10], "off": [0, -5], "color": "#8a5a30"},
+  {"kind": "prop", "name": "Shelf4", "tex": "@library/71.png", "x": 300, "y": 64, "col": [30, 10], "off": [0, -5], "color": "#8a5a30"},
+  {"kind": "prop", "name": "Shelf5", "tex": "@library/72.png", "x": 340, "y": 64, "col": [30, 10], "off": [0, -5], "color": "#8a5a30"},
+  {"kind": "prop", "name": "ShelfRow1", "tex": "@library/74.png", "x": 96, "y": 140, "col": [28, 10], "off": [0, -5], "color": "#8a5a30"},
+  {"kind": "prop", "name": "ShelfRow2", "tex": "@library/74.png", "x": 280, "y": 140, "col": [28, 10], "off": [0, -5], "color": "#8a5a30"},
+  {"kind": "prop", "name": "CensusCabinet", "tex": "@library/40.png", "x": 200, "y": 64, "col": [16, 8], "off": [0, -4], "color": "#8090a0", "children": ["Shimmer"]},
+  {"kind": "prop", "name": "ReadingDesk", "tex": "@library/25.png", "x": 190, "y": 124, "col": [32, 10], "off": [0, -5], "color": "#a07040"},
+  {"kind": "prop", "name": "Globe", "tex": "@library/34.png", "x": 340, "y": 124, "col": [10, 6], "off": [0, -3], "color": "#4080c0"},
+  {"kind": "prop", "name": "Corkboard", "tex": "@library/33.png", "x": 248, "y": 40, "col": [0, 0], "off": [0, 0], "color": "#b08050"},
+  {"kind": "spawn", "name": "Entrance", "id": "entrance", "x": 176, "y": 184, "facing": [0, -1]},
+  {"kind": "door", "name": "WayOut", "id": "door_archive_exit", "x": 176, "y": 196, "area": [30, 10], "scene": "greyford_block", "spawn": "archive_front", "prompt": "PROMPT_EXIT"},
+  {"kind": "inspect", "name": "CabinetUse", "id": "inspect_census_cabinet", "x": 200, "y": 72, "area": [22, 12], "priority": 20, "dialogue": "census_cabinet"},
+  {"kind": "inspect", "name": "ShelvesLook", "id": "inspect_archive_shelves", "x": 96, "y": 148, "area": [30, 10], "dialogue": "archive_shelves"},
+  {"kind": "anchor", "name": "A_desk", "id": "desk", "x": 190, "y": 108}
+ ]
+}

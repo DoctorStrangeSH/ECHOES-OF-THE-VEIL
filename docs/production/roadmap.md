@@ -56,7 +56,7 @@ This roadmap is milestone-based, not a promise of fixed calendar dates. Estimate
 
 **Exit gate:** choices produce visible, tested consequences; no critical clue is accidentally missable.
 
-## M5 — Life, work, and ownership (implemented, in review)
+## M5 — Life, work, and ownership (implemented)
 **Build**
 - day clock and weather;
 - one profession loop (gardening or repair);
@@ -66,7 +66,7 @@ This roadmap is milestone-based, not a promise of fixed calendar dates. Estimate
 
 **Exit gate:** non-combat activities are rewarding and connect to NPC/world needs.
 
-## M6 — Content production pipeline
+## M6 — Content production pipeline (implemented, in review)
 **Build**
 - reusable region templates;
 - dialogue/quest authoring workflow;

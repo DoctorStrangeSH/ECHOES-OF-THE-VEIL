@@ -1,7 +1,7 @@
 @tool
 class_name NpcRegistry
 extends RefCounted
-## Loads NPC definitions from res://data/characters/npcs.json and resolves
+## Loads NPC definitions from res://data/characters/npcs.json (+ npcs_*.json) and resolves
 ## where each NPC should be right now (schedule blocks + story conditions).
 ##
 ## Definition: { "name": "NPC_MARA", "premade": "Premade_Character_10" | "custom_sheet": "...",
@@ -10,7 +10,7 @@ extends RefCounted
 ##                  "anchor": "plaza_east", "facing": "left"} ] }
 ## The first schedule entry whose period and condition match wins; none = absent.
 
-const PATH := "res://data/characters/npcs.json"
+const PATH := "res://data/characters/npcs"
 const FACINGS := {"right": 0, "up": 1, "left": 2, "down": 3}
 
 static var _defs: Dictionary = {}
@@ -23,14 +23,7 @@ static func defs() -> Dictionary:
 
 
 static func reload() -> void:
-	_defs = {}
-	var data: Variant = JSON.parse_string(FileAccess.get_file_as_string(PATH))
-	if not data is Dictionary:
-		push_error("NpcRegistry: %s is not a JSON object" % PATH)
-		return
-	for id: String in data:
-		if not id.begins_with("_"):
-			_defs[StringName(id)] = data[id]
+	_defs = DataFiles.defs(PATH)
 
 
 static func get_def(id: StringName) -> Dictionary:

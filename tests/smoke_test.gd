@@ -132,6 +132,36 @@ func _ready() -> void:
 	await _wait_location(&"greyford_block")
 	await _frames(20)
 
+	_step = "lighthouse point (region built from data only)"
+	SceneFlow.travel(&"lighthouse_point", &"from_greyford")
+	await _wait_location(&"lighthouse_point")
+	await _frames(20)
+	_assert(_npc_present(&"wren_ashby"), "Wren is at the point by day")
+	DialogueService.start(&"wren", {"npc": &"wren_ashby"})
+	for i in 8:
+		DialogueService.choose(0)
+		DialogueService.advance()
+		await _frames(2)
+		if Journal.case_stage(&"case_lighthouse") == &"watch":
+			break
+	DialogueService.end()
+	await _frames(3)
+	_assert(Journal.case_stage(&"case_lighthouse") == &"watch", "Wren's case reaches the night watch")
+	WorldClock.wait_until_hour(23)
+	DialogueService.start(&"lighthouse_watch")
+	await _finish_dialogue()
+	_assert(Journal.case_stage(&"case_lighthouse") == &"registry", "counting the flashes advances the case")
+	DialogueService.start(&"archive_shelves")
+	await _finish_dialogue()
+	_assert(Journal.case_stage(&"case_lighthouse") == &"answer", "the harbour register answers it")
+	DialogueService.start(&"wren", {"npc": &"wren_ashby"})
+	await _finish_dialogue()
+	_assert(Journal.case_status(&"case_lighthouse") == Journal.STATUS_DONE and GameState.has_flag(&"world.lamp_counts"), "Wren's case resolved")
+	WorldClock.wait_until_hour(9)
+	SceneFlow.travel(&"greyford_block", &"point_steps")
+	await _wait_location(&"greyford_block")
+	await _frames(10)
+
 	_step = "work: jobs, repair, shop, workbench, stall"
 	var gr2 := get_child(0)
 	Inventory.money = 200
@@ -237,6 +267,11 @@ func _hold(action: StringName, seconds: float) -> void:
 	Input.action_press(action)
 	await get_tree().create_timer(seconds).timeout
 	Input.action_release(action)
+
+
+func _npc_present(id: StringName) -> bool:
+	var loc := SceneFlow.current_location as Location
+	return loc != null and is_instance_valid(loc._npcs.get(id))
 
 
 func _finish_dialogue() -> void:

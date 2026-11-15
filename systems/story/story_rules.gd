@@ -155,7 +155,8 @@ static func _apply_one(key: String, arg: Variant, whole: Dictionary) -> void:
 		"wait_until_hour":
 			WorldClock.wait_until_hour(int(arg))
 		"save_game":
-			SaveService.save_game()
+			if SaveService.save_game() != OK:
+				EventHub.toast_requested.emit(TranslationServer.translate("REST_SAVE_FAILED"))
 		"travel":
 			SceneFlow.travel(StringName(arg[0]), StringName(arg[1]))
 		"heal_player":

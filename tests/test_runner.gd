@@ -418,8 +418,8 @@ func test_health_iframes_and_heal() -> void:
 
 func test_enemy_variants_defined() -> void:
 	for v: String in ["hollow", "clinger", "wailer"]:
-		check(EchoEnemy.VARIANTS.has(v), "variant %s" % v)
-	check(bool(EchoEnemy.VARIANTS["wailer"].get("ranged", false)), "wailer is ranged")
+		check(EchoEnemy.variants().has(StringName(v)), "variant %s" % v)
+	check(bool(EchoEnemy.variants()[&"wailer"].get("ranged", false)), "wailer is ranged")
 
 
 func test_save_migration_from_v2() -> void:
@@ -627,3 +627,65 @@ func test_save_migration_from_v4() -> void:
 	var r := SaveService.read_slot(1)
 	check(r["ok"] and r["envelope"]["payload"].has("life"), "v4 save gains life")
 	_cleanup(dir)
+
+
+# --- M6: content pipeline --------------------------------------------------------
+
+func test_location_budgets() -> void:
+	var budgets: Dictionary = DataFiles.read_json("res://data/world/budgets.json")
+	for scene_id: StringName in SceneFlow.LOCATIONS:
+		var b: Dictionary = (budgets["default"] as Dictionary).duplicate()
+		b.merge(budgets.get(String(scene_id), {}), true)
+		var t0 := Time.get_ticks_usec()
+		var root: Node = (load(SceneFlow.LOCATIONS[scene_id]) as PackedScene).instantiate()
+		var ms := (Time.get_ticks_usec() - t0) / 1000.0
+		var got := {"nodes": 0, "props": 0, "interactables": 0, "npcs": 0, "enemies": 0, "tiles": 0}
+		var stack: Array[Node] = [root]
+		while not stack.is_empty():
+			var n: Node = stack.pop_back()
+			stack.append_array(n.get_children())
+			got["nodes"] += 1
+			if n is WorldProp:
+				got["props"] += 1
+			elif n is Interactable:
+				got["interactables"] += 1
+			elif n is Npc:
+				got["npcs"] += 1
+			elif n is EchoEnemy or n is CensusTaker:
+				got["enemies"] += 1
+			elif n is TilePainter:
+				got["tiles"] += (n as TilePainter).layout.replace("\n", "").replace(" ", "").replace(".", "").length()
+		root.free()
+		for k: String in got:
+			check(int(got[k]) <= int(b[k]), "%s: %s %d within budget %d" % [scene_id, k, got[k], b[k]])
+		check(ms <= float(b["instantiate_ms"]), "%s: instantiated in %.1f ms (budget %d)" % [scene_id, ms, b["instantiate_ms"]])
+		print("    %s: %d nodes, %d props, %d tiles, %.1f ms" % [scene_id, got["nodes"], got["props"], got["tiles"], ms])
+
+
+func test_locations_register_themselves() -> void:
+	check(SceneFlow.LOCATIONS.size() >= 5, "locations found by scanning scenes/locations")
+	for scene_id: StringName in SceneFlow.LOCATIONS:
+		check(String(SceneFlow.LOCATIONS[scene_id]).ends_with("/%s.tscn" % scene_id), "%s: id is the file name" % scene_id)
+
+
+func test_data_files_merge_and_reject_duplicates() -> void:
+	var files := DataFiles.files_for("res://data/items/items")
+	check(files.size() >= 1 and files[0].ends_with("/items.json"), "primary file first")
+	var items := DataFiles.defs("res://data/items/items")
+	check(items.has(&"scrap") and not items.has(&"_doc"), "comments skipped, ids loaded")
+	check(Inventory.item_defs.size() == items.size(), "inventory uses the merged files")
+	check(DataFiles.files_for("res://data/world/facts").size() >= 1, "facts found")
+	for f in DataFiles.files_for("res://data/world/facts"):
+		check(not f.ends_with("factions.json"), "prefix match is exact: factions.json is not a facts file")
+
+
+func test_enemy_variants_are_data() -> void:
+	for id: StringName in EchoEnemy.variants():
+		var v: Dictionary = EchoEnemy.variants()[id]
+		for k in ["max_health", "move_speed", "chase_speed", "windup_time", "attack_range", "resonance", "tint"]:
+			check(v.has(k), "%s has %s" % [id, k])
+	var e := (load("res://scenes/combat/echo_enemy.tscn") as PackedScene).instantiate() as EchoEnemy
+	e.variant = "clinger"
+	add_child(e)
+	check(e.max_health == 1 and is_equal_approx(e.sprite.scale.x, 0.8), "clinger stats come from data")
+	e.queue_free()
