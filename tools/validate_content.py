@@ -17,7 +17,7 @@ os.chdir(ROOT)
 errors, warnings = [], []
 LANGS = ['en', 'ru']
 # Flags whose names are built in code (prefix match), so no data sets them literally.
-DYNAMIC_FLAGS = ('rel.', 'repair.level_', 'home.', 'defeated.', 'junk.', 'met.', 'boss.', 'case.', 'job.')
+DYNAMIC_FLAGS = ('act.', 'rel.', 'repair.level_', 'home.', 'defeated.', 'junk.', 'met.', 'boss.', 'case.', 'job.')
 
 
 def err(m): errors.append(m)
@@ -206,7 +206,15 @@ for c, v in J['cases'].items():
         key(ff.get('note'), f'case {c} fail-forward')
         if ff.get('stage') not in v.get('stages', {}) or (ff.get('to') and ff['to'] not in v.get('stages', {})):
             err(f'case {c}: fail-forward uses an unknown stage')
+CAMPAIGN = load('data/story/campaign.json')
+for a in CAMPAIGN.get('acts', []):
+    for k in ('title', 'subtitle'):
+        key(a.get(k), f'act {a.get("id")}')
+    walk(a.get('begins_if', {}), f'act {a.get("id")}')
+    walk(a.get('effects', []), f'act {a.get("id")}')
 for h, v in J['hypotheses'].items():
+    key(v.get('title'), f'hypothesis {h}')
+    key(v.get('body'), f'hypothesis {h}')
     for e in v.get('requires_all', []) + v.get('requires_any', []):
         if e not in J['evidence']:
             err(f'hypothesis {h}: unknown evidence {e}')

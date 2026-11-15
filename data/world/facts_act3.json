@@ -1,0 +1,10 @@
+{
+ "keepers_pact": {
+  "audience": [
+   "faction:keepers",
+   "faction:open_hand",
+   "mara_venn"
+  ],
+  "delay_periods": 2
+ }
+}

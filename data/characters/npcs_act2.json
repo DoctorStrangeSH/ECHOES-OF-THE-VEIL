@@ -79,6 +79,14 @@
   "schedule": [
    {
     "if": {
+     "quest_active": "case_kindness"
+    },
+    "scene": "north_quay",
+    "anchor": "annex",
+    "facing": "down"
+   },
+   {
+    "if": {
      "flag": "ward.open"
     },
     "scene": "echo_ward",

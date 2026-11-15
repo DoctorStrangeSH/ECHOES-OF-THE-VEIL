@@ -92,6 +92,38 @@ flowchart LR
   case_misplaced_bring -.->|"stuck 3 days"| case_misplaced_ff_3
 ```
 
+## case_kindness — A Kindness Built on a Lie
+
+```mermaid
+flowchart LR
+  case_kindness_pact["pact<br/>Ivo has asked you to come down beneath …"]
+  case_kindness_quay["quay<br/>The Open Hand is at North Quay (east en…"]
+  case_kindness_underpass["underpass<br/>Meridian's resonator went into the floo…"]
+  case_kindness_truth["truth<br/>Someone you trusted knew about the pact…"]
+  case_kindness_decide["decide<br/>Decide what happens to the resonator, a…"]
+  case_kindness_pact --> case_kindness_quay
+  case_kindness_quay --> case_kindness_underpass
+  case_kindness_underpass --> case_kindness_truth
+  case_kindness_truth --> case_kindness_decide
+  case_kindness_out_sealed(["outcome: sealed<br/>You gave the resonator to the…"])
+  case_kindness_out_opened(["outcome: opened<br/>You gave the resonator to the…"])
+  case_kindness_out_sold(["outcome: sold<br/>You returned the resonator to…"])
+  case_kindness_out_broken(["outcome: broken<br/>You broke the resonator. Nobo…"])
+  case_kindness_START(("start")) --> case_kindness_pact
+  case_kindness_ff_0{{"help: A letter from Ivo, in a Keeper's carefu…"}}
+  case_kindness_pact -.->|"stuck 2 days"| case_kindness_ff_0
+  case_kindness_ff_0 -.-> case_kindness_quay
+  case_kindness_ff_1{{"help: Nadiya, at your door before breakfast: …"}}
+  case_kindness_quay -.->|"stuck 3 days"| case_kindness_ff_1
+  case_kindness_ff_1 -.-> case_kindness_underpass
+  case_kindness_ff_2{{"help: The tide went out of the underpass over…"}}
+  case_kindness_underpass -.->|"stuck 4 days"| case_kindness_ff_2
+  case_kindness_ff_2 -.-> case_kindness_truth
+  case_kindness_ff_3{{"help: A note under your door: 'I'm sorry I di…"}}
+  case_kindness_truth -.->|"stuck 3 days"| case_kindness_ff_3
+  case_kindness_ff_3 -.-> case_kindness_decide
+```
+
 ## case_door — The Door That Shouldn't Be There
 
 ```mermaid

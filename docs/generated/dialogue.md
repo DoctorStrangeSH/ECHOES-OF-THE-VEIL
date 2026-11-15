@@ -270,14 +270,17 @@ flowchart TD
   vale_hub -->|"What does Meridian want with …"| vale_ask
   vale_hub -->|"I'll hold the sensor for you. ⟨{not_flag: vale.helped, all: [{not_flag…⟩"| vale_help
   vale_hub -->|"These are people, not reading… ⟨{not_flag: vale.helped, all: [{not_flag…⟩"| vale_refuse
-  vale_hub_end_3(["end"])
-  vale_hub -->|"Goodbye."| vale_hub_end_3
+  vale_hub -->|"Your resonator is in the unde… ⟨{quest_active: case_kindness}⟩"| vale_res
+  vale_hub_end_4(["end"])
+  vale_hub -->|"Goodbye."| vale_hub_end_4
   vale_ask["ask<br/>Dr Sera Vale: 'To measure it. Then to make it safe. Then — I'…"]
   vale_ask --> vale_hub
   vale_help["help<br/>Dr Sera Vale: The instrument hums against your palm. The lamp…"]
   vale_help --> vale_hub
   vale_refuse["refuse<br/>Dr Sera Vale: 'They're both. That's what makes it interesting…"]
   vale_refuse --> vale_hub
+  vale_res["res<br/>Dr Sera Vale: 'Is it.' She looks at the flooded steps like an…"]
+  vale_res --> vale_hub
 ```
 
 ### rosalind
@@ -340,6 +343,7 @@ flowchart TD
 flowchart TD
   camp_mara_START(("start"))
   camp_mara_START --> camp_mara_hub
+  camp_mara_START -->|"{quest_stage: [case_kindness, truth], f…"| camp_mara_not_here
   camp_mara_hub["hub<br/>Mara Venn: 'I'm taking notes. Go on.'"]
   camp_mara_hub -->|"How are you holding up?"| camp_mara_how
   camp_mara_hub -->|"Go home for now."| camp_mara_home
@@ -348,6 +352,78 @@ flowchart TD
   camp_mara_how["how<br/>Mara Venn: 'Every record I've ever kept is wrong by two hu…"]
   camp_mara_how --> camp_mara_hub
   camp_mara_home["home<br/>Mara Venn: 'I'll be at the archive. Write things down.'"]
+  camp_mara_not_here["not_here<br/>Mara Venn: 'Not here. Meet me under the archive. There's s…"]
+```
+
+## act3.json
+
+### keepers_enter
+
+```mermaid
+flowchart TD
+  keepers_enter_START(("start"))
+  keepers_enter_START --> keepers_enter_1
+  keepers_enter_1["1<br/>Under the archive there is an older hall: the C…"]
+  keepers_enter_1 --> keepers_enter_2
+  keepers_enter_2["2<br/>Ivo Calder: Ivo is waiting at the table. 'The Seal Engine. …"]
+  keepers_enter_2 --> keepers_enter_3
+  keepers_enter_3["3<br/>Ivo Calder: 'Half. Forever. That's the pact. Somebody had t…"]
+  keepers_enter_3 --> keepers_enter_4
+  keepers_enter_4["4<br/>Ivo Calder: 'And now the Open Hand wants to break it. Nadiy…"]
+```
+
+### seal_engine
+
+```mermaid
+flowchart TD
+  seal_engine_START(("start"))
+  seal_engine_START --> seal_engine_idle
+  seal_engine_START -->|"{quest_stage: [case_kindness, decide]}"| seal_engine_decide1
+  seal_engine_START -->|"{quest_done: case_kindness}"| seal_engine_after
+  seal_engine_idle["idle<br/>The Seal Engine hums one low note. The floor hu…"]
+  seal_engine_after["after<br/>The engine hums. Greyford will remember who cho…"]
+  seal_engine_decide1["decide1<br/>The resonator and the Seal Engine hum the same …"]
+  seal_engine_decide1 -->|"Give it to the Keepers. The s…"| seal_engine_kept
+  seal_engine_decide1 -->|"Give it to Nadiya. Open the W…"| seal_engine_opened
+  seal_engine_decide1 -->|"Return it to Dr Vale. Let Mer…"| seal_engine_sold
+  seal_engine_decide1 -->|"Break it. Nobody should hold …"| seal_engine_broken
+  seal_engine_kept["kept<br/>You set the resonator into a slot in the engine…"]
+  seal_engine_opened["opened<br/>Nadiya takes it as if it were made of glass. 'N…"]
+  seal_engine_sold["sold<br/>Dr Vale signs a receipt and counts out notes. '…"]
+  seal_engine_broken["broken<br/>It breaks like a bell: once, and then for a lon…"]
+```
+
+### underpass_enter
+
+```mermaid
+flowchart TD
+  underpass_enter_START(("start"))
+  underpass_enter_START --> underpass_enter_1
+  underpass_enter_1["1<br/>The underpass is flooded in channels, neat as a…"]
+  underpass_enter_1 --> underpass_enter_2
+  underpass_enter_2["2<br/>You open one. The files inside are bone dry. Bi…"]
+```
+
+### archivist_enter
+
+```mermaid
+flowchart TD
+  archivist_enter_START(("start"))
+  archivist_enter_START --> archivist_enter_1
+  archivist_enter_1["1<br/>A man in a clerk's sleeve-guards stands in the …"]
+  archivist_enter_1 --> archivist_enter_2
+  archivist_enter_2["2<br/>The Archivist of Fl…: 'Every record I keep is dry. Every record I kee…"]
+```
+
+### resonator_found
+
+```mermaid
+flowchart TD
+  resonator_found_START(("start"))
+  resonator_found_START --> resonator_found_1
+  resonator_found_1["1<br/>Among the dry files: a brass device the size of…"]
+  resonator_found_1 --> resonator_found_2
+  resonator_found_2["2<br/>It's warm in your hands. It wants to be used."]
 ```
 
 ## lighthouse.json
@@ -436,6 +512,8 @@ flowchart TD
 flowchart TD
   mara_START(("start"))
   mara_START --> mara_hub
+  mara_START -->|"{quest_stage: [case_kindness, truth], f…"| mara_kn_stay1
+  mara_START -->|"{quest_stage: [case_kindness, truth], f…"| mara_kn_leave1
   mara_START -->|"{flag: mara.lied, knows: [mara_venn, ag…"| mara_lie_found
   mara_START -->|"{quest_stage: [case_eleventh, start]}"| mara_arch_in1
   mara_START -->|"{quest_stage: [case_eleventh, search]}"| mara_arch_wait
@@ -509,6 +587,16 @@ flowchart TD
   mara_mark1["mark1<br/>Mara Venn: 'Three lines to a point: it's a surveyor's mark…"]
   mara_mark1 --> mara_hub
   mara_join["join<br/>Mara Venn: 'I'll bring a notebook. Things that aren't writ…"]
+  mara_kn_stay1["kn_stay1<br/>Mara Venn: Mara is turning a pencil over and over. 'The el…"]
+  mara_kn_stay1 --> mara_kn_stay2
+  mara_kn_stay2["kn_stay2<br/>Mara Venn: 'It wasn't. My grandmother was a Keeper. I've k…"]
+  mara_kn_stay2 --> mara_kn_stay3
+  mara_kn_stay3["kn_stay3<br/>Mara Venn: 'I'm not asking you to trust me. I'm asking you…"]
+  mara_kn_leave1["kn_leave1<br/>Mara Venn: Mara is turning a pencil over and over. 'The el…"]
+  mara_kn_leave1 --> mara_kn_leave2
+  mara_kn_leave2["kn_leave2<br/>Mara Venn: 'It wasn't. My grandmother was a Keeper. I've k…"]
+  mara_kn_leave2 --> mara_kn_leave3
+  mara_kn_leave3["kn_leave3<br/>Mara Venn: 'Right.' She closes the notebook. 'Then I'll ge…"]
 ```
 
 ### jonah
@@ -618,6 +706,8 @@ flowchart TD
 flowchart TD
   halloway_START(("start"))
   halloway_START --> halloway_hub
+  halloway_START -->|"{quest_stage: [case_kindness, truth], f…"| halloway_kn_stay1
+  halloway_START -->|"{quest_stage: [case_kindness, truth], f…"| halloway_kn_leave1
   halloway_START -->|"{flag: has_radio, quest_stage: [case_ra…"| halloway_radio1
   halloway_START -->|"{not_flag: met.edda_halloway, backgroun…"| halloway_local1
   halloway_START -->|"{not_flag: met.edda_halloway}"| halloway_intro1
@@ -668,6 +758,16 @@ flowchart TD
   halloway_bea1 --> halloway_bea2
   halloway_bea2["bea2<br/>Edda Halloway: 'I'll leave the back door on the latch on Thurs…"]
   halloway_bea2 --> halloway_hub
+  halloway_kn_stay1["kn_stay1<br/>Edda Halloway: Mrs Halloway has brought a flask of tea and doe…"]
+  halloway_kn_stay1 --> halloway_kn_stay2
+  halloway_kn_stay2["kn_stay2<br/>Edda Halloway: 'Mr Calder asked me to forget, in 1987, and I a…"]
+  halloway_kn_stay2 --> halloway_kn_stay3
+  halloway_kn_stay3["kn_stay3<br/>Edda Halloway: 'You kept my map secret. I'll keep you company …"]
+  halloway_kn_leave1["kn_leave1<br/>Edda Halloway: Mrs Halloway has brought a flask of tea and doe…"]
+  halloway_kn_leave1 --> halloway_kn_leave2
+  halloway_kn_leave2["kn_leave2<br/>Edda Halloway: 'Mr Calder asked me to forget, in 1987, and I a…"]
+  halloway_kn_leave2 --> halloway_kn_leave3
+  halloway_kn_leave3["kn_leave3<br/>Edda Halloway: 'I don't think I can watch.' She leaves the fla…"]
 ```
 
 ### ivo
@@ -676,6 +776,8 @@ flowchart TD
 flowchart TD
   ivo_START(("start"))
   ivo_START --> ivo_hub
+  ivo_START -->|"{quest_stage: [case_kindness, truth], f…"| ivo_kn_stay1
+  ivo_START -->|"{quest_stage: [case_kindness, truth], f…"| ivo_kn_leave1
   ivo_START -->|"{not_flag: met.ivo_calder}"| ivo_intro1
   ivo_START -->|"{knows: [ivo_calder, reported_door], no…"| ivo_reported
   ivo_START -->|"{knows: [ivo_calder, opened_door], not_…"| ivo_echo
@@ -713,6 +815,16 @@ flowchart TD
   ivo_ward_ok --> ivo_hub
   ivo_ward_no["ward_no<br/>Ivo Calder: Something closes in his face. 'Not with you ask…"]
   ivo_ward_no --> ivo_hub
+  ivo_kn_stay1["kn_stay1<br/>Ivo Calder: Ivo doesn't stand up. 'Forty years I've tended …"]
+  ivo_kn_stay1 --> ivo_kn_stay2
+  ivo_kn_stay2["kn_stay2<br/>Ivo Calder: 'I knew about the Ward before you ever saw the …"]
+  ivo_kn_stay2 --> ivo_kn_stay3
+  ivo_kn_stay3["kn_stay3<br/>Ivo Calder: 'Hate me tomorrow. Tonight, decide well. I'll s…"]
+  ivo_kn_leave1["kn_leave1<br/>Ivo Calder: Ivo doesn't stand up. 'Forty years I've tended …"]
+  ivo_kn_leave1 --> ivo_kn_leave2
+  ivo_kn_leave2["kn_leave2<br/>Ivo Calder: 'I knew about the Ward before you ever saw the …"]
+  ivo_kn_leave2 --> ivo_kn_leave3
+  ivo_kn_leave3["kn_leave3<br/>Ivo Calder: 'You won't forgive this. You shouldn't.' He put…"]
 ```
 
 ### nadiya
@@ -734,8 +846,9 @@ flowchart TD
   nadiya_hub -->|"The door on the plaza... ⟨{evidence: e_door_observed, not_flag: n…⟩"| nadiya_door1
   nadiya_hub -->|"What do you deliver at night?"| nadiya_work1
   nadiya_hub -->|"Do you know a way into the Wa… ⟨{quest_stage: [case_misplaced, ward], n…⟩"| nadiya_ward_nad
-  nadiya_hub_end_3(["end"])
-  nadiya_hub -->|"Goodbye."| nadiya_hub_end_3
+  nadiya_hub -->|"What is the Open Hand plannin… ⟨{quest_stage: [case_kindness, quay]}⟩"| nadiya_plan1
+  nadiya_hub_end_4(["end"])
+  nadiya_hub -->|"Goodbye."| nadiya_hub_end_4
   nadiya_door1["door1<br/>Nadiya Sol: 'You see it too? Good. Most people's eyes just …"]
   nadiya_door1 --> nadiya_door2
   nadiya_door2["door2<br/>Nadiya Sol: 'They tore down a whole street and told everyon…"]
@@ -762,6 +875,10 @@ flowchart TD
   nadiya_persist1["persist1<br/>Nadiya Sol: 'Right. Seven isn't nineteen.' She sounds sure.…"]
   nadiya_ward_nad["ward_nad<br/>Nadiya Sol: 'Course I do. I deliver there.' She taps her ba…"]
   nadiya_ward_nad --> nadiya_hub
+  nadiya_plan1["plan1<br/>Nadiya Sol: 'Meridian built a resonator. Tune it to the Kee…"]
+  nadiya_plan1 --> nadiya_plan2
+  nadiya_plan2["plan2<br/>Nadiya Sol: 'They moved it through the old underpass when t…"]
+  nadiya_plan2 --> nadiya_hub
 ```
 
 ### pike

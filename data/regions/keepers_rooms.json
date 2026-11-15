@@ -1,0 +1,18 @@
+{
+ "id": "keepers_rooms",
+ "name_key": "LOC_KEEPERS_ROOMS",
+ "palette": "echo_corridor",
+ "options": {"outdoors": false, "fixed_tint": {"color": [1.0, 0.9, 0.78, 1.0]}, "enter_dialogue_id": "keepers_enter", "enter_condition": {"not_flag": "keepers.entered"}},
+ "layout": {"generator": "room", "width": 24, "height": 12, "door_x": 11},
+ "nodes": [
+  {"template": "row", "prop": {"tex": "@library/57.png", "color": "#6a4a30"}, "at": {"xs": [40, 80], "y": 64}, "name": "ShelfW"},
+  {"template": "row", "prop": {"tex": "@library/71.png", "color": "#6a4a30"}, "at": {"xs": [300, 340], "y": 64}, "name": "ShelfE"},
+  {"kind": "prop", "name": "SealEngine", "tex": "@basement/1.png", "x": 192, "y": 72, "col": [28, 12], "off": [0, -6], "color": "#808060", "children": ["Shimmer"]},
+  {"kind": "inspect", "name": "SealEngineUse", "id": "inspect_seal_engine", "x": 192, "y": 82, "area": [34, 12], "dialogue": "seal_engine", "priority": 25},
+  {"kind": "prop", "name": "CouncilTable", "tex": "@library/25.png", "x": 192, "y": 128, "col": [40, 12], "off": [0, -6], "color": "#7a5a3a"},
+  {"template": "row", "prop": {"tex": "@living/87.png", "color": "#f0d090", "col": [8, 6], "off": [0, -3]}, "at": {"xs": [128, 256], "y": 72}, "name": "Lamp"},
+  {"kind": "spawn", "name": "Stairs", "id": "stairs", "x": 192, "y": 168, "facing": [0, -1]},
+  {"kind": "door", "name": "StairsUp", "id": "door_keepers_up", "x": 192, "y": 184, "area": [30, 10], "scene": "municipal_archive", "spawn": "keepers_return", "prompt": "PROMPT_STAIRS_UP"},
+  {"template": "anchors", "points": {"council": [192, 144]}}
+ ]
+}

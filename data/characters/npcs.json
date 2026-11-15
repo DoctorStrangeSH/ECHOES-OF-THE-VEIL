@@ -7,6 +7,18 @@
   "dialogue": "mara",
   "schedule": [
    {
+    "if": {
+     "flag": "act3.confessor_mara",
+     "quest_stage": [
+      "case_kindness",
+      "truth"
+     ]
+    },
+    "scene": "keepers_rooms",
+    "anchor": "council",
+    "facing": "down"
+   },
+   {
     "period": "night",
     "if": {
      "any": [
@@ -83,6 +95,18 @@
   "dialogue": "halloway",
   "schedule": [
    {
+    "if": {
+     "flag": "act3.confessor_halloway",
+     "quest_stage": [
+      "case_kindness",
+      "truth"
+     ]
+    },
+    "scene": "keepers_rooms",
+    "anchor": "council",
+    "facing": "down"
+   },
+   {
     "period": "morning",
     "scene": "greyford_block",
     "anchor": "home_mailbox",
@@ -103,6 +127,18 @@
   "color": "#7a9a6a",
   "dialogue": "ivo",
   "schedule": [
+   {
+    "if": {
+     "flag": "act3.confessor_ivo",
+     "quest_stage": [
+      "case_kindness",
+      "truth"
+     ]
+    },
+    "scene": "keepers_rooms",
+    "anchor": "council",
+    "facing": "down"
+   },
    {
     "period": "afternoon",
     "scene": "greyford_block",
@@ -126,6 +162,27 @@
   "color": "#c9b06a",
   "dialogue": "nadiya",
   "schedule": [
+   {
+    "if": {
+     "any": [
+      {
+       "quest_stage": [
+        "case_kindness",
+        "quay"
+       ]
+      },
+      {
+       "quest_stage": [
+        "case_kindness",
+        "underpass"
+       ]
+      }
+     ]
+    },
+    "scene": "north_quay",
+    "anchor": "nadiya_quay",
+    "facing": "down"
+   },
    {
     "period": "evening",
     "scene": "greyford_block",

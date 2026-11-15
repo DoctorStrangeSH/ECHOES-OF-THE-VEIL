@@ -1,0 +1,9 @@
+{
+ "resonator": {
+  "category": "key",
+  "name": "ITEM_RESONATOR",
+  "desc": "ITEM_RESONATOR_DESC",
+  "color": "#a0d0ff",
+  "evidence": "e_resonator"
+ }
+}

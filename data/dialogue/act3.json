@@ -1,0 +1,293 @@
+{
+ "keepers_enter": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "KEEP_ENTER_1",
+    "next": "2"
+   },
+   "2": {
+    "speaker": "NPC_IVO",
+    "text": "KEEP_ENTER_2",
+    "next": "3"
+   },
+   "3": {
+    "speaker": "NPC_IVO",
+    "text": "KEEP_ENTER_3",
+    "next": "4"
+   },
+   "4": {
+    "speaker": "NPC_IVO",
+    "text": "KEEP_ENTER_4",
+    "effects": [
+     {
+      "set_flag": "keepers.entered"
+     },
+     {
+      "add_evidence": "e_keepers_pact"
+     },
+     {
+      "publish": "keepers_pact"
+     },
+     {
+      "quest_stage": [
+       "case_kindness",
+       "quay"
+      ]
+     }
+    ],
+    "next": null
+   }
+  }
+ },
+ "seal_engine": {
+  "entries": [
+   {
+    "if": {
+     "quest_stage": [
+      "case_kindness",
+      "decide"
+     ]
+    },
+    "node": "decide1"
+   },
+   {
+    "if": {
+     "quest_done": "case_kindness"
+    },
+    "node": "after"
+   }
+  ],
+  "start": "idle",
+  "nodes": {
+   "idle": {
+    "text": "SEAL_IDLE",
+    "next": null
+   },
+   "after": {
+    "text": "SEAL_AFTER",
+    "next": null
+   },
+   "decide1": {
+    "text": "SEAL_DECIDE_1",
+    "choices": [
+     {
+      "text": "SEAL_KEEP",
+      "effects": [
+       {
+        "take_item": "resonator"
+       },
+       {
+        "quest_complete": [
+         "case_kindness",
+         "sealed"
+        ]
+       },
+       {
+        "faction": [
+         "keepers",
+         3
+        ]
+       },
+       {
+        "faction": [
+         "open_hand",
+         -3
+        ]
+       },
+       {
+        "set_flag": "world.seal_held"
+       }
+      ],
+      "next": "kept"
+     },
+     {
+      "text": "SEAL_OPEN",
+      "effects": [
+       {
+        "take_item": "resonator"
+       },
+       {
+        "quest_complete": [
+         "case_kindness",
+         "opened"
+        ]
+       },
+       {
+        "faction": [
+         "open_hand",
+         3
+        ]
+       },
+       {
+        "faction": [
+         "keepers",
+         -3
+        ]
+       },
+       {
+        "faction": [
+         "civic",
+         -1
+        ]
+       },
+       {
+        "set_flag": "world.restoration_planned"
+       }
+      ],
+      "next": "opened"
+     },
+     {
+      "text": "SEAL_SELL",
+      "effects": [
+       {
+        "take_item": "resonator"
+       },
+       {
+        "quest_complete": [
+         "case_kindness",
+         "sold"
+        ]
+       },
+       {
+        "faction": [
+         "meridian",
+         3
+        ]
+       },
+       {
+        "faction": [
+         "keepers",
+         -1
+        ]
+       },
+       {
+        "faction": [
+         "open_hand",
+         -1
+        ]
+       },
+       {
+        "give_money": 60
+       },
+       {
+        "set_flag": "world.meridian_resonator"
+       }
+      ],
+      "next": "sold"
+     },
+     {
+      "text": "SEAL_BREAK",
+      "effects": [
+       {
+        "take_item": "resonator"
+       },
+       {
+        "quest_complete": [
+         "case_kindness",
+         "broken"
+        ]
+       },
+       {
+        "faction": [
+         "unwritten",
+         2
+        ]
+       },
+       {
+        "faction": [
+         "meridian",
+         -2
+        ]
+       },
+       {
+        "set_flag": "world.resonator_broken"
+       }
+      ],
+      "next": "broken"
+     }
+    ]
+   },
+   "kept": {
+    "text": "SEAL_KEPT",
+    "next": null
+   },
+   "opened": {
+    "text": "SEAL_OPENED",
+    "next": null
+   },
+   "sold": {
+    "text": "SEAL_SOLD",
+    "next": null
+   },
+   "broken": {
+    "text": "SEAL_BROKEN",
+    "next": null
+   }
+  }
+ },
+ "underpass_enter": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "UNDERPASS_ENTER_1",
+    "next": "2"
+   },
+   "2": {
+    "text": "UNDERPASS_ENTER_2",
+    "effects": [
+     {
+      "set_flag": "underpass.entered"
+     },
+     {
+      "add_evidence": "e_flood_records"
+     }
+    ],
+    "next": null
+   }
+  }
+ },
+ "archivist_enter": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "ARCHIVIST_ENTER_1",
+    "next": "2"
+   },
+   "2": {
+    "speaker": "BOSS_ARCHIVIST",
+    "text": "ARCHIVIST_ENTER_2",
+    "effects": [
+     {
+      "add_evidence": "e_archivist_seen"
+     }
+    ],
+    "next": null
+   }
+  }
+ },
+ "resonator_found": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "RESONATOR_1",
+    "next": "2"
+   },
+   "2": {
+    "text": "RESONATOR_2",
+    "effects": [
+     {
+      "give_item": "resonator"
+     },
+     {
+      "quest_stage": [
+       "case_kindness",
+       "truth"
+      ]
+     }
+    ],
+    "next": null
+   }
+  }
+ }
+}

@@ -651,7 +651,7 @@ func test_location_budgets() -> void:
 				got["interactables"] += 1
 			elif n is Npc:
 				got["npcs"] += 1
-			elif n is EchoEnemy or n is CensusTaker or n is Conductor:
+			elif n is EchoEnemy or n is CensusTaker or n is Conductor or n is Archivist:
 				got["enemies"] += 1
 			elif n is TilePainter:
 				got["tiles"] += (n as TilePainter).layout.replace("\n", "").replace(" ", "").replace(".", "").length()
@@ -877,4 +877,83 @@ func test_act_two_never_blocks() -> void:
 		WorldClock.sleep_until_hour(7)
 	check(Journal.case_status(&"case_misplaced") == Journal.STATUS_DONE and GameState.has_flag(&"rosalind.reunited"), "Jonah finds her himself")
 	check(NpcRegistry.resolve(&"rosalind_rook").get("scene", "") == "echo_ward", "then she lives in the Ward")
+	GameState.reset_for_new_game()
+
+
+# --- M7c: act III, the flood ----------------------------------------------------------
+
+func test_first_match_and_outcomes() -> void:
+	GameState.reset_for_new_game()
+	Journal.start_case(&"case_two_maps")
+	Journal.complete_case(&"case_two_maps", &"kept")
+	check(StoryRules.evaluate({"quest_outcome": ["case_two_maps", "kept"]}), "outcome matches")
+	check(not StoryRules.evaluate({"quest_outcome": ["case_two_maps", "shared"]}), "other outcome does not")
+	StoryRules.apply([{"first_match": [
+		{"if": {"flag": "nope"}, "do": [{"set_flag": "branch.a"}]},
+		{"if": {"quest_outcome": ["case_two_maps", "kept"]}, "do": [{"set_flag": "branch.b"}]},
+		{"if": {}, "do": [{"set_flag": "branch.c"}]}]}])
+	check(GameState.has_flag(&"branch.b") and not GameState.has_flag(&"branch.a") and not GameState.has_flag(&"branch.c"), "only the first true branch runs")
+	GameState.reset_for_new_game()
+
+
+func test_act_three_picks_the_confessor() -> void:
+	for setup in [["", "", "act3.confessor_ivo"], ["case_two_maps", "kept", "act3.confessor_halloway"], ["case_eleventh", "sealed", "act3.confessor_mara"]]:
+		GameState.reset_for_new_game()
+		GameState.is_playing = true
+		for c in [&"case_door", &"case_two_maps", &"case_misplaced"]:
+			Journal.start_case(c)
+			Journal.complete_case(c, &"x")
+		if setup[0] != "":
+			Journal.cases.erase(StringName(setup[0]))
+			Journal.start_case(StringName(setup[0]))
+			Journal.complete_case(StringName(setup[0]), StringName(setup[1]))
+		Campaign.check()
+		check(Campaign.current_act() == &"act3", "act III starts after act II")
+		check(GameState.has_flag(StringName(setup[2])), "confessor: %s" % setup[2])
+		var count := 0
+		for f in ["act3.confessor_ivo", "act3.confessor_mara", "act3.confessor_halloway"]:
+			count += int(GameState.has_flag(StringName(f)))
+		check(count == 1, "exactly one confessor")
+	GameState.is_playing = false
+	GameState.reset_for_new_game()
+
+
+func test_flood_water_and_islands() -> void:
+	var w := FloodWater.new()
+	w.size = Vector2(100, 100)
+	w.islands = [Rect2(10, 60, 20, 20)]
+	w.level = 0.5
+	check(w.is_wet(Vector2(50, 80)), "below the waterline is wet")
+	check(not w.is_wet(Vector2(50, 30)), "above it is dry")
+	check(not w.is_wet(Vector2(20, 70)), "islands stay dry")
+	check(not w.is_wet(Vector2(150, 80)), "outside the arena is dry")
+	w.free()
+	var a := (load("res://scenes/combat/archivist.tscn") as PackedScene).instantiate() as Archivist
+	add_child(a)
+	await get_tree().process_frame
+	a.engage()
+	check(a.state == Archivist.State.LOW and not a.is_submerged(), "starts on the surface")
+	a._enter(Archivist.State.RISING, 1.0)
+	check(a.is_submerged() and a.water.target > 0.5, "sinks and the water rises")
+	a.stun(1.0)
+	check(a.state == Archivist.State.RISING, "the flash can't reach him under water")
+	a.water.queue_free()
+	a.queue_free()
+
+
+func test_act_three_never_blocks() -> void:
+	GameState.reset_for_new_game()
+	Journal.start_case(&"case_kindness")
+	for i in 2:
+		WorldClock.sleep_until_hour(7)
+	check(Journal.case_stage(&"case_kindness") == &"quay" and Journal.has_evidence(&"e_keepers_pact"), "Ivo's letter explains the pact")
+	for i in 3:
+		WorldClock.sleep_until_hour(7)
+	check(Journal.case_stage(&"case_kindness") == &"underpass", "Nadiya points the way")
+	for i in 4:
+		WorldClock.sleep_until_hour(7)
+	check(Journal.case_stage(&"case_kindness") == &"truth" and Inventory.count(&"resonator") == 1, "the resonator turns up without the fight")
+	for i in 3:
+		WorldClock.sleep_until_hour(7)
+	check(Journal.case_stage(&"case_kindness") == &"decide", "the decision is never withheld")
 	GameState.reset_for_new_game()

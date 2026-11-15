@@ -3,6 +3,31 @@
   "entries": [
    {
     "if": {
+     "quest_stage": [
+      "case_kindness",
+      "truth"
+     ],
+     "flag": "act3.confessor_mara",
+     "all": [
+      {
+       "flag": "rel.mara_venn.friend"
+      }
+     ]
+    },
+    "node": "kn_stay1"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_kindness",
+      "truth"
+     ],
+     "flag": "act3.confessor_mara"
+    },
+    "node": "kn_leave1"
+   },
+   {
+    "if": {
      "flag": "mara.lied",
      "knows": [
       "mara_venn",
@@ -611,6 +636,76 @@
    "join": {
     "speaker": "NPC_MARA",
     "text": "MARA_JOIN",
+    "next": null
+   },
+   "kn_stay1": {
+    "speaker": "NPC_MARA",
+    "text": "CONF_MARA_1",
+    "next": "kn_stay2"
+   },
+   "kn_stay2": {
+    "speaker": "NPC_MARA",
+    "text": "CONF_MARA_2",
+    "next": "kn_stay3"
+   },
+   "kn_stay3": {
+    "speaker": "NPC_MARA",
+    "text": "CONF_MARA_STAY",
+    "effects": [
+     {
+      "set_flag": "ally.stayed"
+     },
+     {
+      "remember": [
+       "mara_venn",
+       "heard_the_confession"
+      ]
+     },
+     {
+      "quest_stage": [
+       "case_kindness",
+       "decide"
+      ]
+     }
+    ],
+    "next": null
+   },
+   "kn_leave1": {
+    "speaker": "NPC_MARA",
+    "text": "CONF_MARA_1",
+    "next": "kn_leave2"
+   },
+   "kn_leave2": {
+    "speaker": "NPC_MARA",
+    "text": "CONF_MARA_2",
+    "next": "kn_leave3"
+   },
+   "kn_leave3": {
+    "speaker": "NPC_MARA",
+    "text": "CONF_MARA_LEAVE",
+    "effects": [
+     {
+      "set_flag": "ally.left"
+     },
+     {
+      "relationship": [
+       "mara_venn",
+       -1
+      ]
+     },
+     {
+      "remember": [
+       "mara_venn",
+       "heard_the_confession"
+      ]
+     },
+     {
+      "quest_stage": [
+       "case_kindness",
+       "decide"
+      ]
+     }
+    ],
     "next": null
    }
   }
@@ -1277,6 +1372,31 @@
   "entries": [
    {
     "if": {
+     "quest_stage": [
+      "case_kindness",
+      "truth"
+     ],
+     "flag": "act3.confessor_halloway",
+     "all": [
+      {
+       "flag": "rel.edda_halloway.friend"
+      }
+     ]
+    },
+    "node": "kn_stay1"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_kindness",
+      "truth"
+     ],
+     "flag": "act3.confessor_halloway"
+    },
+    "node": "kn_leave1"
+   },
+   {
+    "if": {
      "flag": "has_radio",
      "quest_stage": [
       "case_radio",
@@ -1718,11 +1838,106 @@
     "speaker": "NPC_HALLOWAY",
     "text": "HALLOWAY_BEA_2",
     "next": "hub"
+   },
+   "kn_stay1": {
+    "speaker": "NPC_HALLOWAY",
+    "text": "CONF_HALLOWAY_1",
+    "next": "kn_stay2"
+   },
+   "kn_stay2": {
+    "speaker": "NPC_HALLOWAY",
+    "text": "CONF_HALLOWAY_2",
+    "next": "kn_stay3"
+   },
+   "kn_stay3": {
+    "speaker": "NPC_HALLOWAY",
+    "text": "CONF_HALLOWAY_STAY",
+    "effects": [
+     {
+      "set_flag": "ally.stayed"
+     },
+     {
+      "remember": [
+       "edda_halloway",
+       "heard_the_confession"
+      ]
+     },
+     {
+      "quest_stage": [
+       "case_kindness",
+       "decide"
+      ]
+     }
+    ],
+    "next": null
+   },
+   "kn_leave1": {
+    "speaker": "NPC_HALLOWAY",
+    "text": "CONF_HALLOWAY_1",
+    "next": "kn_leave2"
+   },
+   "kn_leave2": {
+    "speaker": "NPC_HALLOWAY",
+    "text": "CONF_HALLOWAY_2",
+    "next": "kn_leave3"
+   },
+   "kn_leave3": {
+    "speaker": "NPC_HALLOWAY",
+    "text": "CONF_HALLOWAY_LEAVE",
+    "effects": [
+     {
+      "set_flag": "ally.left"
+     },
+     {
+      "relationship": [
+       "edda_halloway",
+       -1
+      ]
+     },
+     {
+      "remember": [
+       "edda_halloway",
+       "heard_the_confession"
+      ]
+     },
+     {
+      "quest_stage": [
+       "case_kindness",
+       "decide"
+      ]
+     }
+    ],
+    "next": null
    }
   }
  },
  "ivo": {
   "entries": [
+   {
+    "if": {
+     "quest_stage": [
+      "case_kindness",
+      "truth"
+     ],
+     "flag": "act3.confessor_ivo",
+     "all": [
+      {
+       "flag": "rel.ivo_calder.friend"
+      }
+     ]
+    },
+    "node": "kn_stay1"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_kindness",
+      "truth"
+     ],
+     "flag": "act3.confessor_ivo"
+    },
+    "node": "kn_leave1"
+   },
    {
     "if": {
      "not_flag": "met.ivo_calder"
@@ -2037,6 +2252,76 @@
     "speaker": "NPC_IVO",
     "text": "IVO_WARD_NO",
     "next": "hub"
+   },
+   "kn_stay1": {
+    "speaker": "NPC_IVO",
+    "text": "CONF_IVO_1",
+    "next": "kn_stay2"
+   },
+   "kn_stay2": {
+    "speaker": "NPC_IVO",
+    "text": "CONF_IVO_2",
+    "next": "kn_stay3"
+   },
+   "kn_stay3": {
+    "speaker": "NPC_IVO",
+    "text": "CONF_IVO_STAY",
+    "effects": [
+     {
+      "set_flag": "ally.stayed"
+     },
+     {
+      "remember": [
+       "ivo_calder",
+       "heard_the_confession"
+      ]
+     },
+     {
+      "quest_stage": [
+       "case_kindness",
+       "decide"
+      ]
+     }
+    ],
+    "next": null
+   },
+   "kn_leave1": {
+    "speaker": "NPC_IVO",
+    "text": "CONF_IVO_1",
+    "next": "kn_leave2"
+   },
+   "kn_leave2": {
+    "speaker": "NPC_IVO",
+    "text": "CONF_IVO_2",
+    "next": "kn_leave3"
+   },
+   "kn_leave3": {
+    "speaker": "NPC_IVO",
+    "text": "CONF_IVO_LEAVE",
+    "effects": [
+     {
+      "set_flag": "ally.left"
+     },
+     {
+      "relationship": [
+       "ivo_calder",
+       -1
+      ]
+     },
+     {
+      "remember": [
+       "ivo_calder",
+       "heard_the_confession"
+      ]
+     },
+     {
+      "quest_stage": [
+       "case_kindness",
+       "decide"
+      ]
+     }
+    ],
+    "next": null
    }
   }
  },
@@ -2154,6 +2439,16 @@
        }
       ],
       "next": "ward_nad"
+     },
+     {
+      "text": "NADIYA_ASK_PLAN",
+      "if": {
+       "quest_stage": [
+        "case_kindness",
+        "quay"
+       ]
+      },
+      "next": "plan1"
      },
      {
       "text": "BYE",
@@ -2398,6 +2693,27 @@
    "ward_nad": {
     "speaker": "NPC_NADIYA",
     "text": "NADIYA_WARD_1",
+    "next": "hub"
+   },
+   "plan1": {
+    "speaker": "NPC_NADIYA",
+    "text": "NADIYA_PLAN_1",
+    "next": "plan2"
+   },
+   "plan2": {
+    "speaker": "NPC_NADIYA",
+    "text": "NADIYA_PLAN_2",
+    "effects": [
+     {
+      "add_evidence": "e_open_hand_plan"
+     },
+     {
+      "quest_stage": [
+       "case_kindness",
+       "underpass"
+      ]
+     }
+    ],
     "next": "hub"
    }
   }

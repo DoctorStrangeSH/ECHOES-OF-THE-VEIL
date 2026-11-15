@@ -177,3 +177,34 @@ dialogue_id = &"archive_shelves"
 position = Vector2(190, 108)
 script = ExtResource("11_anchor")
 anchor_id = &"desk"
+
+[node name="StairsDown" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(40, 160)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_240.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.290,0.227,0.188, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Condition" type="Node" parent="Entities/StairsDown"]
+script = ExtResource("10_cond")
+show_if = {"flag": "act.act3"}
+
+[node name="KeepersStairs" type="Area2D" parent="Entities"]
+position = Vector2(40, 170)
+script = ExtResource("6_door")
+interaction_id = &"door_archive_keepers"
+area_size = Vector2(20, 14)
+prompt_key = "PROMPT_STAIRS_DOWN"
+target_scene_id = &"keepers_rooms"
+target_spawn_id = &"stairs"
+
+[node name="Condition" type="Node" parent="Entities/KeepersStairs"]
+script = ExtResource("10_cond")
+show_if = {"flag": "act.act3"}
+
+[node name="KeepersReturn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(64, 176)
+script = ExtResource("4_spawn")
+spawn_id = &"keepers_return"
+facing = Vector2(1, 0)

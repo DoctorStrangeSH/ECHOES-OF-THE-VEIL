@@ -1,0 +1,154 @@
+{
+ "cases": {
+  "case_kindness": {
+   "title": "CASE_K_TITLE",
+   "summary": "CASE_K_SUMMARY",
+   "first_stage": "pact",
+   "stages": {
+    "pact": "CASE_K_PACT",
+    "quay": "CASE_K_QUAY",
+    "underpass": "CASE_K_UNDERPASS",
+    "truth": "CASE_K_TRUTH",
+    "decide": "CASE_K_DECIDE"
+   },
+   "transitions": {
+    "pact": [
+     "quay"
+    ],
+    "quay": [
+     "underpass"
+    ],
+    "underpass": [
+     "truth"
+    ],
+    "truth": [
+     "decide"
+    ]
+   },
+   "fail_forward": [
+    {
+     "stage": "pact",
+     "after_days": 2,
+     "note": "FF_K_PACT",
+     "effects": [
+      {
+       "add_evidence": "e_keepers_pact"
+      }
+     ],
+     "to": "quay"
+    },
+    {
+     "stage": "quay",
+     "after_days": 3,
+     "note": "FF_K_QUAY",
+     "to": "underpass"
+    },
+    {
+     "stage": "underpass",
+     "after_days": 4,
+     "note": "FF_K_UNDERPASS",
+     "effects": [
+      {
+       "set_flag": "underpass.cleared"
+      },
+      {
+       "set_flag": "boss.archivist.defeated"
+      },
+      {
+       "give_item": "resonator"
+      }
+     ],
+     "to": "truth"
+    },
+    {
+     "stage": "truth",
+     "after_days": 3,
+     "note": "FF_K_TRUTH",
+     "to": "decide"
+    }
+   ],
+   "outcomes": {
+    "sealed": "CASE_K_SEALED",
+    "opened": "CASE_K_OPENED",
+    "sold": "CASE_K_SOLD",
+    "broken": "CASE_K_BROKEN"
+   }
+  }
+ },
+ "evidence": {
+  "e_keepers_pact": {
+   "case": "case_kindness",
+   "kind": "reported",
+   "source": "ivo_calder",
+   "source_name": "NPC_IVO",
+   "title": "EV_PACT_TITLE",
+   "body": "EV_PACT_BODY"
+  },
+  "e_open_hand_plan": {
+   "case": "case_kindness",
+   "kind": "reported",
+   "source": "nadiya_sol",
+   "source_name": "NPC_NADIYA",
+   "title": "EV_PLAN_TITLE",
+   "body": "EV_PLAN_BODY"
+  },
+  "e_archivist_seen": {
+   "case": "case_kindness",
+   "kind": "observed",
+   "source": "player",
+   "source_name": "SRC_YOU",
+   "title": "EV_ARCHIVIST_TITLE",
+   "body": "EV_ARCHIVIST_BODY"
+  },
+  "e_resonator": {
+   "case": "case_kindness",
+   "kind": "recorded",
+   "source": "resonator",
+   "source_name": "SRC_RESONATOR",
+   "title": "EV_RESONATOR_TITLE",
+   "body": "EV_RESONATOR_BODY"
+  },
+  "e_flood_records": {
+   "case": "case_kindness",
+   "kind": "recorded",
+   "source": "flood_files",
+   "source_name": "SRC_FLOOD_FILES",
+   "title": "EV_FLOOD_TITLE",
+   "body": "EV_FLOOD_BODY"
+  }
+ },
+ "hypotheses": {
+  "flood_was_a_cover": {
+   "case": "case_kindness",
+   "title": "HYP_FLOOD_TITLE",
+   "body": "HYP_FLOOD_BODY",
+   "requires_all": [
+    "e_flood_records"
+   ],
+   "requires_any": [
+    "e_ward_census",
+    "e_keepers_pact",
+    "e_census_page"
+   ],
+   "min_any": 2,
+   "corroborate_sources": 3,
+   "effects": [
+    {
+     "give_resonance": 2
+    },
+    {
+     "faction": [
+      "keepers",
+      -1
+     ]
+    },
+    {
+     "faction": [
+      "unwritten",
+      1
+     ]
+    }
+   ]
+  }
+ }
+}
