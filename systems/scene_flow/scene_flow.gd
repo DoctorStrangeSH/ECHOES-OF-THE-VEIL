@@ -10,14 +10,9 @@ signal location_entered(scene_id: StringName)
 signal transition_started
 signal transition_finished
 
-## Scene registry: stable ID -> scene path. Add every location here.
-const LOCATIONS := {
-	&"greyford_block": "res://scenes/locations/greyford_block.tscn",
-	&"rented_room": "res://scenes/locations/rented_room.tscn",
-	&"echo_lantern_row": "res://scenes/locations/echo_lantern_row.tscn",
-	&"phantom_platform": "res://scenes/locations/phantom_platform.tscn",
-	&"municipal_archive": "res://scenes/locations/municipal_archive.tscn",
-}
+## Scene registry: stable ID -> scene path. Every scene in scenes/locations is
+## registered by its file name; nothing to add by hand.
+var LOCATIONS: Dictionary = DataFiles.location_scenes()
 const MAIN_MENU := "res://scenes/ui/main_menu.tscn"
 const CHARACTER_CREATOR := "res://scenes/ui/character_creator.tscn"
 const FADE_TIME := 0.25

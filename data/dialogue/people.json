@@ -865,6 +865,16 @@
       "next": "parts_hint"
      },
      {
+      "text": "JONAH_ASK_SHIP",
+      "if": {
+       "knows": [
+        "jonah_rook",
+        "margaret_ellery"
+       ]
+      },
+      "next": "ship"
+     },
+     {
       "text": "BYE",
       "next": null
      }
@@ -1140,6 +1150,11 @@
      }
     ],
     "next": null
+   },
+   "ship": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_SHIP",
+    "next": "hub"
    }
   }
  },

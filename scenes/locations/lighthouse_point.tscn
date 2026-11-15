@@ -1,0 +1,302 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/location.gd" id="1_loc"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2_paint"]
+[ext_resource type="PackedScene" path="res://scenes/props/world_prop.tscn" id="3_prop"]
+[ext_resource type="Script" path="res://scripts/world/spawn_point.gd" id="4_spawn"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="5_inspect"]
+[ext_resource type="Script" path="res://scripts/interaction/door_interactable.gd" id="6_door"]
+[ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
+[ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+[ext_resource type="Script" path="res://scripts/world/conditional_visibility.gd" id="10_cond"]
+[ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
+[ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
+[ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+[ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
+[ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
+[ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
+[ext_resource type="PackedScene" path="res://scenes/world/repair_spot.tscn" id="17_spot"]
+[ext_resource type="PackedScene" path="res://scenes/world/screen_interactable.tscn" id="18_screen"]
+[ext_resource type="PackedScene" path="res://scenes/world/junk_pile.tscn" id="19_junk"]
+
+[node name="LighthousePoint" type="Node2D"]
+script = ExtResource("1_loc")
+location_id = &"lighthouse_point"
+name_key = "LOC_LIGHTHOUSE_POINT"
+
+[node name="Ground" type="TileMapLayer" parent="."]
+script = ExtResource("2_paint")
+palette_id = "lighthouse_point"
+layout = "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+oooooooooooooooooooooooooooooooooooo
+ddddddddddssdddddddddddddddddddddddd
+ddddddddddssdddddddddddddddddddddddd
+ddddddddddssdddddddddddddddddddddddd
+ddddddddddssdddddddddddddddddddddddd
+ddddddddddssdddddddddddddddddddddddd
+ddddddddddssdddddddddddddddddddddddd
+ddddddddddssdddddddddddddddddddddddd
+ggggggggggssdddddddddddddddddddddddd
+ggggggggggssdddddddddddddddddddddddd
+ggggggggggssdddddddddddddddddddddddd
+gggggggsssssssssssssssssssssssssssss
+gggggggsssssssssssssssssssssssssssss
+ggggggggggdddddddddddddddddddddddddd
+gggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggg"
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="NpcAnchors" type="Node2D" parent="."]
+
+[node name="Lighthouse" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(80, 280)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Example_Lighthouse.png"
+placeholder_size = Vector2i(112, 256)
+placeholder_color = Color(0.847,0.816,0.753, 1)
+collision_size = Vector2(64, 36)
+collision_offset = Vector2(0, -18)
+
+[node name="LighthouseLook" type="Area2D" parent="Entities"]
+position = Vector2(80, 286)
+script = ExtResource("5_inspect")
+interaction_id = &"lighthouse_door"
+area_size = Vector2(26, 14)
+dialogue_id = &"lighthouse_door"
+
+[node name="SeaWallLamp" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(300, 84)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Street_Lamp_5.png"
+placeholder_size = Vector2i(16, 64)
+placeholder_color = Color(0.267,0.267,0.333, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="SeaWallLampUse" parent="Entities" instance=ExtResource("17_spot")]
+position = Vector2(300, 94)
+interaction_id = &"spot_point_lamp"
+spot_id = &"point_lamp"
+
+[node name="WatchTheLight" type="Area2D" parent="Entities"]
+position = Vector2(196, 88)
+script = ExtResource("5_inspect")
+interaction_id = &"watch_the_light"
+area_size = Vector2(40, 14)
+interaction_priority = 20
+dialogue_id = &"lighthouse_watch"
+
+[node name="Signpost" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(520, 236)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Direction_Pole_Big.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.604,0.478,0.314, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="SignpostRead" type="Area2D" parent="Entities"]
+position = Vector2(520, 242)
+script = ExtResource("5_inspect")
+interaction_id = &"read_point_signpost"
+area_size = Vector2(18, 12)
+prompt_key = "PROMPT_READ"
+dialogue_id = &"point_signpost"
+
+[node name="Bench" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(420, 226)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Bench_2.png"
+placeholder_size = Vector2i(48, 32)
+placeholder_color = Color(0.627,0.439,0.251, 1)
+collision_size = Vector2(44, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Trashbin" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(360, 212)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Trashbin_7.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.333,0.333,0.333, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="JunkPoint" parent="Entities" instance=ExtResource("19_junk")]
+position = Vector2(376, 214)
+interaction_id = &"junk_point"
+
+[node name="SeaGlass1" parent="Entities" instance=ExtResource("16_pickup")]
+position = Vector2(250, 180)
+interaction_id = &"pickup_sea_glass_1"
+item_id = &"sea_glass"
+pickup_flag = &"pickup.sea_glass_1"
+
+[node name="SeaGlass2" parent="Entities" instance=ExtResource("16_pickup")]
+position = Vector2(500, 130)
+interaction_id = &"pickup_sea_glass_2"
+item_id = &"sea_glass"
+pickup_flag = &"pickup.sea_glass_2"
+
+[node name="BigRock1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(150, 62)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Big_Sea_Rock_Vers_1.png"
+placeholder_size = Vector2i(64, 64)
+placeholder_color = Color(0.376,0.416,0.439, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="BigRock2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(430, 58)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Big_Sea_Rock_Vers_1.png"
+placeholder_size = Vector2i(64, 64)
+placeholder_color = Color(0.376,0.416,0.439, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Rock1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(250, 44)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Medium_Sea_Rock_1_Vers_1.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.376,0.416,0.439, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Rock2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(520, 40)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Medium_Sea_Rock_1_Vers_1.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.376,0.416,0.439, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Rock3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(40, 56)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Medium_Sea_Rock_1_Vers_1.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.376,0.416,0.439, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Gull1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(340, 140)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Seagull_Left.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.878,0.878,0.878, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Gull2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(470, 170)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Seagull_Left.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.878,0.878,0.878, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="ShellPink1" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(210, 150)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Pink_Shell_1_Vers_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.878,0.627,0.627, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="ShellPink2" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(330, 260)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Pink_Shell_1_Vers_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.878,0.627,0.627, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="ShellPink3" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(470, 110)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Pink_Shell_1_Vers_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.878,0.627,0.627, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="ShellGrey1" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(280, 120)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Grey_Shell_1_Vers_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.627,0.627,0.627, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="ShellGrey2" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(400, 150)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Grey_Shell_1_Vers_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.627,0.627,0.627, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="ShellGrey3" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(560, 180)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Grey_Shell_1_Vers_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.627,0.627,0.627, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Starfish1" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(160, 200)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Blue_Small_Starfish.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.376,0.502,0.753, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Starfish2" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(450, 280)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Blue_Small_Starfish.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.376,0.502,0.753, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="RocksLook" type="Area2D" parent="Entities"]
+position = Vector2(150, 92)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_point_rocks"
+area_size = Vector2(50, 12)
+lines = PackedStringArray("POINT_ROCKS")
+
+[node name="FromGreyford" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(548, 256)
+script = ExtResource("4_spawn")
+spawn_id = &"from_greyford"
+facing = Vector2(-1, 0)
+
+[node name="StepsUp" type="Area2D" parent="Entities"]
+position = Vector2(570, 256)
+script = ExtResource("6_door")
+interaction_id = &"door_point_greyford"
+area_size = Vector2(14, 32)
+prompt_key = "PROMPT_TO_GREYFORD"
+target_scene_id = &"greyford_block"
+target_spawn_id = &"point_steps"
+
+[node name="A_keeper_door" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(112, 296)
+script = ExtResource("11_anchor")
+anchor_id = &"keeper_door"
+
+[node name="A_bench" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(420, 238)
+script = ExtResource("11_anchor")
+anchor_id = &"bench"
+
+[node name="A_sea_wall" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(212, 92)
+script = ExtResource("11_anchor")
+anchor_id = &"sea_wall"

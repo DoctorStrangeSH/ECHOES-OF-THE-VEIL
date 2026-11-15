@@ -4,8 +4,8 @@ extends RefCounted
 ## Invariants (tested): no item can be bought for less than a shop pays for
 ## it, and no recipe creates more sale value than its inputs cost to buy.
 
-const SHOPS_PATH := "res://data/economy/shops.json"
-const RECIPES_PATH := "res://data/economy/recipes.json"
+const SHOPS_PATH := "res://data/economy/shops"  # + shops_*.json
+const RECIPES_PATH := "res://data/economy/recipes"
 const SELL_RATIO := 0.5
 
 static var _shops: Dictionary = {}
@@ -25,13 +25,7 @@ static func recipes() -> Dictionary:
 
 
 static func _load(path: String) -> Dictionary:
-	var out := {}
-	var data: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
-	if data is Dictionary:
-		for id: String in data:
-			if not id.begins_with("_"):
-				out[StringName(id)] = data[id]
-	return out
+	return DataFiles.defs(path)
 
 
 static func sell_price(item: StringName) -> int:

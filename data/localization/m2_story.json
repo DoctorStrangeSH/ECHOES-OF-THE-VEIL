@@ -1,934 +1,235 @@
 {
- "HUD_CLOCK": {
-  "en": "Day %d · %s · %s",
-  "ru": "День %d · %s · %s"
- },
- "PERIOD_MORNING": {
-  "en": "Morning",
-  "ru": "Утро"
- },
- "PERIOD_AFTERNOON": {
-  "en": "Afternoon",
-  "ru": "День"
- },
- "PERIOD_EVENING": {
-  "en": "Evening",
-  "ru": "Вечер"
- },
- "PERIOD_NIGHT": {
-  "en": "Night",
-  "ru": "Ночь"
- },
- "WEATHER_RAIN": {
-  "en": "Rain",
-  "ru": "Дождь"
- },
- "BYE": {
-  "en": "Goodbye.",
-  "ru": "До встречи."
- },
- "PROMPT_TALK": {
-  "en": "Talk",
-  "ru": "Поговорить"
- },
- "JOURNAL_TITLE": {
-  "en": "Journal",
-  "ru": "Журнал"
- },
- "JOURNAL_CLOSE_HINT": {
-  "en": "Tab / Esc — close",
-  "ru": "Tab / Esc — закрыть"
- },
- "JOURNAL_EMPTY": {
-  "en": "Nothing written down yet.",
-  "ru": "Пока ничего не записано."
- },
- "JOURNAL_OBJECTIVE": {
-  "en": "Now",
-  "ru": "Сейчас"
- },
- "JOURNAL_STATUS_DONE": {
-  "en": "Closed",
-  "ru": "Закрыто"
- },
- "JOURNAL_EVIDENCE": {
-  "en": "Evidence",
-  "ru": "Улики"
- },
- "JOURNAL_NO_EVIDENCE": {
-  "en": "No evidence yet.",
-  "ru": "Улик пока нет."
- },
- "JOURNAL_SOURCE": {
-  "en": "Source: %s · day %d, %s",
-  "ru": "Источник: %s · день %d, %s"
- },
- "JOURNAL_HYPOTHESES": {
-  "en": "Hypotheses",
-  "ru": "Гипотезы"
- },
- "JOURNAL_HYP_LOCKED": {
-  "en": "Not enough evidence for a hypothesis yet.",
-  "ru": "Для гипотезы пока не хватает улик."
- },
- "JOURNAL_FORM_HYPOTHESIS": {
-  "en": "Form this hypothesis",
-  "ru": "Выдвинуть гипотезу"
- },
- "JOURNAL_SOURCES_COUNT": {
-  "en": "Independent sources: %d",
-  "ru": "Независимых источников: %d"
- },
- "JOURNAL_NEW_EVIDENCE": {
-  "en": "New evidence: %s",
-  "ru": "Новая улика: %s"
- },
- "JOURNAL_NEW_CASE": {
-  "en": "New case: %s",
-  "ru": "Новое дело: %s"
- },
- "JOURNAL_CASE_UPDATED": {
-  "en": "Case updated: %s",
-  "ru": "Дело обновлено: %s"
- },
- "JOURNAL_CASE_CLOSED": {
-  "en": "Case closed: %s",
-  "ru": "Дело закрыто: %s"
- },
- "JOURNAL_CORROBORATED": {
-  "en": "Corroborated: %s",
-  "ru": "Подтверждено: %s"
- },
- "EVIDENCE_KIND_OBSERVED": {
-  "en": "Observed",
-  "ru": "Видели сами"
- },
- "EVIDENCE_KIND_REPORTED": {
-  "en": "Reported",
-  "ru": "Со слов"
- },
- "EVIDENCE_KIND_RECORDED": {
-  "en": "Recorded",
-  "ru": "Документ"
- },
- "HYP_STATUS_AVAILABLE": {
-  "en": "can be formed",
-  "ru": "можно выдвинуть"
- },
- "HYP_STATUS_INFERRED": {
-  "en": "inferred",
-  "ru": "предположение"
- },
- "HYP_STATUS_CORROBORATED": {
-  "en": "corroborated",
-  "ru": "подтверждено"
- },
- "SRC_YOU": {
-  "en": "you",
-  "ru": "вы"
- },
- "SRC_RADIO": {
-  "en": "Mrs Halloway's radio",
-  "ru": "радио миссис Холлоуэй"
- },
- "SRC_MAP": {
-  "en": "1962 survey plan",
-  "ru": "план съёмки 1962 года"
- },
- "SRC_NOTE_LANDLADY": {
-  "en": "landlady's note",
-  "ru": "записка хозяйки"
- },
- "SRC_NOTE_ROOK": {
-  "en": "note on Rook's door",
-  "ru": "записка на двери Рука"
- },
- "CC_TITLE": {
-  "en": "Who arrives in Greyford?",
-  "ru": "Кто приезжает в Грейфорд?"
- },
- "CC_NAME": {
-  "en": "Name",
-  "ru": "Имя"
- },
- "CC_NAME_PLACEHOLDER": {
-  "en": "Your name",
-  "ru": "Ваше имя"
- },
- "CC_DEFAULT_NAME": {
-  "en": "Alex",
-  "ru": "Саша"
- },
- "CC_PRONOUNS": {
-  "en": "Pronouns",
-  "ru": "Обращение"
- },
- "CC_PRONOUN_THEY": {
-  "en": "they/them",
-  "ru": "нейтрально"
- },
- "CC_PRONOUN_SHE": {
-  "en": "she/her",
-  "ru": "она"
- },
- "CC_PRONOUN_HE": {
-  "en": "he/him",
-  "ru": "он"
- },
- "CC_SKIN": {
-  "en": "Skin",
-  "ru": "Кожа"
- },
- "CC_EYES": {
-  "en": "Eyes",
-  "ru": "Глаза"
- },
- "CC_OUTFIT": {
-  "en": "Outfit",
-  "ru": "Одежда"
- },
- "CC_HAIR": {
-  "en": "Hair",
-  "ru": "Причёска"
- },
- "CC_ACCESSORY": {
-  "en": "Extra",
-  "ru": "Аксессуар"
- },
- "CC_COLOR": {
-  "en": "Change colour",
-  "ru": "Сменить цвет"
- },
- "CC_COLOR_SHORT": {
-  "en": "colour",
-  "ru": "цвет"
- },
- "CC_NONE": {
-  "en": "none",
-  "ru": "нет"
- },
- "CC_RANDOM": {
-  "en": "Randomise",
-  "ru": "Случайно"
- },
- "CC_BACK": {
-  "en": "Back",
-  "ru": "Назад"
- },
- "CC_BEGIN": {
-  "en": "Arrive in Greyford",
-  "ru": "Приехать в Грейфорд"
- },
- "BG_RETURNING_LOCAL": {
-  "en": "Returning local",
-  "ru": "Вернувшийся"
- },
- "BG_RETURNING_LOCAL_DESC": {
-  "en": "You left Greyford as a child. Some residents remember you — though not quite where you lived.",
-  "ru": "Вы уехали из Грейфорда ребёнком. Кое-кто из местных вас помнит — только не помнит, где именно вы жили."
- },
- "BG_ARCHIVIST": {
-  "en": "Former archivist",
-  "ru": "Бывший архивист"
- },
- "BG_ARCHIVIST_DESC": {
-  "en": "You know how records lie by omission. Mara Venn treats you as a colleague.",
-  "ru": "Вы знаете, как документы лгут умолчанием. Мара Венн видит в вас коллегу."
- },
- "BG_REPAIR_TECHNICIAN": {
-  "en": "Repair technician",
-  "ru": "Мастер по ремонту"
- },
- "BG_REPAIR_TECHNICIAN_DESC": {
-  "en": "Machines tell you things people won't. Extra options with devices and with Jonah Rook.",
-  "ru": "Механизмы рассказывают то, о чём молчат люди. Дополнительные варианты с техникой и с Джоной Руком."
- },
- "BG_COURIER": {
-  "en": "Freelance courier",
-  "ru": "Курьер"
- },
- "BG_COURIER_DESC": {
-  "en": "You know every shortcut. You sprint faster.",
-  "ru": "Вы знаете все короткие пути. Бег быстрее."
- },
- "INTRO_1": {
-  "en": "The bus pulls away. Greyford smells of salt, wet brick and frying onions.",
-  "ru": "Автобус уезжает. Грейфорд пахнет солью, мокрым кирпичом и жареным луком."
- },
- "INTRO_2": {
-  "en": "Your new address is on a slip of paper: the brown house by the corner. The key is under the mat.",
-  "ru": "Новый адрес записан на клочке бумаги: коричневый дом на углу. Ключ под ковриком."
- },
- "INTRO_3": {
-  "en": "(Tab opens your journal. Look closely, talk to people — time passes while you walk.)",
-  "ru": "(Tab — журнал. Присматривайтесь, говорите с людьми — пока вы ходите, идёт время.)"
- },
- "REST_PROMPT": {
-  "en": "The bed creaks. What now?",
-  "ru": "Кровать скрипит. Что дальше?"
- },
- "REST_SAVE": {
-  "en": "Rest a moment (save)",
-  "ru": "Немного передохнуть (сохранить)"
- },
- "REST_WAIT_EVENING": {
-  "en": "Wait until evening (save)",
-  "ru": "Подождать до вечера (сохранить)"
- },
- "REST_SLEEP": {
-  "en": "Sleep until morning (save)",
-  "ru": "Спать до утра (сохранить)"
- },
- "REST_CANCEL": {
-  "en": "Not now",
-  "ru": "Не сейчас"
- },
- "REST_WAITED": {
-  "en": "You doze off to the radiator's knocking. When you wake, the light has turned amber. (Game saved.)",
-  "ru": "Вы задремали под стук батареи. Когда просыпаетесь, свет уже янтарный. (Игра сохранена.)"
- },
- "REST_SLEPT": {
-  "en": "You sleep badly. In the dream, a tram bell rings on a street with no rails. (Game saved.)",
-  "ru": "Спится плохо. Во сне звенит трамвай — на улице, где нет рельсов. (Игра сохранена.)"
- },
- "WOKE_1": {
-  "en": "You wake on your own bed, coat still on. Your knuckles ache. An hour is missing.",
-  "ru": "Вы просыпаетесь на своей кровати, не сняв пальто. Ноют костяшки. Пропал целый час."
- },
- "WOKE_2": {
-  "en": "Whatever was in that corridor, it is still there. It can wait for you.",
-  "ru": "Что бы ни было в том коридоре, оно всё ещё там. Оно умеет ждать."
- },
- "ROOK_SHOP_REPEAT": {
-  "en": "\"Back after the tram inspection. — J.\"",
-  "ru": "«Вернусь после проверки трамвайной линии. — Дж.»"
- },
- "CONDO_YELLOW_1": {
-  "en": "Fresh paint over old paint. Under the doorbell, someone has drawn a small symbol.",
-  "ru": "Свежая краска поверх старой. Под звонком кто-то нарисовал маленький знак."
- },
- "CONDO_YELLOW_2": {
-  "en": "Three lines meeting at a point. The same mark is scratched, very faintly, into the frame of the door on the plaza.",
-  "ru": "Три линии, сходящиеся в одной точке. Такой же знак, едва заметный, процарапан на раме двери на площади."
- },
- "CONDO_YELLOW_REPEAT": {
-  "en": "The three-line mark. Someone repainted around it, carefully.",
-  "ru": "Знак из трёх линий. Кто-то аккуратно закрасил всё вокруг него."
- },
- "VEIL_DOOR_NOT_READY": {
-  "en": "The handle is warm. You don't understand enough to open it — not yet.",
-  "ru": "Ручка тёплая. Вы понимаете слишком мало, чтобы открыть её. Пока."
- },
- "VEIL_DOOR_READY": {
-  "en": "Behind the little window, the corridor waits. Green wallpaper. Lantern Row — the number has worn away.",
-  "ru": "За окошком ждёт коридор. Зелёные обои. Лантерн-Роу — номер стёрся."
- },
- "VEIL_DOOR_OPEN": {
-  "en": "Open the door",
-  "ru": "Открыть дверь"
- },
- "VEIL_DOOR_LEAVE": {
-  "en": "Not yet",
-  "ru": "Не сейчас"
- },
- "VEIL_DOOR_GONE": {
-  "en": "Where the door stood, the paving stones are dry, as if it never rained here.",
-  "ru": "Там, где стояла дверь, плитка сухая — будто здесь никогда не шёл дождь."
- },
- "VEIL_DOOR_FENCED": {
-  "en": "Orange barriers and a laminated notice: CIVIC RENEWAL — STRUCTURAL SURVEY. KEEP OUT.",
-  "ru": "Оранжевые заграждения и заламинированное объявление: УПРАВЛЕНИЕ ГОРОДСКОГО ОБНОВЛЕНИЯ — ОБСЛЕДОВАНИЕ КОНСТРУКЦИЙ. ПРОХОД ЗАКРЫТ."
- },
- "ECHO_ENTER_1": {
-  "en": "The door closes behind you without a sound. The air smells of boiled cabbage and coal smoke — 1970, give or take.",
-  "ru": "Дверь беззвучно закрывается за спиной. Пахнет варёной капустой и угольным дымом — году в семидесятом, плюс-минус."
- },
- "ECHO_ENTER_2": {
-  "en": "Pale shapes drift along the corridor, repeating small gestures. Hollows. They notice you. (J — strike.)",
-  "ru": "По коридору плывут бледные фигуры, повторяя одни и те же жесты. Пустые. Они вас замечают. (J — удар.)"
- },
- "ECHO_PHOTO_1": {
-  "en": "A framed photo of a street party under paper lanterns. Every face has been carefully scratched out —",
-  "ru": "Фотография в рамке: уличный праздник под бумажными фонариками. Все лица аккуратно выцарапаны —"
- },
- "ECHO_PHOTO_2": {
-  "en": "— except one child at the edge, who looks exactly like you did at seven.",
-  "ru": "— кроме одного ребёнка с краю. Он выглядит точь-в-точь как вы в семь лет."
- },
- "ECHO_PHOTO_REPEAT": {
-  "en": "The child in the photo is still looking at you.",
-  "ru": "Ребёнок на фото всё ещё смотрит на вас."
- },
- "LOC_ECHO_LANTERN_ROW": {
-  "en": "Lantern Row (echo)",
-  "ru": "Лантерн-Роу (эхо)"
- },
- "PROMPT_LEAVE_ECHO": {
-  "en": "Go back to the plaza",
-  "ru": "Вернуться на площадь"
- },
- "CASE_DOOR_TITLE": {
-  "en": "The Door That Shouldn't Be There",
-  "ru": "Дверь, которой не должно быть"
- },
- "CASE_DOOR_SUMMARY": {
-  "en": "A doorway stands alone on the plaza. Somebody behind it knows your name.",
-  "ru": "Посреди площади стоит одинокая дверь. Кто-то за ней знает ваше имя."
- },
- "CASE_DOOR_START": {
-  "en": "Find out what the door on the plaza is. Ask around; look for records.",
-  "ru": "Выясните, что это за дверь на площади. Расспросите людей, поищите документы."
- },
- "CASE_DOOR_DECIDE": {
-  "en": "You know what the door is. Decide what to do: report it to Civic Renewal, confide in someone — or open it.",
-  "ru": "Вы знаете, что это за дверь. Решите, что делать: сообщить в Управление, довериться кому-то — или открыть её."
- },
- "CASE_DOOR_INSIDE": {
-  "en": "Find whoever called your name.",
-  "ru": "Найдите того, кто назвал ваше имя."
- },
- "CASE_DOOR_REPORTED": {
-  "en": "You reported the door. Civic Renewal fenced off the plaza. Whatever was behind it is their secret now.",
-  "ru": "Вы сообщили о двери. Управление оцепило площадь. Что бы ни было за ней — теперь это их тайна."
- },
- "CASE_DOOR_OPENED": {
-  "en": "You went through. A woman from Lantern Row knew you. The door is gone — the question isn't.",
-  "ru": "Вы прошли насквозь. Женщина с Лантерн-Роу вас узнала. Двери больше нет — вопрос остался."
- },
- "CASE_RADIO_TITLE": {
-  "en": "Rook's Radio",
-  "ru": "Радио от Рука"
- },
- "CASE_RADIO_SUMMARY": {
-  "en": "Jonah Rook repaired Mrs Halloway's radio and asked you to deliver it.",
-  "ru": "Джона Рук починил радио миссис Холлоуэй и попросил его доставить."
- },
- "CASE_RADIO_DELIVER": {
-  "en": "Bring the radio to Mrs Halloway (mornings by the mailbox, afternoons on the park bench).",
-  "ru": "Отнесите радио миссис Холлоуэй (по утрам — у почтового ящика, днём — на скамейке в парке)."
- },
- "CASE_RADIO_RETURN": {
-  "en": "Tell Jonah the radio was delivered (afternoons and evenings at his shop).",
-  "ru": "Сообщите Джоне, что радио доставлено (днём и вечером — у его мастерской)."
- },
- "CASE_RADIO_DONE": {
-  "en": "Delivered. Jonah gave you a 1962 survey plan that was lining the radio's box.",
-  "ru": "Доставлено. Джона отдал вам план 1962 года, которым была выстлана коробка от радио."
- },
- "CASE_QUIET_TITLE": {
-  "en": "Greyford Keeps Quiet",
-  "ru": "Грейфорд молчит"
- },
- "CASE_QUIET_SUMMARY": {
-  "en": "Notes, warnings, a symbol under a doorbell. People here avoid certain subjects.",
-  "ru": "Записки, предупреждения, знак под звонком. Здесь избегают некоторых тем."
- },
- "CASE_QUIET_START": {
-  "en": "Notice who avoids what — and who leaves marks.",
-  "ru": "Замечайте, кто чего избегает — и кто оставляет знаки."
- },
- "CASE_QUIET_FORMED": {
-  "en": "Someone marks these places. Ask the people who seem to know.",
-  "ru": "Кто-то помечает эти места. Спросите тех, кто, похоже, знает."
- },
- "CASE_LR_TITLE": {
-  "en": "Lantern Row",
-  "ru": "Лантерн-Роу"
- },
- "CASE_LR_SUMMARY": {
-  "en": "A street demolished in 1971. You may have lived there. You don't remember.",
-  "ru": "Улица, снесённая в 1971-м. Возможно, вы там жили. Вы не помните."
- },
- "CASE_LR_START": {
-  "en": "Find out who lived on Lantern Row — and why nobody remembers it. (To be continued.)",
-  "ru": "Узнайте, кто жил на Лантерн-Роу и почему её никто не помнит. (Продолжение следует.)"
- },
- "EV_DOOR_TITLE": {
-  "en": "The door on the plaza",
-  "ru": "Дверь на площади"
- },
- "EV_DOOR_BODY": {
-  "en": "A freestanding doorway with a scrap of floor attached. Green-papered corridor behind the window. A voice said my name.",
-  "ru": "Отдельно стоящий дверной проём с куском пола. За окошком коридор с зелёными обоями. Голос назвал моё имя."
- },
- "EV_MARA_LR_TITLE": {
-  "en": "Mara: a street called Lantern Row",
-  "ru": "Мара: улица Лантерн-Роу"
- },
- "EV_MARA_LR_BODY": {
-  "en": "Old rate books list nineteen houses on Lantern Row, where the plaza is now. Demolished in 1971. Nobody she asks remembers it.",
-  "ru": "По старым налоговым книгам на месте площади была улица Лантерн-Роу, девятнадцать домов. Снесена в 1971-м. Никто из опрошенных её не помнит."
- },
- "EV_HALLOWAY_LR_TITLE": {
-  "en": "Mrs Halloway: \"before everything\"",
-  "ru": "Миссис Холлоуэй: «до всего»"
- },
- "EV_HALLOWAY_LR_BODY": {
-  "en": "She says Lantern Row was \"before the redevelopment, before everything\" — and that people don't talk about it.",
-  "ru": "По её словам, Лантерн-Роу была «до реконструкции, до всего», и о ней не принято говорить."
- },
- "EV_RADIO_TITLE": {
-  "en": "A tram announcement",
-  "ru": "Объявление трамвая"
- },
- "EV_RADIO_BODY": {
-  "en": "The radio caught a calm voice: \"Next stop, Lantern Row.\" The tram line closed in 1989; the street was gone long before.",
-  "ru": "Радио поймало спокойный голос: «Следующая остановка — Лантерн-Роу». Трамвай закрыли в 1989-м, а улицы не стало намного раньше."
- },
- "EV_MAP_TITLE": {
-  "en": "1962 survey plan",
-  "ru": "План съёмки 1962 года"
- },
- "EV_MAP_BODY": {
-  "en": "A city survey plan. Lantern Row runs straight through where the plaza is today. House no. 11 is circled in pencil.",
-  "ru": "Городской план. Лантерн-Роу проходит прямо там, где сейчас площадь. Дом № 11 обведён карандашом."
- },
- "EV_SYMBOL_TITLE": {
-  "en": "Three lines meeting",
-  "ru": "Три сходящиеся линии"
- },
- "EV_SYMBOL_BODY": {
-  "en": "A small mark under a doorbell — the same one scratched into the plaza door's frame.",
-  "ru": "Маленький знак под звонком — такой же процарапан на раме двери на площади."
- },
- "EV_NOTE_TITLE": {
-  "en": "The landlady's note",
-  "ru": "Записка хозяйки"
- },
- "EV_NOTE_BODY": {
-  "en": "\"If you hear the tram at night: there isn't one. Please don't ask the neighbours about it.\"",
-  "ru": "«Если ночью услышите трамвай — его нет. Пожалуйста, не спрашивайте об этом соседей»."
- },
- "EV_ROOK_NOTE_TITLE": {
-  "en": "Note on Rook's door",
-  "ru": "Записка на двери Рука"
- },
- "EV_ROOK_NOTE_BODY": {
-  "en": "\"Back after the tram inspection.\" There is no tram to inspect.",
-  "ru": "«Вернусь после проверки трамвайной линии». Проверять нечего — трамвая нет."
- },
- "EV_IVO_TITLE": {
-  "en": "Ivo's warning",
-  "ru": "Предупреждение Иво"
- },
- "EV_IVO_BODY": {
-  "en": "\"Doors like that close on their own — if nobody opens them.\" He knew exactly which door.",
-  "ru": "«Такие двери закрываются сами — если их никто не открывает». Он точно знал, о какой двери речь."
- },
- "EV_ECHO_RESIDENT_TITLE": {
-  "en": "The woman at No. 11",
-  "ru": "Женщина из дома № 11"
- },
- "EV_ECHO_RESIDENT_BODY": {
-  "en": "A resident of Lantern Row, inside the echo. She says I lived three doors down, \"before\", and that I always come back.",
-  "ru": "Жительница Лантерн-Роу внутри эха. Говорит, что я жил(а) через три дома, «раньше», и что я всегда возвращаюсь."
- },
- "EV_ECHO_PHOTO_TITLE": {
-  "en": "The street party photo",
-  "ru": "Фото уличного праздника"
- },
- "EV_ECHO_PHOTO_BODY": {
-  "en": "Every face scratched out except a child who looks like me at seven.",
-  "ru": "Все лица выцарапаны, кроме ребёнка, похожего на меня в семь лет."
- },
- "HYP_LR_TITLE": {
-  "en": "The door is a piece of Lantern Row",
-  "ru": "Дверь — это кусок Лантерн-Роу"
- },
- "HYP_LR_BODY": {
-  "en": "A street demolished in 1971 stood where the plaza is. The door belongs to it — and it is coming back.",
-  "ru": "На месте площади стояла улица, снесённая в 1971-м. Дверь — её часть, и эта улица возвращается."
- },
- "HYP_QUIET_TITLE": {
-  "en": "Greyford keeps quiet on purpose",
-  "ru": "Грейфорд молчит намеренно"
- },
- "HYP_QUIET_BODY": {
-  "en": "People know about the impossible things and avoid them. Someone marks the places where they happen.",
-  "ru": "Люди знают о невозможном и обходят его стороной. Кто-то помечает места, где оно случается."
- },
- "NPC_JONAH": {
-  "en": "Jonah Rook",
-  "ru": "Джона Рук"
- },
- "NPC_HALLOWAY": {
-  "en": "Edda Halloway",
-  "ru": "Эдда Холлоуэй"
- },
- "NPC_IVO": {
-  "en": "Ivo Calder",
-  "ru": "Иво Колдер"
- },
- "NPC_NADIYA": {
-  "en": "Nadiya Sol",
-  "ru": "Надия Сол"
- },
- "NPC_PIKE": {
-  "en": "Warden Dana Pike",
-  "ru": "Смотритель Дана Пайк"
- },
- "NPC_ECHO_WOMAN": {
-  "en": "Woman in green",
-  "ru": "Женщина в зелёном"
- },
- "MARA_HUB": {
-  "en": "Mara looks up from her notebook. \"Yes?\"",
-  "ru": "Мара отрывается от блокнота. «Да?»"
- },
- "MARA_ASK_PLAZA": {
-  "en": "What was here before the plaza?",
-  "ru": "Что было здесь до площади?"
- },
- "MARA_ASK_ARCHIVE": {
-  "en": "Why was the archive closed?",
-  "ru": "Почему закрыли архив?"
- },
- "MARA_SHOW_MAP": {
-  "en": "Show her the 1962 survey plan",
-  "ru": "Показать ей план 1962 года"
- },
- "MARA_TELL_LATER": {
-  "en": "About the door — I want to tell you.",
-  "ru": "Насчёт двери — я хочу вам рассказать."
- },
- "MARA_PLAZA_1": {
-  "en": "\"Before the plaza? A car park. Before that—\" She flips pages.",
-  "ru": "«До площади? Парковка. А до неё...» Она листает страницы."
- },
- "MARA_PLAZA_2": {
-  "en": "\"The rate books list a street. Lantern Row. Nineteen houses, demolished in '71. 'Slum clearance.'\"",
-  "ru": "«По налоговым книгам здесь была улица. Лантерн-Роу. Девятнадцать домов, снесены в семьдесят первом. „Расчистка трущоб“»."
- },
- "MARA_PLAZA_3": {
-  "en": "\"Funny thing. Nobody I ask remembers it. Not even people who lived two streets over.\"",
-  "ru": "«Забавно: никто из тех, кого я спрашиваю, её не помнит. Даже те, кто жил через две улицы»."
- },
- "MARA_ARCHIVE_1": {
-  "en": "\"Officially: asbestos. Unofficially: the week before, Civic Renewal requested every redevelopment file from 1960 to 1975.\"",
-  "ru": "«Официально — асбест. Неофициально — за неделю до этого Управление запросило все дела о реконструкции с 1960 по 1975 год»."
- },
- "MARA_ARCHIVE_2": {
-  "en": "\"They sent them back. Lighter.\"",
-  "ru": "«Потом вернули. Похудевшими»."
- },
- "MARA_MAP_1": {
-  "en": "\"Where did you get this? It's a survey plan — Lantern Row runs right through the plaza. And someone circled number eleven.\"",
-  "ru": "«Откуда это у вас? Это съёмочный план — Лантерн-Роу проходит прямо через площадь. И кто-то обвёл одиннадцатый дом»."
- },
- "MARA_DECIDE_1": {
-  "en": "\"You've got that look. You found out something about the door.\"",
-  "ru": "«У вас такое лицо... Вы что-то узнали про дверь»."
- },
- "MARA_TELL": {
-  "en": "Tell her everything",
-  "ru": "Рассказать ей всё"
- },
- "MARA_KEEP": {
-  "en": "Keep it to yourself for now",
-  "ru": "Пока оставить при себе"
- },
- "MARA_TELL_1": {
-  "en": "She listens without interrupting. \"A piece of Lantern Row, sitting on the plaza like a lost glove.\"",
-  "ru": "Она слушает не перебивая. «Кусок Лантерн-Роу посреди площади, как потерянная перчатка»."
- },
- "MARA_TELL_2": {
-  "en": "\"If you go through, I want to know everything. Dates, times, exact words. Promise me.\"",
-  "ru": "«Если пойдёте туда — я хочу знать всё. Даты, время, точные слова. Обещайте»."
- },
- "MARA_KEEP_1": {
-  "en": "\"Suit yourself.\" She doesn't sound offended. She sounds like she's taking notes.",
-  "ru": "«Как знаете». Она не обижена. Похоже, она делает пометку."
- },
- "MARA_REPORTED_1": {
-  "en": "\"You called Civic Renewal.\" It isn't a question. \"Then that's the last anyone will see of it.\"",
-  "ru": "«Вы позвонили в Управление». Это не вопрос. «Значит, больше её никто не увидит»."
- },
- "MARA_ECHO_1": {
-  "en": "\"Well? Dates, times, exact words.\" You tell her. She writes until her pen runs dry.",
-  "ru": "«Ну? Даты, время, точные слова». Вы рассказываете. Она пишет, пока не кончаются чернила."
- },
- "MARA_ECHO_2": {
-  "en": "\"Number eleven,\" she says at last, very quietly. \"My grandmother's address was number eleven.\"",
-  "ru": "«Одиннадцатый дом, — наконец говорит она очень тихо. — Моя бабушка жила в одиннадцатом»."
- },
- "MARA_ECHO_SECRET": {
-  "en": "\"The door's gone. You went through, didn't you.\" A pause. \"You could have told me.\"",
-  "ru": "«Двери больше нет. Вы прошли туда, да?» Пауза. «Могли бы и сказать»."
- },
- "JONAH_1": {
-  "en": "\"Jonah Rook. I repair things nobody makes any more.\"",
-  "ru": "«Джона Рук. Чиню то, что больше никто не делает»."
- },
- "JONAH_2": {
-  "en": "\"You're new? Then you're exactly who I need. I've got to be at the old tram depot before dark.\"",
-  "ru": "«Вы недавно в городе? Тогда вы мне и нужны. Мне до темноты надо быть у старого трамвайного депо»."
- },
- "JONAH_3": {
-  "en": "\"Mrs Halloway's radio is fixed. Could you take it to her? She's your landlady, if I'm not wrong.\"",
-  "ru": "«Радио миссис Холлоуэй готово. Отнесёте ей? Она ведь ваша хозяйка, если не ошибаюсь»."
- },
- "JONAH_ACCEPT": {
-  "en": "Sure, I'll take it.",
-  "ru": "Конечно, отнесу."
- },
- "JONAH_TECH": {
-  "en": "(Repair technician) Let me check the tuning first.",
-  "ru": "(Мастер) Дайте сначала проверю настройку."
- },
- "JONAH_DECLINE": {
-  "en": "Not right now.",
-  "ru": "Не сейчас."
- },
- "JONAH_ACCEPT_1": {
-  "en": "\"Lifesaver. Don't let her tip you — she can't afford it.\"",
-  "ru": "«Выручили. Не берите у неё чаевых — ей не по карману»."
- },
- "JONAH_TECH_1": {
-  "en": "You open the back. Someone has soldered the dial in place, on a frequency no station uses.",
-  "ru": "Вы снимаете заднюю крышку. Кто-то припаял ручку настройки к частоте, на которой не вещает ни одна станция."
- },
- "JONAH_TECH_2": {
-  "en": "Jonah frowns. \"I didn't do that.\" A pause. \"Leave it. She likes it the way it is.\"",
-  "ru": "Джона хмурится. «Это не я». Пауза. «Оставьте. Ей нравится так, как есть»."
- },
- "JONAH_DECLINE_1": {
-  "en": "\"No worries. I'll be around.\"",
-  "ru": "«Ничего страшного. Я тут поблизости»."
- },
- "JONAH_REMIND": {
-  "en": "\"Radio still in one piece? Mrs Halloway's by the mailbox in the mornings, on the park bench after lunch.\"",
-  "ru": "«Радио цело? Миссис Холлоуэй по утрам у почтового ящика, после обеда — на скамейке в парке»."
- },
- "JONAH_REWARD_1": {
-  "en": "\"She called me. Said the radio 'talked about Lantern Row'.\"",
-  "ru": "«Она мне звонила. Сказала, радио „говорило про Лантерн-Роу“»."
- },
- "JONAH_REWARD_2": {
-  "en": "\"My sister used to say that name. Before.\" He stops, as if he walked into a wall.",
-  "ru": "«Сестра так говорила. Раньше». Он осекается, будто налетел на стену."
- },
- "JONAH_REWARD_3": {
-  "en": "\"Here. This was lining the radio's box — an old survey map. Keep it. I don't want it in the shop.\"",
-  "ru": "«Вот. Этим была выстлана коробка — старая карта. Оставьте себе. Не хочу её в мастерской»."
- },
- "JONAH_HUB": {
-  "en": "\"Need something fixed?\"",
-  "ru": "«Что-нибудь починить?»"
- },
- "JONAH_ASK_TRAM": {
-  "en": "What's this \"tram inspection\"?",
-  "ru": "Что за «проверка трамвайной линии»?"
- },
- "JONAH_ASK_RADIO": {
-  "en": "About the radio...",
-  "ru": "Насчёт радио..."
- },
- "JONAH_TRAM_1": {
-  "en": "\"The line closed in '89. But when it rains, people swear they hear the bell at the old stop by the harbour.\"",
-  "ru": "«Линию закрыли в восемьдесят девятом. Но в дождь люди клянутся, что слышат звонок на старой остановке у гавани»."
- },
- "JONAH_TRAM_2": {
-  "en": "\"So I go and check. Every time. Nothing's ever there.\" He doesn't sound relieved.",
-  "ru": "«Вот я и хожу проверять. Каждый раз. Там никогда ничего нет». Облегчения в голосе не слышно."
- },
- "HALLOWAY_1": {
-  "en": "\"So you're my new lodger. Edda Halloway. Rent on the first, and don't mind the radiator.\"",
-  "ru": "«Так вы мой новый жилец. Эдда Холлоуэй. Плата первого числа, а на батарею не обращайте внимания»."
- },
- "HALLOWAY_LOCAL_1": {
-  "en": "\"Well I never — {name}! You were this high when your family left!\"",
-  "ru": "«Батюшки — {name}! Вот такого роста были, когда ваша семья уехала!»"
- },
- "HALLOWAY_LOCAL_2": {
-  "en": "\"Funny... I can't remember which street you lived on. Can't for the life of me.\"",
-  "ru": "«Странно... Не могу вспомнить, на какой улице вы жили. Хоть убейте»."
- },
- "HALLOWAY_RADIO_1": {
-  "en": "\"My radio! Oh, Jonah's a dear.\" She switches it on at once.",
-  "ru": "«Моё радио! Ах, Джона — золото». Она тут же его включает."
- },
- "HALLOWAY_RADIO_2": {
-  "en": "Static, then a calm voice: \"...next stop, Lantern Row. Lantern Row. Mind the gap...\"",
-  "ru": "Треск, потом спокойный голос: «...следующая остановка — Лантерн-Роу. Лантерн-Роу. Осторожно, двери...»"
- },
- "HALLOWAY_RADIO_3": {
-  "en": "Mrs Halloway turns it off very quickly.",
-  "ru": "Миссис Холлоуэй очень быстро его выключает."
- },
- "HALLOWAY_RADIO_4": {
-  "en": "\"Lantern Row was before the redevelopment. Before... everything. People don't talk about it, dear. It isn't kind.\"",
-  "ru": "«Лантерн-Роу была до реконструкции. До... всего. Об этом не говорят, дорогуша. Это недобрый разговор»."
- },
- "HALLOWAY_HUB": {
-  "en": "\"Settling in, dear?\"",
-  "ru": "«Обживаетесь?»"
- },
- "HALLOWAY_ASK_NOTE": {
-  "en": "About your note — the tram at night?",
-  "ru": "Про вашу записку — ночной трамвай?"
- },
- "HALLOWAY_NOTE_1": {
-  "en": "\"Oh, that. Old houses make noises. That's all it is.\" She doesn't meet your eyes.",
-  "ru": "«Ах, это. Старые дома шумят, только и всего». Она не смотрит вам в глаза."
- },
- "IVO_1": {
-  "en": "\"Ivo Calder. Residents' association — bins, benches, petitions about bins and benches.\"",
-  "ru": "«Иво Колдер. Совет жильцов: урны, скамейки, петиции про урны и скамейки»."
- },
- "IVO_2": {
-  "en": "\"A word of advice, freely given: Greyford is kind to people who don't go poking at it.\"",
-  "ru": "«Бесплатный совет: Грейфорд добр к тем, кто в нём не ковыряется»."
- },
- "IVO_HUB": {
-  "en": "Ivo nods. \"Evening, neighbour.\"",
-  "ru": "Иво кивает. «Здравствуйте, сосед»."
- },
- "IVO_ASK_DOOR": {
-  "en": "Have you seen the door on the plaza?",
-  "ru": "Вы видели дверь на площади?"
- },
- "IVO_ASK_SYMBOL": {
-  "en": "Someone draws three lines under doorbells.",
-  "ru": "Кто-то рисует три линии под звонками."
- },
- "IVO_DOOR_1": {
-  "en": "He is quiet for a while. \"Doors like that close on their own. If nobody opens them.\"",
-  "ru": "Он долго молчит. «Такие двери закрываются сами. Если их никто не открывает»."
- },
- "IVO_DOOR_2": {
-  "en": "\"Whatever's on the other side has waited a long time. It can wait a little longer. Forever, ideally.\"",
-  "ru": "«То, что по ту сторону, ждало долго. Подождёт ещё. В идеале — вечно»."
- },
- "IVO_SYM_1": {
-  "en": "\"Kids.\" A pause. \"Or people who'd rather the rest of us didn't have to know. Either way — leave it be.\"",
-  "ru": "«Дети». Пауза. «Или люди, которые предпочли бы, чтобы остальным не пришлось знать. В любом случае — не трогайте»."
- },
- "IVO_REPORTED_1": {
-  "en": "\"Civic Renewal fenced off the plaza. Sensible.\" He looks at you a moment too long. \"Thank you.\"",
-  "ru": "«Управление оцепило площадь. Разумно». Он смотрит на вас чуть дольше, чем нужно. «Спасибо»."
- },
- "IVO_ECHO_1": {
-  "en": "\"The door's gone.\" His voice is flat. \"You opened it. I hope you know what you let back in.\"",
-  "ru": "«Двери нет». Голос ровный. «Вы её открыли. Надеюсь, вы понимаете, что впустили обратно»."
- },
- "NADIYA_1": {
-  "en": "\"Nadiya. Courier — parcels, letters, the occasional awkward truth.\"",
-  "ru": "«Надия. Курьер: посылки, письма, иногда неудобная правда»."
- },
- "NADIYA_2": {
-  "en": "\"You've got that new-in-town look. Everyone here has the old-in-town look. It's worse.\"",
-  "ru": "«У вас вид новенького. У всех здесь вид старожилов. Это хуже»."
- },
- "NADIYA_HUB": {
-  "en": "\"Delivering or receiving?\"",
-  "ru": "«Доставка или получение?»"
- },
- "NADIYA_ASK_DOOR": {
-  "en": "The door on the plaza...",
-  "ru": "Дверь на площади..."
- },
- "NADIYA_ASK_WORK": {
-  "en": "What do you deliver at night?",
-  "ru": "Что вы доставляете по ночам?"
- },
- "NADIYA_DOOR_1": {
-  "en": "\"You see it too? Good. Most people's eyes just slide off it.\"",
-  "ru": "«Вы тоже её видите? Хорошо. У большинства взгляд просто соскальзывает»."
- },
- "NADIYA_DOOR_2": {
-  "en": "\"They tore down a whole street and told everyone it never mattered. If that's a piece of it, it's someone's home trying to come back.\"",
-  "ru": "«Снесли целую улицу и всем сказали, что она ничего не значила. Если это её кусок — это чей-то дом пытается вернуться»."
- },
- "NADIYA_WORK_1": {
-  "en": "\"Letters addressed to people who don't exist. They still get answers.\" She grins. \"Mostly.\"",
-  "ru": "«Письма людям, которых не существует. Ответы всё равно приходят». Она ухмыляется. «Обычно»."
- },
- "NADIYA_REPORTED_1": {
-  "en": "\"You handed it to Civic Renewal. Wow. Hope the forms were worth it.\"",
-  "ru": "«Вы сдали её Управлению. Ну надо же. Надеюсь, бланки того стоили»."
- },
- "NADIYA_ECHO_1": {
-  "en": "\"You went through.\" For once she isn't joking. \"Then you've met one of them. Now you know they're people.\"",
-  "ru": "«Вы прошли туда». На этот раз она не шутит. «Значит, вы встретили кого-то из них. Теперь вы знаете, что это люди»."
- },
- "PIKE_1": {
-  "en": "\"Dana Pike, Civic Renewal Office. I keep an eye on the redevelopment zone.\"",
-  "ru": "«Дана Пайк, Управление городского обновления. Слежу за зоной реконструкции»."
- },
- "PIKE_2": {
-  "en": "\"If you notice anything structurally... unusual, report it to us. For your own safety.\"",
-  "ru": "«Если заметите что-то... конструктивно необычное, сообщите нам. Ради вашей же безопасности»."
- },
- "PIKE_HUB": {
-  "en": "\"Citizen.\"",
-  "ru": "«Гражданин»."
- },
- "PIKE_REPORT": {
-  "en": "Report the door on the plaza",
-  "ru": "Сообщить о двери на площади"
- },
- "PIKE_REPORT_CONFIRM": {
-  "en": "If you report it, Civic Renewal will take the door. You won't get near it again.",
-  "ru": "Если сообщить, Управление заберёт дверь себе. Подойти к ней вы больше не сможете."
- },
- "PIKE_REPORT_YES": {
-  "en": "Report it",
-  "ru": "Сообщить"
- },
- "PIKE_REPORT_NO": {
-  "en": "Never mind",
-  "ru": "Нет, ничего"
- },
- "PIKE_REPORT_1": {
-  "en": "She follows your gaze and her jaw tightens. She doesn't ask which door.",
-  "ru": "Она смотрит туда же, куда и вы, и сжимает челюсти. Не спрашивает, какая дверь."
- },
- "PIKE_REPORT_2": {
-  "en": "\"Thank you. We'll take it from here. Please don't mention this to anyone — rumours cause harm.\"",
-  "ru": "«Спасибо. Дальше мы сами. Пожалуйста, никому не говорите — слухи причиняют вред»."
- },
- "PIKE_ASK_ARCHIVE": {
-  "en": "Why is the archive closed?",
-  "ru": "Почему закрыт архив?"
- },
- "PIKE_ARCHIVE_1": {
-  "en": "\"Asbestos survey. Standard procedure.\" It sounds rehearsed.",
-  "ru": "«Обследование на асбест. Стандартная процедура». Звучит заученно."
- },
- "ECHO_WOMAN_1": {
-  "en": "A woman in a green cardigan sits at a kitchen table that ends halfway, as if the rest of the room was never drawn.",
-  "ru": "Женщина в зелёном кардигане сидит за кухонным столом, который обрывается посередине, — будто остальную комнату так и не дорисовали."
- },
- "ECHO_WOMAN_2": {
-  "en": "\"{name}. You came back. You always come back — and you never remember.\"",
-  "ru": "«{name}. Вы вернулись. Вы всегда возвращаетесь — и никогда не помните»."
- },
- "ECHO_WOMAN_3": {
-  "en": "\"This is number eleven, Lantern Row. Or it was, until they decided it wasn't.\"",
-  "ru": "«Это дом одиннадцать, Лантерн-Роу. Был, пока не решили, что его нет»."
- },
- "ECHO_ASK_WHO": {
-  "en": "Who are you?",
-  "ru": "Кто вы?"
- },
- "ECHO_ASK_NAME": {
-  "en": "How do you know my name?",
-  "ru": "Откуда вы знаете моё имя?"
- },
- "ECHO_WHO_1": {
-  "en": "\"Someone who was erased politely. With paperwork.\" She smiles. \"They called it a census. A quiet one.\"",
-  "ru": "«Та, кого стёрли вежливо. С бумагами». Она улыбается. «Они называли это переписью. Тихой»."
- },
- "ECHO_NAME_1": {
-  "en": "\"You lived three doors down. Before.\" The tea in her cup ripples, though nothing touched it.",
-  "ru": "«Вы жили через три дома. Раньше». Чай в её чашке подрагивает, хотя его никто не трогал."
- },
- "ECHO_WOMAN_4": {
-  "en": "\"Go back now. The door won't hold much longer — and you're not ready for the rest of us yet.\"",
-  "ru": "«Возвращайтесь. Дверь долго не продержится — а к остальным из нас вы пока не готовы»."
- },
- "ECHO_WOMAN_AFTER": {
-  "en": "She is already looking at something you can't see.",
-  "ru": "Она уже смотрит на что-то, чего вам не видно."
- }
+  "HUD_CLOCK": {"en": "Day %d · %s · %s", "ru": "День %d · %s · %s"},
+  "PERIOD_MORNING": {"en": "Morning", "ru": "Утро"},
+  "PERIOD_AFTERNOON": {"en": "Afternoon", "ru": "День"},
+  "PERIOD_EVENING": {"en": "Evening", "ru": "Вечер"},
+  "PERIOD_NIGHT": {"en": "Night", "ru": "Ночь"},
+  "WEATHER_RAIN": {"en": "Rain", "ru": "Дождь"},
+  "BYE": {"en": "Goodbye.", "ru": "До встречи."},
+  "PROMPT_TALK": {"en": "Talk", "ru": "Поговорить"},
+  "JOURNAL_TITLE": {"en": "Journal", "ru": "Журнал"},
+  "JOURNAL_CLOSE_HINT": {"en": "Tab / Esc — close", "ru": "Tab / Esc — закрыть"},
+  "JOURNAL_EMPTY": {"en": "Nothing written down yet.", "ru": "Пока ничего не записано."},
+  "JOURNAL_OBJECTIVE": {"en": "Now", "ru": "Сейчас"},
+  "JOURNAL_STATUS_DONE": {"en": "Closed", "ru": "Закрыто"},
+  "JOURNAL_EVIDENCE": {"en": "Evidence", "ru": "Улики"},
+  "JOURNAL_NO_EVIDENCE": {"en": "No evidence yet.", "ru": "Улик пока нет."},
+  "JOURNAL_SOURCE": {"en": "Source: %s · day %d, %s", "ru": "Источник: %s · день %d, %s"},
+  "JOURNAL_HYPOTHESES": {"en": "Hypotheses", "ru": "Гипотезы"},
+  "JOURNAL_HYP_LOCKED": {"en": "Not enough evidence for a hypothesis yet.", "ru": "Для гипотезы пока не хватает улик."},
+  "JOURNAL_FORM_HYPOTHESIS": {"en": "Form this hypothesis", "ru": "Выдвинуть гипотезу"},
+  "JOURNAL_SOURCES_COUNT": {"en": "Independent sources: %d", "ru": "Независимых источников: %d"},
+  "JOURNAL_NEW_EVIDENCE": {"en": "New evidence: %s", "ru": "Новая улика: %s"},
+  "JOURNAL_NEW_CASE": {"en": "New case: %s", "ru": "Новое дело: %s"},
+  "JOURNAL_CASE_UPDATED": {"en": "Case updated: %s", "ru": "Дело обновлено: %s"},
+  "JOURNAL_CASE_CLOSED": {"en": "Case closed: %s", "ru": "Дело закрыто: %s"},
+  "JOURNAL_CORROBORATED": {"en": "Corroborated: %s", "ru": "Подтверждено: %s"},
+  "EVIDENCE_KIND_OBSERVED": {"en": "Observed", "ru": "Видели сами"},
+  "EVIDENCE_KIND_REPORTED": {"en": "Reported", "ru": "Со слов"},
+  "EVIDENCE_KIND_RECORDED": {"en": "Recorded", "ru": "Документ"},
+  "HYP_STATUS_AVAILABLE": {"en": "can be formed", "ru": "можно выдвинуть"},
+  "HYP_STATUS_INFERRED": {"en": "inferred", "ru": "предположение"},
+  "HYP_STATUS_CORROBORATED": {"en": "corroborated", "ru": "подтверждено"},
+  "SRC_YOU": {"en": "you", "ru": "вы"},
+  "SRC_RADIO": {"en": "Mrs Halloway's radio", "ru": "радио миссис Холлоуэй"},
+  "SRC_MAP": {"en": "1962 survey plan", "ru": "план съёмки 1962 года"},
+  "SRC_NOTE_LANDLADY": {"en": "landlady's note", "ru": "записка хозяйки"},
+  "SRC_NOTE_ROOK": {"en": "note on Rook's door", "ru": "записка на двери Рука"},
+  "CC_TITLE": {"en": "Who arrives in Greyford?", "ru": "Кто приезжает в Грейфорд?"},
+  "CC_NAME": {"en": "Name", "ru": "Имя"},
+  "CC_NAME_PLACEHOLDER": {"en": "Your name", "ru": "Ваше имя"},
+  "CC_DEFAULT_NAME": {"en": "Alex", "ru": "Саша"},
+  "CC_PRONOUNS": {"en": "Pronouns", "ru": "Обращение"},
+  "CC_PRONOUN_THEY": {"en": "they/them", "ru": "нейтрально"},
+  "CC_PRONOUN_SHE": {"en": "she/her", "ru": "она"},
+  "CC_PRONOUN_HE": {"en": "he/him", "ru": "он"},
+  "CC_SKIN": {"en": "Skin", "ru": "Кожа"},
+  "CC_EYES": {"en": "Eyes", "ru": "Глаза"},
+  "CC_OUTFIT": {"en": "Outfit", "ru": "Одежда"},
+  "CC_HAIR": {"en": "Hair", "ru": "Причёска"},
+  "CC_ACCESSORY": {"en": "Extra", "ru": "Аксессуар"},
+  "CC_COLOR": {"en": "Change colour", "ru": "Сменить цвет"},
+  "CC_COLOR_SHORT": {"en": "colour", "ru": "цвет"},
+  "CC_NONE": {"en": "none", "ru": "нет"},
+  "CC_RANDOM": {"en": "Randomise", "ru": "Случайно"},
+  "CC_BACK": {"en": "Back", "ru": "Назад"},
+  "CC_BEGIN": {"en": "Arrive in Greyford", "ru": "Приехать в Грейфорд"},
+  "BG_RETURNING_LOCAL": {"en": "Returning local", "ru": "Вернувшийся"},
+  "BG_RETURNING_LOCAL_DESC": {"en": "You left Greyford as a child. Some residents remember you — though not quite where you lived.", "ru": "Вы уехали из Грейфорда ребёнком. Кое-кто из местных вас помнит — только не помнит, где именно вы жили."},
+  "BG_ARCHIVIST": {"en": "Former archivist", "ru": "Бывший архивист"},
+  "BG_ARCHIVIST_DESC": {"en": "You know how records lie by omission. Mara Venn treats you as a colleague.", "ru": "Вы знаете, как документы лгут умолчанием. Мара Венн видит в вас коллегу."},
+  "BG_REPAIR_TECHNICIAN": {"en": "Repair technician", "ru": "Мастер по ремонту"},
+  "BG_REPAIR_TECHNICIAN_DESC": {"en": "Machines tell you things people won't. Extra options with devices and with Jonah Rook.", "ru": "Механизмы рассказывают то, о чём молчат люди. Дополнительные варианты с техникой и с Джоной Руком."},
+  "BG_COURIER": {"en": "Freelance courier", "ru": "Курьер"},
+  "BG_COURIER_DESC": {"en": "You know every shortcut. You sprint faster.", "ru": "Вы знаете все короткие пути. Бег быстрее."},
+  "INTRO_1": {"en": "The bus pulls away. Greyford smells of salt, wet brick and frying onions.", "ru": "Автобус уезжает. Грейфорд пахнет солью, мокрым кирпичом и жареным луком."},
+  "INTRO_2": {"en": "Your new address is on a slip of paper: the brown house by the corner. The key is under the mat.", "ru": "Новый адрес записан на клочке бумаги: коричневый дом на углу. Ключ под ковриком."},
+  "INTRO_3": {"en": "(Tab opens your journal. Look closely, talk to people — time passes while you walk.)", "ru": "(Tab — журнал. Присматривайтесь, говорите с людьми — пока вы ходите, идёт время.)"},
+  "REST_PROMPT": {"en": "The bed creaks. What now?", "ru": "Кровать скрипит. Что дальше?"},
+  "REST_SAVE": {"en": "Rest a moment (save)", "ru": "Немного передохнуть (сохранить)"},
+  "REST_WAIT_EVENING": {"en": "Wait until evening (save)", "ru": "Подождать до вечера (сохранить)"},
+  "REST_SLEEP": {"en": "Sleep until morning (save)", "ru": "Спать до утра (сохранить)"},
+  "REST_CANCEL": {"en": "Not now", "ru": "Не сейчас"},
+  "REST_WAITED": {"en": "You doze off to the radiator's knocking. When you wake, the light has turned amber. (Game saved.)", "ru": "Вы задремали под стук батареи. Когда просыпаетесь, свет уже янтарный. (Игра сохранена.)"},
+  "REST_SLEPT": {"en": "You sleep badly. In the dream, a tram bell rings on a street with no rails. (Game saved.)", "ru": "Спится плохо. Во сне звенит трамвай — на улице, где нет рельсов. (Игра сохранена.)"},
+  "WOKE_1": {"en": "You wake on your own bed, coat still on. Your knuckles ache. An hour is missing.", "ru": "Вы просыпаетесь на своей кровати, не сняв пальто. Ноют костяшки. Пропал целый час."},
+  "WOKE_2": {"en": "Whatever was in that corridor, it is still there. It can wait for you.", "ru": "Что бы ни было в том коридоре, оно всё ещё там. Оно умеет ждать."},
+  "ROOK_SHOP_REPEAT": {"en": "\"Back after the tram inspection. — J.\"", "ru": "«Вернусь после проверки трамвайной линии. — Дж.»"},
+  "CONDO_YELLOW_1": {"en": "Fresh paint over old paint. Under the doorbell, someone has drawn a small symbol.", "ru": "Свежая краска поверх старой. Под звонком кто-то нарисовал маленький знак."},
+  "CONDO_YELLOW_2": {"en": "Three lines meeting at a point. The same mark is scratched, very faintly, into the frame of the door on the plaza.", "ru": "Три линии, сходящиеся в одной точке. Такой же знак, едва заметный, процарапан на раме двери на площади."},
+  "CONDO_YELLOW_REPEAT": {"en": "The three-line mark. Someone repainted around it, carefully.", "ru": "Знак из трёх линий. Кто-то аккуратно закрасил всё вокруг него."},
+  "VEIL_DOOR_NOT_READY": {"en": "The handle is warm. You don't understand enough to open it — not yet.", "ru": "Ручка тёплая. Вы понимаете слишком мало, чтобы открыть её. Пока."},
+  "VEIL_DOOR_READY": {"en": "Behind the little window, the corridor waits. Green wallpaper. Lantern Row — the number has worn away.", "ru": "За окошком ждёт коридор. Зелёные обои. Лантерн-Роу — номер стёрся."},
+  "VEIL_DOOR_OPEN": {"en": "Open the door", "ru": "Открыть дверь"},
+  "VEIL_DOOR_LEAVE": {"en": "Not yet", "ru": "Не сейчас"},
+  "VEIL_DOOR_GONE": {"en": "Where the door stood, the paving stones are dry, as if it never rained here.", "ru": "Там, где стояла дверь, плитка сухая — будто здесь никогда не шёл дождь."},
+  "VEIL_DOOR_FENCED": {"en": "Orange barriers and a laminated notice: CIVIC RENEWAL — STRUCTURAL SURVEY. KEEP OUT.", "ru": "Оранжевые заграждения и заламинированное объявление: УПРАВЛЕНИЕ ГОРОДСКОГО ОБНОВЛЕНИЯ — ОБСЛЕДОВАНИЕ КОНСТРУКЦИЙ. ПРОХОД ЗАКРЫТ."},
+  "ECHO_ENTER_1": {"en": "The door closes behind you without a sound. The air smells of boiled cabbage and coal smoke — 1970, give or take.", "ru": "Дверь беззвучно закрывается за спиной. Пахнет варёной капустой и угольным дымом — году в семидесятом, плюс-минус."},
+  "ECHO_ENTER_2": {"en": "Pale shapes drift along the corridor, repeating small gestures. Hollows. They notice you. (J — strike.)", "ru": "По коридору плывут бледные фигуры, повторяя одни и те же жесты. Пустые. Они вас замечают. (J — удар.)"},
+  "ECHO_PHOTO_1": {"en": "A framed photo of a street party under paper lanterns. Every face has been carefully scratched out —", "ru": "Фотография в рамке: уличный праздник под бумажными фонариками. Все лица аккуратно выцарапаны —"},
+  "ECHO_PHOTO_2": {"en": "— except one child at the edge, who looks exactly like you did at seven.", "ru": "— кроме одного ребёнка с краю. Он выглядит точь-в-точь как вы в семь лет."},
+  "ECHO_PHOTO_REPEAT": {"en": "The child in the photo is still looking at you.", "ru": "Ребёнок на фото всё ещё смотрит на вас."},
+  "LOC_ECHO_LANTERN_ROW": {"en": "Lantern Row (echo)", "ru": "Лантерн-Роу (эхо)"},
+  "PROMPT_LEAVE_ECHO": {"en": "Go back to the plaza", "ru": "Вернуться на площадь"},
+  "CASE_DOOR_TITLE": {"en": "The Door That Shouldn't Be There", "ru": "Дверь, которой не должно быть"},
+  "CASE_DOOR_SUMMARY": {"en": "A doorway stands alone on the plaza. Somebody behind it knows your name.", "ru": "Посреди площади стоит одинокая дверь. Кто-то за ней знает ваше имя."},
+  "CASE_DOOR_START": {"en": "Find out what the door on the plaza is. Ask around; look for records.", "ru": "Выясните, что это за дверь на площади. Расспросите людей, поищите документы."},
+  "CASE_DOOR_DECIDE": {"en": "You know what the door is. Decide what to do: report it to Civic Renewal, confide in someone — or open it.", "ru": "Вы знаете, что это за дверь. Решите, что делать: сообщить в Управление, довериться кому-то — или открыть её."},
+  "CASE_DOOR_INSIDE": {"en": "Find whoever called your name.", "ru": "Найдите того, кто назвал ваше имя."},
+  "CASE_DOOR_REPORTED": {"en": "You reported the door. Civic Renewal fenced off the plaza. Whatever was behind it is their secret now.", "ru": "Вы сообщили о двери. Управление оцепило площадь. Что бы ни было за ней — теперь это их тайна."},
+  "CASE_DOOR_OPENED": {"en": "You went through. A woman from Lantern Row knew you. The door is gone — the question isn't.", "ru": "Вы прошли насквозь. Женщина с Лантерн-Роу вас узнала. Двери больше нет — вопрос остался."},
+  "CASE_RADIO_TITLE": {"en": "Rook's Radio", "ru": "Радио от Рука"},
+  "CASE_RADIO_SUMMARY": {"en": "Jonah Rook repaired Mrs Halloway's radio and asked you to deliver it.", "ru": "Джона Рук починил радио миссис Холлоуэй и попросил его доставить."},
+  "CASE_RADIO_DELIVER": {"en": "Bring the radio to Mrs Halloway (mornings by the mailbox, afternoons on the park bench).", "ru": "Отнесите радио миссис Холлоуэй (по утрам — у почтового ящика, днём — на скамейке в парке)."},
+  "CASE_RADIO_RETURN": {"en": "Tell Jonah the radio was delivered (afternoons and evenings at his shop).", "ru": "Сообщите Джоне, что радио доставлено (днём и вечером — у его мастерской)."},
+  "CASE_RADIO_DONE": {"en": "Delivered. Jonah gave you a 1962 survey plan that was lining the radio's box.", "ru": "Доставлено. Джона отдал вам план 1962 года, которым была выстлана коробка от радио."},
+  "CASE_QUIET_TITLE": {"en": "Greyford Keeps Quiet", "ru": "Грейфорд молчит"},
+  "CASE_QUIET_SUMMARY": {"en": "Notes, warnings, a symbol under a doorbell. People here avoid certain subjects.", "ru": "Записки, предупреждения, знак под звонком. Здесь избегают некоторых тем."},
+  "CASE_QUIET_START": {"en": "Notice who avoids what — and who leaves marks.", "ru": "Замечайте, кто чего избегает — и кто оставляет знаки."},
+  "CASE_QUIET_FORMED": {"en": "Someone marks these places. Ask the people who seem to know.", "ru": "Кто-то помечает эти места. Спросите тех, кто, похоже, знает."},
+  "CASE_LR_TITLE": {"en": "Lantern Row", "ru": "Лантерн-Роу"},
+  "CASE_LR_SUMMARY": {"en": "A street demolished in 1971. You may have lived there. You don't remember.", "ru": "Улица, снесённая в 1971-м. Возможно, вы там жили. Вы не помните."},
+  "CASE_LR_START": {"en": "Find out who lived on Lantern Row — and why nobody remembers it. (To be continued.)", "ru": "Узнайте, кто жил на Лантерн-Роу и почему её никто не помнит. (Продолжение следует.)"},
+  "EV_DOOR_TITLE": {"en": "The door on the plaza", "ru": "Дверь на площади"},
+  "EV_DOOR_BODY": {"en": "A freestanding doorway with a scrap of floor attached. Green-papered corridor behind the window. A voice said my name.", "ru": "Отдельно стоящий дверной проём с куском пола. За окошком коридор с зелёными обоями. Голос назвал моё имя."},
+  "EV_MARA_LR_TITLE": {"en": "Mara: a street called Lantern Row", "ru": "Мара: улица Лантерн-Роу"},
+  "EV_MARA_LR_BODY": {"en": "Old rate books list nineteen houses on Lantern Row, where the plaza is now. Demolished in 1971. Nobody she asks remembers it.", "ru": "По старым налоговым книгам на месте площади была улица Лантерн-Роу, девятнадцать домов. Снесена в 1971-м. Никто из опрошенных её не помнит."},
+  "EV_HALLOWAY_LR_TITLE": {"en": "Mrs Halloway: \"before everything\"", "ru": "Миссис Холлоуэй: «до всего»"},
+  "EV_HALLOWAY_LR_BODY": {"en": "She says Lantern Row was \"before the redevelopment, before everything\" — and that people don't talk about it.", "ru": "По её словам, Лантерн-Роу была «до реконструкции, до всего», и о ней не принято говорить."},
+  "EV_RADIO_TITLE": {"en": "A tram announcement", "ru": "Объявление трамвая"},
+  "EV_RADIO_BODY": {"en": "The radio caught a calm voice: \"Next stop, Lantern Row.\" The tram line closed in 1989; the street was gone long before.", "ru": "Радио поймало спокойный голос: «Следующая остановка — Лантерн-Роу». Трамвай закрыли в 1989-м, а улицы не стало намного раньше."},
+  "EV_MAP_TITLE": {"en": "1962 survey plan", "ru": "План съёмки 1962 года"},
+  "EV_MAP_BODY": {"en": "A city survey plan. Lantern Row runs straight through where the plaza is today. House no. 11 is circled in pencil.", "ru": "Городской план. Лантерн-Роу проходит прямо там, где сейчас площадь. Дом № 11 обведён карандашом."},
+  "EV_SYMBOL_TITLE": {"en": "Three lines meeting", "ru": "Три сходящиеся линии"},
+  "EV_SYMBOL_BODY": {"en": "A small mark under a doorbell — the same one scratched into the plaza door's frame.", "ru": "Маленький знак под звонком — такой же процарапан на раме двери на площади."},
+  "EV_NOTE_TITLE": {"en": "The landlady's note", "ru": "Записка хозяйки"},
+  "EV_NOTE_BODY": {"en": "\"If you hear the tram at night: there isn't one. Please don't ask the neighbours about it.\"", "ru": "«Если ночью услышите трамвай — его нет. Пожалуйста, не спрашивайте об этом соседей»."},
+  "EV_ROOK_NOTE_TITLE": {"en": "Note on Rook's door", "ru": "Записка на двери Рука"},
+  "EV_ROOK_NOTE_BODY": {"en": "\"Back after the tram inspection.\" There is no tram to inspect.", "ru": "«Вернусь после проверки трамвайной линии». Проверять нечего — трамвая нет."},
+  "EV_IVO_TITLE": {"en": "Ivo's warning", "ru": "Предупреждение Иво"},
+  "EV_IVO_BODY": {"en": "\"Doors like that close on their own — if nobody opens them.\" He knew exactly which door.", "ru": "«Такие двери закрываются сами — если их никто не открывает». Он точно знал, о какой двери речь."},
+  "EV_ECHO_RESIDENT_TITLE": {"en": "The woman at No. 11", "ru": "Женщина из дома № 11"},
+  "EV_ECHO_RESIDENT_BODY": {"en": "A resident of Lantern Row, inside the echo. She says I lived three doors down, \"before\", and that I always come back.", "ru": "Жительница Лантерн-Роу внутри эха. Говорит, что я жил(а) через три дома, «раньше», и что я всегда возвращаюсь."},
+  "EV_ECHO_PHOTO_TITLE": {"en": "The street party photo", "ru": "Фото уличного праздника"},
+  "EV_ECHO_PHOTO_BODY": {"en": "Every face scratched out except a child who looks like me at seven.", "ru": "Все лица выцарапаны, кроме ребёнка, похожего на меня в семь лет."},
+  "HYP_LR_TITLE": {"en": "The door is a piece of Lantern Row", "ru": "Дверь — это кусок Лантерн-Роу"},
+  "HYP_LR_BODY": {"en": "A street demolished in 1971 stood where the plaza is. The door belongs to it — and it is coming back.", "ru": "На месте площади стояла улица, снесённая в 1971-м. Дверь — её часть, и эта улица возвращается."},
+  "HYP_QUIET_TITLE": {"en": "Greyford keeps quiet on purpose", "ru": "Грейфорд молчит намеренно"},
+  "HYP_QUIET_BODY": {"en": "People know about the impossible things and avoid them. Someone marks the places where they happen.", "ru": "Люди знают о невозможном и обходят его стороной. Кто-то помечает места, где оно случается."},
+  "NPC_JONAH": {"en": "Jonah Rook", "ru": "Джона Рук"},
+  "NPC_HALLOWAY": {"en": "Edda Halloway", "ru": "Эдда Холлоуэй"},
+  "NPC_IVO": {"en": "Ivo Calder", "ru": "Иво Колдер"},
+  "NPC_NADIYA": {"en": "Nadiya Sol", "ru": "Надия Сол"},
+  "NPC_PIKE": {"en": "Warden Dana Pike", "ru": "Смотритель Дана Пайк"},
+  "NPC_ECHO_WOMAN": {"en": "Woman in green", "ru": "Женщина в зелёном"},
+  "MARA_HUB": {"en": "Mara looks up from her notebook. \"Yes?\"", "ru": "Мара отрывается от блокнота. «Да?»"},
+  "MARA_ASK_PLAZA": {"en": "What was here before the plaza?", "ru": "Что было здесь до площади?"},
+  "MARA_ASK_ARCHIVE": {"en": "Why was the archive closed?", "ru": "Почему закрыли архив?"},
+  "MARA_SHOW_MAP": {"en": "Show her the 1962 survey plan", "ru": "Показать ей план 1962 года"},
+  "MARA_TELL_LATER": {"en": "About the door — I want to tell you.", "ru": "Насчёт двери — я хочу вам рассказать."},
+  "MARA_PLAZA_1": {"en": "\"Before the plaza? A car park. Before that—\" She flips pages.", "ru": "«До площади? Парковка. А до неё...» Она листает страницы."},
+  "MARA_PLAZA_2": {"en": "\"The rate books list a street. Lantern Row. Nineteen houses, demolished in '71. 'Slum clearance.'\"", "ru": "«По налоговым книгам здесь была улица. Лантерн-Роу. Девятнадцать домов, снесены в семьдесят первом. „Расчистка трущоб“»."},
+  "MARA_PLAZA_3": {"en": "\"Funny thing. Nobody I ask remembers it. Not even people who lived two streets over.\"", "ru": "«Забавно: никто из тех, кого я спрашиваю, её не помнит. Даже те, кто жил через две улицы»."},
+  "MARA_ARCHIVE_1": {"en": "\"Officially: asbestos. Unofficially: the week before, Civic Renewal requested every redevelopment file from 1960 to 1975.\"", "ru": "«Официально — асбест. Неофициально — за неделю до этого Управление запросило все дела о реконструкции с 1960 по 1975 год»."},
+  "MARA_ARCHIVE_2": {"en": "\"They sent them back. Lighter.\"", "ru": "«Потом вернули. Похудевшими»."},
+  "MARA_MAP_1": {"en": "\"Where did you get this? It's a survey plan — Lantern Row runs right through the plaza. And someone circled number eleven.\"", "ru": "«Откуда это у вас? Это съёмочный план — Лантерн-Роу проходит прямо через площадь. И кто-то обвёл одиннадцатый дом»."},
+  "MARA_DECIDE_1": {"en": "\"You've got that look. You found out something about the door.\"", "ru": "«У вас такое лицо... Вы что-то узнали про дверь»."},
+  "MARA_TELL": {"en": "Tell her everything", "ru": "Рассказать ей всё"},
+  "MARA_KEEP": {"en": "Keep it to yourself for now", "ru": "Пока оставить при себе"},
+  "MARA_TELL_1": {"en": "She listens without interrupting. \"A piece of Lantern Row, sitting on the plaza like a lost glove.\"", "ru": "Она слушает не перебивая. «Кусок Лантерн-Роу посреди площади, как потерянная перчатка»."},
+  "MARA_TELL_2": {"en": "\"If you go through, I want to know everything. Dates, times, exact words. Promise me.\"", "ru": "«Если пойдёте туда — я хочу знать всё. Даты, время, точные слова. Обещайте»."},
+  "MARA_KEEP_1": {"en": "\"Suit yourself.\" She doesn't sound offended. She sounds like she's taking notes.", "ru": "«Как знаете». Она не обижена. Похоже, она делает пометку."},
+  "MARA_REPORTED_1": {"en": "\"You called Civic Renewal.\" It isn't a question. \"Then that's the last anyone will see of it.\"", "ru": "«Вы позвонили в Управление». Это не вопрос. «Значит, больше её никто не увидит»."},
+  "MARA_ECHO_1": {"en": "\"Well? Dates, times, exact words.\" You tell her. She writes until her pen runs dry.", "ru": "«Ну? Даты, время, точные слова». Вы рассказываете. Она пишет, пока не кончаются чернила."},
+  "MARA_ECHO_2": {"en": "\"Number eleven,\" she says at last, very quietly. \"My grandmother's address was number eleven.\"", "ru": "«Одиннадцатый дом, — наконец говорит она очень тихо. — Моя бабушка жила в одиннадцатом»."},
+  "MARA_ECHO_SECRET": {"en": "\"The door's gone. You went through, didn't you.\" A pause. \"You could have told me.\"", "ru": "«Двери больше нет. Вы прошли туда, да?» Пауза. «Могли бы и сказать»."},
+  "JONAH_1": {"en": "\"Jonah Rook. I repair things nobody makes any more.\"", "ru": "«Джона Рук. Чиню то, что больше никто не делает»."},
+  "JONAH_2": {"en": "\"You're new? Then you're exactly who I need. I've got to be at the old tram depot before dark.\"", "ru": "«Вы недавно в городе? Тогда вы мне и нужны. Мне до темноты надо быть у старого трамвайного депо»."},
+  "JONAH_3": {"en": "\"Mrs Halloway's radio is fixed. Could you take it to her? She's your landlady, if I'm not wrong.\"", "ru": "«Радио миссис Холлоуэй готово. Отнесёте ей? Она ведь ваша хозяйка, если не ошибаюсь»."},
+  "JONAH_ACCEPT": {"en": "Sure, I'll take it.", "ru": "Конечно, отнесу."},
+  "JONAH_TECH": {"en": "(Repair technician) Let me check the tuning first.", "ru": "(Мастер) Дайте сначала проверю настройку."},
+  "JONAH_DECLINE": {"en": "Not right now.", "ru": "Не сейчас."},
+  "JONAH_ACCEPT_1": {"en": "\"Lifesaver. Don't let her tip you — she can't afford it.\"", "ru": "«Выручили. Не берите у неё чаевых — ей не по карману»."},
+  "JONAH_TECH_1": {"en": "You open the back. Someone has soldered the dial in place, on a frequency no station uses.", "ru": "Вы снимаете заднюю крышку. Кто-то припаял ручку настройки к частоте, на которой не вещает ни одна станция."},
+  "JONAH_TECH_2": {"en": "Jonah frowns. \"I didn't do that.\" A pause. \"Leave it. She likes it the way it is.\"", "ru": "Джона хмурится. «Это не я». Пауза. «Оставьте. Ей нравится так, как есть»."},
+  "JONAH_DECLINE_1": {"en": "\"No worries. I'll be around.\"", "ru": "«Ничего страшного. Я тут поблизости»."},
+  "JONAH_REMIND": {"en": "\"Radio still in one piece? Mrs Halloway's by the mailbox in the mornings, on the park bench after lunch.\"", "ru": "«Радио цело? Миссис Холлоуэй по утрам у почтового ящика, после обеда — на скамейке в парке»."},
+  "JONAH_REWARD_1": {"en": "\"She called me. Said the radio 'talked about Lantern Row'.\"", "ru": "«Она мне звонила. Сказала, радио „говорило про Лантерн-Роу“»."},
+  "JONAH_REWARD_2": {"en": "\"My sister used to say that name. Before.\" He stops, as if he walked into a wall.", "ru": "«Сестра так говорила. Раньше». Он осекается, будто налетел на стену."},
+  "JONAH_REWARD_3": {"en": "\"Here. This was lining the radio's box — an old survey map. Keep it. I don't want it in the shop.\"", "ru": "«Вот. Этим была выстлана коробка — старая карта. Оставьте себе. Не хочу её в мастерской»."},
+  "JONAH_HUB": {"en": "\"Need something fixed?\"", "ru": "«Что-нибудь починить?»"},
+  "JONAH_ASK_TRAM": {"en": "What's this \"tram inspection\"?", "ru": "Что за «проверка трамвайной линии»?"},
+  "JONAH_ASK_RADIO": {"en": "About the radio...", "ru": "Насчёт радио..."},
+  "JONAH_TRAM_1": {"en": "\"The line closed in '89. But when it rains, people swear they hear the bell at the old stop by the harbour.\"", "ru": "«Линию закрыли в восемьдесят девятом. Но в дождь люди клянутся, что слышат звонок на старой остановке у гавани»."},
+  "JONAH_TRAM_2": {"en": "\"So I go and check. Every time. Nothing's ever there.\" He doesn't sound relieved.", "ru": "«Вот я и хожу проверять. Каждый раз. Там никогда ничего нет». Облегчения в голосе не слышно."},
+  "HALLOWAY_1": {"en": "\"So you're my new lodger. Edda Halloway. Rent on the first, and don't mind the radiator.\"", "ru": "«Так вы мой новый жилец. Эдда Холлоуэй. Плата первого числа, а на батарею не обращайте внимания»."},
+  "HALLOWAY_LOCAL_1": {"en": "\"Well I never — {name}! You were this high when your family left!\"", "ru": "«Батюшки — {name}! Вот такого роста были, когда ваша семья уехала!»"},
+  "HALLOWAY_LOCAL_2": {"en": "\"Funny... I can't remember which street you lived on. Can't for the life of me.\"", "ru": "«Странно... Не могу вспомнить, на какой улице вы жили. Хоть убейте»."},
+  "HALLOWAY_RADIO_1": {"en": "\"My radio! Oh, Jonah's a dear.\" She switches it on at once.", "ru": "«Моё радио! Ах, Джона — золото». Она тут же его включает."},
+  "HALLOWAY_RADIO_2": {"en": "Static, then a calm voice: \"...next stop, Lantern Row. Lantern Row. Mind the gap...\"", "ru": "Треск, потом спокойный голос: «...следующая остановка — Лантерн-Роу. Лантерн-Роу. Осторожно, двери...»"},
+  "HALLOWAY_RADIO_3": {"en": "Mrs Halloway turns it off very quickly.", "ru": "Миссис Холлоуэй очень быстро его выключает."},
+  "HALLOWAY_RADIO_4": {"en": "\"Lantern Row was before the redevelopment. Before... everything. People don't talk about it, dear. It isn't kind.\"", "ru": "«Лантерн-Роу была до реконструкции. До... всего. Об этом не говорят, дорогуша. Это недобрый разговор»."},
+  "HALLOWAY_HUB": {"en": "\"Settling in, dear?\"", "ru": "«Обживаетесь?»"},
+  "HALLOWAY_ASK_NOTE": {"en": "About your note — the tram at night?", "ru": "Про вашу записку — ночной трамвай?"},
+  "HALLOWAY_NOTE_1": {"en": "\"Oh, that. Old houses make noises. That's all it is.\" She doesn't meet your eyes.", "ru": "«Ах, это. Старые дома шумят, только и всего». Она не смотрит вам в глаза."},
+  "IVO_1": {"en": "\"Ivo Calder. Residents' association — bins, benches, petitions about bins and benches.\"", "ru": "«Иво Колдер. Совет жильцов: урны, скамейки, петиции про урны и скамейки»."},
+  "IVO_2": {"en": "\"A word of advice, freely given: Greyford is kind to people who don't go poking at it.\"", "ru": "«Бесплатный совет: Грейфорд добр к тем, кто в нём не ковыряется»."},
+  "IVO_HUB": {"en": "Ivo nods. \"Evening, neighbour.\"", "ru": "Иво кивает. «Здравствуйте, сосед»."},
+  "IVO_ASK_DOOR": {"en": "Have you seen the door on the plaza?", "ru": "Вы видели дверь на площади?"},
+  "IVO_ASK_SYMBOL": {"en": "Someone draws three lines under doorbells.", "ru": "Кто-то рисует три линии под звонками."},
+  "IVO_DOOR_1": {"en": "He is quiet for a while. \"Doors like that close on their own. If nobody opens them.\"", "ru": "Он долго молчит. «Такие двери закрываются сами. Если их никто не открывает»."},
+  "IVO_DOOR_2": {"en": "\"Whatever's on the other side has waited a long time. It can wait a little longer. Forever, ideally.\"", "ru": "«То, что по ту сторону, ждало долго. Подождёт ещё. В идеале — вечно»."},
+  "IVO_SYM_1": {"en": "\"Kids.\" A pause. \"Or people who'd rather the rest of us didn't have to know. Either way — leave it be.\"", "ru": "«Дети». Пауза. «Или люди, которые предпочли бы, чтобы остальным не пришлось знать. В любом случае — не трогайте»."},
+  "IVO_REPORTED_1": {"en": "\"Civic Renewal fenced off the plaza. Sensible.\" He looks at you a moment too long. \"Thank you.\"", "ru": "«Управление оцепило площадь. Разумно». Он смотрит на вас чуть дольше, чем нужно. «Спасибо»."},
+  "IVO_ECHO_1": {"en": "\"The door's gone.\" His voice is flat. \"You opened it. I hope you know what you let back in.\"", "ru": "«Двери нет». Голос ровный. «Вы её открыли. Надеюсь, вы понимаете, что впустили обратно»."},
+  "NADIYA_1": {"en": "\"Nadiya. Courier — parcels, letters, the occasional awkward truth.\"", "ru": "«Надия. Курьер: посылки, письма, иногда неудобная правда»."},
+  "NADIYA_2": {"en": "\"You've got that new-in-town look. Everyone here has the old-in-town look. It's worse.\"", "ru": "«У вас вид новенького. У всех здесь вид старожилов. Это хуже»."},
+  "NADIYA_HUB": {"en": "\"Delivering or receiving?\"", "ru": "«Доставка или получение?»"},
+  "NADIYA_ASK_DOOR": {"en": "The door on the plaza...", "ru": "Дверь на площади..."},
+  "NADIYA_ASK_WORK": {"en": "What do you deliver at night?", "ru": "Что вы доставляете по ночам?"},
+  "NADIYA_DOOR_1": {"en": "\"You see it too? Good. Most people's eyes just slide off it.\"", "ru": "«Вы тоже её видите? Хорошо. У большинства взгляд просто соскальзывает»."},
+  "NADIYA_DOOR_2": {"en": "\"They tore down a whole street and told everyone it never mattered. If that's a piece of it, it's someone's home trying to come back.\"", "ru": "«Снесли целую улицу и всем сказали, что она ничего не значила. Если это её кусок — это чей-то дом пытается вернуться»."},
+  "NADIYA_WORK_1": {"en": "\"Letters addressed to people who don't exist. They still get answers.\" She grins. \"Mostly.\"", "ru": "«Письма людям, которых не существует. Ответы всё равно приходят». Она ухмыляется. «Обычно»."},
+  "NADIYA_REPORTED_1": {"en": "\"You handed it to Civic Renewal. Wow. Hope the forms were worth it.\"", "ru": "«Вы сдали её Управлению. Ну надо же. Надеюсь, бланки того стоили»."},
+  "NADIYA_ECHO_1": {"en": "\"You went through.\" For once she isn't joking. \"Then you've met one of them. Now you know they're people.\"", "ru": "«Вы прошли туда». На этот раз она не шутит. «Значит, вы встретили кого-то из них. Теперь вы знаете, что это люди»."},
+  "PIKE_1": {"en": "\"Dana Pike, Civic Renewal Office. I keep an eye on the redevelopment zone.\"", "ru": "«Дана Пайк, Управление городского обновления. Слежу за зоной реконструкции»."},
+  "PIKE_2": {"en": "\"If you notice anything structurally... unusual, report it to us. For your own safety.\"", "ru": "«Если заметите что-то... конструктивно необычное, сообщите нам. Ради вашей же безопасности»."},
+  "PIKE_HUB": {"en": "\"Citizen.\"", "ru": "«Гражданин»."},
+  "PIKE_REPORT": {"en": "Report the door on the plaza", "ru": "Сообщить о двери на площади"},
+  "PIKE_REPORT_CONFIRM": {"en": "If you report it, Civic Renewal will take the door. You won't get near it again.", "ru": "Если сообщить, Управление заберёт дверь себе. Подойти к ней вы больше не сможете."},
+  "PIKE_REPORT_YES": {"en": "Report it", "ru": "Сообщить"},
+  "PIKE_REPORT_NO": {"en": "Never mind", "ru": "Нет, ничего"},
+  "PIKE_REPORT_1": {"en": "She follows your gaze and her jaw tightens. She doesn't ask which door.", "ru": "Она смотрит туда же, куда и вы, и сжимает челюсти. Не спрашивает, какая дверь."},
+  "PIKE_REPORT_2": {"en": "\"Thank you. We'll take it from here. Please don't mention this to anyone — rumours cause harm.\"", "ru": "«Спасибо. Дальше мы сами. Пожалуйста, никому не говорите — слухи причиняют вред»."},
+  "PIKE_ASK_ARCHIVE": {"en": "Why is the archive closed?", "ru": "Почему закрыт архив?"},
+  "PIKE_ARCHIVE_1": {"en": "\"Asbestos survey. Standard procedure.\" It sounds rehearsed.", "ru": "«Обследование на асбест. Стандартная процедура». Звучит заученно."},
+  "ECHO_WOMAN_1": {"en": "A woman in a green cardigan sits at a kitchen table that ends halfway, as if the rest of the room was never drawn.", "ru": "Женщина в зелёном кардигане сидит за кухонным столом, который обрывается посередине, — будто остальную комнату так и не дорисовали."},
+  "ECHO_WOMAN_2": {"en": "\"{name}. You came back. You always come back — and you never remember.\"", "ru": "«{name}. Вы вернулись. Вы всегда возвращаетесь — и никогда не помните»."},
+  "ECHO_WOMAN_3": {"en": "\"This is number eleven, Lantern Row. Or it was, until they decided it wasn't.\"", "ru": "«Это дом одиннадцать, Лантерн-Роу. Был, пока не решили, что его нет»."},
+  "ECHO_ASK_WHO": {"en": "Who are you?", "ru": "Кто вы?"},
+  "ECHO_ASK_NAME": {"en": "How do you know my name?", "ru": "Откуда вы знаете моё имя?"},
+  "ECHO_WHO_1": {"en": "\"Someone who was erased politely. With paperwork.\" She smiles. \"They called it a census. A quiet one.\"", "ru": "«Та, кого стёрли вежливо. С бумагами». Она улыбается. «Они называли это переписью. Тихой»."},
+  "ECHO_NAME_1": {"en": "\"You lived three doors down. Before.\" The tea in her cup ripples, though nothing touched it.", "ru": "«Вы жили через три дома. Раньше». Чай в её чашке подрагивает, хотя его никто не трогал."},
+  "ECHO_WOMAN_4": {"en": "\"Go back now. The door won't hold much longer — and you're not ready for the rest of us yet.\"", "ru": "«Возвращайтесь. Дверь долго не продержится — а к остальным из нас вы пока не готовы»."},
+  "ECHO_WOMAN_AFTER": {"en": "She is already looking at something you can't see.", "ru": "Она уже смотрит на что-то, чего вам не видно."}
 }

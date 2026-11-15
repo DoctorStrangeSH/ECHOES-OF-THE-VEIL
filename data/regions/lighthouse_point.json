@@ -1,0 +1,31 @@
+{
+ "id": "lighthouse_point",
+ "name_key": "LOC_LIGHTHOUSE_POINT",
+ "palette": "lighthouse_point",
+ "options": {},
+ "layout": {"generator": "bands", "width": 36, "bands": [["w", 4], ["o", 1], ["d", 13], ["g", 4]],
+            "carve": [["g", 0, 12, 10, 6], ["s", 7, 15, 29, 2], ["s", 10, 5, 2, 10]]},
+ "nodes": [
+  {"template": "building", "tex": "@beach/Example_Lighthouse.png", "x": 80, "y": 280, "name": "Lighthouse", "color": "#d8d0c0", "inset": 48, "depth": 36,
+   "inspect": {"id": "lighthouse_door", "dialogue": "lighthouse_door", "width": 26}},
+  {"template": "fixture", "tex": "@city/Street_Lamp_5.png", "x": 300, "y": 84, "name": "SeaWallLamp", "color": "#444455", "col": [6, 4],
+   "use": {"kind": "spot", "id": "spot_point_lamp", "spot": "point_lamp", "y": 94}},
+  {"kind": "inspect", "name": "WatchTheLight", "id": "watch_the_light", "x": 196, "y": 88, "area": [40, 14], "priority": 20, "dialogue": "lighthouse_watch"},
+  {"template": "sign", "tex": "@beach/Direction_Pole_Big.png", "x": 520, "y": 236, "id": "read_point_signpost", "name": "Signpost", "dialogue": "point_signpost", "color": "#9a7a50"},
+  {"kind": "prop", "name": "Bench", "tex": "@city/Bench_2.png", "x": 420, "y": 226, "col": [44, 10], "off": [0, -5], "color": "#a07040"},
+  {"kind": "prop", "name": "Trashbin", "tex": "@city/Trashbin_7.png", "x": 360, "y": 212, "col": [12, 6], "off": [0, -3], "color": "#555555"},
+  {"kind": "junk", "name": "JunkPoint", "id": "junk_point", "x": 376, "y": 214},
+  {"kind": "pickup", "name": "SeaGlass1", "x": 250, "y": 180, "item": "sea_glass", "flag": "pickup.sea_glass_1"},
+  {"kind": "pickup", "name": "SeaGlass2", "x": 500, "y": 130, "item": "sea_glass", "flag": "pickup.sea_glass_2"},
+  {"template": "scatter", "tex": "@beach/Big_Sea_Rock_Vers_1.png", "name": "BigRock", "points": [[150, 62], [430, 58]], "color": "#606a70"},
+  {"template": "scatter", "tex": "@beach/Medium_Sea_Rock_1_Vers_1.png", "name": "Rock", "points": [[250, 44], [520, 40], [40, 56]], "color": "#606a70"},
+  {"template": "scatter", "tex": "@beach/Seagull_Left.png", "name": "Gull", "points": [[340, 140], [470, 170]], "color": "#e0e0e0"},
+  {"template": "scatter", "tex": "@beach/Pink_Shell_1_Vers_1.png", "name": "ShellPink", "points": [[210, 150], [330, 260], [470, 110]], "color": "#e0a0a0", "layer": "FloorDecor"},
+  {"template": "scatter", "tex": "@beach/Grey_Shell_1_Vers_1.png", "name": "ShellGrey", "points": [[280, 120], [400, 150], [560, 180]], "color": "#a0a0a0", "layer": "FloorDecor"},
+  {"template": "scatter", "tex": "@beach/Blue_Small_Starfish.png", "name": "Starfish", "points": [[160, 200], [450, 280]], "color": "#6080c0", "layer": "FloorDecor"},
+  {"kind": "inspect", "name": "RocksLook", "id": "inspect_point_rocks", "x": 150, "y": 92, "area": [50, 12], "lines": ["POINT_ROCKS"]},
+  {"kind": "spawn", "name": "FromGreyford", "id": "from_greyford", "x": 548, "y": 256, "facing": [-1, 0]},
+  {"kind": "door", "name": "StepsUp", "id": "door_point_greyford", "x": 570, "y": 256, "area": [14, 32], "scene": "greyford_block", "spawn": "point_steps", "prompt": "PROMPT_TO_GREYFORD"},
+  {"template": "anchors", "points": {"keeper_door": [112, 296], "bench": [420, 238], "sea_wall": [212, 92]}}
+ ]
+}

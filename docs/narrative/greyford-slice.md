@@ -89,3 +89,15 @@ Three letters: Mrs Halloway learns she had a sister, Bea, who is happy where she
 - **Repair skill** levels 1–5 widen the minigame's green zone. Repair kits (2 scrap at the workbench) widen it once more and are used automatically.
 - **Mrs Halloway** ("About my room...") sells room improvements: workbench (£40), a proper mattress (+1 max health, £30), a lantern shelf (Flash recharges 15% faster, £25). Rent is £15 a week; unpaid rent waits as debt.
 - **Repair cart:** at repair level 3 and Jonah's friendship, Jonah offers the old food cart. Stock it with kits, choose fair / normal / premium prices; sales happen overnight. Fair prices build reputation; upgrades (sign, toolbox, Jonah on Saturdays — needs his full trust) add customers.
+
+## M6 — Lighthouse Point
+
+West of the harbour promenade, steps lead down to a beach, a sea wall and an automated lighthouse.
+
+- **Wren Ashby** (Keepers) kept the light for thirty years. Day: by the lighthouse door; evening: the bench; night: the sea wall (unless the case ended with "fault").
+- **Case: The Light That Counts.** Since spring the lamp sweeps seven times, stops over empty water, and repeats. Ask Wren → watch from the end of the sea wall at night (lights on the water where no boat is) → the archive's harbour register for 1962: the *Margaret Ellery*, crew of seven, page cut out → tell Wren.
+  - *Real*: she keeps the count with the lamp; +Keepers, +Unwritten, Resonance; the fact spreads to the Keepers, Halloway and Jonah (Jonah: his grandad tapped the table seven times).
+  - *Fault*: the council fixes the relay; +Civic, £10; she sleeps at night.
+  - Fail-forward: Wren's own count after 2 days of watching; Mara's copy of the register index after 2 days at the registry stage (so the archive key is never required).
+- The signpost's sanded-off arm: a ferry, seven minutes across, erased from the timetable.
+- Work: the sea-wall lamp job (after meeting Wren), a junk heap by the bins, two pieces of sea glass (Jonah buys them).

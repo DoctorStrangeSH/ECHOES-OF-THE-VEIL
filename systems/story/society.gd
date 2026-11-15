@@ -12,8 +12,8 @@ signal faction_changed(faction_id: StringName, value: int)
 signal milestone_reached(npc_id: StringName, milestone: StringName)
 signal fact_learned(npc_id: StringName, fact_id: StringName)
 
-const FACTIONS_PATH := "res://data/world/factions.json"
-const FACTS_PATH := "res://data/world/facts.json"
+const FACTIONS_PATH := "res://data/world/factions"  # + factions_*.json
+const FACTS_PATH := "res://data/world/facts"  # + facts_*.json
 const DEFAULT_MILESTONES := [
 	{"at": 3, "id": "friend"}, {"at": 6, "id": "confidant"}, {"at": -3, "id": "distrust"},
 ]
@@ -37,15 +37,7 @@ func _ready() -> void:
 
 
 func _load(path: String) -> Dictionary:
-	var out := {}
-	var data: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
-	if data is Dictionary:
-		for id: String in data:
-			if not id.begins_with("_"):
-				out[StringName(id)] = data[id]
-	else:
-		push_error("Society: %s is not a JSON object" % path)
-	return out
+	return DataFiles.defs(path)
 
 
 func reset() -> void:

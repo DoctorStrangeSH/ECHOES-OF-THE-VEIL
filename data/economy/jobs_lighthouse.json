@@ -1,0 +1,3 @@
+{
+ "point_lamp": {"name": "JOB_POINT_LAMP", "desc": "JOB_POINT_LAMP_DESC", "client": "wren_ashby", "spot": "point_lamp", "difficulty": 2, "scrap": 2, "pay": 9, "xp": 3, "requires": {"flag": "met.wren_ashby"}}
+}

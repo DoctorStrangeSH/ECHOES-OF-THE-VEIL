@@ -14,6 +14,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Fast content checks first: they need only Python, no Godot.
+      - name: Validate content (dialogue, quests, scenes, strings, economy)
+        run: python3 tools/validate_content.py
+
+      - name: Asset license guard
+        run: python3 tools/validate_assets.py
+
+      - name: Localization status
+        run: python3 tools/loc.py status
+
+      - name: Generated graphs are up to date
+        run: python3 tools/content_graphs.py --check
+
       - name: Download Godot
         run: |
           curl -sSL -o godot.zip "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip"

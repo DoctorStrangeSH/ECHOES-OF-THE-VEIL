@@ -6,8 +6,8 @@ extends Node
 
 signal changed
 
-const ITEMS_PATH := "res://data/items/items.json"
-const ATTUNEMENTS_PATH := "res://data/progression/attunements.json"
+const ITEMS_PATH := "res://data/items/items"  # + items_*.json
+const ATTUNEMENTS_PATH := "res://data/progression/attunements"
 const CATEGORIES: PackedStringArray = ["weapon", "trinket", "consumable", "material", "key"]
 const DEFAULT_WEAPON := &"fists"
 ## Additive stats default to 0, multipliers to 1.
@@ -29,15 +29,7 @@ func _enter_tree() -> void:
 
 
 func _load(path: String) -> Dictionary:
-	var out := {}
-	var data: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
-	if not data is Dictionary:
-		push_error("Inventory: %s is not a JSON object" % path)
-		return out
-	for id: String in data:
-		if not id.begins_with("_"):
-			out[StringName(id)] = data[id]
-	return out
+	return DataFiles.defs(path)
 
 
 func reset() -> void:

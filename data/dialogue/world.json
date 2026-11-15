@@ -507,8 +507,32 @@
    "1": {
     "text": "ARCH_SHELVES_1",
     "next": null
+   },
+   "register1": {
+    "text": "ARCH_REGISTER_1",
+    "next": "register2"
+   },
+   "register2": {
+    "text": "ARCH_REGISTER_2",
+    "effects": [
+     {
+      "add_evidence": "e_ship_register"
+     }
+    ],
+    "next": null
    }
-  }
+  },
+  "entries": [
+   {
+    "if": {
+     "quest_stage": [
+      "case_lighthouse",
+      "registry"
+     ]
+    },
+    "node": "register1"
+   }
+  ]
  },
  "sos_box": {
   "entries": [

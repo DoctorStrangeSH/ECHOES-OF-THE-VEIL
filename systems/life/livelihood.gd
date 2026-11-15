@@ -6,8 +6,8 @@ extends Node
 
 signal changed
 
-const JOBS_PATH := "res://data/economy/jobs.json"
-const UPGRADES_PATH := "res://data/economy/home_upgrades.json"
+const JOBS_PATH := "res://data/economy/jobs"  # + jobs_*.json
+const UPGRADES_PATH := "res://data/economy/home_upgrades"
 const BUSINESS_PATH := "res://data/economy/business.json"
 const LEVEL_XP := [0, 6, 16, 32, 55]  # xp needed for level 1..5
 const JOBS_PER_DAY := 3
@@ -43,13 +43,7 @@ func _ready() -> void:
 
 
 func _load(path: String) -> Dictionary:
-	var out := {}
-	var data: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
-	if data is Dictionary:
-		for id: String in data:
-			if not id.begins_with("_"):
-				out[StringName(id)] = data[id]
-	return out
+	return DataFiles.defs(path)
 
 
 func reset() -> void:

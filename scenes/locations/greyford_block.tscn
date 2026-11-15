@@ -655,3 +655,34 @@ anchor_id = &"park_bench_west"
 position = Vector2(558, 412)
 script = ExtResource("11_anchor")
 anchor_id = &"park_bench_east"
+
+[node name="PointStepsSign" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(30, 80)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Direction_Pole_Small.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.604,0.478,0.314, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="PointStepsSignRead" type="Area2D" parent="Entities"]
+position = Vector2(30, 86)
+script = ExtResource("5_inspect")
+interaction_id = &"read_point_steps_sign"
+area_size = Vector2(18, 12)
+prompt_key = "PROMPT_READ"
+lines = PackedStringArray("POINT_STEPS_SIGN")
+
+[node name="PointSteps" type="Area2D" parent="Entities"]
+position = Vector2(8, 84)
+script = ExtResource("6_door")
+interaction_id = &"door_greyford_point"
+area_size = Vector2(16, 24)
+prompt_key = "PROMPT_TO_POINT"
+target_scene_id = &"lighthouse_point"
+target_spawn_id = &"from_greyford"
+
+[node name="PointStepsArrival" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(24, 100)
+script = ExtResource("4_spawn")
+spawn_id = &"point_steps"
+facing = Vector2(1, 0)

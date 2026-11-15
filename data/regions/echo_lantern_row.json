@@ -1,0 +1,36 @@
+{
+ "id": "echo_lantern_row",
+ "name_key": "LOC_ECHO_LANTERN_ROW",
+ "palette": "echo_corridor",
+ "options": {"outdoors": false, "combat_enabled": true, "fixed_tint": {"color": [0.74, 0.88, 0.84, 1.0]}, "enter_dialogue_id": "echo_entrance", "enter_condition": {"not_flag": "echo.entered"}},
+ "layout": [
+  "##############################",
+  "#WWWWWWWWWWWWWWWWWWWWWWWWWWWW#",
+  "#wwwwwwwwwwwwwwwwwwwwwwwwwwww#",
+  "#fffffffff#ffffffff#fffffffff#",
+  "#fffffffff#ffffffff#fffffffff#",
+  "#ffffffffffffffffffffffffffff#",
+  "#ffffffffffffffffffffffffffff#",
+  "#ffffffffffffffffffffffffffff#",
+  "#ffffffffffffffffffffffffffff#",
+  "#ffffffffffffffffffffffffffff#",
+  "##ff##########################"
+ ],
+ "nodes": [
+  {"kind": "prop", "name": "Wardrobe", "tex": "@living/37.png", "x": 72, "y": 60, "col": [28, 10], "off": [0, -5], "color": "#5a4030"},
+  {"kind": "prop", "name": "Lamp", "tex": "@living/87.png", "x": 136, "y": 60, "col": [8, 6], "off": [0, -3], "color": "#c0b090"},
+  {"kind": "prop", "name": "Photo", "tex": "@bedroom/420.png", "x": 300, "y": 44, "col": [0, 0], "off": [0, 0], "color": "#a0b0c0"},
+  {"kind": "prop", "name": "Drawers", "tex": "@living/55.png", "x": 230, "y": 62, "col": [28, 10], "off": [0, -5], "color": "#6a4a30"},
+  {"kind": "prop", "name": "Table", "tex": "@bedroom/367.png", "x": 420, "y": 128, "col": [30, 14], "off": [0, -7], "color": "#a07040"},
+  {"kind": "prop", "name": "Plant", "tex": "@living/13.png", "x": 460, "y": 62, "col": [12, 8], "off": [0, -4], "color": "#3f6f4f"},
+  {"kind": "prop", "name": "Rug", "tex": "@bedroom/385.png", "x": 300, "y": 140, "col": [0, 0], "off": [0, 0], "color": "#806050", "layer": "FloorDecor"},
+  {"kind": "spawn", "name": "Entrance", "id": "entrance", "x": 48, "y": 150, "facing": [0, -1]},
+  {"kind": "door", "name": "WayBack", "id": "door_echo_exit", "x": 48, "y": 164, "area": [30, 10], "scene": "greyford_block", "spawn": "plaza_door", "prompt": "PROMPT_LEAVE_ECHO"},
+  {"kind": "inspect", "name": "PhotoLook", "id": "inspect_echo_photo", "x": 300, "y": 56, "area": [24, 14], "dialogue": "echo_photo"},
+  {"kind": "enemy", "name": "Hollow1", "id": "lantern_row_1", "x": 170, "y": 110},
+  {"kind": "enemy", "name": "Hollow2", "id": "lantern_row_2", "x": 270, "y": 128},
+  {"kind": "enemy", "name": "Hollow3", "id": "lantern_row_3", "x": 350, "y": 96},
+  {"kind": "anchor", "name": "A_kitchen", "id": "kitchen", "x": 420, "y": 110},
+  {"kind": "encounter", "flag": "echo.cleared"}
+ ]
+}
