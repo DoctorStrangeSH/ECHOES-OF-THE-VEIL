@@ -1,10 +1,10 @@
 class_name Hud
 extends CanvasLayer
-## In-game overlay: interaction prompt, dialogue box and toasts.
-## Presentation only: it listens to EventHub and never owns game state.
+## In-game overlay: interaction prompt, dialogue box with choices, clock,
+## health, toasts. Presentation only: renders DialogueService/EventHub state.
 
 const CHARS_PER_SECOND := 45.0
-const LOCK_REASON := &"dialogue"
+const TOAST_QUEUE_MAX := 4
 
 var _prompt_panel: PanelContainer
 var _prompt_label: Label
@@ -12,95 +12,139 @@ var _dialogue_panel: PanelContainer
 var _speaker_label: Label
 var _text_label: Label
 var _more_label: Label
+var _choices_box: VBoxContainer
+var _clock_label: Label
+var _hearts: HeartBar
 var _toast_label: Label
-var _toast_tween: Tween
+var _toast_queue: Array[String] = []
+var _toast_busy := false
+var _choices: PackedStringArray = []
 
-var _lines: PackedStringArray = []
-var _line_index := 0
-var dialogue_open := false
+var dialogue_open: bool:
+	get:
+		return DialogueService.is_active
 
 
 func _ready() -> void:
 	layer = 10
 	_build()
-	EventHub.message_requested.connect(_on_message_requested)
+	DialogueService.line_shown.connect(_on_line_shown)
+	DialogueService.dialogue_ended.connect(_on_dialogue_ended)
 	EventHub.interaction_focus_changed.connect(_on_focus_changed)
 	EventHub.toast_requested.connect(show_toast)
+	EventHub.player_health_changed.connect(_on_health_changed)
 	SaveService.saved.connect(func(_slot: int) -> void: show_toast(tr("TOAST_SAVED")))
-	SceneFlow.transition_started.connect(_on_transition_started)
+	SceneFlow.transition_started.connect(func() -> void: _on_focus_changed(""))
 
 
 func _process(delta: float) -> void:
 	visible = GameState.is_playing
-	if dialogue_open and _text_label.visible_ratio < 1.0:
+	if not visible:
+		return
+	var clock := tr("HUD_CLOCK") % [WorldClock.day, WorldClock.time_text(), tr("PERIOD_" + WorldClock.get_period().to_upper())]
+	if WorldClock.weather == "rain":
+		clock += "  " + tr("WEATHER_RAIN")
+	_clock_label.text = clock
+	if _dialogue_panel.visible and _text_label.visible_ratio < 1.0:
 		var total := maxf(1.0, float(_text_label.get_total_character_count()))
 		_text_label.visible_ratio = minf(1.0, _text_label.visible_ratio + delta * CHARS_PER_SECOND / total)
-		_more_label.visible = _text_label.visible_ratio >= 1.0
+		if _text_label.visible_ratio >= 1.0:
+			_reveal_choices()
 
 
 func _input(event: InputEvent) -> void:
-	if not dialogue_open or not event.is_action_pressed(&"interact"):
+	if not DialogueService.is_active or not _dialogue_panel.visible:
 		return
-	get_viewport().set_input_as_handled()
-	if _text_label.visible_ratio < 1.0:
-		_text_label.visible_ratio = 1.0  # first press completes the line
-		_more_label.visible = true
-	else:
-		_line_index += 1
-		if _line_index >= _lines.size():
-			_close_dialogue()
+	if event.is_action_pressed(&"interact"):
+		get_viewport().set_input_as_handled()
+		if _text_label.visible_ratio < 1.0:
+			_text_label.visible_ratio = 1.0  # first press completes the line
+			_reveal_choices()
+		elif _choices.is_empty():
+			DialogueService.advance()
 		else:
-			_show_line()
+			var focused := get_viewport().gui_get_focus_owner()
+			var idx := _choices_box.get_children().find(focused)
+			DialogueService.choose(maxi(idx, 0))
+	elif event is InputEventKey and event.pressed and not event.echo and _choices_box.visible:
+		var n := int((event as InputEventKey).physical_keycode) - int(KEY_1)
+		if n >= 0 and n < _choices.size():
+			get_viewport().set_input_as_handled()
+			DialogueService.choose(n)
 
 
 func show_toast(text: String) -> void:
 	if text.is_empty():
 		return
-	_toast_label.text = text
-	if _toast_tween != null:
-		_toast_tween.kill()
-	_toast_label.modulate.a = 1.0
-	_toast_tween = create_tween()
-	_toast_tween.tween_interval(1.8)
-	_toast_tween.tween_property(_toast_label, "modulate:a", 0.0, 0.6)
+	if _toast_queue.size() < TOAST_QUEUE_MAX:
+		_toast_queue.append(text)
+	if not _toast_busy:
+		_next_toast()
 
 
-func _on_message_requested(lines: PackedStringArray, speaker: String) -> void:
-	if lines.is_empty():
+func _next_toast() -> void:
+	if _toast_queue.is_empty():
+		_toast_busy = false
 		return
-	_lines = lines
-	_line_index = 0
-	_speaker_label.text = tr(speaker) if not speaker.is_empty() else ""
-	_speaker_label.visible = not speaker.is_empty()
-	dialogue_open = true
-	GameState.lock_player(LOCK_REASON)
+	_toast_busy = true
+	_toast_label.text = _toast_queue.pop_front()
+	_toast_label.modulate.a = 1.0
+	var tween := create_tween()
+	tween.tween_interval(1.6)
+	tween.tween_property(_toast_label, "modulate:a", 0.0, 0.4)
+	tween.finished.connect(_next_toast)
+
+
+func _on_line_shown(speaker: String, text: String, choices: PackedStringArray) -> void:
 	_prompt_panel.visible = false
 	_dialogue_panel.visible = true
-	_show_line()
-
-
-func _show_line() -> void:
-	_text_label.text = tr(_lines[_line_index])
-	_text_label.visible_ratio = 0.0
+	_speaker_label.text = speaker
+	_speaker_label.visible = not speaker.is_empty()
+	_text_label.text = text
+	_text_label.visible = not text.is_empty()
+	_text_label.visible_ratio = 0.0 if not text.is_empty() else 1.0
+	_choices = choices
+	for c in _choices_box.get_children():
+		_choices_box.remove_child(c)
+		c.queue_free()
+	_choices_box.visible = false
 	_more_label.visible = false
+	for i in choices.size():
+		var b := Button.new()
+		b.text = "%d. %s" % [i + 1, choices[i]]
+		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		b.pressed.connect(DialogueService.choose.bind(i))
+		_choices_box.add_child(b)
+	if text.is_empty():
+		_reveal_choices()
 
 
-func _close_dialogue() -> void:
-	dialogue_open = false
+func _reveal_choices() -> void:
+	if _choices.is_empty():
+		_more_label.visible = true
+		return
+	if not _choices_box.visible:
+		_choices_box.visible = true
+		var first := _choices_box.get_child(0) as Button
+		if first != null:
+			first.grab_focus.call_deferred()
+
+
+func _on_dialogue_ended(_id: StringName) -> void:
 	_dialogue_panel.visible = false
-	GameState.unlock_player(LOCK_REASON)
-	EventHub.message_finished.emit()
-
-
-func _on_transition_started() -> void:
-	_on_focus_changed("")
-	if dialogue_open:
-		_close_dialogue()
+	for c in _choices_box.get_children():
+		_choices_box.remove_child(c)
+		c.queue_free()
+	_choices = PackedStringArray()
 
 
 func _on_focus_changed(prompt: String) -> void:
-	_prompt_panel.visible = not prompt.is_empty() and not dialogue_open
+	_prompt_panel.visible = not prompt.is_empty() and not DialogueService.is_active
 	_prompt_label.text = "[%s] %s" % [UiTheme.action_hint(&"interact"), prompt]
+
+
+func _on_health_changed(health: int, max_health: int) -> void:
+	_hearts.set_health(health, max_health)
 
 
 func _build() -> void:
@@ -116,6 +160,7 @@ func _build() -> void:
 	root.add_child(_prompt_panel)
 	_prompt_panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER_BOTTOM, Control.PRESET_MODE_MINSIZE, 12)
 	_prompt_panel.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	_prompt_panel.grow_vertical = Control.GROW_DIRECTION_BEGIN
 	_prompt_panel.visible = false
 
 	_dialogue_panel = PanelContainer.new()
@@ -125,28 +170,44 @@ func _build() -> void:
 	_dialogue_panel.anchor_bottom = 1.0
 	_dialogue_panel.offset_left = 16
 	_dialogue_panel.offset_right = -16
-	_dialogue_panel.offset_top = -78
+	_dialogue_panel.offset_top = -72
 	_dialogue_panel.offset_bottom = -8
+	_dialogue_panel.grow_vertical = Control.GROW_DIRECTION_BEGIN
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 2)
 	_speaker_label = Label.new()
 	_speaker_label.add_theme_color_override("font_color", UiTheme.ACCENT)
 	_text_label = Label.new()
 	_text_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_text_label.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	_text_label.custom_minimum_size = Vector2(0, 24)
+	_choices_box = VBoxContainer.new()
+	_choices_box.add_theme_constant_override("separation", 2)
 	_more_label = Label.new()
 	_more_label.text = ">"
 	_more_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	_more_label.add_theme_color_override("font_color", UiTheme.INK_DIM)
 	box.add_child(_speaker_label)
 	box.add_child(_text_label)
+	box.add_child(_choices_box)
 	box.add_child(_more_label)
 	_dialogue_panel.add_child(box)
 	root.add_child(_dialogue_panel)
 	_dialogue_panel.visible = false
 
+	_clock_label = Label.new()
+	_clock_label.add_theme_font_size_override("font_size", 8)
+	_clock_label.add_theme_color_override("font_outline_color", Color.BLACK)
+	_clock_label.add_theme_constant_override("outline_size", 3)
+	root.add_child(_clock_label)
+	_clock_label.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT, Control.PRESET_MODE_MINSIZE, 6)
+	_clock_label.grow_horizontal = Control.GROW_DIRECTION_BEGIN
+
+	_hearts = HeartBar.new()
+	_hearts.position = Vector2(8, 8)
+	root.add_child(_hearts)
+
 	_toast_label = Label.new()
-	_toast_label.position = Vector2(10, 8)
+	_toast_label.position = Vector2(10, 22)
 	_toast_label.add_theme_color_override("font_outline_color", Color.BLACK)
 	_toast_label.add_theme_constant_override("outline_size", 3)
 	_toast_label.modulate.a = 0.0

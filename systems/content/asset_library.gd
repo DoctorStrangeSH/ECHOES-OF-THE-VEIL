@@ -45,6 +45,19 @@ static func character_layer_path(layer: String, id: String) -> String:
 	return "%s/%s/16x16/%s.png" % [CHARACTER_GENERATOR, layer, id]
 
 
+## File stems of the PNGs in a res:// folder, sorted. Uses ResourceLoader so
+## it also works in exported builds (where files are remapped).
+static func list_png_ids(dir: String) -> PackedStringArray:
+	var out := PackedStringArray()
+	if not DirAccess.dir_exists_absolute(dir):
+		return out
+	for f in ResourceLoader.list_directory(dir):
+		if f.get_extension().to_lower() == "png":
+			out.append(f.get_basename())
+	out.sort()
+	return out
+
+
 ## Solid-colour placeholder with a darker outline, cached by size and colour.
 static func placeholder(size: Vector2i, color: Color) -> Texture2D:
 	var key := "%s|%s" % [size, color.to_html()]

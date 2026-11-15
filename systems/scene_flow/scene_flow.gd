@@ -14,8 +14,10 @@ signal transition_finished
 const LOCATIONS := {
 	&"greyford_block": "res://scenes/locations/greyford_block.tscn",
 	&"rented_room": "res://scenes/locations/rented_room.tscn",
+	&"echo_lantern_row": "res://scenes/locations/echo_lantern_row.tscn",
 }
 const MAIN_MENU := "res://scenes/ui/main_menu.tscn"
+const CHARACTER_CREATOR := "res://scenes/ui/character_creator.tscn"
 const FADE_TIME := 0.25
 
 var is_transitioning := false
@@ -51,8 +53,20 @@ func show_main_menu() -> void:
 	await _transition(_swap_to_menu)
 
 
+## Opens the character creator; it calls begin_new_game() when confirmed.
 func start_new_game() -> void:
+	await _transition(_swap_to_creator)
+
+
+## profile: {name, pronouns, background, appearance: CharacterAppearance}
+func begin_new_game(profile: Dictionary) -> void:
 	GameState.reset_for_new_game()
+	GameState.player_name = String(profile.get("name", "Alex"))
+	GameState.pronouns = String(profile.get("pronouns", "they"))
+	GameState.background = StringName(profile.get("background", "returning_local"))
+	if profile.get("appearance") is CharacterAppearance:
+		GameState.player_appearance = profile["appearance"]
+	GameState.set_flag(StringName("background.%s" % GameState.background), true)
 	enter_game_from_state()
 
 
@@ -84,6 +98,11 @@ func _enter_location(scene_id: StringName) -> void:
 		GameState.pending_position = null
 	await _transition(_swap_to_location.bind(scene_id))
 	location_entered.emit(scene_id)
+
+
+func _swap_to_creator() -> void:
+	_clear_world()
+	_root.show_menu(load(CHARACTER_CREATOR).instantiate())
 
 
 func _swap_to_menu() -> void:

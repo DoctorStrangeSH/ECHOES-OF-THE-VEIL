@@ -133,7 +133,7 @@ func test_localization_complete() -> void:
 
 
 func test_input_actions_registered() -> void:
-	for a in [&"move_up", &"move_down", &"move_left", &"move_right", &"interact", &"pause", &"quick_save", &"quick_load"]:
+	for a in [&"move_up", &"move_down", &"move_left", &"move_right", &"interact", &"attack", &"journal", &"pause", &"quick_save", &"quick_load"]:
 		check(InputMap.has_action(a) and not InputMap.action_get_events(a).is_empty(), "action %s" % a)
 
 
@@ -142,7 +142,7 @@ func test_tile_painter() -> void:
 	check(TilePainter.pick_index(1, 0, 4, Vector2i(2, 2)) == 1, "grid 1,0")
 	check(TilePainter.pick_index(2, 1, 4, Vector2i(2, 2)) == 2, "grid wraps")
 	check(TilePainter.pick_variant(5, 7, 3) == TilePainter.pick_variant(5, 7, 3), "variant stable")
-	for palette_id in ["greyford_exterior", "rented_room"]:
+	for palette_id in ["greyford_exterior", "rented_room", "echo_corridor"]:
 		var palette := TilePainter.load_palette(palette_id)
 		check(not palette.is_empty(), "palette %s exists" % palette_id)
 		var built := TilePainter.build_tileset(palette)
@@ -183,3 +183,161 @@ func test_scene_registry_and_door_targets() -> void:
 		check(spawns.has(d[1]), "door in %s targets known scene %s" % [d[0], d[1]])
 		if spawns.has(d[1]):
 			check(spawns[d[1]].has(d[2]), "door in %s targets existing spawn %s/%s" % [d[0], d[1], d[2]])
+
+
+# --- M2: story systems ---------------------------------------------------------
+
+func test_dialogues_valid() -> void:
+	var problems := DialogueService.validate_all()
+	check(problems.is_empty(), "dialogue problems: %s" % "; ".join(problems))
+
+
+## Every evidence/case/hypothesis/dialogue referenced anywhere must exist.
+func test_story_references() -> void:
+	var refs := []  # [kind, id, where]
+	for id: StringName in DialogueService.dialogues:
+		_collect_refs(DialogueService.dialogues[id], "dialogue %s" % id, refs)
+	for id: StringName in Journal.hypothesis_defs:
+		_collect_refs(Journal.hypothesis_defs[id], "hypothesis %s" % id, refs)
+		for ev: String in Array(Journal.hypothesis_defs[id].get("requires_all", [])) + Array(Journal.hypothesis_defs[id].get("requires_any", [])):
+			refs.append(["evidence", ev, "hypothesis %s" % id])
+	for id: StringName in NpcRegistry.defs():
+		var d: Dictionary = NpcRegistry.get_def(id)
+		refs.append(["dialogue", d.get("dialogue", ""), "npc %s" % id])
+		_collect_refs(d.get("schedule", []), "npc %s" % id, refs)
+	for r: Array in refs:
+		var ok := true
+		match r[0]:
+			"evidence": ok = Journal.evidence_defs.has(StringName(r[1]))
+			"case": ok = Journal.case_defs.has(StringName(r[1]))
+			"hypothesis": ok = Journal.hypothesis_defs.has(StringName(r[1]))
+			"dialogue": ok = DialogueService.has_dialogue(StringName(r[1]))
+			"scene": ok = SceneFlow.has_location(StringName(r[1]))
+		check(ok, "%s references unknown %s '%s'" % [r[2], r[0], r[1]])
+	for id: StringName in Journal.evidence_defs:
+		check(Journal.case_defs.has(StringName(Journal.evidence_defs[id].get("case", ""))), "evidence %s has a known case" % id)
+
+
+func _collect_refs(v: Variant, where: String, out: Array) -> void:
+	if v is Array:
+		for x: Variant in v:
+			_collect_refs(x, where, out)
+	elif v is Dictionary:
+		for k: Variant in v:
+			var a: Variant = v[k]
+			match String(k):
+				"add_evidence", "evidence", "not_evidence":
+					out.append(["evidence", a, where])
+				"quest_start", "quest_active", "quest_done", "not_quest_started":
+					out.append(["case", a, where])
+				"quest_stage", "quest_complete":
+					out.append(["case", a[0], where])
+				"hypothesis", "not_hypothesis":
+					out.append(["hypothesis", a, where])
+				"travel":
+					out.append(["scene", a[0], where])
+				"scene":
+					out.append(["scene", a, where])
+			_collect_refs(a, where, out)
+
+
+func test_story_rules() -> void:
+	GameState.reset_for_new_game()
+	check(StoryRules.evaluate(null), "null is true")
+	check(StoryRules.evaluate({}), "empty is true")
+	check(not StoryRules.evaluate({"flag": "x.test"}), "unset flag false")
+	StoryRules.apply([{"set_flag": "x.test"}, {"relationship": ["mara_venn", 3]}, {"remember": ["mara_venn", "kept_promise"]}])
+	check(StoryRules.evaluate({"flag": "x.test"}), "flag set by effect")
+	check(StoryRules.evaluate({"relationship_at_least": ["mara_venn", 3]}), "relationship")
+	check(StoryRules.evaluate({"remembers": ["mara_venn", "kept_promise"]}), "memory")
+	check(StoryRules.evaluate({"any": [{"flag": "nope"}, {"flag": "x.test"}]}), "any")
+	check(not StoryRules.evaluate({"all": [{"flag": "nope"}, {"flag": "x.test"}]}), "all")
+	check(StoryRules.evaluate({"not": {"flag": "nope"}}), "not")
+	StoryRules.apply({"clear_flag": "x.test"})
+	check(not GameState.has_flag(&"x.test"), "clear_flag")
+	GameState.reset_for_new_game()
+
+
+func test_journal_hypothesis_and_corroboration() -> void:
+	GameState.reset_for_new_game()
+	var h := &"lantern_row_fragment"
+	check(Journal.hypothesis_status(h) == Journal.HYP_LOCKED, "locked at start")
+	Journal.add_evidence(&"e_door_observed")
+	check(Journal.case_status(&"case_door") == Journal.STATUS_ACTIVE, "evidence opens its case")
+	Journal.add_evidence(&"e_mara_lantern_row")
+	check(not Journal.can_form(h), "needs two supporting items")
+	Journal.add_evidence(&"e_city_map")
+	check(Journal.can_form(h), "can form with door + 2")
+	check(Journal.form_hypothesis(h), "formed")
+	check(Journal.hypothesis_status(h) == Journal.HYP_INFERRED, "3 sources = inferred")
+	check(Journal.case_stage(&"case_door") == &"decide", "hypothesis effect advanced the case")
+	Journal.add_evidence(&"e_radio_announcement")
+	check(Journal.hypothesis_status(h) == Journal.HYP_CORROBORATED, "4 independent sources = corroborated")
+	var saved := Journal.to_dict()
+	Journal.reset()
+	Journal.from_dict(JSON.parse_string(JSON.stringify(saved)))
+	check(Journal.is_hypothesis_formed(h) and Journal.has_evidence(&"e_city_map"), "journal survives save")
+	GameState.reset_for_new_game()
+
+
+func test_world_clock() -> void:
+	WorldClock.reset()
+	check(WorldClock.get_period() == "morning", "starts in the morning")
+	check(WorldClock.period_for(0) == "night" and WorldClock.period_for(13 * 60) == "afternoon", "periods")
+	WorldClock.wait_until_hour(18)
+	check(WorldClock.get_hour() == 18 and WorldClock.day == 1, "wait until evening")
+	WorldClock.sleep_until_hour(7)
+	check(WorldClock.get_hour() == 7 and WorldClock.day == 2, "sleep to next morning")
+	check(WorldClock.weather == WorldClock.weather_for_day(2), "weather follows the day")
+	check(WorldClock.weather_for_day(1) == "clear", "day 1 is clear")
+	WorldClock.reset()
+
+
+func test_npc_schedules_resolve_to_real_anchors() -> void:
+	var anchors := {}  # scene_id -> {anchor_id: true}
+	for scene_id: StringName in SceneFlow.LOCATIONS:
+		var root: Node = (load(SceneFlow.LOCATIONS[scene_id]) as PackedScene).instantiate()
+		anchors[scene_id] = {}
+		var stack: Array[Node] = [root]
+		while not stack.is_empty():
+			var n: Node = stack.pop_back()
+			stack.append_array(n.get_children())
+			if n is NpcAnchor:
+				anchors[scene_id][(n as NpcAnchor).anchor_id] = true
+		root.free()
+	for id: StringName in NpcRegistry.defs():
+		for entry: Dictionary in NpcRegistry.get_def(id).get("schedule", []):
+			var sid := StringName(entry.get("scene", ""))
+			check(anchors.has(sid), "%s: known scene %s" % [id, sid])
+			if anchors.has(sid):
+				check(anchors[sid].has(StringName(entry.get("anchor", ""))), "%s: anchor %s exists in %s" % [id, entry.get("anchor"), sid])
+
+
+func test_save_migration_from_v1() -> void:
+	var dir := _fresh_save_dir()
+	var v1 := {
+		"schema_version": 1, "game_version": "0.1.0-m1", "timestamp": 0,
+		"payload": {"flags": {"met.mara_venn": true}, "scene_id": "rented_room", "spawn_id": "from_street",
+			"position": null, "facing": [0, 1], "play_time_seconds": 12.0, "appearance": {}},
+	}
+	DirAccess.make_dir_recursive_absolute(dir)
+	var f := FileAccess.open(SaveService.slot_path(1), FileAccess.WRITE)
+	f.store_string(JSON.stringify(v1))
+	f.close()
+	var r := SaveService.read_slot(1)
+	check(r["ok"], "v1 save readable: %s" % r.get("error"))
+	if r["ok"]:
+		var env: Dictionary = r["envelope"]
+		check(int(env["schema_version"]) == SaveService.SCHEMA_VERSION, "migrated to current schema")
+		check(env["payload"].has("profile") and env["payload"].has("journal"), "new sections added")
+		GameState.from_dict(env["payload"])
+		check(GameState.has_flag(&"met.mara_venn"), "old flags kept")
+		check(GameState.player_name == "Alex", "default profile")
+	GameState.reset_for_new_game()
+	_cleanup(dir)
+
+
+func test_creator_style_parsing() -> void:
+	check(CharacterCreator.style_of("Hairstyle_07_03") == "Hairstyle_07", "hair style")
+	check(CharacterCreator.style_of("Body_03") == "Body_03", "body has no colour variant")
+	check(CharacterCreator.style_of("Accessory_01_Ladybug_02") == "Accessory_01_Ladybug", "accessory")

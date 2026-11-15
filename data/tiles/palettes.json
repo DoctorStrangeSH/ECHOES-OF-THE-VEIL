@@ -1,17 +1,200 @@
 {
   "_doc": "Tile brushes for TilePainter layouts. texture is relative to res://assets/limezu; tiles are atlas cells (16 px) picked deterministically per map cell, or laid out as a repeating block when grid [w, h] is given (row-major); solid adds collision; placeholder is used when the art pack is not imported.",
   "greyford_exterior": {
-    "g": {"texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/1_Terrains_and_Fences_16x16.png", "tiles": [[1, 7]], "placeholder": "#4f8f4a"},
-    "s": {"texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/2_City_Terrains_16x16.png", "tiles": [[10, 1], [11, 1]], "placeholder": "#cfc8b8"},
-    "r": {"texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/2_City_Terrains_16x16.png", "tiles": [[1, 5]], "placeholder": "#4a4a52"},
-    "b": {"texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/1_Terrains_and_Fences_16x16.png", "tiles": [[27, 9], [28, 9], [27, 10], [28, 10]], "grid": [2, 2], "placeholder": "#a87a62"},
-    "o": {"texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/1_Terrains_and_Fences_16x16.png", "tiles": [[25, 9], [26, 9], [25, 10], [26, 10]], "grid": [2, 2], "placeholder": "#8e8e96"},
-    "w": {"texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/1_Terrains_and_Fences_16x16.png", "tiles": [[25, 5], [26, 5], [27, 5]], "solid": true, "placeholder": "#3f8fb4"}
+    "g": {
+      "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/1_Terrains_and_Fences_16x16.png",
+      "tiles": [
+        [
+          1,
+          7
+        ]
+      ],
+      "placeholder": "#4f8f4a"
+    },
+    "s": {
+      "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/2_City_Terrains_16x16.png",
+      "tiles": [
+        [
+          10,
+          1
+        ],
+        [
+          11,
+          1
+        ]
+      ],
+      "placeholder": "#cfc8b8"
+    },
+    "r": {
+      "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/2_City_Terrains_16x16.png",
+      "tiles": [
+        [
+          1,
+          5
+        ]
+      ],
+      "placeholder": "#4a4a52"
+    },
+    "b": {
+      "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/1_Terrains_and_Fences_16x16.png",
+      "tiles": [
+        [
+          27,
+          9
+        ],
+        [
+          28,
+          9
+        ],
+        [
+          27,
+          10
+        ],
+        [
+          28,
+          10
+        ]
+      ],
+      "grid": [
+        2,
+        2
+      ],
+      "placeholder": "#a87a62"
+    },
+    "o": {
+      "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/1_Terrains_and_Fences_16x16.png",
+      "tiles": [
+        [
+          25,
+          9
+        ],
+        [
+          26,
+          9
+        ],
+        [
+          25,
+          10
+        ],
+        [
+          26,
+          10
+        ]
+      ],
+      "grid": [
+        2,
+        2
+      ],
+      "placeholder": "#8e8e96"
+    },
+    "w": {
+      "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/1_Terrains_and_Fences_16x16.png",
+      "tiles": [
+        [
+          25,
+          5
+        ],
+        [
+          26,
+          5
+        ],
+        [
+          27,
+          5
+        ]
+      ],
+      "solid": true,
+      "placeholder": "#3f8fb4"
+    }
   },
   "rented_room": {
-    "f": {"texture": "modern_interiors/1_Interiors/16x16/Room_Builder_16x16.png", "tiles": [[35, 21]], "placeholder": "#b88a4e"},
-    "W": {"texture": "modern_interiors/1_Interiors/16x16/Room_Builder_16x16.png", "tiles": [[12, 11]], "solid": true, "placeholder": "#9a6a3c"},
-    "w": {"texture": "modern_interiors/1_Interiors/16x16/Room_Builder_16x16.png", "tiles": [[12, 12]], "solid": true, "placeholder": "#7c522c"},
-    "#": {"texture": "modern_interiors/1_Interiors/16x16/Room_Builder_16x16.png", "tiles": [[12, 0]], "solid": true, "placeholder": "#23222c"}
+    "f": {
+      "texture": "modern_interiors/1_Interiors/16x16/Room_Builder_16x16.png",
+      "tiles": [
+        [
+          35,
+          21
+        ]
+      ],
+      "placeholder": "#b88a4e"
+    },
+    "W": {
+      "texture": "modern_interiors/1_Interiors/16x16/Room_Builder_16x16.png",
+      "tiles": [
+        [
+          12,
+          11
+        ]
+      ],
+      "solid": true,
+      "placeholder": "#9a6a3c"
+    },
+    "w": {
+      "texture": "modern_interiors/1_Interiors/16x16/Room_Builder_16x16.png",
+      "tiles": [
+        [
+          12,
+          12
+        ]
+      ],
+      "solid": true,
+      "placeholder": "#7c522c"
+    },
+    "#": {
+      "texture": "modern_interiors/1_Interiors/16x16/Room_Builder_16x16.png",
+      "tiles": [
+        [
+          12,
+          0
+        ]
+      ],
+      "solid": true,
+      "placeholder": "#23222c"
+    }
+  },
+  "echo_corridor": {
+    "f": {
+      "texture": "modern_interiors/1_Interiors/16x16/Room_Builder_16x16.png",
+      "tiles": [
+        [
+          35,
+          25
+        ]
+      ],
+      "placeholder": "#6b5a48"
+    },
+    "W": {
+      "texture": "modern_interiors/1_Interiors/16x16/Room_Builder_16x16.png",
+      "tiles": [
+        [
+          23,
+          37
+        ]
+      ],
+      "solid": true,
+      "placeholder": "#cfc59a"
+    },
+    "w": {
+      "texture": "modern_interiors/1_Interiors/16x16/Room_Builder_16x16.png",
+      "tiles": [
+        [
+          23,
+          38
+        ]
+      ],
+      "solid": true,
+      "placeholder": "#4f7a62"
+    },
+    "#": {
+      "texture": "modern_interiors/1_Interiors/16x16/Room_Builder_16x16.png",
+      "tiles": [
+        [
+          12,
+          0
+        ]
+      ],
+      "solid": true,
+      "placeholder": "#1c1b24"
+    }
   }
 }

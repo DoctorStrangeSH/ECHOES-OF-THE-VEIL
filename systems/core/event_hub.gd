@@ -15,3 +15,9 @@ signal interaction_performed(interaction_id: StringName)
 signal flag_changed(flag_id: StringName, value: Variant)
 ## The player's best interaction target changed. Empty prompt = nothing in reach.
 signal interaction_focus_changed(prompt: String)
+## Restore the player's health (e.g. after resting).
+signal player_heal_requested
+## Player health changed (for the HUD). max_health 0 = hide.
+signal player_health_changed(health: int, max_health: int)
+## A relationship value changed.
+signal relationship_changed(npc_id: StringName, value: int)

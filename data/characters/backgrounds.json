@@ -1,0 +1,6 @@
+{
+  "returning_local": {"name": "BG_RETURNING_LOCAL", "desc": "BG_RETURNING_LOCAL_DESC"},
+  "archivist": {"name": "BG_ARCHIVIST", "desc": "BG_ARCHIVIST_DESC"},
+  "repair_technician": {"name": "BG_REPAIR_TECHNICIAN", "desc": "BG_REPAIR_TECHNICIAN_DESC"},
+  "courier": {"name": "BG_COURIER", "desc": "BG_COURIER_DESC"}
+}

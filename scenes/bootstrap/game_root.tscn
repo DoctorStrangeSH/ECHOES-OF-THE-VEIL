@@ -3,17 +3,25 @@
 [ext_resource type="Script" path="res://scenes/bootstrap/game_root.gd" id="1_root"]
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="2_hud"]
 [ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="3_pause"]
+[ext_resource type="Script" path="res://scripts/ui/journal_screen.gd" id="4_journal"]
+[ext_resource type="Script" path="res://scripts/ui/rain_overlay.gd" id="5_rain"]
 
 [node name="GameRoot" type="Node"]
 script = ExtResource("1_root")
 
 [node name="World" type="Node2D" parent="."]
 
+[node name="Rain" type="CanvasLayer" parent="."]
+script = ExtResource("5_rain")
+
 [node name="Hud" type="CanvasLayer" parent="."]
 script = ExtResource("2_hud")
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 script = ExtResource("3_pause")
+
+[node name="Journal" type="CanvasLayer" parent="."]
+script = ExtResource("4_journal")
 
 [node name="MenuLayer" type="CanvasLayer" parent="."]
 layer = 20

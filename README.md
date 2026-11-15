@@ -2,7 +2,7 @@
 
 A single-player, top-down pixel-art narrative RPG built with Godot 4.x.
 
-> **Project status:** M1 — technical proof. A playable prototype exists: main menu, a Greyford street block and the player's rented room, 8-direction movement, interaction, doors between scenes, dialogue, save/load with backups, pause menu, English/Russian text.
+> **Project status:** M2 — Greyford vertical slice. Character creator, six scheduled NPCs, branching dialogue, an investigation journal with evidence provenance and hypotheses, a day clock with weather, a main case with a meaningful choice, a local quest, and the first Veil echo with a short combat encounter. English and Russian.
 
 ## High concept
 
@@ -36,6 +36,9 @@ The player can investigate the mystery while building an independent life throug
 | Move | WASD / arrows | Left stick / D-pad |
 | Sprint | Shift | RB |
 | Interact / next line | E, Enter, Space | A |
+| Dialogue choice | 1–4, arrows + E, mouse | D-pad + A |
+| Journal | Tab | Back |
+| Strike (Veil only) | J, left mouse | X |
 | Pause menu | Esc | Start |
 | Quick save / load | F5 / F9 | — |
 
@@ -45,7 +48,7 @@ The player can investigate the mystery while building an independent life throug
 godot --headless --path . --import
 godot --headless --path . res://tests/test_runner.tscn
 ```
-Exit code 0 means all tests passed. Manual checks: [M1 test plan](docs/technical/m1-test-plan.md).
+Exit code 0 means all tests passed. Manual checks: [M1](docs/technical/m1-test-plan.md), [M2](docs/technical/m2-test-plan.md). Story content map: [Greyford slice](docs/narrative/greyford-slice.md).
 
 ## Technology
 
@@ -74,7 +77,7 @@ Build and validate a small, compelling vertical slice before scaling content. A 
 
 ## Current milestone
 
-**M1 — Technical proof** (in review): engine pinned, boot flow, movement, camera, collision, interaction contract, scene transitions with spawn IDs, versioned save/load with backup, automated tests. Next: **M2 — Greyford vertical slice** (character creator, NPC schedules, journal, first investigation chain).
+**M2 — Greyford vertical slice** (in review). Next: **M3 — Core RPG loop** (combat depth, inventory and equipment, enemy family, miniboss) and external playtests of the slice.
 
 ## License and third-party assets
 

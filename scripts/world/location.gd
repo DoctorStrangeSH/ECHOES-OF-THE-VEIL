@@ -2,19 +2,41 @@ class_name Location
 extends Node2D
 ## Root of every playable place. Expected children:
 ##   Ground (TileMapLayer)        - floor; its used rect defines bounds/camera
+##   FloorDecor (Node2D)          - rugs and other things always under actors
 ##   Entities (Node2D, y-sorted)  - props, NPCs, interactables; the player goes here
 ##   SpawnPoints (Node2D)         - SpawnPoint markers
-## Spawns the player at GameState's pending position or spawn ID and closes
-## the map edges with invisible walls.
+##   NpcAnchors (Node2D, optional)- NpcAnchor markers used by NPC schedules
+## Spawns the player, closes the map edges, places scheduled NPCs, tints the
+## scene for the time of day and optionally starts an entry dialogue.
 
 const PLAYER_SCENE := preload("res://scenes/player/player.tscn")
+const NPC_SCENE := preload("res://scenes/npcs/npc.tscn")
+
+## Outdoor light by hour (interpolated). Interiors use a softer version.
+const TINT_KEYS := [
+	[0, Color(0.42, 0.45, 0.68)], [5, Color(0.48, 0.5, 0.72)], [7, Color(0.95, 0.88, 0.85)],
+	[10, Color(1, 1, 1)], [16, Color(1, 0.98, 0.95)], [19, Color(0.98, 0.8, 0.72)],
+	[21, Color(0.6, 0.58, 0.8)], [24, Color(0.42, 0.45, 0.68)],
+]
 
 @export var location_id: StringName = &""
 @export var name_key: String = ""
+@export var outdoors: bool = true
+## Enables attacking and enemy encounters (Veil locations).
+@export var combat_enabled: bool = false
+## If set, ignores the clock and uses this tint (e.g. the uncanny Veil).
+@export var fixed_tint: Color = Color(0, 0, 0, 0)
 ## Extra tiles of camera room beyond the ground (useful for small rooms).
 @export var camera_margin_tiles: int = 0
+## Dialogue started on entering when `enter_condition` holds (e.g. an intro).
+@export var enter_dialogue_id: StringName = &""
+@export var enter_condition: Dictionary = {}
 
 var player: Player
+var _npcs: Dictionary = {}  # npc_id -> Npc
+var _anchors: Dictionary = {}  # anchor_id -> NpcAnchor
+var _tint: CanvasModulate
+var _npc_refresh_pending := false
 
 @onready var ground: TileMapLayer = $Ground
 @onready var entities: Node2D = $Entities
@@ -24,13 +46,34 @@ func _ready() -> void:
 	entities.y_sort_enabled = true
 	var bounds := _bounds_px()
 	_add_edge_walls(bounds)
+	_tint = CanvasModulate.new()
+	add_child(_tint)
+	_update_tint()
+	for node in get_tree().get_nodes_in_group(&"npc_anchor"):
+		if is_ancestor_of(node):
+			_anchors[(node as NpcAnchor).anchor_id] = node
 	player = PLAYER_SCENE.instantiate()
+	player.combat_enabled = combat_enabled
 	entities.add_child(player)
 	var margin := camera_margin_tiles * AssetLibrary.TILE_SIZE
 	player.set_camera_limits(bounds.grow(margin))
 	_place_player()
+	_refresh_npcs(false)
+	WorldClock.time_changed.connect(_on_time_changed)
+	WorldClock.period_changed.connect(_on_story_changed)
+	EventHub.flag_changed.connect(_on_flag_changed)
+	Journal.case_changed.connect(_on_story_changed)
+	DialogueService.dialogue_ended.connect(_on_dialogue_ended)
 	if not name_key.is_empty():
 		EventHub.toast_requested.emit(tr(name_key))
+	if enter_dialogue_id != &"" and StoryRules.evaluate(enter_condition):
+		_start_enter_dialogue.call_deferred()
+
+
+func _start_enter_dialogue() -> void:
+	if SceneFlow.is_transitioning:
+		await SceneFlow.transition_finished
+	DialogueService.start(enter_dialogue_id)
 
 
 func find_spawn(spawn_id: StringName) -> SpawnPoint:
@@ -46,6 +89,81 @@ func find_spawn(spawn_id: StringName) -> SpawnPoint:
 	if first != null:
 		push_warning("Location %s: spawn '%s' not found, using '%s'" % [location_id, spawn_id, first.spawn_id])
 	return first
+
+
+# --- NPC schedules -------------------------------------------------------------
+
+func _refresh_npcs(animate: bool = true) -> void:
+	for id: StringName in NpcRegistry.defs():
+		var entry := NpcRegistry.resolve(id)
+		var anchor_id := StringName(entry.get("anchor", ""))
+		var here := not entry.is_empty() and StringName(entry.get("scene", "")) == location_id
+		if here and not _anchors.has(anchor_id):
+			push_warning("Location %s: NPC %s wants missing anchor '%s'" % [location_id, id, anchor_id])
+			here = false
+		var found: Variant = _npcs.get(id)
+		var existing: Npc = found as Npc if is_instance_valid(found) else null
+		if existing != null and (not here or existing.anchor_id != anchor_id):
+			_npcs.erase(id)
+			if animate:
+				existing.fade_out_and_free()
+			else:
+				existing.queue_free()
+			existing = null
+		if here and existing == null:
+			var npc: Npc = NPC_SCENE.instantiate()
+			npc.anchor_id = anchor_id
+			npc.position = (_anchors[anchor_id] as Node2D).global_position - entities.global_position
+			entities.add_child(npc)
+			npc.npc_id = id
+			npc.facing = NpcRegistry.facing_of(entry) as LayeredCharacterSprite.Dir
+			_npcs[id] = npc
+			if animate:
+				npc.fade_in()
+
+
+## Story changes during a conversation are applied when it ends, so NPCs do
+## not vanish mid-sentence.
+func _on_story_changed(_arg: Variant = null) -> void:
+	if DialogueService.is_active:
+		_npc_refresh_pending = true
+	else:
+		_refresh_npcs(true)
+
+
+func _on_dialogue_ended(_id: StringName) -> void:
+	if _npc_refresh_pending:
+		_npc_refresh_pending = false
+		_refresh_npcs(true)
+
+
+func _on_flag_changed(_id: StringName, _value: Variant) -> void:
+	_on_story_changed()
+
+
+func _on_time_changed(_minute: int) -> void:
+	_update_tint()
+
+
+# --- Presentation --------------------------------------------------------------
+
+func _update_tint() -> void:
+	if fixed_tint.a > 0.0:
+		_tint.color = fixed_tint
+		return
+	var hour := WorldClock.minute_of_day / 60.0
+	var c: Color = TINT_KEYS[0][1]
+	for i in range(TINT_KEYS.size() - 1):
+		var a: Array = TINT_KEYS[i]
+		var b: Array = TINT_KEYS[i + 1]
+		if hour >= float(a[0]) and hour <= float(b[0]):
+			c = (a[1] as Color).lerp(b[1], (hour - float(a[0])) / maxf(0.001, float(b[0]) - float(a[0])))
+			break
+	if not outdoors:
+		c = c.lerp(Color(1, 0.96, 0.9), 0.65)  # lamps are on indoors
+	elif WorldClock.weather == "rain":
+		c = c * Color(0.82, 0.86, 0.95)
+	_tint.color = c
 
 
 func _place_player() -> void:
