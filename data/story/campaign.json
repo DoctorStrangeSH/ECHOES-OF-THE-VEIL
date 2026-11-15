@@ -102,7 +102,14 @@
    "id": "act5",
    "title": "ACT_5",
    "subtitle": "ACT_5_SUB",
-   "planned": true
+   "begins_if": {
+    "quest_done": "case_index"
+   },
+   "effects": [
+    {
+     "quest_start": "case_anchor"
+    }
+   ]
   }
  ]
 }

@@ -11,6 +11,7 @@ extends Node
 @onready var inventory: InventoryScreen = $Inventory
 @onready var work: WorkScreen = $Work
 @onready var repair: RepairMinigame = $Repair
+@onready var epilogue: EpilogueScreen = $Epilogue
 
 
 func _ready() -> void:
@@ -42,6 +43,12 @@ func _on_screen_requested(screen: String) -> void:
 		await get_tree().process_frame
 	if screen.begins_with("repair:"):
 		repair.start(StringName(screen.trim_prefix("repair:")))
+	elif screen == "epilogue":
+		epilogue.open()
+		await epilogue.finished
+		# The world goes on in its new state: morning, in your room.
+		WorldClock.sleep_until_hour(8)
+		SceneFlow.travel(&"rented_room", &"bed")
 	else:
 		work.open(screen)
 

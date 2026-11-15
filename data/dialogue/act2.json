@@ -212,6 +212,57 @@
       "next": "index1"
      },
      {
+      "text": "ANCHOR_ASK",
+      "if": {
+       "quest_stage": [
+        "case_anchor",
+        "gather"
+       ],
+       "not_flag": "anchor.ally.alderman_penhallow",
+       "all": [
+        {
+         "faction_at_least": [
+          "unwritten",
+          3
+         ]
+        }
+       ]
+      },
+      "effects": [
+       {
+        "set_flag": "anchor.ally.alderman_penhallow"
+       },
+       {
+        "relationship": [
+         "alderman_penhallow",
+         1
+        ]
+       }
+      ],
+      "next": "anchor_yes"
+     },
+     {
+      "text": "ANCHOR_ASK",
+      "if": {
+       "quest_stage": [
+        "case_anchor",
+        "gather"
+       ],
+       "not_flag": "anchor.ally.alderman_penhallow",
+       "all": [
+        {
+         "not": {
+          "faction_at_least": [
+           "unwritten",
+           3
+          ]
+         }
+        }
+       ]
+      },
+      "next": "anchor_no"
+     },
+     {
       "text": "BYE",
       "next": null
      }
@@ -273,6 +324,16 @@
       ]
      }
     ],
+    "next": "hub"
+   },
+   "anchor_yes": {
+    "speaker": "NPC_ALDERMAN",
+    "text": "ANCHOR_YES_ALDERMAN",
+    "next": "hub"
+   },
+   "anchor_no": {
+    "speaker": "NPC_ALDERMAN",
+    "text": "ANCHOR_NO_ALDERMAN",
     "next": "hub"
    }
   }
@@ -687,6 +748,51 @@
       "next": "final1"
      },
      {
+      "text": "ANCHOR_ASK",
+      "if": {
+       "quest_stage": [
+        "case_anchor",
+        "gather"
+       ],
+       "not_flag": "anchor.ally.sera_vale",
+       "all": [
+        {
+         "flag": "vale.turned"
+        }
+       ]
+      },
+      "effects": [
+       {
+        "set_flag": "anchor.ally.sera_vale"
+       },
+       {
+        "relationship": [
+         "sera_vale",
+         1
+        ]
+       }
+      ],
+      "next": "anchor_yes"
+     },
+     {
+      "text": "ANCHOR_ASK",
+      "if": {
+       "quest_stage": [
+        "case_anchor",
+        "gather"
+       ],
+       "not_flag": "anchor.ally.sera_vale",
+       "all": [
+        {
+         "not": {
+          "flag": "vale.turned"
+         }
+        }
+       ]
+      },
+      "next": "anchor_no"
+     },
+     {
       "text": "BYE",
       "next": null
      }
@@ -883,6 +989,16 @@
     "speaker": "NPC_VALE",
     "text": "VALE_STOPPED",
     "next": null
+   },
+   "anchor_yes": {
+    "speaker": "NPC_VALE",
+    "text": "ANCHOR_YES_SERA",
+    "next": "hub"
+   },
+   "anchor_no": {
+    "speaker": "NPC_VALE",
+    "text": "ANCHOR_NO_SERA",
+    "next": "hub"
    }
   }
  },
@@ -1159,6 +1275,65 @@
       "next": "home"
      },
      {
+      "text": "ANCHOR_ASK",
+      "if": {
+       "quest_stage": [
+        "case_anchor",
+        "gather"
+       ],
+       "not_flag": "anchor.ally.jonah_rook",
+       "all": [
+        {
+         "any": [
+          {
+           "flag": "rel.jonah_rook.friend"
+          },
+          {
+           "flag": "rosalind.reunited"
+          }
+         ]
+        }
+       ]
+      },
+      "effects": [
+       {
+        "set_flag": "anchor.ally.jonah_rook"
+       },
+       {
+        "relationship": [
+         "jonah_rook",
+         1
+        ]
+       }
+      ],
+      "next": "anchor_yes"
+     },
+     {
+      "text": "ANCHOR_ASK",
+      "if": {
+       "quest_stage": [
+        "case_anchor",
+        "gather"
+       ],
+       "not_flag": "anchor.ally.jonah_rook",
+       "all": [
+        {
+         "not": {
+          "any": [
+           {
+            "flag": "rel.jonah_rook.friend"
+           },
+           {
+            "flag": "rosalind.reunited"
+           }
+          ]
+         }
+        }
+       ]
+      },
+      "next": "anchor_no"
+     },
+     {
       "text": "CAMP_KEEP_GOING",
       "next": null
      }
@@ -1173,6 +1348,16 @@
     "speaker": "NPC_JONAH",
     "text": "CAMP_JONAH_HOME",
     "next": null
+   },
+   "anchor_yes": {
+    "speaker": "NPC_JONAH",
+    "text": "ANCHOR_YES_JONAH",
+    "next": "hub"
+   },
+   "anchor_no": {
+    "speaker": "NPC_JONAH",
+    "text": "ANCHOR_NO_JONAH",
+    "next": "hub"
    }
   }
  },
@@ -1195,6 +1380,57 @@
        }
       ],
       "next": "home"
+     },
+     {
+      "text": "ANCHOR_ASK",
+      "if": {
+       "quest_stage": [
+        "case_anchor",
+        "gather"
+       ],
+       "not_flag": "anchor.ally.mara_venn",
+       "all": [
+        {
+         "relationship_at_least": [
+          "mara_venn",
+          2
+         ]
+        }
+       ]
+      },
+      "effects": [
+       {
+        "set_flag": "anchor.ally.mara_venn"
+       },
+       {
+        "relationship": [
+         "mara_venn",
+         1
+        ]
+       }
+      ],
+      "next": "anchor_yes"
+     },
+     {
+      "text": "ANCHOR_ASK",
+      "if": {
+       "quest_stage": [
+        "case_anchor",
+        "gather"
+       ],
+       "not_flag": "anchor.ally.mara_venn",
+       "all": [
+        {
+         "not": {
+          "relationship_at_least": [
+           "mara_venn",
+           2
+          ]
+         }
+        }
+       ]
+      },
+      "next": "anchor_no"
      },
      {
       "text": "CAMP_KEEP_GOING",
@@ -1221,6 +1457,16 @@
      }
     ],
     "next": null
+   },
+   "anchor_yes": {
+    "speaker": "NPC_MARA",
+    "text": "ANCHOR_YES_MARA",
+    "next": "hub"
+   },
+   "anchor_no": {
+    "speaker": "NPC_MARA",
+    "text": "ANCHOR_NO_MARA",
+    "next": "hub"
    }
   },
   "entries": [

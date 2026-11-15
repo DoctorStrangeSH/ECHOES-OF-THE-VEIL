@@ -76,9 +76,9 @@ This roadmap is milestone-based, not a promise of fixed calendar dates. Estimate
 
 **Exit gate:** a second region can be produced faster and with fewer bespoke code changes than the first.
 
-## M7 — Campaign production (in progress: Acts I–IV implemented — see campaign-plan.md)
+## M7 — Campaign production (campaign playable new game → ending; M7g polish pass next — see campaign-plan.md)
 
-Stages: M7a Act I · M7b Act II · M7c Act III · M7d Act IV · M7e quest system and challenge rework (done) → **M7f Act V and endings** (next) → M7g campaign pass.
+Stages: M7a Act I · M7b Act II · M7c Act III · M7d Act IV · M7e quest system and challenge rework · M7f Act V and endings (done) → **M7g campaign pass** (next: balance, a full manual playthrough per difficulty, companion personal quests).
 
 ### M7e — Quest system and challenge rework (implemented)
 

@@ -1,0 +1,94 @@
+{
+ "cases": {
+  "case_anchor": {
+   "main": true,
+   "title": "CASE_AN_TITLE",
+   "summary": "CASE_AN_SUMMARY",
+   "first_stage": "gather",
+   "stages": {
+    "gather": "CASE_AN_GATHER",
+    "confront": "CASE_AN_CONFRONT",
+    "choose": "CASE_AN_CHOOSE"
+   },
+   "transitions": {
+    "gather": [
+     "confront"
+    ],
+    "confront": [
+     "choose"
+    ]
+   },
+   "outcomes": {
+    "open_record": "CASE_AN_OPEN",
+    "custodians": "CASE_AN_CUSTODIANS",
+    "accord": "CASE_AN_ACCORD"
+   },
+   "objectives": {
+    "gather": [
+     {
+      "id": "allies",
+      "text": "OBJ_AN_ALLIES",
+      "optional": true,
+      "progress": [
+       {
+        "flag": "anchor.ally.jonah_rook"
+       },
+       {
+        "flag": "anchor.ally.mara_venn"
+       },
+       {
+        "flag": "anchor.ally.ivo_calder"
+       },
+       {
+        "flag": "anchor.ally.nadiya_sol"
+       },
+       {
+        "flag": "anchor.ally.sera_vale"
+       },
+       {
+        "flag": "anchor.ally.alderman_penhallow"
+       }
+      ],
+      "need": 3
+     },
+     {
+      "id": "down",
+      "text": "OBJ_AN_DOWN",
+      "done_if": {
+       "flag": "anchor.entered"
+      }
+     }
+    ],
+    "confront": [
+     {
+      "id": "wren",
+      "text": "OBJ_AN_WREN",
+      "done_if": {
+       "flag": "boss.director.defeated"
+      }
+     }
+    ],
+    "choose": [
+     {
+      "id": "choose",
+      "text": "OBJ_AN_CHOOSE",
+      "done_if": {
+       "quest_done": "case_anchor"
+      }
+     }
+    ]
+   }
+  }
+ },
+ "evidence": {
+  "e_wren_plan": {
+   "case": "case_anchor",
+   "kind": "reported",
+   "source": "elias_wren",
+   "source_name": "NPC_WREN",
+   "title": "EV_WREN_PLAN_TITLE",
+   "body": "EV_WREN_PLAN_BODY"
+  }
+ },
+ "hypotheses": {}
+}

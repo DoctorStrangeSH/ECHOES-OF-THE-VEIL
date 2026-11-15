@@ -208,6 +208,20 @@ for a in CAMPAIGN.get('acts', []):
         key(a.get(k), f'act {a.get("id")}')
     walk(a.get('begins_if', {}), f'act {a.get("id")}')
     walk(a.get('effects', []), f'act {a.get("id")}')
+EPI = load('data/story/epilogues.json') if os.path.exists('data/story/epilogues.json') else {}
+for e in EPI.get('endings', []):
+    key(e.get('title'), 'epilogue'); key(e.get('text'), 'epilogue')
+    if e.get('id') not in J['cases'].get('case_anchor', {}).get('outcomes', {}):
+        err(f'epilogue ending {e.get("id")} is not an outcome of case_anchor')
+groups = defaultdict(list)
+for c in EPI.get('cards', []):
+    key(c.get('title'), 'epilogue card'); key(c.get('text'), 'epilogue card')
+    walk(c.get('if', {}), 'epilogue card')
+    groups[c.get('group')].append(c)
+for g, cs in groups.items():
+    if any('if' not in c for c in cs[:-1]):
+        err(f'epilogue group {g}: a card without a condition must come last')
+
 # --- D-052: no progress by waiting; every stage reachable by player action ----
 targets = set()  # (case, stage) moved to by an effect, evidence or hypothesis
 
@@ -395,7 +409,7 @@ def screen_ok(s):
         return s[5:] in SHOPS
     if s.startswith('repair:'):
         return s[7:] in JOBS
-    return s in ('jobs', 'workbench', 'business')
+    return s in ('jobs', 'workbench', 'business', 'epilogue')
 
 CHECK = {
     'evidence': lambda a: a in J['evidence'], 'case': lambda a: a in J['cases'], 'hyp': lambda a: a in J['hypotheses'],

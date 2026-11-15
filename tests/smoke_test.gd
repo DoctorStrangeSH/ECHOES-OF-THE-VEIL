@@ -363,7 +363,6 @@ func _ready() -> void:
 	_assert(Journal.form_hypothesis(&"the_lattice"), "the Index is a prison made of remembrance")
 	await _talk(&"vale", {"npc": &"sera_vale"}, ["VALE_FINAL", "VALE_SHOW_TRUTH"])
 	_assert(Journal.case_status(&"case_index") == Journal.STATUS_DONE and GameState.has_flag(&"vale.turned"), "Vale turned")
-	_assert(Campaign.current_act() == &"act4", "act V is not out yet")
 
 	_step = "fainting leaves a satchel"
 	SceneFlow.travel(&"ward_depot", &"entrance")
@@ -383,6 +382,45 @@ func _ready() -> void:
 	if bag != null:
 		bag._on_interact(get_tree().get_first_node_in_group(&"player"))
 	_assert(Inventory.money == 30 and GameState.satchel.is_empty(), "and can be picked up")
+
+	_step = "act V: what we choose to remember"
+	_assert(Campaign.current_act() == &"act5" and Journal.case_stage(&"case_anchor") == &"gather", "act V begins")
+	await _wait_card()
+	await _talk(&"jonah", {"npc": &"jonah_rook"}, ["ANCHOR_ASK"])
+	await _talk(&"vale", {"npc": &"sera_vale"}, ["ANCHOR_ASK"])
+	_assert(GameState.has_flag(&"anchor.ally.jonah_rook") and GameState.has_flag(&"anchor.ally.sera_vale"), "allies stand with you")
+	SceneFlow.travel(&"keepers_rooms", &"stairs")
+	await _wait_location(&"keepers_rooms")
+	await _frames(5)
+	_assert(_visible_in_location(&"AnchorDescent"), "the way down")
+	SceneFlow.travel(&"the_anchor", &"entrance")
+	await _wait_location(&"the_anchor")
+	await _frames(10)
+	await _finish_dialogue()
+	_assert(Journal.case_stage(&"case_anchor") == &"confront", "Wren's plan")
+	var director := _find_node_of(SceneFlow.current_location, "Director") as Director
+	_assert(director != null, "the Director waits")
+	if director != null:
+		director.engage()
+		for i in 900:
+			await _frames(4)
+			if not is_instance_valid(director) or director.state == Director.State.DEAD:
+				break
+			EventHub.player_heal_requested_amount.emit(5)
+			director.health.take_damage(1, director.global_position + Vector2(12, 0))
+	await _frames(40)
+	_assert(GameState.has_flag(&"boss.director.defeated"), "Wren is stopped")
+	await _talk(&"anchor_heart", {}, ["ENDING_OPEN_CHOICE"])
+	await _frames(10)
+	var epi := get_child(0).get_node("Epilogue") as EpilogueScreen
+	_assert(epi.is_open() and Journal.case_status(&"case_anchor") == Journal.STATUS_DONE, "the epilogue")
+	for i in 40:
+		if not epi.is_open():
+			break
+		epi.next()
+		await _frames(2)
+	await _wait_location(&"rented_room")
+	_assert(GameState.has_flag(&"game.completed") and GameState.has_flag(&"ending.open_record"), "the world goes on after the ending")
 	SceneFlow.travel(&"greyford_block", &"ward_return")
 	await _wait_location(&"greyford_block")
 	WorldClock.wait_until_hour(9)

@@ -148,3 +148,37 @@ target_spawn_id = &"keepers_return"
 position = Vector2(192, 144)
 script = ExtResource("11_anchor")
 anchor_id = &"council"
+
+[node name="AnchorFrame" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(336, 120)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_240.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.627,0.565,0.753, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Shimmer" type="Node" parent="Entities/AnchorFrame"]
+script = ExtResource("9_shimmer")
+
+[node name="Condition" type="Node" parent="Entities/AnchorFrame"]
+script = ExtResource("10_cond")
+show_if = {"flag": "act.act5"}
+
+[node name="AnchorDescent" type="Area2D" parent="Entities"]
+position = Vector2(336, 128)
+script = ExtResource("6_door")
+interaction_id = &"door_keepers_anchor"
+area_size = Vector2(20, 14)
+prompt_key = "PROMPT_ANCHOR"
+target_scene_id = &"the_anchor"
+target_spawn_id = &"entrance"
+
+[node name="Condition" type="Node" parent="Entities/AnchorDescent"]
+script = ExtResource("10_cond")
+show_if = {"flag": "act.act5"}
+
+[node name="AnchorReturn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(336, 148)
+script = ExtResource("4_spawn")
+spawn_id = &"anchor_return"
+facing = Vector2(0, 1)

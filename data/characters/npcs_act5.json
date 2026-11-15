@@ -1,0 +1,21 @@
+{
+ "elias_wren": {
+  "name": "NPC_WREN",
+  "premade": "Premade_Character_07",
+  "color": "#505060",
+  "dialogue": "wren",
+  "factions": [
+   "civic"
+  ],
+  "schedule": [
+   {
+    "if": {
+     "flag": "boss.director.defeated"
+    },
+    "scene": "the_anchor",
+    "anchor": "heart",
+    "facing": "down"
+   }
+  ]
+ }
+}

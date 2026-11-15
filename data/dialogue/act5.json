@@ -1,0 +1,433 @@
+{
+ "anchor_enter": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "ANCHOR_ENTER_1",
+    "next": "2"
+   },
+   "2": {
+    "speaker": "NPC_WREN",
+    "text": "ANCHOR_ENTER_2",
+    "next": "3"
+   },
+   "3": {
+    "speaker": "NPC_WREN",
+    "text": "ANCHOR_ENTER_3",
+    "next": "4"
+   },
+   "4": {
+    "speaker": "NPC_WREN",
+    "text": "ANCHOR_ENTER_4",
+    "effects": [
+     {
+      "set_flag": "anchor.entered"
+     },
+     {
+      "add_evidence": "e_wren_plan"
+     },
+     {
+      "quest_stage": [
+       "case_anchor",
+       "confront"
+      ]
+     }
+    ],
+    "next": null
+   }
+  }
+ },
+ "anchor_heart": {
+  "entries": [
+   {
+    "if": {
+     "quest_stage": [
+      "case_anchor",
+      "confront"
+     ],
+     "flag": "boss.director.defeated"
+    },
+    "node": "h1"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_anchor",
+      "choose"
+     ]
+    },
+    "node": "choose"
+   },
+   {
+    "if": {
+     "quest_done": "case_anchor"
+    },
+    "node": "after"
+   }
+  ],
+  "start": "idle",
+  "nodes": {
+   "idle": {
+    "text": "HEART_IDLE",
+    "next": null
+   },
+   "after": {
+    "text": "HEART_AFTER",
+    "next": null
+   },
+   "h1": {
+    "speaker": "NPC_WREN",
+    "text": "HEART_WREN_1",
+    "next": "h2"
+   },
+   "h2": {
+    "text": "HEART_2",
+    "effects": [
+     {
+      "quest_stage": [
+       "case_anchor",
+       "choose"
+      ]
+     }
+    ],
+    "next": "choose"
+   },
+   "choose": {
+    "text": "HEART_CHOOSE",
+    "choices": [
+     {
+      "text": "ENDING_OPEN_CHOICE",
+      "effects": [
+       {
+        "quest_complete": [
+         "case_anchor",
+         "open_record"
+        ]
+       },
+       {
+        "set_flag": "ending.open_record"
+       },
+       {
+        "set_flag": "game.completed"
+       },
+       {
+        "faction": [
+         "open_hand",
+         2
+        ]
+       },
+       {
+        "faction": [
+         "keepers",
+         -2
+        ]
+       },
+       {
+        "faction": [
+         "civic",
+         -2
+        ]
+       },
+       {
+        "save_game": true
+       },
+       {
+        "open_screen": "epilogue"
+       }
+      ],
+      "next": "said_open"
+     },
+     {
+      "text": "ENDING_CUSTODIANS_CHOICE",
+      "effects": [
+       {
+        "quest_complete": [
+         "case_anchor",
+         "custodians"
+        ]
+       },
+       {
+        "set_flag": "ending.custodians"
+       },
+       {
+        "set_flag": "game.completed"
+       },
+       {
+        "faction": [
+         "keepers",
+         2
+        ]
+       },
+       {
+        "faction": [
+         "civic",
+         1
+        ]
+       },
+       {
+        "faction": [
+         "unwritten",
+         -1
+        ]
+       },
+       {
+        "save_game": true
+       },
+       {
+        "open_screen": "epilogue"
+       }
+      ],
+      "next": "said_custodians"
+     },
+     {
+      "text": "ENDING_ACCORD_CHOICE",
+      "if": {
+       "faction_at_least": [
+        "unwritten",
+        4
+       ],
+       "all": [
+        {
+         "count_at_least": [
+          [
+           {
+            "flag": "site.hospital.true"
+           },
+           {
+            "flag": "site.home.true"
+           },
+           {
+            "flag": "site.station.true"
+           }
+          ],
+          2
+         ]
+        },
+        {
+         "count_at_least": [
+          [
+           {
+            "flag": "anchor.ally.jonah_rook"
+           },
+           {
+            "flag": "anchor.ally.mara_venn"
+           },
+           {
+            "flag": "anchor.ally.ivo_calder"
+           },
+           {
+            "flag": "anchor.ally.nadiya_sol"
+           },
+           {
+            "flag": "anchor.ally.sera_vale"
+           },
+           {
+            "flag": "anchor.ally.alderman_penhallow"
+           }
+          ],
+          3
+         ]
+        },
+        {
+         "count_at_least": [
+          [
+           {
+            "flag": "rosalind.reunited"
+           },
+           {
+            "flag": "world.theo_remembers"
+           },
+           {
+            "flag": "world.lamp_counts"
+           },
+           {
+            "flag": "halloway.heard_bea"
+           },
+           {
+            "flag": "ward.ellie_hopes"
+           },
+           {
+            "flag": "ward.abel_message"
+           },
+           {
+            "quest_outcome": [
+             "case_two_maps",
+             "shared"
+            ]
+           }
+          ],
+          3
+         ]
+        }
+       ]
+      },
+      "effects": [
+       {
+        "quest_complete": [
+         "case_anchor",
+         "accord"
+        ]
+       },
+       {
+        "set_flag": "ending.accord"
+       },
+       {
+        "set_flag": "game.completed"
+       },
+       {
+        "faction": [
+         "unwritten",
+         2
+        ]
+       },
+       {
+        "faction": [
+         "keepers",
+         1
+        ]
+       },
+       {
+        "faction": [
+         "open_hand",
+         1
+        ]
+       },
+       {
+        "save_game": true
+       },
+       {
+        "open_screen": "epilogue"
+       }
+      ],
+      "next": "said_accord"
+     },
+     {
+      "text": "ENDING_ACCORD_TRY",
+      "if": {
+       "not": {
+        "faction_at_least": [
+         "unwritten",
+         4
+        ],
+        "all": [
+         {
+          "count_at_least": [
+           [
+            {
+             "flag": "site.hospital.true"
+            },
+            {
+             "flag": "site.home.true"
+            },
+            {
+             "flag": "site.station.true"
+            }
+           ],
+           2
+          ]
+         },
+         {
+          "count_at_least": [
+           [
+            {
+             "flag": "anchor.ally.jonah_rook"
+            },
+            {
+             "flag": "anchor.ally.mara_venn"
+            },
+            {
+             "flag": "anchor.ally.ivo_calder"
+            },
+            {
+             "flag": "anchor.ally.nadiya_sol"
+            },
+            {
+             "flag": "anchor.ally.sera_vale"
+            },
+            {
+             "flag": "anchor.ally.alderman_penhallow"
+            }
+           ],
+           3
+          ]
+         },
+         {
+          "count_at_least": [
+           [
+            {
+             "flag": "rosalind.reunited"
+            },
+            {
+             "flag": "world.theo_remembers"
+            },
+            {
+             "flag": "world.lamp_counts"
+            },
+            {
+             "flag": "halloway.heard_bea"
+            },
+            {
+             "flag": "ward.ellie_hopes"
+            },
+            {
+             "flag": "ward.abel_message"
+            },
+            {
+             "quest_outcome": [
+              "case_two_maps",
+              "shared"
+             ]
+            }
+           ],
+           3
+          ]
+         }
+        ]
+       }
+      },
+      "next": "accord_no"
+     }
+    ]
+   },
+   "accord_no": {
+    "text": "HEART_ACCORD_NO",
+    "next": "choose"
+   },
+   "said_open": {
+    "text": "HEART_SAID_OPEN",
+    "next": null
+   },
+   "said_custodians": {
+    "text": "HEART_SAID_CUSTODIANS",
+    "next": null
+   },
+   "said_accord": {
+    "text": "HEART_SAID_ACCORD",
+    "next": null
+   }
+  }
+ },
+ "wren": {
+  "entries": [
+   {
+    "if": {
+     "quest_done": "case_anchor"
+    },
+    "node": "after"
+   }
+  ],
+  "start": "before",
+  "nodes": {
+   "before": {
+    "speaker": "NPC_WREN",
+    "text": "WREN_KNEEL",
+    "next": null
+   },
+   "after": {
+    "speaker": "NPC_WREN",
+    "text": "WREN_AFTER",
+    "next": null
+   }
+  }
+ }
+}

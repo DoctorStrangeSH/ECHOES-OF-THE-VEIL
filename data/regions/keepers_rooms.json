@@ -13,6 +13,9 @@
   {"template": "row", "prop": {"tex": "@living/87.png", "color": "#f0d090", "col": [8, 6], "off": [0, -3]}, "at": {"xs": [128, 256], "y": 72}, "name": "Lamp"},
   {"kind": "spawn", "name": "Stairs", "id": "stairs", "x": 192, "y": 168, "facing": [0, -1]},
   {"kind": "door", "name": "StairsUp", "id": "door_keepers_up", "x": 192, "y": 184, "area": [30, 10], "scene": "municipal_archive", "spawn": "keepers_return", "prompt": "PROMPT_STAIRS_UP"},
-  {"template": "anchors", "points": {"council": [192, 144]}}
+  {"template": "anchors", "points": {"council": [192, 144]}},
+  {"kind": "prop", "name": "AnchorFrame", "tex": "@basement/240.png", "x": 336, "y": 120, "col": [0, 0], "off": [0, 0], "color": "#a090c0", "children": ["Shimmer"], "show_if": {"flag": "act.act5"}},
+  {"kind": "door", "name": "AnchorDescent", "id": "door_keepers_anchor", "x": 336, "y": 128, "area": [20, 14], "scene": "the_anchor", "spawn": "entrance", "prompt": "PROMPT_ANCHOR", "show_if": {"flag": "act.act5"}},
+  {"kind": "spawn", "name": "AnchorReturn", "id": "anchor_return", "x": 336, "y": 148, "facing": [0, 1]}
  ]
 }

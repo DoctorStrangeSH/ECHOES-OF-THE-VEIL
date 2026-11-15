@@ -8,6 +8,20 @@
   "schedule": [
    {
     "if": {
+     "flag": "anchor.ally.mara_venn",
+     "quest_active": "case_anchor",
+     "all": [
+      {
+       "flag": "anchor.entered"
+      }
+     ]
+    },
+    "scene": "the_anchor",
+    "anchor": "ally_mara_venn",
+    "facing": "up"
+   },
+   {
+    "if": {
      "flag": "act3.confessor_mara",
      "quest_stage": [
       "case_kindness",
@@ -71,6 +85,20 @@
   "dialogue": "jonah",
   "schedule": [
    {
+    "if": {
+     "flag": "anchor.ally.jonah_rook",
+     "quest_active": "case_anchor",
+     "all": [
+      {
+       "flag": "anchor.entered"
+      }
+     ]
+    },
+    "scene": "the_anchor",
+    "anchor": "ally_jonah_rook",
+    "facing": "up"
+   },
+   {
     "period": "morning",
     "scene": "greyford_block",
     "anchor": "harbor_rail_east",
@@ -129,6 +157,20 @@
   "schedule": [
    {
     "if": {
+     "flag": "anchor.ally.ivo_calder",
+     "quest_active": "case_anchor",
+     "all": [
+      {
+       "flag": "anchor.entered"
+      }
+     ]
+    },
+    "scene": "the_anchor",
+    "anchor": "ally_ivo_calder",
+    "facing": "up"
+   },
+   {
+    "if": {
      "flag": "act3.confessor_ivo",
      "quest_stage": [
       "case_kindness",
@@ -162,6 +204,20 @@
   "color": "#c9b06a",
   "dialogue": "nadiya",
   "schedule": [
+   {
+    "if": {
+     "flag": "anchor.ally.nadiya_sol",
+     "quest_active": "case_anchor",
+     "all": [
+      {
+       "flag": "anchor.entered"
+      }
+     ]
+    },
+    "scene": "the_anchor",
+    "anchor": "ally_nadiya_sol",
+    "facing": "up"
+   },
    {
     "if": {
      "any": [

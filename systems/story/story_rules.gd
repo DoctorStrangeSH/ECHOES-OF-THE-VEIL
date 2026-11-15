@@ -9,7 +9,7 @@ extends RefCounted
 ##   {"hypothesis": "id"}  {"not_hypothesis": "id"}
 ##   {"companion": "id" | ""}  {"can_join": "id"}
 ##   {"quest_outcome": ["id", "outcome"]}  {"verdict": ["e", "edited"]}  {"judged": ["e1", ...]}
-##   {"verdicts_correct_at_least": [["e1", "e2", "e3"], 2]}
+##   {"verdicts_correct_at_least": [["e1", "e2", "e3"], 2]}  {"count_at_least": [[c1, c2, ...], n]}
 ##   {"quest_active": "id"}  {"quest_done": "id"}  {"quest_failed": "id"}  {"quest_stage": ["id", "stage"]} (open cases only)
 ##   {"not_quest_started": "id"}
 ##   {"period": "night" | ["morning", "afternoon"]}  {"weather": "rain"}
@@ -78,6 +78,12 @@ static func _check(key: String, arg: Variant) -> bool:
 			return Party.companion == StringName(arg)
 		"can_join":
 			return Party.can_join(StringName(arg))
+		"count_at_least":  # [[cond, cond, ...], n]: at least n of the conditions hold
+			var n := 0
+			for c: Variant in arg[0]:
+				if evaluate(c):
+					n += 1
+			return n >= int(arg[1])
 		"quest_failed":
 			return Journal.case_status(StringName(arg)) == Journal.STATUS_FAILED
 		"verdict":  # ["evidence", "authentic" | "edited" | "unreliable"]
