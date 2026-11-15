@@ -124,6 +124,15 @@
   "entries": [
    {
     "if": {
+     "quest_stage": [
+      "case_inc_names",
+      "report"
+     ]
+    },
+    "node": "inc_names"
+   },
+   {
+    "if": {
      "not_flag": "met.alderman"
     },
     "node": "intro1"
@@ -335,6 +344,43 @@
     "speaker": "NPC_ALDERMAN",
     "text": "ANCHOR_NO_ALDERMAN",
     "next": "hub"
+   },
+   "inc_names": {
+    "speaker": "NPC_ALDERMAN",
+    "text": "CASE_INC_NAMES_DONE_LINE",
+    "effects": [
+     {
+      "quest_complete": [
+       "case_inc_names",
+       "resolved"
+      ]
+     },
+     {
+      "relationship": [
+       "alderman_penhallow",
+       1
+      ]
+     },
+     {
+      "faction": [
+       "unwritten",
+       2
+      ]
+     },
+     {
+      "give_item": [
+       "veil_shard",
+       3
+      ]
+     },
+     {
+      "give_resonance": 4
+     },
+     {
+      "give_money": 15
+     }
+    ],
+    "next": null
    }
   }
  },
@@ -627,6 +673,15 @@
  },
  "vale": {
   "entries": [
+   {
+    "if": {
+     "quest_stage": [
+      "case_inc_patrol",
+      "report"
+     ]
+    },
+    "node": "inc_patrol"
+   },
    {
     "if": {
      "not_flag": "met.sera_vale"
@@ -999,6 +1054,43 @@
     "speaker": "NPC_VALE",
     "text": "ANCHOR_NO_SERA",
     "next": "hub"
+   },
+   "inc_patrol": {
+    "speaker": "NPC_VALE",
+    "text": "CASE_INC_PATROL_DONE_LINE",
+    "effects": [
+     {
+      "quest_complete": [
+       "case_inc_patrol",
+       "resolved"
+      ]
+     },
+     {
+      "relationship": [
+       "sera_vale",
+       1
+      ]
+     },
+     {
+      "faction": [
+       "unwritten",
+       1
+      ]
+     },
+     {
+      "give_item": [
+       "veil_shard",
+       3
+      ]
+     },
+     {
+      "give_resonance": 4
+     },
+     {
+      "give_money": 15
+     }
+    ],
+    "next": null
    }
   }
  },

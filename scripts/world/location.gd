@@ -62,6 +62,7 @@ func _ready() -> void:
 	_refresh_npcs(false)
 	_refresh_follower()
 	_place_satchel()
+	Incidents.populate(self)
 	Party.companion_changed.connect(_on_companion_changed)
 	WorldClock.time_changed.connect(_on_time_changed)
 	WorldClock.period_changed.connect(_on_story_changed)

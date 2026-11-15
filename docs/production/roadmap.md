@@ -113,7 +113,7 @@ Owner's direction (2026-11-15): the game must not play itself. No story progress
 
 **Exit gate:** endgame offers distinct decisions and encounters, not merely inflated enemy health or repetitive chores.
 
-Stages: **M8a (done)** expeditions: a rift in the Echo Ward after the ending, three runs a day (1–3 modifiers), four sites, rematch bosses whose mechanics combine with the run's modifiers, Veil shards → shard trinkets, the 8-page Index · M8b world incidents (events in Greyford after the ending that change the board and the town) · M8c NG+ decision (only if it adds variation). Debug builds also get a main-menu "start at act N / endgame" for testing (`data/debug/act_starts.json`).
+Stages: **M8a (done)** expeditions: a rift in the Echo Ward after the ending, three runs a day (1–3 modifiers), four sites, rematch bosses whose mechanics combine with the run's modifiers, Veil shards → shard trinkets, the 8-page Index · **M8b (done)** world incidents: after the ending, every few days the Veil acts up in one Veil location (six incidents, three of them only under one ending); clear the echoes within three days and report, or the case fails with lasting consequences · M8c NG+ decision (only if it adds variation). Debug builds also get a main-menu "start at act N / endgame" for testing (`data/debug/act_starts.json`).
 
 ## M9 — Release readiness
 **Build**

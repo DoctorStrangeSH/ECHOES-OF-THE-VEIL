@@ -4,6 +4,15 @@
    {
     "if": {
      "quest_stage": [
+      "case_inc_lanterns",
+      "report"
+     ]
+    },
+    "node": "inc_lanterns"
+   },
+   {
+    "if": {
+     "quest_stage": [
       "case_kindness",
       "truth"
      ],
@@ -926,11 +935,57 @@
     "speaker": "NPC_MARA",
     "text": "MARA_AGNES_DISMISS",
     "next": null
+   },
+   "inc_lanterns": {
+    "speaker": "NPC_MARA",
+    "text": "CASE_INC_LANTERNS_DONE_LINE",
+    "effects": [
+     {
+      "quest_complete": [
+       "case_inc_lanterns",
+       "resolved"
+      ]
+     },
+     {
+      "relationship": [
+       "mara_venn",
+       1
+      ]
+     },
+     {
+      "faction": [
+       "keepers",
+       1
+      ]
+     },
+     {
+      "give_item": [
+       "veil_shard",
+       3
+      ]
+     },
+     {
+      "give_resonance": 4
+     },
+     {
+      "give_money": 15
+     }
+    ],
+    "next": null
    }
   }
  },
  "jonah": {
   "entries": [
+   {
+    "if": {
+     "quest_stage": [
+      "case_inc_storeroom",
+      "report"
+     ]
+    },
+    "node": "inc_storeroom"
+   },
    {
     "if": {
      "not_flag": "met.jonah_rook"
@@ -1683,6 +1738,43 @@
      }
     ],
     "next": "hub"
+   },
+   "inc_storeroom": {
+    "speaker": "NPC_JONAH",
+    "text": "CASE_INC_STOREROOM_DONE_LINE",
+    "effects": [
+     {
+      "quest_complete": [
+       "case_inc_storeroom",
+       "resolved"
+      ]
+     },
+     {
+      "relationship": [
+       "jonah_rook",
+       1
+      ]
+     },
+     {
+      "faction": [
+       "unwritten",
+       1
+      ]
+     },
+     {
+      "give_item": [
+       "veil_shard",
+       3
+      ]
+     },
+     {
+      "give_resonance": 4
+     },
+     {
+      "give_money": 15
+     }
+    ],
+    "next": null
    }
   }
  },
@@ -2234,6 +2326,24 @@
    {
     "if": {
      "quest_stage": [
+      "case_inc_seal",
+      "report"
+     ]
+    },
+    "node": "inc_seal"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_inc_last_tram",
+      "report"
+     ]
+    },
+    "node": "inc_last_tram"
+   },
+   {
+    "if": {
+     "quest_stage": [
       "case_kindness",
       "pact"
      ],
@@ -2766,6 +2876,80 @@
     "speaker": "NPC_IVO",
     "text": "IVO_AGNES",
     "next": "hub"
+   },
+   "inc_last_tram": {
+    "speaker": "NPC_IVO",
+    "text": "CASE_INC_LAST_TRAM_DONE_LINE",
+    "effects": [
+     {
+      "quest_complete": [
+       "case_inc_last_tram",
+       "resolved"
+      ]
+     },
+     {
+      "relationship": [
+       "ivo_calder",
+       1
+      ]
+     },
+     {
+      "faction": [
+       "keepers",
+       1
+      ]
+     },
+     {
+      "give_item": [
+       "veil_shard",
+       3
+      ]
+     },
+     {
+      "give_resonance": 4
+     },
+     {
+      "give_money": 15
+     }
+    ],
+    "next": null
+   },
+   "inc_seal": {
+    "speaker": "NPC_IVO",
+    "text": "CASE_INC_SEAL_DONE_LINE",
+    "effects": [
+     {
+      "quest_complete": [
+       "case_inc_seal",
+       "resolved"
+      ]
+     },
+     {
+      "relationship": [
+       "ivo_calder",
+       1
+      ]
+     },
+     {
+      "faction": [
+       "keepers",
+       2
+      ]
+     },
+     {
+      "give_item": [
+       "veil_shard",
+       3
+      ]
+     },
+     {
+      "give_resonance": 4
+     },
+     {
+      "give_money": 15
+     }
+    ],
+    "next": null
    }
   }
  },

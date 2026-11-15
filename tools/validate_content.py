@@ -244,6 +244,9 @@ for blob in (D, J, CAMPAIGN, JOBS, N):
 for e, v in J['evidence'].items():
     if isinstance(v.get('advance'), list):
         targets.add(tuple(v['advance']))
+# Incidents move clear -> report when their echoes are beaten (systems/world/incidents.gd).
+for inc in ({k: v for k, v in load('data/world/incidents.json').items() if not k.startswith('_')} if os.path.exists('data/world/incidents.json') else {}).values():
+    targets.add((inc.get('case'), 'report'))
 for c, v in J['cases'].items():
     if 'fail_forward' in v:
         err(f'case {c}: fail_forward is not allowed — nothing may advance by waiting (D-052)')
@@ -401,6 +404,50 @@ if EXP:
         key(pg.get('title', ''), f'page {pid}'); key(pg.get('text', ''), f'page {pid}')
         if pg.get('needs') and pg['needs'] not in cleared_keys:
             err(f'page {pid}: needs {pg["needs"]} can never be cleared')
+
+# --- incidents (M8b) ------------------------------------------------------------
+INCIDENTS = {k: v for k, v in load('data/world/incidents.json').items() if not k.startswith('_')} if os.path.exists('data/world/incidents.json') else {}
+
+def _scene_solid_at(loc, x, y):
+    t = LOCS.get(loc, '')
+    m = re.search(r'palette_id = "([^"]+)"\nlayout = "([^"]*)"', t)
+    if not m:
+        return True
+    rows = m.group(2).split('\n')
+    pal = PAL.get(m.group(1), {})
+    cx, cy = int(x) // 16, int(y) // 16
+    if cy >= len(rows) or cx >= len(rows[cy]):
+        return True
+    b = pal.get(rows[cy][cx])
+    return not isinstance(b, dict) or bool(b.get('solid'))
+
+for iid, inc in INCIDENTS.items():
+    where = f'incident {iid}'
+    scene = inc.get('scene')
+    if scene not in LOCS:
+        err(f'{where}: unknown scene {scene}'); continue
+    if 'combat_enabled = true' not in LOCS[scene]:
+        err(f'{where}: {scene} has no combat, echoes could not be fought')
+    case = J['cases'].get(inc.get('case'))
+    if not case:
+        err(f'{where}: unknown case {inc.get("case")}'); continue
+    if set(case.get('stages', {})) != {'clear', 'report'} or case.get('first_stage') != 'clear':
+        err(f'{where}: case needs stages clear -> report')
+    if inc.get('npc') not in N:
+        err(f'{where}: unknown npc {inc.get("npc")}')
+    if not inc.get('spawns'):
+        err(f'{where}: no echoes to clear')
+    for s in inc.get('spawns', []):
+        if s.get('variant') not in ENEMIES:
+            err(f'{where}: unknown variant {s.get("variant")}')
+        if _scene_solid_at(scene, s['x'], s['y']):
+            err(f'{where}: echo at {s["x"]},{s["y"]} is inside a wall of {scene}')
+    walk(inc.get('requires', {}), where)
+    key(inc.get('arrive_toast', ''), where)
+    reported = any(e.get('if', {}).get('quest_stage') == [inc['case'], 'report']
+                   for d in D.values() for e in d.get('entries', []))
+    if not reported:
+        err(f'{where}: no dialogue entry handles the report stage')
 
 # --- scenes ----------------------------------------------------------------
 spawns = {loc: set(re.findall(r'spawn_id = &"([^"]+)"', t)) for loc, t in LOCS.items()}

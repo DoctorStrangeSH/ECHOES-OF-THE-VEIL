@@ -163,6 +163,7 @@ flowchart TD
 flowchart TD
   alderman_START(("start"))
   alderman_START --> alderman_hub
+  alderman_START -->|"{quest_stage: [case_inc_names, report]}"| alderman_inc_names
   alderman_START -->|"{not_flag: met.alderman}"| alderman_intro1
   alderman_intro1["intro1<br/>Alderman Penhallow: 'A visitor from the echo.' A man in a mayoral c…"]
   alderman_intro1 --> alderman_intro2
@@ -200,6 +201,7 @@ flowchart TD
   alderman_anchor_yes --> alderman_hub
   alderman_anchor_no["anchor_no<br/>Alderman Penhallow: 'The Ward doesn't know you well enough to go do…"]
   alderman_anchor_no --> alderman_hub
+  alderman_inc_names["inc_names<br/>Alderman Penhallow: Then they've been read. That's all most of them…"]
 ```
 
 ### bea
@@ -274,6 +276,7 @@ flowchart TD
 flowchart TD
   vale_START(("start"))
   vale_START --> vale_hub
+  vale_START -->|"{quest_stage: [case_inc_patrol, report]}"| vale_inc_patrol
   vale_START -->|"{not_flag: met.sera_vale}"| vale_intro1
   vale_intro1["intro1<br/>Dr Sera Vale: A woman in a good coat holds a brass instrument…"]
   vale_intro1 --> vale_intro2
@@ -313,6 +316,7 @@ flowchart TD
   vale_anchor_yes --> vale_hub
   vale_anchor_no["anchor_no<br/>Dr Sera Vale: 'Meridian's lawyers would never let me. And I'm…"]
   vale_anchor_no --> vale_hub
+  vale_inc_patrol["inc_patrol<br/>Dr Sera Vale: Both sides saw it done. That's worth more than …"]
 ```
 
 ### rosalind
@@ -921,6 +925,7 @@ flowchart TD
 flowchart TD
   mara_START(("start"))
   mara_START --> mara_hub
+  mara_START -->|"{quest_stage: [case_inc_lanterns, repor…"| mara_inc_lanterns
   mara_START -->|"{quest_stage: [case_kindness, truth], f…"| mara_kn_stay1
   mara_START -->|"{quest_stage: [case_kindness, truth], f…"| mara_kn_leave1
   mara_START -->|"{flag: mara.lied, knows: [mara_venn, ag…"| mara_lie_found
@@ -1028,6 +1033,7 @@ flowchart TD
   mara_ag_keeper["ag_keeper<br/>Mara Venn: Mara laughs, and it breaks halfway. 'She kept a…"]
   mara_ag_both["ag_both<br/>Mara Venn: 'Both.' She nods slowly. 'I can live with both.…"]
   mara_ag_dismiss["ag_dismiss<br/>Mara Venn: 'Let her go.' Mara looks at you for a long mome…"]
+  mara_inc_lanterns["inc_lanterns<br/>Mara Venn: Quiet? Good. I was starting to think the ending…"]
 ```
 
 ### jonah
@@ -1036,6 +1042,7 @@ flowchart TD
 flowchart TD
   jonah_START(("start"))
   jonah_START --> jonah_hub
+  jonah_START -->|"{quest_stage: [case_inc_storeroom, repo…"| jonah_inc_storeroom
   jonah_START -->|"{not_flag: met.jonah_rook}"| jonah_intro1
   jonah_START -->|"{quest_stage: [case_radio, deliver]}"| jonah_remind
   jonah_START -->|"{quest_stage: [case_radio, return]}"| jonah_reward1
@@ -1140,6 +1147,7 @@ flowchart TD
   jonah_rr1 --> jonah_rr2
   jonah_rr2["rr2<br/>Jonah Rook: 'Dad's repair stamp. ROOK & DAUGHTER. It was in…"]
   jonah_rr2 --> jonah_hub
+  jonah_inc_storeroom["inc_storeroom<br/>Jonah Rook: Safe. Right. Dad would've charged rent to whate…"]
 ```
 
 ### halloway
@@ -1218,6 +1226,8 @@ flowchart TD
 flowchart TD
   ivo_START(("start"))
   ivo_START --> ivo_hub
+  ivo_START -->|"{quest_stage: [case_inc_seal, report]}"| ivo_inc_seal
+  ivo_START -->|"{quest_stage: [case_inc_last_tram, repo…"| ivo_inc_last_tram
   ivo_START -->|"{quest_stage: [case_kindness, pact], no…"| ivo_pact_key
   ivo_START -->|"{quest_stage: [case_kindness, truth], f…"| ivo_kn_stay1
   ivo_START -->|"{quest_stage: [case_kindness, truth], f…"| ivo_kn_leave1
@@ -1278,6 +1288,8 @@ flowchart TD
   ivo_anchor_no --> ivo_hub
   ivo_agnes["agnes<br/>Ivo Calder: 'Agnes came to us in the winter of '63 with a l…"]
   ivo_agnes --> ivo_hub
+  ivo_inc_last_tram["inc_last_tram<br/>Ivo Calder: No bell tonight, then. I'll strike it from the …"]
+  ivo_inc_seal["inc_seal<br/>Ivo Calder: Readings are falling. The seal holds. This is w…"]
 ```
 
 ### nadiya

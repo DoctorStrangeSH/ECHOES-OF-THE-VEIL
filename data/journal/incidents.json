@@ -1,0 +1,438 @@
+{
+ "cases": {
+  "case_inc_lanterns": {
+   "title": "CASE_INC_LANTERNS_TITLE",
+   "summary": "CASE_INC_LANTERNS_SUMMARY",
+   "first_stage": "clear",
+   "stages": {
+    "clear": "CASE_INC_LANTERNS_CLEAR",
+    "report": "CASE_INC_LANTERNS_REPORT"
+   },
+   "transitions": {
+    "clear": [
+     "report"
+    ]
+   },
+   "deadlines": [
+    {
+     "stage": "clear",
+     "days": 3,
+     "outcome": "missed",
+     "note": "CASE_INC_LANTERNS_MISSED_NOTE",
+     "effects": [
+      {
+       "relationship": [
+        "mara_venn",
+        -2
+       ]
+      },
+      {
+       "faction": [
+        "keepers",
+        -1
+       ]
+      },
+      {
+       "remember": [
+        "mara_venn",
+        "missed_lanterns"
+       ]
+      },
+      {
+       "set_flag": "incident.lanterns.missed"
+      }
+     ]
+    }
+   ],
+   "outcomes": {
+    "resolved": "CASE_INC_LANTERNS_RESOLVED",
+    "missed": "CASE_INC_LANTERNS_MISSED"
+   },
+   "objectives": {
+    "clear": [
+     {
+      "id": "clear",
+      "text": "CASE_INC_LANTERNS_OBJ_CLEAR",
+      "done_if": {
+       "quest_stage": [
+        "case_inc_lanterns",
+        "report"
+       ]
+      }
+     }
+    ],
+    "report": [
+     {
+      "id": "report",
+      "text": "CASE_INC_LANTERNS_OBJ_REPORT",
+      "done_if": {
+       "quest_done": "case_inc_lanterns"
+      }
+     }
+    ]
+   }
+  },
+  "case_inc_storeroom": {
+   "title": "CASE_INC_STOREROOM_TITLE",
+   "summary": "CASE_INC_STOREROOM_SUMMARY",
+   "first_stage": "clear",
+   "stages": {
+    "clear": "CASE_INC_STOREROOM_CLEAR",
+    "report": "CASE_INC_STOREROOM_REPORT"
+   },
+   "transitions": {
+    "clear": [
+     "report"
+    ]
+   },
+   "deadlines": [
+    {
+     "stage": "clear",
+     "days": 3,
+     "outcome": "missed",
+     "note": "CASE_INC_STOREROOM_MISSED_NOTE",
+     "effects": [
+      {
+       "relationship": [
+        "jonah_rook",
+        -2
+       ]
+      },
+      {
+       "faction": [
+        "unwritten",
+        -1
+       ]
+      },
+      {
+       "remember": [
+        "jonah_rook",
+        "missed_storeroom"
+       ]
+      },
+      {
+       "set_flag": "incident.storeroom.missed"
+      }
+     ]
+    }
+   ],
+   "outcomes": {
+    "resolved": "CASE_INC_STOREROOM_RESOLVED",
+    "missed": "CASE_INC_STOREROOM_MISSED"
+   },
+   "objectives": {
+    "clear": [
+     {
+      "id": "clear",
+      "text": "CASE_INC_STOREROOM_OBJ_CLEAR",
+      "done_if": {
+       "quest_stage": [
+        "case_inc_storeroom",
+        "report"
+       ]
+      }
+     }
+    ],
+    "report": [
+     {
+      "id": "report",
+      "text": "CASE_INC_STOREROOM_OBJ_REPORT",
+      "done_if": {
+       "quest_done": "case_inc_storeroom"
+      }
+     }
+    ]
+   }
+  },
+  "case_inc_last_tram": {
+   "title": "CASE_INC_LAST_TRAM_TITLE",
+   "summary": "CASE_INC_LAST_TRAM_SUMMARY",
+   "first_stage": "clear",
+   "stages": {
+    "clear": "CASE_INC_LAST_TRAM_CLEAR",
+    "report": "CASE_INC_LAST_TRAM_REPORT"
+   },
+   "transitions": {
+    "clear": [
+     "report"
+    ]
+   },
+   "deadlines": [
+    {
+     "stage": "clear",
+     "days": 3,
+     "outcome": "missed",
+     "note": "CASE_INC_LAST_TRAM_MISSED_NOTE",
+     "effects": [
+      {
+       "relationship": [
+        "ivo_calder",
+        -2
+       ]
+      },
+      {
+       "faction": [
+        "keepers",
+        -1
+       ]
+      },
+      {
+       "remember": [
+        "ivo_calder",
+        "missed_last_tram"
+       ]
+      },
+      {
+       "set_flag": "incident.last_tram.missed"
+      }
+     ]
+    }
+   ],
+   "outcomes": {
+    "resolved": "CASE_INC_LAST_TRAM_RESOLVED",
+    "missed": "CASE_INC_LAST_TRAM_MISSED"
+   },
+   "objectives": {
+    "clear": [
+     {
+      "id": "clear",
+      "text": "CASE_INC_LAST_TRAM_OBJ_CLEAR",
+      "done_if": {
+       "quest_stage": [
+        "case_inc_last_tram",
+        "report"
+       ]
+      }
+     }
+    ],
+    "report": [
+     {
+      "id": "report",
+      "text": "CASE_INC_LAST_TRAM_OBJ_REPORT",
+      "done_if": {
+       "quest_done": "case_inc_last_tram"
+      }
+     }
+    ]
+   }
+  },
+  "case_inc_names": {
+   "title": "CASE_INC_NAMES_TITLE",
+   "summary": "CASE_INC_NAMES_SUMMARY",
+   "first_stage": "clear",
+   "stages": {
+    "clear": "CASE_INC_NAMES_CLEAR",
+    "report": "CASE_INC_NAMES_REPORT"
+   },
+   "transitions": {
+    "clear": [
+     "report"
+    ]
+   },
+   "deadlines": [
+    {
+     "stage": "clear",
+     "days": 3,
+     "outcome": "missed",
+     "note": "CASE_INC_NAMES_MISSED_NOTE",
+     "effects": [
+      {
+       "relationship": [
+        "alderman_penhallow",
+        -2
+       ]
+      },
+      {
+       "faction": [
+        "unwritten",
+        -1
+       ]
+      },
+      {
+       "remember": [
+        "alderman_penhallow",
+        "missed_names"
+       ]
+      },
+      {
+       "set_flag": "incident.names.missed"
+      }
+     ]
+    }
+   ],
+   "outcomes": {
+    "resolved": "CASE_INC_NAMES_RESOLVED",
+    "missed": "CASE_INC_NAMES_MISSED"
+   },
+   "objectives": {
+    "clear": [
+     {
+      "id": "clear",
+      "text": "CASE_INC_NAMES_OBJ_CLEAR",
+      "done_if": {
+       "quest_stage": [
+        "case_inc_names",
+        "report"
+       ]
+      }
+     }
+    ],
+    "report": [
+     {
+      "id": "report",
+      "text": "CASE_INC_NAMES_OBJ_REPORT",
+      "done_if": {
+       "quest_done": "case_inc_names"
+      }
+     }
+    ]
+   }
+  },
+  "case_inc_seal": {
+   "title": "CASE_INC_SEAL_TITLE",
+   "summary": "CASE_INC_SEAL_SUMMARY",
+   "first_stage": "clear",
+   "stages": {
+    "clear": "CASE_INC_SEAL_CLEAR",
+    "report": "CASE_INC_SEAL_REPORT"
+   },
+   "transitions": {
+    "clear": [
+     "report"
+    ]
+   },
+   "deadlines": [
+    {
+     "stage": "clear",
+     "days": 3,
+     "outcome": "missed",
+     "note": "CASE_INC_SEAL_MISSED_NOTE",
+     "effects": [
+      {
+       "relationship": [
+        "ivo_calder",
+        -2
+       ]
+      },
+      {
+       "faction": [
+        "keepers",
+        -1
+       ]
+      },
+      {
+       "remember": [
+        "ivo_calder",
+        "missed_seal"
+       ]
+      },
+      {
+       "set_flag": "incident.seal.missed"
+      }
+     ]
+    }
+   ],
+   "outcomes": {
+    "resolved": "CASE_INC_SEAL_RESOLVED",
+    "missed": "CASE_INC_SEAL_MISSED"
+   },
+   "objectives": {
+    "clear": [
+     {
+      "id": "clear",
+      "text": "CASE_INC_SEAL_OBJ_CLEAR",
+      "done_if": {
+       "quest_stage": [
+        "case_inc_seal",
+        "report"
+       ]
+      }
+     }
+    ],
+    "report": [
+     {
+      "id": "report",
+      "text": "CASE_INC_SEAL_OBJ_REPORT",
+      "done_if": {
+       "quest_done": "case_inc_seal"
+      }
+     }
+    ]
+   }
+  },
+  "case_inc_patrol": {
+   "title": "CASE_INC_PATROL_TITLE",
+   "summary": "CASE_INC_PATROL_SUMMARY",
+   "first_stage": "clear",
+   "stages": {
+    "clear": "CASE_INC_PATROL_CLEAR",
+    "report": "CASE_INC_PATROL_REPORT"
+   },
+   "transitions": {
+    "clear": [
+     "report"
+    ]
+   },
+   "deadlines": [
+    {
+     "stage": "clear",
+     "days": 3,
+     "outcome": "missed",
+     "note": "CASE_INC_PATROL_MISSED_NOTE",
+     "effects": [
+      {
+       "relationship": [
+        "sera_vale",
+        -2
+       ]
+      },
+      {
+       "faction": [
+        "unwritten",
+        -1
+       ]
+      },
+      {
+       "remember": [
+        "sera_vale",
+        "missed_patrol"
+       ]
+      },
+      {
+       "set_flag": "incident.patrol.missed"
+      }
+     ]
+    }
+   ],
+   "outcomes": {
+    "resolved": "CASE_INC_PATROL_RESOLVED",
+    "missed": "CASE_INC_PATROL_MISSED"
+   },
+   "objectives": {
+    "clear": [
+     {
+      "id": "clear",
+      "text": "CASE_INC_PATROL_OBJ_CLEAR",
+      "done_if": {
+       "quest_stage": [
+        "case_inc_patrol",
+        "report"
+       ]
+      }
+     }
+    ],
+    "report": [
+     {
+      "id": "report",
+      "text": "CASE_INC_PATROL_OBJ_REPORT",
+      "done_if": {
+       "quest_done": "case_inc_patrol"
+      }
+     }
+    ]
+   }
+  }
+ },
+ "evidence": {},
+ "hypotheses": {}
+}
