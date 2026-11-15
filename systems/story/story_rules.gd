@@ -8,7 +8,8 @@ extends RefCounted
 ##   {"background": "courier"}  {"evidence": "id"}  {"not_evidence": "id"}
 ##   {"hypothesis": "id"}  {"not_hypothesis": "id"}
 ##   {"companion": "id" | ""}  {"can_join": "id"}
-##   {"quest_outcome": ["id", "outcome"]}
+##   {"quest_outcome": ["id", "outcome"]}  {"verdict": ["e", "edited"]}  {"judged": ["e1", ...]}
+##   {"verdicts_correct_at_least": [["e1", "e2", "e3"], 2]}
 ##   {"quest_active": "id"}  {"quest_done": "id"}  {"quest_stage": ["id", "stage"]} (open cases only)
 ##   {"not_quest_started": "id"}
 ##   {"period": "night" | ["morning", "afternoon"]}  {"weather": "rain"}
@@ -26,6 +27,7 @@ extends RefCounted
 ##   {"save_game": true}  {"travel": ["scene_id", "spawn_id"]}  {"heal_player": true}
 ##   {"give_item": "id" | ["id", n]}  {"take_item": "id" | ["id", n]}  {"give_money": n}  {"spend_money": n}
 ##   {"open_screen": "shop:jonah" | "jobs" | "workbench" | "business"}
+##   {"verdict": ["e", "authentic" | "edited" | "unreliable"]}  (judge a testimony)
 ##   {"first_match": [{"if": cond, "do": [effects]}, ...]}  (first branch that holds)
 ##   {"companion": "id" | ""}  (recruit a companion / send them home)
 ##   {"give_resonance": n}  {"faction": ["keepers", delta]}  {"tell": ["npc", "fact"]}  {"publish": "fact"}
@@ -76,6 +78,15 @@ static func _check(key: String, arg: Variant) -> bool:
 			return Party.companion == StringName(arg)
 		"can_join":
 			return Party.can_join(StringName(arg))
+		"verdict":  # ["evidence", "authentic" | "edited" | "unreliable"]
+			return Journal.verdict_of(StringName(arg[0])) == String(arg[1])
+		"judged":  # every listed testimony has a verdict
+			for id: Variant in arg:
+				if Journal.verdict_of(StringName(id)) == "":
+					return false
+			return true
+		"verdicts_correct_at_least":  # [["e1", "e2", ...], n]
+			return Journal.correct_verdicts(arg[0]) >= int(arg[1])
 		"quest_outcome":  # ["case", "outcome"]: closed with that outcome
 			return Journal.case_status(StringName(arg[0])) == Journal.STATUS_DONE \
 				and StringName(Journal.cases.get(StringName(arg[0]), {}).get("outcome", &"")) == StringName(arg[1])
@@ -142,6 +153,8 @@ static func apply(effects: Variant) -> void:
 
 static func _apply_one(key: String, arg: Variant, whole: Dictionary) -> void:
 	match key:
+		"verdict":  # ["evidence", verdict]: the player's judgement of a testimony
+			Journal.set_verdict(StringName(arg[0]), String(arg[1]))
 		"first_match":  # [{"if": cond, "do": [effects]}, ...]: runs the first branch whose if holds
 			for branch: Dictionary in arg:
 				if evaluate(branch.get("if")):

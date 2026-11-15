@@ -31,7 +31,7 @@ Decisions are recorded with date, status, and rationale. Revisit only when evide
 | D-025 | Save schema 3 adds inventory, money, Resonance and Attunements (migration 2→3). | Accepted | |
 | D-026 | Factions are standings per group (−10..10) moved by specific choices; no single morality meter. | Accepted | Story bible §6 and world-and-quest-design.md. |
 | D-027 | NPC knowledge: facts with audiences spread one time-of-day period after being published; reactions read who knows. | Accepted | Consequences become visible and believable without simulating conversations. |
-| D-028 | Cases declare stage transitions and fail-forward rules; tests verify reachability. | Accepted | Prevents soft-locks and missable critical clues. |
+| D-028 | Cases declare stage transitions and fail-forward rules; tests verify reachability. | Accepted (fail-forward part superseded by D-052) | Prevents soft-locks and missable critical clues. |
 | D-029 | Save schema 4 adds faction standing, NPC knowledge and pending gossip (migration 3→4). | Accepted | |
 | D-030 | The first profession is **repair** (not gardening): a timing minigame whose green zone grows with skill level (5 levels by XP). | Accepted | Fits Jonah's workshop, the "fix what's broken" theme and the town's broken objects; reuses world props. |
 | D-031 | Economy rules are data (`data/economy/`) and checked by `Economy.validate()`: nothing can be bought and resold for profit, and no recipe outputs more value than its inputs at shop prices. | Accepted | Exploit tests from the M5 exit gate. |
@@ -52,9 +52,12 @@ Decisions are recorded with date, status, and rationale. Revisit only when evide
 | D-046 | The lighthouse keeper is renamed Hester Ashby. | Accepted | "Wren" is Director Elias Wren in the story bible. |
 | D-047 | One companion at a time (`Party`, `data/characters/companions.json`); a companion leaves their schedule and follows as an Npc with a `Follower` brain; one ability each (Jonah: patch up; Mara: pin). Save schema 6 adds `party`. | Accepted | Smallest party model that supports the bible's companions and per-act camp talk. |
 | D-048 | Bosses are any node with `engage()` and a `health`; the region generator takes a boss `scene`. | Accepted | Second boss without copying the arena code. |
-| D-049 | Act II fail-forward can open the depot without the boss fight after four days. | Accepted | Story bible §11: nothing critical is gated behind combat skill. |
+| D-049 | Act II fail-forward can open the depot without the boss fight after four days. | Superseded by D-052 | Story bible §11: nothing critical is gated behind combat skill. |
 | D-050 | Conditional effects (`first_match`) and `quest_outcome` conditions; `give_item`/`take_item` accept a bare id. | Accepted | Lets the campaign choose the Act III confessor from earlier endings in data. |
 | D-051 | Hazards slow the player through `Player.wading`; flood water is a drawn overlay, not tiles. | Accepted | The water level must move every few seconds. |
+| D-052 | **No fail-forward.** Nothing advances because time passed, no free hints, bosses cannot be skipped; mistakes are consequences. New content follows this from M7d; existing content is reworked in M7e. | Accepted | Owner's direction: the game must not play itself or feel casual. Supersedes D-028's fail-forward part, D-049 and the fail-forward wording of story bible §11. |
+| D-053 | Testimony can be judged authentic / edited / unreliable; evidence carries a hidden `truth`; verdicts are saved in the journal (no schema bump: absent means unjudged). | Accepted | Act IV's investigation is the player's judgement, and getting it wrong sticks. |
+| D-054 | One `Reviser` boss class with per-site exports (pattern, summons, look); the region generator writes per-instance exports (`set`). | Accepted | Three distinct bosses without three scripts. |
 
 ## Open questions
 

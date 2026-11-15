@@ -46,7 +46,7 @@ A quest is not accepted merely because it has dialogue and a reward. It must hav
 1. a clear player-facing motivation;
 2. at least one interesting decision or discovery;
 3. a distinct location, character, or mechanic;
-4. a fail-forward outcome where appropriate;
+4. a failure outcome with consequences where appropriate (never automatic progress, D-052);
 5. consequences or a satisfying resolution;
 6. journal and localization coverage;
 7. state-combination tests.

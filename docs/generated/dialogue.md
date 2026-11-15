@@ -175,8 +175,9 @@ flowchart TD
   alderman_hub -->|"I've heard Bea, Abel and Elli… ⟨{quest_stage: [case_misplaced, resident…⟩"| alderman_depot1
   alderman_hub -->|"The depot again? ⟨{quest_stage: [case_misplaced, depot]}⟩"| alderman_depot2
   alderman_hub -->|"The depot is quiet now. ⟨{quest_done: case_misplaced}⟩"| alderman_after
-  alderman_hub_end_4(["end"])
-  alderman_hub -->|"Goodbye."| alderman_hub_end_4
+  alderman_hub -->|"The three nights are put back… ⟨{quest_stage: [case_index, index]}⟩"| alderman_index1
+  alderman_hub_end_5(["end"])
+  alderman_hub -->|"Goodbye."| alderman_hub_end_5
   alderman_lore["lore<br/>Alderman Penhallow: 'Badly, and every day. Nobody ages, nothing bre…"]
   alderman_lore --> alderman_hub
   alderman_depot1["depot1<br/>Alderman Penhallow: 'Then you know we don't agree about anything. E…"]
@@ -187,6 +188,12 @@ flowchart TD
   alderman_depot2 --> alderman_hub
   alderman_after["after<br/>Alderman Penhallow: 'The trams have stopped. Some of us miss them. …"]
   alderman_after --> alderman_hub
+  alderman_index1["index1<br/>Alderman Penhallow: The Alderman opens the Ward register on the hal…"]
+  alderman_index1 --> alderman_index2
+  alderman_index2["index2<br/>The names unwrite themselves and rewrite as one…"]
+  alderman_index2 --> alderman_index3
+  alderman_index3["index3<br/>Alderman Penhallow: 'That's what we asked for. That night, every on…"]
+  alderman_index3 --> alderman_hub
 ```
 
 ### bea
@@ -271,8 +278,10 @@ flowchart TD
   vale_hub -->|"I'll hold the sensor for you. ⟨{not_flag: vale.helped, all: [{not_flag…⟩"| vale_help
   vale_hub -->|"These are people, not reading… ⟨{not_flag: vale.helped, all: [{not_flag…⟩"| vale_refuse
   vale_hub -->|"Your resonator is in the unde… ⟨{quest_active: case_kindness}⟩"| vale_res
-  vale_hub_end_4(["end"])
-  vale_hub -->|"Goodbye."| vale_hub_end_4
+  vale_hub -->|"What has Meridian done? ⟨{quest_stage: [case_index, nodes]}⟩"| vale_nodes1
+  vale_hub -->|"About the Index. ⟨{quest_stage: [case_index, vale]}⟩"| vale_final1
+  vale_hub_end_6(["end"])
+  vale_hub -->|"Goodbye."| vale_hub_end_6
   vale_ask["ask<br/>Dr Sera Vale: 'To measure it. Then to make it safe. Then — I'…"]
   vale_ask --> vale_hub
   vale_help["help<br/>Dr Sera Vale: The instrument hums against your palm. The lamp…"]
@@ -281,6 +290,17 @@ flowchart TD
   vale_refuse --> vale_hub
   vale_res["res<br/>Dr Sera Vale: 'Is it.' She looks at the flooded steps like an…"]
   vale_res --> vale_hub
+  vale_nodes1["nodes1<br/>Dr Sera Vale: 'Found the Index. Under everything — the town, …"]
+  vale_nodes1 --> vale_nodes2
+  vale_nodes2["nodes2<br/>Dr Sera Vale: 'We've switched on three of its nodes. Down the…"]
+  vale_nodes2 --> vale_hub
+  vale_final1["final1<br/>Dr Sera Vale: 'Well? You've been inside it. Is it a miracle o…"]
+  vale_final1 -->|"Look at these three nights. T… ⟨{any: [{all: [{flag: site.hospital.true…⟩"| vale_turned
+  vale_final1 -->|"Finish your work. Carefully."| vale_continued
+  vale_final1 -->|"The Keepers will take it from…"| vale_stopped
+  vale_turned["turned<br/>Dr Sera Vale: She reads Annie's diary twice. Then she takes t…"]
+  vale_continued["continued<br/>Dr Sera Vale: 'Carefully,' she agrees, and you can hear her d…"]
+  vale_stopped["stopped<br/>Dr Sera Vale: 'The Keepers.' She laughs once. 'The people who…"]
 ```
 
 ### rosalind
@@ -424,6 +444,269 @@ flowchart TD
   resonator_found_1["1<br/>Among the dry files: a brass device the size of…"]
   resonator_found_1 --> resonator_found_2
   resonator_found_2["2<br/>It's warm in your hands. It wants to be used."]
+```
+
+## act4.json
+
+### hospital_enter
+
+```mermaid
+flowchart TD
+  hospital_enter_START(("start"))
+  hospital_enter_START --> hospital_enter_1
+  hospital_enter_1["1<br/>The night of 11 November 1962, as St Agnes reme…"]
+  hospital_enter_1 --> hospital_enter_2
+  hospital_enter_2["2<br/>Someone in a starched cap is going through the …"]
+```
+
+### home_enter
+
+```mermaid
+flowchart TD
+  home_enter_START(("start"))
+  home_enter_START --> home_enter_1
+  home_enter_1["1<br/>A kitchen on Lantern Row. Supper half laid. Pen…"]
+  home_enter_1 --> home_enter_2
+  home_enter_2["2<br/>A man in a lodger's cardigan is rearranging the…"]
+```
+
+### station_enter
+
+```mermaid
+flowchart TD
+  station_enter_START(("start"))
+  station_enter_START --> station_enter_1
+  station_enter_1["1<br/>Lantern Row station at 11:51. The platform is f…"]
+  station_enter_1 --> station_enter_2
+  station_enter_2["2<br/>The stationmaster turns the board from 11:52 to…"]
+```
+
+### t_nurse_log
+
+```mermaid
+flowchart TD
+  t_nurse_log_START(("start"))
+  t_nurse_log_START --> t_nurse_log_1
+  t_nurse_log_START -->|"{flag: site.hospital.done}"| t_nurse_log_done
+  t_nurse_log_1["1<br/>Night nurse's log, in a quick, even hand: '23:5…"]
+  t_nurse_log_1 --> t_nurse_log_judge
+  t_nurse_log_judge["judge<br/>How do you judge this account?"]
+  t_nurse_log_judge_end_0(["end"])
+  t_nurse_log_judge -->|"Authentic — it happened like …"| t_nurse_log_judge_end_0
+  t_nurse_log_judge_end_1(["end"])
+  t_nurse_log_judge -->|"Edited — someone changed it a…"| t_nurse_log_judge_end_1
+  t_nurse_log_judge_end_2(["end"])
+  t_nurse_log_judge -->|"Unreliable — the witness can'…"| t_nurse_log_judge_end_2
+  t_nurse_log_judge_end_3(["end"])
+  t_nurse_log_judge -->|"Decide later."| t_nurse_log_judge_end_3
+  t_nurse_log_done["done<br/>Night nurse's log, in a quick, even hand: '23:5…"]
+```
+
+### t_admissions
+
+```mermaid
+flowchart TD
+  t_admissions_START(("start"))
+  t_admissions_START --> t_admissions_1
+  t_admissions_START -->|"{flag: site.hospital.done}"| t_admissions_done
+  t_admissions_1["1<br/>The admissions register. The night's page reads…"]
+  t_admissions_1 --> t_admissions_judge
+  t_admissions_judge["judge<br/>How do you judge this account?"]
+  t_admissions_judge_end_0(["end"])
+  t_admissions_judge -->|"Authentic — it happened like …"| t_admissions_judge_end_0
+  t_admissions_judge_end_1(["end"])
+  t_admissions_judge -->|"Edited — someone changed it a…"| t_admissions_judge_end_1
+  t_admissions_judge_end_2(["end"])
+  t_admissions_judge -->|"Unreliable — the witness can'…"| t_admissions_judge_end_2
+  t_admissions_judge_end_3(["end"])
+  t_admissions_judge -->|"Decide later."| t_admissions_judge_end_3
+  t_admissions_done["done<br/>The admissions register. The night's page reads…"]
+```
+
+### t_doctor
+
+```mermaid
+flowchart TD
+  t_doctor_START(("start"))
+  t_doctor_START --> t_doctor_1
+  t_doctor_START -->|"{flag: site.hospital.done}"| t_doctor_done
+  t_doctor_1["1<br/>Dr Hale's statement, dated 1987: 'A gas leak ca…"]
+  t_doctor_1 --> t_doctor_judge
+  t_doctor_judge["judge<br/>How do you judge this account?"]
+  t_doctor_judge_end_0(["end"])
+  t_doctor_judge -->|"Authentic — it happened like …"| t_doctor_judge_end_0
+  t_doctor_judge_end_1(["end"])
+  t_doctor_judge -->|"Edited — someone changed it a…"| t_doctor_judge_end_1
+  t_doctor_judge_end_2(["end"])
+  t_doctor_judge -->|"Unreliable — the witness can'…"| t_doctor_judge_end_2
+  t_doctor_judge_end_3(["end"])
+  t_doctor_judge -->|"Decide later."| t_doctor_judge_end_3
+  t_doctor_done["done<br/>Dr Hale's statement, dated 1987: 'A gas leak ca…"]
+```
+
+### recon_memory_hospital
+
+```mermaid
+flowchart TD
+  recon_memory_hospital_START(("start"))
+  recon_memory_hospital_START --> recon_memory_hospital_wait
+  recon_memory_hospital_START -->|"{flag: site.hospital.done}"| recon_memory_hospital_after
+  recon_memory_hospital_START -->|"{judged: [e_t_nurse_log, e_t_admissions…"| recon_memory_hospital_r1
+  recon_memory_hospital_wait["wait<br/>The night won't come together yet. Judge every …"]
+  recon_memory_hospital_after["after<br/>The records room, as you put it back together."]
+  recon_memory_hospital_r1["r1<br/>You lay the three accounts side by side and let…"]
+```
+
+### t_child_diary
+
+```mermaid
+flowchart TD
+  t_child_diary_START(("start"))
+  t_child_diary_START --> t_child_diary_1
+  t_child_diary_START -->|"{flag: site.home.done}"| t_child_diary_done
+  t_child_diary_1["1<br/>A child's diary, round letters: 'Nov 11. Mum sa…"]
+  t_child_diary_1 --> t_child_diary_judge
+  t_child_diary_judge["judge<br/>How do you judge this account?"]
+  t_child_diary_judge_end_0(["end"])
+  t_child_diary_judge -->|"Authentic — it happened like …"| t_child_diary_judge_end_0
+  t_child_diary_judge_end_1(["end"])
+  t_child_diary_judge -->|"Edited — someone changed it a…"| t_child_diary_judge_end_1
+  t_child_diary_judge_end_2(["end"])
+  t_child_diary_judge -->|"Unreliable — the witness can'…"| t_child_diary_judge_end_2
+  t_child_diary_judge_end_3(["end"])
+  t_child_diary_judge -->|"Decide later."| t_child_diary_judge_end_3
+  t_child_diary_done["done<br/>A child's diary, round letters: 'Nov 11. Mum sa…"]
+```
+
+### t_eviction
+
+```mermaid
+flowchart TD
+  t_eviction_START(("start"))
+  t_eviction_START --> t_eviction_1
+  t_eviction_START -->|"{flag: site.home.done}"| t_eviction_done
+  t_eviction_1["1<br/>A Borough notice on the table: PROPERTY VACANT …"]
+  t_eviction_1 --> t_eviction_judge
+  t_eviction_judge["judge<br/>How do you judge this account?"]
+  t_eviction_judge_end_0(["end"])
+  t_eviction_judge -->|"Authentic — it happened like …"| t_eviction_judge_end_0
+  t_eviction_judge_end_1(["end"])
+  t_eviction_judge -->|"Edited — someone changed it a…"| t_eviction_judge_end_1
+  t_eviction_judge_end_2(["end"])
+  t_eviction_judge -->|"Unreliable — the witness can'…"| t_eviction_judge_end_2
+  t_eviction_judge_end_3(["end"])
+  t_eviction_judge -->|"Decide later."| t_eviction_judge_end_3
+  t_eviction_done["done<br/>A Borough notice on the table: PROPERTY VACANT …"]
+```
+
+### t_neighbour
+
+```mermaid
+flowchart TD
+  t_neighbour_START(("start"))
+  t_neighbour_START --> t_neighbour_1
+  t_neighbour_START -->|"{flag: site.home.done}"| t_neighbour_done
+  t_neighbour_1["1<br/>A neighbour's account, given gladly: 'Emigrated…"]
+  t_neighbour_1 --> t_neighbour_judge
+  t_neighbour_judge["judge<br/>How do you judge this account?"]
+  t_neighbour_judge_end_0(["end"])
+  t_neighbour_judge -->|"Authentic — it happened like …"| t_neighbour_judge_end_0
+  t_neighbour_judge_end_1(["end"])
+  t_neighbour_judge -->|"Edited — someone changed it a…"| t_neighbour_judge_end_1
+  t_neighbour_judge_end_2(["end"])
+  t_neighbour_judge -->|"Unreliable — the witness can'…"| t_neighbour_judge_end_2
+  t_neighbour_judge_end_3(["end"])
+  t_neighbour_judge -->|"Decide later."| t_neighbour_judge_end_3
+  t_neighbour_done["done<br/>A neighbour's account, given gladly: 'Emigrated…"]
+```
+
+### recon_memory_home
+
+```mermaid
+flowchart TD
+  recon_memory_home_START(("start"))
+  recon_memory_home_START --> recon_memory_home_wait
+  recon_memory_home_START -->|"{flag: site.home.done}"| recon_memory_home_after
+  recon_memory_home_START -->|"{judged: [e_t_child_diary, e_t_eviction…"| recon_memory_home_r1
+  recon_memory_home_wait["wait<br/>The night won't come together yet. Judge every …"]
+  recon_memory_home_after["after<br/>The kitchen, as you put it back together."]
+  recon_memory_home_r1["r1<br/>You lay the three accounts side by side and let…"]
+```
+
+### t_station_log
+
+```mermaid
+flowchart TD
+  t_station_log_START(("start"))
+  t_station_log_START --> t_station_log_1
+  t_station_log_START -->|"{flag: site.station.done}"| t_station_log_done
+  t_station_log_1["1<br/>The stationmaster's log: '11:52 — CANCELLED.' C…"]
+  t_station_log_1 --> t_station_log_judge
+  t_station_log_judge["judge<br/>How do you judge this account?"]
+  t_station_log_judge_end_0(["end"])
+  t_station_log_judge -->|"Authentic — it happened like …"| t_station_log_judge_end_0
+  t_station_log_judge_end_1(["end"])
+  t_station_log_judge -->|"Edited — someone changed it a…"| t_station_log_judge_end_1
+  t_station_log_judge_end_2(["end"])
+  t_station_log_judge -->|"Unreliable — the witness can'…"| t_station_log_judge_end_2
+  t_station_log_judge_end_3(["end"])
+  t_station_log_judge -->|"Decide later."| t_station_log_judge_end_3
+  t_station_log_done["done<br/>The stationmaster's log: '11:52 — CANCELLED.' C…"]
+```
+
+### t_letter
+
+```mermaid
+flowchart TD
+  t_letter_START(("start"))
+  t_letter_START --> t_letter_1
+  t_letter_START -->|"{flag: site.station.done}"| t_letter_done
+  t_letter_1["1<br/>A letter left on the bench, weighted with a tic…"]
+  t_letter_1 --> t_letter_judge
+  t_letter_judge["judge<br/>How do you judge this account?"]
+  t_letter_judge_end_0(["end"])
+  t_letter_judge -->|"Authentic — it happened like …"| t_letter_judge_end_0
+  t_letter_judge_end_1(["end"])
+  t_letter_judge -->|"Edited — someone changed it a…"| t_letter_judge_end_1
+  t_letter_judge_end_2(["end"])
+  t_letter_judge -->|"Unreliable — the witness can'…"| t_letter_judge_end_2
+  t_letter_judge_end_3(["end"])
+  t_letter_judge -->|"Decide later."| t_letter_judge_end_3
+  t_letter_done["done<br/>A letter left on the bench, weighted with a tic…"]
+```
+
+### t_porter
+
+```mermaid
+flowchart TD
+  t_porter_START(("start"))
+  t_porter_START --> t_porter_1
+  t_porter_START -->|"{flag: site.station.done}"| t_porter_done
+  t_porter_1["1<br/>The porter, sure of it: 'The 11:52 never ran. T…"]
+  t_porter_1 --> t_porter_judge
+  t_porter_judge["judge<br/>How do you judge this account?"]
+  t_porter_judge_end_0(["end"])
+  t_porter_judge -->|"Authentic — it happened like …"| t_porter_judge_end_0
+  t_porter_judge_end_1(["end"])
+  t_porter_judge -->|"Edited — someone changed it a…"| t_porter_judge_end_1
+  t_porter_judge_end_2(["end"])
+  t_porter_judge -->|"Unreliable — the witness can'…"| t_porter_judge_end_2
+  t_porter_judge_end_3(["end"])
+  t_porter_judge -->|"Decide later."| t_porter_judge_end_3
+  t_porter_done["done<br/>The porter, sure of it: 'The 11:52 never ran. T…"]
+```
+
+### recon_memory_station
+
+```mermaid
+flowchart TD
+  recon_memory_station_START(("start"))
+  recon_memory_station_START --> recon_memory_station_wait
+  recon_memory_station_START -->|"{flag: site.station.done}"| recon_memory_station_after
+  recon_memory_station_START -->|"{judged: [e_t_station_log, e_t_letter, …"| recon_memory_station_r1
+  recon_memory_station_wait["wait<br/>The night won't come together yet. Judge every …"]
+  recon_memory_station_after["after<br/>The platform, as you put it back together."]
+  recon_memory_station_r1["r1<br/>You lay the three accounts side by side and let…"]
 ```
 
 ## lighthouse.json

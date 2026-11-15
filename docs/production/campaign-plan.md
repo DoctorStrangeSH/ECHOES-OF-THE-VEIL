@@ -11,9 +11,10 @@ The spine is data: `data/story/campaign.json` lists the acts, the condition that
 | M7a | Campaign spine, act cards; **Act I** complete | done |
 | M7b | **Act II** — the Echo Ward, companions, the Conductor, Rosalind found | done |
 | M7c | **Act III** — the Keepers' pact, North Quay, the Archivist of Floods, the ally who knew | done |
-| M7d | **Act IV** — the Index: three memory-sites, Meridian | next |
-| M7e | **Act V** — the anchor; endings and epilogues | |
-| M7f | Campaign pass: balance, fail-forward audit, full playthrough tests | |
+| M7d | **Act IV** — the Index: three memory-sites, testimony verdicts, three Revisions, Dr Vale's choice | done |
+| M7e | **Quest system and challenge rework** — no fail-forward, objectives, failable quests, mandatory bosses, difficulty (see roadmap) | next |
+| M7f | **Act V** — the anchor; endings and epilogues | |
+| M7g | Campaign pass: balance, full playthrough tests | |
 
 ## What already exists (M1–M6)
 
@@ -68,7 +69,11 @@ Original plan:
 - **Dungeon:** the flooded underpass (bible §4), boss *the Archivist of Floods* — water level as the arena mechanic.
 - Faction conflict: the Open Hand plans a forced restoration; the player can warn, join or stop it. First real faction lock-in (standings shift by ±3).
 
-## Act IV — The Index (M7d)
+## Act IV — The Index (M7d, built — the first act without fail-forward)
+
+As built: starts when Act III closes. Dr Vale (Ward promenade) explains that Meridian switched on three of the Index's nodes; three doors open at the bottom of the Ward's street. Each memory-site is the night of 11 November 1962 — **St Agnes hospital**, **the Okafor kitchen on Lantern Row**, **Lantern Row station** — guarded by a **Revision** (the Matron, the Lodger, the Stationmaster): one boss class that rewrites the floor in its own pattern (rows / columns / checkerboard; one row, column or colour is always safe; the Lantern Flash breaks the channel). After the fight the three testimonies can be read and **judged — authentic, edited or unreliable** (re-read to change your mind). Reconstructing the night with at least two correct verdicts gives the *true night*; otherwise it stays *distorted* for good. The Alderman's register rewrites itself into PLEASE DON'T FORGET ME (act turn). Dr Vale: show her the true nights (needs two true sites) and she shuts the nodes down herself, tell her to finish carefully, or hand her work to the Keepers. Nothing in this act moves on by itself.
+
+Original plan:
 
 **Regions:** three short memory-sites reached from the Ward, each a version of the same 1962 night: the hospital archive, the family home, the abandoned station. Each presents testimony that conflicts; the player marks traces as authentic, edited or unreliable (new journal verdict on evidence — a small extension of hypotheses).
 
@@ -91,7 +96,7 @@ Original plan:
 
 ## Rules for every stage
 
-- Story bible §11 fairness: three clue paths per major reveal; no permanently missable critical information; fail-forward on every stage of a main case.
+- Story bible §11 fairness, as revised in M7e: several *player-driven* clue paths per major reveal; nothing advances by waiting; no free hints; bosses are mandatory; a missed or failed step is a consequence carried forward, not a soft-lock.
 - New content goes in its own files (`*_act2.json`, …) and region specs; GDScript changes only for genuinely new mechanics (followers, evidence verdicts, endings), each with tests.
 - Every act adds a smoke-test section that plays it from the previous act's end.
 - Saves from the previous stage must load and continue (the campaign derives the current act from flags, so a save made before an act existed simply starts it on load).

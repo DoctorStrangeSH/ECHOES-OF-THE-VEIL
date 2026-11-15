@@ -20,6 +20,15 @@
   {"kind": "prop", "name": "Bench", "tex": "@city/Bench_2.png", "x": 300, "y": 356, "col": [44, 10], "off": [0, -5], "color": "#a07040"},
   {"kind": "spawn", "name": "Gate", "id": "gate", "x": 36, "y": 312, "facing": [1, 0]},
   {"kind": "door", "name": "WayBack", "id": "door_ward_greyford", "x": 8, "y": 312, "area": [14, 40], "scene": "greyford_block", "spawn": "ward_return", "prompt": "PROMPT_WARD_LEAVE"},
-  {"template": "anchors", "points": {"hall_steps": [136, 272], "bakery_door": [256, 274], "quay": [200, 74], "no11_door": [436, 272], "promenade": [380, 84], "shelter": [560, 280], "bench": [300, 368]}}
+  {"template": "anchors", "points": {"hall_steps": [136, 272], "bakery_door": [256, 274], "quay": [200, 74], "no11_door": [436, 272], "promenade": [380, 84], "shelter": [560, 280], "bench": [300, 368]}},
+  {"kind": "prop", "name": "HospitalDoorFrame", "tex": "@basement/240.png", "x": 120, "y": 352, "col": [0, 0], "off": [0, 0], "color": "#c0c0ff", "children": ["Shimmer"], "show_if": {"flag": "act.act4"}},
+  {"kind": "door", "name": "HospitalDoor", "id": "door_ward_memory_hospital", "x": 120, "y": 356, "area": [20, 14], "scene": "memory_hospital", "spawn": "entrance", "prompt": "PROMPT_MEMORY_HOSPITAL", "show_if": {"flag": "act.act4"}},
+  {"kind": "spawn", "name": "HospitalDoorReturn", "id": "from_memory_hospital", "x": 120, "y": 340, "facing": [0, -1]},
+  {"kind": "prop", "name": "HomeDoorFrame", "tex": "@basement/240.png", "x": 420, "y": 352, "col": [0, 0], "off": [0, 0], "color": "#c0c0ff", "children": ["Shimmer"], "show_if": {"flag": "act.act4"}},
+  {"kind": "door", "name": "HomeDoor", "id": "door_ward_memory_home", "x": 420, "y": 356, "area": [20, 14], "scene": "memory_home", "spawn": "entrance", "prompt": "PROMPT_MEMORY_HOME", "show_if": {"flag": "act.act4"}},
+  {"kind": "spawn", "name": "HomeDoorReturn", "id": "from_memory_home", "x": 420, "y": 340, "facing": [0, -1]},
+  {"kind": "prop", "name": "StationDoorFrame", "tex": "@basement/240.png", "x": 540, "y": 352, "col": [0, 0], "off": [0, 0], "color": "#c0c0ff", "children": ["Shimmer"], "show_if": {"flag": "act.act4"}},
+  {"kind": "door", "name": "StationDoor", "id": "door_ward_memory_station", "x": 540, "y": 356, "area": [20, 14], "scene": "memory_station", "spawn": "entrance", "prompt": "PROMPT_MEMORY_STATION", "show_if": {"flag": "act.act4"}},
+  {"kind": "spawn", "name": "StationDoorReturn", "id": "from_memory_station", "x": 540, "y": 340, "facing": [0, -1]}
  ]
 }

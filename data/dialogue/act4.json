@@ -1,0 +1,1004 @@
+{
+ "hospital_enter": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "HOSPITAL_ENTER_1",
+    "next": "2"
+   },
+   "2": {
+    "text": "HOSPITAL_ENTER_2",
+    "effects": [
+     {
+      "set_flag": "memory_hospital.entered"
+     }
+    ],
+    "next": null
+   }
+  }
+ },
+ "home_enter": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "HOME_ENTER_1",
+    "next": "2"
+   },
+   "2": {
+    "text": "HOME_ENTER_2",
+    "effects": [
+     {
+      "set_flag": "memory_home.entered"
+     }
+    ],
+    "next": null
+   }
+  }
+ },
+ "station_enter": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "STATION_ENTER_1",
+    "next": "2"
+   },
+   "2": {
+    "text": "STATION_ENTER_2",
+    "effects": [
+     {
+      "set_flag": "memory_station.entered"
+     }
+    ],
+    "next": null
+   }
+  }
+ },
+ "t_nurse_log": {
+  "entries": [
+   {
+    "if": {
+     "flag": "site.hospital.done"
+    },
+    "node": "done"
+   }
+  ],
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "T_T_NURSE_LOG",
+    "effects": [
+     {
+      "add_evidence": "e_t_nurse_log"
+     }
+    ],
+    "next": "judge"
+   },
+   "judge": {
+    "text": "VERDICT_ASK",
+    "choices": [
+     {
+      "text": "VERDICT_SAY_AUTHENTIC",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_nurse_log",
+         "authentic"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_EDITED",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_nurse_log",
+         "edited"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_UNRELIABLE",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_nurse_log",
+         "unreliable"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_LATER",
+      "next": null
+     }
+    ]
+   },
+   "done": {
+    "text": "T_T_NURSE_LOG",
+    "next": null
+   }
+  }
+ },
+ "t_admissions": {
+  "entries": [
+   {
+    "if": {
+     "flag": "site.hospital.done"
+    },
+    "node": "done"
+   }
+  ],
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "T_T_ADMISSIONS",
+    "effects": [
+     {
+      "add_evidence": "e_t_admissions"
+     }
+    ],
+    "next": "judge"
+   },
+   "judge": {
+    "text": "VERDICT_ASK",
+    "choices": [
+     {
+      "text": "VERDICT_SAY_AUTHENTIC",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_admissions",
+         "authentic"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_EDITED",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_admissions",
+         "edited"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_UNRELIABLE",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_admissions",
+         "unreliable"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_LATER",
+      "next": null
+     }
+    ]
+   },
+   "done": {
+    "text": "T_T_ADMISSIONS",
+    "next": null
+   }
+  }
+ },
+ "t_doctor": {
+  "entries": [
+   {
+    "if": {
+     "flag": "site.hospital.done"
+    },
+    "node": "done"
+   }
+  ],
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "T_T_DOCTOR",
+    "effects": [
+     {
+      "add_evidence": "e_t_doctor"
+     }
+    ],
+    "next": "judge"
+   },
+   "judge": {
+    "text": "VERDICT_ASK",
+    "choices": [
+     {
+      "text": "VERDICT_SAY_AUTHENTIC",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_doctor",
+         "authentic"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_EDITED",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_doctor",
+         "edited"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_UNRELIABLE",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_doctor",
+         "unreliable"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_LATER",
+      "next": null
+     }
+    ]
+   },
+   "done": {
+    "text": "T_T_DOCTOR",
+    "next": null
+   }
+  }
+ },
+ "recon_memory_hospital": {
+  "entries": [
+   {
+    "if": {
+     "flag": "site.hospital.done"
+    },
+    "node": "after"
+   },
+   {
+    "if": {
+     "judged": [
+      "e_t_nurse_log",
+      "e_t_admissions",
+      "e_t_doctor"
+     ]
+    },
+    "node": "r1"
+   }
+  ],
+  "start": "wait",
+  "nodes": {
+   "wait": {
+    "text": "RECON_WAIT",
+    "next": null
+   },
+   "after": {
+    "text": "RECON_HOSPITAL_AFTER",
+    "next": null
+   },
+   "r1": {
+    "text": "RECON_1",
+    "effects": [
+     {
+      "set_flag": "site.hospital.done"
+     },
+     {
+      "first_match": [
+       {
+        "if": {
+         "verdicts_correct_at_least": [
+          [
+           "e_t_nurse_log",
+           "e_t_admissions",
+           "e_t_doctor"
+          ],
+          2
+         ]
+        },
+        "do": [
+         {
+          "set_flag": "site.hospital.true"
+         },
+         {
+          "add_evidence": "e_true_hospital"
+         },
+         {
+          "give_resonance": 2
+         }
+        ]
+       },
+       {
+        "if": {},
+        "do": [
+         {
+          "set_flag": "site.hospital.distorted"
+         },
+         {
+          "add_evidence": "e_distorted_hospital"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "first_match": [
+       {
+        "if": {
+         "flag": "site.hospital.done",
+         "all": [
+          {
+           "flag": "site.home.done"
+          },
+          {
+           "flag": "site.station.done"
+          }
+         ]
+        },
+        "do": [
+         {
+          "quest_stage": [
+           "case_index",
+           "index"
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "next": null
+   }
+  }
+ },
+ "t_child_diary": {
+  "entries": [
+   {
+    "if": {
+     "flag": "site.home.done"
+    },
+    "node": "done"
+   }
+  ],
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "T_T_CHILD_DIARY",
+    "effects": [
+     {
+      "add_evidence": "e_t_child_diary"
+     }
+    ],
+    "next": "judge"
+   },
+   "judge": {
+    "text": "VERDICT_ASK",
+    "choices": [
+     {
+      "text": "VERDICT_SAY_AUTHENTIC",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_child_diary",
+         "authentic"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_EDITED",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_child_diary",
+         "edited"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_UNRELIABLE",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_child_diary",
+         "unreliable"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_LATER",
+      "next": null
+     }
+    ]
+   },
+   "done": {
+    "text": "T_T_CHILD_DIARY",
+    "next": null
+   }
+  }
+ },
+ "t_eviction": {
+  "entries": [
+   {
+    "if": {
+     "flag": "site.home.done"
+    },
+    "node": "done"
+   }
+  ],
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "T_T_EVICTION",
+    "effects": [
+     {
+      "add_evidence": "e_t_eviction"
+     }
+    ],
+    "next": "judge"
+   },
+   "judge": {
+    "text": "VERDICT_ASK",
+    "choices": [
+     {
+      "text": "VERDICT_SAY_AUTHENTIC",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_eviction",
+         "authentic"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_EDITED",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_eviction",
+         "edited"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_UNRELIABLE",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_eviction",
+         "unreliable"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_LATER",
+      "next": null
+     }
+    ]
+   },
+   "done": {
+    "text": "T_T_EVICTION",
+    "next": null
+   }
+  }
+ },
+ "t_neighbour": {
+  "entries": [
+   {
+    "if": {
+     "flag": "site.home.done"
+    },
+    "node": "done"
+   }
+  ],
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "T_T_NEIGHBOUR",
+    "effects": [
+     {
+      "add_evidence": "e_t_neighbour"
+     }
+    ],
+    "next": "judge"
+   },
+   "judge": {
+    "text": "VERDICT_ASK",
+    "choices": [
+     {
+      "text": "VERDICT_SAY_AUTHENTIC",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_neighbour",
+         "authentic"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_EDITED",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_neighbour",
+         "edited"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_UNRELIABLE",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_neighbour",
+         "unreliable"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_LATER",
+      "next": null
+     }
+    ]
+   },
+   "done": {
+    "text": "T_T_NEIGHBOUR",
+    "next": null
+   }
+  }
+ },
+ "recon_memory_home": {
+  "entries": [
+   {
+    "if": {
+     "flag": "site.home.done"
+    },
+    "node": "after"
+   },
+   {
+    "if": {
+     "judged": [
+      "e_t_child_diary",
+      "e_t_eviction",
+      "e_t_neighbour"
+     ]
+    },
+    "node": "r1"
+   }
+  ],
+  "start": "wait",
+  "nodes": {
+   "wait": {
+    "text": "RECON_WAIT",
+    "next": null
+   },
+   "after": {
+    "text": "RECON_HOME_AFTER",
+    "next": null
+   },
+   "r1": {
+    "text": "RECON_1",
+    "effects": [
+     {
+      "set_flag": "site.home.done"
+     },
+     {
+      "first_match": [
+       {
+        "if": {
+         "verdicts_correct_at_least": [
+          [
+           "e_t_child_diary",
+           "e_t_eviction",
+           "e_t_neighbour"
+          ],
+          2
+         ]
+        },
+        "do": [
+         {
+          "set_flag": "site.home.true"
+         },
+         {
+          "add_evidence": "e_true_home"
+         },
+         {
+          "give_resonance": 2
+         }
+        ]
+       },
+       {
+        "if": {},
+        "do": [
+         {
+          "set_flag": "site.home.distorted"
+         },
+         {
+          "add_evidence": "e_distorted_home"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "first_match": [
+       {
+        "if": {
+         "flag": "site.hospital.done",
+         "all": [
+          {
+           "flag": "site.home.done"
+          },
+          {
+           "flag": "site.station.done"
+          }
+         ]
+        },
+        "do": [
+         {
+          "quest_stage": [
+           "case_index",
+           "index"
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "next": null
+   }
+  }
+ },
+ "t_station_log": {
+  "entries": [
+   {
+    "if": {
+     "flag": "site.station.done"
+    },
+    "node": "done"
+   }
+  ],
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "T_T_STATION_LOG",
+    "effects": [
+     {
+      "add_evidence": "e_t_station_log"
+     }
+    ],
+    "next": "judge"
+   },
+   "judge": {
+    "text": "VERDICT_ASK",
+    "choices": [
+     {
+      "text": "VERDICT_SAY_AUTHENTIC",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_station_log",
+         "authentic"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_EDITED",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_station_log",
+         "edited"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_UNRELIABLE",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_station_log",
+         "unreliable"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_LATER",
+      "next": null
+     }
+    ]
+   },
+   "done": {
+    "text": "T_T_STATION_LOG",
+    "next": null
+   }
+  }
+ },
+ "t_letter": {
+  "entries": [
+   {
+    "if": {
+     "flag": "site.station.done"
+    },
+    "node": "done"
+   }
+  ],
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "T_T_LETTER",
+    "effects": [
+     {
+      "add_evidence": "e_t_letter"
+     }
+    ],
+    "next": "judge"
+   },
+   "judge": {
+    "text": "VERDICT_ASK",
+    "choices": [
+     {
+      "text": "VERDICT_SAY_AUTHENTIC",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_letter",
+         "authentic"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_EDITED",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_letter",
+         "edited"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_UNRELIABLE",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_letter",
+         "unreliable"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_LATER",
+      "next": null
+     }
+    ]
+   },
+   "done": {
+    "text": "T_T_LETTER",
+    "next": null
+   }
+  }
+ },
+ "t_porter": {
+  "entries": [
+   {
+    "if": {
+     "flag": "site.station.done"
+    },
+    "node": "done"
+   }
+  ],
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "T_T_PORTER",
+    "effects": [
+     {
+      "add_evidence": "e_t_porter"
+     }
+    ],
+    "next": "judge"
+   },
+   "judge": {
+    "text": "VERDICT_ASK",
+    "choices": [
+     {
+      "text": "VERDICT_SAY_AUTHENTIC",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_porter",
+         "authentic"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_EDITED",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_porter",
+         "edited"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_UNRELIABLE",
+      "effects": [
+       {
+        "verdict": [
+         "e_t_porter",
+         "unreliable"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VERDICT_SAY_LATER",
+      "next": null
+     }
+    ]
+   },
+   "done": {
+    "text": "T_T_PORTER",
+    "next": null
+   }
+  }
+ },
+ "recon_memory_station": {
+  "entries": [
+   {
+    "if": {
+     "flag": "site.station.done"
+    },
+    "node": "after"
+   },
+   {
+    "if": {
+     "judged": [
+      "e_t_station_log",
+      "e_t_letter",
+      "e_t_porter"
+     ]
+    },
+    "node": "r1"
+   }
+  ],
+  "start": "wait",
+  "nodes": {
+   "wait": {
+    "text": "RECON_WAIT",
+    "next": null
+   },
+   "after": {
+    "text": "RECON_STATION_AFTER",
+    "next": null
+   },
+   "r1": {
+    "text": "RECON_1",
+    "effects": [
+     {
+      "set_flag": "site.station.done"
+     },
+     {
+      "first_match": [
+       {
+        "if": {
+         "verdicts_correct_at_least": [
+          [
+           "e_t_station_log",
+           "e_t_letter",
+           "e_t_porter"
+          ],
+          2
+         ]
+        },
+        "do": [
+         {
+          "set_flag": "site.station.true"
+         },
+         {
+          "add_evidence": "e_true_station"
+         },
+         {
+          "give_resonance": 2
+         }
+        ]
+       },
+       {
+        "if": {},
+        "do": [
+         {
+          "set_flag": "site.station.distorted"
+         },
+         {
+          "add_evidence": "e_distorted_station"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "first_match": [
+       {
+        "if": {
+         "flag": "site.hospital.done",
+         "all": [
+          {
+           "flag": "site.home.done"
+          },
+          {
+           "flag": "site.station.done"
+          }
+         ]
+        },
+        "do": [
+         {
+          "quest_stage": [
+           "case_index",
+           "index"
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "next": null
+   }
+  }
+ }
+}

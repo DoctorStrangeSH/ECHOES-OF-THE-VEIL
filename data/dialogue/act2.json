@@ -202,6 +202,16 @@
       "next": "after"
      },
      {
+      "text": "ALD_INDEX",
+      "if": {
+       "quest_stage": [
+        "case_index",
+        "index"
+       ]
+      },
+      "next": "index1"
+     },
+     {
       "text": "BYE",
       "next": null
      }
@@ -238,6 +248,31 @@
    "after": {
     "speaker": "NPC_ALDERMAN",
     "text": "ALD_AFTER_1",
+    "next": "hub"
+   },
+   "index1": {
+    "speaker": "NPC_ALDERMAN",
+    "text": "ALD_INDEX_1",
+    "next": "index2"
+   },
+   "index2": {
+    "text": "ALD_INDEX_2",
+    "next": "index3"
+   },
+   "index3": {
+    "speaker": "NPC_ALDERMAN",
+    "text": "ALD_INDEX_3",
+    "effects": [
+     {
+      "add_evidence": "e_index_truth"
+     },
+     {
+      "quest_stage": [
+       "case_index",
+       "vale"
+      ]
+     }
+    ],
     "next": "hub"
    }
   }
@@ -632,6 +667,26 @@
       "next": "res"
      },
      {
+      "text": "VALE_ASK_NODES",
+      "if": {
+       "quest_stage": [
+        "case_index",
+        "nodes"
+       ]
+      },
+      "next": "nodes1"
+     },
+     {
+      "text": "VALE_FINAL",
+      "if": {
+       "quest_stage": [
+        "case_index",
+        "vale"
+       ]
+      },
+      "next": "final1"
+     },
+     {
       "text": "BYE",
       "next": null
      }
@@ -656,6 +711,178 @@
     "speaker": "NPC_VALE",
     "text": "VALE_RESONATOR",
     "next": "hub"
+   },
+   "nodes1": {
+    "speaker": "NPC_VALE",
+    "text": "VALE_NODES_1",
+    "next": "nodes2"
+   },
+   "nodes2": {
+    "speaker": "NPC_VALE",
+    "text": "VALE_NODES_2",
+    "effects": [
+     {
+      "quest_stage": [
+       "case_index",
+       "sites"
+      ]
+     }
+    ],
+    "next": "hub"
+   },
+   "final1": {
+    "speaker": "NPC_VALE",
+    "text": "VALE_FINAL_1",
+    "choices": [
+     {
+      "text": "VALE_SHOW_TRUTH",
+      "if": {
+       "any": [
+        {
+         "all": [
+          {
+           "flag": "site.hospital.true"
+          },
+          {
+           "flag": "site.home.true"
+          }
+         ]
+        },
+        {
+         "all": [
+          {
+           "flag": "site.hospital.true"
+          },
+          {
+           "flag": "site.station.true"
+          }
+         ]
+        },
+        {
+         "all": [
+          {
+           "flag": "site.home.true"
+          },
+          {
+           "flag": "site.station.true"
+          }
+         ]
+        }
+       ]
+      },
+      "effects": [
+       {
+        "quest_complete": [
+         "case_index",
+         "turned"
+        ]
+       },
+       {
+        "set_flag": "vale.turned"
+       },
+       {
+        "faction": [
+         "meridian",
+         -3
+        ]
+       },
+       {
+        "faction": [
+         "unwritten",
+         1
+        ]
+       },
+       {
+        "relationship": [
+         "sera_vale",
+         2
+        ]
+       },
+       {
+        "remember": [
+         "sera_vale",
+         "showed_her_the_nights"
+        ]
+       }
+      ],
+      "next": "turned"
+     },
+     {
+      "text": "VALE_SAY_FINISH",
+      "effects": [
+       {
+        "quest_complete": [
+         "case_index",
+         "continued"
+        ]
+       },
+       {
+        "set_flag": "vale.continues"
+       },
+       {
+        "faction": [
+         "meridian",
+         2
+        ]
+       },
+       {
+        "remember": [
+         "sera_vale",
+         "told_her_to_finish"
+        ]
+       }
+      ],
+      "next": "continued"
+     },
+     {
+      "text": "VALE_SAY_STOP",
+      "effects": [
+       {
+        "quest_complete": [
+         "case_index",
+         "stopped"
+        ]
+       },
+       {
+        "set_flag": "vale.stopped"
+       },
+       {
+        "faction": [
+         "keepers",
+         2
+        ]
+       },
+       {
+        "faction": [
+         "meridian",
+         -2
+        ]
+       },
+       {
+        "relationship": [
+         "sera_vale",
+         -2
+        ]
+       }
+      ],
+      "next": "stopped"
+     }
+    ]
+   },
+   "turned": {
+    "speaker": "NPC_VALE",
+    "text": "VALE_TURNED",
+    "next": null
+   },
+   "continued": {
+    "speaker": "NPC_VALE",
+    "text": "VALE_CONTINUED",
+    "next": null
+   },
+   "stopped": {
+    "speaker": "NPC_VALE",
+    "text": "VALE_STOPPED",
+    "next": null
    }
   }
  },

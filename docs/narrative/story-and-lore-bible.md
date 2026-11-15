@@ -154,7 +154,7 @@ Endgame narrative question: what obligations remain when the central crisis is o
 - Red herrings must be explainable in retrospect.
 - NPC testimony reflects what that person knows, believes, wants, and remembers; do not use random lying as a difficulty mechanic.
 - The player must be able to make a reasonable inference before the reveal.
-- Critical story information cannot be permanently missable due to one casual dialogue choice.
+- Critical story information cannot be permanently missable due to one casual dialogue choice — it can be reached by more than one player action. It never arrives by itself because time passed (D-052); a step the player gets wrong stays wrong and is carried into later acts.
 - Journal entries distinguish observed fact, testimony, hypothesis, and confirmed conclusion.
 - Choices should alter people and access, not silently invalidate the central plot.
 
@@ -162,7 +162,7 @@ Endgame narrative question: what obligations remain when the central crisis is o
 
 For each quest or chapter document:
 - player objective and emotional question;
-- prerequisite and fail-forward path;
+- prerequisite and alternative player-driven routes (no fail-forward, D-052);
 - scenes and locations;
 - evidence/clue chain;
 - NPC knowledge states;

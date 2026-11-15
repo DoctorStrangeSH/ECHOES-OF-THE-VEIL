@@ -1,0 +1,208 @@
+{
+ "cases": {
+  "case_index": {
+   "title": "CASE_IX_TITLE",
+   "summary": "CASE_IX_SUMMARY",
+   "first_stage": "nodes",
+   "stages": {
+    "nodes": "CASE_IX_NODES",
+    "sites": "CASE_IX_SITES",
+    "index": "CASE_IX_INDEX",
+    "vale": "CASE_IX_VALE"
+   },
+   "transitions": {
+    "nodes": [
+     "sites"
+    ],
+    "sites": [
+     "index"
+    ],
+    "index": [
+     "vale"
+    ]
+   },
+   "fail_forward": [],
+   "outcomes": {
+    "turned": "CASE_IX_TURNED",
+    "continued": "CASE_IX_CONTINUED",
+    "stopped": "CASE_IX_STOPPED"
+   }
+  }
+ },
+ "evidence": {
+  "e_t_nurse_log": {
+   "case": "case_index",
+   "kind": "recorded",
+   "source": "t_nurse_log",
+   "source_name": "SRC_NURSE",
+   "title": "EV_T_NURSE_LOG_TITLE",
+   "body": "EV_T_NURSE_LOG_BODY",
+   "testimony": true,
+   "truth": "authentic"
+  },
+  "e_t_admissions": {
+   "case": "case_index",
+   "kind": "recorded",
+   "source": "t_admissions",
+   "source_name": "SRC_ADMISSIONS",
+   "title": "EV_T_ADMISSIONS_TITLE",
+   "body": "EV_T_ADMISSIONS_BODY",
+   "testimony": true,
+   "truth": "edited"
+  },
+  "e_t_doctor": {
+   "case": "case_index",
+   "kind": "reported",
+   "source": "t_doctor",
+   "source_name": "SRC_DR_HALE",
+   "title": "EV_T_DOCTOR_TITLE",
+   "body": "EV_T_DOCTOR_BODY",
+   "testimony": true,
+   "truth": "unreliable"
+  },
+  "e_true_hospital": {
+   "case": "case_index",
+   "kind": "observed",
+   "source": "player",
+   "source_name": "SRC_YOU",
+   "title": "EV_TRUE_HOSPITAL_TITLE",
+   "body": "EV_TRUE_HOSPITAL_BODY"
+  },
+  "e_distorted_hospital": {
+   "case": "case_index",
+   "kind": "observed",
+   "source": "player",
+   "source_name": "SRC_YOU",
+   "title": "EV_DISTORTED_HOSPITAL_TITLE",
+   "body": "EV_DISTORTED_HOSPITAL_BODY"
+  },
+  "e_t_child_diary": {
+   "case": "case_index",
+   "kind": "recorded",
+   "source": "t_child_diary",
+   "source_name": "SRC_DIARY",
+   "title": "EV_T_CHILD_DIARY_TITLE",
+   "body": "EV_T_CHILD_DIARY_BODY",
+   "testimony": true,
+   "truth": "authentic"
+  },
+  "e_t_eviction": {
+   "case": "case_index",
+   "kind": "recorded",
+   "source": "t_eviction",
+   "source_name": "SRC_BOROUGH",
+   "title": "EV_T_EVICTION_TITLE",
+   "body": "EV_T_EVICTION_BODY",
+   "testimony": true,
+   "truth": "edited"
+  },
+  "e_t_neighbour": {
+   "case": "case_index",
+   "kind": "reported",
+   "source": "t_neighbour",
+   "source_name": "SRC_NEIGHBOUR",
+   "title": "EV_T_NEIGHBOUR_TITLE",
+   "body": "EV_T_NEIGHBOUR_BODY",
+   "testimony": true,
+   "truth": "unreliable"
+  },
+  "e_true_home": {
+   "case": "case_index",
+   "kind": "observed",
+   "source": "player",
+   "source_name": "SRC_YOU",
+   "title": "EV_TRUE_HOME_TITLE",
+   "body": "EV_TRUE_HOME_BODY"
+  },
+  "e_distorted_home": {
+   "case": "case_index",
+   "kind": "observed",
+   "source": "player",
+   "source_name": "SRC_YOU",
+   "title": "EV_DISTORTED_HOME_TITLE",
+   "body": "EV_DISTORTED_HOME_BODY"
+  },
+  "e_t_station_log": {
+   "case": "case_index",
+   "kind": "recorded",
+   "source": "t_station_log",
+   "source_name": "SRC_STATIONMASTER",
+   "title": "EV_T_STATION_LOG_TITLE",
+   "body": "EV_T_STATION_LOG_BODY",
+   "testimony": true,
+   "truth": "edited"
+  },
+  "e_t_letter": {
+   "case": "case_index",
+   "kind": "recorded",
+   "source": "t_letter",
+   "source_name": "SRC_LETTER",
+   "title": "EV_T_LETTER_TITLE",
+   "body": "EV_T_LETTER_BODY",
+   "testimony": true,
+   "truth": "authentic"
+  },
+  "e_t_porter": {
+   "case": "case_index",
+   "kind": "reported",
+   "source": "t_porter",
+   "source_name": "SRC_PORTER",
+   "title": "EV_T_PORTER_TITLE",
+   "body": "EV_T_PORTER_BODY",
+   "testimony": true,
+   "truth": "unreliable"
+  },
+  "e_true_station": {
+   "case": "case_index",
+   "kind": "observed",
+   "source": "player",
+   "source_name": "SRC_YOU",
+   "title": "EV_TRUE_STATION_TITLE",
+   "body": "EV_TRUE_STATION_BODY"
+  },
+  "e_distorted_station": {
+   "case": "case_index",
+   "kind": "observed",
+   "source": "player",
+   "source_name": "SRC_YOU",
+   "title": "EV_DISTORTED_STATION_TITLE",
+   "body": "EV_DISTORTED_STATION_BODY"
+  },
+  "e_index_truth": {
+   "case": "case_index",
+   "kind": "recorded",
+   "source": "ward_register",
+   "source_name": "SRC_WARD_REGISTER",
+   "title": "EV_INDEX_TITLE",
+   "body": "EV_INDEX_BODY"
+  }
+ },
+ "hypotheses": {
+  "the_lattice": {
+   "case": "case_index",
+   "title": "HYP_LATTICE_TITLE",
+   "body": "HYP_LATTICE_BODY",
+   "requires_all": [
+    "e_index_truth"
+   ],
+   "requires_any": [
+    "e_true_hospital",
+    "e_true_home",
+    "e_true_station"
+   ],
+   "min_any": 1,
+   "corroborate_sources": 3,
+   "effects": [
+    {
+     "give_resonance": 3
+    },
+    {
+     "faction": [
+      "unwritten",
+      1
+     ]
+    }
+   ]
+  }
+ }
+}

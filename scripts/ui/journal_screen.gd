@@ -128,6 +128,9 @@ func _show_case(id: StringName) -> void:
 		var d: Dictionary = Journal.evidence_defs[e]
 		var kind := String(d.get("kind", "observed"))
 		var head := "[%s] %s" % [tr("EVIDENCE_KIND_" + kind.to_upper()), tr(d.get("title", ""))]
+		if d.get("testimony", false):
+			var v := Journal.verdict_of(e)
+			head += "  — " + (tr("VERDICT_" + v.to_upper()) if v != "" else tr("VERDICT_NONE"))
 		_detail.add_child(_label(head, KIND_COLORS.get(kind, UiTheme.INK)))
 		var when: Dictionary = Journal.found[e]
 		var src := tr("JOURNAL_SOURCE") % [tr(d.get("source_name", "")), int(when.get("day", 1)), String(when.get("time", ""))]

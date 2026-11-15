@@ -276,3 +276,105 @@ anchor_id = &"shelter"
 position = Vector2(300, 368)
 script = ExtResource("11_anchor")
 anchor_id = &"bench"
+
+[node name="HospitalDoorFrame" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(120, 352)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_240.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.753,0.753,1.000, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Shimmer" type="Node" parent="Entities/HospitalDoorFrame"]
+script = ExtResource("9_shimmer")
+
+[node name="Condition" type="Node" parent="Entities/HospitalDoorFrame"]
+script = ExtResource("10_cond")
+show_if = {"flag": "act.act4"}
+
+[node name="HospitalDoor" type="Area2D" parent="Entities"]
+position = Vector2(120, 356)
+script = ExtResource("6_door")
+interaction_id = &"door_ward_memory_hospital"
+area_size = Vector2(20, 14)
+prompt_key = "PROMPT_MEMORY_HOSPITAL"
+target_scene_id = &"memory_hospital"
+target_spawn_id = &"entrance"
+
+[node name="Condition" type="Node" parent="Entities/HospitalDoor"]
+script = ExtResource("10_cond")
+show_if = {"flag": "act.act4"}
+
+[node name="HospitalDoorReturn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(120, 340)
+script = ExtResource("4_spawn")
+spawn_id = &"from_memory_hospital"
+facing = Vector2(0, -1)
+
+[node name="HomeDoorFrame" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(420, 352)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_240.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.753,0.753,1.000, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Shimmer" type="Node" parent="Entities/HomeDoorFrame"]
+script = ExtResource("9_shimmer")
+
+[node name="Condition" type="Node" parent="Entities/HomeDoorFrame"]
+script = ExtResource("10_cond")
+show_if = {"flag": "act.act4"}
+
+[node name="HomeDoor" type="Area2D" parent="Entities"]
+position = Vector2(420, 356)
+script = ExtResource("6_door")
+interaction_id = &"door_ward_memory_home"
+area_size = Vector2(20, 14)
+prompt_key = "PROMPT_MEMORY_HOME"
+target_scene_id = &"memory_home"
+target_spawn_id = &"entrance"
+
+[node name="Condition" type="Node" parent="Entities/HomeDoor"]
+script = ExtResource("10_cond")
+show_if = {"flag": "act.act4"}
+
+[node name="HomeDoorReturn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(420, 340)
+script = ExtResource("4_spawn")
+spawn_id = &"from_memory_home"
+facing = Vector2(0, -1)
+
+[node name="StationDoorFrame" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(540, 352)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_240.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.753,0.753,1.000, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Shimmer" type="Node" parent="Entities/StationDoorFrame"]
+script = ExtResource("9_shimmer")
+
+[node name="Condition" type="Node" parent="Entities/StationDoorFrame"]
+script = ExtResource("10_cond")
+show_if = {"flag": "act.act4"}
+
+[node name="StationDoor" type="Area2D" parent="Entities"]
+position = Vector2(540, 356)
+script = ExtResource("6_door")
+interaction_id = &"door_ward_memory_station"
+area_size = Vector2(20, 14)
+prompt_key = "PROMPT_MEMORY_STATION"
+target_scene_id = &"memory_station"
+target_spawn_id = &"entrance"
+
+[node name="Condition" type="Node" parent="Entities/StationDoor"]
+script = ExtResource("10_cond")
+show_if = {"flag": "act.act4"}
+
+[node name="StationDoorReturn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(540, 340)
+script = ExtResource("4_spawn")
+spawn_id = &"from_memory_station"
+facing = Vector2(0, -1)

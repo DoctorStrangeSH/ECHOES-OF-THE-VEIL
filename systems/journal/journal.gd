@@ -36,6 +36,10 @@ var found: Dictionary = {}
 var cases: Dictionary = {}
 ## hypothesis_id -> "inferred" | "corroborated"
 var hypotheses: Dictionary = {}
+## Testimony the player has judged: evidence_id -> "authentic" | "edited" | "unreliable".
+## Evidence with "testimony": true in its definition can be judged; its hidden
+## "truth" says which verdict is right.
+var verdicts: Dictionary = {}
 ## Order in which cases were started (for the journal UI).
 var case_order: Array[StringName] = []
 
@@ -71,6 +75,7 @@ func reset() -> void:
 	found.clear()
 	cases.clear()
 	hypotheses.clear()
+	verdicts.clear()
 	case_order.clear()
 
 
@@ -290,6 +295,37 @@ func _recheck_corroboration() -> void:
 			hypothesis_changed.emit(id, hypotheses[id])
 
 
+# --- Testimony verdicts -------------------------------------------------------
+
+const VERDICTS: Array[String] = ["authentic", "edited", "unreliable"]
+
+signal verdict_changed(evidence_id: StringName, verdict: String)
+
+
+func set_verdict(id: StringName, verdict: String) -> void:
+	if not evidence_defs.get(id, {}).get("testimony", false) or not VERDICTS.has(verdict):
+		push_error("Journal: can't judge '%s' as '%s'" % [id, verdict])
+		return
+	verdicts[id] = verdict
+	verdict_changed.emit(id, verdict)
+
+
+func verdict_of(id: StringName) -> String:
+	return String(verdicts.get(id, ""))
+
+
+func is_verdict_correct(id: StringName) -> bool:
+	return verdicts.has(id) and String(evidence_defs[id].get("truth", "")) == String(verdicts[id])
+
+
+func correct_verdicts(ids: Array) -> int:
+	var n := 0
+	for id: Variant in ids:
+		if is_verdict_correct(StringName(id)):
+			n += 1
+	return n
+
+
 # --- Save --------------------------------------------------------------------
 
 func to_dict() -> Dictionary:
@@ -307,7 +343,10 @@ func to_dict() -> Dictionary:
 	var order: Array[String] = []
 	for id in case_order:
 		order.append(String(id))
-	return {"found": f, "cases": c, "hypotheses": h, "case_order": order}
+	var v := {}
+	for id: StringName in verdicts:
+		v[String(id)] = verdicts[id]
+	return {"found": f, "cases": c, "hypotheses": h, "case_order": order, "verdicts": v}
 
 
 func from_dict(data: Dictionary) -> void:
@@ -330,6 +369,10 @@ func from_dict(data: Dictionary) -> void:
 	var h: Dictionary = data.get("hypotheses", {})
 	for id: String in h:
 		hypotheses[StringName(id)] = String(h[id])
+	var v: Dictionary = data.get("verdicts", {})  # absent before M7d: nothing judged yet
+	for id: String in v:
+		if evidence_defs.get(StringName(id), {}).get("testimony", false):
+			verdicts[StringName(id)] = String(v[id])
 	for id: Variant in data.get("case_order", []):
 		if cases.has(StringName(id)):
 			case_order.append(StringName(id))
