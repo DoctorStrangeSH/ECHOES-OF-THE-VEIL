@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/ui/inventory_screen.gd" id="6_inventory"]
 [ext_resource type="Script" path="res://scripts/ui/work_screen.gd" id="7_work"]
 [ext_resource type="Script" path="res://scripts/ui/repair_minigame.gd" id="8_repair"]
+[ext_resource type="Script" path="res://scripts/ui/act_card.gd" id="9_act"]
 
 [node name="GameRoot" type="Node"]
 script = ExtResource("1_root")
@@ -34,6 +35,9 @@ script = ExtResource("7_work")
 
 [node name="Repair" type="CanvasLayer" parent="."]
 script = ExtResource("8_repair")
+
+[node name="ActCard" type="CanvasLayer" parent="."]
+script = ExtResource("9_act")
 
 [node name="MenuLayer" type="CanvasLayer" parent="."]
 layer = 20

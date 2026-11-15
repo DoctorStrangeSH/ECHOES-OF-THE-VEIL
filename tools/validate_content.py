@@ -173,6 +173,19 @@ for did, d in D.items():
     for nid in nodes:
         if nid not in seen:
             warn(f'{where}: node {nid} is unreachable')
+    if 'hub' in nodes:
+        # An entry that ends the conversation without changing anything repeats
+        # forever while its condition holds and hides the hub (shop, jobs, new cases).
+        for e in d.get('entries', []):
+            n, seen, changes = e.get('node'), set(), False
+            while n and n in nodes and n not in seen:
+                seen.add(n)
+                if n == 'hub' or nodes[n].get('effects') or nodes[n].get('choices'):
+                    changes = True
+                    break
+                n = nodes[n].get('next')
+            if not changes:
+                err(f'{where}: entry {e.get("node")} ends the conversation without changing anything, so the hub is unreachable while it applies')
     walk(d, where)
 
 # --- journal ---------------------------------------------------------------
@@ -188,7 +201,11 @@ for c, v in J['cases'].items():
         for t in [a] + targets:
             if t not in v.get('stages', {}):
                 err(f'case {c}: transition uses unknown stage {t}')
-    walk(v, f'case {c}')
+    walk(v.get('fail_forward', []), f'case {c}')
+    for ff in v.get('fail_forward', []):
+        key(ff.get('note'), f'case {c} fail-forward')
+        if ff.get('stage') not in v.get('stages', {}) or (ff.get('to') and ff['to'] not in v.get('stages', {})):
+            err(f'case {c}: fail-forward uses an unknown stage')
 for h, v in J['hypotheses'].items():
     for e in v.get('requires_all', []) + v.get('requires_any', []):
         if e not in J['evidence']:

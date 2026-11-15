@@ -1,0 +1,245 @@
+{
+ "cases": {
+  "case_two_maps": {
+   "title": "CASE_TM_TITLE",
+   "summary": "CASE_TM_SUMMARY",
+   "first_stage": "incidents",
+   "stages": {
+    "incidents": "CASE_TM_INCIDENTS",
+    "map": "CASE_TM_MAP",
+    "hand": "CASE_TM_HAND",
+    "turn": "CASE_TM_TURN"
+   },
+   "transitions": {
+    "incidents": [
+     "map"
+    ],
+    "map": [
+     "hand"
+    ],
+    "hand": [
+     "turn"
+    ]
+   },
+   "fail_forward": [
+    {
+     "stage": "incidents",
+     "after_days": 4,
+     "note": "FF_TM_INCIDENTS"
+    },
+    {
+     "stage": "map",
+     "after_days": 3,
+     "note": "FF_TM_MAP",
+     "effects": [
+      {
+       "add_evidence": "e_two_maps"
+      }
+     ],
+     "to": "hand"
+    },
+    {
+     "stage": "hand",
+     "after_days": 2,
+     "note": "FF_TM_HAND",
+     "effects": [
+      {
+       "add_evidence": "e_rent_book"
+      }
+     ],
+     "to": "turn"
+    }
+   ],
+   "outcomes": {
+    "kept": "CASE_TM_KEPT",
+    "shared": "CASE_TM_SHARED",
+    "questioned": "CASE_TM_QUESTIONED"
+   }
+  },
+  "case_storeroom": {
+   "title": "CASE_SR_TITLE",
+   "summary": "CASE_SR_SUMMARY",
+   "first_stage": "wall",
+   "stages": {
+    "wall": "CASE_SR_WALL",
+    "tell": "CASE_SR_TELL"
+   },
+   "transitions": {
+    "wall": [
+     "tell"
+    ]
+   },
+   "fail_forward": [
+    {
+     "stage": "wall",
+     "after_days": 3,
+     "note": "FF_SR_WALL",
+     "effects": [
+      {
+       "add_evidence": "e_storeroom_mark"
+      }
+     ],
+     "to": "tell"
+    }
+   ],
+   "outcomes": {
+    "told": "CASE_SR_TOLD"
+   }
+  },
+  "case_larger_house": {
+   "title": "CASE_LH2_TITLE",
+   "summary": "CASE_LH2_SUMMARY",
+   "first_stage": "measure",
+   "stages": {
+    "measure": "CASE_LH2_MEASURE",
+    "room": "CASE_LH2_ROOM",
+    "tell": "CASE_LH2_TELL"
+   },
+   "transitions": {
+    "measure": [
+     "room"
+    ],
+    "room": [
+     "tell"
+    ]
+   },
+   "fail_forward": [
+    {
+     "stage": "room",
+     "after_days": 3,
+     "note": "FF_LH2_ROOM",
+     "effects": [
+      {
+       "add_evidence": "e_house_mark"
+      }
+     ],
+     "to": "tell"
+    }
+   ],
+   "outcomes": {
+    "remembered": "CASE_LH2_REMEMBERED",
+    "settled": "CASE_LH2_SETTLED"
+   }
+  },
+  "case_misplaced": {
+   "title": "CASE_MP_TITLE",
+   "summary": "CASE_MP_SUMMARY",
+   "first_stage": "ward",
+   "stages": {
+    "ward": "CASE_MP_WARD"
+   },
+   "transitions": {}
+  }
+ },
+ "evidence": {
+  "e_storeroom_mark": {
+   "case": "case_storeroom",
+   "kind": "observed",
+   "source": "storeroom",
+   "source_name": "SRC_STOREROOM",
+   "title": "EV_SR_MARK_TITLE",
+   "body": "EV_SR_MARK_BODY",
+   "advance": [
+    "case_storeroom",
+    "tell"
+   ]
+  },
+  "e_rook_ledger": {
+   "case": "case_storeroom",
+   "kind": "recorded",
+   "source": "rook_ledger",
+   "source_name": "SRC_ROOK_LEDGER",
+   "title": "EV_LEDGER_TITLE",
+   "body": "EV_LEDGER_BODY"
+  },
+  "e_house_longer": {
+   "case": "case_larger_house",
+   "kind": "observed",
+   "source": "player",
+   "source_name": "SRC_YOU",
+   "title": "EV_LONGER_TITLE",
+   "body": "EV_LONGER_BODY",
+   "advance": [
+    "case_larger_house",
+    "room"
+   ]
+  },
+  "e_house_mark": {
+   "case": "case_larger_house",
+   "kind": "observed",
+   "source": "new_room",
+   "source_name": "SRC_NEW_ROOM",
+   "title": "EV_HOUSE_MARK_TITLE",
+   "body": "EV_HOUSE_MARK_BODY",
+   "advance": [
+    "case_larger_house",
+    "tell"
+   ]
+  },
+  "e_two_maps": {
+   "case": "case_two_maps",
+   "kind": "recorded",
+   "source": "pencil_map",
+   "source_name": "SRC_PENCIL_MAP",
+   "title": "EV_TWO_MAPS_TITLE",
+   "body": "EV_TWO_MAPS_BODY",
+   "advance": [
+    "case_two_maps",
+    "hand"
+   ]
+  },
+  "e_rent_book": {
+   "case": "case_two_maps",
+   "kind": "recorded",
+   "source": "rent_book",
+   "source_name": "SRC_RENT_BOOK",
+   "title": "EV_RENT_BOOK_TITLE",
+   "body": "EV_RENT_BOOK_BODY"
+  }
+ },
+ "hypotheses": {
+  "incidents_share_mark": {
+   "case": "case_two_maps",
+   "title": "HYP_SHARED_MARK_TITLE",
+   "body": "HYP_SHARED_MARK_BODY",
+   "requires_all": [],
+   "requires_any": [
+    "e_storeroom_mark",
+    "e_house_mark",
+    "e_census_page"
+   ],
+   "min_any": 2,
+   "corroborate_sources": 3,
+   "effects": [
+    {
+     "quest_stage": [
+      "case_two_maps",
+      "map"
+     ]
+    }
+   ]
+  },
+  "halloway_drew_map": {
+   "case": "case_two_maps",
+   "title": "HYP_HAND_TITLE",
+   "body": "HYP_HAND_BODY",
+   "requires_all": [
+    "e_two_maps"
+   ],
+   "requires_any": [
+    "e_landlord_note",
+    "e_rent_book"
+   ],
+   "min_any": 1,
+   "corroborate_sources": 3,
+   "effects": [
+    {
+     "quest_stage": [
+      "case_two_maps",
+      "turn"
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -1,9 +1,9 @@
 {
- "wren": {
+ "hester": {
   "entries": [
    {
     "if": {
-     "not_flag": "met.wren_ashby"
+     "not_flag": "met.hester_ashby"
     },
     "node": "intro1"
    }
@@ -11,16 +11,16 @@
   "start": "hub",
   "nodes": {
    "intro1": {
-    "speaker": "NPC_WREN",
-    "text": "WREN_1",
+    "speaker": "NPC_HESTER",
+    "text": "HESTER_1",
     "next": "intro2"
    },
    "intro2": {
-    "speaker": "NPC_WREN",
-    "text": "WREN_2",
+    "speaker": "NPC_HESTER",
+    "text": "HESTER_2",
     "effects": [
      {
-      "set_flag": "met.wren_ashby"
+      "set_flag": "met.hester_ashby"
      },
      {
       "quest_start": "case_lighthouse"
@@ -29,11 +29,11 @@
     "next": "hub"
    },
    "hub": {
-    "speaker": "NPC_WREN",
-    "text": "WREN_HUB",
+    "speaker": "NPC_HESTER",
+    "text": "HESTER_HUB",
     "choices": [
      {
-      "text": "WREN_ASK_LIGHT",
+      "text": "HESTER_ASK_LIGHT",
       "if": {
        "quest_stage": [
         "case_lighthouse",
@@ -43,7 +43,7 @@
       "next": "light1"
      },
      {
-      "text": "WREN_ASK_WATCH",
+      "text": "HESTER_ASK_WATCH",
       "if": {
        "quest_stage": [
         "case_lighthouse",
@@ -53,7 +53,7 @@
       "next": "watch"
      },
      {
-      "text": "WREN_ASK_REGISTER",
+      "text": "HESTER_ASK_REGISTER",
       "if": {
        "quest_stage": [
         "case_lighthouse",
@@ -63,7 +63,7 @@
       "next": "register"
      },
      {
-      "text": "WREN_ANSWER",
+      "text": "HESTER_ANSWER",
       "if": {
        "quest_stage": [
         "case_lighthouse",
@@ -73,11 +73,11 @@
       "next": "answer1"
      },
      {
-      "text": "WREN_ABOUT_POINT",
+      "text": "HESTER_ABOUT_POINT",
       "next": "point1"
      },
      {
-      "text": "WREN_AFTER",
+      "text": "HESTER_AFTER",
       "if": {
        "quest_done": "case_lighthouse"
       },
@@ -90,16 +90,16 @@
     ]
    },
    "light1": {
-    "speaker": "NPC_WREN",
-    "text": "WREN_LIGHT_1",
+    "speaker": "NPC_HESTER",
+    "text": "HESTER_LIGHT_1",
     "next": "light2"
    },
    "light2": {
-    "speaker": "NPC_WREN",
-    "text": "WREN_LIGHT_2",
+    "speaker": "NPC_HESTER",
+    "text": "HESTER_LIGHT_2",
     "effects": [
      {
-      "add_evidence": "e_wren_count"
+      "add_evidence": "e_hester_count"
      },
      {
       "quest_stage": [
@@ -111,21 +111,21 @@
     "next": "hub"
    },
    "watch": {
-    "speaker": "NPC_WREN",
-    "text": "WREN_WATCH",
+    "speaker": "NPC_HESTER",
+    "text": "HESTER_WATCH",
     "next": "hub"
    },
    "register": {
-    "speaker": "NPC_WREN",
-    "text": "WREN_REGISTER",
+    "speaker": "NPC_HESTER",
+    "text": "HESTER_REGISTER",
     "next": "hub"
    },
    "answer1": {
-    "speaker": "NPC_WREN",
-    "text": "WREN_ANSWER_1",
+    "speaker": "NPC_HESTER",
+    "text": "HESTER_ANSWER_1",
     "choices": [
      {
-      "text": "WREN_SAY_REAL",
+      "text": "HESTER_SAY_REAL",
       "effects": [
        {
         "quest_complete": [
@@ -135,13 +135,13 @@
        },
        {
         "relationship": [
-         "wren_ashby",
+         "hester_ashby",
          2
         ]
        },
        {
         "remember": [
-         "wren_ashby",
+         "hester_ashby",
          "ship_was_real"
         ]
        },
@@ -165,7 +165,7 @@
        },
        {
         "tell": [
-         "wren_ashby",
+         "hester_ashby",
          "margaret_ellery"
         ]
        },
@@ -176,7 +176,7 @@
       "next": "real"
      },
      {
-      "text": "WREN_SAY_FAULT",
+      "text": "HESTER_SAY_FAULT",
       "effects": [
        {
         "quest_complete": [
@@ -186,13 +186,13 @@
        },
        {
         "relationship": [
-         "wren_ashby",
+         "hester_ashby",
          1
         ]
        },
        {
         "remember": [
-         "wren_ashby",
+         "hester_ashby",
          "told_it_was_a_fault"
         ]
        },
@@ -214,23 +214,23 @@
     ]
    },
    "real": {
-    "speaker": "NPC_WREN",
-    "text": "WREN_REAL",
+    "speaker": "NPC_HESTER",
+    "text": "HESTER_REAL",
     "next": null
    },
    "fault": {
-    "speaker": "NPC_WREN",
-    "text": "WREN_FAULT",
+    "speaker": "NPC_HESTER",
+    "text": "HESTER_FAULT",
     "next": null
    },
    "point1": {
-    "speaker": "NPC_WREN",
-    "text": "WREN_POINT_1",
+    "speaker": "NPC_HESTER",
+    "text": "HESTER_POINT_1",
     "next": "hub"
    },
    "after": {
-    "speaker": "NPC_WREN",
-    "text": "WREN_AFTER_REAL",
+    "speaker": "NPC_HESTER",
+    "text": "HESTER_AFTER_REAL",
     "next": "hub"
    }
   }

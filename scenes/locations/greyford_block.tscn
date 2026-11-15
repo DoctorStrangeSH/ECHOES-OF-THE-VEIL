@@ -495,10 +495,10 @@ prompt_key = "PROMPT_READ"
 dialogue_id = &"rook_shop"
 
 [node name="YellowCondoDoor" type="Area2D" parent="Entities"]
-position = Vector2(576, 246)
+position = Vector2(568, 246)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_condo_yellow"
-area_size = Vector2(30, 14)
+area_size = Vector2(18, 14)
 dialogue_id = &"yellow_condo"
 
 [node name="InfoSignRead" type="Area2D" parent="Entities"]
@@ -686,3 +686,57 @@ position = Vector2(24, 100)
 script = ExtResource("4_spawn")
 spawn_id = &"point_steps"
 facing = Vector2(1, 0)
+
+[node name="TheoDoor" type="Area2D" parent="Entities"]
+position = Vector2(590, 250)
+script = ExtResource("6_door")
+interaction_id = &"door_theo_flat"
+area_size = Vector2(14, 14)
+prompt_key = "PROMPT_THEO_DOOR"
+target_scene_id = &"theo_flat"
+target_spawn_id = &"from_street"
+
+[node name="Condition" type="Node" parent="Entities/TheoDoor"]
+script = ExtResource("10_cond")
+show_if = {"flag": "met.theo_marsh"}
+
+[node name="TheoFront" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(590, 266)
+script = ExtResource("4_spawn")
+spawn_id = &"theo_front"
+facing = Vector2(0, 1)
+
+[node name="A_theo_door" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(610, 264)
+script = ExtResource("11_anchor")
+anchor_id = &"theo_door"
+
+[node name="StoreroomDoor" type="Area2D" parent="Entities"]
+position = Vector2(422, 250)
+script = ExtResource("6_door")
+interaction_id = &"door_rook_storeroom"
+area_size = Vector2(14, 14)
+prompt_key = "PROMPT_STOREROOM"
+target_scene_id = &"rook_storeroom"
+target_spawn_id = &"entrance"
+
+[node name="Condition" type="Node" parent="Entities/StoreroomDoor"]
+script = ExtResource("10_cond")
+show_if = {"all": [{"quest_active": "case_storeroom"}, {"period": ["evening", "night"]}]}
+
+[node name="StoreroomWall" type="Area2D" parent="Entities"]
+position = Vector2(422, 250)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_storeroom_wall"
+area_size = Vector2(14, 14)
+lines = PackedStringArray("STOREROOM_WALL_DAY")
+
+[node name="Condition" type="Node" parent="Entities/StoreroomWall"]
+script = ExtResource("10_cond")
+show_if = {"all": [{"quest_active": "case_storeroom"}, {"period": ["morning", "afternoon"]}]}
+
+[node name="StoreroomFront" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(422, 266)
+script = ExtResource("4_spawn")
+spawn_id = &"storeroom_front"
+facing = Vector2(0, 1)

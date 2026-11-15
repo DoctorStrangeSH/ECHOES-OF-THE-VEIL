@@ -94,10 +94,20 @@ Three letters: Mrs Halloway learns she had a sister, Bea, who is happy where she
 
 West of the harbour promenade, steps lead down to a beach, a sea wall and an automated lighthouse.
 
-- **Wren Ashby** (Keepers) kept the light for thirty years. Day: by the lighthouse door; evening: the bench; night: the sea wall (unless the case ended with "fault").
-- **Case: The Light That Counts.** Since spring the lamp sweeps seven times, stops over empty water, and repeats. Ask Wren → watch from the end of the sea wall at night (lights on the water where no boat is) → the archive's harbour register for 1962: the *Margaret Ellery*, crew of seven, page cut out → tell Wren.
+- **Hester Ashby** (Keepers) kept the light for thirty years. Day: by the lighthouse door; evening: the bench; night: the sea wall (unless the case ended with "fault").
+- **Case: The Light That Counts.** Since spring the lamp sweeps seven times, stops over empty water, and repeats. Ask Hester → watch from the end of the sea wall at night (lights on the water where no boat is) → the archive's harbour register for 1962: the *Margaret Ellery*, crew of seven, page cut out → tell Hester.
   - *Real*: she keeps the count with the lamp; +Keepers, +Unwritten, Resonance; the fact spreads to the Keepers, Halloway and Jonah (Jonah: his grandad tapped the table seven times).
   - *Fault*: the council fixes the relay; +Civic, £10; she sleeps at night.
-  - Fail-forward: Wren's own count after 2 days of watching; Mara's copy of the register index after 2 days at the registry stage (so the archive key is never required).
+  - Fail-forward: Hester's own count after 2 days of watching; Mara's copy of the register index after 2 days at the registry stage (so the archive key is never required).
 - The signpost's sanded-off arm: a ferry, seven minutes across, erased from the timetable.
-- Work: the sea-wall lamp job (after meeting Wren), a junk heap by the bins, two pieces of sea glass (Jonah buys them).
+- Work: the sea-wall lamp job (after meeting Hester), a junk heap by the bins, two pieces of sea glass (Jonah buys them).
+
+## M7 — Act I: The City Has Two Maps
+
+Starts with an act card when the door case closes. Full beat sheet and fail-forwards: `docs/production/campaign-plan.md`.
+
+- **Theo Marsh** (new): mornings on the west park bench, afternoons at the yellow building's door, evenings and nights in his armchair once you've met. His flat (`theo_flat`) is a corridor forty strides long behind a twelve-stride front; the newest room (`theo_new_room`) is an echo of a child's bedroom.
+- **Jonah's storeroom** (`rook_storeroom`): ask Jonah "Anything strange?"; the door in the side wall of Rook Repairs exists only in the evening and at night.
+- **The pencil map** is in the newest room's desk once the incidents are linked (Mara explains the mark).
+- **Mrs Halloway** recognises her own sevens. The three answers set up Act III: secrecy (Keepers), Mara (Open Hand; Mara learns of the map), or Ivo's Sunday visits.
+- **Act II** opens *The People We Misplaced*: Ivo promises to take you to the Ward "when the tides line up" (next stage of the campaign).

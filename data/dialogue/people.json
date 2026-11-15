@@ -179,6 +179,16 @@
       "next": "page1"
      },
      {
+      "text": "MARA_ASK_MARK",
+      "if": {
+       "quest_stage": [
+        "case_two_maps",
+        "map"
+       ]
+      },
+      "next": "mark1"
+     },
+     {
       "text": "BYE",
       "next": null
      }
@@ -428,7 +438,7 @@
    },
    "arch_wait": {
     "text": "MARA_ARCH_WAIT",
-    "next": null,
+    "next": "hub",
     "speaker": "NPC_MARA"
    },
    "file_ask": {
@@ -580,6 +590,11 @@
       ]
      }
     ]
+   },
+   "mark1": {
+    "speaker": "NPC_MARA",
+    "text": "MARA_MARK_1",
+    "next": "hub"
    }
   }
  },
@@ -768,7 +783,7 @@
    "remind": {
     "speaker": "NPC_JONAH",
     "text": "JONAH_REMIND",
-    "next": null
+    "next": "hub"
    },
    "reward1": {
     "speaker": "NPC_JONAH",
@@ -873,6 +888,24 @@
        ]
       },
       "next": "ship"
+     },
+     {
+      "text": "JONAH_ASK_STRANGE",
+      "if": {
+       "quest_active": "case_two_maps",
+       "not_quest_started": "case_storeroom"
+      },
+      "next": "strange1"
+     },
+     {
+      "text": "JONAH_STOREROOM_TELL",
+      "if": {
+       "quest_stage": [
+        "case_storeroom",
+        "tell"
+       ]
+      },
+      "next": "sr1"
      },
      {
       "text": "BYE",
@@ -1155,6 +1188,54 @@
     "speaker": "NPC_JONAH",
     "text": "JONAH_SHIP",
     "next": "hub"
+   },
+   "strange1": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_STRANGE_1",
+    "next": "strange2"
+   },
+   "strange2": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_STRANGE_2",
+    "effects": [
+     {
+      "quest_start": "case_storeroom"
+     }
+    ],
+    "next": "hub"
+   },
+   "sr1": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_SR_1",
+    "next": "sr2"
+   },
+   "sr2": {
+    "speaker": "NPC_JONAH",
+    "text": "JONAH_SR_2",
+    "effects": [
+     {
+      "quest_complete": [
+       "case_storeroom",
+       "told"
+      ]
+     },
+     {
+      "relationship": [
+       "jonah_rook",
+       1
+      ]
+     },
+     {
+      "remember": [
+       "jonah_rook",
+       "saw_the_storeroom"
+      ]
+     },
+     {
+      "give_money": 15
+     }
+    ],
+    "next": "hub"
    }
   }
  },
@@ -1336,6 +1417,16 @@
       "next": null
      },
      {
+      "text": "HALLOWAY_SHOW_MAP",
+      "if": {
+       "quest_stage": [
+        "case_two_maps",
+        "turn"
+       ]
+      },
+      "next": "map1"
+     },
+     {
       "text": "BYE",
       "next": null
      }
@@ -1428,6 +1519,136 @@
       "set_flag": "halloway.rosalind_talk"
      }
     ]
+   },
+   "map1": {
+    "speaker": "NPC_HALLOWAY",
+    "text": "HALLOWAY_MAP_1",
+    "next": "map2"
+   },
+   "map2": {
+    "speaker": "NPC_HALLOWAY",
+    "text": "HALLOWAY_MAP_2",
+    "next": "map3"
+   },
+   "map3": {
+    "speaker": "NPC_HALLOWAY",
+    "text": "HALLOWAY_MAP_3",
+    "choices": [
+     {
+      "text": "HALLOWAY_MAP_KEEP",
+      "effects": [
+       {
+        "quest_complete": [
+         "case_two_maps",
+         "kept"
+        ]
+       },
+       {
+        "relationship": [
+         "edda_halloway",
+         2
+        ]
+       },
+       {
+        "remember": [
+         "edda_halloway",
+         "map_kept_secret"
+        ]
+       },
+       {
+        "faction": [
+         "keepers",
+         1
+        ]
+       }
+      ],
+      "next": "kept"
+     },
+     {
+      "text": "HALLOWAY_MAP_MARA",
+      "effects": [
+       {
+        "quest_complete": [
+         "case_two_maps",
+         "shared"
+        ]
+       },
+       {
+        "relationship": [
+         "edda_halloway",
+         -1
+        ]
+       },
+       {
+        "relationship": [
+         "mara_venn",
+         1
+        ]
+       },
+       {
+        "remember": [
+         "edda_halloway",
+         "map_shown_to_mara"
+        ]
+       },
+       {
+        "faction": [
+         "open_hand",
+         1
+        ]
+       },
+       {
+        "tell": [
+         "mara_venn",
+         "pencil_map"
+        ]
+       }
+      ],
+      "next": "shared"
+     },
+     {
+      "text": "HALLOWAY_MAP_WHO",
+      "effects": [
+       {
+        "quest_complete": [
+         "case_two_maps",
+         "questioned"
+        ]
+       },
+       {
+        "remember": [
+         "edda_halloway",
+         "asked_who_visits"
+        ]
+       },
+       {
+        "faction": [
+         "keepers",
+         -1
+        ]
+       },
+       {
+        "set_flag": "act1.ivo_tends_halloway"
+       }
+      ],
+      "next": "who"
+     }
+    ]
+   },
+   "kept": {
+    "speaker": "NPC_HALLOWAY",
+    "text": "HALLOWAY_MAP_KEPT",
+    "next": null
+   },
+   "shared": {
+    "speaker": "NPC_HALLOWAY",
+    "text": "HALLOWAY_MAP_SHARED",
+    "next": null
+   },
+   "who": {
+    "speaker": "NPC_HALLOWAY",
+    "text": "HALLOWAY_MAP_WHO_1",
+    "next": null
    }
   }
  },
@@ -1515,6 +1736,13 @@
        "has_item": "letter_ivo"
       },
       "next": "letter1"
+     },
+     {
+      "text": "IVO_ASK_WARD",
+      "if": {
+       "quest_active": "case_misplaced"
+      },
+      "next": "ward1"
      },
      {
       "text": "BYE",
@@ -1680,6 +1908,16 @@
       ]
      }
     ]
+   },
+   "ward1": {
+    "speaker": "NPC_IVO",
+    "text": "IVO_WARD_1",
+    "next": "ward2"
+   },
+   "ward2": {
+    "speaker": "NPC_IVO",
+    "text": "IVO_WARD_2",
+    "next": "hub"
    }
   }
  },

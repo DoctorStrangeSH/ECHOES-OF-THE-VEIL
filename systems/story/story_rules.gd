@@ -7,7 +7,7 @@ extends RefCounted
 ##   {"flag": "id"}  {"not_flag": "id"}  {"flag_equals": ["id", value]}
 ##   {"background": "courier"}  {"evidence": "id"}  {"not_evidence": "id"}
 ##   {"hypothesis": "id"}  {"not_hypothesis": "id"}
-##   {"quest_active": "id"}  {"quest_done": "id"}  {"quest_stage": ["id", "stage"]}
+##   {"quest_active": "id"}  {"quest_done": "id"}  {"quest_stage": ["id", "stage"]} (open cases only)
 ##   {"not_quest_started": "id"}
 ##   {"period": "night" | ["morning", "afternoon"]}  {"weather": "rain"}
 ##   {"relationship_at_least": ["npc", 2]}  {"remembers": ["npc", "event"]}
@@ -68,8 +68,9 @@ static func _check(key: String, arg: Variant) -> bool:
 			return Journal.case_status(StringName(arg)) == Journal.STATUS_DONE
 		"not_quest_started":
 			return Journal.case_status(StringName(arg)) == Journal.STATUS_NONE
-		"quest_stage":
-			return Journal.case_stage(StringName(arg[0])) == StringName(arg[1])
+		"quest_stage":  # only while the case is open: a closed case keeps its last stage
+			return Journal.case_status(StringName(arg[0])) == Journal.STATUS_ACTIVE \
+				and Journal.case_stage(StringName(arg[0])) == StringName(arg[1])
 		"period":
 			if arg is Array:
 				return WorldClock.get_period() in arg

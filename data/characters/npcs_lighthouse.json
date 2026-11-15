@@ -1,6 +1,6 @@
 {
  "_doc": "Lighthouse Point (M6). Same format as npcs.json; DataFiles merges every npcs_*.json.",
- "wren_ashby": {"name": "NPC_WREN", "premade": "Premade_Character_20", "color": "#7a8a9a", "dialogue": "wren", "factions": ["keepers"],
+ "hester_ashby": {"name": "NPC_HESTER", "premade": "Premade_Character_20", "color": "#7a8a9a", "dialogue": "hester", "factions": ["keepers"],
   "schedule": [
    {"period": ["morning", "afternoon"], "scene": "lighthouse_point", "anchor": "keeper_door", "facing": "down"},
    {"period": "evening", "scene": "lighthouse_point", "anchor": "bench", "facing": "up"},

@@ -136,8 +136,8 @@ func _ready() -> void:
 	SceneFlow.travel(&"lighthouse_point", &"from_greyford")
 	await _wait_location(&"lighthouse_point")
 	await _frames(20)
-	_assert(_npc_present(&"wren_ashby"), "Wren is at the point by day")
-	DialogueService.start(&"wren", {"npc": &"wren_ashby"})
+	_assert(_npc_present(&"hester_ashby"), "Hester is at the point by day")
+	DialogueService.start(&"hester", {"npc": &"hester_ashby"})
 	for i in 8:
 		DialogueService.choose(0)
 		DialogueService.advance()
@@ -146,7 +146,7 @@ func _ready() -> void:
 			break
 	DialogueService.end()
 	await _frames(3)
-	_assert(Journal.case_stage(&"case_lighthouse") == &"watch", "Wren's case reaches the night watch")
+	_assert(Journal.case_stage(&"case_lighthouse") == &"watch", "Hester's case reaches the night watch")
 	WorldClock.wait_until_hour(23)
 	DialogueService.start(&"lighthouse_watch")
 	await _finish_dialogue()
@@ -154,13 +154,67 @@ func _ready() -> void:
 	DialogueService.start(&"archive_shelves")
 	await _finish_dialogue()
 	_assert(Journal.case_stage(&"case_lighthouse") == &"answer", "the harbour register answers it")
-	DialogueService.start(&"wren", {"npc": &"wren_ashby"})
+	DialogueService.start(&"hester", {"npc": &"hester_ashby"})
 	await _finish_dialogue()
-	_assert(Journal.case_status(&"case_lighthouse") == Journal.STATUS_DONE and GameState.has_flag(&"world.lamp_counts"), "Wren's case resolved")
+	_assert(Journal.case_status(&"case_lighthouse") == Journal.STATUS_DONE and GameState.has_flag(&"world.lamp_counts"), "Hester's case resolved")
 	WorldClock.wait_until_hour(9)
 	SceneFlow.travel(&"greyford_block", &"point_steps")
 	await _wait_location(&"greyford_block")
 	await _frames(10)
+
+	_step = "act I: the city has two maps"
+	_assert(Campaign.has_started(&"act1"), "act I started after the door case")
+	_assert(Journal.case_status(&"case_two_maps") == Journal.STATUS_ACTIVE, "act I main case open")
+	await _wait_card()
+	await _talk(&"jonah", {"npc": &"jonah_rook"}, ["JONAH_ASK_STRANGE"])
+	_assert(Journal.case_stage(&"case_storeroom") == &"wall", "Jonah's storeroom case")
+	WorldClock.wait_until_hour(21)
+	SceneFlow.travel(&"rook_storeroom", &"entrance")
+	await _wait_location(&"rook_storeroom")
+	await _frames(10)
+	await _finish_dialogue()
+	await _clear_enemies()
+	_assert(GameState.has_flag(&"storeroom.cleared"), "storeroom echo cleared")
+	DialogueService.start(&"storeroom_crate")
+	await _finish_dialogue()
+	DialogueService.start(&"storeroom_ledger")
+	await _finish_dialogue()
+	await _talk(&"jonah", {"npc": &"jonah_rook"}, ["JONAH_STOREROOM_TELL"])
+	_assert(Journal.case_status(&"case_storeroom") == Journal.STATUS_DONE, "storeroom resolved")
+	await _talk(&"theo", {"npc": &"theo_marsh"}, [])
+	_assert(Journal.case_stage(&"case_larger_house") == &"measure", "Theo's case")
+	SceneFlow.travel(&"theo_flat", &"from_street")
+	await _wait_location(&"theo_flat")
+	await _frames(10)
+	DialogueService.start(&"theo_corridor")
+	await _finish_dialogue()
+	_assert(Journal.case_stage(&"case_larger_house") == &"room", "the corridor is too long")
+	SceneFlow.travel(&"theo_new_room", &"entrance")
+	await _wait_location(&"theo_new_room")
+	await _frames(10)
+	await _finish_dialogue()
+	await _clear_enemies()
+	DialogueService.start(&"new_room_bed")
+	await _finish_dialogue()
+	_assert(Journal.form_hypothesis(&"incidents_share_mark"), "incidents share the mark")
+	DialogueService.start(&"new_room_desk")
+	await _finish_dialogue()
+	_assert(Journal.case_stage(&"case_two_maps") == &"hand", "the pencil map found")
+	if not Journal.can_form(&"halloway_drew_map"):
+		Journal.add_evidence(&"e_rent_book")
+	_assert(Journal.form_hypothesis(&"halloway_drew_map"), "handwriting identified")
+	await _talk(&"theo", {"npc": &"theo_marsh"}, ["THEO_TELL", "THEO_SAY_LOST"])
+	_assert(Journal.case_status(&"case_larger_house") == Journal.STATUS_DONE, "Theo's case resolved")
+	SceneFlow.travel(&"greyford_block", &"theo_front")
+	await _wait_location(&"greyford_block")
+	await _talk(&"halloway", {"npc": &"edda_halloway"}, ["HALLOWAY_SHOW_MAP", "HALLOWAY_MAP_WHO"])
+	_assert(Journal.case_status(&"case_two_maps") == Journal.STATUS_DONE, "act I resolved")
+	await _frames(10)
+	_assert(Campaign.current_act() == &"act2" and Journal.case_status(&"case_misplaced") == Journal.STATUS_ACTIVE, "act II begins")
+	_assert((get_child(0).get_node("ActCard") as ActCard).is_showing(), "act card shown")
+	await _wait_card()
+	await _talk(&"ivo", {"npc": &"ivo_calder"}, ["IVO_ASK_WARD"])
+	WorldClock.wait_until_hour(9)
 
 	_step = "work: jobs, repair, shop, workbench, stall"
 	var gr2 := get_child(0)
@@ -272,6 +326,65 @@ func _hold(action: StringName, seconds: float) -> void:
 func _npc_present(id: StringName) -> bool:
 	var loc := SceneFlow.current_location as Location
 	return loc != null and is_instance_valid(loc._npcs.get(id))
+
+
+## Talks through a conversation, picking the listed choices (by text key) in order.
+## Story beats that open with their own scene end the conversation first, so it
+## talks again (up to six times) until the wanted choices have been made.
+func _talk(id: StringName, ctx: Dictionary, picks: Array) -> void:
+	var tries := 0
+	DialogueService.start(id, ctx)
+	for i in 240:
+		await _frames(2)
+		if not DialogueService.is_active:
+			tries += 1
+			if picks.is_empty() or tries >= 6:
+				if not picks.is_empty():
+					print("TALK %s: gave up waiting for %s" % [id, picks[0]])
+				return
+			DialogueService.start(id, ctx)
+			continue
+		var vis: Array = DialogueService._visible_choices
+		if vis.is_empty():
+			DialogueService.advance()
+			continue
+		var picked := -1
+		if not picks.is_empty():
+			for j in vis.size():
+				if String(vis[j].get("text", "")) == String(picks[0]):
+					picked = j
+		if picked >= 0:
+			picks.pop_front()
+			DialogueService.choose(picked)
+		else:
+			if not picks.is_empty():
+				print("TALK %s: wanted %s, saw %s" % [id, picks[0], vis.map(func(c: Dictionary) -> String: return String(c.get("text", "")))])
+			DialogueService.end()
+			return
+
+
+func _clear_enemies() -> void:
+	for round in 40:
+		var left := 0
+		var stack: Array[Node] = [SceneFlow.current_location]
+		while not stack.is_empty():
+			var n: Node = stack.pop_back()
+			stack.append_array(n.get_children())
+			if n is EchoEnemy and (n as EchoEnemy).health.health > 0:
+				left += 1
+				(n as EchoEnemy).health.take_damage(1, (n as EchoEnemy).global_position + Vector2(10, 0))
+		if left == 0:
+			break
+		await _frames(30)
+	await _frames(20)
+
+
+func _wait_card() -> void:
+	var card := get_child(0).get_node("ActCard") as ActCard
+	for i in 600:
+		if not card.is_showing():
+			return
+		await get_tree().process_frame
 
 
 func _finish_dialogue() -> void:

@@ -1,0 +1,24 @@
+{
+ "id": "theo_new_room",
+ "name_key": "LOC_THEO_NEW_ROOM",
+ "palette": "rented_room",
+ "options": {"outdoors": false, "combat_enabled": true, "fixed_tint": {"color": [0.8, 0.86, 0.95, 1.0]}, "enter_dialogue_id": "new_room_enter", "enter_condition": {"not_flag": "house.entered"}},
+ "layout": {"generator": "room", "width": 14, "height": 10, "door_x": 6},
+ "nodes": [
+  {"kind": "prop", "name": "SmallBed", "tex": "@bedroom/141.png", "x": 32, "y": 96, "col": [14, 40], "off": [0, -20], "color": "#d0a0b0"},
+  {"kind": "prop", "name": "Wardrobe", "tex": "@bedroom/515.png", "x": 184, "y": 64, "col": [14, 10], "off": [0, -5], "color": "#8a6040"},
+  {"kind": "prop", "name": "Dollhouse", "tex": "@bedroom/507.png", "x": 88, "y": 64, "col": [28, 10], "off": [0, -5], "color": "#c08060"},
+  {"kind": "prop", "name": "Desk", "tex": "@bedroom/393.png", "x": 144, "y": 64, "col": [28, 12], "off": [0, -6], "color": "#a08060"},
+  {"kind": "prop", "name": "Teddy", "tex": "@bedroom/301.png", "x": 56, "y": 120, "col": [0, 0], "off": [0, 0], "color": "#a07050"},
+  {"kind": "prop", "name": "Doll", "tex": "@bedroom/321.png", "x": 200, "y": 130, "col": [0, 0], "off": [0, 0], "color": "#e0a060"},
+  {"kind": "prop", "name": "NightLamp", "tex": "@bedroom/541.png", "x": 56, "y": 64, "col": [0, 0], "off": [0, 0], "color": "#f0e0a0"},
+  {"template": "scatter", "tex": "@bedroom/463.png", "name": "Garland", "points": [[72, 36], [120, 36], [168, 36]], "color": "#f0d080"},
+  {"kind": "inspect", "name": "BedLook", "id": "inspect_new_room_bed", "x": 32, "y": 110, "area": [24, 16], "dialogue": "new_room_bed", "show_if": {"flag": "house.cleared"}},
+  {"kind": "inspect", "name": "DeskLook", "id": "inspect_new_room_desk", "x": 144, "y": 74, "area": [30, 12], "dialogue": "new_room_desk", "show_if": {"flag": "house.cleared"}},
+  {"kind": "enemy", "name": "Wailer1", "id": "new_room_wailer", "x": 160, "y": 110, "variant": "wailer"},
+  {"kind": "enemy", "name": "Clinger1", "id": "new_room_clinger", "x": 96, "y": 128, "variant": "clinger"},
+  {"kind": "encounter", "flag": "house.cleared"},
+  {"kind": "spawn", "name": "Entrance", "id": "entrance", "x": 112, "y": 140, "facing": [0, -1]},
+  {"kind": "door", "name": "WayBack", "id": "door_new_room_exit", "x": 112, "y": 150, "area": [30, 10], "scene": "theo_flat", "spawn": "far_end", "prompt": "PROMPT_EXIT"}
+ ]
+}

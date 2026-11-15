@@ -27,6 +27,7 @@ Sfx="*res://systems/audio/sfx.gd"
 SaveService="*res://systems/save/save_service.gd"
 SceneFlow="*res://systems/scene_flow/scene_flow.gd"
 DialogueService="*res://systems/dialogue/dialogue_service.gd"
+Campaign="*res://systems/story/campaign.gd"
 
 [display]
 

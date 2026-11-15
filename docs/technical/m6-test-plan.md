@@ -20,15 +20,15 @@ Lighthouse Point was built with the M6 pipeline only:
 - `python3 tools/content_graphs.py --check` — diagrams in `docs/generated/` up to date.
 - `python3 tools/regions/build_regions.py --check` (needs art) — every scene matches its JSON spec; the five older scenes rebuild byte-for-byte from JSON.
 - `tests/test_runner.tscn` — location budgets, self-registering locations, prefix merging (no false matches such as `factions.json` for `facts`), enemy variants from data.
-- `tests/smoke_test.tscn` — travels to Lighthouse Point, meets Wren, counts the light at night, finds the register, resolves the case, returns to Greyford.
+- `tests/smoke_test.tscn` — travels to Lighthouse Point, meets Hester, counts the light at night, finds the register, resolves the case, returns to Greyford.
 
 ## Manual
 
 1. From the harbour promenade, walk to the far west end: "Down to Lighthouse Point". The way back is at the east end of the beach path.
-2. Meet Wren by the lighthouse (day), on the bench (evening) or on the sea wall (night).
+2. Meet Hester by the lighthouse (day), on the bench (evening) or on the sea wall (night).
 3. Ask what the light counts; at night, inspect the end of the sea wall. Before dark it tells you to come back.
 4. Read the harbour registers on the archive shelves — or wait two days for the fail-forward help.
-5. Answer Wren both ways on two saves: "real" keeps her on the sea wall at night and lets Jonah mention the ship a period later; "fault" pays £10, and she no longer keeps watch.
+5. Answer Hester both ways on two saves: "real" keeps her on the sea wall at night and lets Jonah mention the ship a period later; "fault" pays £10, and she no longer keeps watch.
 6. Salvage the junk on the beach, pick up two pieces of sea glass, sell them to Jonah (£1 each).
-7. The sea-wall lamp job appears on the board after meeting Wren.
+7. The sea-wall lamp job appears on the board after meeting Hester.
 8. Russian: every new line translated, no gendered forms for the player.

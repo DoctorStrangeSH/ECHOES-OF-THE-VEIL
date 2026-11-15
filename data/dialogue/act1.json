@@ -1,0 +1,331 @@
+{
+ "theo": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "met.theo_marsh"
+    },
+    "node": "intro1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "intro1": {
+    "speaker": "NPC_THEO",
+    "text": "THEO_1",
+    "next": "intro2"
+   },
+   "intro2": {
+    "speaker": "NPC_THEO",
+    "text": "THEO_2",
+    "effects": [
+     {
+      "set_flag": "met.theo_marsh"
+     },
+     {
+      "quest_start": "case_larger_house"
+     }
+    ],
+    "next": "hub"
+   },
+   "hub": {
+    "speaker": "NPC_THEO",
+    "text": "THEO_HUB",
+    "choices": [
+     {
+      "text": "THEO_ASK_ROOMS",
+      "if": {
+       "quest_stage": [
+        "case_larger_house",
+        "measure"
+       ]
+      },
+      "next": "rooms"
+     },
+     {
+      "text": "THEO_ASK_NEW",
+      "if": {
+       "quest_stage": [
+        "case_larger_house",
+        "room"
+       ]
+      },
+      "next": "newroom"
+     },
+     {
+      "text": "THEO_TELL",
+      "if": {
+       "quest_stage": [
+        "case_larger_house",
+        "tell"
+       ]
+      },
+      "next": "tell1"
+     },
+     {
+      "text": "THEO_AFTER",
+      "if": {
+       "quest_done": "case_larger_house"
+      },
+      "next": "after"
+     },
+     {
+      "text": "BYE",
+      "next": null
+     }
+    ]
+   },
+   "rooms": {
+    "speaker": "NPC_THEO",
+    "text": "THEO_ROOMS",
+    "next": "hub"
+   },
+   "newroom": {
+    "speaker": "NPC_THEO",
+    "text": "THEO_NEW",
+    "next": "hub"
+   },
+   "tell1": {
+    "speaker": "NPC_THEO",
+    "text": "THEO_TELL_1",
+    "choices": [
+     {
+      "text": "THEO_SAY_LOST",
+      "effects": [
+       {
+        "quest_complete": [
+         "case_larger_house",
+         "remembered"
+        ]
+       },
+       {
+        "relationship": [
+         "theo_marsh",
+         2
+        ]
+       },
+       {
+        "remember": [
+         "theo_marsh",
+         "told_about_room"
+        ]
+       },
+       {
+        "faction": [
+         "unwritten",
+         1
+        ]
+       },
+       {
+        "give_resonance": 1
+       },
+       {
+        "set_flag": "world.theo_remembers"
+       }
+      ],
+      "next": "lost"
+     },
+     {
+      "text": "THEO_SAY_SETTLING",
+      "effects": [
+       {
+        "quest_complete": [
+         "case_larger_house",
+         "settled"
+        ]
+       },
+       {
+        "relationship": [
+         "theo_marsh",
+         1
+        ]
+       },
+       {
+        "remember": [
+         "theo_marsh",
+         "reassured_about_room"
+        ]
+       },
+       {
+        "faction": [
+         "civic",
+         1
+        ]
+       }
+      ],
+      "next": "settled"
+     }
+    ]
+   },
+   "lost": {
+    "speaker": "NPC_THEO",
+    "text": "THEO_LOST",
+    "next": null
+   },
+   "settled": {
+    "speaker": "NPC_THEO",
+    "text": "THEO_SETTLED",
+    "next": null
+   },
+   "after": {
+    "speaker": "NPC_THEO",
+    "text": "THEO_AFTER_SETTLED",
+    "next": "hub"
+   }
+  }
+ },
+ "theo_corridor": {
+  "entries": [
+   {
+    "if": {
+     "quest_stage": [
+      "case_larger_house",
+      "measure"
+     ]
+    },
+    "node": "count1"
+   }
+  ],
+  "start": "idle",
+  "nodes": {
+   "idle": {
+    "text": "THEO_CORRIDOR_IDLE",
+    "next": null
+   },
+   "count1": {
+    "text": "THEO_CORRIDOR_1",
+    "next": "count2"
+   },
+   "count2": {
+    "text": "THEO_CORRIDOR_2",
+    "effects": [
+     {
+      "add_evidence": "e_house_longer"
+     }
+    ],
+    "next": null
+   }
+  }
+ },
+ "new_room_enter": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "NEW_ROOM_ENTER",
+    "effects": [
+     {
+      "set_flag": "house.entered"
+     }
+    ],
+    "next": null
+   }
+  }
+ },
+ "new_room_bed": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "NEW_ROOM_BED_1",
+    "next": "2"
+   },
+   "2": {
+    "text": "NEW_ROOM_BED_2",
+    "effects": [
+     {
+      "add_evidence": "e_house_mark"
+     }
+    ],
+    "next": null
+   }
+  }
+ },
+ "new_room_desk": {
+  "entries": [
+   {
+    "if": {
+     "quest_stage": [
+      "case_two_maps",
+      "map"
+     ]
+    },
+    "node": "map1"
+   },
+   {
+    "if": {
+     "evidence": "e_two_maps"
+    },
+    "node": "seen"
+   }
+  ],
+  "start": "idle",
+  "nodes": {
+   "idle": {
+    "text": "NEW_ROOM_DESK_IDLE",
+    "next": null
+   },
+   "map1": {
+    "text": "NEW_ROOM_MAP_1",
+    "next": "map2"
+   },
+   "map2": {
+    "text": "NEW_ROOM_MAP_2",
+    "effects": [
+     {
+      "add_evidence": "e_two_maps"
+     }
+    ],
+    "next": null
+   },
+   "seen": {
+    "text": "NEW_ROOM_DESK_SEEN",
+    "next": null
+   }
+  }
+ },
+ "storeroom_enter": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "STOREROOM_ENTER",
+    "effects": [
+     {
+      "set_flag": "storeroom.entered"
+     }
+    ],
+    "next": null
+   }
+  }
+ },
+ "storeroom_crate": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "STOREROOM_CRATE_1",
+    "next": "2"
+   },
+   "2": {
+    "text": "STOREROOM_CRATE_2",
+    "effects": [
+     {
+      "add_evidence": "e_storeroom_mark"
+     }
+    ],
+    "next": null
+   }
+  }
+ },
+ "storeroom_ledger": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "STOREROOM_LEDGER",
+    "effects": [
+     {
+      "add_evidence": "e_rook_ledger"
+     }
+    ],
+    "next": null
+   }
+  }
+ }
+}

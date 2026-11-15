@@ -1,0 +1,11 @@
+{
+ "_doc": "The campaign spine. Acts start in order, each once, when begins_if holds; their effects run then (start the act's main case). The current act is the last started one, stored as flag act.<id>, so saves need no extra data. Acts that are not written yet are listed with planned: true and never start. See docs/production/campaign-plan.md.",
+ "acts": [
+  {"id": "prologue", "title": "ACT_PROLOGUE", "subtitle": "ACT_PROLOGUE_SUB", "begins_if": {}, "silent": true},
+  {"id": "act1", "title": "ACT_1", "subtitle": "ACT_1_SUB", "begins_if": {"quest_done": "case_door"}, "effects": [{"quest_start": "case_two_maps"}]},
+  {"id": "act2", "title": "ACT_2", "subtitle": "ACT_2_SUB", "begins_if": {"quest_done": "case_two_maps"}, "effects": [{"quest_start": "case_misplaced"}]},
+  {"id": "act3", "title": "ACT_3", "subtitle": "ACT_3_SUB", "planned": true},
+  {"id": "act4", "title": "ACT_4", "subtitle": "ACT_4_SUB", "planned": true},
+  {"id": "act5", "title": "ACT_5", "subtitle": "ACT_5_SUB", "planned": true}
+ ]
+}
