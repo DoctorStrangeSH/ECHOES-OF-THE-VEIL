@@ -49,6 +49,16 @@ func close() -> void:
 	get_tree().paused = false
 
 
+func _on_inventory() -> void:
+	close()
+	(get_parent().get_node("Inventory") as InventoryScreen).open()
+
+
+func _on_journal() -> void:
+	close()
+	(get_parent().get_node("Journal") as JournalScreen).open()
+
+
 func _on_save() -> void:
 	close()
 	SaveService.save_game()
@@ -70,7 +80,7 @@ func _on_main_menu() -> void:
 
 
 func _refresh_texts() -> void:
-	var keys := ["MENU_CONTINUE", "MENU_SAVE", "MENU_LOAD", "MENU_LANGUAGE", "MENU_MAIN_MENU", "MENU_QUIT"]
+	var keys := ["MENU_CONTINUE", "MENU_INVENTORY", "MENU_JOURNAL", "MENU_SAVE", "MENU_LOAD", "MENU_LANGUAGE", "MENU_MAIN_MENU", "MENU_QUIT"]
 	for i in keys.size():
 		(_buttons.get_child(i) as Button).text = tr(keys[i])
 
@@ -89,10 +99,10 @@ func _build() -> void:
 	_buttons = VBoxContainer.new()
 	_buttons.add_theme_constant_override("separation", 4)
 	_panel.add_child(_buttons)
-	var actions: Array[Callable] = [close, _on_save, _on_load, _on_language, _on_main_menu, func() -> void: get_tree().quit()]
+	var actions: Array[Callable] = [close, _on_inventory, _on_journal, _on_save, _on_load, _on_language, _on_main_menu, func() -> void: get_tree().quit()]
 	for action in actions:
 		var b := Button.new()
 		b.custom_minimum_size = Vector2(120, 0)
 		b.pressed.connect(action)
 		_buttons.add_child(b)
-	_load_button = _buttons.get_child(2) as Button
+	_load_button = _buttons.get_child(4) as Button

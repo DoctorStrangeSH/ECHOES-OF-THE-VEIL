@@ -1,51 +1,219 @@
 {
-  "cases": {
-    "case_door": {
-      "title": "CASE_DOOR_TITLE", "summary": "CASE_DOOR_SUMMARY", "first_stage": "start",
-      "stages": {"start": "CASE_DOOR_START", "decide": "CASE_DOOR_DECIDE", "inside": "CASE_DOOR_INSIDE"},
-      "outcomes": {"reported": "CASE_DOOR_REPORTED", "opened": "CASE_DOOR_OPENED"}
-    },
-    "case_radio": {
-      "title": "CASE_RADIO_TITLE", "summary": "CASE_RADIO_SUMMARY", "first_stage": "deliver",
-      "stages": {"deliver": "CASE_RADIO_DELIVER", "return": "CASE_RADIO_RETURN"},
-      "outcomes": {"delivered": "CASE_RADIO_DONE"}
-    },
-    "case_quiet": {
-      "title": "CASE_QUIET_TITLE", "summary": "CASE_QUIET_SUMMARY", "first_stage": "start",
-      "stages": {"start": "CASE_QUIET_START", "formed": "CASE_QUIET_FORMED"}
-    },
-    "case_lantern_row": {
-      "title": "CASE_LR_TITLE", "summary": "CASE_LR_SUMMARY", "first_stage": "start",
-      "stages": {"start": "CASE_LR_START"}
-    }
+ "cases": {
+  "case_door": {
+   "title": "CASE_DOOR_TITLE",
+   "summary": "CASE_DOOR_SUMMARY",
+   "first_stage": "start",
+   "stages": {
+    "start": "CASE_DOOR_START",
+    "decide": "CASE_DOOR_DECIDE",
+    "inside": "CASE_DOOR_INSIDE"
+   },
+   "outcomes": {
+    "reported": "CASE_DOOR_REPORTED",
+    "opened": "CASE_DOOR_OPENED"
+   }
   },
-  "evidence": {
-    "e_door_observed": {"case": "case_door", "kind": "observed", "source": "player", "source_name": "SRC_YOU", "title": "EV_DOOR_TITLE", "body": "EV_DOOR_BODY"},
-    "e_mara_lantern_row": {"case": "case_door", "kind": "reported", "source": "mara", "source_name": "NPC_MARA", "title": "EV_MARA_LR_TITLE", "body": "EV_MARA_LR_BODY"},
-    "e_halloway_lantern_row": {"case": "case_door", "kind": "reported", "source": "halloway", "source_name": "NPC_HALLOWAY", "title": "EV_HALLOWAY_LR_TITLE", "body": "EV_HALLOWAY_LR_BODY"},
-    "e_radio_announcement": {"case": "case_door", "kind": "observed", "source": "radio", "source_name": "SRC_RADIO", "title": "EV_RADIO_TITLE", "body": "EV_RADIO_BODY"},
-    "e_city_map": {"case": "case_door", "kind": "recorded", "source": "survey_map", "source_name": "SRC_MAP", "title": "EV_MAP_TITLE", "body": "EV_MAP_BODY"},
-    "e_symbol": {"case": "case_quiet", "kind": "observed", "source": "player", "source_name": "SRC_YOU", "title": "EV_SYMBOL_TITLE", "body": "EV_SYMBOL_BODY"},
-    "e_landlord_note": {"case": "case_quiet", "kind": "recorded", "source": "halloway", "source_name": "SRC_NOTE_LANDLADY", "title": "EV_NOTE_TITLE", "body": "EV_NOTE_BODY"},
-    "e_rook_note": {"case": "case_quiet", "kind": "recorded", "source": "rook", "source_name": "SRC_NOTE_ROOK", "title": "EV_ROOK_NOTE_TITLE", "body": "EV_ROOK_NOTE_BODY"},
-    "e_ivo_warning": {"case": "case_quiet", "kind": "reported", "source": "ivo", "source_name": "NPC_IVO", "title": "EV_IVO_TITLE", "body": "EV_IVO_BODY"},
-    "e_echo_resident": {"case": "case_lantern_row", "kind": "reported", "source": "echo_woman", "source_name": "NPC_ECHO_WOMAN", "title": "EV_ECHO_RESIDENT_TITLE", "body": "EV_ECHO_RESIDENT_BODY"},
-    "e_echo_photo": {"case": "case_lantern_row", "kind": "observed", "source": "player", "source_name": "SRC_YOU", "title": "EV_ECHO_PHOTO_TITLE", "body": "EV_ECHO_PHOTO_BODY"}
+  "case_radio": {
+   "title": "CASE_RADIO_TITLE",
+   "summary": "CASE_RADIO_SUMMARY",
+   "first_stage": "deliver",
+   "stages": {
+    "deliver": "CASE_RADIO_DELIVER",
+    "return": "CASE_RADIO_RETURN"
+   },
+   "outcomes": {
+    "delivered": "CASE_RADIO_DONE"
+   }
   },
-  "hypotheses": {
-    "lantern_row_fragment": {
-      "case": "case_door", "title": "HYP_LR_TITLE", "body": "HYP_LR_BODY",
-      "requires_all": ["e_door_observed"],
-      "requires_any": ["e_mara_lantern_row", "e_halloway_lantern_row", "e_radio_announcement", "e_city_map"],
-      "min_any": 2, "corroborate_sources": 4,
-      "effects": [{"quest_stage": ["case_door", "decide"]}]
-    },
-    "greyford_keeps_quiet": {
-      "case": "case_quiet", "title": "HYP_QUIET_TITLE", "body": "HYP_QUIET_BODY",
-      "requires_all": ["e_symbol"],
-      "requires_any": ["e_landlord_note", "e_rook_note", "e_ivo_warning"],
-      "min_any": 2, "corroborate_sources": 4,
-      "effects": [{"quest_stage": ["case_quiet", "formed"]}]
-    }
+  "case_quiet": {
+   "title": "CASE_QUIET_TITLE",
+   "summary": "CASE_QUIET_SUMMARY",
+   "first_stage": "start",
+   "stages": {
+    "start": "CASE_QUIET_START",
+    "formed": "CASE_QUIET_FORMED"
+   }
+  },
+  "case_lantern_row": {
+   "title": "CASE_LR_TITLE",
+   "summary": "CASE_LR_SUMMARY",
+   "first_stage": "start",
+   "stages": {
+    "start": "CASE_LR_START"
+   }
+  },
+  "case_rosalind": {
+   "title": "CASE_ROSALIND_TITLE",
+   "summary": "CASE_ROSALIND_SUMMARY",
+   "first_stage": "start",
+   "stages": {
+    "start": "CASE_ROSALIND_START",
+    "page": "CASE_ROSALIND_PAGE"
+   },
+   "outcomes": {
+    "told": "CASE_ROSALIND_TOLD",
+    "spared": "CASE_ROSALIND_SPARED"
+   }
   }
+ },
+ "evidence": {
+  "e_door_observed": {
+   "case": "case_door",
+   "kind": "observed",
+   "source": "player",
+   "source_name": "SRC_YOU",
+   "title": "EV_DOOR_TITLE",
+   "body": "EV_DOOR_BODY"
+  },
+  "e_mara_lantern_row": {
+   "case": "case_door",
+   "kind": "reported",
+   "source": "mara",
+   "source_name": "NPC_MARA",
+   "title": "EV_MARA_LR_TITLE",
+   "body": "EV_MARA_LR_BODY"
+  },
+  "e_halloway_lantern_row": {
+   "case": "case_door",
+   "kind": "reported",
+   "source": "halloway",
+   "source_name": "NPC_HALLOWAY",
+   "title": "EV_HALLOWAY_LR_TITLE",
+   "body": "EV_HALLOWAY_LR_BODY"
+  },
+  "e_radio_announcement": {
+   "case": "case_door",
+   "kind": "observed",
+   "source": "radio",
+   "source_name": "SRC_RADIO",
+   "title": "EV_RADIO_TITLE",
+   "body": "EV_RADIO_BODY"
+  },
+  "e_city_map": {
+   "case": "case_door",
+   "kind": "recorded",
+   "source": "survey_map",
+   "source_name": "SRC_MAP",
+   "title": "EV_MAP_TITLE",
+   "body": "EV_MAP_BODY"
+  },
+  "e_symbol": {
+   "case": "case_quiet",
+   "kind": "observed",
+   "source": "player",
+   "source_name": "SRC_YOU",
+   "title": "EV_SYMBOL_TITLE",
+   "body": "EV_SYMBOL_BODY"
+  },
+  "e_landlord_note": {
+   "case": "case_quiet",
+   "kind": "recorded",
+   "source": "halloway",
+   "source_name": "SRC_NOTE_LANDLADY",
+   "title": "EV_NOTE_TITLE",
+   "body": "EV_NOTE_BODY"
+  },
+  "e_rook_note": {
+   "case": "case_quiet",
+   "kind": "recorded",
+   "source": "rook",
+   "source_name": "SRC_NOTE_ROOK",
+   "title": "EV_ROOK_NOTE_TITLE",
+   "body": "EV_ROOK_NOTE_BODY"
+  },
+  "e_ivo_warning": {
+   "case": "case_quiet",
+   "kind": "reported",
+   "source": "ivo",
+   "source_name": "NPC_IVO",
+   "title": "EV_IVO_TITLE",
+   "body": "EV_IVO_BODY"
+  },
+  "e_echo_resident": {
+   "case": "case_lantern_row",
+   "kind": "reported",
+   "source": "echo_woman",
+   "source_name": "NPC_ECHO_WOMAN",
+   "title": "EV_ECHO_RESIDENT_TITLE",
+   "body": "EV_ECHO_RESIDENT_BODY"
+  },
+  "e_echo_photo": {
+   "case": "case_lantern_row",
+   "kind": "observed",
+   "source": "player",
+   "source_name": "SRC_YOU",
+   "title": "EV_ECHO_PHOTO_TITLE",
+   "body": "EV_ECHO_PHOTO_BODY"
+  },
+  "e_tram_stop": {
+   "case": "case_rosalind",
+   "kind": "observed",
+   "source": "player",
+   "source_name": "SRC_YOU",
+   "title": "EV_TRAM_STOP_TITLE",
+   "body": "EV_TRAM_STOP_BODY"
+  },
+  "e_census_page": {
+   "case": "case_rosalind",
+   "kind": "recorded",
+   "source": "census_ledger",
+   "source_name": "SRC_LEDGER",
+   "title": "EV_CENSUS_PAGE_TITLE",
+   "body": "EV_CENSUS_PAGE_BODY",
+   "advance": [
+    "case_rosalind",
+    "page"
+   ]
+  }
+ },
+ "hypotheses": {
+  "lantern_row_fragment": {
+   "case": "case_door",
+   "title": "HYP_LR_TITLE",
+   "body": "HYP_LR_BODY",
+   "requires_all": [
+    "e_door_observed"
+   ],
+   "requires_any": [
+    "e_mara_lantern_row",
+    "e_halloway_lantern_row",
+    "e_radio_announcement",
+    "e_city_map"
+   ],
+   "min_any": 2,
+   "corroborate_sources": 4,
+   "effects": [
+    {
+     "quest_stage": [
+      "case_door",
+      "decide"
+     ]
+    }
+   ]
+  },
+  "greyford_keeps_quiet": {
+   "case": "case_quiet",
+   "title": "HYP_QUIET_TITLE",
+   "body": "HYP_QUIET_BODY",
+   "requires_all": [
+    "e_symbol"
+   ],
+   "requires_any": [
+    "e_landlord_note",
+    "e_rook_note",
+    "e_ivo_warning"
+   ],
+   "min_any": 2,
+   "corroborate_sources": 4,
+   "effects": [
+    {
+     "quest_stage": [
+      "case_quiet",
+      "formed"
+     ]
+    }
+   ]
+  }
+ }
 }

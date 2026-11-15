@@ -38,6 +38,18 @@ func take_damage(amount: int, from_position: Vector2) -> bool:
 	return true
 
 
+## Grants invulnerability without taking damage (dodge i-frames).
+func grant_invulnerability(seconds: float) -> void:
+	_invulnerable_until = maxf(_invulnerable_until, Time.get_ticks_msec() / 1000.0 + seconds)
+
+
+func heal(amount: int) -> void:
+	if is_dead() or amount <= 0:
+		return
+	health = mini(max_health, health + amount)
+	changed.emit(health, max_health)
+
+
 func heal_full() -> void:
 	health = max_health
 	changed.emit(health, max_health)

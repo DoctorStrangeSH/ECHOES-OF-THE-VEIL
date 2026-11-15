@@ -4,7 +4,7 @@ extends Area2D
 ## Base contract for anything the player can use: stable ID, prompt text,
 ## priority, and `interact(actor)`. Subclasses override `_on_interact`.
 ##
-## Priority convention (docs/design/gameplay-systems.md):
+## Priority convention (`interaction_priority`) (docs/design/gameplay-systems.md):
 ## story interaction (20) > usable object (10) > ambient inspect (0).
 ## If no CollisionShape2D child exists, one is created from `area_size`.
 
@@ -14,7 +14,7 @@ const LAYER_INTERACTABLE := 1 << 2
 
 @export var interaction_id: StringName = &""
 @export var prompt_key: String = "PROMPT_INSPECT"
-@export var priority: int = 0
+@export var interaction_priority: int = 0
 @export var enabled: bool = true
 @export var area_size: Vector2 = Vector2(16, 16):
 	set(value):

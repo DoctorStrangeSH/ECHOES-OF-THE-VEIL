@@ -8,6 +8,7 @@ extends Node
 @onready var hud: Hud = $Hud
 @onready var pause_menu: PauseMenu = $PauseMenu
 @onready var journal: JournalScreen = $Journal
+@onready var inventory: InventoryScreen = $Inventory
 
 
 func _ready() -> void:

@@ -10,7 +10,7 @@ extends Node
 signal saved(slot: int)
 signal save_failed(slot: int, message: String)
 
-const SCHEMA_VERSION := 2
+const SCHEMA_VERSION := 3
 const DEFAULT_SLOT := 1
 const MAX_SLOTS := 3
 
@@ -23,6 +23,15 @@ var _migrations: Dictionary = {}
 
 func _init() -> void:
 	_migrations[1] = _migrate_1_to_2
+	_migrations[2] = _migrate_2_to_3
+
+
+## v3 (M3) adds inventory, money, Resonance and Attunements.
+func _migrate_2_to_3(env: Dictionary) -> Dictionary:
+	var p: Dictionary = env["payload"]
+	if not p.has("inventory"):
+		p["inventory"] = {"items": {}, "equipped": {"weapon": "fists", "trinket": ""}, "money": 0, "resonance": 0, "attunements": []}
+	return env
 
 
 ## v2 (M2) adds the player profile, relationships, NPC memory, journal and clock.

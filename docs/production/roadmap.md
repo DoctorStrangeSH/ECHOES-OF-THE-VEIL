@@ -25,7 +25,7 @@ This roadmap is milestone-based, not a promise of fixed calendar dates. Estimate
 
 **Exit gate:** clean launch, repeatable movement and interactions, save/load round-trip tests, no critical parser/runtime errors.
 
-## M2 — Greyford vertical slice (implemented, in review)
+## M2 — Greyford vertical slice (implemented)
 **Build**
 - one polished city block, one interior, one short outdoor route;
 - player character with a feasible customization subset;
@@ -36,7 +36,7 @@ This roadmap is milestone-based, not a promise of fixed calendar dates. Estimate
 
 **Exit gate:** 30–60 minute coherent experience; external testers understand the hook and can complete it without developer guidance.
 
-## M3 — Core RPG loop
+## M3 — Core RPG loop (implemented, in review)
 **Build**
 - health, damage, hit reactions, dodge / weapon feel;
 - one weapon discipline and one utility ability;

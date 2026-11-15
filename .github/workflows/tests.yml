@@ -1,0 +1,38 @@
+name: Godot tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GODOT_VERSION: 4.7.2
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download Godot
+        run: |
+          curl -sSL -o godot.zip "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip"
+          unzip -q godot.zip
+          mv "Godot_v${GODOT_VERSION}-stable_linux.x86_64" godot
+          chmod +x godot
+
+      # LimeZu art is not in the repo (license), so CI runs with placeholders.
+      - name: Import project
+        run: ./godot --headless --path . --import || true
+
+      - name: Compile all scripts
+        run: ./godot --headless --path . res://tools/check_scripts.tscn
+
+      - name: Unit tests
+        run: ./godot --headless --path . res://tests/test_runner.tscn
+
+      - name: Smoke test (plays through the slice)
+        run: |
+          ./godot --headless --path . res://tests/smoke_test.tscn 2>&1 | tee smoke.log
+          grep -q "SMOKE TEST FINISHED" smoke.log
+          ! grep -E "SCRIPT ERROR|SMOKE FAIL" smoke.log

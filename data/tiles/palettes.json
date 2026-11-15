@@ -196,5 +196,59 @@
       "solid": true,
       "placeholder": "#1c1b24"
     }
+  },
+  "tram_platform": {
+    "p": {
+      "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_16x16.png",
+      "tiles": [
+        [
+          16,
+          8
+        ]
+      ],
+      "placeholder": "#d8d8dc"
+    },
+    "g": {
+      "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_16x16.png",
+      "tiles": [
+        [
+          16,
+          11
+        ]
+      ],
+      "placeholder": "#8a8a94"
+    },
+    "y": {
+      "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_16x16.png",
+      "tiles": [
+        [
+          20,
+          7
+        ]
+      ],
+      "placeholder": "#e8c040"
+    },
+    "r": {
+      "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/2_City_Terrains_16x16.png",
+      "tiles": [
+        [
+          1,
+          5
+        ]
+      ],
+      "solid": true,
+      "placeholder": "#3a3a42"
+    },
+    "#": {
+      "texture": "modern_interiors/1_Interiors/16x16/Room_Builder_16x16.png",
+      "tiles": [
+        [
+          12,
+          0
+        ]
+      ],
+      "solid": true,
+      "placeholder": "#15141c"
+    }
   }
 }

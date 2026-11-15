@@ -68,6 +68,5 @@ static func _button_style(bg: Color, edge: Color) -> StyleBoxFlat:
 static func action_hint(action: StringName) -> String:
 	for e in InputMap.action_get_events(action):
 		if e is InputEventKey:
-			var k := e as InputEventKey
-			return OS.get_keycode_string(DisplayServer.keyboard_get_keycode_from_physical(k.physical_keycode))
+			return (e as InputEventKey).as_text_physical_keycode()
 	return "?"

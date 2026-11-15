@@ -2,7 +2,7 @@
 
 A single-player, top-down pixel-art narrative RPG built with Godot 4.x.
 
-> **Project status:** M2 — Greyford vertical slice. Character creator, six scheduled NPCs, branching dialogue, an investigation journal with evidence provenance and hypotheses, a day clock with weather, a main case with a meaningful choice, a local quest, and the first Veil echo with a short combat encounter. English and Russian.
+> **Project status:** M3 — core RPG loop on top of the Greyford slice: weapon combos, dodge, Lantern Flash, the Hollow enemy family, the Census Taker miniboss, inventory/equipment, Resonance and Attunements, generated sound effects. M2: Character creator, six scheduled NPCs, branching dialogue, an investigation journal with evidence provenance and hypotheses, a day clock with weather, a main case with a meaningful choice, a local quest, and the first Veil echo with a short combat encounter. English and Russian.
 
 ## High concept
 
@@ -35,10 +35,14 @@ The player can investigate the mystery while building an independent life throug
 |---|---|---|
 | Move | WASD / arrows | Left stick / D-pad |
 | Sprint | Shift | RB |
-| Interact / next line | E, Enter, Space | A |
+| Interact / next line | E, Enter | A |
 | Dialogue choice | 1–4, arrows + E, mouse | D-pad + A |
 | Journal | Tab | Back |
 | Strike (Veil only) | J, left mouse | X |
+| Dodge (Veil only) | Space, K, right mouse | B |
+| Lantern Flash (Veil only) | Q | Y |
+| Eat / drink | R | LB |
+| Inventory | I | pause menu |
 | Pause menu | Esc | Start |
 | Quick save / load | F5 / F9 | — |
 
@@ -46,9 +50,15 @@ The player can investigate the mystery while building an independent life throug
 
 ```
 godot --headless --path . --import
-godot --headless --path . res://tests/test_runner.tscn
+godot --headless --path . res://tools/check_scripts.tscn   # every script compiles
+godot --headless --path . res://tests/test_runner.tscn     # unit tests
+godot --headless --path . res://tests/smoke_test.tscn      # plays through the slice
 ```
-Exit code 0 means all tests passed. Manual checks: [M1](docs/technical/m1-test-plan.md), [M2](docs/technical/m2-test-plan.md). Story content map: [Greyford slice](docs/narrative/greyford-slice.md).
+Exit code 0 means success; the smoke test must also print `SMOKE TEST FINISHED` with no `SCRIPT ERROR`. GitHub Actions runs all three on every pull request (`.github/workflows/tests.yml`). Manual checks: [M1](docs/technical/m1-test-plan.md), [M2](docs/technical/m2-test-plan.md), [M3](docs/technical/m3-test-plan.md). Story content map: [Greyford slice](docs/narrative/greyford-slice.md).
+
+## Audio
+
+Sound effects are synthesised by `tools/generate_sfx.py` (our own, committed in `assets/audio/sfx/`). Re-run the script after tweaking sounds.
 
 ## Technology
 
@@ -77,7 +87,7 @@ Build and validate a small, compelling vertical slice before scaling content. A 
 
 ## Current milestone
 
-**M2 — Greyford vertical slice** (in review). Next: **M3 — Core RPG loop** (combat depth, inventory and equipment, enemy family, miniboss) and external playtests of the slice.
+**M3 — Core RPG loop** (in review). Next: external playtests of the slice, then **M4 — narrative depth** (quest graph, faction access, character stories) and **M5 — life and work**.
 
 ## License and third-party assets
 

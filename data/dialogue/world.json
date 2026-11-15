@@ -1,102 +1,449 @@
 {
-  "intro": {
-    "start": "1",
-    "nodes": {
-      "1": {"text": "INTRO_1", "next": "2"},
-      "2": {"text": "INTRO_2", "next": "3"},
-      "3": {"text": "INTRO_3", "effects": [{"set_flag": "intro.done"}, {"quest_start": "case_door"}], "next": null}
-    }
-  },
-  "rest": {
-    "start": "ask",
-    "nodes": {
-      "ask": {"text": "REST_PROMPT", "choices": [
-        {"text": "REST_SAVE", "effects": [{"save_game": true}], "next": "saved"},
-        {"text": "REST_WAIT_EVENING", "if": {"period": ["morning", "afternoon"]}, "effects": [{"wait_until_hour": 18}, {"save_game": true}], "next": "waited"},
-        {"text": "REST_SLEEP", "if": {"period": ["evening", "night"]}, "effects": [{"sleep_until_hour": 7}, {"heal_player": true}, {"save_game": true}], "next": "slept"},
-        {"text": "REST_CANCEL", "next": null}
-      ]},
-      "saved": {"text": "REST_SAVED", "next": null},
-      "waited": {"text": "REST_WAITED", "next": null},
-      "slept": {"text": "REST_SLEPT", "next": null}
-    }
-  },
-  "woke_up": {
-    "start": "1",
-    "nodes": {
-      "1": {"text": "WOKE_1", "effects": [{"clear_flag": "veil.just_fainted"}, {"advance_minutes": 60}, {"heal_player": true}], "next": "2"},
-      "2": {"text": "WOKE_2", "next": null}
-    }
-  },
-  "landlord_note": {
-    "entries": [{"if": {"evidence": "e_landlord_note"}, "node": "again"}],
-    "start": "1",
-    "nodes": {
-      "1": {"text": "LANDLORD_NOTE_1", "next": "2"},
-      "2": {"text": "LANDLORD_NOTE_2", "next": "3"},
-      "3": {"text": "LANDLORD_NOTE_3", "effects": [{"add_evidence": "e_landlord_note"}], "next": null},
-      "again": {"text": "LANDLORD_NOTE_REPEAT", "next": null}
-    }
-  },
-  "rook_shop": {
-    "entries": [{"if": {"evidence": "e_rook_note"}, "node": "again"}],
-    "start": "1",
-    "nodes": {
-      "1": {"text": "ROOK_SHOP_1", "next": "2"},
-      "2": {"text": "ROOK_SHOP_2", "effects": [{"add_evidence": "e_rook_note"}], "next": null},
-      "again": {"text": "ROOK_SHOP_REPEAT", "next": null}
-    }
-  },
-  "yellow_condo": {
-    "entries": [{"if": {"evidence": "e_symbol"}, "node": "again"}],
-    "start": "1",
-    "nodes": {
-      "1": {"text": "CONDO_YELLOW_1", "next": "2"},
-      "2": {"text": "CONDO_YELLOW_2", "effects": [{"add_evidence": "e_symbol"}], "next": null},
-      "again": {"text": "CONDO_YELLOW_REPEAT", "next": null}
-    }
-  },
-  "veil_door": {
-    "entries": [
-      {"if": {"not_evidence": "e_door_observed"}, "node": "first1"},
-      {"if": {"hypothesis": "lantern_row_fragment"}, "node": "ready"}
+ "intro": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "INTRO_1",
+    "next": "2"
+   },
+   "2": {
+    "text": "INTRO_2",
+    "next": "3"
+   },
+   "3": {
+    "text": "INTRO_3",
+    "effects": [
+     {
+      "set_flag": "intro.done"
+     },
+     {
+      "quest_start": "case_door"
+     }
     ],
-    "start": "repeat1",
-    "nodes": {
-      "first1": {"text": "VEIL_DOOR_1", "next": "first2"},
-      "first2": {"text": "VEIL_DOOR_2", "next": "first3"},
-      "first3": {"text": "VEIL_DOOR_3", "next": "first4"},
-      "first4": {"text": "VEIL_DOOR_4", "effects": [{"add_evidence": "e_door_observed"}], "next": null},
-      "repeat1": {"text": "VEIL_DOOR_REPEAT_1", "next": "repeat2"},
-      "repeat2": {"text": "VEIL_DOOR_NOT_READY", "next": null},
-      "ready": {"text": "VEIL_DOOR_READY", "choices": [
-        {"text": "VEIL_DOOR_OPEN", "effects": [{"set_flag": "door.opened"}, {"quest_stage": ["case_door", "inside"]}, {"travel": ["echo_lantern_row", "entrance"]}], "next": null},
-        {"text": "VEIL_DOOR_LEAVE", "next": null}
-      ]}
-    }
-  },
-  "door_gone": {
-    "start": "1",
-    "nodes": {"1": {"text": "VEIL_DOOR_GONE", "next": null}}
-  },
-  "barriers": {
-    "start": "1",
-    "nodes": {"1": {"text": "VEIL_DOOR_FENCED", "next": null}}
-  },
-  "echo_photo": {
-    "entries": [{"if": {"evidence": "e_echo_photo"}, "node": "again"}],
-    "start": "1",
-    "nodes": {
-      "1": {"text": "ECHO_PHOTO_1", "next": "2"},
-      "2": {"text": "ECHO_PHOTO_2", "effects": [{"add_evidence": "e_echo_photo"}], "next": null},
-      "again": {"text": "ECHO_PHOTO_REPEAT", "next": null}
-    }
-  },
-  "echo_entrance": {
-    "start": "1",
-    "nodes": {
-      "1": {"text": "ECHO_ENTER_1", "next": "2"},
-      "2": {"text": "ECHO_ENTER_2", "effects": [{"set_flag": "echo.entered"}], "next": null}
-    }
+    "next": null
+   }
   }
+ },
+ "rest": {
+  "start": "ask",
+  "nodes": {
+   "ask": {
+    "text": "REST_PROMPT",
+    "choices": [
+     {
+      "text": "REST_SAVE",
+      "effects": [
+       {
+        "save_game": true
+       }
+      ],
+      "next": "saved"
+     },
+     {
+      "text": "REST_WAIT_EVENING",
+      "if": {
+       "period": [
+        "morning",
+        "afternoon"
+       ]
+      },
+      "effects": [
+       {
+        "wait_until_hour": 18
+       },
+       {
+        "save_game": true
+       }
+      ],
+      "next": "waited"
+     },
+     {
+      "text": "REST_SLEEP",
+      "if": {
+       "period": [
+        "evening",
+        "night"
+       ]
+      },
+      "effects": [
+       {
+        "sleep_until_hour": 7
+       },
+       {
+        "heal_player": true
+       },
+       {
+        "save_game": true
+       }
+      ],
+      "next": "slept"
+     },
+     {
+      "text": "REST_CANCEL",
+      "next": null
+     }
+    ]
+   },
+   "saved": {
+    "text": "REST_SAVED",
+    "next": null
+   },
+   "waited": {
+    "text": "REST_WAITED",
+    "next": null
+   },
+   "slept": {
+    "text": "REST_SLEPT",
+    "next": null
+   }
+  }
+ },
+ "woke_up": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "WOKE_1",
+    "effects": [
+     {
+      "clear_flag": "veil.just_fainted"
+     },
+     {
+      "advance_minutes": 60
+     },
+     {
+      "heal_player": true
+     }
+    ],
+    "next": "2"
+   },
+   "2": {
+    "text": "WOKE_2",
+    "next": null
+   }
+  }
+ },
+ "landlord_note": {
+  "entries": [
+   {
+    "if": {
+     "evidence": "e_landlord_note"
+    },
+    "node": "again"
+   }
+  ],
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "LANDLORD_NOTE_1",
+    "next": "2"
+   },
+   "2": {
+    "text": "LANDLORD_NOTE_2",
+    "next": "3"
+   },
+   "3": {
+    "text": "LANDLORD_NOTE_3",
+    "effects": [
+     {
+      "add_evidence": "e_landlord_note"
+     }
+    ],
+    "next": null
+   },
+   "again": {
+    "text": "LANDLORD_NOTE_REPEAT",
+    "next": null
+   }
+  }
+ },
+ "rook_shop": {
+  "entries": [
+   {
+    "if": {
+     "evidence": "e_rook_note"
+    },
+    "node": "again"
+   }
+  ],
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "ROOK_SHOP_1",
+    "next": "2"
+   },
+   "2": {
+    "text": "ROOK_SHOP_2",
+    "effects": [
+     {
+      "add_evidence": "e_rook_note"
+     }
+    ],
+    "next": null
+   },
+   "again": {
+    "text": "ROOK_SHOP_REPEAT",
+    "next": null
+   }
+  }
+ },
+ "yellow_condo": {
+  "entries": [
+   {
+    "if": {
+     "evidence": "e_symbol"
+    },
+    "node": "again"
+   }
+  ],
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "CONDO_YELLOW_1",
+    "next": "2"
+   },
+   "2": {
+    "text": "CONDO_YELLOW_2",
+    "effects": [
+     {
+      "add_evidence": "e_symbol"
+     }
+    ],
+    "next": null
+   },
+   "again": {
+    "text": "CONDO_YELLOW_REPEAT",
+    "next": null
+   }
+  }
+ },
+ "veil_door": {
+  "entries": [
+   {
+    "if": {
+     "not_evidence": "e_door_observed"
+    },
+    "node": "first1"
+   },
+   {
+    "if": {
+     "hypothesis": "lantern_row_fragment"
+    },
+    "node": "ready"
+   }
+  ],
+  "start": "repeat1",
+  "nodes": {
+   "first1": {
+    "text": "VEIL_DOOR_1",
+    "next": "first2"
+   },
+   "first2": {
+    "text": "VEIL_DOOR_2",
+    "next": "first3"
+   },
+   "first3": {
+    "text": "VEIL_DOOR_3",
+    "next": "first4"
+   },
+   "first4": {
+    "text": "VEIL_DOOR_4",
+    "effects": [
+     {
+      "add_evidence": "e_door_observed"
+     }
+    ],
+    "next": null
+   },
+   "repeat1": {
+    "text": "VEIL_DOOR_REPEAT_1",
+    "next": "repeat2"
+   },
+   "repeat2": {
+    "text": "VEIL_DOOR_NOT_READY",
+    "next": null
+   },
+   "ready": {
+    "text": "VEIL_DOOR_READY",
+    "choices": [
+     {
+      "text": "VEIL_DOOR_OPEN",
+      "effects": [
+       {
+        "set_flag": "door.opened"
+       },
+       {
+        "quest_stage": [
+         "case_door",
+         "inside"
+        ]
+       },
+       {
+        "travel": [
+         "echo_lantern_row",
+         "entrance"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "VEIL_DOOR_LEAVE",
+      "next": null
+     }
+    ]
+   }
+  }
+ },
+ "door_gone": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "VEIL_DOOR_GONE",
+    "next": null
+   }
+  }
+ },
+ "barriers": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "VEIL_DOOR_FENCED",
+    "next": null
+   }
+  }
+ },
+ "echo_photo": {
+  "entries": [
+   {
+    "if": {
+     "evidence": "e_echo_photo"
+    },
+    "node": "again"
+   }
+  ],
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "ECHO_PHOTO_1",
+    "next": "2"
+   },
+   "2": {
+    "text": "ECHO_PHOTO_2",
+    "effects": [
+     {
+      "add_evidence": "e_echo_photo"
+     }
+    ],
+    "next": null
+   },
+   "again": {
+    "text": "ECHO_PHOTO_REPEAT",
+    "next": null
+   }
+  }
+ },
+ "echo_entrance": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "ECHO_ENTER_1",
+    "next": "2"
+   },
+   "2": {
+    "text": "ECHO_ENTER_2",
+    "effects": [
+     {
+      "set_flag": "echo.entered"
+     }
+    ],
+    "next": null
+   }
+  }
+ },
+ "ghost_tram": {
+  "entries": [
+   {
+    "if": {
+     "evidence": "e_tram_stop"
+    },
+    "node": "again"
+   }
+  ],
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "TRAM_STOP_1",
+    "next": "2"
+   },
+   "2": {
+    "text": "TRAM_STOP_2",
+    "effects": [
+     {
+      "add_evidence": "e_tram_stop"
+     }
+    ],
+    "next": "ask"
+   },
+   "again": {
+    "text": "TRAM_STOP_AGAIN",
+    "next": "ask"
+   },
+   "ask": {
+    "text": "TRAM_STOP_ASK",
+    "choices": [
+     {
+      "text": "TRAM_STOP_BOARD",
+      "effects": [
+       {
+        "travel": [
+         "phantom_platform",
+         "entrance"
+        ]
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "TRAM_STOP_WAIT",
+      "next": null
+     }
+    ]
+   }
+  }
+ },
+ "platform_enter": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "PLATFORM_ENTER_1",
+    "next": "2"
+   },
+   "2": {
+    "text": "PLATFORM_ENTER_2",
+    "next": "3"
+   },
+   "3": {
+    "text": "PLATFORM_ENTER_3",
+    "effects": [
+     {
+      "set_flag": "platform.entered"
+     }
+    ],
+    "next": null
+   }
+  }
+ },
+ "platform_map": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "PLATFORM_MAP_1",
+    "next": "2"
+   },
+   "2": {
+    "text": "PLATFORM_MAP_2",
+    "next": null
+   }
+  }
+ }
 }

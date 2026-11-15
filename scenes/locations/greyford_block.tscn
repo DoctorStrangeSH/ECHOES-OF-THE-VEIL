@@ -13,6 +13,9 @@
 [ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
 [ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
 [ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+[ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
+[ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
+[ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
 
 [node name="GreyfordBlock" type="Node2D"]
 script = ExtResource("1_loc")
@@ -285,6 +288,39 @@ script = ExtResource("4_spawn")
 spawn_id = &"plaza_door"
 facing = Vector2(0, 1)
 
+[node name="HarborStop" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(600, 80)
+script = ExtResource("4_spawn")
+spawn_id = &"harbor_stop"
+facing = Vector2(0, 1)
+
+[node name="GhostTramStop" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(616, 66)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/10_Vehicles_Singles_16x16/ME_Singles_Vehicles_16x16_Bus_Stop_Sign_1.png"
+placeholder_size = Vector2i(16, 48)
+placeholder_color = Color(0.627,0.251,0.251, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="Shimmer" type="Node" parent="Entities/GhostTramStop"]
+script = ExtResource("9_shimmer")
+
+[node name="Condition" type="Node" parent="Entities/GhostTramStop"]
+script = ExtResource("10_cond")
+show_if = {"any": [{"quest_active": "case_rosalind"}, {"quest_done": "case_rosalind"}], "all": [{"any": [{"period": ["evening", "night"]}, {"weather": "rain"}]}]}
+
+[node name="GhostTramStopUse" type="Area2D" parent="Entities"]
+position = Vector2(600, 70)
+script = ExtResource("5_inspect")
+interaction_id = &"ghost_tram_stop"
+area_size = Vector2(28, 14)
+interaction_priority = 20
+dialogue_id = &"ghost_tram"
+
+[node name="Condition" type="Node" parent="Entities/GhostTramStopUse"]
+script = ExtResource("10_cond")
+show_if = {"any": [{"quest_active": "case_rosalind"}, {"quest_done": "case_rosalind"}], "all": [{"any": [{"period": ["evening", "night"]}, {"weather": "rain"}]}]}
+
 [node name="HomeDoor" type="Area2D" parent="Entities"]
 position = Vector2(88, 246)
 script = ExtResource("6_door")
@@ -336,7 +372,7 @@ position = Vector2(324, 152)
 script = ExtResource("5_inspect")
 interaction_id = &"veil_door_plaza"
 area_size = Vector2(20, 14)
-priority = 20
+interaction_priority = 20
 dialogue_id = &"veil_door"
 
 [node name="Condition" type="Node" parent="Entities/ImpossibleDoorUse"]

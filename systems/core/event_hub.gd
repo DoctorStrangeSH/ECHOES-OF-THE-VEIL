@@ -21,3 +21,13 @@ signal player_heal_requested
 signal player_health_changed(health: int, max_health: int)
 ## A relationship value changed.
 signal relationship_changed(npc_id: StringName, value: int)
+## Heal the player by an amount (consumables).
+signal player_heal_requested_amount(amount: int)
+## Equipment or attunements changed derived stats (max health, cooldowns...).
+signal player_stats_changed
+## Boss health bar. max_health 0 = hide.
+signal boss_health_changed(name_key: String, health: int, max_health: int)
+## Cooldown display: id ("dodge"/"flash"), remaining fraction 0..1.
+signal ability_cooldown(ability: String, fraction: float)
+## Camera shake request (strength in pixels).
+signal camera_shake_requested(strength: float)

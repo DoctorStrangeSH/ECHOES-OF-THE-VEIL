@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="3_pause"]
 [ext_resource type="Script" path="res://scripts/ui/journal_screen.gd" id="4_journal"]
 [ext_resource type="Script" path="res://scripts/ui/rain_overlay.gd" id="5_rain"]
+[ext_resource type="Script" path="res://scripts/ui/inventory_screen.gd" id="6_inventory"]
 
 [node name="GameRoot" type="Node"]
 script = ExtResource("1_root")
@@ -22,6 +23,9 @@ script = ExtResource("3_pause")
 
 [node name="Journal" type="CanvasLayer" parent="."]
 script = ExtResource("4_journal")
+
+[node name="Inventory" type="CanvasLayer" parent="."]
+script = ExtResource("6_inventory")
 
 [node name="MenuLayer" type="CanvasLayer" parent="."]
 layer = 20
