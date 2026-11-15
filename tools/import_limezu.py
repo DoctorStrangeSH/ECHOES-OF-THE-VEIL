@@ -2,9 +2,10 @@
 """Import purchased LimeZu packs into the local Godot project.
 
 The packs are licensed for use in your game but NOT for redistribution, so the
-extracted files go to `assets/limezu/` and `resources/tilesets/limezu/`, which
-are both git-ignored. Every developer runs this script once on their own
-machine with their own copies of the archives.
+extracted files go to `assets/limezu/`, which is a git submodule pointing to a
+PRIVATE repository (see docs/art/asset-pipeline.md). Normally you never run this
+script: `git clone --recurse-submodules` brings the art. Run it only to rebuild
+or update the private art repository from the purchased archives.
 
 Usage:
     python tools/import_limezu.py --source "C:/path/to/zips"
@@ -42,7 +43,7 @@ except ImportError:  # pragma: no cover - optional dependency
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 ASSET_ROOT_REL = "assets/limezu"
-TILESET_ROOT_REL = "resources/tilesets/limezu"
+TILESET_ROOT_REL = "assets/limezu/tilesets"
 
 # pack_id -> (archive name regex, license file names inside the archive)
 PACKS = {
