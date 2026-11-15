@@ -1,0 +1,257 @@
+{
+ "_doc": "Debug-only (editor builds): start a new game at the beginning of an act. Steps are cumulative: starting at act3 applies prologue, act1 and act2.",
+ "steps": [
+  {
+   "to": "act1",
+   "effects": [
+    {
+     "quest_start": "case_door"
+    },
+    {
+     "quest_complete": [
+      "case_door",
+      "opened"
+     ]
+    },
+    {
+     "set_flag": "door.vanished"
+    },
+    {
+     "set_flag": "met.mara_venn"
+    },
+    {
+     "set_flag": "met.jonah_rook"
+    },
+    {
+     "set_flag": "met.ivo_calder"
+    },
+    {
+     "relationship": [
+      "jonah_rook",
+      2
+     ]
+    },
+    {
+     "give_money": 30
+    }
+   ]
+  },
+  {
+   "to": "act2",
+   "effects": [
+    {
+     "quest_start": "case_storeroom"
+    },
+    {
+     "quest_complete": [
+      "case_storeroom",
+      "told"
+     ]
+    },
+    {
+     "quest_start": "case_larger_house"
+    },
+    {
+     "quest_complete": [
+      "case_larger_house",
+      "remembered"
+     ]
+    },
+    {
+     "quest_start": "case_two_maps"
+    },
+    {
+     "quest_complete": [
+      "case_two_maps",
+      "shared"
+     ]
+    },
+    {
+     "set_flag": "world.theo_remembers"
+    },
+    {
+     "set_flag": "met.theo_marsh"
+    },
+    {
+     "add_evidence": "e_two_maps"
+    },
+    {
+     "relationship": [
+      "jonah_rook",
+      1
+     ]
+    },
+    {
+     "relationship": [
+      "mara_venn",
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "to": "act3",
+   "effects": [
+    {
+     "quest_start": "case_misplaced"
+    },
+    {
+     "quest_complete": [
+      "case_misplaced",
+      "reunited"
+     ]
+    },
+    {
+     "set_flag": "ward.open"
+    },
+    {
+     "set_flag": "rosalind.reunited"
+    },
+    {
+     "set_flag": "met.alderman"
+    },
+    {
+     "set_flag": "met.sera_vale"
+    },
+    {
+     "set_flag": "ward.heard_bea"
+    },
+    {
+     "set_flag": "ward.heard_abel"
+    },
+    {
+     "set_flag": "ward.heard_ellie"
+    },
+    {
+     "set_flag": "depot.cleared"
+    },
+    {
+     "set_flag": "boss.conductor.defeated"
+    },
+    {
+     "faction": [
+      "unwritten",
+      2
+     ]
+    },
+    {
+     "relationship": [
+      "jonah_rook",
+      2
+     ]
+    },
+    {
+     "give_resonance": 6
+    }
+   ]
+  },
+  {
+   "to": "act4",
+   "effects": [
+    {
+     "quest_start": "case_kindness"
+    },
+    {
+     "quest_complete": [
+      "case_kindness",
+      "sealed"
+     ]
+    },
+    {
+     "set_flag": "archive.key"
+    },
+    {
+     "set_flag": "keepers.entered"
+    },
+    {
+     "set_flag": "underpass.cleared"
+    },
+    {
+     "set_flag": "boss.archivist.defeated"
+    },
+    {
+     "set_flag": "world.seal_held"
+    },
+    {
+     "faction": [
+      "keepers",
+      3
+     ]
+    },
+    {
+     "give_resonance": 6
+    }
+   ]
+  },
+  {
+   "to": "act5",
+   "effects": [
+    {
+     "quest_start": "case_index"
+    },
+    {
+     "quest_complete": [
+      "case_index",
+      "turned"
+     ]
+    },
+    {
+     "set_flag": "site.hospital.done"
+    },
+    {
+     "set_flag": "site.hospital.true"
+    },
+    {
+     "set_flag": "site.home.done"
+    },
+    {
+     "set_flag": "site.home.true"
+    },
+    {
+     "set_flag": "site.station.done"
+    },
+    {
+     "set_flag": "site.station.distorted"
+    },
+    {
+     "set_flag": "vale.turned"
+    },
+    {
+     "faction": [
+      "unwritten",
+      2
+     ]
+    },
+    {
+     "give_resonance": 6
+    }
+   ]
+  },
+  {
+   "to": "endgame",
+   "effects": [
+    {
+     "quest_start": "case_anchor"
+    },
+    {
+     "quest_complete": [
+      "case_anchor",
+      "accord"
+     ]
+    },
+    {
+     "set_flag": "ending.accord"
+    },
+    {
+     "set_flag": "game.completed"
+    },
+    {
+     "set_flag": "boss.director.defeated"
+    },
+    {
+     "set_flag": "anchor.entered"
+    }
+   ]
+  }
+ ]
+}

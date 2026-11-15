@@ -6,6 +6,8 @@ var _buttons: VBoxContainer
 var _title: Label
 var _subtitle: Label
 var _footer: Label
+var _debug_target := 0
+var _debug_button: Button
 
 
 func _ready() -> void:
@@ -24,6 +26,15 @@ func _on_continue() -> void:
 	SaveService.load_game()
 
 
+func _on_debug_start() -> void:
+	DebugStart.start(DebugStart.TARGETS[_debug_target])
+
+
+func _on_debug_cycle() -> void:
+	_debug_target = (_debug_target + 1) % DebugStart.TARGETS.size()
+	_refresh()
+
+
 func _on_language() -> void:
 	Localization.set_locale("en" if Localization.get_locale().begins_with("ru") else "ru")
 	_refresh()
@@ -39,6 +50,8 @@ func _refresh() -> void:
 	if not AssetLibrary.has_limezu():
 		footer += "\n" + tr("MENU_NO_ASSETS")
 	_footer.text = footer
+	if _debug_button != null:
+		_debug_button.text = tr("MENU_DEBUG_START") % DebugStart.TARGETS[_debug_target]
 
 
 func _build() -> void:
@@ -81,6 +94,18 @@ func _build() -> void:
 		b.pressed.connect(action)
 		_buttons.add_child(b)
 	center.add_child(_buttons)
+	if DebugStart.available():
+		_debug_button = Button.new()
+		_debug_button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		_debug_button.pressed.connect(_on_debug_start)
+		var cycle := Button.new()
+		cycle.text = ">"
+		cycle.pressed.connect(_on_debug_cycle)
+		var row := HBoxContainer.new()
+		row.alignment = BoxContainer.ALIGNMENT_CENTER
+		row.add_child(_debug_button)
+		row.add_child(cycle)
+		center.add_child(row)
 
 	_footer = Label.new()
 	_footer.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER

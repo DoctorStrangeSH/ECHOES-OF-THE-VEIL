@@ -1,0 +1,371 @@
+{
+ "_doc": "Expedition sites. rooms: tile rows plus start (px), exit (px) and, for arenas, boss (px). enemies: the site's echo pool. All rooms must be walkable from start to exit (tested).",
+ "hospital": {
+  "name": "EXP_SITE_HOSPITAL",
+  "palette": "echo_corridor",
+  "tint": [
+   0.82,
+   0.95,
+   0.88,
+   1.0
+  ],
+  "enemies": [
+   "hollow",
+   "clinger"
+  ],
+  "rooms": [
+   {
+    "rows": [
+     "######################",
+     "#WWWWWWWWWWWWWWWWWWWW#",
+     "#wwwwwwwwwwwwwwwwwwww#",
+     "#ffffffffffffffffffff#",
+     "#ffffffffffffffffffff#",
+     "#ffffffffffffffffffff#",
+     "#ffffffffffffffffffff#",
+     "#ffffffffffffffffffff#",
+     "#ffffffffffffffffffff#",
+     "#ffffffffffffffffffff#",
+     "#ffffffffffffffffffff#",
+     "#ffffffffffffffffffff#",
+     "##########ff##########"
+    ],
+    "start": [
+     176,
+     184
+    ],
+    "exit": [
+     176,
+     64
+    ]
+   },
+   {
+    "rows": [
+     "##########################",
+     "#WWWWWWWWWWWWWWWWWWWWWWWW#",
+     "#wwwwwwwwwwwwwwwwwwwwwwww#",
+     "#ffffffffffffffffffffffff#",
+     "#ffffffffffffffffffffffff#",
+     "#ffffffffffffffffffffffff#",
+     "#fffff##ffffffffff##fffff#",
+     "#ffffffffffffffffffffffff#",
+     "#ffffffffffffffffffffffff#",
+     "#ffffffffffffffffffffffff#",
+     "#ffffffffffffffffffffffff#",
+     "############ff############"
+    ],
+    "start": [
+     208,
+     168
+    ],
+    "exit": [
+     208,
+     64
+    ]
+   }
+  ],
+  "arena": {
+   "rows": [
+    "##############################",
+    "#WWWWWWWWWWWWWWWWWWWWWWWWWWWW#",
+    "#wwwwwwwwwwwwwwwwwwwwwwwwwwww#",
+    "#ffffffffffffffffffffffffffff#",
+    "#ffffffffffffffffffffffffffff#",
+    "#ffffffffffffffffffffffffffff#",
+    "#ffffffffffffffffffffffffffff#",
+    "#ffffffffffffffffffffffffffff#",
+    "#ffffffffffffffffffffffffffff#",
+    "#ffffffffffffffffffffffffffff#",
+    "#ffffffffffffffffffffffffffff#",
+    "#ffffffffffffffffffffffffffff#",
+    "#ffffffffffffffffffffffffffff#",
+    "#ffffffffffffffffffffffffffff#",
+    "#ffffffffffffffffffffffffffff#",
+    "##############ff##############"
+   ],
+   "start": [
+    240,
+    232
+   ],
+   "exit": [
+    240,
+    64
+   ],
+   "boss": [
+    240,
+    136
+   ]
+  }
+ },
+ "kitchen": {
+  "name": "EXP_SITE_KITCHEN",
+  "palette": "rented_room",
+  "tint": [
+   1.0,
+   0.88,
+   0.78,
+   1.0
+  ],
+  "enemies": [
+   "hollow",
+   "wailer"
+  ],
+  "rooms": [
+   {
+    "rows": [
+     "######################",
+     "#WWWWWWWWWWWWWWWWWWWW#",
+     "#wwwwwwwwwwwwwwwwwwww#",
+     "#ffffffffffffffffffff#",
+     "#ffffffffffffffffffff#",
+     "#ffffffffffffffffffff#",
+     "#ffffffffffffffffffff#",
+     "#ffffffffffffffffffff#",
+     "#ffffffffffffffffffff#",
+     "#ffffffffffffffffffff#",
+     "#ffffffffffffffffffff#",
+     "#ffffffffffffffffffff#",
+     "##########ff##########"
+    ],
+    "start": [
+     176,
+     184
+    ],
+    "exit": [
+     176,
+     64
+    ]
+   },
+   {
+    "rows": [
+     "##########################",
+     "#WWWWWWWWWWWWWWWWWWWWWWWW#",
+     "#wwwwwwwwwwwwwwwwwwwwwwww#",
+     "#ffffffffffffffffffffffff#",
+     "#ffffffffffffffffffffffff#",
+     "#ffffffffffffffffffffffff#",
+     "#fffff##ffffffffff##fffff#",
+     "#ffffffffffffffffffffffff#",
+     "#ffffffffffffffffffffffff#",
+     "#ffffffffffffffffffffffff#",
+     "#ffffffffffffffffffffffff#",
+     "############ff############"
+    ],
+    "start": [
+     208,
+     168
+    ],
+    "exit": [
+     208,
+     64
+    ]
+   }
+  ],
+  "arena": {
+   "rows": [
+    "##############################",
+    "#WWWWWWWWWWWWWWWWWWWWWWWWWWWW#",
+    "#wwwwwwwwwwwwwwwwwwwwwwwwwwww#",
+    "#ffffffffffffffffffffffffffff#",
+    "#ffffffffffffffffffffffffffff#",
+    "#ffffffffffffffffffffffffffff#",
+    "#ffffffffffffffffffffffffffff#",
+    "#ffffffffffffffffffffffffffff#",
+    "#ffffffffffffffffffffffffffff#",
+    "#ffffffffffffffffffffffffffff#",
+    "#ffffffffffffffffffffffffffff#",
+    "#ffffffffffffffffffffffffffff#",
+    "#ffffffffffffffffffffffffffff#",
+    "#ffffffffffffffffffffffffffff#",
+    "#ffffffffffffffffffffffffffff#",
+    "##############ff##############"
+   ],
+   "start": [
+    240,
+    232
+   ],
+   "exit": [
+    240,
+    64
+   ],
+   "boss": [
+    240,
+    136
+   ]
+  }
+ },
+ "station": {
+  "name": "EXP_SITE_STATION",
+  "palette": "tram_platform",
+  "tint": [
+   0.85,
+   0.85,
+   1.0,
+   1.0
+  ],
+  "enemies": [
+   "clinger",
+   "wailer"
+  ],
+  "rooms": [
+   {
+    "rows": [
+     "##########################",
+     "##########################",
+     "rrrrrrrrrrrrrrrrrrrrrrrrrr",
+     "rrrrrrrrrrrrrrrrrrrrrrrrrr",
+     "yyyyyyyyyyyyyyyyyyyyyyyyyy",
+     "gggggggggggggggggggggggggg",
+     "gggggggggggggggggggggggggg",
+     "gggggggggggggggggggggggggg",
+     "gggggggggggggggggggggggggg",
+     "gggggggggggggggggggggggggg",
+     "gggggggggggggggggggggggggg",
+     "gggggggggggggggggggggggggg",
+     "gggggggggggggggggggggggggg",
+     "############pp############"
+    ],
+    "start": [
+     208,
+     200
+    ],
+    "exit": [
+     208,
+     96
+    ]
+   },
+   {
+    "rows": [
+     "########################",
+     "########################",
+     "rrrrrrrrrrrrrrrrrrrrrrrr",
+     "rrrrrrrrrrrrrrrrrrrrrrrr",
+     "yyyyyyyyyyyyyyyyyyyyyyyy",
+     "gggggggggggggggggggggggg",
+     "gggggggggggggggggggggggg",
+     "gggggg##gggggggg##gggggg",
+     "gggggg##gggggggg##gggggg",
+     "gggggggggggggggggggggggg",
+     "gggggggggggggggggggggggg",
+     "gggggggggggggggggggggggg",
+     "###########pp###########"
+    ],
+    "start": [
+     192,
+     184
+    ],
+    "exit": [
+     192,
+     96
+    ]
+   }
+  ],
+  "arena": {
+   "rows": [
+    "##############################",
+    "##############################",
+    "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+    "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+    "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+    "gggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggg",
+    "##############pp##############"
+   ],
+   "start": [
+    240,
+    232
+   ],
+   "exit": [
+    240,
+    96
+   ],
+   "boss": [
+    240,
+    160
+   ]
+  }
+ },
+ "underpass": {
+  "name": "EXP_SITE_UNDERPASS",
+  "palette": "underpass",
+  "tint": [
+   0.72,
+   0.82,
+   1.0,
+   1.0
+  ],
+  "enemies": [
+   "hollow",
+   "wailer",
+   "clinger"
+  ],
+  "rooms": [
+   {
+    "rows": [
+     "##########################",
+     "##########################",
+     "ggggggggwwgggggggggggggggg",
+     "ggggggggwwgggggggggggggggg",
+     "ggggggggwwgggggggggggggggg",
+     "ggggggggwwgggggggggggggggg",
+     "gggggggggggggggggggggggggg",
+     "gggggggggggggggggggggggggg",
+     "ggggggggggggggggwwgggggggg",
+     "ggggggggggggggggwwgggggggg",
+     "ggggggggggggggggwwgggggggg",
+     "ggggggggggggggggwwgggggggg",
+     "ggggggggggggggggwwgggggggg",
+     "############pp############"
+    ],
+    "start": [
+     208,
+     200
+    ],
+    "exit": [
+     208,
+     48
+    ]
+   }
+  ],
+  "arena": {
+   "rows": [
+    "##############################",
+    "##############################",
+    "gggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggg",
+    "gggggggggggggggggggggggggggggg",
+    "##############pp##############"
+   ],
+   "start": [
+    240,
+    232
+   ],
+   "exit": [
+    240,
+    48
+   ],
+   "boss": [
+    240,
+    136
+   ]
+  }
+ }
+}

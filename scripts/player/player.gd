@@ -377,10 +377,18 @@ func _on_heal_amount(amount: int) -> void:
 ## behind in a satchel where they fell (GameState.drop_satchel).
 func _on_died() -> void:
 	_fainting = true
-	GameState.drop_satchel(GameState.current_scene_id, global_position)
+	var in_run := Expedition.fail()
+	if in_run:
+		GameState.drop_satchel(Expedition.RETURN_SCENE, Expedition.SATCHEL_AT)
+	else:
+		GameState.drop_satchel(GameState.current_scene_id, global_position)
 	GameState.set_flag(&"veil.fainted_once", true)
 	var t := create_tween()
 	t.tween_property(sprite, "modulate:a", 0.0, 0.8)
 	await t.finished
+	if in_run:
+		EventHub.toast_requested.emit(tr("EXP_TOAST_FAILED"))
+		SceneFlow.travel(Expedition.RETURN_SCENE, Expedition.RETURN_SPAWN)
+		return
 	GameState.set_flag(&"veil.just_fainted", true)
 	SceneFlow.travel(&"rented_room", &"bed")

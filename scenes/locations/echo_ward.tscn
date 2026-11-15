@@ -378,3 +378,33 @@ position = Vector2(540, 340)
 script = ExtResource("4_spawn")
 spawn_id = &"from_memory_station"
 facing = Vector2(0, -1)
+
+[node name="RiftFrame" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(220, 352)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_240.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.878,0.753,1.000, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Shimmer" type="Node" parent="Entities/RiftFrame"]
+script = ExtResource("9_shimmer")
+
+[node name="Condition" type="Node" parent="Entities/RiftFrame"]
+script = ExtResource("10_cond")
+show_if = {"flag": "game.completed"}
+
+[node name="RiftUse" parent="Entities" instance=ExtResource("18_screen")]
+position = Vector2(220, 356)
+interaction_id = &"use_veil_rift"
+screen = "expeditions"
+
+[node name="Condition" type="Node" parent="Entities/RiftUse"]
+script = ExtResource("10_cond")
+show_if = {"flag": "game.completed"}
+
+[node name="RiftReturn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(220, 338)
+script = ExtResource("4_spawn")
+spawn_id = &"rift_return"
+facing = Vector2(0, 1)

@@ -1,0 +1,47 @@
+{
+ "_doc": "Veil shard recipes (M8a). Shards can't be bought or sold, so these never break the economy.",
+ "shard_lantern": {
+  "name": "ITEM_SHARD_LANTERN",
+  "inputs": {
+   "veil_shard": 8,
+   "paper_lantern": 1
+  },
+  "output": {
+   "shard_lantern": 1
+  },
+  "min_level": 1
+ },
+ "shard_ribbon": {
+  "name": "ITEM_SHARD_RIBBON",
+  "inputs": {
+   "veil_shard": 10,
+   "tram_token": 1
+  },
+  "output": {
+   "shard_ribbon": 1
+  },
+  "min_level": 1
+ },
+ "shard_compass": {
+  "name": "ITEM_SHARD_COMPASS",
+  "inputs": {
+   "veil_shard": 8,
+   "brass_compass": 1
+  },
+  "output": {
+   "shard_compass": 1
+  },
+  "min_level": 1
+ },
+ "bound_index": {
+  "name": "ITEM_BOUND_INDEX",
+  "inputs": {
+   "veil_shard": 20
+  },
+  "output": {
+   "bound_index": 1
+  },
+  "min_level": 1,
+  "needs_flag": "expedition.index_complete"
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "_doc": "Expedition modifiers: each changes how rooms play, not just numbers. shards: extra reward.",
+ "flooded": {
+  "name": "EXP_MOD_FLOODED",
+  "desc": "EXP_MOD_FLOODED_DESC",
+  "shards": 2
+ },
+ "rewritten": {
+  "name": "EXP_MOD_REWRITTEN",
+  "desc": "EXP_MOD_REWRITTEN_DESC",
+  "shards": 2
+ },
+ "crowded": {
+  "name": "EXP_MOD_CROWDED",
+  "desc": "EXP_MOD_CROWDED_DESC",
+  "shards": 1
+ },
+ "wailing": {
+  "name": "EXP_MOD_WAILING",
+  "desc": "EXP_MOD_WAILING_DESC",
+  "shards": 1
+ },
+ "lightless": {
+  "name": "EXP_MOD_LIGHTLESS",
+  "desc": "EXP_MOD_LIGHTLESS_DESC",
+  "shards": 3
+ },
+ "fragile": {
+  "name": "EXP_MOD_FRAGILE",
+  "desc": "EXP_MOD_FRAGILE_DESC",
+  "shards": 3
+ }
+}

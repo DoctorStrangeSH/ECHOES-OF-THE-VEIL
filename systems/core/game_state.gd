@@ -48,7 +48,9 @@ func enemy_health(base: int) -> int:
 
 
 func incoming_damage(damage: int) -> int:
-	return damage + (1 if difficulty == "hard" and damage > 0 else 0)
+	if damage <= 0:
+		return damage
+	return damage + (1 if difficulty == "hard" else 0) + (1 if Expedition.has_mod(&"fragile") else 0)
 
 
 func player_health_bonus() -> int:
@@ -99,6 +101,7 @@ func reset_for_new_game() -> void:
 	Society.reset()
 	Livelihood.reset()
 	Party.reset()
+	Expedition.reset()
 
 
 func lock_player(reason: StringName) -> void:
@@ -186,6 +189,7 @@ func to_dict(player_node: Node2D = null) -> Dictionary:
 		"society": Society.to_dict(),
 		"life": Livelihood.to_dict(),
 		"party": Party.to_dict(),
+		"expedition": Expedition.to_dict(),
 	}
 
 
@@ -229,3 +233,4 @@ func from_dict(data: Dictionary) -> void:
 	Society.from_dict(data.get("society", {}))
 	Livelihood.from_dict(data.get("life", {}))
 	Party.from_dict(data.get("party", {}))
+	Expedition.from_dict(data.get("expedition", {}))
