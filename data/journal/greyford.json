@@ -12,6 +12,15 @@
    "outcomes": {
     "reported": "CASE_DOOR_REPORTED",
     "opened": "CASE_DOOR_OPENED"
+   },
+   "transitions": {
+    "start": [
+     "decide",
+     "inside"
+    ],
+    "decide": [
+     "inside"
+    ]
    }
   },
   "case_radio": {
@@ -24,7 +33,28 @@
    },
    "outcomes": {
     "delivered": "CASE_RADIO_DONE"
-   }
+   },
+   "transitions": {
+    "deliver": [
+     "return"
+    ]
+   },
+   "fail_forward": [
+    {
+     "stage": "deliver",
+     "after_days": 2,
+     "to": "return",
+     "note": "FF_RADIO",
+     "effects": [
+      {
+       "clear_flag": "has_radio"
+      },
+      {
+       "set_flag": "radio.self_collected"
+      }
+     ]
+    }
+   ]
   },
   "case_quiet": {
    "title": "CASE_QUIET_TITLE",
@@ -33,6 +63,11 @@
    "stages": {
     "start": "CASE_QUIET_START",
     "formed": "CASE_QUIET_FORMED"
+   },
+   "transitions": {
+    "start": [
+     "formed"
+    ]
    }
   },
   "case_lantern_row": {
@@ -41,7 +76,8 @@
    "first_stage": "start",
    "stages": {
     "start": "CASE_LR_START"
-   }
+   },
+   "transitions": {}
   },
   "case_rosalind": {
    "title": "CASE_ROSALIND_TITLE",
@@ -54,6 +90,85 @@
    "outcomes": {
     "told": "CASE_ROSALIND_TOLD",
     "spared": "CASE_ROSALIND_SPARED"
+   },
+   "transitions": {
+    "start": [
+     "page"
+    ]
+   }
+  },
+  "case_eleventh": {
+   "title": "CASE_ELEVENTH_TITLE",
+   "summary": "CASE_ELEVENTH_SUMMARY",
+   "first_stage": "start",
+   "stages": {
+    "start": "CASE_ELEVENTH_START",
+    "search": "CASE_ELEVENTH_SEARCH",
+    "choice": "CASE_ELEVENTH_CHOICE"
+   },
+   "transitions": {
+    "start": [
+     "search"
+    ],
+    "search": [
+     "choice"
+    ]
+   },
+   "outcomes": {
+    "published": "CASE_ELEVENTH_PUBLISHED",
+    "sealed": "CASE_ELEVENTH_SEALED",
+    "hidden": "CASE_ELEVENTH_HIDDEN"
+   }
+  },
+  "case_bell": {
+   "title": "CASE_BELL_TITLE",
+   "summary": "CASE_BELL_SUMMARY",
+   "first_stage": "parts",
+   "stages": {
+    "parts": "CASE_BELL_PARTS",
+    "ring": "CASE_BELL_RING"
+   },
+   "transitions": {
+    "parts": [
+     "ring"
+    ]
+   },
+   "fail_forward": [
+    {
+     "stage": "parts",
+     "after_days": 3,
+     "note": "FF_RELAY",
+     "effects": [
+      {
+       "give_item": [
+        "tram_relay",
+        1
+       ]
+      }
+     ]
+    }
+   ],
+   "outcomes": {
+    "waiting": "CASE_BELL_WAITING",
+    "home": "CASE_BELL_HOME"
+   }
+  },
+  "case_letters": {
+   "title": "CASE_LETTERS_TITLE",
+   "summary": "CASE_LETTERS_SUMMARY",
+   "first_stage": "deliver",
+   "stages": {
+    "deliver": "CASE_LETTERS_DELIVER",
+    "report": "CASE_LETTERS_REPORT"
+   },
+   "transitions": {
+    "deliver": [
+     "report"
+    ]
+   },
+   "outcomes": {
+    "respected": "CASE_LETTERS_RESPECTED",
+    "persisted": "CASE_LETTERS_PERSISTED"
    }
   }
  },
@@ -165,6 +280,50 @@
     "case_rosalind",
     "page"
    ]
+  },
+  "e_agnes_file": {
+   "case": "case_eleventh",
+   "kind": "recorded",
+   "source": "archive_file",
+   "source_name": "SRC_ARCHIVE",
+   "title": "EV_AGNES_TITLE",
+   "body": "EV_AGNES_BODY",
+   "advance": [
+    "case_eleventh",
+    "choice"
+   ]
+  },
+  "e_bea_letter": {
+   "case": "case_letters",
+   "kind": "reported",
+   "source": "halloway",
+   "source_name": "NPC_HALLOWAY",
+   "title": "EV_BEA_TITLE",
+   "body": "EV_BEA_BODY"
+  },
+  "e_lantern_reply": {
+   "case": "case_letters",
+   "kind": "recorded",
+   "source": "lantern_reply",
+   "source_name": "SRC_REPLY",
+   "title": "EV_REPLY_TITLE",
+   "body": "EV_REPLY_BODY"
+  },
+  "e_ivo_letters": {
+   "case": "case_letters",
+   "kind": "reported",
+   "source": "ivo",
+   "source_name": "NPC_IVO",
+   "title": "EV_IVO_LETTERS_TITLE",
+   "body": "EV_IVO_LETTERS_BODY"
+  },
+  "e_reflection": {
+   "case": "case_bell",
+   "kind": "observed",
+   "source": "player",
+   "source_name": "SRC_YOU",
+   "title": "EV_REFLECTION_TITLE",
+   "body": "EV_REFLECTION_BODY"
   }
  },
  "hypotheses": {
@@ -214,6 +373,38 @@
      ]
     }
    ]
+  },
+  "venn_census": {
+   "case": "case_eleventh",
+   "title": "HYP_VENN_TITLE",
+   "body": "HYP_VENN_BODY",
+   "requires_all": [
+    "e_agnes_file"
+   ],
+   "requires_any": [
+    "e_census_page",
+    "e_echo_resident",
+    "e_mara_lantern_row"
+   ],
+   "min_any": 1,
+   "corroborate_sources": 3,
+   "effects": []
+  },
+  "echoes_choose": {
+   "case": "case_letters",
+   "title": "HYP_CHOOSE_TITLE",
+   "body": "HYP_CHOOSE_BODY",
+   "requires_all": [
+    "e_lantern_reply"
+   ],
+   "requires_any": [
+    "e_bea_letter",
+    "e_ivo_letters",
+    "e_echo_resident"
+   ],
+   "min_any": 1,
+   "corroborate_sources": 3,
+   "effects": []
   }
  }
 }

@@ -151,6 +151,23 @@ placeholder_color = Color(0.753,0.188,0.188, 1)
 collision_size = Vector2(28, 8)
 collision_offset = Vector2(0, -4)
 
+[node name="SosBoxUse" type="Area2D" parent="Entities"]
+position = Vector2(680, 132)
+script = ExtResource("5_inspect")
+interaction_id = &"platform_sos_box"
+area_size = Vector2(30, 12)
+dialogue_id = &"sos_box"
+
+[node name="Clapper" parent="Entities" instance=ExtResource("16_pickup")]
+position = Vector2(600, 230)
+interaction_id = &"pickup_bell_clapper"
+item_id = &"bell_clapper"
+pickup_flag = &"pickup.bell_clapper"
+
+[node name="Condition" type="Node" parent="Entities/Clapper"]
+script = ExtResource("10_cond")
+show_if = {"quest_active": "case_bell"}
+
 [node name="Gate" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(360, 212)
 texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Turnstile_Closed.png"

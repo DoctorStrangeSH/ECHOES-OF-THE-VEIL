@@ -434,3 +434,100 @@ func test_save_migration_from_v2() -> void:
 	var r := SaveService.read_slot(1)
 	check(r["ok"] and r["envelope"]["payload"].has("inventory"), "v2 save gains an inventory")
 	_cleanup(dir)
+
+
+# --- M4: society, knowledge, quest graphs ------------------------------------------
+
+func test_quest_graphs_valid() -> void:
+	var problems := Journal.validate_graphs()
+	check(problems.is_empty(), "graph problems: %s" % "; ".join(problems))
+
+
+func test_every_memory_has_text() -> void:
+	var events := {}
+	for id: StringName in DialogueService.dialogues:
+		_collect_memories(DialogueService.dialogues[id], events)
+	for e: String in events:
+		check(tr("MEM_" + e.to_upper()) != "MEM_" + e.to_upper(), "memory text for %s" % e)
+	check(events.size() >= 10, "memories collected (%d)" % events.size())
+
+
+func _collect_memories(v: Variant, out: Dictionary) -> void:
+	if v is Array:
+		for x: Variant in v:
+			_collect_memories(x, out)
+	elif v is Dictionary:
+		for k: Variant in v:
+			if String(k) == "remember":
+				out[String(v[k][1])] = true
+			_collect_memories(v[k], out)
+
+
+func test_gossip_spreads_after_a_period() -> void:
+	GameState.reset_for_new_game()
+	WorldClock.reset()
+	Society.publish(&"reported_door")
+	check(not Society.knows(&"mara_venn", &"reported_door"), "not known immediately")
+	WorldClock.wait_until_hour(12)  # next period
+	check(Society.knows(&"mara_venn", &"reported_door"), "known after a period")
+	Society.publish(&"opened_door")  # keepers + open hand only
+	WorldClock.wait_until_hour(18)
+	check(Society.knows(&"ivo_calder", &"opened_door"), "keepers hear about it")
+	check(Society.knows(&"nadiya_sol", &"opened_door"), "open hand hears about it")
+	check(not Society.knows(&"dana_pike", &"opened_door"), "civic does not")
+	var saved := Society.to_dict()
+	Society.reset()
+	Society.from_dict(JSON.parse_string(JSON.stringify(saved)))
+	check(Society.knows(&"ivo_calder", &"opened_door"), "knowledge survives save")
+	GameState.reset_for_new_game()
+
+
+func test_relationship_milestones_and_factions() -> void:
+	GameState.reset_for_new_game()
+	GameState.change_relationship(&"mara_venn", 2)
+	check(not GameState.has_flag(&"rel.mara_venn.friend"), "not yet a friend")
+	GameState.change_relationship(&"mara_venn", 1)
+	check(GameState.has_flag(&"rel.mara_venn.friend"), "friend at 3")
+	GameState.change_relationship(&"nadiya_sol", -3)
+	check(GameState.has_flag(&"rel.nadiya_sol.distrust"), "distrust at -3")
+	StoryRules.apply({"faction": ["keepers", 3]})
+	check(StoryRules.evaluate({"faction_at_least": ["keepers", 3]}), "faction condition")
+	check(Society.tier_of(3) == "TRUSTED" and Society.tier_of(-7) == "HOSTILE", "tiers")
+	GameState.reset_for_new_game()
+
+
+func test_fail_forward_moves_stalled_case() -> void:
+	GameState.reset_for_new_game()
+	WorldClock.reset()
+	Journal.start_case(&"case_radio")
+	GameState.set_flag(&"has_radio")
+	WorldClock.sleep_until_hour(7)
+	check(Journal.case_stage(&"case_radio") == &"deliver", "one day is not enough")
+	WorldClock.sleep_until_hour(7)
+	check(Journal.case_stage(&"case_radio") == &"return", "fail-forward after two days")
+	check(not GameState.has_flag(&"has_radio"), "fail-forward effects applied")
+	GameState.reset_for_new_game()
+
+
+func test_lantern_row_clues_not_missable_after_fail_forward() -> void:
+	# Even if the radio delivery is missed, Mrs Halloway and the map still supply clues.
+	var hub: Array = DialogueService.dialogues[&"halloway"]["nodes"]["hub"]["choices"]
+	var has_direct_question := false
+	for c: Dictionary in hub:
+		if str(c.get("next")) == "lr1":
+			has_direct_question = true
+	check(has_direct_question, "Halloway can be asked about Lantern Row directly")
+
+
+func test_save_migration_from_v3() -> void:
+	var dir := _fresh_save_dir()
+	var v3 := SaveService.make_envelope(GameState.to_dict())
+	v3["schema_version"] = 3
+	v3["payload"].erase("society")
+	DirAccess.make_dir_recursive_absolute(dir)
+	var f := FileAccess.open(SaveService.slot_path(1), FileAccess.WRITE)
+	f.store_string(JSON.stringify(v3))
+	f.close()
+	var r := SaveService.read_slot(1)
+	check(r["ok"] and r["envelope"]["payload"].has("society"), "v3 save gains society")
+	_cleanup(dir)

@@ -2,7 +2,7 @@
 
 A single-player, top-down pixel-art narrative RPG built with Godot 4.x.
 
-> **Project status:** M3 — core RPG loop on top of the Greyford slice: weapon combos, dodge, Lantern Flash, the Hollow enemy family, the Census Taker miniboss, inventory/equipment, Resonance and Attunements, generated sound effects. M2: Character creator, six scheduled NPCs, branching dialogue, an investigation journal with evidence provenance and hypotheses, a day clock with weather, a main case with a meaningful choice, a local quest, and the first Veil echo with a short combat encounter. English and Russian.
+> **Project status:** M4 — society: factions, NPC knowledge and gossip, relationship milestones, quest graphs with fail-forward, three character stories (Mara, Jonah, Nadiya) and the Municipal Archive. Earlier: M3 — core RPG loop on top of the Greyford slice: weapon combos, dodge, Lantern Flash, the Hollow enemy family, the Census Taker miniboss, inventory/equipment, Resonance and Attunements, generated sound effects. M2: Character creator, six scheduled NPCs, branching dialogue, an investigation journal with evidence provenance and hypotheses, a day clock with weather, a main case with a meaningful choice, a local quest, and the first Veil echo with a short combat encounter. English and Russian.
 
 ## High concept
 
@@ -54,7 +54,7 @@ godot --headless --path . res://tools/check_scripts.tscn   # every script compil
 godot --headless --path . res://tests/test_runner.tscn     # unit tests
 godot --headless --path . res://tests/smoke_test.tscn      # plays through the slice
 ```
-Exit code 0 means success; the smoke test must also print `SMOKE TEST FINISHED` with no `SCRIPT ERROR`. GitHub Actions runs all three on every pull request (`.github/workflows/tests.yml`). Manual checks: [M1](docs/technical/m1-test-plan.md), [M2](docs/technical/m2-test-plan.md), [M3](docs/technical/m3-test-plan.md). Story content map: [Greyford slice](docs/narrative/greyford-slice.md).
+Exit code 0 means success; the smoke test must also print `SMOKE TEST FINISHED` with no `SCRIPT ERROR`. GitHub Actions runs all three on every pull request (`.github/workflows/tests.yml`). Manual checks: [M1](docs/technical/m1-test-plan.md), [M2](docs/technical/m2-test-plan.md), [M3](docs/technical/m3-test-plan.md), [M4](docs/technical/m4-test-plan.md). Story content map: [Greyford slice](docs/narrative/greyford-slice.md).
 
 ## Audio
 
@@ -87,7 +87,7 @@ Build and validate a small, compelling vertical slice before scaling content. A 
 
 ## Current milestone
 
-**M3 — Core RPG loop** (in review). Next: external playtests of the slice, then **M4 — narrative depth** (quest graph, faction access, character stories) and **M5 — life and work**.
+**M4 — Narrative and NPC foundation** (in review). Next: external playtests, then **M5 — life, work and ownership** (jobs, home, crafting, economy sinks).
 
 ## License and third-party assets
 

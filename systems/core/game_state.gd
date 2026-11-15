@@ -51,6 +51,7 @@ func reset_for_new_game() -> void:
 	Journal.reset()
 	WorldClock.reset()
 	Inventory.reset()
+	Society.reset()
 
 
 func lock_player(reason: StringName) -> void:
@@ -82,9 +83,11 @@ func get_relationship(npc_id: StringName) -> int:
 
 
 func change_relationship(npc_id: StringName, delta: int) -> void:
-	var value := clampi(get_relationship(npc_id) + delta, -10, 10)
+	var old := get_relationship(npc_id)
+	var value := clampi(old + delta, -10, 10)
 	relationships[npc_id] = value
 	EventHub.relationship_changed.emit(npc_id, value)
+	Society.check_milestones(npc_id, old, value)
 
 
 ## Records a semantic memory ("helped_with_radio"), not a raw input log.
@@ -132,6 +135,7 @@ func to_dict(player_node: Node2D = null) -> Dictionary:
 		"journal": Journal.to_dict(),
 		"clock": WorldClock.to_dict(),
 		"inventory": Inventory.to_dict(),
+		"society": Society.to_dict(),
 	}
 
 
@@ -170,3 +174,4 @@ func from_dict(data: Dictionary) -> void:
 	Journal.from_dict(data.get("journal", {}))
 	WorldClock.from_dict(data.get("clock", {}))
 	Inventory.from_dict(data.get("inventory", {}))
+	Society.from_dict(data.get("society", {}))

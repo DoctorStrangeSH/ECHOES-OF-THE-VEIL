@@ -17,6 +17,8 @@ var _selected: StringName = &""
 var _hud: Hud
 var _title: Label
 var _hint: Label
+var _tabs: HBoxContainer
+var _tab := "cases"
 
 
 func setup(hud: Hud) -> void:
@@ -62,13 +64,27 @@ func close() -> void:
 	get_tree().paused = false
 
 
+func _set_tab(tab: String) -> void:
+	_tab = tab
+	Sfx.play(&"ui_click")
+	_refresh()
+
+
 func _refresh() -> void:
 	_title.text = tr("JOURNAL_TITLE")
 	_hint.text = tr("JOURNAL_CLOSE_HINT")
+	(_tabs.get_child(0) as Button).text = tr("JOURNAL_TAB_CASES")
+	(_tabs.get_child(1) as Button).text = tr("JOURNAL_TAB_PEOPLE")
+	(_tabs.get_child(0) as Button).button_pressed = _tab == "cases"
+	(_tabs.get_child(1) as Button).button_pressed = _tab == "people"
 	for c in _cases_list.get_children():
 		c.queue_free()
 	for c in _detail.get_children():
 		c.queue_free()
+	_cases_list.get_parent().visible = _tab == "cases"
+	if _tab == "people":
+		_show_people()
+		return
 	if Journal.case_order.is_empty():
 		_detail.add_child(_label(tr("JOURNAL_EMPTY"), UiTheme.INK_DIM))
 		return
@@ -136,6 +152,45 @@ func _show_case(id: StringName) -> void:
 			_detail.add_child(_label(tr("JOURNAL_SOURCES_COUNT") % n, UiTheme.INK_DIM, 8))
 
 
+## Factions with standing, then every NPC the player has met: relationship,
+## milestone and the semantic memories they hold about the player.
+func _show_people() -> void:
+	_detail.add_child(_label(tr("JOURNAL_FACTIONS"), UiTheme.ACCENT, 11))
+	for f: StringName in Society.faction_defs:
+		var d: Dictionary = Society.faction_defs[f]
+		var v := Society.get_standing(f)
+		_detail.add_child(_label("%s — %s (%+d)" % [tr(d.get("name", "")), tr("FACTION_TIER_" + Society.tier_of(v)), v], UiTheme.INK))
+		_detail.add_child(_label(tr(d.get("desc", "")), UiTheme.INK_DIM, 8))
+	_detail.add_child(_label(tr("JOURNAL_PEOPLE"), UiTheme.ACCENT, 11))
+	var any := false
+	for id: StringName in NpcRegistry.defs():
+		if not GameState.has_flag(StringName("met.%s" % id)):
+			continue
+		any = true
+		var def := NpcRegistry.get_def(id)
+		var v := GameState.get_relationship(id)
+		_detail.add_child(_label("%s — %s (%+d)" % [tr(def.get("name", "")), tr("REL_TIER_" + relationship_tier(v)), v], UiTheme.INK))
+		var mems: Array = GameState.npc_memory.get(id, [])
+		for m: Variant in mems:
+			_detail.add_child(_label("  · " + tr("MEM_" + String(m).to_upper()), UiTheme.INK_DIM, 8))
+	if not any:
+		_detail.add_child(_label(tr("JOURNAL_NO_PEOPLE"), UiTheme.INK_DIM))
+
+
+static func relationship_tier(v: int) -> String:
+	if v >= 6:
+		return "CONFIDANT"
+	if v >= 3:
+		return "FRIEND"
+	if v >= 1:
+		return "ACQUAINTANCE"
+	if v <= -3:
+		return "DISTRUST"
+	if v < 0:
+		return "WARY"
+	return "STRANGER"
+
+
 func _on_form(h: StringName) -> void:
 	Journal.form_hypothesis(h)
 	_refresh()
@@ -166,9 +221,20 @@ func _build() -> void:
 	_dim.add_child(panel)
 	var root := VBoxContainer.new()
 	panel.add_child(root)
+	var head := HBoxContainer.new()
+	root.add_child(head)
 	_title = Label.new()
 	_title.add_theme_color_override("font_color", UiTheme.ACCENT)
-	root.add_child(_title)
+	head.add_child(_title)
+	_tabs = HBoxContainer.new()
+	_tabs.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_tabs.alignment = BoxContainer.ALIGNMENT_END
+	head.add_child(_tabs)
+	for tab in ["cases", "people"]:
+		var tb := Button.new()
+		tb.toggle_mode = true
+		tb.pressed.connect(_set_tab.bind(tab))
+		_tabs.add_child(tb)
 	var cols := HBoxContainer.new()
 	cols.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	cols.add_theme_constant_override("separation", 8)

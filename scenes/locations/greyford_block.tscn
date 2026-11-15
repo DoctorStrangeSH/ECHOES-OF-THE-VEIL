@@ -329,13 +329,96 @@ area_size = Vector2(18, 14)
 target_scene_id = &"rented_room"
 target_spawn_id = &"from_street"
 
-[node name="ApartmentDoor" type="Area2D" parent="Entities"]
+[node name="ArchiveDoor" type="Area2D" parent="Entities"]
 position = Vector2(208, 246)
-script = ExtResource("5_inspect")
-interaction_id = &"inspect_condo_teal"
+script = ExtResource("6_door")
+interaction_id = &"door_archive_street"
 area_size = Vector2(30, 14)
-prompt_key = "PROMPT_INSPECT"
-lines = PackedStringArray("CONDO_TEAL_1")
+target_scene_id = &"municipal_archive"
+target_spawn_id = &"entrance"
+required_flag = &"archive.key"
+locked_lines = PackedStringArray("CONDO_TEAL_1", "ARCHIVE_DOOR_LOCKED")
+
+[node name="ArchiveFront" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(208, 260)
+script = ExtResource("4_spawn")
+spawn_id = &"archive_front"
+facing = Vector2(0, 1)
+
+[node name="TramBell" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(560, 64)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Stop_Sign.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.753,0.627,0.251, 1)
+collision_size = Vector2(8, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="Shimmer" type="Node" parent="Entities/TramBell"]
+script = ExtResource("9_shimmer")
+
+[node name="Condition" type="Node" parent="Entities/TramBell"]
+script = ExtResource("10_cond")
+show_if = {"any": [{"quest_stage": ["case_bell", "ring"]}, {"quest_done": "case_bell"}]}
+
+[node name="TramBellUse" type="Area2D" parent="Entities"]
+position = Vector2(560, 70)
+script = ExtResource("5_inspect")
+interaction_id = &"old_tram_bell"
+area_size = Vector2(24, 14)
+interaction_priority = 20
+dialogue_id = &"old_bell"
+
+[node name="Condition" type="Node" parent="Entities/TramBellUse"]
+script = ExtResource("10_cond")
+show_if = {"any": [{"quest_stage": ["case_bell", "ring"]}, {"quest_done": "case_bell"}]}
+
+[node name="RecordsFlyer" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(262, 238)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Single_Poster.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.878,0.816,0.502, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Condition" type="Node" parent="Entities/RecordsFlyer"]
+script = ExtResource("10_cond")
+show_if = {"flag": "world.records_published"}
+
+[node name="RecordsFlyerRead" type="Area2D" parent="Entities"]
+position = Vector2(262, 244)
+script = ExtResource("5_inspect")
+interaction_id = &"read_records_flyer"
+area_size = Vector2(18, 12)
+prompt_key = "PROMPT_READ"
+dialogue_id = &"records_flyer"
+
+[node name="Condition" type="Node" parent="Entities/RecordsFlyerRead"]
+script = ExtResource("10_cond")
+show_if = {"flag": "world.records_published"}
+
+[node name="MissingPoster" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(430, 238)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Single_Poster.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.878,0.878,0.878, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Condition" type="Node" parent="Entities/MissingPoster"]
+script = ExtResource("10_cond")
+show_if = {"remembers": ["jonah_rook", "told_truth_about_rosalind"]}
+
+[node name="MissingPosterRead" type="Area2D" parent="Entities"]
+position = Vector2(430, 244)
+script = ExtResource("5_inspect")
+interaction_id = &"read_missing_poster"
+area_size = Vector2(18, 12)
+prompt_key = "PROMPT_READ"
+dialogue_id = &"missing_poster"
+
+[node name="Condition" type="Node" parent="Entities/MissingPosterRead"]
+script = ExtResource("10_cond")
+show_if = {"remembers": ["jonah_rook", "told_truth_about_rosalind"]}
 
 [node name="HardwareDoor" type="Area2D" parent="Entities"]
 position = Vector2(464, 246)

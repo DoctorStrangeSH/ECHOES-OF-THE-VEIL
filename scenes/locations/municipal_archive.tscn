@@ -1,0 +1,176 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/location.gd" id="1_loc"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2_paint"]
+[ext_resource type="PackedScene" path="res://scenes/props/world_prop.tscn" id="3_prop"]
+[ext_resource type="Script" path="res://scripts/world/spawn_point.gd" id="4_spawn"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="5_inspect"]
+[ext_resource type="Script" path="res://scripts/interaction/door_interactable.gd" id="6_door"]
+[ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
+[ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+[ext_resource type="Script" path="res://scripts/world/conditional_visibility.gd" id="10_cond"]
+[ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
+[ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
+[ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+[ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
+[ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
+[ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
+
+[node name="MunicipalArchive" type="Node2D"]
+script = ExtResource("1_loc")
+location_id = &"municipal_archive"
+name_key = "LOC_ARCHIVE"
+outdoors = false
+
+[node name="Ground" type="TileMapLayer" parent="."]
+script = ExtResource("2_paint")
+palette_id = "echo_corridor"
+layout = "########################
+#WWWWWWWWWWWWWWWWWWWWWW#
+#wwwwwwwwwwwwwwwwwwwwww#
+#ffffffffffffffffffffff#
+#ffffffffffffffffffffff#
+#ffffffffffffffffffffff#
+#ffffffffffffffffffffff#
+#ffffffffffffffffffffff#
+#ffffffffffffffffffffff#
+#ffffffffffffffffffffff#
+#ffffffffffffffffffffff#
+#ffffffffffffffffffffff#
+##########ff############"
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="NpcAnchors" type="Node2D" parent="."]
+
+[node name="Shelf1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(40, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_57.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.353,0.188, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Shelf2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(80, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_58.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.353,0.188, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Shelf3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(128, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_64.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.353,0.188, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Shelf4" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(300, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_71.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.353,0.188, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Shelf5" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(340, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_72.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.353,0.188, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="ShelfRow1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(96, 140)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_74.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.353,0.188, 1)
+collision_size = Vector2(28, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="ShelfRow2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(280, 140)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_74.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.353,0.188, 1)
+collision_size = Vector2(28, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="CensusCabinet" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(200, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_40.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.502,0.565,0.627, 1)
+collision_size = Vector2(16, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Shimmer" type="Node" parent="Entities/CensusCabinet"]
+script = ExtResource("9_shimmer")
+
+[node name="ReadingDesk" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(190, 124)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_25.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.627,0.439,0.251, 1)
+collision_size = Vector2(32, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Globe" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(340, 124)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_34.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.251,0.502,0.753, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Corkboard" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(248, 40)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_33.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.690,0.502,0.314, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Entrance" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(176, 184)
+script = ExtResource("4_spawn")
+spawn_id = &"entrance"
+facing = Vector2(0, -1)
+
+[node name="WayOut" type="Area2D" parent="Entities"]
+position = Vector2(176, 196)
+script = ExtResource("6_door")
+interaction_id = &"door_archive_exit"
+area_size = Vector2(30, 10)
+prompt_key = "PROMPT_EXIT"
+target_scene_id = &"greyford_block"
+target_spawn_id = &"archive_front"
+
+[node name="CabinetUse" type="Area2D" parent="Entities"]
+position = Vector2(200, 72)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_census_cabinet"
+area_size = Vector2(22, 12)
+interaction_priority = 20
+dialogue_id = &"census_cabinet"
+
+[node name="ShelvesLook" type="Area2D" parent="Entities"]
+position = Vector2(96, 148)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_archive_shelves"
+area_size = Vector2(30, 10)
+dialogue_id = &"archive_shelves"
+
+[node name="A_desk" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(190, 108)
+script = ExtResource("11_anchor")
+anchor_id = &"desk"

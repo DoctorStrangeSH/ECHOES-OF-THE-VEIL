@@ -10,7 +10,7 @@ extends Node
 signal saved(slot: int)
 signal save_failed(slot: int, message: String)
 
-const SCHEMA_VERSION := 3
+const SCHEMA_VERSION := 4
 const DEFAULT_SLOT := 1
 const MAX_SLOTS := 3
 
@@ -24,6 +24,15 @@ var _migrations: Dictionary = {}
 func _init() -> void:
 	_migrations[1] = _migrate_1_to_2
 	_migrations[2] = _migrate_2_to_3
+	_migrations[3] = _migrate_3_to_4
+
+
+## v4 (M4) adds faction standing, NPC knowledge and pending gossip.
+func _migrate_3_to_4(env: Dictionary) -> Dictionary:
+	var p: Dictionary = env["payload"]
+	if not p.has("society"):
+		p["society"] = {"standing": {}, "knowledge": {}, "gossip": []}
+	return env
 
 
 ## v3 (M3) adds inventory, money, Resonance and Attunements.

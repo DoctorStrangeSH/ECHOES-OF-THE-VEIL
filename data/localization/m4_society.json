@@ -1,0 +1,718 @@
+{
+ "FACTION_CIVIC": {
+  "en": "Civic Renewal Office",
+  "ru": "Управление городского обновления"
+ },
+ "FACTION_CIVIC_DESC": {
+  "en": "Runs redevelopment and public safety. Some staff protect residents; its leaders hide what lies under Greyford.",
+  "ru": "Ведает реконструкцией и безопасностью. Часть сотрудников и правда защищает жителей; руководство скрывает, что лежит под Грейфордом."
+ },
+ "FACTION_KEEPERS": {
+  "en": "The Keepers",
+  "ru": "Хранители"
+ },
+ "FACTION_KEEPERS_DESC": {
+  "en": "Archivists, repairers and descendants of the old custodians. They keep the Veil sealed — and decide who gets to know.",
+  "ru": "Архивисты, мастера и потомки старых смотрителей. Держат Завесу закрытой — и решают, кому можно знать."
+ },
+ "FACTION_OPEN_HAND": {
+  "en": "The Open Hand",
+  "ru": "Открытая ладонь"
+ },
+ "FACTION_OPEN_HAND_DESC": {
+  "en": "A loose movement that wants erased histories restored. They argue about how fast — and whether by force.",
+  "ru": "Свободное движение за возвращение стёртых историй. Спорят, как быстро — и можно ли силой."
+ },
+ "FACTION_UNWRITTEN": {
+  "en": "The Unwritten",
+  "ru": "Невписанные"
+ },
+ "FACTION_UNWRITTEN_DESC": {
+  "en": "People removed from the record. Not monsters: victims, survivors, and some who are content where they are.",
+  "ru": "Люди, вычеркнутые из записей. Не чудовища: жертвы, выжившие — и те, кого всё устраивает там, где они есть."
+ },
+ "FACTION_TIER_HOSTILE": {
+  "en": "hostile",
+  "ru": "враждебны"
+ },
+ "FACTION_TIER_WARY": {
+  "en": "wary",
+  "ru": "насторожены"
+ },
+ "FACTION_TIER_NEUTRAL": {
+  "en": "neutral",
+  "ru": "нейтральны"
+ },
+ "FACTION_TIER_TRUSTED": {
+  "en": "trust you",
+  "ru": "доверяют"
+ },
+ "FACTION_TIER_ALLY": {
+  "en": "allies",
+  "ru": "союзники"
+ },
+ "REL_TIER_CONFIDANT": {
+  "en": "confidant",
+  "ru": "близкий человек"
+ },
+ "REL_TIER_FRIEND": {
+  "en": "friend",
+  "ru": "друг"
+ },
+ "REL_TIER_ACQUAINTANCE": {
+  "en": "acquaintance",
+  "ru": "знакомый"
+ },
+ "REL_TIER_STRANGER": {
+  "en": "stranger",
+  "ru": "чужой"
+ },
+ "REL_TIER_WARY": {
+  "en": "wary",
+  "ru": "насторожен"
+ },
+ "REL_TIER_DISTRUST": {
+  "en": "distrusts you",
+  "ru": "не доверяет"
+ },
+ "JOURNAL_TAB_CASES": {
+  "en": "Cases",
+  "ru": "Дела"
+ },
+ "JOURNAL_TAB_PEOPLE": {
+  "en": "People",
+  "ru": "Люди"
+ },
+ "JOURNAL_FACTIONS": {
+  "en": "Factions",
+  "ru": "Фракции"
+ },
+ "JOURNAL_PEOPLE": {
+  "en": "People you know",
+  "ru": "Знакомые"
+ },
+ "JOURNAL_NO_PEOPLE": {
+  "en": "You haven't really met anyone yet.",
+  "ru": "Вы ещё ни с кем толком не познакомились."
+ },
+ "TOAST_FACTION_UP": {
+  "en": "%s think better of you",
+  "ru": "%s теперь думают о вас лучше"
+ },
+ "TOAST_FACTION_DOWN": {
+  "en": "%s think less of you",
+  "ru": "%s теперь думают о вас хуже"
+ },
+ "TOAST_MILESTONE_FRIEND": {
+  "en": "%s now considers you a friend",
+  "ru": "%s теперь считает вас другом"
+ },
+ "TOAST_MILESTONE_CONFIDANT": {
+  "en": "%s trusts you completely",
+  "ru": "%s полностью вам доверяет"
+ },
+ "TOAST_MILESTONE_DISTRUST": {
+  "en": "%s no longer trusts you",
+  "ru": "%s больше вам не доверяет"
+ },
+ "FF_RADIO": {
+  "en": "Mrs Halloway got tired of waiting and collected the radio herself.",
+  "ru": "Миссис Холлоуэй надоело ждать, и она сама забрала радио."
+ },
+ "FF_RELAY": {
+  "en": "Jonah left a note: \"Found a relay at a car boot sale. Don't ask.\"",
+  "ru": "Джона оставил записку: «Нашёл реле на барахолке. Не спрашивай»."
+ },
+ "LOC_ARCHIVE": {
+  "en": "Municipal Archive (sealed)",
+  "ru": "Городской архив (опечатан)"
+ },
+ "SRC_ARCHIVE": {
+  "en": "Municipal Archive, drawer L",
+  "ru": "Городской архив, ящик «Л»"
+ },
+ "SRC_REPLY": {
+  "en": "a letter from Lantern Row",
+  "ru": "письмо с Лантерн-Роу"
+ },
+ "MEM_ARCHIVED_CENSUS_PAGE": {
+  "en": "You gave her the Census page for the real archive.",
+  "ru": "Вы отдали ей страницу переписи для настоящего архива."
+ },
+ "MEM_ASKED_ABOUT_MARKS": {
+  "en": "You asked about the three-line marks.",
+  "ru": "Вы спрашивали о знаках из трёх линий."
+ },
+ "MEM_ASKED_ABOUT_ROSALIND": {
+  "en": "You said you'd look for Rosalind.",
+  "ru": "Вы обещали поискать Розалинду."
+ },
+ "MEM_BROUGHT_BEAS_LETTER": {
+  "en": "You brought her sister's letter.",
+  "ru": "Вы принесли ей письмо от сестры."
+ },
+ "MEM_DELIVERED_RADIO": {
+  "en": "You delivered the radio.",
+  "ru": "Вы доставили радио."
+ },
+ "MEM_FACED_TRUTH": {
+  "en": "You showed her what her grandmother signed.",
+  "ru": "Вы показали ей, что подписывала её бабушка."
+ },
+ "MEM_KEPT_GOING": {
+  "en": "You told her to keep trying anyway.",
+  "ru": "Вы сказали ей не останавливаться."
+ },
+ "MEM_MET_AGAIN": {
+  "en": "You came back. Again.",
+  "ru": "Вы вернулись. Снова."
+ },
+ "MEM_NOTICED_DIAL": {
+  "en": "You noticed the soldered dial.",
+  "ru": "Вы заметили припаянную ручку настройки."
+ },
+ "MEM_OPENED_A_DOOR": {
+  "en": "You opened a door that should have stayed shut.",
+  "ru": "Вы открыли дверь, которая должна была остаться закрытой."
+ },
+ "MEM_RANG_THE_BELL": {
+  "en": "You rang the bell for Rosalind.",
+  "ru": "Вы позвонили в колокол для Розалинды."
+ },
+ "MEM_REPORTED_DOOR": {
+  "en": "You reported the door to Civic Renewal.",
+  "ru": "Вы сообщили о двери в Управление."
+ },
+ "MEM_RESPECTED_THEIR_CHOICE": {
+  "en": "You told her to respect their choice.",
+  "ru": "Вы сказали ей уважать их выбор."
+ },
+ "MEM_SEALED_FILE_TOGETHER": {
+  "en": "You sealed her grandmother's file together.",
+  "ru": "Вы вместе запечатали дело её бабушки."
+ },
+ "MEM_SHARED_ECHO": {
+  "en": "You told her everything about the echo.",
+  "ru": "Вы рассказали ей всё об эхе."
+ },
+ "MEM_SHARED_HIS_LETTERS": {
+  "en": "He told you about his own letters.",
+  "ru": "Он рассказал вам о своих письмах."
+ },
+ "MEM_SPARED_ABOUT_ROSALIND": {
+  "en": "You told him you found nothing.",
+  "ru": "Вы сказали ему, что ничего не нашли."
+ },
+ "MEM_TOLD_TRUTH_ABOUT_ROSALIND": {
+  "en": "You showed him Rosalind's page.",
+  "ru": "Вы показали ему страницу Розалинды."
+ },
+ "MEM_TRUSTED_WITH_DOOR": {
+  "en": "You trusted her with the door.",
+  "ru": "Вы доверили ей тайну двери."
+ },
+ "MEM_YOU_LIED_ABOUT_AGNES": {
+  "en": "You lied about her grandmother's file.",
+  "ru": "Вы солгали ей о деле бабушки."
+ },
+ "ITEM_AGNES_FILE": {
+  "en": "Agnes Venn's file",
+  "ru": "Дело Агнес Венн"
+ },
+ "ITEM_AGNES_FILE_DESC": {
+  "en": "\"Venn, Agnes. Census enumerator. Reclassification of Lantern Row — signed A. Venn.\"",
+  "ru": "«Венн, Агнес. Счётчица переписи. Переквалификация Лантерн-Роу — подпись: А. Венн»."
+ },
+ "ITEM_CLAPPER": {
+  "en": "Bell clapper",
+  "ru": "Язычок колокола"
+ },
+ "ITEM_CLAPPER_DESC": {
+  "en": "Brass, heavy, cold. It hums when you hold it near water.",
+  "ru": "Латунный, тяжёлый, холодный. Гудит, если поднести его к воде."
+ },
+ "ITEM_COPPER_WIRE": {
+  "en": "Copper flex",
+  "ru": "Медный провод"
+ },
+ "ITEM_COPPER_WIRE_DESC": {
+  "en": "Old radio flex from Mrs Halloway's late husband.",
+  "ru": "Старый провод от радио покойного мужа миссис Холлоуэй."
+ },
+ "ITEM_RELAY": {
+  "en": "Tram relay",
+  "ru": "Трамвайное реле"
+ },
+ "ITEM_RELAY_DESC": {
+  "en": "A signal relay stamped GCT 1961.",
+  "ru": "Сигнальное реле с клеймом GCT 1961."
+ },
+ "ITEM_LETTER_HALLOWAY": {
+  "en": "Letter: \"Edda\"",
+  "ru": "Письмо: «Эдде»"
+ },
+ "ITEM_LETTER_HALLOWAY_DESC": {
+  "en": "Addressed in faded ink to Edda, at the brown house.",
+  "ru": "Выцветшими чернилами: «Эдде, коричневый дом»."
+ },
+ "ITEM_LETTER_LANTERN": {
+  "en": "Letter: \"Lantern Row\"",
+  "ru": "Письмо: «Лантерн-Роу»"
+ },
+ "ITEM_LETTER_LANTERN_DESC": {
+  "en": "\"To whoever still lives on Lantern Row.\" Nadiya says the old emergency box at the tram stop still takes post.",
+  "ru": "«Тому, кто ещё живёт на Лантерн-Роу». Надия говорит, что старый аварийный ящик на трамвайной остановке до сих пор принимает почту."
+ },
+ "ITEM_LETTER_IVO": {
+  "en": "Letter: \"I. C.\"",
+  "ru": "Письмо: «И. К.»"
+ },
+ "ITEM_LETTER_IVO_DESC": {
+  "en": "Addressed only with initials. Ivo Calder's.",
+  "ru": "На конверте только инициалы. Иво Колдера."
+ },
+ "ITEM_LETTER_REPLY": {
+  "en": "A reply from Lantern Row",
+  "ru": "Ответ с Лантерн-Роу"
+ },
+ "ITEM_LETTER_REPLY_DESC": {
+  "en": "\"We are not lost. Please stop trying to bring us back. — No. 7\"",
+  "ru": "«Мы не потерялись. Пожалуйста, перестаньте нас возвращать. — Дом № 7»."
+ },
+ "CASE_ELEVENTH_TITLE": {
+  "en": "The Eleventh House",
+  "ru": "Одиннадцатый дом"
+ },
+ "CASE_ELEVENTH_SUMMARY": {
+  "en": "Mara's grandmother Agnes is tied to No. 11, Lantern Row. The records disagree how.",
+  "ru": "Бабушка Мары, Агнес, связана с домом № 11 на Лантерн-Роу. Как именно — записи расходятся."
+ },
+ "CASE_ELEVENTH_START": {
+  "en": "Meet Mara inside the sealed Municipal Archive at night (the teal building on the street).",
+  "ru": "Встретьтесь с Марой ночью в опечатанном Городском архиве (бирюзовое здание на улице)."
+ },
+ "CASE_ELEVENTH_SEARCH": {
+  "en": "Search the Census cabinet at the back of the archive.",
+  "ru": "Обыщите картотеку переписи в глубине архива."
+ },
+ "CASE_ELEVENTH_CHOICE": {
+  "en": "You have Agnes Venn's file. Decide what Mara learns.",
+  "ru": "У вас дело Агнес Венн. Решите, что узнает Мара."
+ },
+ "CASE_ELEVENTH_PUBLISHED": {
+  "en": "Mara read the file and will make it public. The Open Hand cheers; Civic Renewal does not.",
+  "ru": "Мара прочитала дело и предаст его огласке. Открытая ладонь ликует; Управление — нет."
+ },
+ "CASE_ELEVENTH_SEALED": {
+  "en": "You and Mara sealed the file in its drawer. Some truths stay in the room.",
+  "ru": "Вы с Марой заперли дело в ящике. Некоторые правды остаются в этой комнате."
+ },
+ "CASE_ELEVENTH_HIDDEN": {
+  "en": "You told Mara the drawer was empty. The file is in your pocket.",
+  "ru": "Вы сказали Маре, что ящик пуст. Дело у вас в кармане."
+ },
+ "CASE_BELL_TITLE": {
+  "en": "The Bell at Harbour Stop",
+  "ru": "Колокол на остановке у гавани"
+ },
+ "CASE_BELL_SUMMARY": {
+  "en": "Jonah wants to repair the old tram bell so Rosalind can find her stop.",
+  "ru": "Джона хочет починить старый трамвайный колокол, чтобы Розалинда нашла свою остановку."
+ },
+ "CASE_BELL_PARTS": {
+  "en": "Bring Jonah a bell clapper (the Lantern Row platform), copper wire (Mrs Halloway) and a tram relay (Civic Renewal — or the Open Hand).",
+  "ru": "Принесите Джоне язычок колокола (платформа «Лантерн-Роу»), медный провод (миссис Холлоуэй) и трамвайное реле (Управление — или Открытая ладонь)."
+ },
+ "CASE_BELL_RING": {
+  "en": "Ring the repaired bell at the harbour at night.",
+  "ru": "Ночью позвоните в починенный колокол у гавани."
+ },
+ "CASE_BELL_WAITING": {
+  "en": "You told Rosalind that Jonah is still waiting.",
+  "ru": "Вы сказали Розалинде, что Джона всё ещё ждёт."
+ },
+ "CASE_BELL_HOME": {
+  "en": "You told Rosalind to go home — wherever that is now.",
+  "ru": "Вы сказали Розалинде идти домой — где бы теперь ни был её дом."
+ },
+ "CASE_LETTERS_TITLE": {
+  "en": "Letters to No One",
+  "ru": "Письма в никуда"
+ },
+ "CASE_LETTERS_SUMMARY": {
+  "en": "Nadiya has three letters for people who aren't on any list.",
+  "ru": "У Надии три письма для людей, которых нет ни в одном списке."
+ },
+ "CASE_LETTERS_DELIVER": {
+  "en": "Deliver Nadiya's letters: Mrs Halloway, the emergency box on the Lantern Row platform, and Ivo.",
+  "ru": "Доставьте письма Надии: миссис Холлоуэй, в аварийный ящик на платформе «Лантерн-Роу» и Иво."
+ },
+ "CASE_LETTERS_REPORT": {
+  "en": "Tell Nadiya how it went (evenings or nights on the plaza). Check your room for post first.",
+  "ru": "Расскажите Надии, как всё прошло (вечером или ночью на площади). Сначала загляните домой — вдруг пришла почта."
+ },
+ "CASE_LETTERS_RESPECTED": {
+  "en": "Some echoes don't want to come back. You told Nadiya to listen to them.",
+  "ru": "Некоторые эхо не хотят возвращаться. Вы сказали Надии прислушаться к ним."
+ },
+ "CASE_LETTERS_PERSISTED": {
+  "en": "You told Nadiya to keep going. Not everyone on the other side will thank her.",
+  "ru": "Вы сказали Надии не останавливаться. Не все по ту сторону скажут ей спасибо."
+ },
+ "EV_AGNES_TITLE": {
+  "en": "Agnes Venn's file",
+  "ru": "Дело Агнес Венн"
+ },
+ "EV_AGNES_BODY": {
+  "en": "Census enumerator. Signed the reclassification of Lantern Row in 1971 — the same neat hand as on Rosalind's page.",
+  "ru": "Счётчица переписи. В 1971 году подписала переквалификацию Лантерн-Роу — тем же аккуратным почерком, что и на странице Розалинды."
+ },
+ "EV_BEA_TITLE": {
+  "en": "Bea's letter",
+  "ru": "Письмо Беа"
+ },
+ "EV_BEA_BODY": {
+  "en": "Mrs Halloway had a sister, Bea, whom she had forgotten. Bea writes that she is happy and asks Edda not to look for her.",
+  "ru": "У миссис Холлоуэй была сестра Беа, о которой она забыла. Беа пишет, что счастлива, и просит Эдду её не искать."
+ },
+ "EV_REPLY_TITLE": {
+  "en": "Reply from No. 7",
+  "ru": "Ответ из дома № 7"
+ },
+ "EV_REPLY_BODY": {
+  "en": "\"We are not lost. Please stop trying to bring us back.\"",
+  "ru": "«Мы не потерялись. Пожалуйста, перестаньте нас возвращать»."
+ },
+ "EV_IVO_LETTERS_TITLE": {
+  "en": "Ivo's winter letters",
+  "ru": "Зимние письма Иво"
+ },
+ "EV_IVO_LETTERS_BODY": {
+  "en": "Ivo writes to the erased every winter — to remember them without waking them.",
+  "ru": "Каждую зиму Иво пишет стёртым — чтобы помнить их, не пробуждая."
+ },
+ "EV_REFLECTION_TITLE": {
+  "en": "Rosalind in the water",
+  "ru": "Розалинда в воде"
+ },
+ "EV_REFLECTION_BODY": {
+  "en": "A girl in a school coat in the harbour water. Twelve, then seventy, then gone.",
+  "ru": "Девочка в школьном пальто в воде гавани. Двенадцать лет, потом семьдесят, потом никого."
+ },
+ "HYP_VENN_TITLE": {
+  "en": "The Venns helped run the Quiet Census",
+  "ru": "Венны участвовали в Тихой переписи"
+ },
+ "HYP_VENN_BODY": {
+  "en": "Agnes Venn signed the erasures. Mara's family is part of the story she has been trying to uncover.",
+  "ru": "Агнес Венн подписывала стирания. Семья Мары — часть той истории, которую она пытается раскрыть."
+ },
+ "HYP_CHOOSE_TITLE": {
+  "en": "Some echoes choose to stay",
+  "ru": "Некоторые эхо сами решают остаться"
+ },
+ "HYP_CHOOSE_BODY": {
+  "en": "Not everyone erased wants to be restored. Restoration without consent is just another census.",
+  "ru": "Не все стёртые хотят вернуться. Возвращение без согласия — та же перепись, только наоборот."
+ },
+ "MARA_ELEVENTH_1": {
+  "en": "\"I need to ask you something that isn't strictly legal. Friends do that, I'm told.\"",
+  "ru": "«Мне нужно попросить вас о кое-чём не вполне законном. Говорят, друзья так делают»."
+ },
+ "MARA_ELEVENTH_2": {
+  "en": "\"My grandmother Agnes was at number eleven, Lantern Row. Lived there or worked there — the records disagree, and I hate it when records disagree.\"",
+  "ru": "«Моя бабушка Агнес была в одиннадцатом доме на Лантерн-Роу. Жила там или работала — записи расходятся, а я терпеть не могу, когда записи расходятся»."
+ },
+ "MARA_ELEVENTH_3": {
+  "en": "\"The archive's sealed, but I never handed in my key. Tonight, after ten. Meet me inside.\"",
+  "ru": "«Архив опечатан, но ключ я так и не сдала. Сегодня, после десяти. Встретимся внутри»."
+ },
+ "MARA_ARCH_IN_1": {
+  "en": "\"You came. Good.\" She keeps her torch low. \"Census cabinet, back wall. Drawer L. I can't make myself open it.\"",
+  "ru": "«Пришли. Хорошо». Она держит фонарик низко. «Картотека переписи у задней стены. Ящик «Л». Я сама не могу его открыть»."
+ },
+ "MARA_ARCH_WAIT": {
+  "en": "\"Back wall. Drawer L.\" She doesn't look up from the desk.",
+  "ru": "«Задняя стена. Ящик «Л»». Она не поднимает глаз от стола."
+ },
+ "MARA_FILE_ASK": {
+  "en": "\"Well?\" Her voice is very even. \"Did you find her?\"",
+  "ru": "«Ну?» Голос у неё очень ровный. «Вы её нашли?»"
+ },
+ "MARA_FILE_SHOW": {
+  "en": "Give her the file",
+  "ru": "Отдать ей дело"
+ },
+ "MARA_FILE_SEAL": {
+  "en": "\"Let's read it together — then decide.\"",
+  "ru": "«Давайте прочитаем вместе — и решим»"
+ },
+ "MARA_FILE_LIE": {
+  "en": "\"The drawer was empty.\"",
+  "ru": "«Ящик был пуст»"
+ },
+ "MARA_SHOW_1": {
+  "en": "She reads. Then reads again. \"Grandma signed them. Lantern Row. All nineteen houses.\"",
+  "ru": "Она читает. Потом перечитывает. «Бабушка их подписала. Лантерн-Роу. Все девятнадцать домов»."
+ },
+ "MARA_SHOW_2": {
+  "en": "\"I've hidden one page of hers for twelve years.\" She closes the file. \"I'm done hiding. This goes public — all of it.\"",
+  "ru": "«Двенадцать лет я прятала одну её страницу». Она закрывает папку. «Хватит прятать. Это будет опубликовано — всё»."
+ },
+ "MARA_SEAL_1": {
+  "en": "You read it together. Afterwards she puts it back, locks the drawer and gives you the only key. \"Not yet. Maybe not ever. But not alone.\"",
+  "ru": "Вы читаете вместе. Потом она кладёт дело обратно, запирает ящик и отдаёт вам единственный ключ. «Не сейчас. Может, никогда. Но не в одиночку»."
+ },
+ "MARA_LIE_1": {
+  "en": "\"Empty.\" She looks at you for a long time. \"Thank you for looking.\"",
+  "ru": "«Пустой». Она долго смотрит на вас. «Спасибо, что посмотрели»."
+ },
+ "MARA_LIE_FOUND": {
+  "en": "\"You knew.\" She has a newspaper folded in her hand. \"About Agnes. You stood in that archive and told me the drawer was empty.\"",
+  "ru": "«Вы знали». В руке у неё сложенная газета. «Про Агнес. Вы стояли в архиве и говорили мне, что ящик пуст»."
+ },
+ "JONAH_ASK_PARTS": {
+  "en": "Remind me what the bell needs?",
+  "ru": "Напомни, что нужно для колокола?"
+ },
+ "JONAH_PARTS_HINT": {
+  "en": "\"Clapper from that platform of yours. Copper flex — Mrs Halloway hoards it. And a relay. Civic took every one in '89, but Pike owes favours, and Nadiya's lot can find anything.\"",
+  "ru": "«Язычок с той твоей платформы. Медный провод — у миссис Холлоуэй его залежи. И реле. Управление забрало все в восемьдесят девятом, но Пайк должна кое-кому, а люди Надии найдут что угодно»."
+ },
+ "JONAH_BELL_1": {
+  "en": "\"I keep seeing her. Tram windows, puddles. Yesterday she was twelve. Today she was old. Never the same twice.\"",
+  "ru": "«Я всё время её вижу. В окнах трамваев, в лужах. Вчера ей было двенадцать. Сегодня — старуха. Ни разу одинаково»."
+ },
+ "JONAH_BELL_2": {
+  "en": "\"The old harbour stop had a bell. If it rang again — properly — maybe she could find the stop. Daft, I know.\"",
+  "ru": "«На старой остановке у гавани был колокол. Если он снова зазвонит — по-настоящему, — может, она найдёт остановку. Глупо, знаю»."
+ },
+ "JONAH_BELL_3": {
+  "en": "\"I need a clapper, copper flex and a relay. Help me?\"",
+  "ru": "«Мне нужны язычок, медный провод и реле. Поможешь?»"
+ },
+ "JONAH_BELL_FIX": {
+  "en": "He works through the afternoon without speaking. When he's done, the bell hangs at the harbour stop, polished. \"Night's when she comes. You ring it. I can't.\"",
+  "ru": "Он работает до вечера, не говоря ни слова. Когда заканчивает, начищенный колокол висит на остановке у гавани. «Она приходит ночью. Позвони ты. Я не смогу»."
+ },
+ "JONAH_BELL_AFTER": {
+  "en": "\"I heard it from the shop.\" He doesn't ask what you saw. \"Thank you. Whatever it was.\"",
+  "ru": "«Я слышал из мастерской». Он не спрашивает, что вы видели. «Спасибо. Что бы это ни было»."
+ },
+ "HALLOWAY_ASK_LR": {
+  "en": "Did you know a street called Lantern Row?",
+  "ru": "Вы знали улицу Лантерн-Роу?"
+ },
+ "HALLOWAY_LR_1": {
+  "en": "\"Lantern Row.\" She says it like a word in another language. \"Before the redevelopment. Before... everything. We don't talk about it, dear.\"",
+  "ru": "«Лантерн-Роу». Она произносит это как слово на чужом языке. «До реконструкции. До... всего. Об этом не говорят, дорогуша»."
+ },
+ "HALLOWAY_ASK_WIRE": {
+  "en": "Do you have any copper wire?",
+  "ru": "У вас не найдётся медного провода?"
+ },
+ "HALLOWAY_WIRE_1": {
+  "en": "\"Harold's old radio flex. He'd have liked it to go to something useful.\" She presses a coil into your hands.",
+  "ru": "«Провод от старого радио Гарольда. Он был бы рад, что тот пригодится». Она вкладывает вам в руки моток."
+ },
+ "HALLOWAY_GIVE_LETTER": {
+  "en": "There's a letter for you",
+  "ru": "Вам письмо"
+ },
+ "HALLOWAY_LETTER_1": {
+  "en": "She reads it standing up. \"It's from Bea. My sister.\" She sits down. \"I'd forgotten I had a sister. How do you forget a sister?\"",
+  "ru": "Она читает стоя. «Это от Беа. Моей сестры». Садится. «Я забыла, что у меня была сестра. Как можно забыть сестру?»"
+ },
+ "HALLOWAY_LETTER_2": {
+  "en": "\"She says she's happy. That I mustn't come looking.\" She folds the letter very small. \"Thank you, dear. I think.\"",
+  "ru": "«Пишет, что счастлива. Что мне нельзя её искать». Она складывает письмо совсем маленьким. «Спасибо, дорогуша. Наверное»."
+ },
+ "HALLOWAY_ROSALIND": {
+  "en": "\"Jonah told me about his sister. About the page.\" She pats your hand. \"You did right, telling him. Even when it hurts.\"",
+  "ru": "«Джона рассказал мне о сестре. О той странице». Она гладит вас по руке. «Правильно, что вы ему рассказали. Даже если больно»."
+ },
+ "IVO_GIVE_LETTER": {
+  "en": "Nadiya asked me to give you this",
+  "ru": "Надия просила передать вам это"
+ },
+ "IVO_LETTER_1": {
+  "en": "He doesn't open it. \"I know the handwriting.\" He folds it into his coat. \"Tell her to stop.\"",
+  "ru": "Он не открывает. «Я знаю этот почерк». Убирает письмо в пальто. «Скажите ей, чтобы прекратила»."
+ },
+ "IVO_LETTER_PRESS": {
+  "en": "\"Who are they, Ivo?\"",
+  "ru": "«Кто они, Иво?»"
+ },
+ "IVO_LETTER_LEAVE": {
+  "en": "Leave it there",
+  "ru": "Не настаивать"
+ },
+ "IVO_LETTER_2": {
+  "en": "A long silence. \"I write to them too. Every winter. Somebody has to remember them without waking them.\"",
+  "ru": "Долгое молчание. «Я тоже им пишу. Каждую зиму. Кто-то должен помнить их, не пробуждая»."
+ },
+ "IVO_RECORDS": {
+  "en": "\"The archive files are in the papers.\" He looks tired. \"Facts don't heal anything on their own, you know. They just stop being quiet.\"",
+  "ru": "«Дела из архива попали в газеты». Вид у него усталый. «Факты сами по себе ничего не лечат. Они просто перестают молчать»."
+ },
+ "NADIYA_LETTERS_1": {
+  "en": "\"I've got three letters I can't deliver. Addressed to people who aren't on any list. You've got the knack.\"",
+  "ru": "«У меня три письма, которые я не могу доставить. Адресаты не значатся ни в одном списке. А у тебя получается»."
+ },
+ "NADIYA_LETTERS_2": {
+  "en": "\"One for Mrs Halloway. One for Lantern Row — the emergency box on that ghost platform still takes post. And one for Ivo. Don't let him lecture you.\"",
+  "ru": "«Одно — миссис Холлоуэй. Одно — на Лантерн-Роу: аварийный ящик на той призрачной платформе всё ещё принимает почту. И одно — Иво. Не давай ему читать тебе лекции»."
+ },
+ "NADIYA_LETTERS_BACK": {
+  "en": "\"All three? You're good at this.\" She grins, then doesn't. \"So. Did anyone write back?\"",
+  "ru": "«Все три? Да у тебя талант». Она улыбается, но улыбка гаснет. «Ну. Кто-нибудь ответил?»"
+ },
+ "NADIYA_REPORT_1": {
+  "en": "\"Any replies?\"",
+  "ru": "«Ответы есть?»"
+ },
+ "NADIYA_SHOW_REPLY": {
+  "en": "Show her the reply from No. 7",
+  "ru": "Показать ей ответ из дома № 7"
+ },
+ "NADIYA_NO_REPLY": {
+  "en": "\"Not yet.\"",
+  "ru": "«Пока нет»"
+ },
+ "NADIYA_NO_REPLY_1": {
+  "en": "\"Check your post. The Row writes back slowly — but it writes back.\"",
+  "ru": "«Проверь почту. Лантерн-Роу отвечает медленно, но отвечает»."
+ },
+ "NADIYA_REPLY_1": {
+  "en": "She reads it twice. \"'We are not lost. Please stop trying to bring us back.'\"",
+  "ru": "Она перечитывает дважды. «„Мы не потерялись. Пожалуйста, перестаньте нас возвращать“»."
+ },
+ "NADIYA_REPLY_2": {
+  "en": "\"Some of them don't want to come back.\" A long pause. \"I don't know what to do with that.\"",
+  "ru": "«Некоторые из них не хотят возвращаться». Долгая пауза. «Я не знаю, что с этим делать»."
+ },
+ "NADIYA_RESPECT": {
+  "en": "\"Then we listen to them.\"",
+  "ru": "«Значит, надо их послушать»"
+ },
+ "NADIYA_PERSIST": {
+  "en": "\"One letter isn't all of them. Keep going.\"",
+  "ru": "«Одно письмо — не все. Продолжай»"
+ },
+ "NADIYA_RESPECT_1": {
+  "en": "\"Restoration without consent is just another census, huh.\" She pockets the letter carefully. \"Okay. We ask first.\"",
+  "ru": "«Вернуть без согласия — та же перепись, да?» Она бережно прячет письмо. «Ладно. Сначала спрашиваем»."
+ },
+ "NADIYA_PERSIST_1": {
+  "en": "\"Right. Seven isn't nineteen.\" She sounds sure. Almost.",
+  "ru": "«Точно. Семь — не девятнадцать». Звучит уверенно. Почти."
+ },
+ "PIKE_ASK_RELAY": {
+  "en": "Could Civic Renewal spare an old tram relay?",
+  "ru": "У Управления не найдётся старого трамвайного реле?"
+ },
+ "PIKE_RELAY_ASK": {
+  "en": "\"A relay. For the harbour stop.\" She studies you.",
+  "ru": "«Реле. Для остановки у гавани». Она изучающе смотрит на вас."
+ },
+ "PIKE_RELAY_OK": {
+  "en": "\"You helped us before.\"",
+  "ru": "«Мы ведь уже сотрудничали»"
+ },
+ "PIKE_RELAY_FORM": {
+  "en": "\"Never mind.\"",
+  "ru": "«Неважно»"
+ },
+ "PIKE_RELAY_YES": {
+  "en": "\"Off the record.\" She unlocks a crate behind the fountain and hands you one. \"You didn't get this from me.\"",
+  "ru": "«Без протокола». Она открывает ящик за фонтаном и отдаёт вам реле. «Вы получили его не от меня»."
+ },
+ "PIKE_RELAY_NO": {
+  "en": "\"Requisition form 14-C. Six to eight weeks.\" She almost smiles. \"Earn some trust first.\"",
+  "ru": "«Форма заявки 14-В. Шесть–восемь недель». Она почти улыбается. «Сначала заслужите доверие»."
+ },
+ "PIKE_GIVE_FILE": {
+  "en": "Hand Agnes Venn's file to Civic Renewal",
+  "ru": "Передать дело Агнес Венн в Управление"
+ },
+ "PIKE_FILE_1": {
+  "en": "She reads the name and goes very still. \"Where did you— No. Don't tell me.\" The file disappears into her coat. \"Thank you, citizen.\"",
+  "ru": "Она читает имя и замирает. «Где вы это... Нет. Не говорите». Папка исчезает у неё под плащом. «Спасибо, гражданин»."
+ },
+ "ARCHIVE_DOOR_LOCKED": {
+  "en": "Boarded, chained, sealed with a Civic Renewal notice. You'd need a key — and a reason.",
+  "ru": "Заколочено, обмотано цепью, опечатано уведомлением Управления. Нужен ключ — и причина."
+ },
+ "ARCH_CABINET_IDLE": {
+  "en": "A grey cabinet labelled CENSUS 1960–1975. Locked.",
+  "ru": "Серый шкаф с надписью «ПЕРЕПИСЬ 1960–1975». Заперт."
+ },
+ "ARCH_CABINET_1": {
+  "en": "Drawer L. Folders for nineteen houses on Lantern Row — eighteen of them empty. Number eleven is thick.",
+  "ru": "Ящик «Л». Папки на девятнадцать домов Лантерн-Роу — восемнадцать пусты. Папка одиннадцатого дома толстая."
+ },
+ "ARCH_CABINET_2": {
+  "en": "\"Venn, Agnes. Census enumerator.\" Below it, page after page of reclassifications, every one signed A. Venn. The same neat hand as Rosalind's page.",
+  "ru": "«Венн, Агнес. Счётчица переписи». Ниже — страница за страницей переквалификаций, и под каждой подпись «А. Венн». Тот же аккуратный почерк, что на странице Розалинды."
+ },
+ "ARCH_CABINET_AFTER": {
+  "en": "Drawer L, emptier than before.",
+  "ru": "Ящик «Л», ещё пустее, чем раньше."
+ },
+ "ARCH_SHELVES_1": {
+  "en": "Redevelopment files, 1960–1975. Every folder is thinner than its spine.",
+  "ru": "Дела о реконструкции, 1960–1975. Каждая папка тоньше собственного корешка."
+ },
+ "SOS_BOX_IDLE": {
+  "en": "An emergency box. Inside, a slot marked POST.",
+  "ru": "Аварийный ящик. Внутри щель с надписью «ПОЧТА»."
+ },
+ "SOS_BOX_POST": {
+  "en": "You post Nadiya's letter. A dry, papery sound, like someone taking it from your fingers.",
+  "ru": "Вы опускаете письмо Надии. Сухой бумажный шорох — будто кто-то взял его у вас из пальцев."
+ },
+ "BELL_IDLE": {
+  "en": "The old harbour tram stop. Somebody has polished the sign.",
+  "ru": "Старая трамвайная остановка у гавани. Кто-то начистил табличку."
+ },
+ "BELL_WAIT": {
+  "en": "The bell is ready. Jonah said she comes at night.",
+  "ru": "Колокол готов. Джона сказал, что она приходит ночью."
+ },
+ "BELL_RING_1": {
+  "en": "The bell's note goes out over the water and doesn't come back.",
+  "ru": "Звук колокола уходит над водой и не возвращается."
+ },
+ "BELL_RING_2": {
+  "en": "In the black water, a girl in a school coat looks up at you. \"Is Jonah still waiting?\" She's twelve. She's seventy.",
+  "ru": "В чёрной воде девочка в школьном пальто поднимает на вас глаза. «Джона всё ещё ждёт?» Ей двенадцать. Ей семьдесят."
+ },
+ "BELL_RING_3": {
+  "en": "She is waiting for an answer.",
+  "ru": "Она ждёт ответа."
+ },
+ "BELL_SAY_WAITING": {
+  "en": "\"Yes. Every day.\"",
+  "ru": "«Да. Каждый день»"
+ },
+ "BELL_SAY_HOME": {
+  "en": "\"Go home, Rosalind.\"",
+  "ru": "«Иди домой, Розалинда»"
+ },
+ "BELL_WAITING": {
+  "en": "She smiles like someone who's been told the right time. Then the water is only water.",
+  "ru": "Она улыбается, как тот, кому наконец сказали точное время. Потом вода — снова просто вода."
+ },
+ "BELL_HOME": {
+  "en": "\"Which one?\" she asks — and is gone before you can answer.",
+  "ru": "«Какой из них?» — спрашивает она и исчезает раньше, чем вы успеваете ответить."
+ },
+ "FLYER_RECORDS": {
+  "en": "A photocopied flyer: OPEN THE RECORDS. 19 HOUSES. 1 SIGNATURE. Mara's name is at the bottom.",
+  "ru": "Ксерокопия листовки: ОТКРОЙТЕ АРХИВЫ. 19 ДОМОВ. 1 ПОДПИСЬ. Внизу — имя Мары."
+ },
+ "POSTER_MISSING": {
+  "en": "MISSING SINCE 1989: ROSALIND ROOK. Somebody has written underneath, in pencil: \"seen at the harbour stop\".",
+  "ru": "ПРОПАЛА В 1989 ГОДУ: РОЗАЛИНДА РУК. Внизу кто-то приписал карандашом: «видели на остановке у гавани»."
+ }
+}

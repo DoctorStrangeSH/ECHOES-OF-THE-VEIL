@@ -64,3 +64,20 @@ Unlocked after Case 1 closes (either outcome). Jonah asks you to look for his si
 
 ## Economy (first pass)
 Sources: £20 at start, £10 radio reward, Resonance from echoes. Sinks: Jonah's tea (£4), Attunements (Resonance). More sinks arrive with M5 (rent, repairs, business).
+
+## M4 — Society and character stories
+
+**Factions** (standing −10..10, shown in Journal → People): Civic Renewal, Keepers, Open Hand, Unwritten. Moved by choices, never by a single morality meter.
+
+**Knowledge and gossip**: facts (`data/world/facts.json`) spread to their audience one time-of-day period later. Reactions read *who knows*, not global flags — reporting the door reaches Pike at once and everyone else by the next period; opening it reaches the Keepers and the Open Hand.
+
+**Milestones**: friend (3), confidant (6), distrust (−3) per NPC, as flags other content can read.
+
+### The Eleventh House (Mara, friend + door case closed)
+Night break-in to the sealed Municipal Archive. Drawer L: Agnes Venn, Mara's grandmother, was a Census enumerator who signed Lantern Row's reclassification — the same hand as Rosalind's page (story bible: Mara conceals a document implicating her family). Outcomes: **publish** (Open Hand +2, Civic −2, flyer on the plaza, Ivo disapproves), **seal together** (Keepers +2, shared secret), **lie** (keep the file; if it later reaches Civic Renewal, gossip tells Mara and she confronts you).
+
+### The Bell at Harbour Stop (Jonah, after the truth about Rosalind)
+Collect clapper (platform echo), copper flex (Mrs Halloway), relay (Pike with Civic ≥ 1; fail-forward after 3 days). Ring it at night: Rosalind appears in the water, twelve and seventy at once (bible: each sighting contradicts the last). Answer "he's waiting" or "go home".
+
+### Letters to No One (Nadiya, after the door case)
+Three letters: Mrs Halloway learns she had a sister, Bea, who is happy where she is; the platform's emergency box brings back a reply — "We are not lost. Please stop trying to bring us back."; Ivo reveals he writes to the erased every winter. Nadiya must face that some echoes do not want to return (her bible arc). Respect their choice (Unwritten +2) or keep going (Open Hand +2, Unwritten −1).
