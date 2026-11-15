@@ -10,7 +10,7 @@ extends Node
 signal saved(slot: int)
 signal save_failed(slot: int, message: String)
 
-const SCHEMA_VERSION := 7
+const SCHEMA_VERSION := 8
 const DEFAULT_SLOT := 1
 const MAX_SLOTS := 3
 
@@ -28,9 +28,18 @@ func _init() -> void:
 	_migrations[4] = _migrate_4_to_5
 	_migrations[5] = _migrate_5_to_6
 	_migrations[6] = _migrate_6_to_7
+	_migrations[7] = _migrate_7_to_8
 
 
 ## v5 (M5) adds work and ownership: repair skill, jobs, rent, home, stall.
+## v8 (M8a) adds expeditions (run in progress, clears, Index pages).
+func _migrate_7_to_8(env: Dictionary) -> Dictionary:
+	var p: Dictionary = env["payload"]
+	if not p.has("expedition"):
+		p["expedition"] = {}
+	return env
+
+
 ## v7 (M7e): difficulty (old saves play on normal), the faint satchel, and
 ## cases that used to move on by themselves now wait for the player.
 func _migrate_6_to_7(env: Dictionary) -> Dictionary:

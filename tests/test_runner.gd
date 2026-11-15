@@ -1253,3 +1253,71 @@ func test_agnes_and_rook_and_rook() -> void:
 		WorldClock.sleep_until_hour(7)
 	check(Journal.case_status(&"case_rook_and_rook") == Journal.STATUS_FAILED and NpcRegistry.resolve(&"rosalind_rook").is_empty(), "too late: she fades")
 	GameState.reset_for_new_game()
+
+
+# --- M8a: debug act starts, expeditions -----------------------------------------
+
+func test_debug_act_starts_reach_every_act() -> void:
+	for target: String in ["act1", "act2", "act3", "act4", "act5"]:
+		GameState.reset_for_new_game()
+		DebugStart.apply_history(target)
+		Campaign.check()
+		check(Campaign.current_act() == StringName(target), "debug start lands in %s (got %s)" % [target, Campaign.current_act()])
+	GameState.reset_for_new_game()
+	DebugStart.apply_history("endgame")
+	Campaign.check()
+	check(Expedition.unlocked() and Journal.case_status(&"case_anchor") == Journal.STATUS_DONE, "endgame start unlocks expeditions")
+	GameState.reset_for_new_game()
+
+
+func test_expedition_board_and_rewards() -> void:
+	GameState.reset_for_new_game()
+	check(not Expedition.unlocked() and not Expedition.start(Expedition.offers()[0]), "locked before the ending")
+	var a := Expedition.offers(5)
+	check(a == Expedition.offers(5), "same day, same board")
+	check(a.size() == Expedition.OFFERS, "three offers")
+	for i in a.size():
+		check((a[i]["mods"] as Array).size() == i + 1, "tier %d has %d modifiers" % [i, i + 1])
+		check(Expedition.sites().has(a[i]["site"]) and Expedition.rematches().has(a[i]["boss"]), "offer refers to real content")
+	check(Expedition.reward_for(a[2]) > Expedition.reward_for(a[0]), "harder runs pay more")
+	Expedition.runs_done = 1
+	check(Expedition.offers(5) != a, "a finished run refreshes the board")
+	# Pages: every page can be earned by some clear.
+	Expedition.cleared = {}
+	for site: String in Expedition.sites():
+		Expedition.cleared["site:" + site] = true
+	for m: String in Expedition.modifiers():
+		Expedition.cleared["mod:" + m] = true
+	check(Expedition._award_pages().size() == Expedition.page_defs().size(), "all pages are reachable")
+	GameState.reset_for_new_game()
+
+
+func test_expedition_modifiers_and_save() -> void:
+	GameState.reset_for_new_game()
+	check(GameState.incoming_damage(1) == 1, "normal damage")
+	Expedition.run = {"site": "hospital", "mods": ["fragile"], "boss": "conductor", "room": 0, "rooms": 3, "seed": 1, "shards": 5}
+	check(GameState.incoming_damage(1) == 2 and GameState.incoming_damage(0) == 0, "fragile: one more per hit")
+	check(not Expedition.is_arena() and not Expedition.current_room().is_empty(), "first room")
+	Expedition.run["room"] = 2
+	check(Expedition.is_arena() and Expedition.current_room().has("boss"), "last room is the arena")
+	Expedition.pages = ["p1_hospital"]
+	var d := GameState.to_dict()
+	GameState.reset_for_new_game()
+	check(not Expedition.active(), "reset clears the run")
+	GameState.from_dict(d)
+	check(Expedition.active() and Expedition.run["room"] == 2 and Expedition.pages == ["p1_hospital"], "run and pages survive a save")
+	check(Expedition.fail() and not Expedition.active() and Expedition.last_result["ok"] == false, "fainting ends the run")
+	var env := {"schema_version": 7, "payload": {"flags": {}}}
+	check(SaveService.migrate(env)["payload"].has("expedition"), "v7 save gains expedition state")
+	GameState.reset_for_new_game()
+
+
+func test_shard_trinkets_need_shards_and_the_index() -> void:
+	GameState.reset_for_new_game()
+	check(Economy.sell_price(&"veil_shard") == 0, "shards can't be sold")
+	check(not Economy.can_craft(&"bound_index"), "bound index needs the full Index")
+	Inventory.add(&"veil_shard", 20, false)
+	check(not Economy.can_craft(&"bound_index"), "even with shards")
+	GameState.set_flag(&"expedition.index_complete")
+	check(Economy.craft(&"bound_index") and Inventory.has(&"bound_index"), "crafted once the Index is whole")
+	GameState.reset_for_new_game()

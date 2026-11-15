@@ -470,6 +470,67 @@ func _ready() -> void:
 	WorldClock.sleep_until_hour(8)
 	await _frames(10)
 
+	_step = "endgame: an expedition with combined mechanics"
+	SceneFlow.travel(&"echo_ward", &"rift_return")
+	await _wait_location(&"echo_ward")
+	await _frames(5)
+	_assert(_visible_in_location("RiftUse"), "the rift opens after the ending")
+	EventHub.screen_requested.emit("expeditions")
+	await _frames(5)
+	(get_child(0).get_node("Work") as WorkScreen).close()
+	_assert(Expedition.offers().size() == 3, "three runs on the board")
+	var shards_before := Inventory.count(Expedition.SHARD)
+	Expedition.start({"site": "station", "mods": ["flooded", "rewritten", "lightless", "crowded", "fragile"], "boss": "matron"})
+	for room in 3:
+		await _frames(3)
+		await _wait_location(&"expedition_room")
+		await _frames(10)
+		var er := SceneFlow.current_location as ExpeditionRoom
+		_assert(er != null and int(Expedition.run.get("room", -1)) == room, "expedition room %d" % room)
+		if er == null:
+			break
+		_player().health.heal(99)
+		if Expedition.is_arena():
+			var rb := er.boss as Reviser
+			_assert(rb != null and er.flood != null, "a revised Matron in rising water")
+			if rb != null:
+				rb.engage()
+				for i in 600:
+					await _frames(4)
+					if not is_instance_valid(rb) or rb.state == Reviser.State.DEAD:
+						break
+					_player().health.heal(99)
+					rb.health.take_damage(1, rb.global_position + Vector2(12, 0))
+		await _clear_enemies()
+		await _frames(10)
+		_assert(er.exit.enabled, "room %d opens once clear" % room)
+		er.exit.interact(_player())
+	await _wait_location(&"echo_ward", 300)
+	_assert(Inventory.count(Expedition.SHARD) > shards_before and not Expedition.active(), "the run pays shards")
+	_assert(Expedition.pages.has("p3_station") and Expedition.pages.has("p8_fragile"), "Index pages earned")
+	Inventory.add(Expedition.SHARD, 10, false)
+	Inventory.add(&"tram_token", 1, false)
+	_assert(Economy.craft(&"shard_ribbon"), "a shard trinket crafted")
+
+	_step = "endgame: fainting ends a run"
+	Inventory.money = 40
+	var shards_now := Inventory.count(Expedition.SHARD)
+	Expedition.start(Expedition.offers()[0])
+	await _frames(3)
+	await _wait_location(&"expedition_room")
+	await _frames(10)
+	_player().health.take_damage(99, Vector2.ZERO)
+	await _wait_location(&"echo_ward", 400)
+	await _frames(10)
+	_assert(not Expedition.active() and Inventory.count(Expedition.SHARD) == shards_now, "no shards from a lost run")
+	var rift_bag := _find_node_of(SceneFlow.current_location, "Satchel")
+	_assert(rift_bag != null or GameState.difficulty == "story", "the satchel waits at the rift")
+	if rift_bag != null:
+		(rift_bag as Satchel).interact(_player())
+	_assert(Inventory.money >= 40, "satchel recovered")
+	SceneFlow.travel(&"greyford_block", &"ward_return")
+	await _wait_location(&"greyford_block")
+
 	_step = "save/load"
 	_assert(SaveService.save_game() == OK, "save ok")
 	await _frames(5)

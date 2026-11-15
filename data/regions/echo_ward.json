@@ -2,33 +2,505 @@
  "id": "echo_ward",
  "name_key": "LOC_ECHO_WARD",
  "palette": "greyford_exterior",
- "options": {"outdoors": true, "fixed_tint": {"color": [0.66, 0.72, 0.95, 1.0]}, "enter_dialogue_id": "ward_enter", "enter_condition": {"not_flag": "ward.open"}},
- "layout": {"generator": "bands", "width": 40, "bands": [["w", 3], ["o", 1], ["s", 2], ["s", 10], ["s", 2], ["r", 3], ["s", 3]]},
+ "options": {
+  "outdoors": true,
+  "fixed_tint": {
+   "color": [
+    0.66,
+    0.72,
+    0.95,
+    1.0
+   ]
+  },
+  "enter_dialogue_id": "ward_enter",
+  "enter_condition": {
+   "not_flag": "ward.open"
+  }
+ },
+ "layout": {
+  "generator": "bands",
+  "width": 40,
+  "bands": [
+   [
+    "w",
+    3
+   ],
+   [
+    "o",
+    1
+   ],
+   [
+    "s",
+    2
+   ],
+   [
+    "s",
+    10
+   ],
+   [
+    "s",
+    2
+   ],
+   [
+    "r",
+    3
+   ],
+   [
+    "s",
+    3
+   ]
+  ]
+ },
  "nodes": [
-  {"template": "building", "tex": "@building/Condo_1_1.png", "x": 40, "y": 256, "name": "TallHouseWest", "color": "#c8a860"},
-  {"template": "building", "tex": "@building/Condo_4_1.png", "x": 136, "y": 256, "name": "WardHall", "color": "#a05040", "inspect": {"id": "inspect_ward_hall", "lines": ["WARD_HALL_LOOK"], "width": 30}},
-  {"template": "building", "tex": "@shop/Market_Small_1.png", "x": 256, "y": 256, "name": "Bakery", "color": "#c05060", "inspect": {"id": "inspect_bakery", "lines": ["WARD_BAKERY_LOOK"], "width": 24}},
-  {"template": "building", "tex": "@building/Condo_2_1.png", "x": 336, "y": 256, "name": "TallHouseMid", "color": "#9090a0"},
-  {"template": "building", "tex": "@building/Condo_4_10.png", "x": 416, "y": 256, "name": "NumberEleven", "color": "#a05040", "inspect": {"id": "inspect_number_eleven", "lines": ["WARD_NO11_LOOK"], "width": 24}},
-  {"template": "building", "tex": "@building/Condo_1_1.png", "x": 496, "y": 256, "name": "TallHouseEast", "color": "#c8a860"},
-  {"kind": "prop", "name": "TramShelter", "tex": "@vehicle/Bus_Stop_1.png", "x": 584, "y": 262, "color": "#607080"},
-  {"kind": "door", "name": "DepotGate", "id": "door_ward_depot", "x": 584, "y": 272, "area": [30, 14], "scene": "ward_depot", "spawn": "entrance", "prompt": "PROMPT_DEPOT", "show_if": {"any": [{"quest_stage": ["case_misplaced", "depot"]}, {"quest_stage": ["case_misplaced", "rosalind"]}, {"quest_stage": ["case_misplaced", "bring"]}, {"quest_done": "case_misplaced"}]}},
-  {"kind": "spawn", "name": "DepotFront", "id": "depot_front", "x": 584, "y": 296, "facing": [0, 1]},
-  {"kind": "prop", "name": "Ferry", "tex": "@vehicle/Boat_1_Left_1.png", "x": 200, "y": 44, "col": [0, 0], "off": [0, 0], "color": "#806040"},
-  {"template": "row", "prop": {"tex": "@city/Street_Lamp_1.png", "color": "#444455", "col": [6, 4], "off": [0, -2], "children": ["Shimmer"]}, "at": {"xs": [96, 320, 544], "y": 92}, "name": "WardLamp"},
-  {"template": "sign", "tex": "@vehicle/Bus_Stop_Sign_1.png", "x": 64, "y": 282, "id": "read_ward_notice", "name": "WardNotice", "lines": ["WARD_NOTICE_1", "WARD_NOTICE_2"]},
-  {"kind": "prop", "name": "Bench", "tex": "@city/Bench_2.png", "x": 300, "y": 356, "col": [44, 10], "off": [0, -5], "color": "#a07040"},
-  {"kind": "spawn", "name": "Gate", "id": "gate", "x": 36, "y": 312, "facing": [1, 0]},
-  {"kind": "door", "name": "WayBack", "id": "door_ward_greyford", "x": 8, "y": 312, "area": [14, 40], "scene": "greyford_block", "spawn": "ward_return", "prompt": "PROMPT_WARD_LEAVE"},
-  {"template": "anchors", "points": {"hall_steps": [136, 272], "bakery_door": [256, 274], "quay": [200, 74], "no11_door": [436, 272], "promenade": [380, 84], "shelter": [560, 280], "bench": [300, 368]}},
-  {"kind": "prop", "name": "HospitalDoorFrame", "tex": "@basement/240.png", "x": 120, "y": 352, "col": [0, 0], "off": [0, 0], "color": "#c0c0ff", "children": ["Shimmer"], "show_if": {"flag": "act.act4"}},
-  {"kind": "door", "name": "HospitalDoor", "id": "door_ward_memory_hospital", "x": 120, "y": 356, "area": [20, 14], "scene": "memory_hospital", "spawn": "entrance", "prompt": "PROMPT_MEMORY_HOSPITAL", "show_if": {"flag": "act.act4"}},
-  {"kind": "spawn", "name": "HospitalDoorReturn", "id": "from_memory_hospital", "x": 120, "y": 340, "facing": [0, -1]},
-  {"kind": "prop", "name": "HomeDoorFrame", "tex": "@basement/240.png", "x": 420, "y": 352, "col": [0, 0], "off": [0, 0], "color": "#c0c0ff", "children": ["Shimmer"], "show_if": {"flag": "act.act4"}},
-  {"kind": "door", "name": "HomeDoor", "id": "door_ward_memory_home", "x": 420, "y": 356, "area": [20, 14], "scene": "memory_home", "spawn": "entrance", "prompt": "PROMPT_MEMORY_HOME", "show_if": {"flag": "act.act4"}},
-  {"kind": "spawn", "name": "HomeDoorReturn", "id": "from_memory_home", "x": 420, "y": 340, "facing": [0, -1]},
-  {"kind": "prop", "name": "StationDoorFrame", "tex": "@basement/240.png", "x": 540, "y": 352, "col": [0, 0], "off": [0, 0], "color": "#c0c0ff", "children": ["Shimmer"], "show_if": {"flag": "act.act4"}},
-  {"kind": "door", "name": "StationDoor", "id": "door_ward_memory_station", "x": 540, "y": 356, "area": [20, 14], "scene": "memory_station", "spawn": "entrance", "prompt": "PROMPT_MEMORY_STATION", "show_if": {"flag": "act.act4"}},
-  {"kind": "spawn", "name": "StationDoorReturn", "id": "from_memory_station", "x": 540, "y": 340, "facing": [0, -1]}
+  {
+   "template": "building",
+   "tex": "@building/Condo_1_1.png",
+   "x": 40,
+   "y": 256,
+   "name": "TallHouseWest",
+   "color": "#c8a860"
+  },
+  {
+   "template": "building",
+   "tex": "@building/Condo_4_1.png",
+   "x": 136,
+   "y": 256,
+   "name": "WardHall",
+   "color": "#a05040",
+   "inspect": {
+    "id": "inspect_ward_hall",
+    "lines": [
+     "WARD_HALL_LOOK"
+    ],
+    "width": 30
+   }
+  },
+  {
+   "template": "building",
+   "tex": "@shop/Market_Small_1.png",
+   "x": 256,
+   "y": 256,
+   "name": "Bakery",
+   "color": "#c05060",
+   "inspect": {
+    "id": "inspect_bakery",
+    "lines": [
+     "WARD_BAKERY_LOOK"
+    ],
+    "width": 24
+   }
+  },
+  {
+   "template": "building",
+   "tex": "@building/Condo_2_1.png",
+   "x": 336,
+   "y": 256,
+   "name": "TallHouseMid",
+   "color": "#9090a0"
+  },
+  {
+   "template": "building",
+   "tex": "@building/Condo_4_10.png",
+   "x": 416,
+   "y": 256,
+   "name": "NumberEleven",
+   "color": "#a05040",
+   "inspect": {
+    "id": "inspect_number_eleven",
+    "lines": [
+     "WARD_NO11_LOOK"
+    ],
+    "width": 24
+   }
+  },
+  {
+   "template": "building",
+   "tex": "@building/Condo_1_1.png",
+   "x": 496,
+   "y": 256,
+   "name": "TallHouseEast",
+   "color": "#c8a860"
+  },
+  {
+   "kind": "prop",
+   "name": "TramShelter",
+   "tex": "@vehicle/Bus_Stop_1.png",
+   "x": 584,
+   "y": 262,
+   "color": "#607080"
+  },
+  {
+   "kind": "door",
+   "name": "DepotGate",
+   "id": "door_ward_depot",
+   "x": 584,
+   "y": 272,
+   "area": [
+    30,
+    14
+   ],
+   "scene": "ward_depot",
+   "spawn": "entrance",
+   "prompt": "PROMPT_DEPOT",
+   "show_if": {
+    "any": [
+     {
+      "quest_stage": [
+       "case_misplaced",
+       "depot"
+      ]
+     },
+     {
+      "quest_stage": [
+       "case_misplaced",
+       "rosalind"
+      ]
+     },
+     {
+      "quest_stage": [
+       "case_misplaced",
+       "bring"
+      ]
+     },
+     {
+      "quest_done": "case_misplaced"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "DepotFront",
+   "id": "depot_front",
+   "x": 584,
+   "y": 296,
+   "facing": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Ferry",
+   "tex": "@vehicle/Boat_1_Left_1.png",
+   "x": 200,
+   "y": 44,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "color": "#806040"
+  },
+  {
+   "template": "row",
+   "prop": {
+    "tex": "@city/Street_Lamp_1.png",
+    "color": "#444455",
+    "col": [
+     6,
+     4
+    ],
+    "off": [
+     0,
+     -2
+    ],
+    "children": [
+     "Shimmer"
+    ]
+   },
+   "at": {
+    "xs": [
+     96,
+     320,
+     544
+    ],
+    "y": 92
+   },
+   "name": "WardLamp"
+  },
+  {
+   "template": "sign",
+   "tex": "@vehicle/Bus_Stop_Sign_1.png",
+   "x": 64,
+   "y": 282,
+   "id": "read_ward_notice",
+   "name": "WardNotice",
+   "lines": [
+    "WARD_NOTICE_1",
+    "WARD_NOTICE_2"
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Bench",
+   "tex": "@city/Bench_2.png",
+   "x": 300,
+   "y": 356,
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#a07040"
+  },
+  {
+   "kind": "spawn",
+   "name": "Gate",
+   "id": "gate",
+   "x": 36,
+   "y": 312,
+   "facing": [
+    1,
+    0
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "WayBack",
+   "id": "door_ward_greyford",
+   "x": 8,
+   "y": 312,
+   "area": [
+    14,
+    40
+   ],
+   "scene": "greyford_block",
+   "spawn": "ward_return",
+   "prompt": "PROMPT_WARD_LEAVE"
+  },
+  {
+   "template": "anchors",
+   "points": {
+    "hall_steps": [
+     136,
+     272
+    ],
+    "bakery_door": [
+     256,
+     274
+    ],
+    "quay": [
+     200,
+     74
+    ],
+    "no11_door": [
+     436,
+     272
+    ],
+    "promenade": [
+     380,
+     84
+    ],
+    "shelter": [
+     560,
+     280
+    ],
+    "bench": [
+     300,
+     368
+    ]
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "HospitalDoorFrame",
+   "tex": "@basement/240.png",
+   "x": 120,
+   "y": 352,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "color": "#c0c0ff",
+   "children": [
+    "Shimmer"
+   ],
+   "show_if": {
+    "flag": "act.act4"
+   }
+  },
+  {
+   "kind": "door",
+   "name": "HospitalDoor",
+   "id": "door_ward_memory_hospital",
+   "x": 120,
+   "y": 356,
+   "area": [
+    20,
+    14
+   ],
+   "scene": "memory_hospital",
+   "spawn": "entrance",
+   "prompt": "PROMPT_MEMORY_HOSPITAL",
+   "show_if": {
+    "flag": "act.act4"
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "HospitalDoorReturn",
+   "id": "from_memory_hospital",
+   "x": 120,
+   "y": 340,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "HomeDoorFrame",
+   "tex": "@basement/240.png",
+   "x": 420,
+   "y": 352,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "color": "#c0c0ff",
+   "children": [
+    "Shimmer"
+   ],
+   "show_if": {
+    "flag": "act.act4"
+   }
+  },
+  {
+   "kind": "door",
+   "name": "HomeDoor",
+   "id": "door_ward_memory_home",
+   "x": 420,
+   "y": 356,
+   "area": [
+    20,
+    14
+   ],
+   "scene": "memory_home",
+   "spawn": "entrance",
+   "prompt": "PROMPT_MEMORY_HOME",
+   "show_if": {
+    "flag": "act.act4"
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "HomeDoorReturn",
+   "id": "from_memory_home",
+   "x": 420,
+   "y": 340,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "StationDoorFrame",
+   "tex": "@basement/240.png",
+   "x": 540,
+   "y": 352,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "color": "#c0c0ff",
+   "children": [
+    "Shimmer"
+   ],
+   "show_if": {
+    "flag": "act.act4"
+   }
+  },
+  {
+   "kind": "door",
+   "name": "StationDoor",
+   "id": "door_ward_memory_station",
+   "x": 540,
+   "y": 356,
+   "area": [
+    20,
+    14
+   ],
+   "scene": "memory_station",
+   "spawn": "entrance",
+   "prompt": "PROMPT_MEMORY_STATION",
+   "show_if": {
+    "flag": "act.act4"
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "StationDoorReturn",
+   "id": "from_memory_station",
+   "x": 540,
+   "y": 340,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "RiftFrame",
+   "tex": "@basement/240.png",
+   "x": 220,
+   "y": 352,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "color": "#e0c0ff",
+   "children": [
+    "Shimmer"
+   ],
+   "show_if": {
+    "flag": "game.completed"
+   }
+  },
+  {
+   "kind": "screen",
+   "name": "RiftUse",
+   "id": "use_veil_rift",
+   "x": 220,
+   "y": 356,
+   "screen": "expeditions",
+   "show_if": {
+    "flag": "game.completed"
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "RiftReturn",
+   "id": "rift_return",
+   "x": 220,
+   "y": 338,
+   "facing": [
+    0,
+    1
+   ]
+  }
  ]
 }

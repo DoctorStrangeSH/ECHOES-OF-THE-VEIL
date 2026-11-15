@@ -1,0 +1,43 @@
+{
+ "_doc": "The Index: 8 pages earned by expeditions. needs: a 'cleared' key (site:<id>, mod:<id>, boss:<id>).",
+ "p1_hospital": {
+  "title": "EXP_PAGE_1",
+  "text": "EXP_PAGE_1_TEXT",
+  "needs": "site:hospital"
+ },
+ "p2_kitchen": {
+  "title": "EXP_PAGE_2",
+  "text": "EXP_PAGE_2_TEXT",
+  "needs": "site:kitchen"
+ },
+ "p3_station": {
+  "title": "EXP_PAGE_3",
+  "text": "EXP_PAGE_3_TEXT",
+  "needs": "site:station"
+ },
+ "p4_underpass": {
+  "title": "EXP_PAGE_4",
+  "text": "EXP_PAGE_4_TEXT",
+  "needs": "site:underpass"
+ },
+ "p5_flooded": {
+  "title": "EXP_PAGE_5",
+  "text": "EXP_PAGE_5_TEXT",
+  "needs": "mod:flooded"
+ },
+ "p6_rewritten": {
+  "title": "EXP_PAGE_6",
+  "text": "EXP_PAGE_6_TEXT",
+  "needs": "mod:rewritten"
+ },
+ "p7_lightless": {
+  "title": "EXP_PAGE_7",
+  "text": "EXP_PAGE_7_TEXT",
+  "needs": "mod:lightless"
+ },
+ "p8_fragile": {
+  "title": "EXP_PAGE_8",
+  "text": "EXP_PAGE_8_TEXT",
+  "needs": "mod:fragile"
+ }
+}

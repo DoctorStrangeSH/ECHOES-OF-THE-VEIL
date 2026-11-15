@@ -1,0 +1,31 @@
+{
+ "_doc": "Rematch bosses for the last room. They come back with the run's modifiers, so the same boss plays differently (a Conductor in a flood, a Revision without a lantern).",
+ "conductor": {
+  "scene": "res://scenes/combat/conductor.tscn",
+  "name": "BOSS_CONDUCTOR"
+ },
+ "archivist": {
+  "scene": "res://scenes/combat/archivist.tscn",
+  "name": "BOSS_ARCHIVIST"
+ },
+ "matron": {
+  "scene": "res://scenes/combat/reviser.tscn",
+  "name": "BOSS_MATRON",
+  "set": {
+   "pattern": "rows",
+   "summon_variant": "clinger",
+   "premade": "Premade_Character_13",
+   "name_key": "BOSS_MATRON"
+  }
+ },
+ "stationmaster": {
+  "scene": "res://scenes/combat/reviser.tscn",
+  "name": "BOSS_STATIONMASTER",
+  "set": {
+   "pattern": "checker",
+   "summon_variant": "wailer",
+   "premade": "Premade_Character_18",
+   "name_key": "BOSS_STATIONMASTER"
+  }
+ }
+}

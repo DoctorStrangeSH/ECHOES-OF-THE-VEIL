@@ -68,6 +68,8 @@ func _refresh() -> void:
 		_fill_workbench()
 	elif mode == "business":
 		_fill_business()
+	elif mode == "expeditions":
+		_fill_expeditions()
 	_focus_first.call_deferred()
 
 
@@ -171,6 +173,47 @@ func _fill_workbench() -> void:
 		var b := _button("%s  ←  %s" % [tr(def.get("name", "")), ", ".join(parts)], func() -> void: Economy.craft(r))
 		b.disabled = not Economy.can_craft(r)
 		_list.add_child(b)
+
+
+# --- Expeditions (M8a) -------------------------------------------------------------
+
+func _fill_expeditions() -> void:
+	_title.text = tr("EXP_TITLE")
+	_summary.text = tr("EXP_SUMMARY") % [Inventory.count(Expedition.SHARD), Expedition.pages.size(), Expedition.page_defs().size()]
+	var res := Expedition.last_result
+	if not res.is_empty():
+		var site_name := tr(String(Expedition.sites().get(res.get("site", ""), {}).get("name", "")))
+		if bool(res.get("ok", false)):
+			_list.add_child(_label(tr("EXP_LAST_OK") % [site_name, int(res["shards"]), int(res["resonance"])], UiTheme.ACCENT))
+		else:
+			_list.add_child(_label(tr("EXP_LAST_FAILED") % site_name, UiTheme.INK_DIM))
+	_list.add_child(_label(tr("EXP_TODAY"), UiTheme.ACCENT))
+	for offer in Expedition.offers():
+		var site: Dictionary = Expedition.sites()[offer["site"]]
+		var mods := PackedStringArray()
+		for m: String in offer["mods"]:
+			mods.append(tr(String(Expedition.modifiers()[m]["name"])))
+		var boss_name := tr(String(Expedition.rematches()[offer["boss"]]["name"]))
+		var text := tr("EXP_OFFER") % [tr(String(site["name"])), ", ".join(mods), Expedition.reward_for(offer)]
+		_list.add_child(_button(text, _start_expedition.bind(offer)))
+		var descs := PackedStringArray()
+		for m: String in offer["mods"]:
+			descs.append(tr(String(Expedition.modifiers()[m]["desc"])))
+		_list.add_child(_label(tr("EXP_BOSS") % boss_name + " " + " ".join(descs), UiTheme.INK_DIM, 8))
+	_list.add_child(_label(tr("EXP_INDEX"), UiTheme.ACCENT))
+	var ids: Array = Expedition.page_defs().keys()
+	ids.sort()
+	for id: String in ids:
+		var def: Dictionary = Expedition.page_defs()[id]
+		if Expedition.pages.has(id):
+			_list.add_child(_label("• " + tr(String(def["title"])) + " — " + tr(String(def["text"])), UiTheme.INK, 8))
+		else:
+			_list.add_child(_label("• " + tr("EXP_PAGE_MISSING"), UiTheme.INK_DIM, 8))
+
+
+func _start_expedition(offer: Dictionary) -> void:
+	close()
+	Expedition.start(offer)
 
 
 # --- Business --------------------------------------------------------------------

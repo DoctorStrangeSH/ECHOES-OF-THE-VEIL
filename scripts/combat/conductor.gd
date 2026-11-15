@@ -235,10 +235,11 @@ func _on_died() -> void:
 		var mote: ResonanceMote = MOTE_SCENE.instantiate()
 		mote.global_position = global_position + Vector2(randf_range(-16, 16), randf_range(-10, 6))
 		get_parent().add_child.call_deferred(mote)
-	var ticket: ResonanceMote = MOTE_SCENE.instantiate()
-	ticket.item_id = &"last_ticket"
-	ticket.global_position = global_position
-	get_parent().add_child.call_deferred(ticket)
+	if boss_id == &"conductor":
+		var ticket: ResonanceMote = MOTE_SCENE.instantiate()
+		ticket.item_id = &"last_ticket"
+		ticket.global_position = global_position
+		get_parent().add_child.call_deferred(ticket)
 	var t := create_tween()
 	t.tween_property(self, "modulate:a", 0.0, 1.2)
 	t.tween_callback(queue_free)

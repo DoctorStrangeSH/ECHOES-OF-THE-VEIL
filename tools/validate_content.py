@@ -347,6 +347,61 @@ for s, locs in spots.items():
 for u in BUSINESS.get('upgrades', {}).values() if isinstance(BUSINESS.get('upgrades'), dict) else []:
     walk(u, 'business')
 
+# --- expeditions (M8a) --------------------------------------------------------
+RUNTIME_LOCATIONS = {'expedition_room'}  # built from data/expeditions at runtime
+
+def _walkable(rows, pal, start, goal):
+    solid = {c for c, b in pal.items() if isinstance(b, dict) and b.get('solid')}
+    h = len(rows)
+    sx, sy = int(start[0]) // 16, int(start[1]) // 16
+    gx, gy = int(goal[0]) // 16, int(goal[1]) // 16
+    seen, todo = {(sx, sy)}, [(sx, sy)]
+    ok = lambda x, y: 0 <= y < h and 0 <= x < len(rows[y]) and rows[y][x] not in solid and rows[y][x] not in ' .'
+    if not ok(sx, sy) or not ok(gx, gy):
+        return False
+    while todo:
+        x, y = todo.pop()
+        if (x, y) == (gx, gy):
+            return True
+        for nx, ny in ((x+1, y), (x-1, y), (x, y+1), (x, y-1)):
+            if (nx, ny) not in seen and ok(nx, ny):
+                seen.add((nx, ny)); todo.append((nx, ny))
+    return False
+
+EXP = {n: {k: v for k, v in load(f'data/expeditions/{n}.json').items() if not k.startswith('_')}
+       for n in ('sites', 'modifiers', 'rematches', 'pages')} if os.path.isdir('data/expeditions') else {}
+if EXP:
+    cleared_keys = set()
+    for sid, site in EXP['sites'].items():
+        cleared_keys.add(f'site:{sid}')
+        key(site.get('name', ''), f'expedition site {sid}')
+        if site.get('palette') not in PAL:
+            err(f'expedition site {sid}: unknown palette {site.get("palette")}')
+            continue
+        for e in site.get('enemies', []):
+            if e not in ENEMIES:
+                err(f'expedition site {sid}: unknown enemy variant {e}')
+        rooms = list(site.get('rooms', [])) + [site.get('arena')]
+        if not site.get('arena') or 'boss' not in site['arena']:
+            err(f'expedition site {sid}: needs an arena with a boss position')
+        for i, r in enumerate(r for r in rooms if r):
+            if not _walkable(r['rows'], PAL[site['palette']], r['start'], r['exit']):
+                err(f'expedition site {sid} room {i}: exit not reachable from start')
+            if 'boss' in r and not _walkable(r['rows'], PAL[site['palette']], r['start'], r['boss']):
+                err(f'expedition site {sid} room {i}: boss spot not reachable')
+    for mid, m in EXP['modifiers'].items():
+        cleared_keys.add(f'mod:{mid}')
+        key(m.get('name', ''), f'modifier {mid}'); key(m.get('desc', ''), f'modifier {mid}')
+    for bid, b in EXP['rematches'].items():
+        cleared_keys.add(f'boss:{bid}')
+        key(b.get('name', ''), f'rematch {bid}')
+        if not os.path.exists(b.get('scene', '').replace('res://', '')):
+            err(f'rematch {bid}: scene {b.get("scene")} not found')
+    for pid, pg in EXP['pages'].items():
+        key(pg.get('title', ''), f'page {pid}'); key(pg.get('text', ''), f'page {pid}')
+        if pg.get('needs') and pg['needs'] not in cleared_keys:
+            err(f'page {pid}: needs {pg["needs"]} can never be cleared')
+
 # --- scenes ----------------------------------------------------------------
 spawns = {loc: set(re.findall(r'spawn_id = &"([^"]+)"', t)) for loc, t in LOCS.items()}
 anchors = {loc: set(re.findall(r'anchor_id = &"([^"]+)"', t)) for loc, t in LOCS.items()}
@@ -360,7 +415,7 @@ for loc, t in LOCS.items():
     m = re.search(r'palette_id = "([^"]+)"', t)
     if m and m.group(1) not in PAL:
         err(f'{loc}.tscn: unknown palette {m.group(1)}')
-    if not os.path.exists(f'data/regions/{loc}.json'):
+    if not os.path.exists(f'data/regions/{loc}.json') and loc not in RUNTIME_LOCATIONS:
         warn(f'{loc}.tscn has no region spec in data/regions (hand-made scene?)')
     for cond in re.findall(r'(?:show_if|enter_condition) = (\{.*\})', t):
         walk(json.loads(cond), loc)
@@ -409,7 +464,7 @@ def screen_ok(s):
         return s[5:] in SHOPS
     if s.startswith('repair:'):
         return s[7:] in JOBS
-    return s in ('jobs', 'workbench', 'business', 'epilogue')
+    return s in ('jobs', 'workbench', 'business', 'epilogue', 'expeditions')
 
 CHECK = {
     'evidence': lambda a: a in J['evidence'], 'case': lambda a: a in J['cases'], 'hyp': lambda a: a in J['hypotheses'],

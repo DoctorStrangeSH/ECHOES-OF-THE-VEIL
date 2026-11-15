@@ -1,0 +1,54 @@
+{
+ "veil_shard": {
+  "category": "material",
+  "name": "ITEM_VEIL_SHARD",
+  "desc": "ITEM_VEIL_SHARD_DESC",
+  "color": "#b0c8ff",
+  "value": 0,
+  "stack": 999
+ },
+ "shard_lantern": {
+  "category": "trinket",
+  "name": "ITEM_SHARD_LANTERN",
+  "desc": "ITEM_SHARD_LANTERN_DESC",
+  "color": "#d8e8ff",
+  "value": 0,
+  "mods": {
+   "flash_cooldown_mult": 0.75,
+   "flash_radius_mult": 1.15
+  }
+ },
+ "shard_ribbon": {
+  "category": "trinket",
+  "name": "ITEM_SHARD_RIBBON",
+  "desc": "ITEM_SHARD_RIBBON_DESC",
+  "color": "#c0a0ff",
+  "value": 0,
+  "mods": {
+   "max_health": 2
+  }
+ },
+ "shard_compass": {
+  "category": "trinket",
+  "name": "ITEM_SHARD_COMPASS",
+  "desc": "ITEM_SHARD_COMPASS_DESC",
+  "color": "#a0e0e0",
+  "value": 0,
+  "mods": {
+   "dodge_cooldown_mult": 0.75,
+   "dodge_distance_mult": 1.2
+  }
+ },
+ "bound_index": {
+  "category": "trinket",
+  "name": "ITEM_BOUND_INDEX",
+  "desc": "ITEM_BOUND_INDEX_DESC",
+  "color": "#f0e0b0",
+  "value": 0,
+  "mods": {
+   "max_health": 2,
+   "finisher_bonus": 1,
+   "flash_cooldown_mult": 0.85
+  }
+ }
+}
