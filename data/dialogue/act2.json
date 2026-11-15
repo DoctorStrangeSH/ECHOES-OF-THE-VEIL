@@ -1007,6 +1007,36 @@
    {
     "if": {
      "quest_stage": [
+      "case_rook_and_rook",
+      "evening"
+     ],
+     "companion": "jonah_rook",
+     "all": [
+      {
+       "has_item": "rook_stamp"
+      },
+      {
+       "period": [
+        "evening",
+        "night"
+       ]
+      }
+     ]
+    },
+    "node": "up1"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_rook_and_rook",
+      "evening"
+     ]
+    },
+    "node": "up_wait"
+   },
+   {
+    "if": {
+     "quest_stage": [
       "case_misplaced",
       "depot"
      ]
@@ -1241,6 +1271,51 @@
    "after_apart": {
     "speaker": "NPC_ROSALIND",
     "text": "ROS_AFTER_APART",
+    "next": null
+   },
+   "up1": {
+    "speaker": "NPC_ROSALIND",
+    "text": "ROS_UP_1",
+    "next": "up2"
+   },
+   "up2": {
+    "text": "ROS_UP_2",
+    "next": "up3"
+   },
+   "up3": {
+    "speaker": "NPC_ROSALIND",
+    "text": "ROS_UP_3",
+    "effects": [
+     {
+      "take_item": "rook_stamp"
+     },
+     {
+      "quest_complete": [
+       "case_rook_and_rook",
+       "visited"
+      ]
+     },
+     {
+      "set_flag": "rosalind.visits_greyford"
+     },
+     {
+      "relationship": [
+       "jonah_rook",
+       2
+      ]
+     },
+     {
+      "relationship": [
+       "rosalind_rook",
+       2
+      ]
+     }
+    ],
+    "next": null
+   },
+   "up_wait": {
+    "speaker": "NPC_ROSALIND",
+    "text": "ROS_UP_WAIT",
     "next": null
    }
   }

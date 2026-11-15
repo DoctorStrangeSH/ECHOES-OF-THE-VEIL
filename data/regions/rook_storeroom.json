@@ -18,6 +18,7 @@
   {"kind": "enemy", "name": "Clinger2", "id": "storeroom_clinger_2", "x": 200, "y": 128, "variant": "clinger"},
   {"kind": "encounter", "flag": "storeroom.cleared"},
   {"kind": "spawn", "name": "Entrance", "id": "entrance", "x": 128, "y": 154, "facing": [0, -1]},
-  {"kind": "door", "name": "WayBack", "id": "door_storeroom_exit", "x": 128, "y": 164, "area": [30, 10], "scene": "greyford_block", "spawn": "storeroom_front", "prompt": "PROMPT_LEAVE_ECHO"}
+  {"kind": "door", "name": "WayBack", "id": "door_storeroom_exit", "x": 128, "y": 164, "area": [30, 10], "scene": "greyford_block", "spawn": "storeroom_front", "prompt": "PROMPT_LEAVE_ECHO"},
+  {"kind": "pickup", "name": "RookStamp", "x": 216, "y": 150, "item": "rook_stamp", "flag": "pickup.rook_stamp", "show_if": {"quest_stage": ["case_rook_and_rook", "stamp"], "flag": "storeroom.cleared"}}
  ]
 }

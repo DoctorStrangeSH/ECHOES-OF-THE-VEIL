@@ -55,7 +55,8 @@ static func health_for_conditions() -> int:
 	var k := 1.0 - 0.1 * true_nights()
 	if ally_present("ivo_calder"):
 		k -= 0.25
-	return GameState.enemy_health(int(round(BASE_HEALTH * maxf(0.4, k))))
+	var base := int(DataFiles.boss_stat("director", "health", BASE_HEALTH))
+	return GameState.enemy_health(int(round(base * maxf(0.4, k))))
 
 
 func _ready() -> void:

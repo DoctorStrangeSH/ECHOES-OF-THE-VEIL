@@ -135,7 +135,8 @@
   "schedule": [
    {
     "if": {
-     "quest_done": "case_misplaced"
+     "quest_done": "case_misplaced",
+     "not_flag": "rosalind.faded"
     },
     "scene": "echo_ward",
     "anchor": "shelter",
@@ -143,7 +144,8 @@
    },
    {
     "if": {
-     "flag": "boss.conductor.defeated"
+     "flag": "boss.conductor.defeated",
+     "not_flag": "rosalind.faded"
     },
     "scene": "depot_platform",
     "anchor": "platform_bench",

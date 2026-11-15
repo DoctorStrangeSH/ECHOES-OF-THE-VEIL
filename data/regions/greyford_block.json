@@ -110,7 +110,7 @@
   {"kind": "door", "name": "TheoDoor", "id": "door_theo_flat", "x": 590, "y": 250, "area": [14, 14], "scene": "theo_flat", "spawn": "from_street", "prompt": "PROMPT_THEO_DOOR", "show_if": {"flag": "met.theo_marsh"}},
   {"kind": "spawn", "name": "TheoFront", "id": "theo_front", "x": 590, "y": 266, "facing": [0, 1]},
   {"kind": "anchor", "name": "A_theo_door", "id": "theo_door", "x": 610, "y": 264},
-  {"kind": "door", "name": "StoreroomDoor", "id": "door_rook_storeroom", "x": 422, "y": 250, "area": [14, 14], "scene": "rook_storeroom", "spawn": "entrance", "prompt": "PROMPT_STOREROOM", "show_if": {"all": [{"quest_active": "case_storeroom"}, {"period": ["evening", "night"]}]}},
+  {"kind": "door", "name": "StoreroomDoor", "id": "door_rook_storeroom", "x": 422, "y": 250, "area": [14, 14], "scene": "rook_storeroom", "spawn": "entrance", "prompt": "PROMPT_STOREROOM", "show_if": {"all": [{"any": [{"quest_active": "case_storeroom"}, {"quest_stage": ["case_rook_and_rook", "stamp"], "not_flag": "storeroom.bricked"}]}, {"period": ["evening", "night"]}]}},
   {"kind": "inspect", "name": "StoreroomWall", "id": "inspect_storeroom_wall", "x": 422, "y": 250, "area": [14, 14], "lines": ["STOREROOM_WALL_DAY"], "show_if": {"all": [{"quest_active": "case_storeroom"}, {"period": ["morning", "afternoon"]}]}},
   {"kind": "spawn", "name": "StoreroomFront", "id": "storeroom_front", "x": 422, "y": 266, "facing": [0, 1]},
   {"template": "sign", "tex": "@vehicle/Bus_Stop_Sign_2.png", "x": 548, "y": 72, "id": "read_harbour_timetable", "name": "HarbourTimetable", "color": "#9090a0", "dialogue": "harbour_timetable"},

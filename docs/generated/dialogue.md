@@ -321,6 +321,8 @@ flowchart TD
 flowchart TD
   rosalind_START(("start"))
   rosalind_START --> rosalind_after_apart
+  rosalind_START -->|"{quest_stage: [case_rook_and_rook, even…"| rosalind_up1
+  rosalind_START -->|"{quest_stage: [case_rook_and_rook, even…"| rosalind_up_wait
   rosalind_START -->|"{quest_stage: [case_misplaced, depot]}"| rosalind_meet1
   rosalind_START -->|"{quest_stage: [case_misplaced, rosalind…"| rosalind_choice
   rosalind_START -->|"{quest_stage: [case_misplaced, bring], …"| rosalind_reunite1
@@ -349,6 +351,12 @@ flowchart TD
   rosalind_apart["apart<br/>Rosalind Rook: 'Both right.' She turns the ticket over. 'Then …"]
   rosalind_after_reunited["after_reunited<br/>Rosalind Rook: 'He comes down every evening now. We argue abou…"]
   rosalind_after_apart["after_apart<br/>Rosalind Rook: 'Not yet. But I'm counting the days instead of …"]
+  rosalind_up1["up1<br/>Rosalind Rook: Rosalind sees the stamp in Jonah's hand and sta…"]
+  rosalind_up1 --> rosalind_up2
+  rosalind_up2["up2<br/>She closes her fingers around it with his. The …"]
+  rosalind_up2 --> rosalind_up3
+  rosalind_up3["up3<br/>Rosalind Rook: At the shop she stands in the doorway for a lon…"]
+  rosalind_up_wait["up_wait<br/>Rosalind Rook: 'Jonah said there's a way up. Bring him, and Da…"]
 ```
 
 ### camp_jonah
@@ -799,6 +807,19 @@ flowchart TD
   wren_after["after<br/>Director Elias Wren: 'I'll testify. Every minute, every name. It won…"]
 ```
 
+## companions.json
+
+### agnes_card
+
+```mermaid
+flowchart TD
+  agnes_card_START(("start"))
+  agnes_card_START --> agnes_card_1
+  agnes_card_1["1<br/>The Keepers' card index: two hundred drawers, a…"]
+  agnes_card_1 --> agnes_card_2
+  agnes_card_2["2<br/>Below, in a different machine: 'Reclassified 19…"]
+```
+
 ## lighthouse.json
 
 ### hester
@@ -928,8 +949,10 @@ flowchart TD
   mara_hub -->|"Do you recognise this handwri… ⟨{quest_stage: [case_two_maps, hand], no…⟩"| mara_hand1
   mara_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| mara_anchor_yes
   mara_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| mara_anchor_no
-  mara_hub_end_10(["end"])
-  mara_hub -->|"Goodbye."| mara_hub_end_10
+  mara_hub -->|"You still think about your gr… ⟨{quest_done: case_eleventh, flag: rel.m…⟩"| mara_ag1
+  mara_hub -->|"I found Agnes's card. ⟨{quest_stage: [case_agnes, tell]}⟩"| mara_agt
+  mara_hub_end_12(["end"])
+  mara_hub -->|"Goodbye."| mara_hub_end_12
   mara_plaza1["plaza1<br/>Mara Venn: 'Before the plaza? A car park. Before that—' Sh…"]
   mara_plaza1 --> mara_plaza2
   mara_plaza2["plaza2<br/>Mara Venn: 'The rate books list a street. Lantern Row. Nin…"]
@@ -994,6 +1017,17 @@ flowchart TD
   mara_anchor_yes --> mara_hub
   mara_anchor_no["anchor_no<br/>Mara Venn: 'I'll read about it afterwards. I'm not sure I …"]
   mara_anchor_no --> mara_hub
+  mara_ag1["ag1<br/>Mara Venn: 'Every day since the archive.' Mara doesn't loo…"]
+  mara_ag1 --> mara_ag2
+  mara_ag2["ag2<br/>Mara Venn: 'The Keepers kept a card index of everyone the …"]
+  mara_ag2 --> mara_hub
+  mara_agt["agt<br/>Mara Venn: Mara puts her pen down, which she never does. '…"]
+  mara_agt -->|"She started the Ward's regist… ⟨{evidence: e_agnes_ivo}⟩"| mara_ag_keeper
+  mara_agt -->|"She signed the lists, and the…"| mara_ag_both
+  mara_agt -->|"It doesn't matter now. Let he…"| mara_ag_dismiss
+  mara_ag_keeper["ag_keeper<br/>Mara Venn: Mara laughs, and it breaks halfway. 'She kept a…"]
+  mara_ag_both["ag_both<br/>Mara Venn: 'Both.' She nods slowly. 'I can live with both.…"]
+  mara_ag_dismiss["ag_dismiss<br/>Mara Venn: 'Let her go.' Mara looks at you for a long mome…"]
 ```
 
 ### jonah
@@ -1046,8 +1080,9 @@ flowchart TD
   jonah_hub -->|"Come with me for a while? ⟨{can_join: jonah_rook}⟩"| jonah_join
   jonah_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| jonah_anchor_yes
   jonah_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| jonah_anchor_no
-  jonah_hub_end_13(["end"])
-  jonah_hub -->|"Goodbye."| jonah_hub_end_13
+  jonah_hub -->|"Could Rosalind ever come up t… ⟨{flag: rosalind.reunited, all: [{flag: …⟩"| jonah_rr1
+  jonah_hub_end_14(["end"])
+  jonah_hub -->|"Goodbye."| jonah_hub_end_14
   jonah_tram1["tram1<br/>Jonah Rook: 'The line closed in '89. But when it rains, peo…"]
   jonah_tram1 --> jonah_tram2
   jonah_tram2["tram2<br/>Jonah Rook: 'So I go and check. Every time. Nothing's ever …"]
@@ -1101,6 +1136,10 @@ flowchart TD
   jonah_anchor_yes --> jonah_hub
   jonah_anchor_no["anchor_no<br/>Jonah Rook: 'I've got a shop and a lot of questions about y…"]
   jonah_anchor_no --> jonah_hub
+  jonah_rr1["rr1<br/>Jonah Rook: 'She asks every evening. Just once, to see the …"]
+  jonah_rr1 --> jonah_rr2
+  jonah_rr2["rr2<br/>Jonah Rook: 'Dad's repair stamp. ROOK & DAUGHTER. It was in…"]
+  jonah_rr2 --> jonah_hub
 ```
 
 ### halloway
@@ -1196,8 +1235,9 @@ flowchart TD
   ivo_hub -->|"What is the Ward? ⟨{quest_stage: [case_misplaced, ward], n…⟩"| ivo_ward1
   ivo_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| ivo_anchor_yes
   ivo_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| ivo_anchor_no
-  ivo_hub_end_6(["end"])
-  ivo_hub -->|"Goodbye."| ivo_hub_end_6
+  ivo_hub -->|"Did you know Agnes Venn? ⟨{quest_stage: [case_agnes, tell], not_e…⟩"| ivo_agnes
+  ivo_hub_end_7(["end"])
+  ivo_hub -->|"Goodbye."| ivo_hub_end_7
   ivo_door1["door1<br/>Ivo Calder: He is quiet for a while. 'Doors like that close…"]
   ivo_door1 --> ivo_door2
   ivo_door2["door2<br/>Ivo Calder: 'Whatever's on the other side has waited a long…"]
@@ -1236,6 +1276,8 @@ flowchart TD
   ivo_anchor_yes --> ivo_hub
   ivo_anchor_no["anchor_no<br/>Ivo Calder: 'The Keepers don't follow people they don't tru…"]
   ivo_anchor_no --> ivo_hub
+  ivo_agnes["agnes<br/>Ivo Calder: 'Agnes came to us in the winter of '63 with a l…"]
+  ivo_agnes --> ivo_hub
 ```
 
 ### nadiya
@@ -1315,8 +1357,9 @@ flowchart TD
   pike_hub -->|"Could Civic Renewal spare an … ⟨{quest_stage: [case_bell, parts], not: …⟩"| pike_relay
   pike_hub -->|"Hand Agnes Venn's file to Civ… ⟨{has_item: agnes_file}⟩"| pike_file1
   pike_hub -->|"Has the council heard about t… ⟨{flag: ward.open, not_flag: pike.ward_t…⟩"| pike_ward_pike
-  pike_hub_end_5(["end"])
-  pike_hub -->|"Goodbye."| pike_hub_end_5
+  pike_hub -->|"Did the council keep anything… ⟨{quest_stage: [case_rook_and_rook, stam…⟩"| pike_stamp1
+  pike_hub_end_6(["end"])
+  pike_hub -->|"Goodbye."| pike_hub_end_6
   pike_confirm["confirm<br/>If you report it, Civic Renewal will take the d…"]
   pike_confirm -->|"Report it"| pike_report1
   pike_confirm -->|"Never mind"| pike_hub
@@ -1340,6 +1383,12 @@ flowchart TD
   pike_ward_rep --> pike_hub
   pike_ward_deny["ward_deny<br/>Warden Dana Pike: 'Of course.' She writes that down too."]
   pike_ward_deny --> pike_hub
+  pike_stamp1["stamp1<br/>Warden Dana Pike: 'Lost property keeps everything from a bricking…"]
+  pike_stamp1 -->|"You owe Civic Renewal a favou… ⟨{faction_at_least: [civic, 1]}⟩"| pike_stamp_ok
+  pike_stamp1 -->|"Pay the fee (£30). ⟨{money_at_least: 30}⟩"| pike_stamp_ok
+  pike_stamp1 -->|"Not now."| pike_hub
+  pike_stamp_ok["stamp_ok<br/>Warden Dana Pike: She hands it over in a paper bag with a form st…"]
+  pike_stamp_ok --> pike_hub
 ```
 
 ### echo_woman

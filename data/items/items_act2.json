@@ -5,5 +5,12 @@
   "desc": "ITEM_LAST_TICKET_DESC",
   "color": "#d0c080",
   "evidence": "e_last_ticket"
+ },
+ "rook_stamp": {
+  "category": "key",
+  "name": "ITEM_ROOK_STAMP",
+  "desc": "ITEM_ROOK_STAMP_DESC",
+  "color": "#806040",
+  "evidence": "e_rook_stamp"
  }
 }

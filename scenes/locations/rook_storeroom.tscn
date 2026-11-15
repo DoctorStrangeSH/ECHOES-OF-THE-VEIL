@@ -188,3 +188,13 @@ area_size = Vector2(30, 10)
 prompt_key = "PROMPT_LEAVE_ECHO"
 target_scene_id = &"greyford_block"
 target_spawn_id = &"storeroom_front"
+
+[node name="RookStamp" parent="Entities" instance=ExtResource("16_pickup")]
+position = Vector2(216, 150)
+interaction_id = &"pickup_rook_stamp"
+item_id = &"rook_stamp"
+pickup_flag = &"pickup.rook_stamp"
+
+[node name="Condition" type="Node" parent="Entities/RookStamp"]
+script = ExtResource("10_cond")
+show_if = {"quest_stage": ["case_rook_and_rook", "stamp"], "flag": "storeroom.cleared"}

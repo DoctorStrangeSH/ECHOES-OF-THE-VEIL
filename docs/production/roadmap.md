@@ -78,7 +78,7 @@ This roadmap is milestone-based, not a promise of fixed calendar dates. Estimate
 
 ## M7 — Campaign production (campaign playable new game → ending; M7g polish pass next — see campaign-plan.md)
 
-Stages: M7a Act I · M7b Act II · M7c Act III · M7d Act IV · M7e quest system and challenge rework · M7f Act V and endings (done) → **M7g campaign pass** (next: balance, a full manual playthrough per difficulty, companion personal quests).
+Stages: M7a Act I · M7b Act II · M7c Act III · M7d Act IV · M7e quest system and challenge rework · M7f Act V and endings · M7g campaign pass, automated part (done: boss tuning as data, fairness tests, companion personal quests) → **owner playtest** (`docs/production/playtest-guide.ru.md`) → balance fixes from it → M8.
 
 ### M7e — Quest system and challenge rework (implemented)
 

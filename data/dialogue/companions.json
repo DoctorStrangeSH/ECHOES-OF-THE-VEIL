@@ -1,0 +1,20 @@
+{
+ "agnes_card": {
+  "start": "1",
+  "nodes": {
+   "1": {
+    "text": "AGNES_CARD_1",
+    "next": "2"
+   },
+   "2": {
+    "text": "AGNES_CARD_2",
+    "effects": [
+     {
+      "add_evidence": "e_agnes_card"
+     }
+    ],
+    "next": null
+   }
+  }
+ }
+}

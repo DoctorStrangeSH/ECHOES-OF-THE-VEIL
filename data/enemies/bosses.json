@@ -1,0 +1,24 @@
+{
+ "_doc": "Boss tuning without code. health is before the difficulty multiplier. Reviser bosses are keyed by boss_id.",
+ "census_taker": {
+  "health": 24
+ },
+ "conductor": {
+  "health": 30
+ },
+ "archivist": {
+  "health": 34
+ },
+ "matron": {
+  "health": 28
+ },
+ "lodger": {
+  "health": 30
+ },
+ "stationmaster": {
+  "health": 32
+ },
+ "director": {
+  "health": 44
+ }
+}

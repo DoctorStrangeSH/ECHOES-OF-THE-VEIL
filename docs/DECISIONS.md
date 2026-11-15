@@ -61,6 +61,8 @@ Decisions are recorded with date, status, and rationale. Revisit only when evide
 | D-056 | Quests: per-stage objectives (conditions, progress counters, optional rewards paid once), deadlines that fail side quests with consequences, one pinned case on the HUD, no waypoints. Main cases never have deadlines. The validator rejects fail-forward and stages no player action reaches. | Accepted | Replaces fail-forward (D-052) with player-driven progress and real failure. |
 | D-057 | The final fight is shaped, not skipped, by allies and evidence: each ally removes or softens one mechanic, true nights lower Wren's health (floor 40%). | Accepted | Bible: "not simply a boss fight" + D-052 (no skips). |
 | D-058 | Endings and epilogues are data (`data/story/epilogues.json`): the ending card, then the first matching card per group; the Living Accord needs trust, truth, allies and true nights (`count_at_least`). After the epilogue the game continues in the new world state. | Accepted | Bible §9–10; consequences stay visible. |
+| D-059 | Boss health is data (`data/enemies/bosses.json`, before difficulty); tests assert every boss pattern leaves a safe place. | Accepted | Balance changes from playtests without code; challenge stays fair. |
+| D-060 | Companion personal quests upgrade the companion's ability (`companions.json` `upgrade`); both can be failed by deadline. | Accepted | Relationships pay off mechanically; consequences per D-052. |
 | D-054 | One `Reviser` boss class with per-site exports (pattern, summons, look); the region generator writes per-instance exports (`set`). | Accepted | Three distinct bosses without three scripts. |
 
 ## Open questions

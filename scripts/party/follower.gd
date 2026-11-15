@@ -2,8 +2,9 @@ class_name Follower
 extends Node
 ## Turns an Npc into the player's companion: it trails the player, talks with
 ## its camp dialogue and uses its ability in fights. Added by Location.
-##   patch_up - when the player drops to 1 health, heals 2 (once per cooldown)
-##   pin      - in fights, slows the nearest echo for a few seconds
+##   patch_up - when the player drops to 1 health, heals `power` (once per cooldown)
+##   pin      - in fights, slows the `power` nearest echoes for a few seconds
+## Personal quests upgrade both (companions.json "upgrade").
 
 const TRAIL := 22.0
 const SPEED := 95.0
@@ -12,6 +13,8 @@ const TELEPORT := 170.0
 var npc: Npc
 var ability := ""
 var cooldown := 0.0
+## patch_up: health restored; pin: how many echoes are slowed at once.
+var power := 1
 var _ready_at := 0.0
 var _sprite: LayeredCharacterSprite
 var _last_dir := LayeredCharacterSprite.Dir.DOWN
@@ -21,6 +24,12 @@ func setup(target: Npc, def: Dictionary) -> void:
 	npc = target
 	ability = String(def.get("ability", ""))
 	cooldown = float(def.get("cooldown", 30.0))
+	power = int(def.get("power", 2 if ability == "patch_up" else 1))
+	# Personal quests can improve the ability: {"upgrade": {"if": cond, "power": n, "cooldown": s}}
+	var up: Dictionary = def.get("upgrade", {})
+	if not up.is_empty() and StoryRules.evaluate(up.get("if")):
+		power = int(up.get("power", power))
+		cooldown = float(up.get("cooldown", cooldown))
 	npc.collision_layer = 0  # never blocks the player
 	npc.add_child(self)
 
@@ -78,7 +87,7 @@ func _on_player_health(health: int, _max: int) -> void:
 	if ability != "patch_up" or health != 1 or not _ready_now():
 		return
 	_use()
-	EventHub.player_heal_requested_amount.emit(2)
+	EventHub.player_heal_requested_amount.emit(power)
 	EventHub.toast_requested.emit(tr("TOAST_COMPANION_PATCH") % tr(Party.def_of(npc.npc_id).get("name", "")))
 	Sfx.play(&"use")
 
@@ -87,15 +96,14 @@ func _try_pin() -> void:
 	var loc := SceneFlow.current_location as Location
 	if loc == null or not loc.combat_enabled or not _ready_now():
 		return
-	var best: EchoEnemy = null
-	var best_d := 140.0
+	var near: Array[EchoEnemy] = []
 	for e in get_tree().get_nodes_in_group(&"echo_enemy"):
-		var d := (e as Node2D).global_position.distance_to(npc.global_position)
-		if d < best_d and (e as EchoEnemy).health.health > 0:
-			best = e
-			best_d = d
-	if best == null:
+		if (e as Node2D).global_position.distance_to(npc.global_position) < 140.0 and (e as EchoEnemy).health.health > 0:
+			near.append(e)
+	if near.is_empty():
 		return
+	near.sort_custom(func(a: EchoEnemy, b: EchoEnemy) -> bool: return a.global_position.distance_to(npc.global_position) < b.global_position.distance_to(npc.global_position))
 	_use()
-	best.slow(3.0)
+	for i in mini(power, near.size()):
+		near[i].slow(3.0)
 	Sfx.play(&"flash", 0.0, -8.0)
