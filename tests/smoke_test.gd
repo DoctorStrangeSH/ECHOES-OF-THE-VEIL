@@ -483,6 +483,32 @@ func _ready() -> void:
 	WorldClock.sleep_until_hour(8)
 	await _frames(10)
 
+	_step = "park: a three-a-side match on the pitch"
+	WorldClock.wait_until_hour(15)
+	SceneFlow.travel(&"greyford_park", &"from_town")
+	await _wait_location(&"greyford_park")
+	await _frames(10)
+	EventHub.screen_requested.emit("match:football")
+	await _frames(10)
+	var matches := SceneFlow.current_location.find_children("*", "FootballMatch", true, false)
+	_assert(matches.size() == 1, "a match starts on the pitch")
+	if matches.size() == 1:
+		var fm := matches[0] as FootballMatch
+		_assert(fm.bots.size() == 7, "seven other players on the pitch")
+		var cash := Inventory.money
+		for g in FootballMatch.WIN:
+			await get_tree().create_timer(FootballMatch.KICKOFF_PAUSE + 0.3).timeout
+			if not is_instance_valid(fm):
+				break
+			fm.ball_pos = Vector2(FootballMatch.CENTER.x, FootballMatch.top_goal_y() - 6)
+			fm.ball_vel = Vector2(0, -120)
+			await _frames(6)
+		await _frames(10)
+		_assert(not is_instance_valid(fm) or not fm.running, "the match ends at three goals")
+		_assert(Inventory.money > cash or int(GameState.get_flag(&"match.football.wins", 0)) >= 1, "a win counts")
+	SceneFlow.travel(&"greyford_block", &"from_park")
+	await _wait_location(&"greyford_block")
+
 	_step = "endgame: an expedition with combined mechanics"
 	SceneFlow.travel(&"echo_ward", &"rift_return")
 	await _wait_location(&"echo_ward")

@@ -950,9 +950,11 @@ flowchart TD
   park_keeper_intro2 --> park_keeper_hub
   park_keeper_hub["hub<br/>Dev: 'Left, right, or the middle. I've narrowed it d…"]
   park_keeper_hub_end_0(["end"])
-  park_keeper_hub -->|"'Let's play.'"| park_keeper_hub_end_0
+  park_keeper_hub -->|"'Fancy a proper match?' ⟨{period: [morning, afternoon, evening]}⟩"| park_keeper_hub_end_0
   park_keeper_hub_end_1(["end"])
-  park_keeper_hub -->|"'Later.'"| park_keeper_hub_end_1
+  park_keeper_hub -->|"'Just penalties.'"| park_keeper_hub_end_1
+  park_keeper_hub_end_2(["end"])
+  park_keeper_hub -->|"'Later.'"| park_keeper_hub_end_2
 ```
 
 ## people.json

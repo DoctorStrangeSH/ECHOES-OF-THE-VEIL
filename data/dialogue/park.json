@@ -77,7 +77,23 @@
     "text": "PARK_KEEPER_R",
     "choices": [
      {
-      "text": "SPORT_CHOICE_PLAY",
+      "text": "MATCH_CHOICE",
+      "if": {
+       "period": [
+        "morning",
+        "afternoon",
+        "evening"
+       ]
+      },
+      "effects": [
+       {
+        "open_screen": "match:football"
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "SPORT_CHOICE_PENALTIES",
       "effects": [
        {
         "open_screen": "sport:football"
