@@ -226,9 +226,24 @@ collision_offset = Vector2(0, -2)
 position = Vector2(232, 264)
 interaction_id = &"use_bus_stop"
 screen = "map:travel"
+prompt_key = "PROMPT_BUS"
 
 [node name="BusStopSpawn" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(232, 274)
 script = ExtResource("4_spawn")
 spawn_id = &"bus_stop"
 facing = Vector2(0, 1)
+
+[node name="FishSpot" parent="Entities" instance=ExtResource("18_screen")]
+position = Vector2(440, 64)
+interaction_id = &"fish_north_quay"
+screen = "fish:harbour"
+prompt_key = "PROMPT_FISH"
+
+[node name="FishBucket" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(456, 76)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Fish_Bucket_1.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.376,0.502,0.627, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)

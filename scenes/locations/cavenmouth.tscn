@@ -204,12 +204,11 @@ placeholder_color = Color(0.314,0.251,0.251, 1)
 collision_size = Vector2(112, 96)
 collision_offset = Vector2(0, -48)
 
-[node name="BaitLook" type="Area2D" parent="Entities"]
+[node name="BaitShop" parent="Entities" instance=ExtResource("18_screen")]
 position = Vector2(456, 262)
-script = ExtResource("5_inspect")
-interaction_id = &"inspect_cav_bait"
-area_size = Vector2(60, 10)
-lines = PackedStringArray("FLAVOR_CAV_BAIT")
+interaction_id = &"use_cav_bait"
+screen = "shop:cav_bait"
+prompt_key = "PROMPT_ENTER_SHOP"
 
 [node name="ShopGround" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(584, 256)
@@ -405,6 +404,7 @@ collision_offset = Vector2(0, -2)
 position = Vector2(400, 368)
 interaction_id = &"use_cav_coach"
 screen = "world:travel"
+prompt_key = "PROMPT_COACH"
 
 [node name="CoachStop" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(384, 352)
@@ -594,3 +594,17 @@ placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.251,0.502,0.753, 1)
 collision_size = Vector2(0, 0)
 collision_offset = Vector2(0, 0)
+
+[node name="FishSpot" parent="Entities" instance=ExtResource("18_screen")]
+position = Vector2(592, 488)
+interaction_id = &"fish_cav_pier"
+screen = "fish:sea"
+prompt_key = "PROMPT_FISH"
+
+[node name="FishBucket" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(610, 496)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Fish_Bucket_1.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.376,0.502,0.627, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)

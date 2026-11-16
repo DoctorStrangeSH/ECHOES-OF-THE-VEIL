@@ -15,6 +15,7 @@ extends Node
 var sport: SportMinigame
 var city_map: MapScreen
 var world_map: WorldMapScreen
+var fishing: FishingMinigame
 
 
 func _ready() -> void:
@@ -25,6 +26,8 @@ func _ready() -> void:
 	add_child(city_map)
 	world_map = WorldMapScreen.new()
 	add_child(world_map)
+	fishing = FishingMinigame.new()
+	add_child(fishing)
 	add_child(CharacterScreen.new())
 	add_child(SeedMenu.new())
 	pause_menu.setup(hud)
@@ -63,6 +66,8 @@ func _on_screen_requested(screen: String) -> void:
 		city_map.open(true)
 	elif screen == "world:travel":
 		world_map.open()
+	elif screen.begins_with("fish:"):
+		fishing.start(screen.trim_prefix("fish:"))
 	elif screen == "match:football":
 		var loc := SceneFlow.current_location
 		if loc != null and loc.location_id == &"greyford_park" and loc.find_children("*", "FootballMatch", true, false).is_empty():

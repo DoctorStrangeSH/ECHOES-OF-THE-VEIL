@@ -223,6 +223,10 @@ for loc in CROWDS:
     if not loc.startswith('_'):
         refs.append(('scene', loc, 'crowds'))
 
+for f in glob.glob('scenes/locations/*.tscn'):
+    for k in re.findall(r'prompt_key = "(\w+)"', open(f, encoding='utf-8').read()):
+        key(k, f)
+
 CAMPAIGN = load('data/story/campaign.json')
 for a in CAMPAIGN.get('acts', []):
     for k in ('title', 'subtitle'):
@@ -584,6 +588,8 @@ def screen_ok(s):
         return s[5:] in SHOPS
     if s.startswith('repair:'):
         return s[7:] in JOBS
+    if s.startswith('fish:'):
+        return s[5:] in ('sea', 'harbour', 'lake')
     return s in ('jobs', 'workbench', 'business', 'epilogue', 'expeditions', 'sport:basketball', 'sport:football', 'match:football', 'map:travel', 'train:gym', 'world:travel')
 
 CHECK = {

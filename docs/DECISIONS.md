@@ -112,3 +112,7 @@ A schedule entry can carry an activity: look (glance around now and then), read,
 ## D-073 Other towns (R12a)
 
 Travel between towns is its own layer above the city bus: data/world/world_map.json lists towns (their scenes, where you arrive, a spot on a hand-drawn coast map) and routes with a mode, a fare and a time. Every scene belongs to Greyford unless a town claims it. The first route is a coach from the market to Cavenmouth, a seaside town with an inn, a post office, a beach and its own crowd. Car and plane will be other modes of the same table. The first Cavenmouth story ties back to Greyford on purpose (letters to erased addresses, delivered by hand to Edda, Theo and Jonah), so a second town deepens the first rather than replacing it.
+
+## D-074 Fishing (R7a)
+
+Fishing spots are screen nodes ("fish:sea|harbour|lake") marked by a bucket. A rod from either bait shop opens the minigame: cast, wait, strike inside a short window, then keep the fish inside a band that rises while E is held and sinks when it is let go. Which fish can bite depends on the water, the part of the day, the weather and sometimes the story (data/fishing/fish.json): the herring of '62 only on rainy nights in the harbour, the bell carp only after Mill Ford's bell is known. Each cast costs ten minutes. The kinds caught are counted (flags fish.caught.<id>). Fixed on the way: screen nodes ignored their "prompt" in the region data, so bus stops and shops all said "Use"; the validator now checks every prompt key in the scenes.

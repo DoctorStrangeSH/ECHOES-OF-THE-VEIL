@@ -1,0 +1,113 @@
+{
+ "mackerel": {
+  "category": "fish",
+  "name": "FISH_MACKEREL",
+  "desc": "FISH_MACKEREL_DESC",
+  "color": "#6aa0c0",
+  "value": 6,
+  "stack": 20,
+  "use": {
+   "heal": 1
+  }
+ },
+ "cod": {
+  "category": "fish",
+  "name": "FISH_COD",
+  "desc": "FISH_COD_DESC",
+  "color": "#b0a070",
+  "value": 9,
+  "stack": 20
+ },
+ "plaice": {
+  "category": "fish",
+  "name": "FISH_PLAICE",
+  "desc": "FISH_PLAICE_DESC",
+  "color": "#c09060",
+  "value": 10,
+  "stack": 20
+ },
+ "sea_bass": {
+  "category": "fish",
+  "name": "FISH_SEA_BASS",
+  "desc": "FISH_SEA_BASS_DESC",
+  "color": "#a0b0c0",
+  "value": 16,
+  "stack": 20
+ },
+ "conger": {
+  "category": "fish",
+  "name": "FISH_CONGER",
+  "desc": "FISH_CONGER_DESC",
+  "color": "#505a60",
+  "value": 24,
+  "stack": 20,
+  "use": {
+   "heal": 2
+  }
+ },
+ "harbour_crab": {
+  "category": "fish",
+  "name": "FISH_CRAB",
+  "desc": "FISH_CRAB_DESC",
+  "color": "#d06040",
+  "value": 5,
+  "stack": 20
+ },
+ "herring_1962": {
+  "category": "fish",
+  "name": "FISH_HERRING_1962",
+  "desc": "FISH_HERRING_1962_DESC",
+  "color": "#c0e8ff",
+  "value": 40,
+  "stack": 20
+ },
+ "perch": {
+  "category": "fish",
+  "name": "FISH_PERCH",
+  "desc": "FISH_PERCH_DESC",
+  "color": "#90a050",
+  "value": 5,
+  "stack": 20
+ },
+ "roach": {
+  "category": "fish",
+  "name": "FISH_ROACH",
+  "desc": "FISH_ROACH_DESC",
+  "color": "#b0b0c0",
+  "value": 4,
+  "stack": 20
+ },
+ "pike": {
+  "category": "fish",
+  "name": "FISH_PIKE",
+  "desc": "FISH_PIKE_DESC",
+  "color": "#607a40",
+  "value": 20,
+  "stack": 20
+ },
+ "carp": {
+  "category": "fish",
+  "name": "FISH_CARP",
+  "desc": "FISH_CARP_DESC",
+  "color": "#c0a050",
+  "value": 15,
+  "stack": 20
+ },
+ "bell_carp": {
+  "category": "fish",
+  "name": "FISH_BELL_CARP",
+  "desc": "FISH_BELL_CARP_DESC",
+  "color": "#d0d8ff",
+  "value": 50,
+  "stack": 20
+ },
+ "fishing_rod": {
+  "category": "key",
+  "name": "ITEM_FISHING_ROD",
+  "desc": "ITEM_FISHING_ROD_DESC",
+  "color": "#a08050",
+  "value": 10,
+  "stack": 1,
+  "icon": "modern_farm/Icons/Icons_16x16/Icons_16x16_Singles/Icons_16x16_Tools_Fishing_Rod.png"
+ }
+}

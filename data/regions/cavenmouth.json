@@ -93,13 +93,16 @@
    "ground": "Ground_Floor_Bait_Shop_7",
    "middle": "Middle_Floor_13",
    "roof": "Roof_6",
-   "name": "Bait",
-   "inspect": {
-    "id": "inspect_cav_bait",
-    "lines": [
-     "FLAVOR_CAV_BAIT"
-    ]
-   }
+   "name": "Bait"
+  },
+  {
+   "kind": "screen",
+   "name": "BaitShop",
+   "id": "use_cav_bait",
+   "x": 456,
+   "y": 262,
+   "screen": "shop:cav_bait",
+   "prompt": "PROMPT_ENTER_SHOP"
   },
   {
    "template": "townhouse",
@@ -771,6 +774,31 @@
    ],
    "layer": "FloorDecor",
    "color": "#4080c0"
+  },
+  {
+   "kind": "screen",
+   "name": "FishSpot",
+   "id": "fish_cav_pier",
+   "x": 592,
+   "y": 488,
+   "screen": "fish:sea",
+   "prompt": "PROMPT_FISH"
+  },
+  {
+   "kind": "prop",
+   "name": "FishBucket",
+   "tex": "@camp/Fish_Bucket_1.png",
+   "x": 610,
+   "y": 496,
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ],
+   "color": "#6080a0"
   }
  ]
 }

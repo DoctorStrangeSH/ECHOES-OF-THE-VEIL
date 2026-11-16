@@ -1251,6 +1251,31 @@
     1,
     0
    ]
+  },
+  {
+   "kind": "screen",
+   "name": "FishSpot",
+   "id": "fish_millwood_pier",
+   "x": 632,
+   "y": 300,
+   "screen": "fish:lake",
+   "prompt": "PROMPT_FISH"
+  },
+  {
+   "kind": "prop",
+   "name": "FishBucket",
+   "tex": "@camp/Fish_Bucket_1.png",
+   "x": 648,
+   "y": 306,
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ],
+   "color": "#6080a0"
   }
  ]
 }

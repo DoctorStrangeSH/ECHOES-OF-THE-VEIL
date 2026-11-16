@@ -8,9 +8,9 @@ signal changed
 
 const ITEMS_PATH := "res://data/items/items"  # + items_*.json
 const ATTUNEMENTS_PATH := "res://data/progression/attunements"
-const CATEGORIES: PackedStringArray = ["weapon", "trinket", "consumable", "material", "key", "seed", "produce"]
+const CATEGORIES: PackedStringArray = ["weapon", "trinket", "consumable", "material", "key", "seed", "produce", "fish"]
 ## Filter groups: the "farm" filter shows seeds and produce together.
-const FILTER_GROUPS := {"farm": ["seed", "produce"]}
+const FILTER_GROUPS := {"farm": ["seed", "produce", "fish"]}
 const DEFAULT_WEAPON := &"fists"
 ## Additive stats default to 0, multipliers to 1.
 const MULT_STATS: PackedStringArray = ["dodge_cooldown_mult", "dodge_distance_mult", "flash_cooldown_mult", "flash_radius_mult", "speed_mult", "pay_mult"]

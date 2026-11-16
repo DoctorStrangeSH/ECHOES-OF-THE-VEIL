@@ -70,7 +70,6 @@
   "OBJ_LETTER_THEO": {"en": "Theo Marsh", "ru": "Тео Марш"},
   "OBJ_LETTER_JONAH": {"en": "Jonah Rook", "ru": "Джона Рук"},
   "FLAVOR_CAV_BAKERY": {"en": "The window is full of saffron buns. A card says: «Yesterday's at half price. Tomorrow's at full.»", "ru": "Витрина полна шафрановых булочек. На табличке: «Вчерашние за полцены. Завтрашние по полной»."},
-  "FLAVOR_CAV_BAIT": {"en": "Live bait, hooks, and a hand-written sign: «We do not sell luck. Ask anyway.»", "ru": "Живая наживка, крючки и табличка от руки: «Удачу не продаём. Но спросить можно»."},
   "FLAVOR_CAV_SHOP": {"en": "Knitted jumpers in every colour of the sea, which is to say grey, grey-green and grey.", "ru": "Вязаные свитера всех цветов моря, то есть серого, серо-зелёного и снова серого."},
   "FLAVOR_CAV_BANK": {"en": "A cash machine that, according to a note taped to it, «only gives on Tuesdays».", "ru": "Банкомат, который, если верить записке на скотче, «выдаёт только по вторникам»."},
   "FLAVOR_CAV_PIER": {"en": "At the end of the pier the boards are silver with salt. Out at sea, a tanker stands so still it might be painted.", "ru": "На конце причала доски серебристые от соли. В море стоит танкер, такой неподвижный, будто нарисованный."},

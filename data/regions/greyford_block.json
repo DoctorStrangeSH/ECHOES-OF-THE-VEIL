@@ -1497,6 +1497,31 @@
     0,
     1
    ]
+  },
+  {
+   "kind": "screen",
+   "name": "FishSpot",
+   "id": "fish_harbour_rail",
+   "x": 200,
+   "y": 60,
+   "screen": "fish:harbour",
+   "prompt": "PROMPT_FISH"
+  },
+  {
+   "kind": "prop",
+   "name": "FishBucket",
+   "tex": "@camp/Fish_Bucket_1.png",
+   "x": 214,
+   "y": 72,
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ],
+   "color": "#6080a0"
   }
  ]
 }

@@ -338,6 +338,31 @@
     0,
     1
    ]
+  },
+  {
+   "kind": "screen",
+   "name": "FishSpot",
+   "id": "fish_north_quay",
+   "x": 440,
+   "y": 64,
+   "screen": "fish:harbour",
+   "prompt": "PROMPT_FISH"
+  },
+  {
+   "kind": "prop",
+   "name": "FishBucket",
+   "tex": "@camp/Fish_Bucket_1.png",
+   "x": 456,
+   "y": 76,
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ],
+   "color": "#6080a0"
   }
  ]
 }

@@ -403,12 +403,11 @@ interaction_id = &"inspect_butchery"
 area_size = Vector2(60, 10)
 lines = PackedStringArray("FLAVOR_MARKET_BUTCHERY")
 
-[node name="BaitLook" type="Area2D" parent="Entities"]
+[node name="BaitShop" parent="Entities" instance=ExtResource("18_screen")]
 position = Vector2(712, 262)
-script = ExtResource("5_inspect")
-interaction_id = &"inspect_bait"
-area_size = Vector2(60, 10)
-lines = PackedStringArray("FLAVOR_MARKET_BAIT")
+interaction_id = &"use_market_bait"
+screen = "shop:market_bait"
+prompt_key = "PROMPT_ENTER_SHOP"
 
 [node name="CandyLook" type="Area2D" parent="Entities"]
 position = Vector2(264, 416)
@@ -456,6 +455,7 @@ collision_offset = Vector2(0, -2)
 position = Vector2(600, 306)
 interaction_id = &"use_bus_stop"
 screen = "map:travel"
+prompt_key = "PROMPT_BUS"
 
 [node name="BusStopSpawn" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(600, 314)
@@ -517,6 +517,7 @@ collision_offset = Vector2(0, -2)
 position = Vector2(404, 400)
 interaction_id = &"use_market_coach"
 screen = "world:travel"
+prompt_key = "PROMPT_COACH"
 
 [node name="CoachStop" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(388, 384)

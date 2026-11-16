@@ -741,3 +741,17 @@ position = Vector2(22, 368)
 script = ExtResource("4_spawn")
 spawn_id = &"from_farm"
 facing = Vector2(1, 0)
+
+[node name="FishSpot" parent="Entities" instance=ExtResource("18_screen")]
+position = Vector2(632, 300)
+interaction_id = &"fish_millwood_pier"
+screen = "fish:lake"
+prompt_key = "PROMPT_FISH"
+
+[node name="FishBucket" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(648, 306)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Fish_Bucket_1.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.376,0.502,0.627, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)
