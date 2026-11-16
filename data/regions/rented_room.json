@@ -2,7 +2,13 @@
  "id": "rented_room",
  "name_key": "LOC_RENTED_ROOM",
  "palette": "rented_room",
- "options": {"outdoors": false, "enter_dialogue_id": "woke_up", "enter_condition": {"flag": "veil.just_fainted"}},
+ "options": {
+  "outdoors": false,
+  "enter_dialogue_id": "woke_up",
+  "enter_condition": {
+   "flag": "veil.just_fainted"
+  }
+ },
  "layout": [
   "################",
   "#WWWWWWWWWWWWWW#",
@@ -17,23 +23,325 @@
   "#######ff#######"
  ],
  "nodes": [
-  {"kind": "prop", "name": "Bed", "tex": "@bedroom/256.png", "x": 36, "y": 96, "col": [30, 44], "off": [0, -22], "color": "#5f8f7a"},
-  {"kind": "prop", "name": "Desk", "tex": "@bedroom/393.png", "x": 184, "y": 64, "col": [44, 14], "off": [0, -7], "color": "#a08060"},
-  {"kind": "prop", "name": "Wardrobe", "tex": "@living/37.png", "x": 120, "y": 60, "col": [28, 10], "off": [0, -5], "color": "#8a6040"},
-  {"kind": "prop", "name": "Plant", "tex": "@living/13.png", "x": 224, "y": 62, "col": [12, 8], "off": [0, -4], "color": "#3f8f3f"},
-  {"kind": "prop", "name": "Lamp", "tex": "@living/87.png", "x": 66, "y": 60, "col": [8, 6], "off": [0, -3], "color": "#e0d0b0"},
-  {"kind": "prop", "name": "Drawers", "tex": "@living/55.png", "x": 224, "y": 140, "col": [28, 10], "off": [0, -5], "color": "#8a6040"},
-  {"kind": "prop", "name": "Rug", "tex": "@bedroom/385.png", "x": 128, "y": 134, "col": [0, 0], "off": [0, 0], "color": "#a07a60", "layer": "FloorDecor"},
-  {"kind": "spawn", "name": "FromStreet", "id": "from_street", "x": 128, "y": 154, "facing": [0, -1]},
-  {"kind": "spawn", "name": "Bed", "id": "bed", "x": 36, "y": 120, "facing": [0, 1]},
-  {"kind": "door", "name": "ExitDoor", "id": "door_home_room", "x": 128, "y": 164, "area": [30, 10], "scene": "greyford_block", "spawn": "front_home", "prompt": "PROMPT_EXIT"},
-  {"kind": "rest", "name": "BedRest", "id": "rest_home_bed", "x": 36, "y": 104, "area": [30, 14]},
-  {"kind": "inspect", "name": "DeskNote", "id": "inspect_landlord_note", "x": 184, "y": 72, "area": [44, 14], "prompt": "PROMPT_READ", "dialogue": "landlord_note"},
-  {"kind": "inspect", "name": "WardrobeLook", "id": "inspect_wardrobe", "x": 120, "y": 66, "area": [28, 10], "lines": ["WARDROBE_1"]},
-  {"kind": "pickup", "name": "Compass", "x": 224, "y": 150, "item": "brass_compass", "flag": "pickup.room_compass"},
-  {"kind": "prop", "name": "Workbench", "tex": "@library/28.png", "x": 60, "y": 140, "col": [28, 10], "off": [0, -5], "color": "#906040", "show_if": {"flag": "home.workbench"}},
-  {"kind": "screen", "name": "WorkbenchUse", "id": "use_workbench", "x": 60, "y": 148, "screen": "workbench", "show_if": {"flag": "home.workbench"}},
-  {"kind": "spot", "name": "SpotRadiator", "id": "spot_radiator", "x": 100, "y": 58, "spot": "room_radiator"},
-  {"kind": "pickup", "name": "ReplyLetter", "x": 200, "y": 96, "item": "letter_reply", "flag": "pickup.letter_reply", "show_if": {"flag": "letters.lantern"}}
+  {
+   "kind": "prop",
+   "name": "Bed",
+   "tex": "@bedroom/256.png",
+   "x": 36,
+   "y": 96,
+   "col": [
+    30,
+    44
+   ],
+   "off": [
+    0,
+    -22
+   ],
+   "color": "#5f8f7a"
+  },
+  {
+   "kind": "prop",
+   "name": "Desk",
+   "tex": "@bedroom/393.png",
+   "x": 184,
+   "y": 64,
+   "col": [
+    44,
+    14
+   ],
+   "off": [
+    0,
+    -7
+   ],
+   "color": "#a08060"
+  },
+  {
+   "kind": "prop",
+   "name": "Wardrobe",
+   "tex": "@living/37.png",
+   "x": 120,
+   "y": 60,
+   "col": [
+    28,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#8a6040"
+  },
+  {
+   "kind": "prop",
+   "name": "Plant",
+   "tex": "@living/13.png",
+   "x": 224,
+   "y": 62,
+   "col": [
+    12,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#3f8f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp",
+   "tex": "@living/87.png",
+   "x": 66,
+   "y": 60,
+   "col": [
+    8,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ],
+   "color": "#e0d0b0"
+  },
+  {
+   "kind": "prop",
+   "name": "Drawers",
+   "tex": "@living/55.png",
+   "x": 224,
+   "y": 140,
+   "col": [
+    28,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#8a6040"
+  },
+  {
+   "kind": "prop",
+   "name": "Rug",
+   "tex": "@bedroom/385.png",
+   "x": 128,
+   "y": 134,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "color": "#a07a60",
+   "layer": "FloorDecor"
+  },
+  {
+   "kind": "furn",
+   "furn": "window",
+   "x": 88,
+   "y": 52
+  },
+  {
+   "kind": "furn",
+   "furn": "window",
+   "x": 152,
+   "y": 52
+  },
+  {
+   "kind": "furn",
+   "furn": "nightstand",
+   "x": 62,
+   "y": 82
+  },
+  {
+   "kind": "furn",
+   "furn": "coat_stand",
+   "x": 98,
+   "y": 154
+  },
+  {
+   "kind": "furn",
+   "furn": "table_wood",
+   "x": 164,
+   "y": 122
+  },
+  {
+   "kind": "furn",
+   "furn": "chair_wood",
+   "x": 186,
+   "y": 120
+  },
+  {
+   "kind": "furn",
+   "furn": "armchair_red",
+   "x": 222,
+   "y": 114
+  },
+  {
+   "kind": "furn",
+   "furn": "sideboard_books",
+   "x": 28,
+   "y": 158
+  },
+  {
+   "kind": "spawn",
+   "name": "FromStreet",
+   "id": "from_street",
+   "x": 128,
+   "y": 154,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "spawn",
+   "name": "Bed",
+   "id": "bed",
+   "x": 36,
+   "y": 120,
+   "facing": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ExitDoor",
+   "id": "door_home_room",
+   "x": 128,
+   "y": 164,
+   "area": [
+    30,
+    10
+   ],
+   "scene": "greyford_block",
+   "spawn": "front_home",
+   "prompt": "PROMPT_EXIT"
+  },
+  {
+   "kind": "rest",
+   "name": "BedRest",
+   "id": "rest_home_bed",
+   "x": 36,
+   "y": 104,
+   "area": [
+    30,
+    14
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "DeskNote",
+   "id": "inspect_landlord_note",
+   "x": 184,
+   "y": 72,
+   "area": [
+    44,
+    14
+   ],
+   "prompt": "PROMPT_READ",
+   "dialogue": "landlord_note"
+  },
+  {
+   "kind": "inspect",
+   "name": "WardrobeLook",
+   "id": "inspect_wardrobe",
+   "x": 120,
+   "y": 66,
+   "area": [
+    28,
+    10
+   ],
+   "lines": [
+    "WARDROBE_1"
+   ]
+  },
+  {
+   "kind": "pickup",
+   "name": "Compass",
+   "x": 224,
+   "y": 150,
+   "item": "brass_compass",
+   "flag": "pickup.room_compass"
+  },
+  {
+   "kind": "prop",
+   "name": "Workbench",
+   "tex": "@library/28.png",
+   "x": 60,
+   "y": 140,
+   "col": [
+    28,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#906040",
+   "show_if": {
+    "flag": "home.workbench"
+   }
+  },
+  {
+   "kind": "screen",
+   "name": "WorkbenchUse",
+   "id": "use_workbench",
+   "x": 60,
+   "y": 148,
+   "screen": "workbench",
+   "show_if": {
+    "flag": "home.workbench"
+   }
+  },
+  {
+   "kind": "spot",
+   "name": "SpotRadiator",
+   "id": "spot_radiator",
+   "x": 100,
+   "y": 58,
+   "spot": "room_radiator"
+  },
+  {
+   "kind": "pickup",
+   "name": "ReplyLetter",
+   "x": 200,
+   "y": 96,
+   "item": "letter_reply",
+   "flag": "pickup.letter_reply",
+   "show_if": {
+    "flag": "letters.lantern"
+   }
+  },
+  {
+   "kind": "inspect",
+   "name": "WindowLook",
+   "id": "inspect_room_window",
+   "x": 152,
+   "y": 60,
+   "area": [
+    28,
+    10
+   ],
+   "lines": [
+    "FLAVOR_ROOM_WINDOW"
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "ArmchairLook",
+   "id": "inspect_room_armchair",
+   "x": 222,
+   "y": 120,
+   "area": [
+    20,
+    10
+   ],
+   "lines": [
+    "FLAVOR_ROOM_ARMCHAIR"
+   ]
+  }
  ]
 }

@@ -449,6 +449,12 @@ for iid, inc in INCIDENTS.items():
     if not reported:
         err(f'{where}: no dialogue entry handles the report stage')
 
+# --- proofreading (tools/text_lint.py) -----------------------------------------
+_lint = _sp_lint = __import__('subprocess').run([sys.executable, 'tools/text_lint.py'], capture_output=True, text=True)
+for line in _lint.stdout.splitlines():
+    if line.startswith('ERROR: '):
+        err('text: ' + line[7:])
+
 # --- quest guide (R0) -----------------------------------------------------------
 import subprocess as _sp
 if _sp.run([sys.executable, 'tools/regions/door_graph.py', '--check']).returncode != 0:

@@ -198,3 +198,43 @@ pickup_flag = &"pickup.rook_stamp"
 [node name="Condition" type="Node" parent="Entities/RookStamp"]
 script = ExtResource("10_cond")
 show_if = {"quest_stage": ["case_rook_and_rook", "stamp"], "flag": "storeroom.cleared"}
+
+[node name="Crate_40_80" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(40, 80)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_40.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(20, 10)
+collision_offset = Vector2(4, -5)
+
+[node name="CrateB_40_96" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(40, 96)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_41.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(20, 10)
+collision_offset = Vector2(4, -5)
+
+[node name="CrateOpen_216_76" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(216, 76)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_43.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(20, 10)
+collision_offset = Vector2(-4, -5)
+
+[node name="BookcaseJars_220_112" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(220, 112)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_45.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -13)
+
+[node name="Stool_88_144" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(88, 144)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_105.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(10, 4)
+collision_offset = Vector2(0, -5)
