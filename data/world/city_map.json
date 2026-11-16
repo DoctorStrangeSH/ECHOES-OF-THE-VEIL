@@ -70,7 +70,7 @@
    ],
    "stop_at": [
     312,
-    56
+    136
    ],
    "desc": "MAP_DESC_GARDENS",
    "places": [
@@ -105,7 +105,7 @@
    ],
    "stop_at": [
     600,
-    298
+    314
    ],
    "desc": "MAP_DESC_MARKET",
    "places": [
@@ -164,8 +164,8 @@
     12
    ],
    "stop_at": [
-    96,
-    176
+    232,
+    274
    ],
    "desc": "MAP_DESC_NORTH_QUAY",
    "places": [

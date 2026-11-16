@@ -36,8 +36,8 @@ palette_id = "echo_corridor"
 layout = "##############################
 #WWWWWWWWWWWWWWWWWWWWWWWWWWWW#
 #wwwwwwwwwwwwwwwwwwwwwwwwwwww#
-#fffffffff#ffffffff#fffffffff#
-#fffffffff#ffffffff#fffffffff#
+#ffffffffffffffffffffffffffff#
+#ffffffffffffffffffffffffffff#
 #ffffffffffffffffffffffffffff#
 #ffffffffffffffffffffffffffff#
 #ffffffffffffffffffffffffffff#
@@ -95,7 +95,7 @@ collision_size = Vector2(30, 14)
 collision_offset = Vector2(0, -7)
 
 [node name="Plant" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(460, 62)
+position = Vector2(446, 62)
 texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_13.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.247,0.435,0.310, 1)

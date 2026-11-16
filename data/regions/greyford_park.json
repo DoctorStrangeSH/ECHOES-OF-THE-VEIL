@@ -14,6 +14,11 @@
   "ggggggggggggggggsssggggggggggggggggggggggggg",
   "ggggggggggggggggsssggggggggggggggggggggggggg",
   "ggggggggggggggggsssggggggggggggggggggggggggg",
+  "ggggggggggggggggsssggggggggggggggggggggggggg",
+  "ggggggggggggggggsssggggggggggggggggggggggggg",
+  "ggggggggggggggggsssggggggggggggggggggggggggg",
+  "ggggggggggggggggsssggggggggggggggggggggggggg",
+  "ggggggggggggggggsssggggggggggggggggggggggggg",
   "sssssssssssssssssssssssssssssssggggggggggggg",
   "sssssssssssssssssssssssssssssssggggggggggggg",
   "sssssssssssssssssssssssssssssssggggggggggggg",
@@ -41,7 +46,7 @@
    "name": "BasketballCourt",
    "tex": "modern_exteriors/Modern_Exteriors_16x16/Modern_Exteriors_Complete_Singles_16x16/ME_Singles_School_16x16_Basketball_Court_5.png",
    "x": 136,
-   "y": 440,
+   "y": 520,
    "color": "#8a7a70",
    "col": [
     0,
@@ -58,7 +63,7 @@
    "name": "SoccerField",
    "tex": "modern_exteriors/Modern_Exteriors_16x16/Modern_Exteriors_Complete_Singles_16x16/ME_Singles_School_16x16_Soccer_Court_2.png",
    "x": 600,
-   "y": 448,
+   "y": 528,
    "color": "#4a8a3a",
    "col": [
     0,
@@ -75,7 +80,7 @@
    "name": "Fountain",
    "tex": "@city/Fountain_1.png",
    "x": 280,
-   "y": 256,
+   "y": 336,
    "color": "#6a8a5a",
    "col": [
     28,
@@ -91,7 +96,7 @@
    "name": "CoffeeKiosk",
    "tex": "@city/Kiosk_Coffee_Cup_Example.png",
    "x": 376,
-   "y": 124,
+   "y": 204,
    "color": "#a07050"
   },
   {
@@ -99,7 +104,7 @@
    "name": "IceCreamKiosk",
    "tex": "@city/Kiosk_Icecream_Example.png",
    "x": 476,
-   "y": 124,
+   "y": 204,
    "color": "#e0a0c0"
   },
   {
@@ -107,7 +112,7 @@
    "name": "BenchN1",
    "tex": "@city/Bench_2.png",
    "x": 72,
-   "y": 124,
+   "y": 204,
    "color": "#6a8a5a",
    "col": [
     44,
@@ -123,7 +128,7 @@
    "name": "BenchN2",
    "tex": "@city/Bench_2.png",
    "x": 168,
-   "y": 124,
+   "y": 204,
    "color": "#6a8a5a",
    "col": [
     44,
@@ -139,7 +144,7 @@
    "name": "BenchP1",
    "tex": "@city/Bench_2.png",
    "x": 240,
-   "y": 300,
+   "y": 380,
    "color": "#6a8a5a",
    "col": [
     44,
@@ -155,7 +160,7 @@
    "name": "BenchP2",
    "tex": "@city/Bench_2.png",
    "x": 320,
-   "y": 300,
+   "y": 380,
    "color": "#6a8a5a",
    "col": [
     44,
@@ -171,7 +176,7 @@
    "name": "Lamp1",
    "tex": "@city/Street_Lamp_5.png",
    "x": 232,
-   "y": 180,
+   "y": 260,
    "color": "#6a8a5a",
    "col": [
     6,
@@ -187,7 +192,7 @@
    "name": "Lamp2",
    "tex": "@city/Street_Lamp_5.png",
    "x": 344,
-   "y": 180,
+   "y": 260,
    "color": "#6a8a5a",
    "col": [
     6,
@@ -203,7 +208,7 @@
    "name": "Lamp3",
    "tex": "@city/Street_Lamp_5.png",
    "x": 120,
-   "y": 176,
+   "y": 256,
    "color": "#6a8a5a",
    "col": [
     6,
@@ -219,7 +224,7 @@
    "name": "Lamp4",
    "tex": "@city/Street_Lamp_5.png",
    "x": 480,
-   "y": 176,
+   "y": 256,
    "color": "#6a8a5a",
    "col": [
     6,
@@ -235,7 +240,7 @@
    "name": "InfoSign",
    "tex": "@city/Info_Sign_2.png",
    "x": 224,
-   "y": 128,
+   "y": 208,
    "color": "#6a8a5a",
    "col": [
     10,
@@ -251,7 +256,7 @@
    "name": "Bin1",
    "tex": "@city/Trashbin_7.png",
    "x": 208,
-   "y": 128,
+   "y": 208,
    "color": "#6a8a5a",
    "col": [
     12,
@@ -267,7 +272,7 @@
    "name": "Tree1",
    "tex": "@city/Tree_11.png",
    "x": 24,
-   "y": 60,
+   "y": 150,
    "color": "#3f7f3f",
    "col": [
     14,
@@ -283,7 +288,7 @@
    "name": "Tree2",
    "tex": "@city/Tree_3.png",
    "x": 88,
-   "y": 48,
+   "y": 150,
    "color": "#3f7f3f",
    "col": [
     14,
@@ -299,7 +304,7 @@
    "name": "Tree3",
    "tex": "@city/Tree_5.png",
    "x": 150,
-   "y": 70,
+   "y": 150,
    "color": "#3f7f3f",
    "col": [
     14,
@@ -315,7 +320,7 @@
    "name": "Tree4",
    "tex": "@city/Tree_11.png",
    "x": 232,
-   "y": 56,
+   "y": 150,
    "color": "#3f7f3f",
    "col": [
     14,
@@ -331,7 +336,7 @@
    "name": "Tree5",
    "tex": "@city/Tree_7.png",
    "x": 330,
-   "y": 60,
+   "y": 150,
    "color": "#3f7f3f",
    "col": [
     14,
@@ -347,7 +352,7 @@
    "name": "Tree6",
    "tex": "@city/Tree_11.png",
    "x": 400,
-   "y": 72,
+   "y": 152,
    "color": "#3f7f3f",
    "col": [
     14,
@@ -363,7 +368,7 @@
    "name": "Tree7",
    "tex": "@city/Tree_3.png",
    "x": 560,
-   "y": 60,
+   "y": 150,
    "color": "#3f7f3f",
    "col": [
     14,
@@ -379,7 +384,7 @@
    "name": "Tree8",
    "tex": "@city/Tree_5.png",
    "x": 24,
-   "y": 200,
+   "y": 280,
    "color": "#3f7f3f",
    "col": [
     14,
@@ -394,8 +399,8 @@
    "kind": "prop",
    "name": "Tree9",
    "tex": "@city/Tree_11.png",
-   "x": 390,
-   "y": 250,
+   "x": 380,
+   "y": 190,
    "color": "#3f7f3f",
    "col": [
     14,
@@ -410,8 +415,8 @@
    "kind": "prop",
    "name": "Tree10",
    "tex": "@city/Tree_7.png",
-   "x": 450,
-   "y": 300,
+   "x": 470,
+   "y": 190,
    "color": "#3f7f3f",
    "col": [
     14,
@@ -427,7 +432,7 @@
    "name": "Tree11",
    "tex": "@city/Tree_11.png",
    "x": 400,
-   "y": 380,
+   "y": 460,
    "color": "#3f7f3f",
    "col": [
     14,
@@ -443,7 +448,7 @@
    "name": "Tree12",
    "tex": "@city/Tree_3.png",
    "x": 470,
-   "y": 420,
+   "y": 500,
    "color": "#3f7f3f",
    "col": [
     14,
@@ -459,7 +464,7 @@
    "name": "Tree13",
    "tex": "@city/Tree_5.png",
    "x": 24,
-   "y": 300,
+   "y": 380,
    "color": "#3f7f3f",
    "col": [
     14,
@@ -475,7 +480,7 @@
    "name": "Tree14",
    "tex": "@city/Tree_11.png",
    "x": 272,
-   "y": 436,
+   "y": 516,
    "color": "#3f7f3f",
    "col": [
     14,
@@ -491,7 +496,7 @@
    "name": "Tree15",
    "tex": "@city/Tree_7.png",
    "x": 330,
-   "y": 430,
+   "y": 510,
    "color": "#3f7f3f",
    "col": [
     14,
@@ -507,7 +512,7 @@
    "name": "Flowers1",
    "tex": "@city/Flower_Bush_1.png",
    "x": 200,
-   "y": 200,
+   "y": 280,
    "color": "#6a8a5a",
    "col": [
     30,
@@ -523,7 +528,7 @@
    "name": "Flowers2",
    "tex": "@city/Flower_Bush_1.png",
    "x": 360,
-   "y": 200,
+   "y": 280,
    "color": "#6a8a5a",
    "col": [
     30,
@@ -539,7 +544,7 @@
    "name": "Flowers3",
    "tex": "@city/Flower_Bush_1.png",
    "x": 200,
-   "y": 300,
+   "y": 380,
    "color": "#6a8a5a",
    "col": [
     30,
@@ -555,7 +560,7 @@
    "name": "Flowers4",
    "tex": "@city/Flower_Bush_1.png",
    "x": 360,
-   "y": 300,
+   "y": 380,
    "color": "#6a8a5a",
    "col": [
     30,
@@ -571,7 +576,7 @@
    "name": "BasketballUse",
    "id": "use_basketball",
    "x": 136,
-   "y": 356,
+   "y": 436,
    "screen": "sport:basketball",
    "prompt": "PROMPT_PLAY"
   },
@@ -580,7 +585,7 @@
    "name": "SoccerUse",
    "id": "use_football",
    "x": 600,
-   "y": 396,
+   "y": 476,
    "screen": "sport:football",
    "prompt": "PROMPT_PLAY"
   },
@@ -589,7 +594,7 @@
    "name": "CoffeeLook",
    "id": "inspect_park_coffee",
    "x": 376,
-   "y": 132,
+   "y": 212,
    "area": [
     40,
     10
@@ -603,7 +608,7 @@
    "name": "IceCreamLook",
    "id": "inspect_park_icecream",
    "x": 476,
-   "y": 132,
+   "y": 212,
    "area": [
     40,
     10
@@ -617,7 +622,7 @@
    "name": "FountainLook",
    "id": "inspect_park_fountain",
    "x": 280,
-   "y": 264,
+   "y": 344,
    "area": [
     30,
     10
@@ -656,11 +661,11 @@
    "points": {
     "hoops": [
      96,
-     330
+     410
     ],
     "goal": [
      600,
-     176
+     256
     ]
    }
   },
@@ -669,7 +674,7 @@
    "name": "BusStopSign",
    "tex": "@vehicle/Bus_Stop_Sign_1.png",
    "x": 312,
-   "y": 40,
+   "y": 130,
    "col": [
     6,
     4
@@ -685,7 +690,7 @@
    "name": "BusStopUse",
    "id": "use_bus_stop",
    "x": 312,
-   "y": 48,
+   "y": 138,
    "screen": "map:travel",
    "prompt": "PROMPT_BUS"
   },
@@ -694,7 +699,7 @@
    "name": "BusStopSpawn",
    "id": "bus_stop",
    "x": 312,
-   "y": 56,
+   "y": 146,
    "facing": [
     0,
     1

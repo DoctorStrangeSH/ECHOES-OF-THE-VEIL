@@ -12,9 +12,9 @@ extends Node2D
 
 signal ended(our: int, their: int)
 
-const FIELD := Rect2(512, 174, 176, 262)  # inside the painted lines
+const FIELD := Rect2(512, 254, 176, 262)  # inside the painted lines
 const GOAL_HALF := 22.0                   # half the goal mouth
-const CENTER := Vector2(600, 305)
+const CENTER := Vector2(600, 385)
 const WIN := 3
 const TIME := 180.0
 const KICK := 230.0
@@ -69,6 +69,8 @@ func start(location: Location) -> void:
 	var tex := AssetLibrary.load_texture(BALL_TEX)
 	_ball.texture = tex if tex != null else AssetLibrary.placeholder(Vector2i(8, 8), Color.WHITE)
 	_ball.offset = Vector2(0, -6)
+	_ball.z_index = 1  # at the players' feet, never hidden behind them
+	_ball.scale = Vector2(1.25, 1.25)
 	_world.add_child(_ball)
 	# Teams: role = home position as a fraction of the field, side.
 	_add_bot("us", "keeper", "Premade_Character_02", Vector2(0.5, 0.98))

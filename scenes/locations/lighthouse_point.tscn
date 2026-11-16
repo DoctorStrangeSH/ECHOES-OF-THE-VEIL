@@ -145,7 +145,7 @@ item_id = &"sea_glass"
 pickup_flag = &"pickup.sea_glass_2"
 
 [node name="BigRock1" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(150, 62)
+position = Vector2(150, 72)
 texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Big_Sea_Rock_Vers_1.png"
 placeholder_size = Vector2i(64, 64)
 placeholder_color = Color(0.376,0.416,0.439, 1)
@@ -153,7 +153,7 @@ collision_size = Vector2(0, 0)
 collision_offset = Vector2(0, 0)
 
 [node name="BigRock2" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(430, 58)
+position = Vector2(430, 68)
 texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Big_Sea_Rock_Vers_1.png"
 placeholder_size = Vector2i(64, 64)
 placeholder_color = Color(0.376,0.416,0.439, 1)

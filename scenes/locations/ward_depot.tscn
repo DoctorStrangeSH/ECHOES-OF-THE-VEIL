@@ -58,13 +58,13 @@ y_sort_enabled = true
 [node name="NpcAnchors" type="Node2D" parent="."]
 
 [node name="TramCar" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(120, 72)
+position = Vector2(120, 70)
 texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_16x16.png"
-placeholder_size = Vector2i(128, 64)
+placeholder_size = Vector2i(160, 63)
 placeholder_color = Color(0.314,0.376,0.439, 1)
 collision_size = Vector2(0, 0)
 collision_offset = Vector2(0, 0)
-region = Rect2(0, 592, 128, 64)
+region = Rect2(176, 785, 160, 63)
 
 [node name="Pillar1" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(96, 120)

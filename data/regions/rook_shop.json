@@ -63,7 +63,7 @@
   {
    "kind": "furn",
    "furn": "grandfather_clock",
-   "x": 272,
+   "x": 262,
    "y": 64
   },
   {
@@ -117,7 +117,7 @@
   {
    "kind": "furn",
    "furn": "plant_tall",
-   "x": 272,
+   "x": 262,
    "y": 120
   },
   {
@@ -158,7 +158,7 @@
    "kind": "inspect",
    "name": "ClockLook",
    "id": "inspect_shop_clock",
-   "x": 272,
+   "x": 262,
    "y": 74,
    "area": [
     16,

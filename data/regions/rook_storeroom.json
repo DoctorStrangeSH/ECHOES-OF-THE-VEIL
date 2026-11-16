@@ -252,13 +252,13 @@
   {
    "kind": "furn",
    "furn": "bookcase_jars",
-   "x": 220,
-   "y": 112
+   "x": 40,
+   "y": 150
   },
   {
    "kind": "furn",
    "furn": "stool",
-   "x": 88,
+   "x": 104,
    "y": 144
   }
  ]

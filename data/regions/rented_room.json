@@ -140,13 +140,13 @@
    "kind": "furn",
    "furn": "window",
    "x": 88,
-   "y": 52
+   "y": 62
   },
   {
    "kind": "furn",
    "furn": "window",
    "x": 152,
-   "y": 52
+   "y": 62
   },
   {
    "kind": "furn",
@@ -181,7 +181,7 @@
   {
    "kind": "furn",
    "furn": "sideboard_books",
-   "x": 28,
+   "x": 38,
    "y": 158
   },
   {
