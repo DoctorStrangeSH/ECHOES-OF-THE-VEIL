@@ -74,6 +74,7 @@ func open() -> void:
 	_cards = build_cards()
 	_index = 0
 	visible = true
+	Music.override = "epilogue"
 	GameState.lock_player(&"epilogue")
 	_show()
 
@@ -87,6 +88,7 @@ func next() -> void:
 	if _index >= _cards.size():
 		visible = false
 		GameState.unlock_player(&"epilogue")
+		Music.override = ""
 		finished.emit()
 		return
 	_show()
