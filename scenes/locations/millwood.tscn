@@ -1,0 +1,743 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/location.gd" id="1_loc"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2_paint"]
+[ext_resource type="PackedScene" path="res://scenes/props/world_prop.tscn" id="3_prop"]
+[ext_resource type="Script" path="res://scripts/world/spawn_point.gd" id="4_spawn"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="5_inspect"]
+[ext_resource type="Script" path="res://scripts/interaction/door_interactable.gd" id="6_door"]
+[ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
+[ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+[ext_resource type="Script" path="res://scripts/world/conditional_visibility.gd" id="10_cond"]
+[ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
+[ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
+[ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+[ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
+[ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
+[ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
+[ext_resource type="PackedScene" path="res://scenes/world/repair_spot.tscn" id="17_spot"]
+[ext_resource type="PackedScene" path="res://scenes/world/screen_interactable.tscn" id="18_screen"]
+[ext_resource type="PackedScene" path="res://scenes/world/junk_pile.tscn" id="19_junk"]
+[ext_resource type="Script" path="res://scripts/farm/forage_spot.gd" id="20_forage"]
+
+[node name="Millwood" type="Node2D"]
+script = ExtResource("1_loc")
+location_id = &"millwood"
+name_key = "LOC_MILLWOOD"
+outdoors = true
+
+[node name="Ground" type="TileMapLayer" parent="."]
+script = ExtResource("2_paint")
+palette_id = "millwood"
+layout = "gggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwgggggggg
+ggggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwggggggg
+ggggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwgggggg
+gggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwggggg
+ggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwgggg
+ggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwgggg
+ggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwgggg
+ggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwgggg
+ggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwgggg
+ggggggggggggddggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwgggg
+ggggggggggggddggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwgggg
+ggggggggggggddggggggggggggggwwwwwwwwwwppwwwwwwwwwwwwgggg
+ggggggggggggddggggggggggggggwwwwwwwwwwppwwwwwwwwwwwwgggg
+ggggggggggggddggggggggggggggwwwwwwwwwwppwwwwwwwwwwwwgggg
+ggggggggggggddggggggggggggggwwwwwwwwwwppwwwwwwwwwwwwgggg
+ggggggggggggddggggggggggggggwwwwwwwwwwppwwwwwwwwwwwwgggg
+ggggggggggggddgggggggggggggggwwwwwwwwwppwwwwwwwwwwwggggg
+ggggggggggggddggggggggggggggggwwwwwwwwppwwwwwwwwwwgggggg
+ggggggggggggddggggggggggggggggggggggggppgggggggggggggggg
+ggggggggggggddgggggggggggggggggggggggggggggggggggggggggg
+dddddddddddddddddddddddddddddddddddddddddggggggggggggggg
+dddddddddddddddddddddddddddddddddddddddddggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggggggggg"
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="NpcAnchors" type="Node2D" parent="."]
+
+[node name="Caravan" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(208, 160)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Mobile_House_Medium_1.png"
+placeholder_size = Vector2i(128, 96)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(118, 40)
+collision_offset = Vector2(0, -20)
+
+[node name="CaravanLook" type="Area2D" parent="Entities"]
+position = Vector2(208, 166)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_caravan"
+area_size = Vector2(40, 14)
+lines = PackedStringArray("FLAVOR_CARAVAN")
+
+[node name="AdaFire" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(176, 196)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Campfire_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="AdaTable" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(250, 200)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Benched_Table_1.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="AdaLantern" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(282, 162)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Lantern_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="AdaStump" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(150, 206)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Stump_1.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(24, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="AdaClothes" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(120, 150)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Pier_Clothes_2.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="A_yard" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(214, 192)
+script = ExtResource("11_anchor")
+anchor_id = &"yard"
+
+[node name="A_shore" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(600, 352)
+script = ExtResource("11_anchor")
+anchor_id = &"shore"
+
+[node name="A_pier" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(616, 272)
+script = ExtResource("11_anchor")
+anchor_id = &"pier"
+
+[node name="Buoy1" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(560, 150)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Buoy_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Buoy2" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(700, 120)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Buoy_3.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Driftwood1" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(520, 250)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Floating_Wood_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Driftwood2" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(760, 280)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Floating_Wood_2.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="PierPost1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(604, 226)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Pier_Pole_1.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(4, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="PierPost2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(644, 226)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Pier_Pole_1.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(4, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="PierBarrel" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(646, 300)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Pier_Barrel_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="PierEnd" type="Area2D" parent="Entities"]
+position = Vector2(624, 222)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_ford_pier"
+area_size = Vector2(32, 14)
+prompt_key = "PROMPT_LISTEN"
+dialogue_id = &"ford_pier"
+
+[node name="VeilBelow" type="Area2D" parent="Entities"]
+position = Vector2(624, 214)
+script = ExtResource("6_door")
+interaction_id = &"door_ford_below"
+area_size = Vector2(32, 10)
+prompt_key = "PROMPT_FORD_DIVE"
+interaction_priority = 25
+target_scene_id = &"drowned_ford"
+target_spawn_id = &"entrance"
+
+[node name="Condition" type="Node" parent="Entities/VeilBelow"]
+script = ExtResource("10_cond")
+show_if = {"all": [{"flag": "ford.open"}, {"period": ["evening", "night"]}]}
+
+[node name="PierSpawn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(624, 244)
+script = ExtResource("4_spawn")
+spawn_id = &"pier"
+facing = Vector2(0, 1)
+
+[node name="Tent" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(520, 456)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Tent_1.png"
+placeholder_size = Vector2i(64, 64)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(50, 14)
+collision_offset = Vector2(0, -7)
+
+[node name="SleepingBag" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(570, 460)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Sleeping_Bag_2.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="CampFire" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(600, 440)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Campfire_2.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="CampLog" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(632, 446)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Cut_Wood_Bench_1.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(26, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="CampRest" type="Area2D" parent="Entities"]
+position = Vector2(600, 452)
+script = ExtResource("7_rest")
+interaction_id = &"rest_millwood_camp"
+area_size = Vector2(30, 14)
+prompt_key = "PROMPT_REST_FIRE"
+
+[node name="CampSign" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(470, 400)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Sign_2.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.816,0.816,0.816, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="CampSignRead" type="Area2D" parent="Entities"]
+position = Vector2(470, 406)
+script = ExtResource("5_inspect")
+interaction_id = &"read_millwood_sign"
+area_size = Vector2(18, 12)
+prompt_key = "PROMPT_READ"
+lines = PackedStringArray("FLAVOR_MILLWOOD_SIGN")
+
+[node name="DeadTree" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(800, 460)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/19_Graveyard_Singles_16x16/ME_Singles_Graveyard_16x16_Big_Tree_.png"
+placeholder_size = Vector2i(64, 64)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(16, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Cross1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(720, 420)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/19_Graveyard_Singles_16x16/ME_Singles_Graveyard_16x16_Grey_Cross_1.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Cross2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(752, 436)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/19_Graveyard_Singles_16x16/ME_Singles_Graveyard_16x16_Grey_Cross_2.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Cross3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(696, 452)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/19_Graveyard_Singles_16x16/ME_Singles_Graveyard_16x16_Grey_Cross_3.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Cross4" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(744, 478)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/19_Graveyard_Singles_16x16/ME_Singles_Graveyard_16x16_Brown_Cross_2.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Cross5" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(840, 420)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/19_Graveyard_Singles_16x16/ME_Singles_Graveyard_16x16_Grey_Cross_4.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Crow" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(812, 388)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/19_Graveyard_Singles_16x16/ME_Singles_Graveyard_16x16_Crow_Front.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Memorial" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(776, 392)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Rock_5.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="MemorialUse" type="Area2D" parent="Entities"]
+position = Vector2(776, 400)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_ford_memorial"
+area_size = Vector2(24, 12)
+prompt_key = "PROMPT_READ"
+dialogue_id = &"ford_memorial"
+
+[node name="Tree1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(40, 72)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Tree_1.png"
+placeholder_size = Vector2i(64, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(110, 80)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Tree_50.png"
+placeholder_size = Vector2i(64, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(300, 96)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Pine_Dark_Green_Big_16x16.png"
+placeholder_size = Vector2i(64, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree4" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(380, 100)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Oak_Green_Big_16x16.png"
+placeholder_size = Vector2i(80, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree5" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(450, 96)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Pine_Green_Big_16x16.png"
+placeholder_size = Vector2i(64, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree6" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(60, 140)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Tree_100.png"
+placeholder_size = Vector2i(64, 80)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree7" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(330, 160)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Birch_Green_Medium_16x16.png"
+placeholder_size = Vector2i(48, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree8" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(400, 170)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Tree_1.png"
+placeholder_size = Vector2i(64, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree9" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(36, 240)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Tree_50.png"
+placeholder_size = Vector2i(64, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree10" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(110, 260)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Pine_Dark_Green_Big_16x16.png"
+placeholder_size = Vector2i(64, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree11" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(300, 260)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Oak_Green_Big_16x16.png"
+placeholder_size = Vector2i(80, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree12" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(380, 250)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Pine_Green_Big_16x16.png"
+placeholder_size = Vector2i(64, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree13" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(450, 280)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Tree_100.png"
+placeholder_size = Vector2i(64, 80)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree14" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(40, 480)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Birch_Green_Medium_16x16.png"
+placeholder_size = Vector2i(48, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree15" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(120, 520)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Tree_1.png"
+placeholder_size = Vector2i(64, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree16" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(200, 470)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Tree_50.png"
+placeholder_size = Vector2i(64, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree17" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(290, 520)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Pine_Dark_Green_Big_16x16.png"
+placeholder_size = Vector2i(64, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree18" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(370, 470)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Oak_Green_Big_16x16.png"
+placeholder_size = Vector2i(80, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree19" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(440, 540)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Pine_Green_Big_16x16.png"
+placeholder_size = Vector2i(64, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree20" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(860, 140)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Tree_100.png"
+placeholder_size = Vector2i(64, 80)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree21" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(870, 300)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Birch_Green_Medium_16x16.png"
+placeholder_size = Vector2i(48, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree22" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(690, 560)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Tree_1.png"
+placeholder_size = Vector2i(64, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree23" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(840, 560)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Tree_50.png"
+placeholder_size = Vector2i(64, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree24" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(560, 560)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Pine_Dark_Green_Big_16x16.png"
+placeholder_size = Vector2i(64, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree25" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(240, 330)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Oak_Green_Big_16x16.png"
+placeholder_size = Vector2i(80, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree26" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(170, 560)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Pine_Green_Big_16x16.png"
+placeholder_size = Vector2i(64, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Mushrooms1" type="Area2D" parent="Entities"]
+position = Vector2(70, 320)
+script = ExtResource("20_forage")
+interaction_id = &"forage_millwood_mush_1"
+forage_id = &"millwood_mush_1"
+item_id = &"mushroom"
+amount = 1
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Mushrooms_1.png"
+
+[node name="Mushrooms2" type="Area2D" parent="Entities"]
+position = Vector2(330, 330)
+script = ExtResource("20_forage")
+interaction_id = &"forage_millwood_mush_2"
+forage_id = &"millwood_mush_2"
+item_id = &"mushroom"
+amount = 1
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Mushrooms_4.png"
+
+[node name="Mushrooms3" type="Area2D" parent="Entities"]
+position = Vector2(150, 420)
+script = ExtResource("20_forage")
+interaction_id = &"forage_millwood_mush_3"
+forage_id = &"millwood_mush_3"
+item_id = &"mushroom"
+amount = 1
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Mushrooms_2.png"
+
+[node name="Mushrooms4" type="Area2D" parent="Entities"]
+position = Vector2(420, 120)
+script = ExtResource("20_forage")
+interaction_id = &"forage_millwood_mush_4"
+forage_id = &"millwood_mush_4"
+item_id = &"mushroom"
+amount = 1
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Mushrooms_5.png"
+
+[node name="Berries1" type="Area2D" parent="Entities"]
+position = Vector2(250, 420)
+script = ExtResource("20_forage")
+interaction_id = &"forage_millwood_berry_1"
+forage_id = &"millwood_berry_1"
+item_id = &"wild_berries"
+amount = 2
+texture_path = "modern_farm/16x16/Single_Files_16x16/Crops_16x16/Crop_Berry_Ripe_16x16.png"
+picked_texture_path = "modern_farm/16x16/Single_Files_16x16/Crops_16x16/Crop_Berry_Fruitless_16x16.png"
+
+[node name="Berries2" type="Area2D" parent="Entities"]
+position = Vector2(360, 560)
+script = ExtResource("20_forage")
+interaction_id = &"forage_millwood_berry_2"
+forage_id = &"millwood_berry_2"
+item_id = &"wild_berries"
+amount = 2
+texture_path = "modern_farm/16x16/Single_Files_16x16/Crops_16x16/Crop_Berry_Ripe_16x16.png"
+picked_texture_path = "modern_farm/16x16/Single_Files_16x16/Crops_16x16/Crop_Berry_Fruitless_16x16.png"
+
+[node name="Berries3" type="Area2D" parent="Entities"]
+position = Vector2(90, 190)
+script = ExtResource("20_forage")
+interaction_id = &"forage_millwood_berry_3"
+forage_id = &"millwood_berry_3"
+item_id = &"wild_berries"
+amount = 2
+texture_path = "modern_farm/16x16/Single_Files_16x16/Crops_16x16/Crop_Berry_Ripe_16x16.png"
+picked_texture_path = "modern_farm/16x16/Single_Files_16x16/Crops_16x16/Crop_Berry_Fruitless_16x16.png"
+
+[node name="Moss1" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(160, 300)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Moss_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.290,0.478,0.227, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Moss2" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(260, 250)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Moss_2.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.290,0.478,0.227, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Moss3" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(480, 330)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Moss_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.290,0.478,0.227, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Moss4" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(680, 360)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Moss_2.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.290,0.478,0.227, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Moss5" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(350, 420)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Moss_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.290,0.478,0.227, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Moss6" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(820, 520)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Moss_2.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.290,0.478,0.227, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Moss7" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(40, 400)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Moss_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.290,0.478,0.227, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Moss8" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(520, 520)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Moss_2.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.290,0.478,0.227, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Rock1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(200, 380)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Rock_3.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Rock2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(420, 380)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Rock_4.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Rock3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(660, 410)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Rock_5.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Rock4" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(30, 330)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Rock_6.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="ToFarm" type="Area2D" parent="Entities"]
+position = Vector2(4, 368)
+script = ExtResource("6_door")
+interaction_id = &"door_millwood_farm"
+area_size = Vector2(8, 32)
+prompt_key = "PROMPT_GO_FARM"
+target_scene_id = &"brook_farm"
+target_spawn_id = &"from_millwood"
+
+[node name="FromFarm" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(22, 368)
+script = ExtResource("4_spawn")
+spawn_id = &"from_farm"
+facing = Vector2(1, 0)

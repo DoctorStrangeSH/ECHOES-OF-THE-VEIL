@@ -1,0 +1,715 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/location.gd" id="1_loc"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2_paint"]
+[ext_resource type="PackedScene" path="res://scenes/props/world_prop.tscn" id="3_prop"]
+[ext_resource type="Script" path="res://scripts/world/spawn_point.gd" id="4_spawn"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="5_inspect"]
+[ext_resource type="Script" path="res://scripts/interaction/door_interactable.gd" id="6_door"]
+[ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
+[ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+[ext_resource type="Script" path="res://scripts/world/conditional_visibility.gd" id="10_cond"]
+[ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
+[ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
+[ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+[ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
+[ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
+[ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
+[ext_resource type="PackedScene" path="res://scenes/world/repair_spot.tscn" id="17_spot"]
+[ext_resource type="PackedScene" path="res://scenes/world/screen_interactable.tscn" id="18_screen"]
+[ext_resource type="PackedScene" path="res://scenes/world/junk_pile.tscn" id="19_junk"]
+
+[node name="DrownedFord" type="Node2D"]
+script = ExtResource("1_loc")
+location_id = &"drowned_ford"
+name_key = "LOC_DROWNED_FORD"
+outdoors = false
+combat_enabled = true
+fixed_tint = Color(0.42, 0.62, 0.86, 1.0)
+enter_dialogue_id = &"ford_enter"
+enter_condition = {"not_flag": "ford.entered"}
+
+[node name="Ground" type="TileMapLayer" parent="."]
+script = ExtResource("2_paint")
+palette_id = "greyford_exterior"
+layout = "gggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggg
+ggggggggggggggggggggggggoooooooooogggggggggg
+ggggggggggggggggggggggggoooooooooogggggggggg
+ggggggggggggggggggggggggoooooooooogggggggggg
+oooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooo
+gggggggggggggggggggggooggggggggggggggggggggg
+gggggggggggggggggggggooggggggggggggggggggggg
+gggggggggggggggggggggooggggggggggggggggggggg
+gggggggggggggggggggggooggggggggggggggggggggg
+gggggggggggggggggggggooggggggggggggggggggggg
+gggggggggggggggggggggooggggggggggggggggggggg
+gggggggggggggggggggggooggggggggggggggggggggg
+gggggggggggggggggggggooggggggggggggggggggggg
+gggggggggggggggggggggooggggggggggggggggggggg
+gggggggggggggggggggggooggggggggggggggggggggg
+gggggggggggggggggggggooggggggggggggggggggggg
+gggggggggggggggggggggooggggggggggggggggggggg
+gggggggggggggggggggggooggggggggggggggggggggg"
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="NpcAnchors" type="Node2D" parent="."]
+
+[node name="MillHouse" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(100, 232)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Farmer_House_2_16x16.png"
+placeholder_size = Vector2i(160, 144)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(150, 40)
+collision_offset = Vector2(0, -20)
+
+[node name="Shimmer" type="Node" parent="Entities/MillHouse"]
+script = ExtResource("9_shimmer")
+
+[node name="Cottage" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(260, 232)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Farmer_House_1_16x16.png"
+placeholder_size = Vector2i(128, 160)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(118, 40)
+collision_offset = Vector2(0, -20)
+
+[node name="Shimmer" type="Node" parent="Entities/Cottage"]
+script = ExtResource("9_shimmer")
+
+[node name="Chapel" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(464, 192)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/19_Graveyard_Singles_16x16/ME_Singles_Graveyard_16x16_Grace_Chapel.png"
+placeholder_size = Vector2i(80, 144)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(74, 40)
+collision_offset = Vector2(0, -20)
+
+[node name="Shimmer" type="Node" parent="Entities/Chapel"]
+script = ExtResource("9_shimmer")
+
+[node name="Windmill" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(620, 232)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/24_Additional_Houses_Singles_16x16/24_Additional_Houses_Post_Apocalyptic_House_Wind_Mill_16x16.png"
+placeholder_size = Vector2i(64, 128)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(40, 20)
+collision_offset = Vector2(0, -10)
+
+[node name="Shimmer" type="Node" parent="Entities/Windmill"]
+script = ExtResource("9_shimmer")
+
+[node name="Barn" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(120, 448)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Barn_Small_16x16.png"
+placeholder_size = Vector2i(128, 160)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(116, 40)
+collision_offset = Vector2(0, -20)
+
+[node name="Shimmer" type="Node" parent="Entities/Barn"]
+script = ExtResource("9_shimmer")
+
+[node name="SquareWell" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(560, 216)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Well_Stone_16x16.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(22, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Cross1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(560, 354)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/19_Graveyard_Singles_16x16/ME_Singles_Graveyard_16x16_Grey_Cross_1.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Cross2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(600, 374)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/19_Graveyard_Singles_16x16/ME_Singles_Graveyard_16x16_Grey_Cross_2.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Cross3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(640, 354)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/19_Graveyard_Singles_16x16/ME_Singles_Graveyard_16x16_Brown_Cross_1.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Cross4" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(580, 414)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/19_Graveyard_Singles_16x16/ME_Singles_Graveyard_16x16_Grey_Cross_3.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Cross5" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(630, 424)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/19_Graveyard_Singles_16x16/ME_Singles_Graveyard_16x16_Brown_Cross_3.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Cross6" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(670, 404)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/19_Graveyard_Singles_16x16/ME_Singles_Graveyard_16x16_Grey_Cross_4.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="DeadTree" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(460, 440)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/19_Graveyard_Singles_16x16/ME_Singles_Graveyard_16x16_Big_Tree_.png"
+placeholder_size = Vector2i(64, 64)
+placeholder_color = Color(0.416,0.478,0.353, 1)
+collision_size = Vector2(16, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="YardFence1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(520, 320)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(16, 4)
+collision_offset = Vector2(0, -2)
+region = Rect2(96, 96, 16, 16)
+
+[node name="YardFence2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(520, 448)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(16, 4)
+collision_offset = Vector2(0, -2)
+region = Rect2(96, 128, 16, 16)
+
+[node name="YardFence3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(536, 320)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(16, 4)
+collision_offset = Vector2(0, -2)
+region = Rect2(96, 96, 16, 16)
+
+[node name="YardFence4" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(536, 448)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(16, 4)
+collision_offset = Vector2(0, -2)
+region = Rect2(96, 128, 16, 16)
+
+[node name="YardFence5" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(552, 320)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(16, 4)
+collision_offset = Vector2(0, -2)
+region = Rect2(96, 96, 16, 16)
+
+[node name="YardFence6" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(552, 448)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(16, 4)
+collision_offset = Vector2(0, -2)
+region = Rect2(96, 128, 16, 16)
+
+[node name="YardFence7" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(568, 448)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(16, 4)
+collision_offset = Vector2(0, -2)
+region = Rect2(96, 128, 16, 16)
+
+[node name="YardFence8" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(584, 320)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(16, 4)
+collision_offset = Vector2(0, -2)
+region = Rect2(96, 96, 16, 16)
+
+[node name="YardFence9" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(584, 448)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(16, 4)
+collision_offset = Vector2(0, -2)
+region = Rect2(96, 128, 16, 16)
+
+[node name="YardFence10" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(600, 320)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(16, 4)
+collision_offset = Vector2(0, -2)
+region = Rect2(96, 96, 16, 16)
+
+[node name="YardFence11" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(600, 448)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(16, 4)
+collision_offset = Vector2(0, -2)
+region = Rect2(96, 128, 16, 16)
+
+[node name="YardFence12" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(616, 320)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(16, 4)
+collision_offset = Vector2(0, -2)
+region = Rect2(96, 96, 16, 16)
+
+[node name="YardFence13" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(616, 448)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(16, 4)
+collision_offset = Vector2(0, -2)
+region = Rect2(96, 128, 16, 16)
+
+[node name="YardFence14" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(632, 320)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(16, 4)
+collision_offset = Vector2(0, -2)
+region = Rect2(96, 96, 16, 16)
+
+[node name="YardFence15" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(632, 448)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(16, 4)
+collision_offset = Vector2(0, -2)
+region = Rect2(96, 128, 16, 16)
+
+[node name="YardFence16" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(648, 320)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(16, 4)
+collision_offset = Vector2(0, -2)
+region = Rect2(96, 96, 16, 16)
+
+[node name="YardFence17" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(648, 448)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(16, 4)
+collision_offset = Vector2(0, -2)
+region = Rect2(96, 128, 16, 16)
+
+[node name="YardFence18" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(664, 320)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(16, 4)
+collision_offset = Vector2(0, -2)
+region = Rect2(96, 96, 16, 16)
+
+[node name="YardFence19" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(664, 448)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(16, 4)
+collision_offset = Vector2(0, -2)
+region = Rect2(96, 128, 16, 16)
+
+[node name="YardFence20" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(680, 320)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(16, 4)
+collision_offset = Vector2(0, -2)
+region = Rect2(112, 96, 16, 16)
+
+[node name="YardFence21" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(680, 448)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(16, 4)
+collision_offset = Vector2(0, -2)
+region = Rect2(112, 128, 16, 16)
+
+[node name="YardFence22" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(520, 336)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(4, 16)
+collision_offset = Vector2(-6, -8)
+region = Rect2(96, 112, 16, 16)
+
+[node name="YardFence23" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(680, 336)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(4, 16)
+collision_offset = Vector2(6, -8)
+region = Rect2(112, 112, 16, 16)
+
+[node name="YardFence24" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(520, 352)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(4, 16)
+collision_offset = Vector2(-6, -8)
+region = Rect2(96, 112, 16, 16)
+
+[node name="YardFence25" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(680, 352)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(4, 16)
+collision_offset = Vector2(6, -8)
+region = Rect2(112, 112, 16, 16)
+
+[node name="YardFence26" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(520, 368)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(4, 16)
+collision_offset = Vector2(-6, -8)
+region = Rect2(96, 112, 16, 16)
+
+[node name="YardFence27" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(680, 368)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(4, 16)
+collision_offset = Vector2(6, -8)
+region = Rect2(112, 112, 16, 16)
+
+[node name="YardFence28" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(520, 384)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(4, 16)
+collision_offset = Vector2(-6, -8)
+region = Rect2(96, 112, 16, 16)
+
+[node name="YardFence29" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(680, 384)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(4, 16)
+collision_offset = Vector2(6, -8)
+region = Rect2(112, 112, 16, 16)
+
+[node name="YardFence30" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(520, 400)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(4, 16)
+collision_offset = Vector2(-6, -8)
+region = Rect2(96, 112, 16, 16)
+
+[node name="YardFence31" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(680, 400)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(4, 16)
+collision_offset = Vector2(6, -8)
+region = Rect2(112, 112, 16, 16)
+
+[node name="YardFence32" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(520, 416)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(4, 16)
+collision_offset = Vector2(-6, -8)
+region = Rect2(96, 112, 16, 16)
+
+[node name="YardFence33" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(680, 416)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(4, 16)
+collision_offset = Vector2(6, -8)
+region = Rect2(112, 112, 16, 16)
+
+[node name="YardFence34" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(520, 432)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(4, 16)
+collision_offset = Vector2(-6, -8)
+region = Rect2(96, 112, 16, 16)
+
+[node name="YardFence35" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(680, 432)
+texture_path = "modern_farm/16x16/2_Fences_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(4, 16)
+collision_offset = Vector2(6, -8)
+region = Rect2(112, 112, 16, 16)
+
+[node name="Weed1" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(40, 300)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Sprout_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.290,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Weed2" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(300, 330)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Sprout_2.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.290,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Weed3" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(420, 300)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Sprout_3.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.290,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Weed4" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(240, 420)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Sprout_4.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.290,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Weed5" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(420, 440)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Sprout_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.290,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Weed6" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(680, 170)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Sprout_2.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.290,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Weed7" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(30, 180)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Sprout_3.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.290,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Weed8" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(360, 120)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Sprout_4.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.290,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Moss1" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(200, 300)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Moss_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.290,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Moss2" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(380, 360)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Moss_2.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.290,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Moss3" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(150, 330)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Moss_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.290,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Moss4" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(300, 450)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Moss_2.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.290,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Moss5" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(480, 450)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Moss_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.290,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Echo1" parent="Entities" instance=ExtResource("12_enemy")]
+position = Vector2(180, 256)
+enemy_id = &"ford_1"
+variant = "hollow"
+
+[node name="Echo2" parent="Entities" instance=ExtResource("12_enemy")]
+position = Vector2(330, 262)
+enemy_id = &"ford_2"
+variant = "clinger"
+
+[node name="Echo3" parent="Entities" instance=ExtResource("12_enemy")]
+position = Vector2(470, 236)
+enemy_id = &"ford_3"
+variant = "wailer"
+
+[node name="Echo4" parent="Entities" instance=ExtResource("12_enemy")]
+position = Vector2(560, 262)
+enemy_id = &"ford_4"
+variant = "hollow"
+
+[node name="Echo5" parent="Entities" instance=ExtResource("12_enemy")]
+position = Vector2(620, 360)
+enemy_id = &"ford_5"
+variant = "clinger"
+
+[node name="Echo6" parent="Entities" instance=ExtResource("12_enemy")]
+position = Vector2(250, 360)
+enemy_id = &"ford_6"
+variant = "hollow"
+
+[node name="Encounter" type="Node" parent="."]
+script = ExtResource("13_encounter")
+clear_flag = &"ford.cleared"
+
+[node name="ChapelDoor" type="Area2D" parent="Entities"]
+position = Vector2(464, 200)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_ford_chapel"
+area_size = Vector2(30, 12)
+interaction_priority = 20
+dialogue_id = &"ford_chapel"
+
+[node name="MillLook" type="Area2D" parent="Entities"]
+position = Vector2(100, 240)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_ford_mill"
+area_size = Vector2(40, 10)
+lines = PackedStringArray("FLAVOR_FORD_MILLHOUSE")
+
+[node name="GravesLook" type="Area2D" parent="Entities"]
+position = Vector2(610, 360)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_ford_graves"
+area_size = Vector2(60, 30)
+lines = PackedStringArray("FLAVOR_FORD_GRAVES")
+
+[node name="Entrance" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(352, 452)
+script = ExtResource("4_spawn")
+spawn_id = &"entrance"
+facing = Vector2(0, -1)
+
+[node name="ToSurface" type="Area2D" parent="Entities"]
+position = Vector2(352, 472)
+script = ExtResource("6_door")
+interaction_id = &"door_ford_surface"
+area_size = Vector2(40, 10)
+prompt_key = "PROMPT_FORD_SURFACE"
+target_scene_id = &"millwood"
+target_spawn_id = &"pier"
+
+[node name="DrownedTree1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(372, 120)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Oak_Green_Big_16x16.png"
+placeholder_size = Vector2i(80, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="DrownedTree2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(664, 120)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Pine_Dark_Green_Big_16x16.png"
+placeholder_size = Vector2i(64, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="DrownedTree3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(30, 420)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Birch_Green_Medium_16x16.png"
+placeholder_size = Vector2i(48, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Cart" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(300, 300)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Wood_Board_Load_16x16.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.541,0.376,0.251, 1)
+collision_size = Vector2(18, 8)
+collision_offset = Vector2(0, -4)

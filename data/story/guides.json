@@ -323,5 +323,23 @@
   "buy": {
    "npc": "hugh_penny"
   }
+ },
+ "case_drowned_ford": {
+  "listen": {
+   "scene": "millwood",
+   "node": "PierEnd",
+   "period": [
+    "evening",
+    "night"
+   ]
+  },
+  "below": {
+   "scene": "drowned_ford",
+   "node": "ChapelDoor",
+   "note": "GUIDE_NOTE_FORD_BELOW"
+  },
+  "choice": {
+   "npc": "ada_fenwick"
+  }
  }
 }

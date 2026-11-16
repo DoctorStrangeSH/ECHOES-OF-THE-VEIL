@@ -1,0 +1,45 @@
+{
+ "mushroom": {
+  "category": "consumable",
+  "name": "ITEM_MUSHROOM",
+  "desc": "ITEM_MUSHROOM_DESC",
+  "color": "#c09070",
+  "value": 4,
+  "stack": 20,
+  "use": {
+   "heal": 1
+  },
+  "icon": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Mushrooms_4.png"
+ },
+ "wild_berries": {
+  "category": "consumable",
+  "name": "ITEM_WILD_BERRIES",
+  "desc": "ITEM_WILD_BERRIES_DESC",
+  "color": "#a03060",
+  "value": 3,
+  "stack": 20,
+  "use": {
+   "heal": 1
+  },
+  "icon": "modern_farm/16x16/Single_Files_16x16/Crops_16x16/Crop_Berry_Small_Basket_16x16.png"
+ },
+ "ford_register": {
+  "category": "key",
+  "name": "ITEM_FORD_REGISTER",
+  "desc": "ITEM_FORD_REGISTER_DESC",
+  "color": "#6080a0",
+  "value": 0,
+  "stack": 1
+ },
+ "ford_bell": {
+  "category": "trinket",
+  "name": "ITEM_FORD_BELL",
+  "desc": "ITEM_FORD_BELL_DESC",
+  "color": "#a0c0e0",
+  "value": 20,
+  "mods": {
+   "flash_cooldown_mult": 0.85,
+   "flash_radius_mult": 1.1
+  }
+ }
+}

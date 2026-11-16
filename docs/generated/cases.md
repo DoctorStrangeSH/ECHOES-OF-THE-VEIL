@@ -362,3 +362,17 @@ flowchart LR
 
 Evidence that advances this case: `e_flash_count`, `e_ship_register`
 
+## case_drowned_ford — The bell under the water
+
+```mermaid
+flowchart LR
+  case_drowned_ford_listen["listen<br/>Go to the end of the pier after dark an…"]
+  case_drowned_ford_below["below<br/>Go down to Mill Ford and find the paris…"]
+  case_drowned_ford_choice["choice<br/>Bring the register to Ada and decide wh…"]
+  case_drowned_ford_listen --> case_drowned_ford_below
+  case_drowned_ford_below --> case_drowned_ford_choice
+  case_drowned_ford_out_remembered(["outcome: remembered<br/>Ada took the register to the …"])
+  case_drowned_ford_out_laid_to_rest(["outcome: laid_to_rest<br/>The register went back to the…"])
+  case_drowned_ford_START(("start")) --> case_drowned_ford_listen
+```
+

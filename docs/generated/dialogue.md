@@ -1188,6 +1188,121 @@ flowchart TD
   sol_photo2 --> sol_hub
 ```
 
+## millwood.json
+
+### ada
+
+```mermaid
+flowchart TD
+  ada_START(("start"))
+  ada_START --> ada_hub
+  ada_START -->|"{quest_outcome: [case_drowned_ford, rem…"| ada_after_rem
+  ada_START -->|"{quest_outcome: [case_drowned_ford, lai…"| ada_after_rest
+  ada_START -->|"{all: [{quest_stage: [case_drowned_ford…"| ada_reg1
+  ada_START -->|"{quest_stage: [case_drowned_ford, below…"| ada_below
+  ada_START -->|"{quest_stage: [case_drowned_ford, liste…"| ada_listen
+  ada_START -->|"{not_flag: met.ada}"| ada_intro1
+  ada_intro1["intro1<br/>By the caravan, on an upturned crate, an elderl…"]
+  ada_intro1 --> ada_intro2
+  ada_intro2["intro2<br/>Ada Fenwick: Don't be scared, I don't bite. Ada Fenwick. I u…"]
+  ada_intro2 --> ada_intro3
+  ada_intro3["intro3<br/>Ada Fenwick: You're from Hugh's farm? Then maybe you'll hear…"]
+  ada_intro3 --> ada_hub
+  ada_hub["hub<br/>Ada looks up from her net."]
+  ada_hub -->|"What bell? ⟨{not_quest_started: case_drowned_ford}⟩"| ada_bell1
+  ada_hub -->|"Tell me about the bell again. ⟨{quest_active: case_drowned_ford}⟩"| ada_bell_again
+  ada_hub -->|"What's there in the woods?"| ada_forest
+  ada_hub_end_3(["end"])
+  ada_hub -->|"'I'll be off.'"| ada_hub_end_3
+  ada_bell1["bell1<br/>Ada Fenwick: There's a village under the lake. Mill Ford. Fo…"]
+  ada_bell1 --> ada_bell2
+  ada_bell2["bell2<br/>Ada Fenwick: I opened the sluices. I was nineteen, and they …"]
+  ada_bell2 --> ada_bell3
+  ada_bell3["bell3<br/>Ada Fenwick: Go to the end of the pier when it's dark. Liste…"]
+  ada_bell3 --> ada_hub
+  ada_bell_again["bell_again<br/>Ada Fenwick: Mill Ford, under the water. The bell rings at n…"]
+  ada_bell_again --> ada_hub
+  ada_forest["forest<br/>Ada Fenwick: Mushrooms under the pines, blackberries along t…"]
+  ada_forest --> ada_hub
+  ada_listen["listen<br/>Ada Fenwick: The end of the pier, when it's dark. The bell d…"]
+  ada_listen --> ada_hub
+  ada_below["below<br/>Ada Fenwick: So the bell called. Go while it's calling. Down…"]
+  ada_below --> ada_hub
+  ada_reg1["reg1<br/>Ada takes the sodden book in both hands, the wa…"]
+  ada_reg1 --> ada_reg2
+  ada_reg2["reg2<br/>Ada Fenwick: There they are. All of them. The town struck th…"]
+  ada_reg2 --> ada_reg3
+  ada_reg3["reg3<br/>Ada Fenwick: What to do with it is yours to decide. Your han…"]
+  ada_reg3 -->|"Take it to the town archive. …"| ada_arch1
+  ada_reg3 -->|"Give it back to the chapel. L…"| ada_rest1
+  ada_arch1["arch1<br/>Ada Fenwick: The archive... To that woman, Mara? They say sh…"]
+  ada_arch1 --> ada_arch2
+  ada_arch2["arch2<br/>Ada Fenwick: All right. I'll take it myself. Sixty years sin…"]
+  ada_rest1["rest1<br/>Ada Fenwick: Give it back... Yes. They never asked strangers…"]
+  ada_rest1 --> ada_rest2
+  ada_rest2["rest2<br/>Ada Fenwick: Tonight I'll go down to the water one last time…"]
+  ada_after_rem["after_rem<br/>Ada Fenwick: Town isn't how I remembered it. But the directo…"]
+  ada_after_rem --> ada_hub
+  ada_after_rest["after_rest<br/>Ada Fenwick: The bell doesn't ring any more. I sleep at nigh…"]
+  ada_after_rest --> ada_hub
+```
+
+### ford_pier
+
+```mermaid
+flowchart TD
+  ford_pier_START(("start"))
+  ford_pier_START --> ford_pier_plain
+  ford_pier_START -->|"{all: [{flag: ford.open}, {quest_active…"| ford_pier_open
+  ford_pier_START -->|"{all: [{quest_stage: [case_drowned_ford…"| ford_pier_bell1
+  ford_pier_START -->|"{quest_stage: [case_drowned_ford, liste…"| ford_pier_day
+  ford_pier_open["open<br/>The boards underfoot are wet, though there are …"]
+  ford_pier_bell1["bell1<br/>At first, nothing. Only the water rubbing again…"]
+  ford_pier_bell1 --> ford_pier_bell2
+  ford_pier_bell2["bell2<br/>Then a stroke. Dull and heavy, it comes not thr…"]
+  ford_pier_day["day<br/>Near the shore the lake is clear and calm; furt…"]
+  ford_pier_plain["plain<br/>The old pier. From here you can see the whole l…"]
+```
+
+### ford_memorial
+
+```mermaid
+flowchart TD
+  ford_memorial_START(("start"))
+  ford_memorial_START --> ford_memorial_again
+  ford_memorial_START -->|"{not_quest_started: case_drowned_ford}"| ford_memorial_m1
+  ford_memorial_m1["m1<br/>Cut into the mossy stone: «Here stood the villa…"]
+  ford_memorial_m1 --> ford_memorial_m2
+  ford_memorial_m2["m2<br/>At the foot of the stone, fresh wildflowers and…"]
+  ford_memorial_again["again<br/>Cut into the mossy stone: «Here stood the villa…"]
+```
+
+### ford_enter
+
+```mermaid
+flowchart TD
+  ford_enter_START(("start"))
+  ford_enter_START --> ford_enter_e1
+  ford_enter_e1["e1<br/>You do not drown. The water parts before every …"]
+  ford_enter_e1 --> ford_enter_e2
+  ford_enter_e2["e2<br/>And from everywhere, the ones who were forgotte…"]
+```
+
+### ford_chapel
+
+```mermaid
+flowchart TD
+  ford_chapel_START(("start"))
+  ford_chapel_START --> ford_chapel_blocked
+  ford_chapel_START -->|"{any: [{has_item: ford_register}, {ques…"| ford_chapel_empty
+  ford_chapel_START -->|"{flag: ford.cleared}"| ford_chapel_reg1
+  ford_chapel_empty["empty<br/>The empty chapel. The bell above the door is si…"]
+  ford_chapel_blocked["blocked<br/>Echoes circle by the chapel doors. While they a…"]
+  ford_chapel_reg1["reg1<br/>The chapel door opens without a creak. Inside i…"]
+  ford_chapel_reg1 --> ford_chapel_reg2
+  ford_chapel_reg2["reg2<br/>You pick it up, and the bell overhead rings onc…"]
+```
+
 ## park.json
 
 ### kid_hoops

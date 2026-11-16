@@ -6,7 +6,12 @@
    "to": "market_street"
   }
  ],
- "brook_farm": [],
+ "brook_farm": [
+  {
+   "node": "ToMillwood",
+   "to": "millwood"
+  }
+ ],
  "brook_farmhouse": [
   {
    "node": "ExitDoor",
@@ -23,6 +28,12 @@
   {
    "node": "WayBack",
    "to": "ward_depot"
+  }
+ ],
+ "drowned_ford": [
+  {
+   "node": "ToSurface",
+   "to": "millwood"
   }
  ],
  "echo_lantern_row": [
@@ -296,6 +307,29 @@
   {
    "node": "WayBack",
    "to": "echo_ward"
+  }
+ ],
+ "millwood": [
+  {
+   "node": "VeilBelow",
+   "to": "drowned_ford",
+   "show_if": {
+    "all": [
+     {
+      "flag": "ford.open"
+     },
+     {
+      "period": [
+       "evening",
+       "night"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "node": "ToFarm",
+   "to": "brook_farm"
   }
  ],
  "municipal_archive": [

@@ -1,0 +1,1256 @@
+{
+ "id": "millwood",
+ "name_key": "LOC_MILLWOOD",
+ "palette": "millwood",
+ "options": {
+  "outdoors": true
+ },
+ "layout": [
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwgggggggg",
+  "ggggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwggggggg",
+  "ggggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwgggggg",
+  "gggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwggggg",
+  "ggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwgggg",
+  "ggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwgggg",
+  "ggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwgggg",
+  "ggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwgggg",
+  "ggggggggggggggggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwgggg",
+  "ggggggggggggddggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwgggg",
+  "ggggggggggggddggggggggggggggwwwwwwwwwwwwwwwwwwwwwwwwgggg",
+  "ggggggggggggddggggggggggggggwwwwwwwwwwppwwwwwwwwwwwwgggg",
+  "ggggggggggggddggggggggggggggwwwwwwwwwwppwwwwwwwwwwwwgggg",
+  "ggggggggggggddggggggggggggggwwwwwwwwwwppwwwwwwwwwwwwgggg",
+  "ggggggggggggddggggggggggggggwwwwwwwwwwppwwwwwwwwwwwwgggg",
+  "ggggggggggggddggggggggggggggwwwwwwwwwwppwwwwwwwwwwwwgggg",
+  "ggggggggggggddgggggggggggggggwwwwwwwwwppwwwwwwwwwwwggggg",
+  "ggggggggggggddggggggggggggggggwwwwwwwwppwwwwwwwwwwgggggg",
+  "ggggggggggggddggggggggggggggggggggggggppgggggggggggggggg",
+  "ggggggggggggddgggggggggggggggggggggggggggggggggggggggggg",
+  "dddddddddddddddddddddddddddddddddddddddddggggggggggggggg",
+  "dddddddddddddddddddddddddddddddddddddddddggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggg"
+ ],
+ "nodes": [
+  {
+   "template": "building",
+   "tex": "@camp/Mobile_House_Medium_1.png",
+   "x": 208,
+   "y": 160,
+   "name": "Caravan",
+   "depth": 40,
+   "inset": 10,
+   "inspect": {
+    "id": "inspect_caravan",
+    "lines": [
+     "FLAVOR_CARAVAN"
+    ],
+    "width": 40
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "AdaFire",
+   "tex": "@camp/Campfire_1.png",
+   "x": 176,
+   "y": 196,
+   "color": "#6a7a5a",
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "AdaTable",
+   "tex": "@camp/Benched_Table_1.png",
+   "x": 250,
+   "y": 200,
+   "color": "#6a7a5a",
+   "col": [
+    30,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "AdaLantern",
+   "tex": "@camp/Lantern_1.png",
+   "x": 282,
+   "y": 162,
+   "color": "#6a7a5a",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "AdaStump",
+   "tex": "@camp/Stump_1.png",
+   "x": 150,
+   "y": 206,
+   "color": "#6a7a5a",
+   "col": [
+    24,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "AdaClothes",
+   "tex": "@camp/Pier_Clothes_2.png",
+   "x": 120,
+   "y": 150,
+   "color": "#6a7a5a",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "template": "anchors",
+   "points": {
+    "yard": [
+     214,
+     192
+    ],
+    "shore": [
+     600,
+     352
+    ],
+    "pier": [
+     616,
+     272
+    ]
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "Buoy1",
+   "tex": "@camp/Buoy_1.png",
+   "x": 560,
+   "y": 150,
+   "color": "#6a7a5a",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor"
+  },
+  {
+   "kind": "prop",
+   "name": "Buoy2",
+   "tex": "@camp/Buoy_3.png",
+   "x": 700,
+   "y": 120,
+   "color": "#6a7a5a",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor"
+  },
+  {
+   "kind": "prop",
+   "name": "Driftwood1",
+   "tex": "@camp/Floating_Wood_1.png",
+   "x": 520,
+   "y": 250,
+   "color": "#6a7a5a",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor"
+  },
+  {
+   "kind": "prop",
+   "name": "Driftwood2",
+   "tex": "@camp/Floating_Wood_2.png",
+   "x": 760,
+   "y": 280,
+   "color": "#6a7a5a",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor"
+  },
+  {
+   "kind": "prop",
+   "name": "PierPost1",
+   "tex": "@camp/Pier_Pole_1.png",
+   "x": 604,
+   "y": 226,
+   "color": "#6a7a5a",
+   "col": [
+    4,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "PierPost2",
+   "tex": "@camp/Pier_Pole_1.png",
+   "x": 644,
+   "y": 226,
+   "color": "#6a7a5a",
+   "col": [
+    4,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "PierBarrel",
+   "tex": "@camp/Pier_Barrel_1.png",
+   "x": 646,
+   "y": 300,
+   "color": "#6a7a5a",
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "PierEnd",
+   "id": "inspect_ford_pier",
+   "x": 624,
+   "y": 222,
+   "area": [
+    32,
+    14
+   ],
+   "dialogue": "ford_pier",
+   "prompt": "PROMPT_LISTEN"
+  },
+  {
+   "kind": "door",
+   "name": "VeilBelow",
+   "id": "door_ford_below",
+   "x": 624,
+   "y": 214,
+   "area": [
+    32,
+    10
+   ],
+   "scene": "drowned_ford",
+   "spawn": "entrance",
+   "prompt": "PROMPT_FORD_DIVE",
+   "show_if": {
+    "all": [
+     {
+      "flag": "ford.open"
+     },
+     {
+      "period": [
+       "evening",
+       "night"
+      ]
+     }
+    ]
+   },
+   "priority": 25
+  },
+  {
+   "kind": "spawn",
+   "name": "PierSpawn",
+   "id": "pier",
+   "x": 624,
+   "y": 244,
+   "facing": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tent",
+   "tex": "@camp/Tent_1.png",
+   "x": 520,
+   "y": 456,
+   "color": "#6a7a5a",
+   "col": [
+    50,
+    14
+   ],
+   "off": [
+    0,
+    -7
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "SleepingBag",
+   "tex": "@camp/Sleeping_Bag_2.png",
+   "x": 570,
+   "y": 460,
+   "color": "#6a7a5a",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor"
+  },
+  {
+   "kind": "prop",
+   "name": "CampFire",
+   "tex": "@camp/Campfire_2.png",
+   "x": 600,
+   "y": 440,
+   "color": "#6a7a5a",
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "CampLog",
+   "tex": "@camp/Cut_Wood_Bench_1.png",
+   "x": 632,
+   "y": 446,
+   "color": "#6a7a5a",
+   "col": [
+    26,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "rest",
+   "name": "CampRest",
+   "id": "rest_millwood_camp",
+   "x": 600,
+   "y": 452,
+   "area": [
+    30,
+    14
+   ],
+   "prompt": "PROMPT_REST_FIRE"
+  },
+  {
+   "template": "sign",
+   "tex": "@camp/Sign_2.png",
+   "x": 470,
+   "y": 400,
+   "id": "read_millwood_sign",
+   "name": "CampSign",
+   "lines": [
+    "FLAVOR_MILLWOOD_SIGN"
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "DeadTree",
+   "tex": "@grave/Big_Tree_.png",
+   "x": 800,
+   "y": 460,
+   "color": "#6a7a5a",
+   "col": [
+    16,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Cross1",
+   "tex": "@grave/Grey_Cross_1.png",
+   "x": 720,
+   "y": 420,
+   "color": "#6a7a5a",
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Cross2",
+   "tex": "@grave/Grey_Cross_2.png",
+   "x": 752,
+   "y": 436,
+   "color": "#6a7a5a",
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Cross3",
+   "tex": "@grave/Grey_Cross_3.png",
+   "x": 696,
+   "y": 452,
+   "color": "#6a7a5a",
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Cross4",
+   "tex": "@grave/Brown_Cross_2.png",
+   "x": 744,
+   "y": 478,
+   "color": "#6a7a5a",
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Cross5",
+   "tex": "@grave/Grey_Cross_4.png",
+   "x": 840,
+   "y": 420,
+   "color": "#6a7a5a",
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Crow",
+   "tex": "@grave/Crow_Front.png",
+   "x": 812,
+   "y": 388,
+   "color": "#6a7a5a",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ]
+  },
+  {
+   "template": "fixture",
+   "tex": "@camp/Rock_5.png",
+   "x": 776,
+   "y": 392,
+   "name": "Memorial",
+   "col": [
+    12,
+    6
+   ],
+   "use": {
+    "kind": "inspect",
+    "id": "inspect_ford_memorial",
+    "dialogue": "ford_memorial",
+    "prompt": "PROMPT_READ"
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "Tree1",
+   "tex": "@camp/Tree_1.png",
+   "x": 40,
+   "y": 72,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree2",
+   "tex": "@camp/Tree_50.png",
+   "x": 110,
+   "y": 80,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree3",
+   "tex": "@ftree/Tree_Pine_Dark_Green_Big_16x16.png",
+   "x": 300,
+   "y": 96,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree4",
+   "tex": "@ftree/Tree_Oak_Green_Big_16x16.png",
+   "x": 380,
+   "y": 100,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree5",
+   "tex": "@ftree/Tree_Pine_Green_Big_16x16.png",
+   "x": 450,
+   "y": 96,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree6",
+   "tex": "@camp/Tree_100.png",
+   "x": 60,
+   "y": 140,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree7",
+   "tex": "@ftree/Tree_Birch_Green_Medium_16x16.png",
+   "x": 330,
+   "y": 160,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree8",
+   "tex": "@camp/Tree_1.png",
+   "x": 400,
+   "y": 170,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree9",
+   "tex": "@camp/Tree_50.png",
+   "x": 36,
+   "y": 240,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree10",
+   "tex": "@ftree/Tree_Pine_Dark_Green_Big_16x16.png",
+   "x": 110,
+   "y": 260,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree11",
+   "tex": "@ftree/Tree_Oak_Green_Big_16x16.png",
+   "x": 300,
+   "y": 260,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree12",
+   "tex": "@ftree/Tree_Pine_Green_Big_16x16.png",
+   "x": 380,
+   "y": 250,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree13",
+   "tex": "@camp/Tree_100.png",
+   "x": 450,
+   "y": 280,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree14",
+   "tex": "@ftree/Tree_Birch_Green_Medium_16x16.png",
+   "x": 40,
+   "y": 480,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree15",
+   "tex": "@camp/Tree_1.png",
+   "x": 120,
+   "y": 520,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree16",
+   "tex": "@camp/Tree_50.png",
+   "x": 200,
+   "y": 470,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree17",
+   "tex": "@ftree/Tree_Pine_Dark_Green_Big_16x16.png",
+   "x": 290,
+   "y": 520,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree18",
+   "tex": "@ftree/Tree_Oak_Green_Big_16x16.png",
+   "x": 370,
+   "y": 470,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree19",
+   "tex": "@ftree/Tree_Pine_Green_Big_16x16.png",
+   "x": 440,
+   "y": 540,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree20",
+   "tex": "@camp/Tree_100.png",
+   "x": 860,
+   "y": 140,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree21",
+   "tex": "@ftree/Tree_Birch_Green_Medium_16x16.png",
+   "x": 870,
+   "y": 300,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree22",
+   "tex": "@camp/Tree_1.png",
+   "x": 690,
+   "y": 560,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree23",
+   "tex": "@camp/Tree_50.png",
+   "x": 840,
+   "y": 560,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree24",
+   "tex": "@ftree/Tree_Pine_Dark_Green_Big_16x16.png",
+   "x": 560,
+   "y": 560,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree25",
+   "tex": "@ftree/Tree_Oak_Green_Big_16x16.png",
+   "x": 240,
+   "y": 330,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree26",
+   "tex": "@ftree/Tree_Pine_Green_Big_16x16.png",
+   "x": 170,
+   "y": 560,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "forage",
+   "name": "Mushrooms1",
+   "id": "millwood_mush_1",
+   "x": 70,
+   "y": 320,
+   "item": "mushroom",
+   "tex": "@camp/Mushrooms_1.png"
+  },
+  {
+   "kind": "forage",
+   "name": "Mushrooms2",
+   "id": "millwood_mush_2",
+   "x": 330,
+   "y": 330,
+   "item": "mushroom",
+   "tex": "@camp/Mushrooms_4.png"
+  },
+  {
+   "kind": "forage",
+   "name": "Mushrooms3",
+   "id": "millwood_mush_3",
+   "x": 150,
+   "y": 420,
+   "item": "mushroom",
+   "tex": "@camp/Mushrooms_2.png"
+  },
+  {
+   "kind": "forage",
+   "name": "Mushrooms4",
+   "id": "millwood_mush_4",
+   "x": 420,
+   "y": 120,
+   "item": "mushroom",
+   "tex": "@camp/Mushrooms_5.png"
+  },
+  {
+   "kind": "forage",
+   "name": "Berries1",
+   "id": "millwood_berry_1",
+   "x": 250,
+   "y": 420,
+   "item": "wild_berries",
+   "amount": 2,
+   "tex": "@fcrop/Crop_Berry_Ripe_16x16.png",
+   "picked": "@fcrop/Crop_Berry_Fruitless_16x16.png"
+  },
+  {
+   "kind": "forage",
+   "name": "Berries2",
+   "id": "millwood_berry_2",
+   "x": 360,
+   "y": 560,
+   "item": "wild_berries",
+   "amount": 2,
+   "tex": "@fcrop/Crop_Berry_Ripe_16x16.png",
+   "picked": "@fcrop/Crop_Berry_Fruitless_16x16.png"
+  },
+  {
+   "kind": "forage",
+   "name": "Berries3",
+   "id": "millwood_berry_3",
+   "x": 90,
+   "y": 190,
+   "item": "wild_berries",
+   "amount": 2,
+   "tex": "@fcrop/Crop_Berry_Ripe_16x16.png",
+   "picked": "@fcrop/Crop_Berry_Fruitless_16x16.png"
+  },
+  {
+   "kind": "prop",
+   "name": "Moss1",
+   "tex": "@camp/Moss_1.png",
+   "x": 160,
+   "y": 300,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#4a7a3a"
+  },
+  {
+   "kind": "prop",
+   "name": "Moss2",
+   "tex": "@camp/Moss_2.png",
+   "x": 260,
+   "y": 250,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#4a7a3a"
+  },
+  {
+   "kind": "prop",
+   "name": "Moss3",
+   "tex": "@camp/Moss_1.png",
+   "x": 480,
+   "y": 330,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#4a7a3a"
+  },
+  {
+   "kind": "prop",
+   "name": "Moss4",
+   "tex": "@camp/Moss_2.png",
+   "x": 680,
+   "y": 360,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#4a7a3a"
+  },
+  {
+   "kind": "prop",
+   "name": "Moss5",
+   "tex": "@camp/Moss_1.png",
+   "x": 350,
+   "y": 420,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#4a7a3a"
+  },
+  {
+   "kind": "prop",
+   "name": "Moss6",
+   "tex": "@camp/Moss_2.png",
+   "x": 820,
+   "y": 520,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#4a7a3a"
+  },
+  {
+   "kind": "prop",
+   "name": "Moss7",
+   "tex": "@camp/Moss_1.png",
+   "x": 40,
+   "y": 400,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#4a7a3a"
+  },
+  {
+   "kind": "prop",
+   "name": "Moss8",
+   "tex": "@camp/Moss_2.png",
+   "x": 520,
+   "y": 520,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#4a7a3a"
+  },
+  {
+   "kind": "prop",
+   "name": "Rock1",
+   "tex": "@camp/Rock_3.png",
+   "x": 200,
+   "y": 380,
+   "color": "#6a7a5a",
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Rock2",
+   "tex": "@camp/Rock_4.png",
+   "x": 420,
+   "y": 380,
+   "color": "#6a7a5a",
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Rock3",
+   "tex": "@camp/Rock_5.png",
+   "x": 660,
+   "y": 410,
+   "color": "#6a7a5a",
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Rock4",
+   "tex": "@camp/Rock_6.png",
+   "x": 30,
+   "y": 330,
+   "color": "#6a7a5a",
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ToFarm",
+   "id": "door_millwood_farm",
+   "x": 4,
+   "y": 368,
+   "area": [
+    8,
+    32
+   ],
+   "scene": "brook_farm",
+   "spawn": "from_millwood",
+   "prompt": "PROMPT_GO_FARM"
+  },
+  {
+   "kind": "spawn",
+   "name": "FromFarm",
+   "id": "from_farm",
+   "x": 22,
+   "y": 368,
+   "facing": [
+    1,
+    0
+   ]
+  }
+ ]
+}

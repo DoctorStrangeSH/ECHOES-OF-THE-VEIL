@@ -1,0 +1,448 @@
+{
+ "ada": {
+  "entries": [
+   {
+    "if": {
+     "quest_outcome": [
+      "case_drowned_ford",
+      "remembered"
+     ]
+    },
+    "node": "after_rem"
+   },
+   {
+    "if": {
+     "quest_outcome": [
+      "case_drowned_ford",
+      "laid_to_rest"
+     ]
+    },
+    "node": "after_rest"
+   },
+   {
+    "if": {
+     "all": [
+      {
+       "quest_stage": [
+        "case_drowned_ford",
+        "choice"
+       ]
+      },
+      {
+       "has_item": "ford_register"
+      }
+     ]
+    },
+    "node": "reg1"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_drowned_ford",
+      "below"
+     ]
+    },
+    "node": "below"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_drowned_ford",
+      "listen"
+     ]
+    },
+    "node": "listen"
+   },
+   {
+    "if": {
+     "not_flag": "met.ada"
+    },
+    "node": "intro1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "intro1": {
+    "text": "ADA_INTRO_1",
+    "next": "intro2",
+    "effects": [
+     {
+      "set_flag": "met.ada"
+     }
+    ]
+   },
+   "intro2": {
+    "text": "ADA_INTRO_2",
+    "speaker": "NPC_ADA",
+    "next": "intro3"
+   },
+   "intro3": {
+    "text": "ADA_INTRO_3",
+    "speaker": "NPC_ADA",
+    "next": "hub"
+   },
+   "hub": {
+    "text": "ADA_HUB",
+    "choices": [
+     {
+      "text": "ADA_ASK_BELL",
+      "next": "bell1",
+      "if": {
+       "not_quest_started": "case_drowned_ford"
+      }
+     },
+     {
+      "text": "ADA_ASK_BELL_AGAIN",
+      "next": "bell_again",
+      "if": {
+       "quest_active": "case_drowned_ford"
+      }
+     },
+     {
+      "text": "ADA_ASK_FOREST",
+      "next": "forest"
+     },
+     {
+      "text": "MARKET_BYE",
+      "next": null
+     }
+    ]
+   },
+   "bell1": {
+    "text": "ADA_BELL_1",
+    "speaker": "NPC_ADA",
+    "next": "bell2"
+   },
+   "bell2": {
+    "text": "ADA_BELL_2",
+    "speaker": "NPC_ADA",
+    "next": "bell3"
+   },
+   "bell3": {
+    "text": "ADA_BELL_3",
+    "speaker": "NPC_ADA",
+    "next": "hub",
+    "effects": [
+     {
+      "quest_start": "case_drowned_ford"
+     }
+    ]
+   },
+   "bell_again": {
+    "text": "ADA_BELL_AGAIN",
+    "speaker": "NPC_ADA",
+    "next": "hub"
+   },
+   "forest": {
+    "text": "ADA_FOREST",
+    "speaker": "NPC_ADA",
+    "next": "hub"
+   },
+   "listen": {
+    "text": "ADA_LISTEN",
+    "speaker": "NPC_ADA",
+    "next": "hub"
+   },
+   "below": {
+    "text": "ADA_BELOW",
+    "speaker": "NPC_ADA",
+    "next": "hub"
+   },
+   "reg1": {
+    "text": "ADA_REG_1",
+    "next": "reg2"
+   },
+   "reg2": {
+    "text": "ADA_REG_2",
+    "speaker": "NPC_ADA",
+    "next": "reg3"
+   },
+   "reg3": {
+    "text": "ADA_REG_3",
+    "speaker": "NPC_ADA",
+    "choices": [
+     {
+      "text": "FORD_TO_ARCHIVE",
+      "next": "arch1",
+      "effects": [
+       {
+        "take_item": "ford_register"
+       },
+       {
+        "set_flag": "ford.remembered"
+       },
+       {
+        "relationship": [
+         "ada_fenwick",
+         2
+        ]
+       },
+       {
+        "give_resonance": 15
+       },
+       {
+        "give_xp": 60
+       },
+       {
+        "quest_complete": [
+         "case_drowned_ford",
+         "remembered"
+        ]
+       }
+      ]
+     },
+     {
+      "text": "FORD_TO_BELL",
+      "next": "rest1",
+      "effects": [
+       {
+        "take_item": "ford_register"
+       },
+       {
+        "give_item": "ford_bell"
+       },
+       {
+        "relationship": [
+         "ada_fenwick",
+         2
+        ]
+       },
+       {
+        "give_xp": 60
+       },
+       {
+        "quest_complete": [
+         "case_drowned_ford",
+         "laid_to_rest"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "arch1": {
+    "text": "ADA_ARCHIVE_1",
+    "speaker": "NPC_ADA",
+    "next": "arch2"
+   },
+   "arch2": {
+    "text": "ADA_ARCHIVE_2",
+    "speaker": "NPC_ADA",
+    "next": null
+   },
+   "rest1": {
+    "text": "ADA_REST_1",
+    "speaker": "NPC_ADA",
+    "next": "rest2"
+   },
+   "rest2": {
+    "text": "ADA_REST_2",
+    "speaker": "NPC_ADA",
+    "next": null
+   },
+   "after_rem": {
+    "text": "ADA_AFTER_REMEMBERED",
+    "speaker": "NPC_ADA",
+    "next": "hub"
+   },
+   "after_rest": {
+    "text": "ADA_AFTER_REST",
+    "speaker": "NPC_ADA",
+    "next": "hub"
+   }
+  }
+ },
+ "ford_pier": {
+  "entries": [
+   {
+    "if": {
+     "all": [
+      {
+       "flag": "ford.open"
+      },
+      {
+       "quest_active": "case_drowned_ford"
+      },
+      {
+       "period": [
+        "evening",
+        "night"
+       ]
+      }
+     ]
+    },
+    "node": "open"
+   },
+   {
+    "if": {
+     "all": [
+      {
+       "quest_stage": [
+        "case_drowned_ford",
+        "listen"
+       ]
+      },
+      {
+       "period": [
+        "evening",
+        "night"
+       ]
+      }
+     ]
+    },
+    "node": "bell1"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_drowned_ford",
+      "listen"
+     ]
+    },
+    "node": "day"
+   }
+  ],
+  "start": "plain",
+  "nodes": {
+   "open": {
+    "text": "PIER_OPEN",
+    "next": null
+   },
+   "bell1": {
+    "text": "PIER_BELL_1",
+    "next": "bell2"
+   },
+   "bell2": {
+    "text": "PIER_BELL_2",
+    "next": null,
+    "effects": [
+     {
+      "set_flag": "ford.open"
+     },
+     {
+      "quest_stage": [
+       "case_drowned_ford",
+       "below"
+      ]
+     }
+    ]
+   },
+   "day": {
+    "text": "PIER_DAY",
+    "next": null
+   },
+   "plain": {
+    "text": "PIER_PLAIN",
+    "next": null
+   }
+  }
+ },
+ "ford_memorial": {
+  "entries": [
+   {
+    "if": {
+     "not_quest_started": "case_drowned_ford"
+    },
+    "node": "m1"
+   }
+  ],
+  "start": "again",
+  "nodes": {
+   "m1": {
+    "text": "MEMORIAL_1",
+    "next": "m2"
+   },
+   "m2": {
+    "text": "MEMORIAL_2",
+    "next": null,
+    "effects": [
+     {
+      "quest_start": "case_drowned_ford"
+     }
+    ]
+   },
+   "again": {
+    "text": "MEMORIAL_1",
+    "next": null
+   }
+  }
+ },
+ "ford_enter": {
+  "entries": [],
+  "start": "e1",
+  "nodes": {
+   "e1": {
+    "text": "FORD_ENTER_1",
+    "next": "e2",
+    "effects": [
+     {
+      "set_flag": "ford.entered"
+     }
+    ]
+   },
+   "e2": {
+    "text": "FORD_ENTER_2",
+    "next": null
+   }
+  }
+ },
+ "ford_chapel": {
+  "entries": [
+   {
+    "if": {
+     "any": [
+      {
+       "has_item": "ford_register"
+      },
+      {
+       "quest_done": "case_drowned_ford"
+      },
+      {
+       "quest_stage": [
+        "case_drowned_ford",
+        "choice"
+       ]
+      }
+     ]
+    },
+    "node": "empty"
+   },
+   {
+    "if": {
+     "flag": "ford.cleared"
+    },
+    "node": "reg1"
+   }
+  ],
+  "start": "blocked",
+  "nodes": {
+   "empty": {
+    "text": "CHAPEL_EMPTY",
+    "next": null
+   },
+   "blocked": {
+    "text": "CHAPEL_BLOCKED",
+    "next": null
+   },
+   "reg1": {
+    "text": "CHAPEL_REG_1",
+    "next": "reg2"
+   },
+   "reg2": {
+    "text": "CHAPEL_REG_2",
+    "next": null,
+    "effects": [
+     {
+      "give_item": "ford_register"
+     },
+     {
+      "quest_stage": [
+       "case_drowned_ford",
+       "choice"
+      ]
+     }
+    ]
+   }
+  }
+ }
+}
