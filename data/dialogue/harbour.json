@@ -1,0 +1,107 @@
+{
+ "nell": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "met.nell"
+    },
+    "node": "i1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "i1": {
+    "text": "NELL_INTRO",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "met.nell"
+     }
+    ]
+   },
+   "hub": {
+    "text": "NELL_HUB",
+    "speaker": "NPC_NELL",
+    "choices": [
+     {
+      "text": "MARKET_BUY",
+      "effects": [
+       {
+        "open_screen": "shop:fishmonger"
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "NELL_ASK_FISH",
+      "next": "fish"
+     },
+     {
+      "text": "MARKET_BYE",
+      "next": null
+     }
+    ]
+   },
+   "fish": {
+    "text": "NELL_FISH",
+    "speaker": "NPC_NELL",
+    "next": "hub"
+   }
+  }
+ },
+ "agatha": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "met.agatha"
+    },
+    "node": "i1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "i1": {
+    "text": "AGATHA_INTRO_1",
+    "next": "i2",
+    "effects": [
+     {
+      "set_flag": "met.agatha"
+     }
+    ]
+   },
+   "i2": {
+    "text": "AGATHA_INTRO_2",
+    "speaker": "NPC_AGATHA",
+    "next": "hub"
+   },
+   "hub": {
+    "text": "AGATHA_HUB",
+    "speaker": "NPC_AGATHA",
+    "choices": [
+     {
+      "text": "AGATHA_ASK_FERRY",
+      "next": "ferry"
+     },
+     {
+      "text": "AGATHA_ASK_HARBOUR",
+      "next": "harbour"
+     },
+     {
+      "text": "MARKET_BYE",
+      "next": null
+     }
+    ]
+   },
+   "ferry": {
+    "text": "AGATHA_FERRY",
+    "speaker": "NPC_AGATHA",
+    "next": "hub"
+   },
+   "harbour": {
+    "text": "AGATHA_HARBOUR",
+    "speaker": "NPC_AGATHA",
+    "next": "hub"
+   }
+  }
+ }
+}

@@ -826,6 +826,18 @@ func _cavenmouth_story() -> void:
 	CityMap.driving = false
 	await _wait_location(&"greyford_block")
 	(get_child(0).get("city_map") as MapScreen).close()
+	_step = "the harbour"
+	WorldClock.wait_until_hour(10)
+	_assert(CityMap.known("harbour") and CityMap.ride("harbour"), "a bus to the harbour")
+	await _wait_location(&"greyford_harbour")
+	await _frames(10)
+	await _talk(&"nell", {"npc": &"nell_goodwin"}, ["NELL_ASK_FISH", "MARKET_BYE"])
+	await _finish_dialogue()
+	await _talk(&"agatha", {"npc": &"agatha_moss"}, ["AGATHA_ASK_FERRY", "MARKET_BYE"])
+	await _finish_dialogue()
+	Inventory.add(&"cod", 1, false)
+	var m0 := Inventory.money
+	_assert(Economy.sell(&"cod") and Inventory.money > m0, "Nell buys the catch")
 	for who: Array in [[&"halloway", &"edda_halloway"], [&"theo", &"theo_marsh"], [&"jonah", &"jonah_rook"]]:
 		DialogueService.start(who[0], {"npc": who[1]})
 		await _finish_dialogue()
