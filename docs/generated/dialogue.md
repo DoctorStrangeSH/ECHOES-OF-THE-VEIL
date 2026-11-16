@@ -917,6 +917,62 @@ flowchart TD
   lifeboat_locker_found["found<br/>Inside, wrapped in oilcloth: the lifeboat crew'…"]
 ```
 
+## market.json
+
+### martha
+
+```mermaid
+flowchart TD
+  martha_START(("start"))
+  martha_START --> martha_hub
+  martha_START -->|"{not_flag: met.martha}"| martha_intro1
+  martha_intro1["intro1<br/>Martha Pell: Flour has settled in the creases of Martha Pell…"]
+  martha_intro1 --> martha_intro2
+  martha_intro2["intro2<br/>Martha Pell: 'New face. Good. The old ones only ever want th…"]
+  martha_intro2 --> martha_hub
+  martha_hub["hub<br/>Martha Pell: Martha wipes her hands on an apron that has giv…"]
+  martha_hub_end_0(["end"])
+  martha_hub -->|"'What have you got today?'"| martha_hub_end_0
+  martha_hub -->|"'What's new?' ⟨{not_flag: martha.talk1}⟩"| martha_talk1
+  martha_hub -->|"'What's new?' ⟨{not_flag: martha.talk2, flag: martha.t…⟩"| martha_talk2
+  martha_hub -->|"'What's new?' ⟨{not_flag: martha.talk3, flag: martha.t…⟩"| martha_talk3
+  martha_hub_end_4(["end"])
+  martha_hub -->|"'I'll be off.'"| martha_hub_end_4
+  martha_talk1["talk1<br/>Martha Pell: 'Every eleventh of November I leave a loaf on t…"]
+  martha_talk1 --> martha_hub
+  martha_talk2["talk2<br/>Martha Pell: 'My mother kept the shop in sixty-two. Men with…"]
+  martha_talk2 --> martha_hub
+  martha_talk3["talk3<br/>Martha Pell: 'Mara Venn has bought one cheese scone at eight…"]
+  martha_talk3 --> martha_hub
+```
+
+### lou
+
+```mermaid
+flowchart TD
+  lou_START(("start"))
+  lou_START --> lou_hub
+  lou_START -->|"{not_flag: met.lou}"| lou_intro1
+  lou_intro1["intro1<br/>Lou Ferrante: Lou Ferrante polishes a glass that is already c…"]
+  lou_intro1 --> lou_intro2
+  lou_intro2["intro2<br/>Lou Ferrante: 'Welcome to the Mooring. The ice cream is Itali…"]
+  lou_intro2 --> lou_hub
+  lou_hub["hub<br/>Lou Ferrante: The radio behind the counter hums something tha…"]
+  lou_hub_end_0(["end"])
+  lou_hub -->|"'What have you got today?'"| lou_hub_end_0
+  lou_hub -->|"'What's new?' ⟨{not_flag: lou.talk1}⟩"| lou_talk1
+  lou_hub -->|"'What's new?' ⟨{not_flag: lou.talk2, flag: lou.talk1}⟩"| lou_talk2
+  lou_hub -->|"'What's new?' ⟨{not_flag: lou.talk3, flag: lou.talk2}⟩"| lou_talk3
+  lou_hub_end_4(["end"])
+  lou_hub -->|"'I'll be off.'"| lou_hub_end_4
+  lou_talk1["talk1<br/>Lou Ferrante: 'At closing time that radio plays songs from 19…"]
+  lou_talk1 --> lou_hub
+  lou_talk2["talk2<br/>Lou Ferrante: 'A regular of mine orders two cocoas every Thur…"]
+  lou_talk2 --> lou_hub
+  lou_talk3["talk3<br/>Lou Ferrante: 'Dev, the keeper in the gardens? My nephew. If …"]
+  lou_talk3 --> lou_hub
+```
+
 ## park.json
 
 ### kid_hoops

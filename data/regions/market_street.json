@@ -1,0 +1,789 @@
+{
+ "id": "market_street",
+ "name_key": "LOC_MARKET_STREET",
+ "palette": "greyford_exterior",
+ "options": {
+  "outdoors": true
+ },
+ "layout": [
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg"
+ ],
+ "nodes": [
+  {
+   "kind": "prop",
+   "name": "BakeryGround",
+   "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Ground_Floor_Bakery_1.png",
+   "x": 72,
+   "y": 240,
+   "col": [
+    128,
+    76
+   ],
+   "off": [
+    0,
+    -40.0
+   ],
+   "color": "#a05040"
+  },
+  {
+   "kind": "prop",
+   "name": "BakeryMiddle",
+   "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Middle_Floor_5.png",
+   "x": 72,
+   "y": 160,
+   "col": [
+    128,
+    64
+   ],
+   "off": [
+    0,
+    -32.0
+   ],
+   "color": "#905040"
+  },
+  {
+   "kind": "prop",
+   "name": "BakeryRoof",
+   "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Roof_2.png",
+   "x": 72,
+   "y": 96,
+   "col": [
+    128,
+    96
+   ],
+   "off": [
+    0,
+    -48.0
+   ],
+   "color": "#604040"
+  },
+  {
+   "kind": "prop",
+   "name": "CafeGround",
+   "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Ground_Floor_Ice_Cream_Shop_1.png",
+   "x": 200,
+   "y": 240,
+   "col": [
+    128,
+    76
+   ],
+   "off": [
+    0,
+    -40.0
+   ],
+   "color": "#a05040"
+  },
+  {
+   "kind": "prop",
+   "name": "CafeMiddle",
+   "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Middle_Floor_1.png",
+   "x": 200,
+   "y": 160,
+   "col": [
+    128,
+    64
+   ],
+   "off": [
+    0,
+    -32.0
+   ],
+   "color": "#905040"
+  },
+  {
+   "kind": "prop",
+   "name": "CafeRoof",
+   "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Roof_4.png",
+   "x": 200,
+   "y": 96,
+   "col": [
+    128,
+    96
+   ],
+   "off": [
+    0,
+    -48.0
+   ],
+   "color": "#604040"
+  },
+  {
+   "kind": "prop",
+   "name": "MusicGround",
+   "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Ground_Floor_Music_Store_1.png",
+   "x": 328,
+   "y": 240,
+   "col": [
+    128,
+    60
+   ],
+   "off": [
+    0,
+    -32.0
+   ],
+   "color": "#a05040"
+  },
+  {
+   "kind": "prop",
+   "name": "MusicMiddle",
+   "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Middle_Floor_13.png",
+   "x": 328,
+   "y": 176,
+   "col": [
+    128,
+    64
+   ],
+   "off": [
+    0,
+    -32.0
+   ],
+   "color": "#905040"
+  },
+  {
+   "kind": "prop",
+   "name": "MusicRoof",
+   "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Roof_6.png",
+   "x": 328,
+   "y": 112,
+   "col": [
+    128,
+    96
+   ],
+   "off": [
+    0,
+    -48.0
+   ],
+   "color": "#604040"
+  },
+  {
+   "kind": "prop",
+   "name": "ButcheryGround",
+   "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Ground_Floor_Butchery_1.png",
+   "x": 456,
+   "y": 240,
+   "col": [
+    128,
+    76
+   ],
+   "off": [
+    0,
+    -40.0
+   ],
+   "color": "#a05040"
+  },
+  {
+   "kind": "prop",
+   "name": "ButcheryMiddle",
+   "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Middle_Floor_7.png",
+   "x": 456,
+   "y": 160,
+   "col": [
+    128,
+    64
+   ],
+   "off": [
+    0,
+    -32.0
+   ],
+   "color": "#905040"
+  },
+  {
+   "kind": "prop",
+   "name": "ButcheryRoof",
+   "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Roof_2.png",
+   "x": 456,
+   "y": 96,
+   "col": [
+    128,
+    96
+   ],
+   "off": [
+    0,
+    -48.0
+   ],
+   "color": "#604040"
+  },
+  {
+   "kind": "prop",
+   "name": "GymGround",
+   "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Ground_Floor_Gym_1.png",
+   "x": 584,
+   "y": 240,
+   "col": [
+    128,
+    76
+   ],
+   "off": [
+    0,
+    -40.0
+   ],
+   "color": "#a05040"
+  },
+  {
+   "kind": "prop",
+   "name": "GymMiddle",
+   "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Middle_Floor_10.png",
+   "x": 584,
+   "y": 160,
+   "col": [
+    128,
+    64
+   ],
+   "off": [
+    0,
+    -32.0
+   ],
+   "color": "#905040"
+  },
+  {
+   "kind": "prop",
+   "name": "GymRoof",
+   "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Roof_4.png",
+   "x": 584,
+   "y": 96,
+   "col": [
+    128,
+    96
+   ],
+   "off": [
+    0,
+    -48.0
+   ],
+   "color": "#604040"
+  },
+  {
+   "kind": "prop",
+   "name": "BaitGround",
+   "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Ground_Floor_Bait_Shop_1.png",
+   "x": 712,
+   "y": 240,
+   "col": [
+    128,
+    92
+   ],
+   "off": [
+    0,
+    -48.0
+   ],
+   "color": "#a05040"
+  },
+  {
+   "kind": "prop",
+   "name": "BaitMiddle",
+   "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Middle_Floor_16.png",
+   "x": 712,
+   "y": 144,
+   "col": [
+    128,
+    64
+   ],
+   "off": [
+    0,
+    -32.0
+   ],
+   "color": "#905040"
+  },
+  {
+   "kind": "prop",
+   "name": "BaitRoof",
+   "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Roof_6.png",
+   "x": 712,
+   "y": 80,
+   "col": [
+    128,
+    80
+   ],
+   "off": [
+    0,
+    -40.0
+   ],
+   "color": "#604040"
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp0",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 24,
+   "y": 282,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2.0
+   ],
+   "color": "#707070"
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp1",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 136,
+   "y": 282,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2.0
+   ],
+   "color": "#707070"
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp2",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 264,
+   "y": 282,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2.0
+   ],
+   "color": "#707070"
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp3",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 392,
+   "y": 282,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2.0
+   ],
+   "color": "#707070"
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp4",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 520,
+   "y": 282,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2.0
+   ],
+   "color": "#707070"
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp5",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 648,
+   "y": 282,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2.0
+   ],
+   "color": "#707070"
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp6",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 776,
+   "y": 282,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2.0
+   ],
+   "color": "#707070"
+  },
+  {
+   "kind": "prop",
+   "name": "Bench0",
+   "tex": "@city/Bench_2.png",
+   "x": 80,
+   "y": 388,
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5.0
+   ],
+   "color": "#707070"
+  },
+  {
+   "kind": "prop",
+   "name": "Bench1",
+   "tex": "@city/Bench_2.png",
+   "x": 336,
+   "y": 388,
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5.0
+   ],
+   "color": "#707070"
+  },
+  {
+   "kind": "prop",
+   "name": "Bench2",
+   "tex": "@city/Bench_2.png",
+   "x": 592,
+   "y": 388,
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5.0
+   ],
+   "color": "#707070"
+  },
+  {
+   "kind": "prop",
+   "name": "Tree0",
+   "tex": "@city/Tree_11.png",
+   "x": 24,
+   "y": 424,
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4.0
+   ],
+   "color": "#3f7f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "Tree1",
+   "tex": "@city/Tree_11.png",
+   "x": 200,
+   "y": 424,
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4.0
+   ],
+   "color": "#3f7f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "Tree2",
+   "tex": "@city/Tree_11.png",
+   "x": 456,
+   "y": 424,
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4.0
+   ],
+   "color": "#3f7f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "Tree3",
+   "tex": "@city/Tree_11.png",
+   "x": 680,
+   "y": 424,
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4.0
+   ],
+   "color": "#3f7f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "CandyCart",
+   "tex": "@city/Candies_Cart_1.png",
+   "x": 264,
+   "y": 392,
+   "col": [
+    40,
+    10
+   ],
+   "off": [
+    0,
+    -5.0
+   ],
+   "color": "#d08080"
+  },
+  {
+   "kind": "prop",
+   "name": "FoodCart",
+   "tex": "@vehicle/Street_Food_Cart_1.png",
+   "x": 760,
+   "y": 392,
+   "col": [
+    40,
+    10
+   ],
+   "off": [
+    0,
+    -5.0
+   ],
+   "color": "#707070"
+  },
+  {
+   "kind": "prop",
+   "name": "Bin1",
+   "tex": "@city/Trashbin_7.png",
+   "x": 168,
+   "y": 282,
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3.0
+   ],
+   "color": "#707070"
+  },
+  {
+   "kind": "prop",
+   "name": "Mail1",
+   "tex": "@city/Mailbox_1.png",
+   "x": 424,
+   "y": 282,
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3.0
+   ],
+   "color": "#707070"
+  },
+  {
+   "kind": "prop",
+   "name": "ParkedCar",
+   "tex": "@vehicle/Car_Left_1.png",
+   "x": 520,
+   "y": 330,
+   "col": [
+    60,
+    24
+   ],
+   "off": [
+    0,
+    -12.0
+   ],
+   "color": "#4060c0"
+  },
+  {
+   "kind": "door",
+   "name": "BakeryDoor",
+   "id": "door_bakery",
+   "x": 108,
+   "y": 246,
+   "area": [
+    24,
+    10
+   ],
+   "scene": "bakery",
+   "spawn": "entrance",
+   "prompt": "PROMPT_ENTER_SHOP",
+   "show_if": {
+    "period": [
+     "morning",
+     "afternoon",
+     "evening"
+    ]
+   }
+  },
+  {
+   "kind": "door",
+   "name": "CafeDoor",
+   "id": "door_cafe",
+   "x": 200,
+   "y": 246,
+   "area": [
+    24,
+    10
+   ],
+   "scene": "cafe",
+   "spawn": "entrance",
+   "prompt": "PROMPT_ENTER_SHOP",
+   "show_if": {
+    "period": [
+     "afternoon",
+     "evening"
+    ]
+   }
+  },
+  {
+   "kind": "inspect",
+   "name": "MusicLook",
+   "id": "inspect_music_store",
+   "x": 328,
+   "y": 246,
+   "area": [
+    60,
+    10
+   ],
+   "lines": [
+    "FLAVOR_MARKET_MUSIC"
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "ButcheryLook",
+   "id": "inspect_butchery",
+   "x": 456,
+   "y": 246,
+   "area": [
+    60,
+    10
+   ],
+   "lines": [
+    "FLAVOR_MARKET_BUTCHERY"
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "GymLook",
+   "id": "inspect_gym",
+   "x": 584,
+   "y": 246,
+   "area": [
+    60,
+    10
+   ],
+   "lines": [
+    "FLAVOR_MARKET_GYM"
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "BaitLook",
+   "id": "inspect_bait",
+   "x": 712,
+   "y": 246,
+   "area": [
+    60,
+    10
+   ],
+   "lines": [
+    "FLAVOR_MARKET_BAIT"
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "CandyLook",
+   "id": "inspect_candy_cart",
+   "x": 264,
+   "y": 400,
+   "area": [
+    40,
+    10
+   ],
+   "lines": [
+    "FLAVOR_MARKET_CANDY"
+   ]
+  },
+  {
+   "kind": "spawn",
+   "name": "FromOldQuarter",
+   "id": "from_old_quarter",
+   "x": 16,
+   "y": 262,
+   "facing": [
+    1,
+    0
+   ]
+  },
+  {
+   "kind": "spawn",
+   "name": "BakeryFront",
+   "id": "bakery_front",
+   "x": 108,
+   "y": 258,
+   "facing": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "spawn",
+   "name": "CafeFront",
+   "id": "cafe_front",
+   "x": 200,
+   "y": 258,
+   "facing": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ToOldQuarter",
+   "id": "door_market_old_quarter",
+   "x": 4,
+   "y": 262,
+   "area": [
+    8,
+    28
+   ],
+   "scene": "greyford_block",
+   "spawn": "from_market",
+   "prompt": "PROMPT_TO_TOWN"
+  }
+ ]
+}

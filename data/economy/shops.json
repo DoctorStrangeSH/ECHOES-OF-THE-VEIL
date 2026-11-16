@@ -35,5 +35,37 @@
    }
   ],
   "sells_to": false
+ },
+ "bakery": {
+  "name": "SHOP_BAKERY",
+  "buy": [
+   {
+    "item": "bread_roll",
+    "price": 4
+   },
+   {
+    "item": "meat_pie",
+    "price": 9
+   }
+  ],
+  "sells_to": false
+ },
+ "cafe": {
+  "name": "SHOP_CAFE",
+  "buy": [
+   {
+    "item": "ice_cream",
+    "price": 4
+   },
+   {
+    "item": "cocoa",
+    "price": 6
+   },
+   {
+    "item": "tea_flask",
+    "price": 5
+   }
+  ],
+  "sells_to": false
  }
 }

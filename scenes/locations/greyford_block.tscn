@@ -832,3 +832,18 @@ position = Vector2(272, 392)
 script = ExtResource("4_spawn")
 spawn_id = &"from_park"
 facing = Vector2(0, -1)
+
+[node name="MarketPath" type="Area2D" parent="Entities"]
+position = Vector2(636, 272)
+script = ExtResource("6_door")
+interaction_id = &"door_greyford_market"
+area_size = Vector2(8, 28)
+prompt_key = "PROMPT_TO_MARKET"
+target_scene_id = &"market_street"
+target_spawn_id = &"from_old_quarter"
+
+[node name="FromMarket" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(620, 272)
+script = ExtResource("4_spawn")
+spawn_id = &"from_market"
+facing = Vector2(-1, 0)

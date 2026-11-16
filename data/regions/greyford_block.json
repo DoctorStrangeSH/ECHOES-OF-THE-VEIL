@@ -1452,6 +1452,31 @@
     0,
     -1
    ]
+  },
+  {
+   "kind": "door",
+   "name": "MarketPath",
+   "id": "door_greyford_market",
+   "x": 636,
+   "y": 272,
+   "area": [
+    8,
+    28
+   ],
+   "scene": "market_street",
+   "spawn": "from_old_quarter",
+   "prompt": "PROMPT_TO_MARKET"
+  },
+  {
+   "kind": "spawn",
+   "name": "FromMarket",
+   "id": "from_market",
+   "x": 620,
+   "y": 272,
+   "facing": [
+    -1,
+    0
+   ]
   }
  ]
 }

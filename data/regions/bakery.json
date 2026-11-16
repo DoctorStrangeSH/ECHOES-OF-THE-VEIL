@@ -1,0 +1,174 @@
+{
+ "id": "bakery",
+ "name_key": "LOC_BAKERY",
+ "palette": "rented_room",
+ "options": {
+  "outdoors": false
+ },
+ "layout": {
+  "generator": "room",
+  "width": 16,
+  "height": 10,
+  "door_x": 7
+ },
+ "nodes": [
+  {
+   "kind": "furn",
+   "furn": "bread_shelf",
+   "x": 40,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "bread_shelf_b",
+   "x": 72,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "bread_shelf",
+   "x": 104,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "oven",
+   "x": 184,
+   "y": 62
+  },
+  {
+   "kind": "furn",
+   "furn": "oven",
+   "x": 200,
+   "y": 62
+  },
+  {
+   "kind": "furn",
+   "furn": "fridge",
+   "x": 224,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "display_counter",
+   "x": 136,
+   "y": 104
+  },
+  {
+   "kind": "furn",
+   "furn": "table_cloth_red",
+   "x": 56,
+   "y": 124
+  },
+  {
+   "kind": "furn",
+   "furn": "stool_wood",
+   "x": 36,
+   "y": 124
+  },
+  {
+   "kind": "furn",
+   "furn": "stool_wood_b",
+   "x": 76,
+   "y": 126
+  },
+  {
+   "kind": "furn",
+   "furn": "table_cloth_white",
+   "x": 208,
+   "y": 140
+  },
+  {
+   "kind": "furn",
+   "furn": "stool_wood",
+   "x": 188,
+   "y": 140
+  },
+  {
+   "kind": "furn",
+   "furn": "plant_small",
+   "x": 28,
+   "y": 150
+  },
+  {
+   "kind": "furn",
+   "furn": "rug_yellow",
+   "x": 120,
+   "y": 148
+  },
+  {
+   "kind": "inspect",
+   "name": "BreadLook",
+   "id": "inspect_bakery_bread",
+   "x": 72,
+   "y": 72,
+   "area": [
+    90,
+    10
+   ],
+   "lines": [
+    "FLAVOR_BAKERY_BREAD"
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "OvenLook",
+   "id": "inspect_bakery_oven",
+   "x": 192,
+   "y": 70,
+   "area": [
+    34,
+    10
+   ],
+   "lines": [
+    "FLAVOR_BAKERY_OVEN"
+   ]
+  },
+  {
+   "template": "anchors",
+   "points": {
+    "counter": [
+     176,
+     90
+    ]
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "Entrance",
+   "id": "entrance",
+   "x": 120,
+   "y": 138,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ExitDoor",
+   "id": "door_bakery_exit",
+   "x": 120,
+   "y": 156,
+   "area": [
+    30,
+    10
+   ],
+   "scene": "market_street",
+   "spawn": "bakery_front",
+   "prompt": "PROMPT_EXIT"
+  },
+  {
+   "kind": "furn",
+   "furn": "counter_left",
+   "x": 168,
+   "y": 110
+  },
+  {
+   "kind": "furn",
+   "furn": "counter_right",
+   "x": 200,
+   "y": 110
+  }
+ ]
+}
