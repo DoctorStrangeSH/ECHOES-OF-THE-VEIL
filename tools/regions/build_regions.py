@@ -158,6 +158,8 @@ def write_tscn(path, loc_id, name_key, palette, layout, nodes, margin=0, opts=No
          ('PackedScene','res://scenes/world/junk_pile.tscn','19_junk')]
     if any(n['kind'] == 'plot' for n in nodes):
         ext.append(('Script', 'res://scripts/farm/farm_plot.gd', '%d_plot' % (len(ext) + 1)))
+    if any(n['kind'] == 'forage' for n in nodes):
+        ext.append(('Script', 'res://scripts/farm/forage_spot.gd', '%d_forage' % (len(ext) + 1)))
     if any(n['kind'] == 'critter' for n in nodes):
         ext.append(('Script', 'res://scripts/farm/critter.gd', '%d_critter' % (len(ext) + 1)))
     for n in nodes:  # bosses other than the Census Taker bring their own scene
@@ -239,6 +241,12 @@ def write_tscn(path, loc_id, name_key, palette, layout, nodes, margin=0, opts=No
             pid = next(e[2] for e in ext if e[1].endswith('farm_plot.gd'))
             L+=[f'[node name="{n["name"]}" type="Area2D" parent="Entities"]',f'position = {v(n["x"],n["y"])}',f'script = ExtResource("{pid}")',
                 f'interaction_id = &"plot_{n["id"]}"', f'plot_id = &"{n["id"]}"']
+        elif k=='forage':
+            fid = next(e[2] for e in ext if e[1].endswith('forage_spot.gd'))
+            L+=[f'[node name="{n["name"]}" type="Area2D" parent="Entities"]',f'position = {v(n["x"],n["y"])}',f'script = ExtResource("{fid}")',
+                f'interaction_id = &"forage_{n["id"]}"', f'forage_id = &"{n["id"]}"', f'item_id = &"{n["item"]}"', f'amount = {n.get("amount", 1)}',
+                f'texture_path = "{resolve_tex(n["tex"])}"']
+            if n.get('picked'): L.append(f'picked_texture_path = "{resolve_tex(n["picked"])}"')
         elif k=='critter':
             cid = next(e[2] for e in ext if e[1].endswith('critter.gd'))
             L+=[f'[node name="{n["name"]}" type="Node2D" parent="Entities"]',f'position = {v(n["x"],n["y"])}',f'script = ExtResource("{cid}")',
@@ -278,6 +286,9 @@ def preview(out, palette, layout, nodes, clean=False):
         if n['kind']=='npc':
             im=Image.open(SRC['modern_interiors']+f'/2_Characters/Character_Generator/0_Premade_Characters/16x16/{n["premade"]}.png').convert('RGBA')
             col={0:0,1:6,2:12,3:18}[n['facing']]; fr=im.crop((col*16,32,col*16+16,64)); drawables.append((True,n['y'],fr,n['x']-8,n['y']-32))
+        if n['kind']=='forage':
+            im=Image.open(local(resolve_tex(n['tex']))).convert('RGBA')
+            drawables.append((True,n['y']+6,im,n['x']-im.width//2,n['y']+6-im.height))
         if n['kind']=='critter':
             im=Image.open(local(resolve_tex(n['tex']))).convert('RGBA'); s=n.get('frame',16)
             drawables.append((True,n['y'],im.crop((3*s,0,4*s,s)),n['x']-s//2,n['y']-s))

@@ -684,22 +684,6 @@
   },
   {
    "kind": "prop",
-   "name": "Tree7",
-   "tex": "@ftree/Tree_Birch_Green_Medium_16x16.png",
-   "x": 774,
-   "y": 300,
-   "color": "#3f7f3f",
-   "col": [
-    14,
-    8
-   ],
-   "off": [
-    0,
-    -4
-   ]
-  },
-  {
-   "kind": "prop",
    "name": "Tree8",
    "tex": "@ftree/Tree_Pine_Green_Big_16x16.png",
    "x": 40,
@@ -1246,6 +1230,42 @@
     -5
    ],
    "color": "#8a6040"
+  },
+  {
+   "kind": "door",
+   "name": "ToMillwood",
+   "id": "door_farm_millwood",
+   "x": 796,
+   "y": 296,
+   "area": [
+    8,
+    40
+   ],
+   "scene": "millwood",
+   "spawn": "from_farm",
+   "prompt": "PROMPT_GO_MILLWOOD"
+  },
+  {
+   "kind": "spawn",
+   "name": "FromMillwood",
+   "id": "from_millwood",
+   "x": 778,
+   "y": 296,
+   "facing": [
+    -1,
+    0
+   ]
+  },
+  {
+   "template": "sign",
+   "tex": "@farm/Sign_2_16x16.png",
+   "x": 770,
+   "y": 272,
+   "id": "read_farm_millwood_sign",
+   "name": "MillwoodSign",
+   "lines": [
+    "FLAVOR_FARM_MILLWOOD_SIGN"
+   ]
   }
  ]
 }

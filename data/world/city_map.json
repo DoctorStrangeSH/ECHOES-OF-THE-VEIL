@@ -188,7 +188,9 @@
    ],
    "scenes": [
     "brook_farm",
-    "brook_farmhouse"
+    "brook_farmhouse",
+    "millwood",
+    "drowned_ford"
    ],
    "stop": [
     "brook_farm",
@@ -211,6 +213,10 @@
    "places": [
     {
      "name": "MAP_PLACE_FARM",
+     "hours": "MAP_HOURS_ALWAYS"
+    },
+    {
+     "name": "MAP_PLACE_MILLWOOD",
      "hours": "MAP_HOURS_ALWAYS"
     }
    ]

@@ -1,0 +1,693 @@
+{
+ "id": "drowned_ford",
+ "name_key": "LOC_DROWNED_FORD",
+ "palette": "greyford_exterior",
+ "options": {
+  "outdoors": false,
+  "combat_enabled": true,
+  "fixed_tint": {
+   "color": [
+    0.42,
+    0.62,
+    0.86,
+    1.0
+   ]
+  },
+  "enter_dialogue_id": "ford_enter",
+  "enter_condition": {
+   "not_flag": "ford.entered"
+  }
+ },
+ "layout": [
+  "gggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggoooooooooogggggggggg",
+  "ggggggggggggggggggggggggoooooooooogggggggggg",
+  "ggggggggggggggggggggggggoooooooooogggggggggg",
+  "oooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooo",
+  "gggggggggggggggggggggooggggggggggggggggggggg",
+  "gggggggggggggggggggggooggggggggggggggggggggg",
+  "gggggggggggggggggggggooggggggggggggggggggggg",
+  "gggggggggggggggggggggooggggggggggggggggggggg",
+  "gggggggggggggggggggggooggggggggggggggggggggg",
+  "gggggggggggggggggggggooggggggggggggggggggggg",
+  "gggggggggggggggggggggooggggggggggggggggggggg",
+  "gggggggggggggggggggggooggggggggggggggggggggg",
+  "gggggggggggggggggggggooggggggggggggggggggggg",
+  "gggggggggggggggggggggooggggggggggggggggggggg",
+  "gggggggggggggggggggggooggggggggggggggggggggg",
+  "gggggggggggggggggggggooggggggggggggggggggggg",
+  "gggggggggggggggggggggooggggggggggggggggggggg"
+ ],
+ "nodes": [
+  {
+   "kind": "prop",
+   "name": "MillHouse",
+   "tex": "@farm/Farmer_House_2_16x16.png",
+   "x": 100,
+   "y": 232,
+   "color": "#6a7a5a",
+   "col": [
+    150,
+    40
+   ],
+   "off": [
+    0,
+    -20
+   ],
+   "children": [
+    "Shimmer"
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Cottage",
+   "tex": "@farm/Farmer_House_1_16x16.png",
+   "x": 260,
+   "y": 232,
+   "color": "#6a7a5a",
+   "col": [
+    118,
+    40
+   ],
+   "off": [
+    0,
+    -20
+   ],
+   "children": [
+    "Shimmer"
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Chapel",
+   "tex": "@grave/Grace_Chapel.png",
+   "x": 464,
+   "y": 192,
+   "color": "#6a7a5a",
+   "col": [
+    74,
+    40
+   ],
+   "off": [
+    0,
+    -20
+   ],
+   "children": [
+    "Shimmer"
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Windmill",
+   "tex": "@house/Post_Apocalyptic_House_Wind_Mill_16x16.png",
+   "x": 620,
+   "y": 232,
+   "color": "#6a7a5a",
+   "col": [
+    40,
+    20
+   ],
+   "off": [
+    0,
+    -10
+   ],
+   "children": [
+    "Shimmer"
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Barn",
+   "tex": "@farm/Barn_Small_16x16.png",
+   "x": 120,
+   "y": 448,
+   "color": "#6a7a5a",
+   "col": [
+    116,
+    40
+   ],
+   "off": [
+    0,
+    -20
+   ],
+   "children": [
+    "Shimmer"
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "SquareWell",
+   "tex": "@farm/Well_Stone_16x16.png",
+   "x": 560,
+   "y": 216,
+   "color": "#6a7a5a",
+   "col": [
+    22,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Cross1",
+   "tex": "@grave/Grey_Cross_1.png",
+   "x": 560,
+   "y": 354,
+   "color": "#6a7a5a",
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Cross2",
+   "tex": "@grave/Grey_Cross_2.png",
+   "x": 600,
+   "y": 374,
+   "color": "#6a7a5a",
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Cross3",
+   "tex": "@grave/Brown_Cross_1.png",
+   "x": 640,
+   "y": 354,
+   "color": "#6a7a5a",
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Cross4",
+   "tex": "@grave/Grey_Cross_3.png",
+   "x": 580,
+   "y": 414,
+   "color": "#6a7a5a",
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Cross5",
+   "tex": "@grave/Brown_Cross_3.png",
+   "x": 630,
+   "y": 424,
+   "color": "#6a7a5a",
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Cross6",
+   "tex": "@grave/Grey_Cross_4.png",
+   "x": 670,
+   "y": 404,
+   "color": "#6a7a5a",
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "DeadTree",
+   "tex": "@grave/Big_Tree_.png",
+   "x": 460,
+   "y": 440,
+   "color": "#6a7a5a",
+   "col": [
+    16,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "template": "fence",
+   "x": 32,
+   "y": 19,
+   "w": 11,
+   "h": 9,
+   "name": "YardFence",
+   "gate": [
+    3
+   ],
+   "gate_side": "top"
+  },
+  {
+   "kind": "prop",
+   "name": "Weed1",
+   "tex": "@camp/Sprout_1.png",
+   "x": 40,
+   "y": 300,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#4a7a6a"
+  },
+  {
+   "kind": "prop",
+   "name": "Weed2",
+   "tex": "@camp/Sprout_2.png",
+   "x": 300,
+   "y": 330,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#4a7a6a"
+  },
+  {
+   "kind": "prop",
+   "name": "Weed3",
+   "tex": "@camp/Sprout_3.png",
+   "x": 420,
+   "y": 300,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#4a7a6a"
+  },
+  {
+   "kind": "prop",
+   "name": "Weed4",
+   "tex": "@camp/Sprout_4.png",
+   "x": 240,
+   "y": 420,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#4a7a6a"
+  },
+  {
+   "kind": "prop",
+   "name": "Weed5",
+   "tex": "@camp/Sprout_1.png",
+   "x": 420,
+   "y": 440,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#4a7a6a"
+  },
+  {
+   "kind": "prop",
+   "name": "Weed6",
+   "tex": "@camp/Sprout_2.png",
+   "x": 680,
+   "y": 170,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#4a7a6a"
+  },
+  {
+   "kind": "prop",
+   "name": "Weed7",
+   "tex": "@camp/Sprout_3.png",
+   "x": 30,
+   "y": 180,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#4a7a6a"
+  },
+  {
+   "kind": "prop",
+   "name": "Weed8",
+   "tex": "@camp/Sprout_4.png",
+   "x": 360,
+   "y": 120,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#4a7a6a"
+  },
+  {
+   "kind": "prop",
+   "name": "Moss1",
+   "tex": "@camp/Moss_1.png",
+   "x": 200,
+   "y": 300,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#4a7a6a"
+  },
+  {
+   "kind": "prop",
+   "name": "Moss2",
+   "tex": "@camp/Moss_2.png",
+   "x": 380,
+   "y": 360,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#4a7a6a"
+  },
+  {
+   "kind": "prop",
+   "name": "Moss3",
+   "tex": "@camp/Moss_1.png",
+   "x": 150,
+   "y": 330,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#4a7a6a"
+  },
+  {
+   "kind": "prop",
+   "name": "Moss4",
+   "tex": "@camp/Moss_2.png",
+   "x": 300,
+   "y": 450,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#4a7a6a"
+  },
+  {
+   "kind": "prop",
+   "name": "Moss5",
+   "tex": "@camp/Moss_1.png",
+   "x": 480,
+   "y": 450,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#4a7a6a"
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo1",
+   "id": "ford_1",
+   "x": 180,
+   "y": 256,
+   "variant": "hollow"
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo2",
+   "id": "ford_2",
+   "x": 330,
+   "y": 262,
+   "variant": "clinger"
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo3",
+   "id": "ford_3",
+   "x": 470,
+   "y": 236,
+   "variant": "wailer"
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo4",
+   "id": "ford_4",
+   "x": 560,
+   "y": 262,
+   "variant": "hollow"
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo5",
+   "id": "ford_5",
+   "x": 620,
+   "y": 360,
+   "variant": "clinger"
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo6",
+   "id": "ford_6",
+   "x": 250,
+   "y": 360,
+   "variant": "hollow"
+  },
+  {
+   "kind": "encounter",
+   "flag": "ford.cleared"
+  },
+  {
+   "kind": "inspect",
+   "name": "ChapelDoor",
+   "id": "inspect_ford_chapel",
+   "x": 464,
+   "y": 200,
+   "area": [
+    30,
+    12
+   ],
+   "dialogue": "ford_chapel",
+   "priority": 20
+  },
+  {
+   "kind": "inspect",
+   "name": "MillLook",
+   "id": "inspect_ford_mill",
+   "x": 100,
+   "y": 240,
+   "area": [
+    40,
+    10
+   ],
+   "lines": [
+    "FLAVOR_FORD_MILLHOUSE"
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "GravesLook",
+   "id": "inspect_ford_graves",
+   "x": 610,
+   "y": 360,
+   "area": [
+    60,
+    30
+   ],
+   "lines": [
+    "FLAVOR_FORD_GRAVES"
+   ]
+  },
+  {
+   "kind": "spawn",
+   "name": "Entrance",
+   "id": "entrance",
+   "x": 352,
+   "y": 452,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ToSurface",
+   "id": "door_ford_surface",
+   "x": 352,
+   "y": 472,
+   "area": [
+    40,
+    10
+   ],
+   "scene": "millwood",
+   "spawn": "pier",
+   "prompt": "PROMPT_FORD_SURFACE"
+  },
+  {
+   "kind": "prop",
+   "name": "DrownedTree1",
+   "tex": "@ftree/Tree_Oak_Green_Big_16x16.png",
+   "x": 372,
+   "y": 120,
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#3f7f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "DrownedTree2",
+   "tex": "@ftree/Tree_Pine_Dark_Green_Big_16x16.png",
+   "x": 664,
+   "y": 120,
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#3f7f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "DrownedTree3",
+   "tex": "@ftree/Tree_Birch_Green_Medium_16x16.png",
+   "x": 30,
+   "y": 420,
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#3f7f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "Cart",
+   "tex": "@farm/Wood_Board_Load_16x16.png",
+   "x": 300,
+   "y": 300,
+   "col": [
+    18,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#8a6040"
+  }
+ ]
+}

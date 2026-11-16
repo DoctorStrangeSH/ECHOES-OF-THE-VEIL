@@ -90,3 +90,9 @@ The farm is bought through a side case (case_brook_farm): a notice at the market
 Districts can carry `open_if`: once you have heard of a place, the bus goes there before your first visit, and further districts have their own fare and ride time.
 
 Farming is deliberately forgiving: a crop grows one step per watered (or rainy) day and never withers; produce goes in the crate and is paid next morning; hens lay every night. Plots are Interactables generated from a `field` template over a derived soil picture (tools/art/make_field.py, private submodule); animals are decorative `critter` nodes. State lives in the Farm autoload and is saved under "farm" (no schema bump: missing means empty).
+
+## D-069 Millwood and the drowned village (R5b)
+
+East of the farm: Millwood (forest, lake, pier, Ada's caravan, a campsite with a rest by the fire) and, under the lake, Mill Ford, a Veil location reached by a stair of light from the end of the pier in the evening or at night. It is our first "underwater" place: a whole village on the lake bottom, tinted deep blue. The case (case_drowned_ford) ties the countryside to the main story: the village was flooded in 1962 and then struck out of the town's books by the Census. Hints live in the world: Ada names the pier and the hour, and the memorial stone carries her note for anyone who meets the stone first.
+
+Foraging is a new node kind (`forage`, ForageSpot): gather once a day, back next morning, state in the flag forage.<id>.

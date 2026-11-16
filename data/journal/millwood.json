@@ -1,0 +1,46 @@
+{
+ "cases": {
+  "case_drowned_ford": {
+   "title": "CASE_FORD_TITLE",
+   "summary": "CASE_FORD_SUMMARY",
+   "first_stage": "listen",
+   "stages": {
+    "listen": "CASE_FORD_LISTEN",
+    "below": "CASE_FORD_BELOW",
+    "choice": "CASE_FORD_CHOICE"
+   },
+   "outcomes": {
+    "remembered": "CASE_FORD_REMEMBERED",
+    "laid_to_rest": "CASE_FORD_REST"
+   },
+   "transitions": {
+    "listen": [
+     "below"
+    ],
+    "below": [
+     "choice"
+    ]
+   },
+   "objectives": {
+    "below": [
+     {
+      "id": "clear",
+      "text": "OBJ_FORD_CLEAR",
+      "done_if": {
+       "flag": "ford.cleared"
+      }
+     },
+     {
+      "id": "register",
+      "text": "OBJ_FORD_REGISTER",
+      "done_if": {
+       "has_item": "ford_register"
+      }
+     }
+    ]
+   }
+  }
+ },
+ "evidence": {},
+ "hypotheses": {}
+}

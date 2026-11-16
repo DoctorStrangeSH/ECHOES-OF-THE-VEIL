@@ -702,8 +702,50 @@ func _farm_story() -> void:
 	await _frames(10)
 	await _tap(&"pause")
 	await _frames(5)
+	await _millwood_story()
 	SceneFlow.travel(&"greyford_block", &"ward_return")
 	await _wait_location(&"greyford_block")
+
+
+## R5b: Millwood, Ada, the bell at night, the drowned village, the register.
+func _millwood_story() -> void:
+	_step = "millwood: the woods"
+	WorldClock.wait_until_hour(10)
+	SceneFlow.travel(&"brook_farm", &"from_millwood")
+	await _wait_location(&"brook_farm")
+	SceneFlow.travel(&"millwood", &"from_farm")
+	await _wait_location(&"millwood")
+	await _frames(10)
+	var mush := _find_named("Mushrooms1") as ForageSpot
+	_assert(mush != null and mush.available(), "mushrooms to gather")
+	if mush != null:
+		mush.interact(_player())
+		_assert(Inventory.has(&"mushroom") and not mush.available(), "gathered; gone until tomorrow")
+	await _talk(&"ada", {"npc": &"ada_fenwick"}, ["ADA_ASK_BELL", "MARKET_BYE"])
+	await _finish_dialogue()
+	_assert(Journal.case_stage(&"case_drowned_ford") == &"listen", "listen for the bell")
+	_step = "millwood: the bell"
+	WorldClock.wait_until_hour(21)
+	await _frames(10)
+	DialogueService.start(&"ford_pier")
+	await _finish_dialogue()
+	_assert(GameState.has_flag(&"ford.open") and _visible_in_location("VeilBelow"), "a stair of light at the end of the pier")
+	SceneFlow.travel(&"drowned_ford", &"entrance")
+	await _wait_location(&"drowned_ford")
+	await _frames(20)
+	await _finish_dialogue()
+	await _clear_enemies()
+	await _frames(10)
+	_assert(GameState.has_flag(&"ford.cleared"), "the echoes are gone from the chapel")
+	DialogueService.start(&"ford_chapel")
+	await _finish_dialogue()
+	_assert(Inventory.has(&"ford_register") and Journal.case_stage(&"case_drowned_ford") == &"choice", "the register")
+	SceneFlow.travel(&"millwood", &"pier")
+	await _wait_location(&"millwood")
+	await _frames(10)
+	await _talk(&"ada", {"npc": &"ada_fenwick"}, ["FORD_TO_BELL"])
+	await _finish_dialogue()
+	_assert(Journal.case_status(&"case_drowned_ford") == Journal.STATUS_DONE and Inventory.has(&"ford_bell"), "laid to rest; the clapper")
 
 
 func _find_named(node_name: String) -> Node:

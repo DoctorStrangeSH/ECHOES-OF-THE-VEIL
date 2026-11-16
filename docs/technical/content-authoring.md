@@ -37,7 +37,7 @@ CI runs steps 3–4 (in check mode), the asset license guard and the Godot tests
 - **options**: scene settings — `outdoors`, `combat_enabled`, `fixed_tint` (`{"color": [r, g, b, a]}`), `enter_dialogue_id`, `enter_condition`, `camera_margin_tiles`.
 - **nodes**: plain nodes or templates. Texture paths can use aliases from `data/regions/_aliases.json` (`@city/Bench_2.png`, `@beach/...`, `@bedroom/...`).
 
-Plain node kinds: `prop`, `spawn`, `door`, `inspect`, `rest`, `anchor`, `npc`, `enemy` (`variant`), `boss`, `arena`, `encounter`, `pickup`, `spot` (repair), `screen` (shop/jobs/workbench/business), `junk`, `plot` (a farm square), `critter` (a farm animal ambling in a pen; `hen: n` shows it while the farm keeps n hens). Any node can take `show_if` (a StoryRules condition).
+Plain node kinds: `prop`, `spawn`, `door`, `inspect`, `rest`, `anchor`, `npc`, `enemy` (`variant`), `boss`, `arena`, `encounter`, `pickup`, `spot` (repair), `screen` (shop/jobs/workbench/business), `junk`, `plot` (a farm square), `forage` (mushrooms or a berry bush, gathered once a day), `critter` (a farm animal ambling in a pen; `hen: n` shows it while the farm keeps n hens). Any node can take `show_if` (a StoryRules condition).
 
 Templates (`tools/regions/templates.py`):
 

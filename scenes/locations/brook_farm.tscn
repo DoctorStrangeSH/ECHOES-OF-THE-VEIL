@@ -1122,14 +1122,6 @@ placeholder_color = Color(0.247,0.498,0.247, 1)
 collision_size = Vector2(14, 8)
 collision_offset = Vector2(0, -4)
 
-[node name="Tree7" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(774, 300)
-texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Birch_Green_Medium_16x16.png"
-placeholder_size = Vector2i(48, 64)
-placeholder_color = Color(0.247,0.498,0.247, 1)
-collision_size = Vector2(14, 8)
-collision_offset = Vector2(0, -4)
-
 [node name="Tree8" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(40, 470)
 texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Pine_Green_Big_16x16.png"
@@ -1411,3 +1403,34 @@ placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.376,0.251, 1)
 collision_size = Vector2(28, 10)
 collision_offset = Vector2(0, -5)
+
+[node name="ToMillwood" type="Area2D" parent="Entities"]
+position = Vector2(796, 296)
+script = ExtResource("6_door")
+interaction_id = &"door_farm_millwood"
+area_size = Vector2(8, 40)
+prompt_key = "PROMPT_GO_MILLWOOD"
+target_scene_id = &"millwood"
+target_spawn_id = &"from_farm"
+
+[node name="FromMillwood" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(778, 296)
+script = ExtResource("4_spawn")
+spawn_id = &"from_millwood"
+facing = Vector2(-1, 0)
+
+[node name="MillwoodSign" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(770, 272)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Sign_2_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.816,0.816,0.816, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="MillwoodSignRead" type="Area2D" parent="Entities"]
+position = Vector2(770, 278)
+script = ExtResource("5_inspect")
+interaction_id = &"read_farm_millwood_sign"
+area_size = Vector2(18, 12)
+prompt_key = "PROMPT_READ"
+lines = PackedStringArray("FLAVOR_FARM_MILLWOOD_SIGN")

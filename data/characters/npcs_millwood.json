@@ -1,0 +1,31 @@
+{
+ "ada_fenwick": {
+  "name": "NPC_ADA",
+  "body": "Body_02",
+  "eyes": "Eyes_01",
+  "outfit": "Outfit_20_01",
+  "hairstyle": "Hairstyle_06_05",
+  "color": "#7a8a9a",
+  "dialogue": "ada",
+  "schedule": [
+   {
+    "period": [
+     "morning",
+     "afternoon"
+    ],
+    "scene": "millwood",
+    "anchor": "yard",
+    "facing": "down"
+   },
+   {
+    "period": [
+     "evening",
+     "night"
+    ],
+    "scene": "millwood",
+    "anchor": "shore",
+    "facing": "up"
+   }
+  ]
+ }
+}
