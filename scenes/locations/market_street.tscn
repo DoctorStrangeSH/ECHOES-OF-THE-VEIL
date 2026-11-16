@@ -403,13 +403,6 @@ interaction_id = &"inspect_butchery"
 area_size = Vector2(60, 10)
 lines = PackedStringArray("FLAVOR_MARKET_BUTCHERY")
 
-[node name="GymLook" type="Area2D" parent="Entities"]
-position = Vector2(584, 262)
-script = ExtResource("5_inspect")
-interaction_id = &"inspect_gym"
-area_size = Vector2(60, 10)
-lines = PackedStringArray("FLAVOR_MARKET_GYM")
-
 [node name="BaitLook" type="Area2D" parent="Entities"]
 position = Vector2(712, 262)
 script = ExtResource("5_inspect")
@@ -469,3 +462,29 @@ position = Vector2(600, 314)
 script = ExtResource("4_spawn")
 spawn_id = &"bus_stop"
 facing = Vector2(0, 1)
+
+[node name="GymDoor" type="Area2D" parent="Entities"]
+position = Vector2(618, 262)
+script = ExtResource("6_door")
+interaction_id = &"door_gym"
+area_size = Vector2(24, 10)
+prompt_key = "PROMPT_ENTER_SHOP"
+target_scene_id = &"gym"
+target_spawn_id = &"entrance"
+
+[node name="Condition" type="Node" parent="Entities/GymDoor"]
+script = ExtResource("10_cond")
+show_if = {"period": ["morning", "afternoon", "evening"]}
+
+[node name="GymFront" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(618, 276)
+script = ExtResource("4_spawn")
+spawn_id = &"gym_front"
+facing = Vector2(0, 1)
+
+[node name="GymLook" type="Area2D" parent="Entities"]
+position = Vector2(560, 262)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_gym"
+area_size = Vector2(40, 10)
+lines = PackedStringArray("FLAVOR_MARKET_GYM")

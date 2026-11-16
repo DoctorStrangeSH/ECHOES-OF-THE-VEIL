@@ -11,7 +11,7 @@ const ATTUNEMENTS_PATH := "res://data/progression/attunements"
 const CATEGORIES: PackedStringArray = ["weapon", "trinket", "consumable", "material", "key"]
 const DEFAULT_WEAPON := &"fists"
 ## Additive stats default to 0, multipliers to 1.
-const MULT_STATS: PackedStringArray = ["dodge_cooldown_mult", "dodge_distance_mult", "flash_cooldown_mult", "flash_radius_mult"]
+const MULT_STATS: PackedStringArray = ["dodge_cooldown_mult", "dodge_distance_mult", "flash_cooldown_mult", "flash_radius_mult", "speed_mult", "pay_mult"]
 
 var item_defs: Dictionary = {}
 var attunement_defs: Dictionary = {}
@@ -199,6 +199,9 @@ func stat(stat_name: String) -> float:
 	for mods: Dictionary in sources:
 		if mods.has(stat_name):
 			v = v * float(mods[stat_name]) if mult else v + float(mods[stat_name])
+	var p: Variant = Progression.mod(stat_name)
+	if p != null:
+		v = v * float(p) if mult else v + float(p)
 	return v
 
 

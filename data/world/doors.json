@@ -210,6 +210,12 @@
    "to": "greyford_block"
   }
  ],
+ "gym": [
+  {
+   "node": "ExitDoor",
+   "to": "market_street"
+  }
+ ],
  "keepers_rooms": [
   {
    "node": "StairsUp",
@@ -254,6 +260,17 @@
   {
    "node": "ToOldQuarter",
    "to": "greyford_block"
+  },
+  {
+   "node": "GymDoor",
+   "to": "gym",
+   "show_if": {
+    "period": [
+     "morning",
+     "afternoon",
+     "evening"
+    ]
+   }
   }
  ],
  "memory_home": [

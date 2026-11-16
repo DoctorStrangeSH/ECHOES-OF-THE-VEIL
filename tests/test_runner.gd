@@ -1548,3 +1548,48 @@ func test_city_map_knows_where_you_have_been_and_buses_cost() -> void:
 			check(SceneFlow.has_location(StringName(stop[0])), "%s's stop is a real place" % id)
 	check(InputMap.has_action(&"map"), "M opens the map")
 	GameState.reset_for_new_game()
+
+
+# --- R3a: progression -------------------------------------------------------------------
+
+func test_progression_levels_points_and_stats() -> void:
+	GameState.reset_for_new_game()
+	GameState.is_playing = true
+	check(Progression.level == 1 and Progression.points == 0, "start at level 1")
+	Progression.add_xp(Progression.xp_to_next(1) + Progression.xp_to_next(2))
+	check(Progression.level == 3 and Progression.points == 2 and Progression.talent_points == 1, "two levels: two points, a talent point at 3")
+	var hp := int(Inventory.stat("max_health"))
+	check(Progression.raise("endurance") and Progression.raise("endurance"), "spend points")
+	check(not Progression.raise("strength"), "no points left")
+	check(int(Inventory.stat("max_health")) == hp + 1, "endurance 3: one more heart")
+	Progression.stats["agility"] = 6
+	check(Inventory.stat("dodge_cooldown_mult") < 0.85 and Inventory.stat("speed_mult") > 1.09, "agility feeds dodge and speed")
+	Progression.stats["strength"] = 7
+	check(int(Inventory.stat("damage_bonus")) == 2, "strength 7: +2 damage")
+	check(StoryRules.evaluate({"stat_at_least": ["strength", 7]}) and not StoryRules.evaluate({"stat_at_least": ["perception", 2]}), "dialogue can check characteristics")
+	var before := Progression.xp
+	StoryRules.apply([{"give_xp": 5}])
+	check(Progression.xp == before + 5, "story can give experience")
+	var d := GameState.to_dict()
+	GameState.reset_for_new_game()
+	check(Progression.level == 1, "reset")
+	GameState.from_dict(d)
+	check(Progression.level == 3 and Progression.get_stat("strength") == 7, "progression survives a save")
+	var env := {"schema_version": 8, "payload": {"journal": {"cases": {"a": {"status": "done"}, "b": {"status": "done"}}}}}
+	check(int(SaveService.migrate(env)["payload"]["progression"]["level"]) == 3, "old saves get levels for their closed cases")
+	GameState.reset_for_new_game()
+	GameState.is_playing = false
+
+
+func test_xp_comes_from_play() -> void:
+	GameState.reset_for_new_game()
+	GameState.is_playing = true
+	var x := Progression.xp
+	Journal.add_evidence(&"e_rook_note")
+	check(Progression.xp == x + Progression.XP_EVIDENCE, "evidence gives a little")
+	x = Progression.xp
+	var lvl := Progression.level
+	GameState.set_flag(&"boss.conductor.defeated")
+	check(Progression.level > lvl or Progression.xp >= x + Progression.XP_BOSS, "a boss gives a lot")
+	GameState.reset_for_new_game()
+	GameState.is_playing = false

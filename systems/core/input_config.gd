@@ -47,6 +47,7 @@ func _defaults() -> Dictionary:
 		&"journal": [_key(KEY_TAB), _button(JOY_BUTTON_BACK)],
 		&"wait": [_key(KEY_T), _button(JOY_BUTTON_RIGHT_STICK)],
 		&"map": [_key(KEY_M), _button(JOY_BUTTON_LEFT_STICK)],
+		&"character": [_key(KEY_C)],
 		&"inventory": [_key(KEY_I)],
 		&"pause": [_key(KEY_ESCAPE), _button(JOY_BUTTON_START)],
 		&"quick_save": [_key(KEY_F5)],

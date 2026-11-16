@@ -163,6 +163,7 @@ func _finish() -> void:
 		line += " " + tr("SPORT_PAID") % REWARD
 	if score > best and best > 0:
 		line += " " + tr("SPORT_RECORD")
+	Progression.add_xp(score * 2)
 	EventHub.toast_requested.emit(line)
 	finished.emit(game, score)
 

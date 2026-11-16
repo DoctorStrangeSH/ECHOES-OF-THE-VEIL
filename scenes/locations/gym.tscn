@@ -1,0 +1,221 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/location.gd" id="1_loc"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2_paint"]
+[ext_resource type="PackedScene" path="res://scenes/props/world_prop.tscn" id="3_prop"]
+[ext_resource type="Script" path="res://scripts/world/spawn_point.gd" id="4_spawn"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="5_inspect"]
+[ext_resource type="Script" path="res://scripts/interaction/door_interactable.gd" id="6_door"]
+[ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
+[ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+[ext_resource type="Script" path="res://scripts/world/conditional_visibility.gd" id="10_cond"]
+[ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
+[ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
+[ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+[ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
+[ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
+[ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
+[ext_resource type="PackedScene" path="res://scenes/world/repair_spot.tscn" id="17_spot"]
+[ext_resource type="PackedScene" path="res://scenes/world/screen_interactable.tscn" id="18_screen"]
+[ext_resource type="PackedScene" path="res://scenes/world/junk_pile.tscn" id="19_junk"]
+
+[node name="Gym" type="Node2D"]
+script = ExtResource("1_loc")
+location_id = &"gym"
+name_key = "LOC_GYM"
+outdoors = false
+
+[node name="Ground" type="TileMapLayer" parent="."]
+script = ExtResource("2_paint")
+palette_id = "echo_corridor"
+layout = "####################
+#WWWWWWWWWWWWWWWWWW#
+#wwwwwwwwwwwwwwwwww#
+#ffffffffffffffffff#
+#ffffffffffffffffff#
+#ffffffffffffffffff#
+#ffffffffffffffffff#
+#ffffffffffffffffff#
+#ffffffffffffffffff#
+#ffffffffffffffffff#
+#########ff#########"
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="NpcAnchors" type="Node2D" parent="."]
+
+[node name="GymMirror_72_60" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(72, 60)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/8_Gym_Singles/Gym_Singles_118.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="GymMirror_120_60" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(120, 60)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/8_Gym_Singles/Gym_Singles_118.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Treadmill_184_72" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(184, 72)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/8_Gym_Singles/Gym_Singles_186.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(20, 14)
+collision_offset = Vector2(0, -14)
+
+[node name="Treadmill_208_72" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(208, 72)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/8_Gym_Singles/Gym_Singles_186.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(20, 14)
+collision_offset = Vector2(0, -14)
+
+[node name="ExerciseBike_240_70" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(240, 70)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/8_Gym_Singles/Gym_Singles_188.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(16, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="ExerciseBike_262_70" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(262, 70)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/8_Gym_Singles/Gym_Singles_188.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(16, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="DumbbellRack_40_72" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(40, 72)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/8_Gym_Singles/Gym_Singles_166.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(29, 10)
+collision_offset = Vector2(0.5, -14)
+
+[node name="DumbbellRackB_284_72" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(284, 72)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/8_Gym_Singles/Gym_Singles_169.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(29, 10)
+collision_offset = Vector2(0.5, -14)
+
+[node name="BenchPress_72_124" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(72, 124)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/8_Gym_Singles/Gym_Singles_97.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(26, 12)
+collision_offset = Vector2(1, -12)
+
+[node name="WeightMachine_112_124" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(112, 124)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/8_Gym_Singles/Gym_Singles_92.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(29, 14)
+collision_offset = Vector2(0.5, -8)
+
+[node name="LegPress_256_128" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(256, 128)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/8_Gym_Singles/Gym_Singles_95.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(18, 14)
+collision_offset = Vector2(0, -7)
+
+[node name="PunchingBag_36_160" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(36, 160)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/8_Gym_Singles/Gym_Singles_64.png"
+placeholder_size = Vector2i(16, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -10)
+
+[node name="PunchingBagB_60_160" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(60, 160)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/8_Gym_Singles/Gym_Singles_66.png"
+placeholder_size = Vector2i(16, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -10)
+
+[node name="GymMat_216_150" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(216, 150)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/8_Gym_Singles/Gym_Singles_197.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="GymBall_290_160" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(290, 160)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/8_Gym_Singles/Gym_Singles_74.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(16, 6)
+collision_offset = Vector2(-1, -12)
+
+[node name="GymBall_270_168" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(270, 168)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/8_Gym_Singles/Gym_Singles_74.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(16, 6)
+collision_offset = Vector2(-1, -12)
+
+[node name="PlantTall_292_120" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(292, 120)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_17.png"
+placeholder_size = Vector2i(16, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -10)
+
+[node name="TreadmillLook" type="Area2D" parent="Entities"]
+position = Vector2(196, 80)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_gym_treadmill"
+area_size = Vector2(40, 10)
+lines = PackedStringArray("FLAVOR_GYM_TREADMILL")
+
+[node name="BagLook" type="Area2D" parent="Entities"]
+position = Vector2(48, 168)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_gym_bag"
+area_size = Vector2(40, 10)
+lines = PackedStringArray("FLAVOR_GYM_BAG")
+
+[node name="A_coach" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(160, 104)
+script = ExtResource("11_anchor")
+anchor_id = &"coach"
+
+[node name="Entrance" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(160, 154)
+script = ExtResource("4_spawn")
+spawn_id = &"entrance"
+facing = Vector2(0, -1)
+
+[node name="ExitDoor" type="Area2D" parent="Entities"]
+position = Vector2(160, 172)
+script = ExtResource("6_door")
+interaction_id = &"door_gym_exit"
+area_size = Vector2(30, 10)
+prompt_key = "PROMPT_EXIT"
+target_scene_id = &"market_street"
+target_spawn_id = &"gym_front"

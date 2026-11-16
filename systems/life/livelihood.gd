@@ -82,7 +82,7 @@ func add_repair_xp(amount: int) -> void:
 
 ## Width of the success zone in the repair minigame (0..1 of the bar).
 func repair_zone(difficulty: int) -> float:
-	return clampf(0.24 + 0.04 * (repair_level() - 1) - 0.05 * (difficulty - 1), 0.08, 0.5)
+	return clampf(0.24 + 0.04 * (repair_level() - 1) - 0.05 * (difficulty - 1) + Inventory.stat("repair_bonus"), 0.08, 0.5)
 
 
 # --- Jobs ------------------------------------------------------------------------
@@ -145,7 +145,7 @@ func complete(id: StringName) -> void:
 	done_today.append(id)
 	if bool(d.get("once", false)):
 		done_once.append(id)
-	Inventory.add_money(int(d.get("pay", 0)))
+	Inventory.add_money(roundi(float(d.get("pay", 0)) * Inventory.stat("pay_mult")))
 	if d.has("resonance"):
 		Inventory.add_resonance(int(d["resonance"]))
 	if d.has("client"):

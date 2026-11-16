@@ -15,6 +15,7 @@ extends RefCounted
 ##   {"period": "night" | ["morning", "afternoon"]}  {"weather": "rain"}
 ##   {"relationship_at_least": ["npc", 2]}  {"remembers": ["npc", "event"]}
 ##   {"has_item": "id" | ["id", n]}  {"money_at_least": n}
+##   {"stat_at_least": ["perception", 3]}  {"level_at_least": 5}
 ##   {"faction_at_least": ["civic", 2]}  {"faction_below": ["civic", 0]}  {"knows": ["npc", "fact"]}
 ##   {"not_knows": ["npc", "fact"]}
 ##   {"all": [c, ...]}  {"any": [c, ...]}  {"not": c}
@@ -30,7 +31,7 @@ extends RefCounted
 ##   {"verdict": ["e", "authentic" | "edited" | "unreliable"]}  (judge a testimony)
 ##   {"first_match": [{"if": cond, "do": [effects]}, ...]}  (first branch that holds)
 ##   {"companion": "id" | ""}  (recruit a companion / send them home)
-##   {"give_resonance": n}  {"faction": ["keepers", delta]}  {"tell": ["npc", "fact"]}  {"publish": "fact"}
+##   {"give_xp": n}  {"give_resonance": n}  {"faction": ["keepers", delta]}  {"tell": ["npc", "fact"]}  {"publish": "fact"}
 
 
 static func evaluate(cond: Variant) -> bool:
@@ -121,6 +122,10 @@ static func _check(key: String, arg: Variant) -> bool:
 			return Inventory.money >= int(arg)
 		"faction_at_least":
 			return Society.get_standing(StringName(arg[0])) >= int(arg[1])
+		"stat_at_least":  # ["perception", 3]
+			return Progression.get_stat(String(arg[0])) >= int(arg[1])
+		"level_at_least":
+			return Progression.level >= int(arg)
 		"faction_below":
 			return Society.get_standing(StringName(arg[0])) < int(arg[1])
 		"knows":
@@ -209,6 +214,8 @@ static func _apply_one(key: String, arg: Variant, whole: Dictionary) -> void:
 			Inventory.add_money(int(arg))
 		"spend_money":
 			Inventory.spend_money(int(arg))
+		"give_xp":
+			Progression.add_xp(int(arg))
 		"give_resonance":
 			Inventory.add_resonance(int(arg))
 		"faction":

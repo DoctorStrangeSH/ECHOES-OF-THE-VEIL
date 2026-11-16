@@ -126,7 +126,7 @@ func _physics_process(delta: float) -> void:
 	if not _is_blocked():
 		input = Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")
 	# get_vector already clamps diagonals to length 1 (no faster diagonal movement).
-	var speed := sprint_speed if Input.is_action_pressed(&"sprint") else walk_speed
+	var speed := (sprint_speed if Input.is_action_pressed(&"sprint") else walk_speed) * Inventory.stat("speed_mult")
 	if _action_anim_time > 0.0:
 		_action_anim_time -= delta
 		speed *= 0.35  # committed to the swing
@@ -199,6 +199,7 @@ func _attack() -> void:
 	var is_finisher := _combo_index % combo.size() == combo.size() - 1
 	if is_finisher:
 		damage += int(Inventory.stat("finisher_bonus"))
+	damage += int(Inventory.stat("damage_bonus"))
 	var cooldown := float(w.get("cooldown", 0.36)) * (1.35 if is_finisher else 1.0)
 	_attack_ready_at = now + cooldown
 	_combo_expires_at = now + cooldown + COMBO_WINDOW

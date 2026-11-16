@@ -699,20 +699,6 @@
   },
   {
    "kind": "inspect",
-   "name": "GymLook",
-   "id": "inspect_gym",
-   "x": 584,
-   "y": 262,
-   "area": [
-    60,
-    10
-   ],
-   "lines": [
-    "FLAVOR_MARKET_GYM"
-   ]
-  },
-  {
-   "kind": "inspect",
    "name": "BaitLook",
    "id": "inspect_bait",
    "x": 712,
@@ -820,6 +806,52 @@
    "facing": [
     0,
     1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "GymDoor",
+   "id": "door_gym",
+   "x": 618,
+   "y": 262,
+   "area": [
+    24,
+    10
+   ],
+   "scene": "gym",
+   "spawn": "entrance",
+   "prompt": "PROMPT_ENTER_SHOP",
+   "show_if": {
+    "period": [
+     "morning",
+     "afternoon",
+     "evening"
+    ]
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "GymFront",
+   "id": "gym_front",
+   "x": 618,
+   "y": 276,
+   "facing": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "GymLook",
+   "id": "inspect_gym",
+   "x": 560,
+   "y": 262,
+   "area": [
+    40,
+    10
+   ],
+   "lines": [
+    "FLAVOR_MARKET_GYM"
    ]
   }
  ]
