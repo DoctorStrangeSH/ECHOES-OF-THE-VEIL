@@ -2,21 +2,318 @@
  "id": "keepers_rooms",
  "name_key": "LOC_KEEPERS_ROOMS",
  "palette": "echo_corridor",
- "options": {"outdoors": false, "fixed_tint": {"color": [1.0, 0.9, 0.78, 1.0]}, "enter_dialogue_id": "keepers_enter", "enter_condition": {"not_flag": "keepers.entered"}},
- "layout": {"generator": "room", "width": 24, "height": 12, "door_x": 11},
+ "options": {
+  "outdoors": false,
+  "fixed_tint": {
+   "color": [
+    1.0,
+    0.9,
+    0.78,
+    1.0
+   ]
+  },
+  "enter_dialogue_id": "keepers_enter",
+  "enter_condition": {
+   "not_flag": "keepers.entered"
+  }
+ },
+ "layout": {
+  "generator": "room",
+  "width": 24,
+  "height": 12,
+  "door_x": 11
+ },
  "nodes": [
-  {"template": "row", "prop": {"tex": "@library/57.png", "color": "#6a4a30"}, "at": {"xs": [40, 80], "y": 64}, "name": "ShelfW"},
-  {"template": "row", "prop": {"tex": "@library/71.png", "color": "#6a4a30"}, "at": {"xs": [300, 340], "y": 64}, "name": "ShelfE"},
-  {"kind": "prop", "name": "SealEngine", "tex": "@basement/1.png", "x": 192, "y": 72, "col": [28, 12], "off": [0, -6], "color": "#808060", "children": ["Shimmer"]},
-  {"kind": "inspect", "name": "SealEngineUse", "id": "inspect_seal_engine", "x": 192, "y": 82, "area": [34, 12], "dialogue": "seal_engine", "priority": 25},
-  {"kind": "prop", "name": "CouncilTable", "tex": "@library/25.png", "x": 192, "y": 128, "col": [40, 12], "off": [0, -6], "color": "#7a5a3a"},
-  {"template": "row", "prop": {"tex": "@living/87.png", "color": "#f0d090", "col": [8, 6], "off": [0, -3]}, "at": {"xs": [128, 256], "y": 72}, "name": "Lamp"},
-  {"kind": "spawn", "name": "Stairs", "id": "stairs", "x": 192, "y": 168, "facing": [0, -1]},
-  {"kind": "door", "name": "StairsUp", "id": "door_keepers_up", "x": 192, "y": 184, "area": [30, 10], "scene": "municipal_archive", "spawn": "keepers_return", "prompt": "PROMPT_STAIRS_UP"},
-  {"template": "anchors", "points": {"council": [192, 144]}},
-  {"kind": "prop", "name": "AnchorFrame", "tex": "@basement/240.png", "x": 336, "y": 120, "col": [0, 0], "off": [0, 0], "color": "#a090c0", "children": ["Shimmer"], "show_if": {"flag": "act.act5"}},
-  {"kind": "door", "name": "AnchorDescent", "id": "door_keepers_anchor", "x": 336, "y": 128, "area": [20, 14], "scene": "the_anchor", "spawn": "entrance", "prompt": "PROMPT_ANCHOR", "show_if": {"flag": "act.act5"}},
-  {"kind": "spawn", "name": "AnchorReturn", "id": "anchor_return", "x": 336, "y": 148, "facing": [0, 1]},
-  {"kind": "inspect", "name": "CardIndex", "id": "inspect_card_index", "x": 60, "y": 82, "area": [40, 12], "dialogue": "agnes_card", "show_if": {"quest_stage": ["case_agnes", "card"]}}
+  {
+   "template": "row",
+   "prop": {
+    "tex": "@library/57.png",
+    "color": "#6a4a30"
+   },
+   "at": {
+    "xs": [
+     40,
+     80
+    ],
+    "y": 64
+   },
+   "name": "ShelfW"
+  },
+  {
+   "template": "row",
+   "prop": {
+    "tex": "@library/71.png",
+    "color": "#6a4a30"
+   },
+   "at": {
+    "xs": [
+     300,
+     340
+    ],
+    "y": 64
+   },
+   "name": "ShelfE"
+  },
+  {
+   "kind": "prop",
+   "name": "SealEngine",
+   "tex": "@basement/1.png",
+   "x": 192,
+   "y": 72,
+   "col": [
+    28,
+    12
+   ],
+   "off": [
+    0,
+    -6
+   ],
+   "color": "#808060",
+   "children": [
+    "Shimmer"
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "SealEngineUse",
+   "id": "inspect_seal_engine",
+   "x": 192,
+   "y": 82,
+   "area": [
+    34,
+    12
+   ],
+   "dialogue": "seal_engine",
+   "priority": 25
+  },
+  {
+   "kind": "prop",
+   "name": "CouncilTable",
+   "tex": "@library/25.png",
+   "x": 192,
+   "y": 128,
+   "col": [
+    40,
+    12
+   ],
+   "off": [
+    0,
+    -6
+   ],
+   "color": "#7a5a3a"
+  },
+  {
+   "template": "row",
+   "prop": {
+    "tex": "@living/87.png",
+    "color": "#f0d090",
+    "col": [
+     8,
+     6
+    ],
+    "off": [
+     0,
+     -3
+    ]
+   },
+   "at": {
+    "xs": [
+     128,
+     256
+    ],
+    "y": 72
+   },
+   "name": "Lamp"
+  },
+  {
+   "kind": "spawn",
+   "name": "Stairs",
+   "id": "stairs",
+   "x": 192,
+   "y": 168,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "StairsUp",
+   "id": "door_keepers_up",
+   "x": 192,
+   "y": 184,
+   "area": [
+    30,
+    10
+   ],
+   "scene": "municipal_archive",
+   "spawn": "keepers_return",
+   "prompt": "PROMPT_STAIRS_UP"
+  },
+  {
+   "template": "anchors",
+   "points": {
+    "council": [
+     192,
+     144
+    ]
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "AnchorFrame",
+   "tex": "@basement/240.png",
+   "x": 336,
+   "y": 120,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "color": "#a090c0",
+   "children": [
+    "Shimmer"
+   ],
+   "show_if": {
+    "flag": "act.act5"
+   }
+  },
+  {
+   "kind": "door",
+   "name": "AnchorDescent",
+   "id": "door_keepers_anchor",
+   "x": 336,
+   "y": 128,
+   "area": [
+    20,
+    14
+   ],
+   "scene": "the_anchor",
+   "spawn": "entrance",
+   "prompt": "PROMPT_ANCHOR",
+   "show_if": {
+    "flag": "act.act5"
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "AnchorReturn",
+   "id": "anchor_return",
+   "x": 336,
+   "y": 148,
+   "facing": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "CardIndex",
+   "id": "inspect_card_index",
+   "x": 60,
+   "y": 82,
+   "area": [
+    40,
+    12
+   ],
+   "dialogue": "agnes_card",
+   "show_if": {
+    "quest_stage": [
+     "case_agnes",
+     "card"
+    ]
+   }
+  },
+  {
+   "kind": "furn",
+   "furn": "rug_blue",
+   "x": 192,
+   "y": 136
+  },
+  {
+   "kind": "furn",
+   "furn": "chair_wood",
+   "x": 160,
+   "y": 130
+  },
+  {
+   "kind": "furn",
+   "furn": "chair_wood_b",
+   "x": 224,
+   "y": 130
+  },
+  {
+   "kind": "furn",
+   "furn": "grandfather_clock",
+   "x": 248,
+   "y": 66
+  },
+  {
+   "kind": "furn",
+   "furn": "world_map",
+   "x": 136,
+   "y": 44
+  },
+  {
+   "kind": "furn",
+   "furn": "globe",
+   "x": 288,
+   "y": 150
+  },
+  {
+   "kind": "furn",
+   "furn": "filing_cabinet",
+   "x": 32,
+   "y": 160
+  },
+  {
+   "kind": "furn",
+   "furn": "filing_cabinet",
+   "x": 48,
+   "y": 160
+  },
+  {
+   "kind": "furn",
+   "furn": "armchair_red",
+   "x": 104,
+   "y": 160
+  },
+  {
+   "kind": "furn",
+   "furn": "lamp_cream",
+   "x": 124,
+   "y": 156
+  },
+  {
+   "kind": "inspect",
+   "name": "KeepersClockLook",
+   "id": "inspect_keepers_clock",
+   "x": 248,
+   "y": 74,
+   "area": [
+    16,
+    10
+   ],
+   "lines": [
+    "FLAVOR_KEEPERS_CLOCK"
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "KeepersMapLook",
+   "id": "inspect_keepers_map",
+   "x": 136,
+   "y": 54,
+   "area": [
+    32,
+    10
+   ],
+   "lines": [
+    "FLAVOR_KEEPERS_MAP"
+   ]
+  }
  ]
 }

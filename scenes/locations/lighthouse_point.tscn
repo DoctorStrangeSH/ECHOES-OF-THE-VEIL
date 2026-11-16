@@ -300,3 +300,14 @@ anchor_id = &"bench"
 position = Vector2(212, 92)
 script = ExtResource("11_anchor")
 anchor_id = &"sea_wall"
+
+[node name="LifeboatLocker" type="Area2D" parent="Entities"]
+position = Vector2(330, 92)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_lifeboat_locker"
+area_size = Vector2(26, 12)
+dialogue_id = &"lifeboat_locker"
+
+[node name="Condition" type="Node" parent="Entities/LifeboatLocker"]
+script = ExtResource("10_cond")
+show_if = {"quest_stage": ["case_lighthouse", "registry"]}

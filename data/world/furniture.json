@@ -1,0 +1,403 @@
+{
+ "_doc": "Furniture library (R1). Region nodes {\"kind\":\"furn\",\"furn\":id,\"x\":..,\"y\":..} become props; collision is computed from the sprite's visible pixels: 'depth' px tall at the bottom (0 = walk over, e.g. rugs). x,y = bottom centre of the sprite.",
+ "cabinet_glass": {
+  "tex": "@living/1.png",
+  "depth": 10
+ },
+ "plant_big": {
+  "tex": "@living/13.png",
+  "depth": 8
+ },
+ "plant_palm": {
+  "tex": "@living/14.png",
+  "depth": 8
+ },
+ "plant_small": {
+  "tex": "@living/15.png",
+  "depth": 6
+ },
+ "plant_tall": {
+  "tex": "@living/17.png",
+  "depth": 6
+ },
+ "plant_bush": {
+  "tex": "@living/18.png",
+  "depth": 8
+ },
+ "console_lamp": {
+  "tex": "@living/31.png",
+  "depth": 10
+ },
+ "console_books": {
+  "tex": "@living/32.png",
+  "depth": 10
+ },
+ "armoire": {
+  "tex": "@living/37.png",
+  "depth": 10
+ },
+ "armoire_glass": {
+  "tex": "@living/38.png",
+  "depth": 10
+ },
+ "sideboard": {
+  "tex": "@living/51.png",
+  "depth": 10
+ },
+ "sideboard_fruit": {
+  "tex": "@living/53.png",
+  "depth": 10
+ },
+ "sideboard_low": {
+  "tex": "@living/55.png",
+  "depth": 10
+ },
+ "sideboard_books": {
+  "tex": "@living/57.png",
+  "depth": 10
+ },
+ "lamp_red": {
+  "tex": "@living/82.png",
+  "depth": 4
+ },
+ "lamp_cream": {
+  "tex": "@living/87.png",
+  "depth": 4
+ },
+ "radiogram": {
+  "tex": "@living/89.png",
+  "depth": 8
+ },
+ "grandfather_clock": {
+  "tex": "@living/90.png",
+  "depth": 8
+ },
+ "glass_shelf": {
+  "tex": "@living/91.png",
+  "depth": 10
+ },
+ "chair_wood": {
+  "tex": "@living/92.png",
+  "depth": 6
+ },
+ "chair_wood_b": {
+  "tex": "@living/93.png",
+  "depth": 6
+ },
+ "coat_stand": {
+  "tex": "@living/104.png",
+  "depth": 4
+ },
+ "fireplace": {
+  "tex": "@living/107.png",
+  "depth": 12
+ },
+ "fireplace_brick": {
+  "tex": "@living/113.png",
+  "depth": 12
+ },
+ "bunk_bed": {
+  "tex": "@bedroom/125.png",
+  "depth": 30
+ },
+ "bed_single": {
+  "tex": "@bedroom/141.png",
+  "depth": 30
+ },
+ "bed_double": {
+  "tex": "@bedroom/217.png",
+  "depth": 30
+ },
+ "bed_double_b": {
+  "tex": "@bedroom/231.png",
+  "depth": 30
+ },
+ "rug_pink": {
+  "tex": "@bedroom/382.png",
+  "depth": 0,
+  "layer": "FloorDecor"
+ },
+ "rug_check": {
+  "tex": "@bedroom/385.png",
+  "depth": 0,
+  "layer": "FloorDecor"
+ },
+ "rug_round": {
+  "tex": "@bedroom/386.png",
+  "depth": 0,
+  "layer": "FloorDecor"
+ },
+ "dresser_vase": {
+  "tex": "@bedroom/393.png",
+  "depth": 10
+ },
+ "dresser_vase_b": {
+  "tex": "@bedroom/401.png",
+  "depth": 10
+ },
+ "window": {
+  "tex": "@bedroom/421.png",
+  "depth": 0,
+  "layer": "FloorDecor"
+ },
+ "window_wide": {
+  "tex": "@bedroom/423.png",
+  "depth": 0,
+  "layer": "FloorDecor"
+ },
+ "nightstand": {
+  "tex": "@bedroom/429.png",
+  "depth": 8
+ },
+ "nightstand_b": {
+  "tex": "@bedroom/430.png",
+  "depth": 8
+ },
+ "wardrobe_tall": {
+  "tex": "@bedroom/532.png",
+  "depth": 10
+ },
+ "wardrobe_tall_b": {
+  "tex": "@bedroom/534.png",
+  "depth": 10
+ },
+ "shelf_toys": {
+  "tex": "@bedroom/538.png",
+  "depth": 10
+ },
+ "shelf_clutter": {
+  "tex": "@bedroom/539.png",
+  "depth": 10
+ },
+ "cabinet_white": {
+  "tex": "@bedroom/540.png",
+  "depth": 10
+ },
+ "lamp_small": {
+  "tex": "@bedroom/541.png",
+  "depth": 4
+ },
+ "school_desk": {
+  "tex": "@library/15.png",
+  "depth": 8
+ },
+ "reading_desk": {
+  "tex": "@library/25.png",
+  "depth": 10
+ },
+ "world_map": {
+  "tex": "@library/31.png",
+  "depth": 0
+ },
+ "globe": {
+  "tex": "@library/34.png",
+  "depth": 6
+ },
+ "blackboard": {
+  "tex": "@library/36.png",
+  "depth": 0
+ },
+ "filing_cabinet": {
+  "tex": "@library/40.png",
+  "depth": 8
+ },
+ "ladder": {
+  "tex": "@library/41.png",
+  "depth": 4
+ },
+ "bookcase_red": {
+  "tex": "@library/43.png",
+  "depth": 10
+ },
+ "bookcase_bottles": {
+  "tex": "@library/44.png",
+  "depth": 10
+ },
+ "bookcase_jars": {
+  "tex": "@library/45.png",
+  "depth": 10
+ },
+ "counter_left": {
+  "tex": "@library/49.png",
+  "depth": 12
+ },
+ "counter_mid": {
+  "tex": "@library/50.png",
+  "depth": 12
+ },
+ "counter_mid_b": {
+  "tex": "@library/51.png",
+  "depth": 12
+ },
+ "counter_right": {
+  "tex": "@library/52.png",
+  "depth": 12
+ },
+ "bookcase": {
+  "tex": "@library/55.png",
+  "depth": 10
+ },
+ "bookcase_b": {
+  "tex": "@library/57.png",
+  "depth": 10
+ },
+ "bookcase_c": {
+  "tex": "@library/60.png",
+  "depth": 10
+ },
+ "bookcase_d": {
+  "tex": "@library/67.png",
+  "depth": 10
+ },
+ "bookcase_e": {
+  "tex": "@library/71.png",
+  "depth": 10
+ },
+ "bookcase_f": {
+  "tex": "@library/74.png",
+  "depth": 10
+ },
+ "sofa_l": {
+  "tex": "@basement/4.png",
+  "depth": 10
+ },
+ "sofa_m": {
+  "tex": "@basement/5.png",
+  "depth": 10
+ },
+ "sofa_r": {
+  "tex": "@basement/6.png",
+  "depth": 10
+ },
+ "crate": {
+  "tex": "@basement/40.png",
+  "depth": 10
+ },
+ "crate_b": {
+  "tex": "@basement/41.png",
+  "depth": 10
+ },
+ "crate_open": {
+  "tex": "@basement/43.png",
+  "depth": 10
+ },
+ "crate_c": {
+  "tex": "@basement/44.png",
+  "depth": 10
+ },
+ "pool_table": {
+  "tex": "@basement/77.png",
+  "depth": 22
+ },
+ "stool": {
+  "tex": "@basement/105.png",
+  "depth": 4
+ },
+ "tv": {
+  "tex": "@basement/164.png",
+  "depth": 8
+ },
+ "tv_stand": {
+  "tex": "@basement/195.png",
+  "depth": 10
+ },
+ "beanbag": {
+  "tex": "@basement/198.png",
+  "depth": 8
+ },
+ "armchair_yellow": {
+  "tex": "@basement/202.png",
+  "depth": 8
+ },
+ "armchair_red": {
+  "tex": "@basement/206.png",
+  "depth": 8
+ },
+ "arcade": {
+  "tex": "@basement/218.png",
+  "depth": 10
+ },
+ "ping_pong": {
+  "tex": "@basement/241.png",
+  "depth": 40
+ },
+ "stove": {
+  "tex": "@kitchen/148.png",
+  "depth": 10
+ },
+ "fridge": {
+  "tex": "@kitchen/158.png",
+  "depth": 10
+ },
+ "fridge_b": {
+  "tex": "@kitchen/164.png",
+  "depth": 10
+ },
+ "sink": {
+  "tex": "@kitchen/141.png",
+  "depth": 8
+ },
+ "coffee_machine": {
+  "tex": "@kitchen/177.png",
+  "depth": 6
+ },
+ "kitchen_cabinet": {
+  "tex": "@kitchen/121.png",
+  "depth": 10
+ },
+ "kitchen_cabinet_b": {
+  "tex": "@kitchen/122.png",
+  "depth": 10
+ },
+ "rug_yellow": {
+  "tex": "@kitchen/226.png",
+  "depth": 0,
+  "layer": "FloorDecor"
+ },
+ "rug_blue": {
+  "tex": "@kitchen/236.png",
+  "depth": 0,
+  "layer": "FloorDecor"
+ },
+ "rug_white": {
+  "tex": "@kitchen/246.png",
+  "depth": 0,
+  "layer": "FloorDecor"
+ },
+ "stool_wood": {
+  "tex": "@kitchen/272.png",
+  "depth": 4
+ },
+ "stool_wood_b": {
+  "tex": "@kitchen/276.png",
+  "depth": 4
+ },
+ "table_tall": {
+  "tex": "@kitchen/300.png",
+  "depth": 12
+ },
+ "table_wood": {
+  "tex": "@kitchen/309.png",
+  "depth": 12
+ },
+ "table_wood_b": {
+  "tex": "@kitchen/311.png",
+  "depth": 12
+ },
+ "table_glass": {
+  "tex": "@kitchen/321.png",
+  "depth": 12
+ },
+ "table_cloth_red": {
+  "tex": "@kitchen/336.png",
+  "depth": 12
+ },
+ "table_cloth_pink": {
+  "tex": "@kitchen/337.png",
+  "depth": 12
+ },
+ "table_cloth_white": {
+  "tex": "@kitchen/338.png",
+  "depth": 12
+ }
+}

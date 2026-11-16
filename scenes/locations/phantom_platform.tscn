@@ -254,3 +254,13 @@ script = ExtResource("15_arena")
 boss_path = NodePath("../Entities/CensusTaker")
 engaged_flag = &"boss.census_taker.engaged"
 area_size = Vector2(320, 140)
+
+[node name="RelayOnTrack" parent="Entities" instance=ExtResource("16_pickup")]
+position = Vector2(424, 96)
+interaction_id = &"pickup_tram_relay_platform"
+item_id = &"tram_relay"
+pickup_flag = &"pickup.tram_relay_platform"
+
+[node name="Condition" type="Node" parent="Entities/RelayOnTrack"]
+script = ExtResource("10_cond")
+show_if = {"quest_active": "case_bell", "not_flag": "pickup.tram_relay_platform", "all": [{"not": {"has_item": "tram_relay"}}]}

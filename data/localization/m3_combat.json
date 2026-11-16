@@ -75,7 +75,7 @@
   "EV_CENSUS_PAGE_BODY": {"en": "\"ROOK, Rosalind — reclassified: NOT RESIDENT.\" A neat signature. A stamp that looks like three lines meeting at a point.", "ru": "«РУК, Розалинда — переквалифицирована: НЕ ПРОЖИВАЕТ». Аккуратная подпись. Штамп, похожий на три линии, сходящиеся в точке."},
   "SRC_LEDGER": {"en": "Census Office ledger", "ru": "книга Бюро переписи"},
   "JONAH_ASK_SISTER": {"en": "About Rosalind...", "ru": "Насчёт Розалинды..."},
-  "JONAH_SISTER_1": {"en": "Jonah watches you for a long moment. \"You've been somewhere. Lantern Row, isn't it. I can tell.\"", "ru": "Джона долго смотрит на вас. «Вы где-то побывали. На Лантерн-Роу, да? Я вижу»."},
+  "JONAH_SISTER_1": {"en": "Jonah watches you for a long moment. \"You've been somewhere. Lantern Row, isn't it. I can tell.\"", "ru": "Джона долго смотрит на вас. «Вы где-то побывали. На Фонарном ряду, да? Я вижу»."},
   "JONAH_SISTER_2": {"en": "\"I had a sister. Rosalind. Older than me. In '89 she just... stopped being in any record. School, hospital, Mum's address book.\"", "ru": "«У меня была сестра. Розалинда. Старше меня. В восемьдесят девятом она просто... исчезла из всех записей. Школа, больница, мамина записная книжка»."},
   "JONAH_SISTER_3": {"en": "\"When it rains, or after dark, the tram bell rings at the harbour. If that's her line — look for her. Please.\"", "ru": "«Когда идёт дождь или темнеет, у гавани звенит трамвай. Если это её линия — поищите её. Пожалуйста»."},
   "JONAH_SISTER_4": {"en": "\"And take this. You'll want something better than your fists.\" He presses a heavy wrench into your hands.", "ru": "«И возьмите вот это. Кулаков вам будет мало». Он вкладывает вам в руки тяжёлый гаечный ключ."},
@@ -100,5 +100,5 @@
   "PLATFORM_ENTER_3": {"en": "(Space / K — dodge. Q — Lantern Flash stuns echoes. R — eat or drink. I — inventory.)", "ru": "(Пробел / K — рывок. Q — Вспышка фонаря оглушает эхо. R — поесть или выпить. I — инвентарь.)"},
   "PLATFORM_MAP_1": {"en": "A route map. Every stop has a name you know — except one, between the harbour and the plaza: LANTERN ROW.", "ru": "Схема маршрута. Все остановки вам знакомы, кроме одной — между гаванью и площадью: ЛАНТЕРН-РОУ."},
   "PLATFORM_MAP_2": {"en": "Someone has written in the margin, in careful capitals: COUNTED — 19 HOUSES. RECOUNTED — 0.", "ru": "На полях аккуратными заглавными буквами выведено: ПОСЧИТАНО — 19 ДОМОВ. ПЕРЕСЧИТАНО — 0."},
-  "LOC_PHANTOM_PLATFORM": {"en": "Lantern Row stop (echo)", "ru": "Остановка «Лантерн-Роу» (эхо)"}
+  "LOC_PHANTOM_PLATFORM": {"en": "Lantern Row stop (echo)", "ru": "Остановка «Фонарный ряд» (эхо)"}
 }

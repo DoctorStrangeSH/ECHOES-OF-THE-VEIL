@@ -52,6 +52,40 @@ def resolve_tex(t):
     return t
 
 
+FURNITURE = None
+
+
+def furn_to_prop(n, ctx):
+    """A furniture-library item (data/world/furniture.json) as a prop whose
+    collision hugs the sprite's visible pixels."""
+    global FURNITURE
+    if FURNITURE is None:
+        FURNITURE = {k: v for k, v in json.load(open('data/world/furniture.json')).items() if not k.startswith('_')}
+    fid = n['furn']
+    if fid not in FURNITURE:
+        raise SystemExit(f'{ctx}: unknown furniture {fid}')
+    f = FURNITURE[fid]
+    p = {k: v for k, v in n.items() if k not in ('furn', 'kind', 'depth')}
+    p['kind'] = 'prop'
+    p['tex'] = f['tex']
+    p.setdefault('name', fid.title().replace('_', '') + '_%d_%d' % (n['x'], n['y']))
+    p.setdefault('color', '#8a7a6a')
+    if f.get('layer'):
+        p.setdefault('layer', f['layer'])
+    path = local(resolve_tex(f['tex']))
+    im = Image.open(path).convert('RGBA')
+    w, h = im.size
+    bb = im.getchannel('A').getbbox() or (0, 0, w, h)
+    depth = int(n.get('depth', f.get('depth', 8)))
+    if depth <= 0:
+        p['col'], p['off'] = [0, 0], [0, 0]
+    else:
+        bw = bb[2] - bb[0]
+        p['col'] = [max(4, bw - 2), depth]
+        p['off'] = [(bb[0] + bb[2]) / 2 - w / 2, -h + bb[3] - depth / 2]
+    return p
+
+
 def finish_prop(n):
     """Fill prop defaults: real texture path, placeholder size, collision box."""
     n = dict(n)
@@ -85,6 +119,8 @@ def expand(nodes, ctx):
             args = {k: v for k, v in n.items() if k != 'template'}
             out += expand(fn(**args), ctx)
         else:
+            if n['kind'] == 'furn':
+                n = furn_to_prop(n, ctx)
             out.append(finish_prop(n) if n['kind'] == 'prop' else n)
     return out
 
