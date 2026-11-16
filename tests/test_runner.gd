@@ -1695,6 +1695,22 @@ func test_crowds_and_chatter() -> void:
 	c.free()
 
 
+func test_npc_activities() -> void:
+	var s := LayeredCharacterSprite.new()
+	s.appearance = NpcRegistry.appearance_of(NpcRegistry.get_def(&"hugh_penny"))
+	add_child(s)
+	s.play(&"read", LayeredCharacterSprite.Dir.DOWN)
+	check(s.animation == &"read", "a layered character can read")
+	s.play(&"walk", LayeredCharacterSprite.Dir.LEFT)
+	check(s.animation == &"walk", "and stop reading")
+	s.queue_free()
+	var acts := {}
+	for id: StringName in NpcRegistry.defs():
+		for e: Dictionary in NpcRegistry.get_def(id).get("schedule", []):
+			acts[String(e.get("activity", ""))] = true
+	check(acts.has("read") and acts.has("work") and acts.has("look") and acts.has("phone"), "people do different things through the day")
+
+
 func test_xp_comes_from_play() -> void:
 	GameState.reset_for_new_game()
 	GameState.is_playing = true

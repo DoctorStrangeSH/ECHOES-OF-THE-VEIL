@@ -19,7 +19,8 @@
     ],
     "scene": "bakery",
     "anchor": "hugh_table",
-    "facing": "right"
+    "facing": "right",
+    "activity": "read"
    },
    {
     "if": {
@@ -33,7 +34,8 @@
     ],
     "scene": "brook_farm",
     "anchor": "porch",
-    "facing": "down"
+    "facing": "down",
+    "activity": "look"
    },
    {
     "if": {
@@ -44,7 +46,8 @@
     "period": "evening",
     "scene": "brook_farmhouse",
     "anchor": "kitchen",
-    "facing": "left"
+    "facing": "left",
+    "activity": "work"
    }
   ]
  },

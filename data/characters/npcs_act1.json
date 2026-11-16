@@ -11,13 +11,15 @@
     "period": "morning",
     "scene": "greyford_block",
     "anchor": "park_bench_west",
-    "facing": "down"
+    "facing": "down",
+    "activity": "read"
    },
    {
     "period": "afternoon",
     "scene": "greyford_block",
     "anchor": "theo_door",
-    "facing": "left"
+    "facing": "left",
+    "activity": "look"
    },
    {
     "period": [
@@ -29,7 +31,8 @@
     },
     "scene": "theo_flat",
     "anchor": "armchair",
-    "facing": "down"
+    "facing": "down",
+    "activity": "read"
    }
   ]
  }

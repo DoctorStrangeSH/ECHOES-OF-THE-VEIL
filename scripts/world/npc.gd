@@ -19,6 +19,15 @@ const FADE_TIME := 0.35
 			_sprite.play(&"idle", facing)
 
 var anchor_id: StringName = &""
+## What they do while nobody talks to them (R1d): "" (stand), "look" (glance
+## around), "read", "phone", "work" (busy, a few steps to and fro). From the
+## schedule entry ("activity"); talking interrupts it.
+var activity := ""
+var _home := Vector2.ZERO
+var _t := 0.0
+var _next := 2.0
+var _busy := false
+var _rng := RandomNumberGenerator.new()
 
 @onready var _sprite: LayeredCharacterSprite = $Sprite
 @onready var _talk: TalkInteractable = $Talk
@@ -62,11 +71,60 @@ func fade_out_and_free() -> void:
 	t.finished.connect(queue_free)
 
 
+func set_activity(a: String) -> void:
+	activity = a
+	_home = position
+	_rng.seed = hash(npc_id)
+	_next = _rng.randf_range(1.0, 4.0)
+	_resume()
+
+
+func _resume() -> void:
+	if _sprite == null:
+		return
+	match activity:
+		"read":
+			_sprite.play(&"read", LayeredCharacterSprite.Dir.DOWN)
+		"phone":
+			var premade := _sprite.appearance != null and not _sprite.appearance.premade.is_empty()
+			_sprite.play(&"phone" if premade else &"idle", LayeredCharacterSprite.Dir.DOWN if premade else facing)
+		_:
+			_sprite.play(&"idle", facing)
+
+
+func _process(delta: float) -> void:
+	if Engine.is_editor_hint() or _busy or activity in ["", "read", "phone"]:
+		return
+	_t += delta
+	if activity == "work" and position.distance_to(_target) > 0.5:
+		var d := _target - position
+		position += d.normalized() * minf(d.length(), 14.0 * delta)
+		_sprite.play(&"walk", LayeredCharacterSprite.dir_from_vector(d))
+		return
+	if _t < _next:
+		return
+	_t = 0.0
+	_next = _rng.randf_range(2.5, 6.0)
+	if activity == "look":
+		var dirs := [facing, facing, LayeredCharacterSprite.Dir.LEFT, LayeredCharacterSprite.Dir.RIGHT, LayeredCharacterSprite.Dir.DOWN]
+		_sprite.play(&"idle", dirs[_rng.randi() % dirs.size()])
+	elif activity == "work":
+		_target = _home + Vector2(_rng.randf_range(-12.0, 12.0), _rng.randf_range(-3.0, 3.0))
+		if _target.distance_to(_home) < 4.0:
+			_target = _home
+		_sprite.play(&"idle", facing)
+
+
+var _target := Vector2.ZERO
+
+
 func _on_talked(actor: Node) -> void:
+	_busy = true
 	if actor is Node2D:
 		var to_actor: Vector2 = (actor as Node2D).global_position - global_position
 		_sprite.play(&"idle", LayeredCharacterSprite.dir_from_vector(to_actor, facing))
 
 
 func _on_dialogue_ended(_id: StringName) -> void:
-	_sprite.play(&"idle", facing)
+	_busy = false
+	_resume()

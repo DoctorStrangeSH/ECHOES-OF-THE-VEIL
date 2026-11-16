@@ -13,7 +13,8 @@
     ],
     "scene": "greyford_park",
     "anchor": "hoops",
-    "facing": "right"
+    "facing": "right",
+    "activity": "work"
    }
   ]
  },
@@ -30,7 +31,8 @@
     ],
     "scene": "greyford_park",
     "anchor": "goal",
-    "facing": "down"
+    "facing": "down",
+    "activity": "look"
    }
   ]
  }

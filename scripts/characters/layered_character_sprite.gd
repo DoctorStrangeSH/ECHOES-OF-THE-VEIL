@@ -20,7 +20,16 @@ const ANIMATIONS := {
 	&"walk": {"row": 2, "frames": 6, "fps": 10.0, "loop": true},
 	&"punch": {"row": 14, "frames": 6, "fps": 16.0, "loop": false},
 	&"hurt": {"row": 19, "frames": 3, "fps": 10.0, "loop": false},
+	# Activities (R1d): one direction (facing the viewer), looping a range of
+	# a 12-frame row. Layered characters hold a book from the Books sheet;
+	# premade sheets have the book and the phone drawn in.
+	&"read": {"row": 7, "frames": 6, "fps": 4.0, "loop": true, "single": true, "overlay": "Books"},
+	&"phone": {"row": 6, "frames": 6, "fps": 5.0, "loop": true, "single": true, "first": 3},
 }
+
+## Book sheet used by "read" on layered characters (Books/16x16/<id>.png).
+@export var book := "Book_01"
+var _overlay: Sprite2D
 
 @export var appearance: CharacterAppearance:
 	set(value):
@@ -85,6 +94,9 @@ func _rebuild() -> void:
 	for s in _layers:
 		s.queue_free()
 	_layers.clear()
+	if _overlay != null:
+		_overlay.queue_free()
+		_overlay = null
 	var look := appearance if appearance != null else CharacterAppearance.default_player()
 	for path in look.layer_paths():
 		var tex := AssetLibrary.load_texture(path)
@@ -113,9 +125,29 @@ func _apply_frame() -> void:
 	var spec: Dictionary = ANIMATIONS[animation]
 	var row: int = spec["row"]
 	var col := int(direction) * int(spec["frames"]) + _frame
+	if spec.get("single", false):
+		col = int(spec.get("first", 0)) + _frame
 	var rect := Rect2(col * FRAME_SIZE.x, row * FRAME_SIZE.y, FRAME_SIZE.x, FRAME_SIZE.y)
 	for s in _layers:
 		s.region_rect = rect
+	_sync_overlay(spec, rect)
+
+
+## A held prop (the book) over layered characters while an activity needs it.
+func _sync_overlay(spec: Dictionary, rect: Rect2) -> void:
+	var want: String = spec.get("overlay", "")
+	var layered := appearance != null and appearance.premade.is_empty() and appearance.custom_sheet.is_empty()
+	if want == "" or not layered:
+		if _overlay != null:
+			_overlay.visible = false
+		return
+	if _overlay == null:
+		var tex := AssetLibrary.load_texture(AssetLibrary.character_layer_path(want, book))
+		if tex == null:
+			return
+		_overlay = _make_sprite(tex, true)
+	_overlay.visible = true
+	_overlay.region_rect = rect
 
 
 func _placeholder_texture(color: Color) -> Texture2D:

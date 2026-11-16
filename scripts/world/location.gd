@@ -152,6 +152,8 @@ func _refresh_npcs(animate: bool = true) -> void:
 			entities.add_child(npc)
 			npc.npc_id = id
 			npc.facing = NpcRegistry.facing_of(entry) as LayeredCharacterSprite.Dir
+			npc._target = npc.position
+			npc.set_activity(String(entry.get("activity", "")))
 			_npcs[id] = npc
 			if animate:
 				npc.fade_in()

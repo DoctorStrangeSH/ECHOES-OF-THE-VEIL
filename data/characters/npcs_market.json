@@ -13,7 +13,8 @@
     ],
     "scene": "bakery",
     "anchor": "counter",
-    "facing": "down"
+    "facing": "down",
+    "activity": "work"
    }
   ]
  },
@@ -30,7 +31,8 @@
     ],
     "scene": "cafe",
     "anchor": "counter",
-    "facing": "down"
+    "facing": "down",
+    "activity": "work"
    }
   ]
  },
@@ -48,7 +50,8 @@
     ],
     "scene": "gym",
     "anchor": "coach",
-    "facing": "down"
+    "facing": "down",
+    "activity": "work"
    }
   ]
  }
