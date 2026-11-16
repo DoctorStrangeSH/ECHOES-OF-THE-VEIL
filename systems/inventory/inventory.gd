@@ -8,7 +8,9 @@ signal changed
 
 const ITEMS_PATH := "res://data/items/items"  # + items_*.json
 const ATTUNEMENTS_PATH := "res://data/progression/attunements"
-const CATEGORIES: PackedStringArray = ["weapon", "trinket", "consumable", "material", "key"]
+const CATEGORIES: PackedStringArray = ["weapon", "trinket", "consumable", "material", "key", "seed", "produce"]
+## Filter groups: the "farm" filter shows seeds and produce together.
+const FILTER_GROUPS := {"farm": ["seed", "produce"]}
 const DEFAULT_WEAPON := &"fists"
 ## Additive stats default to 0, multipliers to 1.
 const MULT_STATS: PackedStringArray = ["dodge_cooldown_mult", "dodge_distance_mult", "flash_cooldown_mult", "flash_radius_mult", "speed_mult", "pay_mult"]
@@ -87,7 +89,8 @@ func remove(id: StringName, amount: int = 1) -> bool:
 func list(category: String = "") -> Array[StringName]:
 	var out: Array[StringName] = []
 	for id: StringName in items:
-		if category.is_empty() or def(id).get("category", "") == category:
+		var cat: String = def(id).get("category", "")
+		if category.is_empty() or cat == category or (FILTER_GROUPS.get(category, []) as Array).has(cat):
 			out.append(id)
 	if category in ["", "weapon"] and not out.has(DEFAULT_WEAPON):
 		out.push_front(DEFAULT_WEAPON)

@@ -1,0 +1,149 @@
+{
+ "seed_radish": {
+  "category": "seed",
+  "name": "ITEM_SEED_RADISH",
+  "desc": "ITEM_SEED_RADISH_DESC",
+  "color": "#c06070",
+  "value": 2,
+  "icon": "modern_farm/Icons/Icons_16x16/Icons_16x16_Singles/Icons_16x16_Seed_Bags_Radish.png",
+  "stack": 99
+ },
+ "seed_carrot": {
+  "category": "seed",
+  "name": "ITEM_SEED_CARROT",
+  "desc": "ITEM_SEED_CARROT_DESC",
+  "color": "#e09040",
+  "value": 3,
+  "icon": "modern_farm/Icons/Icons_16x16/Icons_16x16_Singles/Icons_16x16_Seed_Bags_Carrot.png",
+  "stack": 99
+ },
+ "seed_turnip": {
+  "category": "seed",
+  "name": "ITEM_SEED_TURNIP",
+  "desc": "ITEM_SEED_TURNIP_DESC",
+  "color": "#c0a0d0",
+  "value": 3,
+  "icon": "modern_farm/Icons/Icons_16x16/Icons_16x16_Singles/Icons_16x16_Seed_Bags_turnip.png",
+  "stack": 99
+ },
+ "seed_tomato": {
+  "category": "seed",
+  "name": "ITEM_SEED_TOMATO",
+  "desc": "ITEM_SEED_TOMATO_DESC",
+  "color": "#d04030",
+  "value": 6,
+  "icon": "modern_farm/Icons/Icons_16x16/Icons_16x16_Singles/Icons_16x16_Seed_Bags_Tomato.png",
+  "stack": 99
+ },
+ "seed_strawberry": {
+  "category": "seed",
+  "name": "ITEM_SEED_STRAWBERRY",
+  "desc": "ITEM_SEED_STRAWBERRY_DESC",
+  "color": "#e05060",
+  "value": 5,
+  "icon": "modern_farm/Icons/Icons_16x16/Icons_16x16_Singles/Icons_16x16_Seed_Bags_Strawberry.png",
+  "stack": 99
+ },
+ "seed_pumpkin": {
+  "category": "seed",
+  "name": "ITEM_SEED_PUMPKIN",
+  "desc": "ITEM_SEED_PUMPKIN_DESC",
+  "color": "#e08020",
+  "value": 9,
+  "icon": "modern_farm/Icons/Icons_16x16/Icons_16x16_Singles/Icons_16x16_Seed_Bags_Pumpkin.png",
+  "stack": 99
+ },
+ "radish": {
+  "category": "produce",
+  "name": "ITEM_RADISH",
+  "desc": "ITEM_RADISH_DESC",
+  "color": "#c06070",
+  "value": 7,
+  "icon": "modern_farm/Icons/Icons_16x16/Icons_16x16_Singles/Icons_16x16_Crops_Radish.png",
+  "stack": 99,
+  "use": {
+   "heal": 1
+  }
+ },
+ "carrot": {
+  "category": "produce",
+  "name": "ITEM_CARROT",
+  "desc": "ITEM_CARROT_DESC",
+  "color": "#e09040",
+  "value": 10,
+  "icon": "modern_farm/Icons/Icons_16x16/Icons_16x16_Singles/Icons_16x16_Crops_ Carrot.png",
+  "stack": 99,
+  "use": {
+   "heal": 1
+  }
+ },
+ "turnip": {
+  "category": "produce",
+  "name": "ITEM_TURNIP",
+  "desc": "ITEM_TURNIP_DESC",
+  "color": "#c0a0d0",
+  "value": 8,
+  "icon": "modern_farm/Icons/Icons_16x16/Icons_16x16_Singles/Icons_16x16_Crops_Turnip.png",
+  "stack": 99
+ },
+ "tomato": {
+  "category": "produce",
+  "name": "ITEM_TOMATO",
+  "desc": "ITEM_TOMATO_DESC",
+  "color": "#d04030",
+  "value": 9,
+  "icon": "modern_farm/Icons/Icons_16x16/Icons_16x16_Singles/Icons_16x16_Crops_Tomato.png",
+  "stack": 99,
+  "use": {
+   "heal": 1
+  }
+ },
+ "strawberry": {
+  "category": "produce",
+  "name": "ITEM_STRAWBERRY",
+  "desc": "ITEM_STRAWBERRY_DESC",
+  "color": "#e05060",
+  "value": 9,
+  "icon": "modern_farm/Icons/Icons_16x16/Icons_16x16_Singles/Icons_16x16_Crops_Strawberry.png",
+  "stack": 99,
+  "use": {
+   "heal": 1
+  }
+ },
+ "pumpkin": {
+  "category": "produce",
+  "name": "ITEM_PUMPKIN",
+  "desc": "ITEM_PUMPKIN_DESC",
+  "color": "#e08020",
+  "value": 34,
+  "icon": "modern_farm/Icons/Icons_16x16/Icons_16x16_Singles/Icons_16x16_Crops_Pumpkin.png",
+  "stack": 99
+ },
+ "egg": {
+  "category": "produce",
+  "name": "ITEM_EGG",
+  "desc": "ITEM_EGG_DESC",
+  "color": "#f0e8d0",
+  "value": 3,
+  "icon": "modern_farm/Icons/Icons_16x16/Icons_16x16_Singles/Icons_16x16_Food_Egg.png",
+  "stack": 99
+ },
+ "watering_can": {
+  "category": "key",
+  "name": "ITEM_WATERING_CAN",
+  "desc": "ITEM_WATERING_CAN_DESC",
+  "color": "#6090c0",
+  "value": 0,
+  "icon": "modern_farm/Icons/Icons_16x16/Icons_16x16_Singles/Icons_16x16_Tools_Watering_Can.png",
+  "stack": 1
+ },
+ "margaret_tin": {
+  "category": "key",
+  "name": "ITEM_MARGARET_TIN",
+  "desc": "ITEM_MARGARET_TIN_DESC",
+  "color": "#a08060",
+  "value": 0,
+  "icon": "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Trunk_Small_1_16x16.png",
+  "stack": 1
+ }
+}

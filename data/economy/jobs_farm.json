@@ -1,0 +1,25 @@
+{
+ "farm_pump": {
+  "name": "JOB_FARM_PUMP",
+  "desc": "JOB_FARM_PUMP_DESC",
+  "client": "hugh_penny",
+  "spot": "farm_well",
+  "difficulty": 2,
+  "scrap": 0,
+  "pay": 0,
+  "xp": 4,
+  "once": true,
+  "board": false,
+  "effects": [
+   {
+    "set_flag": "farm.well_fixed"
+   },
+   {
+    "quest_stage": [
+     "case_brook_farm",
+     "dusk"
+    ]
+   }
+  ]
+ }
+}

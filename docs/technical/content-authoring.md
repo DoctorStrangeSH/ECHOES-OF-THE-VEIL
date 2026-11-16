@@ -37,7 +37,7 @@ CI runs steps 3–4 (in check mode), the asset license guard and the Godot tests
 - **options**: scene settings — `outdoors`, `combat_enabled`, `fixed_tint` (`{"color": [r, g, b, a]}`), `enter_dialogue_id`, `enter_condition`, `camera_margin_tiles`.
 - **nodes**: plain nodes or templates. Texture paths can use aliases from `data/regions/_aliases.json` (`@city/Bench_2.png`, `@beach/...`, `@bedroom/...`).
 
-Plain node kinds: `prop`, `spawn`, `door`, `inspect`, `rest`, `anchor`, `npc`, `enemy` (`variant`), `boss`, `arena`, `encounter`, `pickup`, `spot` (repair), `screen` (shop/jobs/workbench/business), `junk`. Any node can take `show_if` (a StoryRules condition).
+Plain node kinds: `prop`, `spawn`, `door`, `inspect`, `rest`, `anchor`, `npc`, `enemy` (`variant`), `boss`, `arena`, `encounter`, `pickup`, `spot` (repair), `screen` (shop/jobs/workbench/business), `junk`, `plot` (a farm square), `critter` (a farm animal ambling in a pen; `hen: n` shows it while the farm keeps n hens). Any node can take `show_if` (a StoryRules condition).
 
 Templates (`tools/regions/templates.py`):
 
@@ -48,6 +48,8 @@ Templates (`tools/regions/templates.py`):
 | `sign` | a readable sign or poster (prop + "Read") |
 | `row` | the same prop at several points (`at`: `[[x, y], ...]` or `{"xs": [...], "y": n}`) |
 | `scatter` | decoration with no collision (shells, litter, birds) |
+| `fence` | a rail-fence pen from the farm pack, `w` x `h` tiles, with gaps for a gate |
+| `field` | a tilled field (picture from `tools/art/make_field.py`) with farm plots on its inner squares |
 | `anchors` | NPC schedule anchors: `{"points": {"id": [x, y]}}` |
 
 Add a template only when a pattern repeats across regions; anything specific to one place stays in its JSON.

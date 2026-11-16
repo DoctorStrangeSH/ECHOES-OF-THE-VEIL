@@ -1,0 +1,75 @@
+{
+ "hugh_penny": {
+  "name": "NPC_HUGH",
+  "body": "Body_01",
+  "eyes": "Eyes_01",
+  "outfit": "Outfit_12_02",
+  "hairstyle": "Hairstyle_02_05",
+  "accessory": "Accessory_13_Beard_04",
+  "color": "#8a7a5a",
+  "dialogue": "hugh",
+  "schedule": [
+   {
+    "if": {
+     "farm": "owned"
+    },
+    "period": [
+     "morning",
+     "afternoon"
+    ],
+    "scene": "bakery",
+    "anchor": "hugh_table",
+    "facing": "right"
+   },
+   {
+    "if": {
+     "not": {
+      "farm": "owned"
+     }
+    },
+    "period": [
+     "morning",
+     "afternoon"
+    ],
+    "scene": "brook_farm",
+    "anchor": "porch",
+    "facing": "down"
+   },
+   {
+    "if": {
+     "not": {
+      "farm": "owned"
+     }
+    },
+    "period": "evening",
+    "scene": "brook_farmhouse",
+    "anchor": "kitchen",
+    "facing": "left"
+   }
+  ]
+ },
+ "margaret_penny": {
+  "name": "NPC_MARGARET",
+  "body": "Body_01",
+  "eyes": "Eyes_01",
+  "outfit": "Outfit_06_01",
+  "hairstyle": "Hairstyle_10_05",
+  "color": "#b0d0f0",
+  "tint": "#b8dcffa8",
+  "dialogue": "margaret",
+  "schedule": [
+   {
+    "if": {
+     "quest_stage": [
+      "case_brook_farm",
+      "dusk"
+     ]
+    },
+    "period": "evening",
+    "scene": "brook_farm",
+    "anchor": "well_side",
+    "facing": "left"
+   }
+  ]
+ }
+}

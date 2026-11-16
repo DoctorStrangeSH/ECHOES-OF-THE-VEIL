@@ -824,6 +824,190 @@ flowchart TD
   agnes_card_2["2<br/>Below, in a different machine: 'Reclassified 19…"]
 ```
 
+## farm.json
+
+### farm_notice
+
+```mermaid
+flowchart TD
+  farm_notice_START(("start"))
+  farm_notice_START --> farm_notice_again
+  farm_notice_START -->|"{not_quest_started: case_brook_farm}"| farm_notice_n1
+  farm_notice_n1["n1<br/>The notice has faded, but the letters were writ…"]
+  farm_notice_n1 --> farm_notice_n2
+  farm_notice_n2["n2<br/>Below, in pencil, in another hand: «The well si…"]
+  farm_notice_again["again<br/>The notice about Brookside Farm. Bus from the m…"]
+```
+
+### hugh
+
+```mermaid
+flowchart TD
+  hugh_START(("start"))
+  hugh_START --> hugh_hub
+  hugh_START -->|"{farm: owned}"| hugh_after
+  hugh_START -->|"{quest_stage: [case_brook_farm, buy]}"| hugh_buy
+  hugh_START -->|"{all: [{quest_stage: [case_brook_farm, …"| hugh_tin1
+  hugh_START -->|"{quest_stage: [case_brook_farm, tin]}"| hugh_tin_wait
+  hugh_START -->|"{quest_stage: [case_brook_farm, dusk]}"| hugh_dusk1
+  hugh_START -->|"{quest_stage: [case_brook_farm, pump]}"| hugh_pump_wait
+  hugh_START -->|"{not_flag: met.hugh}"| hugh_intro1
+  hugh_intro1["intro1<br/>A tall old man in a faded jacket stands by the …"]
+  hugh_intro1 --> hugh_intro2
+  hugh_intro2["intro2<br/>Hugh Penny: About the notice? Good. I won't lie to you: I'm…"]
+  hugh_intro2 --> hugh_intro3
+  hugh_intro3["intro3<br/>Hugh Penny: But I won't hand Brookside to the first person …"]
+  hugh_intro3 -->|"What would it take?"| hugh_task1
+  hugh_intro3 -->|"How much do you want for it?"| hugh_price
+  hugh_price["price<br/>Hugh Penny: The well first. Price after. Price is the last …"]
+  hugh_price -->|"What would it take?"| hugh_task1
+  hugh_task1["task1<br/>Hugh Penny: The well's broken. The winch handle snapped off…"]
+  hugh_task1 --> hugh_task2
+  hugh_task2["task2<br/>Hugh Penny: It's to the left of the house. A winch with no …"]
+  hugh_hub["hub<br/>Hugh Penny: Hugh nods without taking his eyes off the field."]
+  hugh_hub -->|"What would it take? ⟨{any: [{not_quest_started: case_brook_f…⟩"| hugh_task1
+  hugh_hub_end_1(["end"])
+  hugh_hub -->|"'I'll be off.'"| hugh_hub_end_1
+  hugh_pump_wait["pump_wait<br/>Hugh Penny: The well's to the left of the house. Take your …"]
+  hugh_pump_wait --> hugh_hub
+  hugh_dusk1["dusk1<br/>Hugh Penny: Mended it, then. I heard it creak. First time i…"]
+  hugh_dusk1 --> hugh_dusk2
+  hugh_dusk2["dusk2<br/>Hugh Penny: Now. Come to the well at sunset, when the sun g…"]
+  hugh_dusk2 --> hugh_hub
+  hugh_tin_wait["tin_wait<br/>Hugh Penny: You've a look about you, like someone sent you …"]
+  hugh_tin_wait --> hugh_hub
+  hugh_tin1["tin1<br/>Hugh looks at the rusty box a long while before…"]
+  hugh_tin1 --> hugh_tin2
+  hugh_tin2["tin2<br/>Hugh Penny: That's her hand. She wrote me letters? Forty ye…"]
+  hugh_tin2 --> hugh_tin3
+  hugh_tin3["tin3<br/>Hugh Penny: You heard her. I can see it on you. Tell me one…"]
+  hugh_tin3 -->|"She doesn't want the farm sol…"| hugh_truth1
+  hugh_tin3 -->|"Maybe the letters should stay…"| hugh_stay1
+  hugh_truth1["truth1<br/>Hugh Penny: Like a dead woman's things. Yes. That's exactly…"]
+  hugh_truth1 --> hugh_truth2
+  hugh_truth2["truth2<br/>Hugh Penny: Here's what. The letters come with me; I'll rea…"]
+  hugh_truth2 --> hugh_buy
+  hugh_stay1["stay1<br/>Hugh Penny: Here. On her shelf. Where she hid them in the f…"]
+  hugh_stay1 --> hugh_stay2
+  hugh_stay2["stay2<br/>Hugh Penny: Maybe so. I'll read them here, evenings, when I…"]
+  hugh_stay2 --> hugh_buy
+  hugh_buy["buy<br/>Hugh Penny: So, shall we shake on it? The price stands as w…"]
+  hugh_buy -->|"Pay £120 ⟨{all: [{flag_equals: [farm.price, 120]}…⟩"| hugh_deal1
+  hugh_buy -->|"Pay £90 ⟨{all: [{flag_equals: [farm.price, 90]},…⟩"| hugh_deal1
+  hugh_buy -->|"I need to get the money toget…"| hugh_wait_money
+  hugh_wait_money["wait_money<br/>Hugh Penny: The land will wait. It knows how."]
+  hugh_deal1["deal1<br/>Hugh puts a ring of keys in your palm. The keys…"]
+  hugh_deal1 --> hugh_deal2
+  hugh_deal2["deal2<br/>Hugh Penny: The can's yours. Seeds are under the awning, wi…"]
+  hugh_deal2 --> hugh_deal3
+  hugh_deal3["deal3<br/>Hugh Penny: I'll be in town, at my sister's. Mornings, at M…"]
+  hugh_after["after<br/>Hugh Penny: There you are. Hugh smiles into his beard. How'…"]
+  hugh_after -->|"Any advice?"| hugh_tips
+  hugh_after -->|"How are the letters? ⟨{flag: farm.letters_home}⟩"| hugh_letters_home
+  hugh_after -->|"How are the letters? ⟨{flag: farm.letters_stay}⟩"| hugh_letters_stay
+  hugh_after_end_3(["end"])
+  hugh_after -->|"'I'll be off.'"| hugh_after_end_3
+  hugh_tips["tips<br/>Hugh Penny: Water every day except when it rains; in rain t…"]
+  hugh_tips --> hugh_after
+  hugh_letters_home["letters_home<br/>Hugh Penny: One a day, as promised. Yesterday's was about h…"]
+  hugh_letters_home --> hugh_after
+  hugh_letters_stay["letters_stay<br/>Hugh Penny: I come out on Sundays and read by the fire. Don…"]
+  hugh_letters_stay --> hugh_after
+```
+
+### margaret
+
+```mermaid
+flowchart TD
+  margaret_START(("start"))
+  margaret_START --> margaret_m1
+  margaret_m1["m1<br/>By the well stands a woman in a light summer dr…"]
+  margaret_m1 --> margaret_m2
+  margaret_m2["m2<br/>Margaret: The winch sings again. That was your doing, was…"]
+  margaret_m2 --> margaret_m3
+  margaret_m3["m3<br/>Margaret: I'm not in the well. I'm wherever he remembers …"]
+  margaret_m3 -->|"What are you singing?"| margaret_song
+  margaret_m3 -->|"What do you want?"| margaret_want
+  margaret_song["song<br/>Margaret: Something we sang when we planted our first str…"]
+  margaret_song -->|"What do you want?"| margaret_want
+  margaret_want["want<br/>Margaret: For him to stop selling the farm the way you se…"]
+  margaret_want --> margaret_bye
+  margaret_bye["bye<br/>Margaret: The sun's going down. Go while there's light. I…"]
+```
+
+### farm_well
+
+```mermaid
+flowchart TD
+  farm_well_START(("start"))
+  farm_well_START --> farm_well_plain
+  farm_well_START -->|"{quest_stage: [case_brook_farm, pump]}"| farm_well_broken
+  farm_well_START -->|"{all: [{quest_stage: [case_brook_farm, …"| farm_well_dusk
+  farm_well_START -->|"{quest_stage: [case_brook_farm, dusk]}"| farm_well_dusk_day
+  farm_well_START -->|"{flag: farm.well_fixed}"| farm_well_fixed
+  farm_well_broken["broken<br/>The winch has no handle and the axle has rusted…"]
+  farm_well_dusk["dusk<br/>The air above the well trembles like air above …"]
+  farm_well_dusk_day["dusk_day<br/>The winch turns easily now. The water below is …"]
+  farm_well_fixed["fixed<br/>You turn the winch, and the bucket comes up ful…"]
+  farm_well_plain["plain<br/>An old well under a wooden roof. The winch has …"]
+```
+
+### farm_apple
+
+```mermaid
+flowchart TD
+  farm_apple_START(("start"))
+  farm_apple_START --> farm_apple_plain
+  farm_apple_START -->|"{quest_stage: [case_brook_farm, tin]}"| farm_apple_tin
+  farm_apple_tin["tin<br/>By the roots that turn towards the house, the g…"]
+  farm_apple_plain["plain<br/>An old apple tree, its bark grey with lichen. O…"]
+```
+
+### farm_photo
+
+```mermaid
+flowchart TD
+  farm_photo_START(("start"))
+  farm_photo_START --> farm_photo_plain
+  farm_photo_START -->|"{all: [{farm: owned}, {flag: farm.lette…"| farm_photo_tin
+  farm_photo_tin["tin<br/>On the dresser, a photograph in a wooden frame:…"]
+  farm_photo_tin --> farm_photo_tin2
+  farm_photo_tin2["tin2<br/>Beside the frame, the rusty tin box. Hugh left …"]
+  farm_photo_plain["plain<br/>On the dresser, a photograph in a wooden frame:…"]
+```
+
+### farm_coop
+
+```mermaid
+flowchart TD
+  farm_coop_START(("start"))
+  farm_coop_START --> farm_coop_hugh
+  farm_coop_START -->|"{farm: owned}"| farm_coop_hub
+  farm_coop_hugh["hugh<br/>Hugh's hens eye you with suspicion. They don't …"]
+  farm_coop_hub["hub<br/>The hen house smells of straw. The hens go abou…"]
+  farm_coop_hub_end_0(["end"])
+  farm_coop_hub -->|"Collect the eggs ⟨{farm: eggs}⟩"| farm_coop_hub_end_0
+  farm_coop_hub_end_1(["end"])
+  farm_coop_hub -->|"Buy a laying hen from the nei… ⟨{farm: can_buy_hen}⟩"| farm_coop_hub_end_1
+  farm_coop_hub_end_2(["end"])
+  farm_coop_hub -->|"Leave"| farm_coop_hub_end_2
+```
+
+### farm_crate
+
+```mermaid
+flowchart TD
+  farm_crate_START(("start"))
+  farm_crate_START --> farm_crate_hugh
+  farm_crate_START -->|"{farm: owned}"| farm_crate_hub
+  farm_crate_hugh["hugh<br/>A green crate stencilled «Penny, for Ferrante».…"]
+  farm_crate_hub["hub<br/>The green crate for the harvest. In the morning…"]
+  farm_crate_hub_end_0(["end"])
+  farm_crate_hub -->|"Put the harvest in the crate ⟨{farm: has_produce}⟩"| farm_crate_hub_end_0
+  farm_crate_hub_end_1(["end"])
+  farm_crate_hub -->|"Leave"| farm_crate_hub_end_1
+```
+
 ## lighthouse.json
 
 ### hester
@@ -936,14 +1120,19 @@ flowchart TD
   martha_hub -->|"'What's new?' ⟨{not_flag: martha.talk1}⟩"| martha_talk1
   martha_hub -->|"'What's new?' ⟨{not_flag: martha.talk2, flag: martha.t…⟩"| martha_talk2
   martha_hub -->|"'What's new?' ⟨{not_flag: martha.talk3, flag: martha.t…⟩"| martha_talk3
-  martha_hub_end_4(["end"])
-  martha_hub -->|"'I'll be off.'"| martha_hub_end_4
+  martha_hub -->|"What's this farm for sale? ⟨{not_quest_started: case_brook_farm}⟩"| martha_farm1
+  martha_hub_end_5(["end"])
+  martha_hub -->|"'I'll be off.'"| martha_hub_end_5
   martha_talk1["talk1<br/>Martha Pell: 'Every eleventh of November I leave a loaf on t…"]
   martha_talk1 --> martha_hub
   martha_talk2["talk2<br/>Martha Pell: 'My mother kept the shop in sixty-two. Men with…"]
   martha_talk2 --> martha_hub
   martha_talk3["talk3<br/>Martha Pell: 'Mara Venn has bought one cheese scone at eight…"]
   martha_talk3 --> martha_hub
+  martha_farm1["farm1<br/>Martha Pell: Hugh Penny? Forty years he brought me flour and…"]
+  martha_farm1 --> martha_farm2
+  martha_farm2["farm2<br/>Martha Pell: Margaret died last autumn. Since then Hugh hard…"]
+  martha_farm2 --> martha_hub
 ```
 
 ### lou

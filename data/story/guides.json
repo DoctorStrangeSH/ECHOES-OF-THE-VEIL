@@ -301,5 +301,27 @@
   "evening/jonah": {
    "npc": "jonah_rook"
   }
+ },
+ "case_brook_farm": {
+  "visit": {
+   "npc": "hugh_penny",
+   "note": "GUIDE_NOTE_BROOK_BUS"
+  },
+  "pump": {
+   "scene": "brook_farm",
+   "node": "WellSpot"
+  },
+  "dusk": {
+   "scene": "brook_farm",
+   "node": "WellLook",
+   "period": "evening"
+  },
+  "tin": {
+   "scene": "brook_farm",
+   "node": "TinPickup"
+  },
+  "buy": {
+   "npc": "hugh_penny"
+  }
  }
 }

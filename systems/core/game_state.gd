@@ -103,6 +103,7 @@ func reset_for_new_game() -> void:
 	Party.reset()
 	Progression.reset()
 	Expedition.reset()
+	Farm.reset()
 
 
 func lock_player(reason: StringName) -> void:
@@ -192,6 +193,7 @@ func to_dict(player_node: Node2D = null) -> Dictionary:
 		"party": Party.to_dict(),
 		"progression": Progression.to_dict(),
 		"expedition": Expedition.to_dict(),
+		"farm": Farm.to_dict(),
 	}
 
 
@@ -237,3 +239,4 @@ func from_dict(data: Dictionary) -> void:
 	Party.from_dict(data.get("party", {}))
 	Progression.from_dict(data.get("progression", {}))
 	Expedition.from_dict(data.get("expedition", {}))
+	Farm.from_dict(data.get("farm", {}))

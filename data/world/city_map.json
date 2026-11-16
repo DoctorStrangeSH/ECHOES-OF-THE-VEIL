@@ -179,6 +179,41 @@
      "hours": "MAP_HOURS_ALWAYS"
     }
    ]
+  },
+  "brookside": {
+   "name": "MAP_BROOKSIDE",
+   "pos": [
+    260,
+    170
+   ],
+   "scenes": [
+    "brook_farm",
+    "brook_farmhouse"
+   ],
+   "stop": [
+    "brook_farm",
+    "bus_stop"
+   ],
+   "open_if": {
+    "flag": "farm.route_known"
+   },
+   "fare": 4,
+   "ride_minutes": 45,
+   "map_at": [
+    200,
+    140
+   ],
+   "stop_at": [
+    440,
+    488
+   ],
+   "desc": "MAP_DESC_BROOKSIDE",
+   "places": [
+    {
+     "name": "MAP_PLACE_FARM",
+     "hours": "MAP_HOURS_ALWAYS"
+    }
+   ]
   }
  },
  "roads": [
@@ -197,6 +232,10 @@
   [
    "old_quarter",
    "north_quay"
+  ],
+  [
+   "market",
+   "brookside"
   ]
  ],
  "map_scale": 0.125,

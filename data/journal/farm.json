@@ -1,0 +1,47 @@
+{
+ "cases": {
+  "case_brook_farm": {
+   "title": "CASE_BROOK_TITLE",
+   "summary": "CASE_BROOK_SUMMARY",
+   "first_stage": "visit",
+   "stages": {
+    "visit": "CASE_BROOK_VISIT",
+    "pump": "CASE_BROOK_PUMP",
+    "dusk": "CASE_BROOK_DUSK",
+    "tin": "CASE_BROOK_TIN",
+    "buy": "CASE_BROOK_BUY"
+   },
+   "outcomes": {
+    "letters_home": "CASE_BROOK_HOME",
+    "letters_stay": "CASE_BROOK_STAY"
+   },
+   "transitions": {
+    "visit": [
+     "pump"
+    ],
+    "pump": [
+     "dusk"
+    ],
+    "dusk": [
+     "tin"
+    ],
+    "tin": [
+     "buy"
+    ]
+   },
+   "objectives": {
+    "buy": [
+     {
+      "id": "money",
+      "text": "OBJ_BROOK_MONEY",
+      "done_if": {
+       "farm": "can_afford"
+      }
+     }
+    ]
+   }
+  }
+ },
+ "evidence": {},
+ "hypotheses": {}
+}

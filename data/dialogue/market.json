@@ -62,6 +62,13 @@
       "next": "talk3"
      },
      {
+      "text": "MARTHA_ASK_FARM",
+      "if": {
+       "not_quest_started": "case_brook_farm"
+      },
+      "next": "farm1"
+     },
+     {
       "text": "MARKET_BYE",
       "next": null
      }
@@ -94,6 +101,24 @@
     "effects": [
      {
       "set_flag": "martha.talk3"
+     }
+    ]
+   },
+   "farm1": {
+    "speaker": "NPC_MARTHA",
+    "text": "MARTHA_FARM_1",
+    "next": "farm2"
+   },
+   "farm2": {
+    "speaker": "NPC_MARTHA",
+    "text": "MARTHA_FARM_2",
+    "next": "hub",
+    "effects": [
+     {
+      "quest_start": "case_brook_farm"
+     },
+     {
+      "set_flag": "farm.route_known"
      }
     ]
    }

@@ -200,6 +200,8 @@ func _refresh() -> void:
 		_line(tr("MAP_CASES"), UiTheme.ACCENT)
 		_line(", ".join(cases), UiTheme.INK)
 	_line(tr("MAP_BUS") if d.get("stop") != null else tr("MAP_NO_BUS"), Color(0.55, 0.75, 1.0))
+	if d.get("stop") != null and CityMap.fare_to(selected) != CityMap.fare():
+		_line(tr("MAP_BUS_FARE") % [CityMap.fare_to(selected), int(d.get("ride_minutes", 20))], Color(0.55, 0.75, 1.0))
 	if travel and CityMap.destinations(GameState.current_scene_id).is_empty():
 		_line(tr("BUS_NOWHERE"), Color(1.0, 0.7, 0.5))
 

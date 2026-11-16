@@ -6,6 +6,13 @@
    "to": "market_street"
   }
  ],
+ "brook_farm": [],
+ "brook_farmhouse": [
+  {
+   "node": "ExitDoor",
+   "to": "brook_farm"
+  }
+ ],
  "cafe": [
   {
    "node": "ExitDoor",

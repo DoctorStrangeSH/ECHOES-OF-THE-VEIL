@@ -34,7 +34,7 @@ _sizes = {}
 
 def local(p):
     pack, rest = p.split('/', 1)
-    return SRC[pack] + '/' + rest
+    return SRC.get(pack, ART + '/' + pack) + '/' + rest
 
 
 def size(p):
@@ -156,6 +156,10 @@ def write_tscn(path, loc_id, name_key, palette, layout, nodes, margin=0, opts=No
          ('Script','res://scripts/combat/boss_arena.gd','15_arena'),('PackedScene','res://scenes/world/item_pickup.tscn','16_pickup'),
          ('PackedScene','res://scenes/world/repair_spot.tscn','17_spot'),('PackedScene','res://scenes/world/screen_interactable.tscn','18_screen'),
          ('PackedScene','res://scenes/world/junk_pile.tscn','19_junk')]
+    if any(n['kind'] == 'plot' for n in nodes):
+        ext.append(('Script', 'res://scripts/farm/farm_plot.gd', '%d_plot' % (len(ext) + 1)))
+    if any(n['kind'] == 'critter' for n in nodes):
+        ext.append(('Script', 'res://scripts/farm/critter.gd', '%d_critter' % (len(ext) + 1)))
     for n in nodes:  # bosses other than the Census Taker bring their own scene
         if n['kind'] == 'boss' and n.get('scene') and not any(e[1] == n['scene'] for e in ext):
             ext.append(('PackedScene', n['scene'], f'{len(ext) + 1}_boss_{n["name"].lower()}'))
@@ -231,6 +235,18 @@ def write_tscn(path, loc_id, name_key, palette, layout, nodes, margin=0, opts=No
             if k=='screen': L.append(f'screen = "{n["screen"]}"')
             if n.get('show_if') is not None:
                 L+=['',f'[node name="Condition" type="Node" parent="Entities/{n["name"]}"]','script = ExtResource("10_cond")',f'show_if = {_j.dumps(n["show_if"])}']
+        elif k=='plot':
+            pid = next(e[2] for e in ext if e[1].endswith('farm_plot.gd'))
+            L+=[f'[node name="{n["name"]}" type="Area2D" parent="Entities"]',f'position = {v(n["x"],n["y"])}',f'script = ExtResource("{pid}")',
+                f'interaction_id = &"plot_{n["id"]}"', f'plot_id = &"{n["id"]}"']
+        elif k=='critter':
+            cid = next(e[2] for e in ext if e[1].endswith('critter.gd'))
+            L+=[f'[node name="{n["name"]}" type="Node2D" parent="Entities"]',f'position = {v(n["x"],n["y"])}',f'script = ExtResource("{cid}")',
+                f'texture_path = "{resolve_tex(n["tex"])}"', f'frame_size = {n.get("frame", 16)}',
+                'pen = Rect2(%g, %g, %g, %g)' % tuple(n.get('pen', [-24, -16, 48, 32])), f'speed = {n.get("speed", 10.0)}']
+            if n.get('hen'): L.append(f'hen = {n["hen"]}')
+            if n.get('show_if') is not None:
+                L+=['',f'[node name="Condition" type="Node" parent="Entities/{n["name"]}"]','script = ExtResource("10_cond")',f'show_if = {_j.dumps(n["show_if"])}']
         elif k=='encounter':
             L+=[f'[node name="Encounter" type="Node" parent="."]','script = ExtResource("13_encounter")',f'clear_flag = &"{n["flag"]}"']
         elif k=='npc':
@@ -262,6 +278,9 @@ def preview(out, palette, layout, nodes, clean=False):
         if n['kind']=='npc':
             im=Image.open(SRC['modern_interiors']+f'/2_Characters/Character_Generator/0_Premade_Characters/16x16/{n["premade"]}.png').convert('RGBA')
             col={0:0,1:6,2:12,3:18}[n['facing']]; fr=im.crop((col*16,32,col*16+16,64)); drawables.append((True,n['y'],fr,n['x']-8,n['y']-32))
+        if n['kind']=='critter':
+            im=Image.open(local(resolve_tex(n['tex']))).convert('RGBA'); s=n.get('frame',16)
+            drawables.append((True,n['y'],im.crop((3*s,0,4*s,s)),n['x']-s//2,n['y']-s))
     drawables.sort(key=lambda d:(d[0],d[1]))
     for _,_,im,x,y in drawables: img.alpha_composite(im,(int(x),int(y)))
     if clean:

@@ -98,6 +98,15 @@ func _ready() -> void:
 			boss.health.take_damage(1, _player().global_position)
 		_assert(GameState.has_flag(&"boss.census_taker.defeated"), "boss defeated")
 		await _frames(60)
+		# The boss drops a Census ledger page (Rosalind's side story). Whether
+		# its mote drifts to the player depends on where the boss fell, and
+		# holding it changes what Jonah says later, so the main-story run sets
+		# it aside to stay deterministic (it made CI flaky).
+		for m in SceneFlow.current_location.find_children("*", "ResonanceMote", true, false):
+			if (m as ResonanceMote).item_id == &"ledger_page":
+				m.queue_free()
+		if Inventory.has(&"ledger_page"):
+			Inventory.remove(&"ledger_page")
 
 	_step = "archive (Mara's story)"
 	GameState.set_flag(&"met.mara_venn")
@@ -588,6 +597,8 @@ func _ready() -> void:
 	SceneFlow.travel(&"greyford_block", &"ward_return")
 	await _wait_location(&"greyford_block")
 
+	await _farm_story()
+
 	_step = "save/load"
 	_assert(SaveService.save_game() == OK, "save ok")
 	await _frames(5)
@@ -609,6 +620,100 @@ func _ready() -> void:
 
 
 var _bolt_seen := false
+
+
+## R5: the notice, Hugh, the well, Margaret at dusk, the tin, the purchase,
+## then a crop from seed to the crate and the money in the morning.
+func _farm_story() -> void:
+	_step = "farm: the notice"
+	SceneFlow.travel(&"market_street", &"bus_stop")
+	await _wait_location(&"market_street")
+	await _frames(10)
+	DialogueService.start(&"farm_notice")
+	await _finish_dialogue()
+	_assert(Journal.case_status(&"case_brook_farm") == Journal.STATUS_ACTIVE and CityMap.known("brookside"), "the farm is on the bus map")
+	WorldClock.wait_until_hour(9)
+	var money := Inventory.money
+	_assert(CityMap.ride("brookside"), "ride out of town")
+	await _wait_location(&"brook_farm")
+	await _frames(20)
+	_assert(Inventory.money == money - CityMap.fare_to("brookside"), "the longer ride costs more")
+	_step = "farm: Hugh"
+	await _talk(&"hugh", {"npc": &"hugh_penny"}, ["HUGH_ASK_HOW"])
+	_assert(Journal.case_stage(&"case_brook_farm") == &"pump" and Livelihood.active.has(&"farm_pump"), "mend the well")
+	await _frames(5)
+	_assert(_visible_in_location("WellSpot"), "the well shows a repair spot")
+	Livelihood.complete(&"farm_pump")
+	_assert(Journal.case_stage(&"case_brook_farm") == &"dusk" and GameState.has_flag(&"farm.well_fixed"), "come back at dusk")
+	_step = "farm: Margaret"
+	WorldClock.wait_until_hour(19)
+	await _frames(30)
+	_assert(SceneFlow.current_location.find_children("*", "Npc", true, false).any(func(n: Node) -> bool: return n.get("npc_id") == &"margaret_penny"), "Margaret by the well")
+	await _talk(&"margaret", {"npc": &"margaret_penny"}, ["MARGARET_ASK_SONG", "MARGARET_ASK_WANT"])
+	await _finish_dialogue()
+	_assert(Journal.case_stage(&"case_brook_farm") == &"tin", "look under the apple tree")
+	await _frames(5)
+	var tin := _find_named("TinPickup")
+	_assert(tin != null and (tin as CanvasItem).visible, "the tin can be found")
+	if tin != null:
+		(tin as Interactable).interact(_player())
+	_assert(Inventory.has(&"margaret_tin"), "tin found")
+	_step = "farm: the deal"
+	SceneFlow.travel(&"brook_farmhouse", &"entrance")
+	await _wait_location(&"brook_farmhouse")
+	await _frames(10)
+	Inventory.add_money(100)
+	await _talk(&"hugh", {"npc": &"hugh_penny"}, ["FARM_LEAVE_LETTERS", "FARM_PAY_90"])
+	await _finish_dialogue()
+	_assert(Farm.owned() and Journal.case_status(&"case_brook_farm") == Journal.STATUS_DONE, "the farm is yours")
+	_assert(Inventory.has(&"watering_can") and Inventory.has(&"seed_radish") and Farm.hens == 2, "keys, can, seeds, hens")
+	_step = "farm: a crop"
+	SceneFlow.travel(&"brook_farm", &"farmhouse_front")
+	await _wait_location(&"brook_farm")
+	await _frames(10)
+	var plot := _find_named("FieldPlot1") as FarmPlot
+	_assert(plot != null and plot.enabled, "the field is yours to use")
+	if plot == null:
+		return
+	Farm.last_seed = &"seed_radish"
+	_assert(Farm.plant(plot.plot_id, &"seed_radish"), "plant radish")
+	for day in 3:
+		plot.interact(_player())  # water (or, on a rainy day, just look)
+		_assert(Farm.is_watered(plot.plot_id), "watered on day %d" % day)
+		WorldClock.sleep_until_hour(8)
+		await _frames(3)
+	_assert(Farm.state(plot.plot_id) == "ready", "radish ripe after three watered days")
+	plot.interact(_player())
+	_assert(Inventory.has(&"radish"), "harvested")
+	DialogueService.start(&"farm_crate")
+	await _frames(3)
+	DialogueService.choose(0)
+	await _finish_dialogue()
+	_assert(Farm.shipped > 0 and not Inventory.has(&"radish"), "into the crate")
+	money = Inventory.money
+	WorldClock.sleep_until_hour(8)
+	_assert(Inventory.money > money and Farm.eggs >= 2, "paid in the morning; the hens laid")
+	DialogueService.start(&"farm_coop")
+	await _frames(3)
+	DialogueService.choose(0)
+	await _finish_dialogue()
+	_assert(Inventory.has(&"egg", 2) and Farm.eggs == 0, "eggs collected")
+	EventHub.screen_requested.emit("map:travel")
+	await _frames(10)
+	await _tap(&"pause")
+	await _frames(5)
+	SceneFlow.travel(&"greyford_block", &"ward_return")
+	await _wait_location(&"greyford_block")
+
+
+func _find_named(node_name: String) -> Node:
+	var stack: Array[Node] = [SceneFlow.current_location]
+	while not stack.is_empty():
+		var n: Node = stack.pop_back()
+		if n.name == node_name:
+			return n
+		stack.append_array(n.get_children())
+	return null
 
 
 func _player() -> Player:

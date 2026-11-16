@@ -75,5 +75,35 @@
    }
   ],
   "sells_to": false
+ },
+ "farm_seeds": {
+  "name": "SHOP_FARM_SEEDS",
+  "buy": [
+   {
+    "item": "seed_radish",
+    "price": 2
+   },
+   {
+    "item": "seed_carrot",
+    "price": 3
+   },
+   {
+    "item": "seed_turnip",
+    "price": 3
+   },
+   {
+    "item": "seed_tomato",
+    "price": 6
+   },
+   {
+    "item": "seed_strawberry",
+    "price": 5
+   },
+   {
+    "item": "seed_pumpkin",
+    "price": 9
+   }
+  ],
+  "sells_to": false
  }
 }
