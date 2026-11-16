@@ -24,6 +24,7 @@
   "ssssssssssssssssssssssssssssssssssssssssssssssssss",
   "ssssssssssssssssssssssssssssssssssssssssssssssssss",
   "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
   "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
   "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
   "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
@@ -40,7 +41,7 @@
    "name": "BakeryGround",
    "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Ground_Floor_Bakery_1.png",
    "x": 72,
-   "y": 240,
+   "y": 256,
    "col": [
     128,
     76
@@ -56,7 +57,7 @@
    "name": "BakeryMiddle",
    "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Middle_Floor_5.png",
    "x": 72,
-   "y": 160,
+   "y": 176,
    "col": [
     128,
     64
@@ -72,7 +73,7 @@
    "name": "BakeryRoof",
    "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Roof_2.png",
    "x": 72,
-   "y": 96,
+   "y": 112,
    "col": [
     128,
     96
@@ -88,7 +89,7 @@
    "name": "CafeGround",
    "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Ground_Floor_Ice_Cream_Shop_1.png",
    "x": 200,
-   "y": 240,
+   "y": 256,
    "col": [
     128,
     76
@@ -104,7 +105,7 @@
    "name": "CafeMiddle",
    "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Middle_Floor_1.png",
    "x": 200,
-   "y": 160,
+   "y": 176,
    "col": [
     128,
     64
@@ -120,7 +121,7 @@
    "name": "CafeRoof",
    "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Roof_4.png",
    "x": 200,
-   "y": 96,
+   "y": 112,
    "col": [
     128,
     96
@@ -136,7 +137,7 @@
    "name": "MusicGround",
    "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Ground_Floor_Music_Store_1.png",
    "x": 328,
-   "y": 240,
+   "y": 256,
    "col": [
     128,
     60
@@ -152,7 +153,7 @@
    "name": "MusicMiddle",
    "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Middle_Floor_13.png",
    "x": 328,
-   "y": 176,
+   "y": 192,
    "col": [
     128,
     64
@@ -168,7 +169,7 @@
    "name": "MusicRoof",
    "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Roof_6.png",
    "x": 328,
-   "y": 112,
+   "y": 128,
    "col": [
     128,
     96
@@ -184,7 +185,7 @@
    "name": "ButcheryGround",
    "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Ground_Floor_Butchery_1.png",
    "x": 456,
-   "y": 240,
+   "y": 256,
    "col": [
     128,
     76
@@ -200,7 +201,7 @@
    "name": "ButcheryMiddle",
    "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Middle_Floor_7.png",
    "x": 456,
-   "y": 160,
+   "y": 176,
    "col": [
     128,
     64
@@ -216,7 +217,7 @@
    "name": "ButcheryRoof",
    "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Roof_2.png",
    "x": 456,
-   "y": 96,
+   "y": 112,
    "col": [
     128,
     96
@@ -232,7 +233,7 @@
    "name": "GymGround",
    "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Ground_Floor_Gym_1.png",
    "x": 584,
-   "y": 240,
+   "y": 256,
    "col": [
     128,
     76
@@ -248,7 +249,7 @@
    "name": "GymMiddle",
    "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Middle_Floor_10.png",
    "x": 584,
-   "y": 160,
+   "y": 176,
    "col": [
     128,
     64
@@ -264,7 +265,7 @@
    "name": "GymRoof",
    "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Roof_4.png",
    "x": 584,
-   "y": 96,
+   "y": 112,
    "col": [
     128,
     96
@@ -280,7 +281,7 @@
    "name": "BaitGround",
    "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Ground_Floor_Bait_Shop_1.png",
    "x": 712,
-   "y": 240,
+   "y": 256,
    "col": [
     128,
     92
@@ -296,7 +297,7 @@
    "name": "BaitMiddle",
    "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Middle_Floor_16.png",
    "x": 712,
-   "y": 144,
+   "y": 160,
    "col": [
     128,
     64
@@ -312,7 +313,7 @@
    "name": "BaitRoof",
    "tex": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_Roof_6.png",
    "x": 712,
-   "y": 80,
+   "y": 96,
    "col": [
     128,
     80
@@ -328,7 +329,7 @@
    "name": "Lamp0",
    "tex": "@city/Street_Lamp_5.png",
    "x": 24,
-   "y": 282,
+   "y": 298,
    "col": [
     6,
     4
@@ -344,7 +345,7 @@
    "name": "Lamp1",
    "tex": "@city/Street_Lamp_5.png",
    "x": 136,
-   "y": 282,
+   "y": 298,
    "col": [
     6,
     4
@@ -360,7 +361,7 @@
    "name": "Lamp2",
    "tex": "@city/Street_Lamp_5.png",
    "x": 264,
-   "y": 282,
+   "y": 298,
    "col": [
     6,
     4
@@ -376,7 +377,7 @@
    "name": "Lamp3",
    "tex": "@city/Street_Lamp_5.png",
    "x": 392,
-   "y": 282,
+   "y": 298,
    "col": [
     6,
     4
@@ -392,7 +393,7 @@
    "name": "Lamp4",
    "tex": "@city/Street_Lamp_5.png",
    "x": 520,
-   "y": 282,
+   "y": 298,
    "col": [
     6,
     4
@@ -408,7 +409,7 @@
    "name": "Lamp5",
    "tex": "@city/Street_Lamp_5.png",
    "x": 648,
-   "y": 282,
+   "y": 298,
    "col": [
     6,
     4
@@ -424,7 +425,7 @@
    "name": "Lamp6",
    "tex": "@city/Street_Lamp_5.png",
    "x": 776,
-   "y": 282,
+   "y": 298,
    "col": [
     6,
     4
@@ -440,7 +441,7 @@
    "name": "Bench0",
    "tex": "@city/Bench_2.png",
    "x": 80,
-   "y": 388,
+   "y": 404,
    "col": [
     44,
     10
@@ -456,7 +457,7 @@
    "name": "Bench1",
    "tex": "@city/Bench_2.png",
    "x": 336,
-   "y": 388,
+   "y": 404,
    "col": [
     44,
     10
@@ -472,7 +473,7 @@
    "name": "Bench2",
    "tex": "@city/Bench_2.png",
    "x": 592,
-   "y": 388,
+   "y": 404,
    "col": [
     44,
     10
@@ -488,7 +489,7 @@
    "name": "Tree0",
    "tex": "@city/Tree_11.png",
    "x": 24,
-   "y": 424,
+   "y": 440,
    "col": [
     14,
     8
@@ -504,7 +505,7 @@
    "name": "Tree1",
    "tex": "@city/Tree_11.png",
    "x": 200,
-   "y": 424,
+   "y": 440,
    "col": [
     14,
     8
@@ -520,7 +521,7 @@
    "name": "Tree2",
    "tex": "@city/Tree_11.png",
    "x": 456,
-   "y": 424,
+   "y": 440,
    "col": [
     14,
     8
@@ -536,7 +537,7 @@
    "name": "Tree3",
    "tex": "@city/Tree_11.png",
    "x": 680,
-   "y": 424,
+   "y": 440,
    "col": [
     14,
     8
@@ -552,7 +553,7 @@
    "name": "CandyCart",
    "tex": "@city/Candies_Cart_1.png",
    "x": 264,
-   "y": 392,
+   "y": 408,
    "col": [
     40,
     10
@@ -568,7 +569,7 @@
    "name": "FoodCart",
    "tex": "@vehicle/Street_Food_Cart_1.png",
    "x": 760,
-   "y": 392,
+   "y": 408,
    "col": [
     40,
     10
@@ -584,7 +585,7 @@
    "name": "Bin1",
    "tex": "@city/Trashbin_7.png",
    "x": 168,
-   "y": 282,
+   "y": 298,
    "col": [
     12,
     6
@@ -600,7 +601,7 @@
    "name": "Mail1",
    "tex": "@city/Mailbox_1.png",
    "x": 424,
-   "y": 282,
+   "y": 298,
    "col": [
     12,
     6
@@ -616,7 +617,7 @@
    "name": "ParkedCar",
    "tex": "@vehicle/Car_Left_1.png",
    "x": 520,
-   "y": 330,
+   "y": 346,
    "col": [
     60,
     24
@@ -632,7 +633,7 @@
    "name": "BakeryDoor",
    "id": "door_bakery",
    "x": 108,
-   "y": 246,
+   "y": 262,
    "area": [
     24,
     10
@@ -653,7 +654,7 @@
    "name": "CafeDoor",
    "id": "door_cafe",
    "x": 200,
-   "y": 246,
+   "y": 262,
    "area": [
     24,
     10
@@ -673,7 +674,7 @@
    "name": "MusicLook",
    "id": "inspect_music_store",
    "x": 328,
-   "y": 246,
+   "y": 262,
    "area": [
     60,
     10
@@ -687,7 +688,7 @@
    "name": "ButcheryLook",
    "id": "inspect_butchery",
    "x": 456,
-   "y": 246,
+   "y": 262,
    "area": [
     60,
     10
@@ -701,7 +702,7 @@
    "name": "GymLook",
    "id": "inspect_gym",
    "x": 584,
-   "y": 246,
+   "y": 262,
    "area": [
     60,
     10
@@ -715,7 +716,7 @@
    "name": "BaitLook",
    "id": "inspect_bait",
    "x": 712,
-   "y": 246,
+   "y": 262,
    "area": [
     60,
     10
@@ -729,7 +730,7 @@
    "name": "CandyLook",
    "id": "inspect_candy_cart",
    "x": 264,
-   "y": 400,
+   "y": 416,
    "area": [
     40,
     10
@@ -743,7 +744,7 @@
    "name": "FromOldQuarter",
    "id": "from_old_quarter",
    "x": 16,
-   "y": 262,
+   "y": 278,
    "facing": [
     1,
     0
@@ -754,7 +755,7 @@
    "name": "BakeryFront",
    "id": "bakery_front",
    "x": 108,
-   "y": 258,
+   "y": 274,
    "facing": [
     0,
     1
@@ -765,7 +766,7 @@
    "name": "CafeFront",
    "id": "cafe_front",
    "x": 200,
-   "y": 258,
+   "y": 274,
    "facing": [
     0,
     1
@@ -776,7 +777,7 @@
    "name": "ToOldQuarter",
    "id": "door_market_old_quarter",
    "x": 4,
-   "y": 262,
+   "y": 278,
    "area": [
     8,
     28
@@ -790,7 +791,7 @@
    "name": "BusStopSign",
    "tex": "@vehicle/Bus_Stop_Sign_1.png",
    "x": 600,
-   "y": 282,
+   "y": 298,
    "col": [
     6,
     4
@@ -806,7 +807,7 @@
    "name": "BusStopUse",
    "id": "use_bus_stop",
    "x": 600,
-   "y": 290,
+   "y": 306,
    "screen": "map:travel",
    "prompt": "PROMPT_BUS"
   },
@@ -815,7 +816,7 @@
    "name": "BusStopSpawn",
    "id": "bus_stop",
    "x": 600,
-   "y": 298,
+   "y": 314,
    "facing": [
     0,
     1

@@ -16,13 +16,13 @@
    "kind": "furn",
    "furn": "window",
    "x": 48,
-   "y": 52
+   "y": 62
   },
   {
    "kind": "furn",
    "furn": "window",
    "x": 240,
-   "y": 52
+   "y": 62
   },
   {
    "kind": "furn",
@@ -51,7 +51,7 @@
   {
    "kind": "furn",
    "furn": "radiogram",
-   "x": 272,
+   "x": 258,
    "y": 66
   },
   {
@@ -117,7 +117,7 @@
   {
    "kind": "furn",
    "furn": "plant_big",
-   "x": 272,
+   "x": 258,
    "y": 150
   },
   {
@@ -129,7 +129,7 @@
   {
    "kind": "furn",
    "furn": "lamp_cream",
-   "x": 20,
+   "x": 30,
    "y": 80
   },
   {
@@ -150,7 +150,7 @@
    "kind": "inspect",
    "name": "CafeRadioLook",
    "id": "inspect_cafe_radio",
-   "x": 272,
+   "x": 258,
    "y": 74,
    "area": [
     24,

@@ -481,7 +481,7 @@
    "name": "HarborStop",
    "id": "harbor_stop",
    "x": 600,
-   "y": 80,
+   "y": 62,
    "facing": [
     0,
     1
@@ -1356,7 +1356,7 @@
    "name": "WardReturn",
    "id": "ward_return",
    "x": 572,
-   "y": 92,
+   "y": 62,
    "facing": [
     0,
     1
@@ -1384,7 +1384,7 @@
    "name": "QuayReturn",
    "id": "quay_return",
    "x": 616,
-   "y": 78,
+   "y": 62,
    "facing": [
     -1,
     0

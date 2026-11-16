@@ -292,7 +292,7 @@ spawn_id = &"plaza_door"
 facing = Vector2(0, 1)
 
 [node name="HarborStop" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(600, 80)
+position = Vector2(600, 62)
 script = ExtResource("4_spawn")
 spawn_id = &"harbor_stop"
 facing = Vector2(0, 1)
@@ -775,7 +775,7 @@ script = ExtResource("10_cond")
 show_if = {"all": [{"any": [{"flag": "ward.ivo_invite"}, {"flag": "ward.nadiya_invite"}, {"flag": "ward.timetable"}, {"flag": "ward.open"}]}, {"period": ["evening", "night"]}]}
 
 [node name="WardReturn" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(572, 92)
+position = Vector2(572, 62)
 script = ExtResource("4_spawn")
 spawn_id = &"ward_return"
 facing = Vector2(0, 1)
@@ -794,7 +794,7 @@ script = ExtResource("10_cond")
 show_if = {"flag": "act.act3"}
 
 [node name="QuayReturn" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(616, 78)
+position = Vector2(616, 62)
 script = ExtResource("4_spawn")
 spawn_id = &"quay_return"
 facing = Vector2(-1, 0)

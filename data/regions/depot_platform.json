@@ -2,16 +2,172 @@
  "id": "depot_platform",
  "name_key": "LOC_DEPOT_PLATFORM",
  "palette": "tram_platform",
- "options": {"outdoors": false, "combat_enabled": true, "fixed_tint": {"color": [0.78, 0.74, 0.9, 1.0]}, "enter_dialogue_id": "platform_conductor", "enter_condition": {"not_flag": "boss.conductor.defeated", "not_evidence": "e_conductor_seen"}},
- "layout": {"generator": "bands", "width": 30, "bands": [["#", 2], ["r", 2], ["y", 1], ["g", 10], ["y", 1], ["#", 1]], "carve": [["g", 0, 9, 1, 2]]},
+ "options": {
+  "outdoors": false,
+  "combat_enabled": true,
+  "fixed_tint": {
+   "color": [
+    0.78,
+    0.74,
+    0.9,
+    1.0
+   ]
+  },
+  "enter_dialogue_id": "platform_conductor",
+  "enter_condition": {
+   "not_flag": "boss.conductor.defeated",
+   "not_evidence": "e_conductor_seen"
+  }
+ },
+ "layout": {
+  "generator": "bands",
+  "width": 30,
+  "bands": [
+   [
+    "#",
+    2
+   ],
+   [
+    "r",
+    2
+   ],
+   [
+    "y",
+    1
+   ],
+   [
+    "g",
+    10
+   ],
+   [
+    "y",
+    1
+   ],
+   [
+    "#",
+    1
+   ]
+  ],
+  "carve": [
+   [
+    "g",
+    0,
+    9,
+    1,
+    2
+   ]
+  ]
+ },
  "nodes": [
-  {"kind": "prop", "name": "TramCar", "tex": "@EXT/20_Subway_and_Train_Station_16x16.png", "region": [0, 592, 128, 64], "x": 360, "y": 72, "col": [0, 0], "off": [0, 0], "color": "#506070"},
-  {"kind": "prop", "name": "Bench", "tex": "@subway/Three_Seats_Green_Bench_Frontal_1.png", "x": 420, "y": 100, "col": [44, 10], "off": [0, -5], "color": "#407050"},
-  {"kind": "prop", "name": "Gate", "tex": "@subway/Turnstile_Closed.png", "x": 44, "y": 176, "col": [28, 40], "off": [0, -20], "color": "#606070", "show_if": {"flag": "boss.conductor.engaged", "not_flag": "boss.conductor.defeated"}},
-  {"kind": "boss", "name": "Conductor", "x": 264, "y": 160, "scene": "res://scenes/combat/conductor.tscn"},
-  {"kind": "arena", "boss": "Conductor", "flag": "boss.conductor.engaged", "x": 264, "y": 160, "size": [380, 150]},
-  {"kind": "spawn", "name": "FromHall", "id": "from_hall", "x": 28, "y": 160, "facing": [1, 0]},
-  {"kind": "door", "name": "WayBack", "id": "door_platform_hall", "x": 6, "y": 160, "area": [10, 30], "scene": "ward_depot", "spawn": "from_platform", "prompt": "PROMPT_LEAVE_ECHO"},
-  {"template": "anchors", "points": {"platform_bench": [420, 116]}}
+  {
+   "kind": "prop",
+   "name": "TramCar",
+   "tex": "@EXT/20_Subway_and_Train_Station_16x16.png",
+   "region": [
+    176,
+    785,
+    160,
+    63
+   ],
+   "x": 360,
+   "y": 70,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "color": "#506070"
+  },
+  {
+   "kind": "prop",
+   "name": "Bench",
+   "tex": "@subway/Three_Seats_Green_Bench_Frontal_1.png",
+   "x": 420,
+   "y": 100,
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#407050"
+  },
+  {
+   "kind": "prop",
+   "name": "Gate",
+   "tex": "@subway/Turnstile_Closed.png",
+   "x": 44,
+   "y": 176,
+   "col": [
+    28,
+    40
+   ],
+   "off": [
+    0,
+    -20
+   ],
+   "color": "#606070",
+   "show_if": {
+    "flag": "boss.conductor.engaged",
+    "not_flag": "boss.conductor.defeated"
+   }
+  },
+  {
+   "kind": "boss",
+   "name": "Conductor",
+   "x": 264,
+   "y": 160,
+   "scene": "res://scenes/combat/conductor.tscn"
+  },
+  {
+   "kind": "arena",
+   "boss": "Conductor",
+   "flag": "boss.conductor.engaged",
+   "x": 264,
+   "y": 160,
+   "size": [
+    380,
+    150
+   ]
+  },
+  {
+   "kind": "spawn",
+   "name": "FromHall",
+   "id": "from_hall",
+   "x": 28,
+   "y": 160,
+   "facing": [
+    1,
+    0
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "WayBack",
+   "id": "door_platform_hall",
+   "x": 6,
+   "y": 160,
+   "area": [
+    10,
+    30
+   ],
+   "scene": "ward_depot",
+   "spawn": "from_platform",
+   "prompt": "PROMPT_LEAVE_ECHO"
+  },
+  {
+   "template": "anchors",
+   "points": {
+    "platform_bench": [
+     420,
+     116
+    ]
+   }
+  }
  ]
 }

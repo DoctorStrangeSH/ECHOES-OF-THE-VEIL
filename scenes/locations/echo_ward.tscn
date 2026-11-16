@@ -182,7 +182,7 @@ collision_offset = Vector2(0, -2)
 script = ExtResource("9_shimmer")
 
 [node name="WardLamp2" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(320, 92)
+position = Vector2(288, 92)
 texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Street_Lamp_1.png"
 placeholder_size = Vector2i(32, 64)
 placeholder_color = Color(0.267,0.267,0.333, 1)

@@ -100,3 +100,7 @@ python3 tools/loc.py format                 # one string per line
 ## Assets
 
 `python3 tools/validate_assets.py` fails if any image, audio or archive file is tracked in the public repo (LimeZu's license forbids redistribution). With the art submodule present it also checks that every referenced texture exists, placeholders match real sprite sizes and palette tiles are inside their tilesets.
+
+## Layout audit (R2f)
+
+After editing any region, run `python3 tools/regions/audit_layout.py` (needs the art submodule). It fails a layout when a sprite runs off the map, two solid props overlap, furniture stands in a wall, or a spawn point sits inside a prop. Then look at `build/region_previews/<id>.png` (`build_regions.py <id> --preview`). Wall decorations (windows) are 48 px tall with the frame in pixels 6–33: on a two-row wall put their bottom at y = 62.

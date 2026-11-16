@@ -215,7 +215,7 @@ script = ExtResource("11_anchor")
 anchor_id = &"annex"
 
 [node name="BusStopSign" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(96, 160)
+position = Vector2(232, 256)
 texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/10_Vehicles_Singles_16x16/ME_Singles_Vehicles_16x16_Bus_Stop_Sign_1.png"
 placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.188,0.376,0.627, 1)
@@ -223,12 +223,12 @@ collision_size = Vector2(6, 4)
 collision_offset = Vector2(0, -2)
 
 [node name="BusStopUse" parent="Entities" instance=ExtResource("18_screen")]
-position = Vector2(96, 168)
+position = Vector2(232, 264)
 interaction_id = &"use_bus_stop"
 screen = "map:travel"
 
 [node name="BusStopSpawn" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(96, 176)
+position = Vector2(232, 274)
 script = ExtResource("4_spawn")
 spawn_id = &"bus_stop"
 facing = Vector2(0, 1)
