@@ -515,7 +515,10 @@ func _ready() -> void:
 	var fare_before := Inventory.money
 	EventHub.screen_requested.emit("map:travel")
 	await _frames(5)
-	(get_child(0).city_map as MapScreen)._ride("market")
+	var ms := get_child(0).city_map as MapScreen
+	_assert(ms.is_open() and ms.travel, "the route board opens at the stop")
+	ms.selected = "market"
+	ms._try_ride()
 	await _wait_location(&"market_street")
 	_assert(Inventory.money == fare_before - CityMap.fare(), "a bus ride costs the fare")
 	SceneFlow.travel(&"greyford_block", &"bus_stop")
