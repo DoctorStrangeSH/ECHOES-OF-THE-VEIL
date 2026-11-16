@@ -165,6 +165,23 @@
    "show_if": {
     "flag": "act.act3"
    }
+  },
+  {
+   "node": "ShopDoor",
+   "to": "rook_shop",
+   "show_if": {
+    "all": [
+     {
+      "period": [
+       "afternoon",
+       "evening"
+      ]
+     },
+     {
+      "evidence": "e_rook_note"
+     }
+    ]
+   }
   }
  ],
  "keepers_rooms": [
@@ -259,6 +276,12 @@
   }
  ],
  "rented_room": [
+  {
+   "node": "ExitDoor",
+   "to": "greyford_block"
+  }
+ ],
+ "rook_shop": [
   {
    "node": "ExitDoor",
    "to": "greyford_block"

@@ -494,6 +494,10 @@ area_size = Vector2(40, 14)
 prompt_key = "PROMPT_READ"
 dialogue_id = &"rook_shop"
 
+[node name="Condition" type="Node" parent="Entities/HardwareDoor"]
+script = ExtResource("10_cond")
+show_if = {"not": {"all": [{"period": ["afternoon", "evening"]}, {"evidence": "e_rook_note"}]}}
+
 [node name="YellowCondoDoor" type="Area2D" parent="Entities"]
 position = Vector2(568, 246)
 script = ExtResource("5_inspect")
@@ -794,3 +798,22 @@ position = Vector2(616, 78)
 script = ExtResource("4_spawn")
 spawn_id = &"quay_return"
 facing = Vector2(-1, 0)
+
+[node name="ShopDoor" type="Area2D" parent="Entities"]
+position = Vector2(464, 250)
+script = ExtResource("6_door")
+interaction_id = &"door_rook_shop"
+area_size = Vector2(40, 14)
+prompt_key = "PROMPT_ENTER_SHOP"
+target_scene_id = &"rook_shop"
+target_spawn_id = &"entrance"
+
+[node name="Condition" type="Node" parent="Entities/ShopDoor"]
+script = ExtResource("10_cond")
+show_if = {"all": [{"period": ["afternoon", "evening"]}, {"evidence": "e_rook_note"}]}
+
+[node name="ShopFront" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(464, 266)
+script = ExtResource("4_spawn")
+spawn_id = &"shop_front"
+facing = Vector2(0, 1)

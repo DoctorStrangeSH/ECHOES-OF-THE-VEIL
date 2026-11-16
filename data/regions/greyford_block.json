@@ -2,7 +2,12 @@
  "id": "greyford_block",
  "name_key": "LOC_GREYFORD_BLOCK",
  "palette": "greyford_exterior",
- "options": {"enter_dialogue_id": "intro", "enter_condition": {"not_flag": "intro.done"}},
+ "options": {
+  "enter_dialogue_id": "intro",
+  "enter_condition": {
+   "not_flag": "intro.done"
+  }
+ },
  "layout": [
   "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
   "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
@@ -32,91 +37,1396 @@
   "gggggggggggggggggggggggggggggggggggggggg"
  ],
  "nodes": [
-  {"kind": "prop", "name": "Condo_3_45", "tex": "@building/Condo_3_45.png", "x": 96, "y": 240, "col": [96, 150], "off": [0, -75.0], "color": "#8b6f55"},
-  {"kind": "prop", "name": "Condo_5_1", "tex": "@building/Condo_5_1.png", "x": 208, "y": 240, "col": [96, 166], "off": [0, -83.0], "color": "#5fa3b5"},
-  {"kind": "prop", "name": "Hardware_Store_Example", "tex": "@building/Hardware_Store_Example.png", "x": 464, "y": 240, "col": [128, 134], "off": [0, -67.0], "color": "#9b9ba8"},
-  {"kind": "prop", "name": "Condo_5_3", "tex": "@building/Condo_5_3.png", "x": 576, "y": 240, "col": [96, 166], "off": [0, -83.0], "color": "#c9b25a"},
-  {"kind": "prop", "name": "ImpossibleDoor", "tex": "@building/Condo_4_13.png", "x": 328, "y": 160, "col": [76, 36], "off": [0, -32], "color": "#6f7fb0", "children": ["Shimmer"], "show_if": {"not_flag": "door.vanished"}},
-  {"kind": "prop", "name": "Fountain", "tex": "@city/Fountain_1.png", "x": 328, "y": 232, "col": [28, 16], "off": [0, -8], "color": "#7aa7c7"},
-  {"kind": "prop", "name": "InfoSign", "tex": "@city/Info_Sign_2.png", "x": 290, "y": 248, "col": [10, 4], "off": [0, -2], "color": "#d0d0d0"},
-  {"kind": "prop", "name": "Mailbox", "tex": "@city/Mailbox_1.png", "x": 150, "y": 252, "col": [12, 6], "off": [0, -3], "color": "#8a5a3a"},
-  {"kind": "prop", "name": "Trashbin", "tex": "@city/Trashbin_7.png", "x": 392, "y": 252, "col": [12, 6], "off": [0, -3], "color": "#555555"},
-  {"kind": "prop", "name": "StreetLamp1", "tex": "@city/Street_Lamp_5.png", "x": 40, "y": 282, "col": [6, 4], "off": [0, -2], "color": "#444455"},
-  {"kind": "prop", "name": "StreetLamp2", "tex": "@city/Street_Lamp_5.png", "x": 248, "y": 282, "col": [6, 4], "off": [0, -2], "color": "#444455"},
-  {"kind": "prop", "name": "StreetLamp3", "tex": "@city/Street_Lamp_5.png", "x": 408, "y": 282, "col": [6, 4], "off": [0, -2], "color": "#444455"},
-  {"kind": "prop", "name": "StreetLamp4", "tex": "@city/Street_Lamp_5.png", "x": 600, "y": 282, "col": [6, 4], "off": [0, -2], "color": "#444455"},
-  {"kind": "prop", "name": "Tree1", "tex": "@city/Tree_11.png", "x": 40, "y": 404, "col": [14, 8], "off": [0, -4], "color": "#3f7f3f"},
-  {"kind": "prop", "name": "Tree2", "tex": "@city/Tree_11.png", "x": 216, "y": 404, "col": [14, 8], "off": [0, -4], "color": "#3f7f3f"},
-  {"kind": "prop", "name": "Tree3", "tex": "@city/Tree_11.png", "x": 440, "y": 404, "col": [14, 8], "off": [0, -4], "color": "#3f7f3f"},
-  {"kind": "prop", "name": "Tree4", "tex": "@city/Tree_11.png", "x": 616, "y": 404, "col": [14, 8], "off": [0, -4], "color": "#3f7f3f"},
-  {"kind": "prop", "name": "Bench1", "tex": "@city/Bench_2.png", "x": 120, "y": 396, "col": [44, 10], "off": [0, -5], "color": "#a07040"},
-  {"kind": "prop", "name": "Bench2", "tex": "@city/Bench_2.png", "x": 528, "y": 396, "col": [44, 10], "off": [0, -5], "color": "#a07040"},
-  {"kind": "prop", "name": "Flowers1", "tex": "@city/Flower_Bush_1.png", "x": 168, "y": 392, "col": [30, 10], "off": [0, -5], "color": "#d07090"},
-  {"kind": "prop", "name": "Flowers2", "tex": "@city/Flower_Bush_1.png", "x": 312, "y": 392, "col": [30, 10], "off": [0, -5], "color": "#d07090"},
-  {"kind": "prop", "name": "Flowers3", "tex": "@city/Flower_Bush_1.png", "x": 368, "y": 392, "col": [30, 10], "off": [0, -5], "color": "#d07090"},
-  {"kind": "prop", "name": "Flowers4", "tex": "@city/Flower_Bush_1.png", "x": 488, "y": 392, "col": [30, 10], "off": [0, -5], "color": "#d07090"},
-  {"kind": "prop", "name": "ParkedCar", "tex": "@vehicle/Car_Left_1.png", "x": 520, "y": 322, "col": [60, 24], "off": [0, -12], "color": "#b03030"},
-  {"kind": "prop", "name": "BusStop", "tex": "@vehicle/Bus_Stop_Sign_1.png", "x": 300, "y": 366, "col": [6, 4], "off": [0, -2], "color": "#3060a0"},
-  {"kind": "spawn", "name": "Arrival", "id": "arrival", "x": 320, "y": 372, "facing": [0, -1]},
-  {"kind": "spawn", "name": "FrontHome", "id": "front_home", "x": 88, "y": 258, "facing": [0, 1]},
-  {"kind": "spawn", "name": "PlazaDoor", "id": "plaza_door", "x": 324, "y": 178, "facing": [0, 1]},
-  {"kind": "spawn", "name": "HarborStop", "id": "harbor_stop", "x": 600, "y": 80, "facing": [0, 1]},
-  {"kind": "prop", "name": "JobBoard", "tex": "@library/33.png", "x": 548, "y": 236, "col": [0, 0], "off": [0, 0], "color": "#b08050"},
-  {"kind": "screen", "name": "JobBoardUse", "id": "use_job_board", "x": 548, "y": 248, "screen": "jobs"},
-  {"kind": "junk", "name": "JunkStreet", "id": "junk_street", "x": 404, "y": 262},
-  {"kind": "prop", "name": "RepairCart", "tex": "@vehicle/Street_Food_Cart_1.png", "x": 300, "y": 286, "col": [40, 10], "off": [0, -5], "color": "#a06030", "show_if": {"flag": "biz.unlocked"}},
-  {"kind": "screen", "name": "StallUse", "id": "use_stall", "x": 300, "y": 290, "screen": "business", "show_if": {"flag": "biz.unlocked"}},
-  {"kind": "spot", "name": "SpotFountain", "id": "spot_fountain", "x": 310, "y": 244, "spot": "plaza_fountain"},
-  {"kind": "spot", "name": "SpotLamp", "id": "spot_lamp", "x": 248, "y": 288, "spot": "street_lamp"},
-  {"kind": "spot", "name": "SpotPikeRadio", "id": "spot_pike_radio", "x": 346, "y": 282, "spot": "pike_radio"},
-  {"kind": "spot", "name": "SpotMailbox", "id": "spot_mailbox", "x": 164, "y": 258, "spot": "mailbox"},
-  {"kind": "spot", "name": "SpotBenchClock", "id": "spot_bench_clock", "x": 540, "y": 406, "spot": "bench_clock"},
-  {"kind": "prop", "name": "GhostTramStop", "tex": "@vehicle/Bus_Stop_Sign_1.png", "x": 616, "y": 66, "col": [6, 4], "off": [0, -2], "color": "#a04040", "children": ["Shimmer"], "show_if": {"any": [{"quest_active": "case_rosalind"}, {"quest_done": "case_rosalind"}], "all": [{"any": [{"period": ["evening", "night"]}, {"weather": "rain"}]}]}},
-  {"kind": "inspect", "name": "GhostTramStopUse", "id": "ghost_tram_stop", "x": 600, "y": 70, "area": [28, 14], "priority": 20, "dialogue": "ghost_tram", "show_if": {"any": [{"quest_active": "case_rosalind"}, {"quest_done": "case_rosalind"}], "all": [{"any": [{"period": ["evening", "night"]}, {"weather": "rain"}]}]}},
-  {"kind": "door", "name": "HomeDoor", "id": "door_home_street", "x": 88, "y": 246, "area": [18, 14], "scene": "rented_room", "spawn": "from_street"},
-  {"kind": "door", "name": "ArchiveDoor", "id": "door_archive_street", "x": 208, "y": 246, "area": [30, 14], "scene": "municipal_archive", "spawn": "entrance", "required_flag": "archive.key", "locked": ["CONDO_TEAL_1", "ARCHIVE_DOOR_LOCKED"]},
-  {"kind": "spawn", "name": "ArchiveFront", "id": "archive_front", "x": 208, "y": 260, "facing": [0, 1]},
-  {"kind": "prop", "name": "TramBell", "tex": "@subway/Stop_Sign.png", "x": 560, "y": 64, "col": [8, 4], "off": [0, -2], "color": "#c0a040", "children": ["Shimmer"], "show_if": {"any": [{"quest_stage": ["case_bell", "ring"]}, {"quest_done": "case_bell"}]}},
-  {"kind": "inspect", "name": "TramBellUse", "id": "old_tram_bell", "x": 560, "y": 70, "area": [24, 14], "priority": 20, "dialogue": "old_bell", "show_if": {"any": [{"quest_stage": ["case_bell", "ring"]}, {"quest_done": "case_bell"}]}},
-  {"kind": "prop", "name": "RecordsFlyer", "tex": "@subway/Single_Poster.png", "x": 262, "y": 238, "col": [0, 0], "off": [0, 0], "color": "#e0d080", "show_if": {"flag": "world.records_published"}},
-  {"kind": "inspect", "name": "RecordsFlyerRead", "id": "read_records_flyer", "x": 262, "y": 244, "area": [18, 12], "prompt": "PROMPT_READ", "dialogue": "records_flyer", "show_if": {"flag": "world.records_published"}},
-  {"kind": "prop", "name": "MissingPoster", "tex": "@subway/Single_Poster.png", "x": 430, "y": 238, "col": [0, 0], "off": [0, 0], "color": "#e0e0e0", "show_if": {"remembers": ["jonah_rook", "told_truth_about_rosalind"]}},
-  {"kind": "inspect", "name": "MissingPosterRead", "id": "read_missing_poster", "x": 430, "y": 244, "area": [18, 12], "prompt": "PROMPT_READ", "dialogue": "missing_poster", "show_if": {"remembers": ["jonah_rook", "told_truth_about_rosalind"]}},
-  {"kind": "inspect", "name": "HardwareDoor", "id": "inspect_rook_repairs", "x": 464, "y": 246, "area": [40, 14], "dialogue": "rook_shop", "prompt": "PROMPT_READ"},
-  {"kind": "inspect", "name": "YellowCondoDoor", "id": "inspect_condo_yellow", "x": 568, "y": 246, "area": [18, 14], "dialogue": "yellow_condo"},
-  {"kind": "inspect", "name": "InfoSignRead", "id": "inspect_quarter_sign", "x": 290, "y": 252, "area": [18, 14], "prompt": "PROMPT_READ", "lines": ["QUARTER_SIGN_1", "QUARTER_SIGN_2"]},
-  {"kind": "inspect", "name": "FountainLook", "id": "inspect_fountain", "x": 328, "y": 238, "area": [34, 12], "lines": ["FOUNTAIN_1"]},
-  {"kind": "inspect", "name": "ImpossibleDoorUse", "id": "veil_door_plaza", "x": 324, "y": 152, "area": [20, 14], "priority": 20, "dialogue": "veil_door", "show_if": {"not_flag": "door.vanished", "all": [{"not_flag": "door.reported"}]}},
-  {"kind": "inspect", "name": "DoorGone", "id": "inspect_door_gone", "x": 328, "y": 140, "area": [40, 24], "dialogue": "door_gone", "show_if": {"flag": "door.vanished"}},
-  {"kind": "inspect", "name": "BarrierNotice", "id": "inspect_barriers", "x": 328, "y": 188, "area": [80, 10], "dialogue": "barriers", "prompt": "PROMPT_READ", "show_if": {"flag": "door.reported", "all": [{"not_flag": "door.vanished"}]}},
-  {"kind": "inspect", "name": "Harbor", "id": "inspect_harbor", "x": 480, "y": 64, "area": [64, 10], "lines": ["HARBOR_1"]},
-  {"kind": "prop", "name": "Barrier1", "tex": "@city/Traffic_Barrier_1.png", "x": 284, "y": 184, "col": [30, 6], "off": [0, -3], "color": "#e08030", "show_if": {"flag": "door.reported", "all": [{"not_flag": "door.vanished"}]}},
-  {"kind": "prop", "name": "Barrier2", "tex": "@city/Traffic_Barrier_1.png", "x": 316, "y": 184, "col": [30, 6], "off": [0, -3], "color": "#e08030", "show_if": {"flag": "door.reported", "all": [{"not_flag": "door.vanished"}]}},
-  {"kind": "prop", "name": "Barrier3", "tex": "@city/Traffic_Barrier_1.png", "x": 348, "y": 184, "col": [30, 6], "off": [0, -3], "color": "#e08030", "show_if": {"flag": "door.reported", "all": [{"not_flag": "door.vanished"}]}},
-  {"kind": "prop", "name": "Barrier4", "tex": "@city/Traffic_Barrier_1.png", "x": 380, "y": 184, "col": [30, 6], "off": [0, -3], "color": "#e08030", "show_if": {"flag": "door.reported", "all": [{"not_flag": "door.vanished"}]}},
-  {"kind": "anchor", "name": "A_plaza_east", "id": "plaza_east", "x": 364, "y": 252},
-  {"kind": "anchor", "name": "A_plaza_west", "id": "plaza_west", "x": 284, "y": 272},
-  {"kind": "anchor", "name": "A_plaza_south", "id": "plaza_south", "x": 328, "y": 276},
-  {"kind": "anchor", "name": "A_plaza_north", "id": "plaza_north", "x": 388, "y": 150},
-  {"kind": "anchor", "name": "A_harbor_rail_west", "id": "harbor_rail_west", "x": 120, "y": 72},
-  {"kind": "anchor", "name": "A_harbor_rail_east", "id": "harbor_rail_east", "x": 520, "y": 72},
-  {"kind": "anchor", "name": "A_rook_shop", "id": "rook_shop", "x": 504, "y": 258},
-  {"kind": "anchor", "name": "A_home_mailbox", "id": "home_mailbox", "x": 172, "y": 258},
-  {"kind": "anchor", "name": "A_park_bench_west", "id": "park_bench_west", "x": 150, "y": 412},
-  {"kind": "anchor", "name": "A_park_bench_east", "id": "park_bench_east", "x": 558, "y": 412},
-  {"template": "sign", "tex": "@beach/Direction_Pole_Small.png", "x": 30, "y": 80, "id": "read_point_steps_sign", "name": "PointStepsSign", "lines": ["POINT_STEPS_SIGN"], "color": "#9a7a50"},
-  {"kind": "door", "name": "PointSteps", "id": "door_greyford_point", "x": 8, "y": 84, "area": [16, 24], "scene": "lighthouse_point", "spawn": "from_greyford", "prompt": "PROMPT_TO_POINT"},
-  {"kind": "spawn", "name": "PointStepsArrival", "id": "point_steps", "x": 24, "y": 100, "facing": [1, 0]},
-  {"kind": "door", "name": "TheoDoor", "id": "door_theo_flat", "x": 590, "y": 250, "area": [14, 14], "scene": "theo_flat", "spawn": "from_street", "prompt": "PROMPT_THEO_DOOR", "show_if": {"flag": "met.theo_marsh"}},
-  {"kind": "spawn", "name": "TheoFront", "id": "theo_front", "x": 590, "y": 266, "facing": [0, 1]},
-  {"kind": "anchor", "name": "A_theo_door", "id": "theo_door", "x": 610, "y": 264},
-  {"kind": "door", "name": "StoreroomDoor", "id": "door_rook_storeroom", "x": 422, "y": 250, "area": [14, 14], "scene": "rook_storeroom", "spawn": "entrance", "prompt": "PROMPT_STOREROOM", "show_if": {"all": [{"any": [{"quest_active": "case_storeroom"}, {"quest_stage": ["case_rook_and_rook", "stamp"], "not_flag": "storeroom.bricked"}]}, {"period": ["evening", "night"]}]}},
-  {"kind": "inspect", "name": "StoreroomWall", "id": "inspect_storeroom_wall", "x": 422, "y": 250, "area": [14, 14], "lines": ["STOREROOM_WALL_DAY"], "show_if": {"all": [{"quest_active": "case_storeroom"}, {"period": ["morning", "afternoon"]}]}},
-  {"kind": "spawn", "name": "StoreroomFront", "id": "storeroom_front", "x": 422, "y": 266, "facing": [0, 1]},
-  {"template": "sign", "tex": "@vehicle/Bus_Stop_Sign_2.png", "x": 548, "y": 72, "id": "read_harbour_timetable", "name": "HarbourTimetable", "color": "#9090a0", "dialogue": "harbour_timetable"},
-  {"kind": "door", "name": "WardGate", "id": "door_greyford_ward", "x": 572, "y": 76, "area": [16, 14], "scene": "echo_ward", "spawn": "gate", "prompt": "PROMPT_WARD_GATE", "show_if": {"all": [{"any": [{"flag": "ward.ivo_invite"}, {"flag": "ward.nadiya_invite"}, {"flag": "ward.timetable"}, {"flag": "ward.open"}]}, {"period": ["evening", "night"]}]}},
-  {"kind": "spawn", "name": "WardReturn", "id": "ward_return", "x": 572, "y": 92, "facing": [0, 1]},
-  {"kind": "door", "name": "QuayPath", "id": "door_greyford_quay", "x": 634, "y": 76, "area": [12, 24], "scene": "north_quay", "spawn": "from_greyford", "prompt": "PROMPT_TO_QUAY", "show_if": {"flag": "act.act3"}},
-  {"kind": "spawn", "name": "QuayReturn", "id": "quay_return", "x": 616, "y": 78, "facing": [-1, 0]}
+  {
+   "kind": "prop",
+   "name": "Condo_3_45",
+   "tex": "@building/Condo_3_45.png",
+   "x": 96,
+   "y": 240,
+   "col": [
+    96,
+    150
+   ],
+   "off": [
+    0,
+    -75.0
+   ],
+   "color": "#8b6f55"
+  },
+  {
+   "kind": "prop",
+   "name": "Condo_5_1",
+   "tex": "@building/Condo_5_1.png",
+   "x": 208,
+   "y": 240,
+   "col": [
+    96,
+    166
+   ],
+   "off": [
+    0,
+    -83.0
+   ],
+   "color": "#5fa3b5"
+  },
+  {
+   "kind": "prop",
+   "name": "Hardware_Store_Example",
+   "tex": "@building/Hardware_Store_Example.png",
+   "x": 464,
+   "y": 240,
+   "col": [
+    128,
+    134
+   ],
+   "off": [
+    0,
+    -67.0
+   ],
+   "color": "#9b9ba8"
+  },
+  {
+   "kind": "prop",
+   "name": "Condo_5_3",
+   "tex": "@building/Condo_5_3.png",
+   "x": 576,
+   "y": 240,
+   "col": [
+    96,
+    166
+   ],
+   "off": [
+    0,
+    -83.0
+   ],
+   "color": "#c9b25a"
+  },
+  {
+   "kind": "prop",
+   "name": "ImpossibleDoor",
+   "tex": "@building/Condo_4_13.png",
+   "x": 328,
+   "y": 160,
+   "col": [
+    76,
+    36
+   ],
+   "off": [
+    0,
+    -32
+   ],
+   "color": "#6f7fb0",
+   "children": [
+    "Shimmer"
+   ],
+   "show_if": {
+    "not_flag": "door.vanished"
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "Fountain",
+   "tex": "@city/Fountain_1.png",
+   "x": 328,
+   "y": 232,
+   "col": [
+    28,
+    16
+   ],
+   "off": [
+    0,
+    -8
+   ],
+   "color": "#7aa7c7"
+  },
+  {
+   "kind": "prop",
+   "name": "InfoSign",
+   "tex": "@city/Info_Sign_2.png",
+   "x": 290,
+   "y": 248,
+   "col": [
+    10,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#d0d0d0"
+  },
+  {
+   "kind": "prop",
+   "name": "Mailbox",
+   "tex": "@city/Mailbox_1.png",
+   "x": 150,
+   "y": 252,
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ],
+   "color": "#8a5a3a"
+  },
+  {
+   "kind": "prop",
+   "name": "Trashbin",
+   "tex": "@city/Trashbin_7.png",
+   "x": 392,
+   "y": 252,
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ],
+   "color": "#555555"
+  },
+  {
+   "kind": "prop",
+   "name": "StreetLamp1",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 40,
+   "y": 282,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#444455"
+  },
+  {
+   "kind": "prop",
+   "name": "StreetLamp2",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 248,
+   "y": 282,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#444455"
+  },
+  {
+   "kind": "prop",
+   "name": "StreetLamp3",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 408,
+   "y": 282,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#444455"
+  },
+  {
+   "kind": "prop",
+   "name": "StreetLamp4",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 600,
+   "y": 282,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#444455"
+  },
+  {
+   "kind": "prop",
+   "name": "Tree1",
+   "tex": "@city/Tree_11.png",
+   "x": 40,
+   "y": 404,
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#3f7f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "Tree2",
+   "tex": "@city/Tree_11.png",
+   "x": 216,
+   "y": 404,
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#3f7f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "Tree3",
+   "tex": "@city/Tree_11.png",
+   "x": 440,
+   "y": 404,
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#3f7f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "Tree4",
+   "tex": "@city/Tree_11.png",
+   "x": 616,
+   "y": 404,
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#3f7f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "Bench1",
+   "tex": "@city/Bench_2.png",
+   "x": 120,
+   "y": 396,
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#a07040"
+  },
+  {
+   "kind": "prop",
+   "name": "Bench2",
+   "tex": "@city/Bench_2.png",
+   "x": 528,
+   "y": 396,
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#a07040"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers1",
+   "tex": "@city/Flower_Bush_1.png",
+   "x": 168,
+   "y": 392,
+   "col": [
+    30,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#d07090"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers2",
+   "tex": "@city/Flower_Bush_1.png",
+   "x": 312,
+   "y": 392,
+   "col": [
+    30,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#d07090"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers3",
+   "tex": "@city/Flower_Bush_1.png",
+   "x": 368,
+   "y": 392,
+   "col": [
+    30,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#d07090"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers4",
+   "tex": "@city/Flower_Bush_1.png",
+   "x": 488,
+   "y": 392,
+   "col": [
+    30,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#d07090"
+  },
+  {
+   "kind": "prop",
+   "name": "ParkedCar",
+   "tex": "@vehicle/Car_Left_1.png",
+   "x": 520,
+   "y": 322,
+   "col": [
+    60,
+    24
+   ],
+   "off": [
+    0,
+    -12
+   ],
+   "color": "#b03030"
+  },
+  {
+   "kind": "prop",
+   "name": "BusStop",
+   "tex": "@vehicle/Bus_Stop_Sign_1.png",
+   "x": 300,
+   "y": 366,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#3060a0"
+  },
+  {
+   "kind": "spawn",
+   "name": "Arrival",
+   "id": "arrival",
+   "x": 320,
+   "y": 372,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "spawn",
+   "name": "FrontHome",
+   "id": "front_home",
+   "x": 88,
+   "y": 258,
+   "facing": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "spawn",
+   "name": "PlazaDoor",
+   "id": "plaza_door",
+   "x": 324,
+   "y": 178,
+   "facing": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "spawn",
+   "name": "HarborStop",
+   "id": "harbor_stop",
+   "x": 600,
+   "y": 80,
+   "facing": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "JobBoard",
+   "tex": "@library/33.png",
+   "x": 548,
+   "y": 236,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "color": "#b08050"
+  },
+  {
+   "kind": "screen",
+   "name": "JobBoardUse",
+   "id": "use_job_board",
+   "x": 548,
+   "y": 248,
+   "screen": "jobs"
+  },
+  {
+   "kind": "junk",
+   "name": "JunkStreet",
+   "id": "junk_street",
+   "x": 404,
+   "y": 262
+  },
+  {
+   "kind": "prop",
+   "name": "RepairCart",
+   "tex": "@vehicle/Street_Food_Cart_1.png",
+   "x": 300,
+   "y": 286,
+   "col": [
+    40,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#a06030",
+   "show_if": {
+    "flag": "biz.unlocked"
+   }
+  },
+  {
+   "kind": "screen",
+   "name": "StallUse",
+   "id": "use_stall",
+   "x": 300,
+   "y": 290,
+   "screen": "business",
+   "show_if": {
+    "flag": "biz.unlocked"
+   }
+  },
+  {
+   "kind": "spot",
+   "name": "SpotFountain",
+   "id": "spot_fountain",
+   "x": 310,
+   "y": 244,
+   "spot": "plaza_fountain"
+  },
+  {
+   "kind": "spot",
+   "name": "SpotLamp",
+   "id": "spot_lamp",
+   "x": 248,
+   "y": 288,
+   "spot": "street_lamp"
+  },
+  {
+   "kind": "spot",
+   "name": "SpotPikeRadio",
+   "id": "spot_pike_radio",
+   "x": 346,
+   "y": 282,
+   "spot": "pike_radio"
+  },
+  {
+   "kind": "spot",
+   "name": "SpotMailbox",
+   "id": "spot_mailbox",
+   "x": 164,
+   "y": 258,
+   "spot": "mailbox"
+  },
+  {
+   "kind": "spot",
+   "name": "SpotBenchClock",
+   "id": "spot_bench_clock",
+   "x": 540,
+   "y": 406,
+   "spot": "bench_clock"
+  },
+  {
+   "kind": "prop",
+   "name": "GhostTramStop",
+   "tex": "@vehicle/Bus_Stop_Sign_1.png",
+   "x": 616,
+   "y": 66,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#a04040",
+   "children": [
+    "Shimmer"
+   ],
+   "show_if": {
+    "any": [
+     {
+      "quest_active": "case_rosalind"
+     },
+     {
+      "quest_done": "case_rosalind"
+     }
+    ],
+    "all": [
+     {
+      "any": [
+       {
+        "period": [
+         "evening",
+         "night"
+        ]
+       },
+       {
+        "weather": "rain"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "kind": "inspect",
+   "name": "GhostTramStopUse",
+   "id": "ghost_tram_stop",
+   "x": 600,
+   "y": 70,
+   "area": [
+    28,
+    14
+   ],
+   "priority": 20,
+   "dialogue": "ghost_tram",
+   "show_if": {
+    "any": [
+     {
+      "quest_active": "case_rosalind"
+     },
+     {
+      "quest_done": "case_rosalind"
+     }
+    ],
+    "all": [
+     {
+      "any": [
+       {
+        "period": [
+         "evening",
+         "night"
+        ]
+       },
+       {
+        "weather": "rain"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "kind": "door",
+   "name": "HomeDoor",
+   "id": "door_home_street",
+   "x": 88,
+   "y": 246,
+   "area": [
+    18,
+    14
+   ],
+   "scene": "rented_room",
+   "spawn": "from_street"
+  },
+  {
+   "kind": "door",
+   "name": "ArchiveDoor",
+   "id": "door_archive_street",
+   "x": 208,
+   "y": 246,
+   "area": [
+    30,
+    14
+   ],
+   "scene": "municipal_archive",
+   "spawn": "entrance",
+   "required_flag": "archive.key",
+   "locked": [
+    "CONDO_TEAL_1",
+    "ARCHIVE_DOOR_LOCKED"
+   ]
+  },
+  {
+   "kind": "spawn",
+   "name": "ArchiveFront",
+   "id": "archive_front",
+   "x": 208,
+   "y": 260,
+   "facing": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "TramBell",
+   "tex": "@subway/Stop_Sign.png",
+   "x": 560,
+   "y": 64,
+   "col": [
+    8,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#c0a040",
+   "children": [
+    "Shimmer"
+   ],
+   "show_if": {
+    "any": [
+     {
+      "quest_stage": [
+       "case_bell",
+       "ring"
+      ]
+     },
+     {
+      "quest_done": "case_bell"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "inspect",
+   "name": "TramBellUse",
+   "id": "old_tram_bell",
+   "x": 560,
+   "y": 70,
+   "area": [
+    24,
+    14
+   ],
+   "priority": 20,
+   "dialogue": "old_bell",
+   "show_if": {
+    "any": [
+     {
+      "quest_stage": [
+       "case_bell",
+       "ring"
+      ]
+     },
+     {
+      "quest_done": "case_bell"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "RecordsFlyer",
+   "tex": "@subway/Single_Poster.png",
+   "x": 262,
+   "y": 238,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "color": "#e0d080",
+   "show_if": {
+    "flag": "world.records_published"
+   }
+  },
+  {
+   "kind": "inspect",
+   "name": "RecordsFlyerRead",
+   "id": "read_records_flyer",
+   "x": 262,
+   "y": 244,
+   "area": [
+    18,
+    12
+   ],
+   "prompt": "PROMPT_READ",
+   "dialogue": "records_flyer",
+   "show_if": {
+    "flag": "world.records_published"
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "MissingPoster",
+   "tex": "@subway/Single_Poster.png",
+   "x": 430,
+   "y": 238,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "color": "#e0e0e0",
+   "show_if": {
+    "remembers": [
+     "jonah_rook",
+     "told_truth_about_rosalind"
+    ]
+   }
+  },
+  {
+   "kind": "inspect",
+   "name": "MissingPosterRead",
+   "id": "read_missing_poster",
+   "x": 430,
+   "y": 244,
+   "area": [
+    18,
+    12
+   ],
+   "prompt": "PROMPT_READ",
+   "dialogue": "missing_poster",
+   "show_if": {
+    "remembers": [
+     "jonah_rook",
+     "told_truth_about_rosalind"
+    ]
+   }
+  },
+  {
+   "kind": "inspect",
+   "name": "HardwareDoor",
+   "id": "inspect_rook_repairs",
+   "x": 464,
+   "y": 246,
+   "area": [
+    40,
+    14
+   ],
+   "dialogue": "rook_shop",
+   "prompt": "PROMPT_READ",
+   "show_if": {
+    "not": {
+     "all": [
+      {
+       "period": [
+        "afternoon",
+        "evening"
+       ]
+      },
+      {
+       "evidence": "e_rook_note"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "kind": "inspect",
+   "name": "YellowCondoDoor",
+   "id": "inspect_condo_yellow",
+   "x": 568,
+   "y": 246,
+   "area": [
+    18,
+    14
+   ],
+   "dialogue": "yellow_condo"
+  },
+  {
+   "kind": "inspect",
+   "name": "InfoSignRead",
+   "id": "inspect_quarter_sign",
+   "x": 290,
+   "y": 252,
+   "area": [
+    18,
+    14
+   ],
+   "prompt": "PROMPT_READ",
+   "lines": [
+    "QUARTER_SIGN_1",
+    "QUARTER_SIGN_2"
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "FountainLook",
+   "id": "inspect_fountain",
+   "x": 328,
+   "y": 238,
+   "area": [
+    34,
+    12
+   ],
+   "lines": [
+    "FOUNTAIN_1"
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "ImpossibleDoorUse",
+   "id": "veil_door_plaza",
+   "x": 324,
+   "y": 152,
+   "area": [
+    20,
+    14
+   ],
+   "priority": 20,
+   "dialogue": "veil_door",
+   "show_if": {
+    "not_flag": "door.vanished",
+    "all": [
+     {
+      "not_flag": "door.reported"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "inspect",
+   "name": "DoorGone",
+   "id": "inspect_door_gone",
+   "x": 328,
+   "y": 140,
+   "area": [
+    40,
+    24
+   ],
+   "dialogue": "door_gone",
+   "show_if": {
+    "flag": "door.vanished"
+   }
+  },
+  {
+   "kind": "inspect",
+   "name": "BarrierNotice",
+   "id": "inspect_barriers",
+   "x": 328,
+   "y": 188,
+   "area": [
+    80,
+    10
+   ],
+   "dialogue": "barriers",
+   "prompt": "PROMPT_READ",
+   "show_if": {
+    "flag": "door.reported",
+    "all": [
+     {
+      "not_flag": "door.vanished"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "inspect",
+   "name": "Harbor",
+   "id": "inspect_harbor",
+   "x": 480,
+   "y": 64,
+   "area": [
+    64,
+    10
+   ],
+   "lines": [
+    "HARBOR_1"
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Barrier1",
+   "tex": "@city/Traffic_Barrier_1.png",
+   "x": 284,
+   "y": 184,
+   "col": [
+    30,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ],
+   "color": "#e08030",
+   "show_if": {
+    "flag": "door.reported",
+    "all": [
+     {
+      "not_flag": "door.vanished"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "Barrier2",
+   "tex": "@city/Traffic_Barrier_1.png",
+   "x": 316,
+   "y": 184,
+   "col": [
+    30,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ],
+   "color": "#e08030",
+   "show_if": {
+    "flag": "door.reported",
+    "all": [
+     {
+      "not_flag": "door.vanished"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "Barrier3",
+   "tex": "@city/Traffic_Barrier_1.png",
+   "x": 348,
+   "y": 184,
+   "col": [
+    30,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ],
+   "color": "#e08030",
+   "show_if": {
+    "flag": "door.reported",
+    "all": [
+     {
+      "not_flag": "door.vanished"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "Barrier4",
+   "tex": "@city/Traffic_Barrier_1.png",
+   "x": 380,
+   "y": 184,
+   "col": [
+    30,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ],
+   "color": "#e08030",
+   "show_if": {
+    "flag": "door.reported",
+    "all": [
+     {
+      "not_flag": "door.vanished"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "anchor",
+   "name": "A_plaza_east",
+   "id": "plaza_east",
+   "x": 364,
+   "y": 252
+  },
+  {
+   "kind": "anchor",
+   "name": "A_plaza_west",
+   "id": "plaza_west",
+   "x": 284,
+   "y": 272
+  },
+  {
+   "kind": "anchor",
+   "name": "A_plaza_south",
+   "id": "plaza_south",
+   "x": 328,
+   "y": 276
+  },
+  {
+   "kind": "anchor",
+   "name": "A_plaza_north",
+   "id": "plaza_north",
+   "x": 388,
+   "y": 150
+  },
+  {
+   "kind": "anchor",
+   "name": "A_harbor_rail_west",
+   "id": "harbor_rail_west",
+   "x": 120,
+   "y": 72
+  },
+  {
+   "kind": "anchor",
+   "name": "A_harbor_rail_east",
+   "id": "harbor_rail_east",
+   "x": 520,
+   "y": 72
+  },
+  {
+   "kind": "anchor",
+   "name": "A_rook_shop",
+   "id": "rook_shop",
+   "x": 504,
+   "y": 258
+  },
+  {
+   "kind": "anchor",
+   "name": "A_home_mailbox",
+   "id": "home_mailbox",
+   "x": 172,
+   "y": 258
+  },
+  {
+   "kind": "anchor",
+   "name": "A_park_bench_west",
+   "id": "park_bench_west",
+   "x": 150,
+   "y": 412
+  },
+  {
+   "kind": "anchor",
+   "name": "A_park_bench_east",
+   "id": "park_bench_east",
+   "x": 558,
+   "y": 412
+  },
+  {
+   "template": "sign",
+   "tex": "@beach/Direction_Pole_Small.png",
+   "x": 30,
+   "y": 80,
+   "id": "read_point_steps_sign",
+   "name": "PointStepsSign",
+   "lines": [
+    "POINT_STEPS_SIGN"
+   ],
+   "color": "#9a7a50"
+  },
+  {
+   "kind": "door",
+   "name": "PointSteps",
+   "id": "door_greyford_point",
+   "x": 8,
+   "y": 84,
+   "area": [
+    16,
+    24
+   ],
+   "scene": "lighthouse_point",
+   "spawn": "from_greyford",
+   "prompt": "PROMPT_TO_POINT"
+  },
+  {
+   "kind": "spawn",
+   "name": "PointStepsArrival",
+   "id": "point_steps",
+   "x": 24,
+   "y": 100,
+   "facing": [
+    1,
+    0
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "TheoDoor",
+   "id": "door_theo_flat",
+   "x": 590,
+   "y": 250,
+   "area": [
+    14,
+    14
+   ],
+   "scene": "theo_flat",
+   "spawn": "from_street",
+   "prompt": "PROMPT_THEO_DOOR",
+   "show_if": {
+    "flag": "met.theo_marsh"
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "TheoFront",
+   "id": "theo_front",
+   "x": 590,
+   "y": 266,
+   "facing": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "anchor",
+   "name": "A_theo_door",
+   "id": "theo_door",
+   "x": 610,
+   "y": 264
+  },
+  {
+   "kind": "door",
+   "name": "StoreroomDoor",
+   "id": "door_rook_storeroom",
+   "x": 422,
+   "y": 250,
+   "area": [
+    14,
+    14
+   ],
+   "scene": "rook_storeroom",
+   "spawn": "entrance",
+   "prompt": "PROMPT_STOREROOM",
+   "show_if": {
+    "all": [
+     {
+      "any": [
+       {
+        "quest_active": "case_storeroom"
+       },
+       {
+        "quest_stage": [
+         "case_rook_and_rook",
+         "stamp"
+        ],
+        "not_flag": "storeroom.bricked"
+       }
+      ]
+     },
+     {
+      "period": [
+       "evening",
+       "night"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "kind": "inspect",
+   "name": "StoreroomWall",
+   "id": "inspect_storeroom_wall",
+   "x": 422,
+   "y": 250,
+   "area": [
+    14,
+    14
+   ],
+   "lines": [
+    "STOREROOM_WALL_DAY"
+   ],
+   "show_if": {
+    "all": [
+     {
+      "quest_active": "case_storeroom"
+     },
+     {
+      "period": [
+       "morning",
+       "afternoon"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "StoreroomFront",
+   "id": "storeroom_front",
+   "x": 422,
+   "y": 266,
+   "facing": [
+    0,
+    1
+   ]
+  },
+  {
+   "template": "sign",
+   "tex": "@vehicle/Bus_Stop_Sign_2.png",
+   "x": 548,
+   "y": 72,
+   "id": "read_harbour_timetable",
+   "name": "HarbourTimetable",
+   "color": "#9090a0",
+   "dialogue": "harbour_timetable"
+  },
+  {
+   "kind": "door",
+   "name": "WardGate",
+   "id": "door_greyford_ward",
+   "x": 572,
+   "y": 76,
+   "area": [
+    16,
+    14
+   ],
+   "scene": "echo_ward",
+   "spawn": "gate",
+   "prompt": "PROMPT_WARD_GATE",
+   "show_if": {
+    "all": [
+     {
+      "any": [
+       {
+        "flag": "ward.ivo_invite"
+       },
+       {
+        "flag": "ward.nadiya_invite"
+       },
+       {
+        "flag": "ward.timetable"
+       },
+       {
+        "flag": "ward.open"
+       }
+      ]
+     },
+     {
+      "period": [
+       "evening",
+       "night"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "WardReturn",
+   "id": "ward_return",
+   "x": 572,
+   "y": 92,
+   "facing": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "QuayPath",
+   "id": "door_greyford_quay",
+   "x": 634,
+   "y": 76,
+   "area": [
+    12,
+    24
+   ],
+   "scene": "north_quay",
+   "spawn": "from_greyford",
+   "prompt": "PROMPT_TO_QUAY",
+   "show_if": {
+    "flag": "act.act3"
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "QuayReturn",
+   "id": "quay_return",
+   "x": 616,
+   "y": 78,
+   "facing": [
+    -1,
+    0
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ShopDoor",
+   "id": "door_rook_shop",
+   "x": 464,
+   "y": 250,
+   "area": [
+    40,
+    14
+   ],
+   "scene": "rook_shop",
+   "spawn": "entrance",
+   "prompt": "PROMPT_ENTER_SHOP",
+   "show_if": {
+    "all": [
+     {
+      "period": [
+       "afternoon",
+       "evening"
+      ]
+     },
+     {
+      "evidence": "e_rook_note"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "ShopFront",
+   "id": "shop_front",
+   "x": 464,
+   "y": 266,
+   "facing": [
+    0,
+    1
+   ]
+  }
  ]
 }

@@ -1472,3 +1472,15 @@ func test_music_has_every_piece_and_picks_by_situation() -> void:
 	check(Music.pick() == "epilogue", "epilogue overrides")
 	Music.override = ""
 	check(AudioServer.get_bus_index(&"Music") >= 0, "music has its own bus")
+
+
+func test_rook_shop_opens_in_the_afternoon() -> void:
+	GameState.reset_for_new_game()
+	WorldClock.wait_until_hour(14)
+	check(NpcRegistry.resolve(&"jonah_rook").get("scene", "") == "greyford_block", "before the note, Jonah is outside")
+	Journal.add_evidence(&"e_rook_note")
+	check(NpcRegistry.resolve(&"jonah_rook").get("scene", "") == "rook_shop", "afternoon: Jonah behind the counter")
+	check(QuestGuide.next_door(&"greyford_block", &"rook_shop") == "ShopDoor", "the shop door is open")
+	WorldClock.wait_until_hour(22)
+	check(QuestGuide.next_door(&"greyford_block", &"rook_shop") == "", "closed at night")
+	GameState.reset_for_new_game()

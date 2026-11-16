@@ -105,10 +105,24 @@
     "facing": "up"
    },
    {
+    "period": "afternoon",
+    "if": {
+     "evidence": "e_rook_note"
+    },
+    "scene": "rook_shop",
+    "anchor": "counter",
+    "facing": "down"
+   },
+   {
     "period": [
-     "afternoon",
      "evening"
     ],
+    "scene": "greyford_block",
+    "anchor": "rook_shop",
+    "facing": "left"
+   },
+   {
+    "period": "afternoon",
     "scene": "greyford_block",
     "anchor": "rook_shop",
     "facing": "left"
