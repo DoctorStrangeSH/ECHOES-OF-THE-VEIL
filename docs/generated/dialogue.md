@@ -917,6 +917,44 @@ flowchart TD
   lifeboat_locker_found["found<br/>Inside, wrapped in oilcloth: the lifeboat crew'…"]
 ```
 
+## park.json
+
+### kid_hoops
+
+```mermaid
+flowchart TD
+  kid_hoops_START(("start"))
+  kid_hoops_START --> kid_hoops_hub
+  kid_hoops_START -->|"{not_flag: met.kid_hoops}"| kid_hoops_intro1
+  kid_hoops_intro1["intro1<br/>Kit: 'You any good? Five shots. Most people get two,…"]
+  kid_hoops_intro1 --> kid_hoops_intro2
+  kid_hoops_intro2["intro2<br/>Kit: 'Watch the arc, not the hoop. My gran said that…"]
+  kid_hoops_intro2 --> kid_hoops_hub
+  kid_hoops_hub["hub<br/>Kit: 'Wind's picking up. Convenient.'"]
+  kid_hoops_hub_end_0(["end"])
+  kid_hoops_hub -->|"'Let's play.'"| kid_hoops_hub_end_0
+  kid_hoops_hub_end_1(["end"])
+  kid_hoops_hub -->|"'Later.'"| kid_hoops_hub_end_1
+```
+
+### park_keeper
+
+```mermaid
+flowchart TD
+  park_keeper_START(("start"))
+  park_keeper_START --> park_keeper_hub
+  park_keeper_START -->|"{not_flag: met.park_keeper}"| park_keeper_intro1
+  park_keeper_intro1["intro1<br/>Dev: 'Penalties? I'll go in goal. I always guess. So…"]
+  park_keeper_intro1 --> park_keeper_intro2
+  park_keeper_intro2["intro2<br/>Dev: 'Don't blast it. The last one who blasted it is…"]
+  park_keeper_intro2 --> park_keeper_hub
+  park_keeper_hub["hub<br/>Dev: 'Left, right, or the middle. I've narrowed it d…"]
+  park_keeper_hub_end_0(["end"])
+  park_keeper_hub -->|"'Let's play.'"| park_keeper_hub_end_0
+  park_keeper_hub_end_1(["end"])
+  park_keeper_hub -->|"'Later.'"| park_keeper_hub_end_1
+```
+
 ## people.json
 
 ### mara
