@@ -811,6 +811,21 @@ func _cavenmouth_story() -> void:
 	await _wait_location(&"cavenmouth")
 	_assert(WorldMap.travel("greyford"), "the coach home")
 	await _wait_location(&"market_street", 300)
+	_step = "the car"
+	Inventory.add_money(150)
+	GameState.change_relationship(&"jonah_rook", 2)
+	await _talk(&"jonah", {"npc": &"jonah_rook"}, ["JONAH_ASK_CAR", "JONAH_CAR_BUY", "BYE"])
+	await _finish_dialogue()
+	_assert(GameState.has_flag(&"car.owned") and Inventory.has(&"car_keys"), "Mr Rook's old car")
+	await _frames(5)
+	_assert(_visible_in_location("MyCar"), "parked on the market street")
+	EventHub.screen_requested.emit("map:drive")
+	await _frames(5)
+	CityMap.driving = true
+	_assert(CityMap.ride("old_quarter"), "drive across town")
+	CityMap.driving = false
+	await _wait_location(&"greyford_block")
+	(get_child(0).get("city_map") as MapScreen).close()
 	for who: Array in [[&"halloway", &"edda_halloway"], [&"theo", &"theo_marsh"], [&"jonah", &"jonah_rook"]]:
 		DialogueService.start(who[0], {"npc": who[1]})
 		await _finish_dialogue()

@@ -275,6 +275,16 @@
    "where": [
     "cavenmouth"
    ]
+  },
+  {
+   "text": "CHATTER_CAR",
+   "if": {
+    "flag": "car.owned"
+   },
+   "where": [
+    "greyford_block",
+    "market_street"
+   ]
   }
  ]
 }

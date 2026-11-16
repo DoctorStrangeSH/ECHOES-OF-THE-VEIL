@@ -1,0 +1,35 @@
+{
+ "car": {
+  "entries": [],
+  "start": "c1",
+  "nodes": {
+   "c1": {
+    "text": "CAR_SIT",
+    "choices": [
+     {
+      "text": "CAR_DRIVE_TOWN",
+      "effects": [
+       {
+        "open_screen": "map:drive"
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "CAR_DRIVE_COAST",
+      "effects": [
+       {
+        "open_screen": "world:drive"
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "CAR_STAY",
+      "next": null
+     }
+    ]
+   }
+  }
+ }
+}

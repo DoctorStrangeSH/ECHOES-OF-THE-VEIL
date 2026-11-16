@@ -5,6 +5,9 @@ extends RefCounted
 
 const PATH := "res://data/world/city_map.json"
 static var _data: Dictionary = {}
+## Set while the player drives their own car (R12b): rides are free and quick.
+static var driving := false
+const DRIVE_MINUTES := 10
 
 
 static func data() -> Dictionary:
@@ -54,6 +57,8 @@ static func fare() -> int:
 
 ## A district further out can cost more and take longer.
 static func fare_to(id: String) -> int:
+	if driving:
+		return 0
 	return int(districts().get(id, {}).get("fare", fare()))
 
 
@@ -67,7 +72,11 @@ static func ride(to: String) -> bool:
 		EventHub.toast_requested.emit(TranslationServer.translate("BUS_NO_MONEY"))
 		return false
 	Inventory.money -= fare_to(to)
-	WorldClock.advance_minutes(int(d.get("ride_minutes", data().get("ride_minutes", 20))))
-	EventHub.toast_requested.emit(String(TranslationServer.translate("BUS_RIDE")) % TranslationServer.translate(String(d["name"])))
+	if driving:
+		WorldClock.advance_minutes(DRIVE_MINUTES)
+		EventHub.toast_requested.emit(String(TranslationServer.translate("CAR_DROVE")) % TranslationServer.translate(String(d["name"])))
+	else:
+		WorldClock.advance_minutes(int(d.get("ride_minutes", data().get("ride_minutes", 20))))
+		EventHub.toast_requested.emit(String(TranslationServer.translate("BUS_RIDE")) % TranslationServer.translate(String(d["name"])))
 	SceneFlow.travel(StringName(stop[0]), StringName(stop[1]))
 	return true

@@ -1266,6 +1266,41 @@
    "lines": [
     "FLAVOR_FARM_MILLWOOD_SIGN"
    ]
+  },
+  {
+   "kind": "prop",
+   "name": "MyCar",
+   "tex": "@vehicle/Car_Left_3.png",
+   "x": 600,
+   "y": 532,
+   "col": [
+    56,
+    20
+   ],
+   "off": [
+    0,
+    -10
+   ],
+   "color": "#40a080",
+   "show_if": {
+    "flag": "car.owned"
+   }
+  },
+  {
+   "kind": "inspect",
+   "name": "MyCarUse",
+   "id": "use_my_car",
+   "x": 600,
+   "y": 538,
+   "area": [
+    60,
+    12
+   ],
+   "dialogue": "car",
+   "prompt": "PROMPT_CAR",
+   "show_if": {
+    "flag": "car.owned"
+   }
   }
  ]
 }

@@ -49,11 +49,19 @@ static func routes_from(city: String) -> Array[Dictionary]:
 	return out
 
 
+## The route to `to` by the chosen means: your own car, or public transport.
+static func route_to(to: String, by_car: bool) -> Dictionary:
+	for r in routes_from(city_of(GameState.current_scene_id)):
+		if String(r["dest"]) == to and (String(r.get("mode", "coach")) == "car") == by_car:
+			return r
+	return {}
+
+
 ## Go. Returns false when it can't be done (no route, no money).
-static func travel(to: String) -> bool:
+static func travel(to: String, by_car := false) -> bool:
 	var here := city_of(GameState.current_scene_id)
 	for r in routes_from(here):
-		if String(r["dest"]) != to:
+		if String(r["dest"]) != to or (String(r.get("mode", "coach")) == "car") != by_car:
 			continue
 		var fare := int(r.get("fare", 0))
 		if Inventory.money < fare:

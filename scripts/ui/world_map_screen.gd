@@ -5,6 +5,8 @@ extends CanvasLayer
 ## E to buy a ticket and go, Esc to stay.
 
 var selected := ""
+## Opened from your own car (R12b): car routes instead of the coach.
+var driving := false
 var _order: Array[String] = []
 var _root: Control
 var _info: VBoxContainer
@@ -47,13 +49,14 @@ func is_open() -> bool:
 	return visible
 
 
-func open() -> void:
+func open(by_car := false) -> void:
+	driving = by_car
 	_order.clear()
 	for id: String in WorldMap.cities():
 		if WorldMap.known(id):
 			_order.append(id)
 	var here := WorldMap.city_of(GameState.current_scene_id)
-	var routes := WorldMap.routes_from(here)
+	var routes := WorldMap.routes_from(here).filter(func(r: Dictionary) -> bool: return (String(r.get("mode", "coach")) == "car") == driving)
 	selected = String(routes[0]["dest"]) if not routes.is_empty() else here
 	visible = true
 	get_tree().paused = true
@@ -99,10 +102,7 @@ func _step(d: int) -> void:
 
 
 func _route_to(id: String) -> Dictionary:
-	for r in WorldMap.routes_from(WorldMap.city_of(GameState.current_scene_id)):
-		if String(r["dest"]) == id:
-			return r
-	return {}
+	return WorldMap.route_to(id, driving)
 
 
 func _go() -> void:
@@ -110,7 +110,7 @@ func _go() -> void:
 		return
 	var to := selected
 	close()
-	WorldMap.travel(to)
+	WorldMap.travel(to, driving)
 
 
 func _pos(id: String) -> Vector2:
@@ -129,7 +129,7 @@ func _line(text: String, color: Color, size := 8) -> void:
 
 
 func _refresh() -> void:
-	(_root.get_node("Title") as Label).text = tr("TRAVEL_TITLE")
+	(_root.get_node("Title") as Label).text = tr("CAR_TITLE") if driving else tr("TRAVEL_TITLE")
 	_hint.text = tr("TRAVEL_HINT")
 	for c in _info.get_children():
 		c.queue_free()

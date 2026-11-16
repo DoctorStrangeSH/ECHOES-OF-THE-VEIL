@@ -116,3 +116,7 @@ Travel between towns is its own layer above the city bus: data/world/world_map.j
 ## D-074 Fishing (R7a)
 
 Fishing spots are screen nodes ("fish:sea|harbour|lake") marked by a bucket. A rod from either bait shop opens the minigame: cast, wait, strike inside a short window, then keep the fish inside a band that rises while E is held and sinks when it is let go. Which fish can bite depends on the water, the part of the day, the weather and sometimes the story (data/fishing/fish.json): the herring of '62 only on rainy nights in the harbour, the bell carp only after Mill Ford's bell is known. Each cast costs ten minutes. The kinds caught are counted (flags fish.caught.<id>). Fixed on the way: screen nodes ignored their "prompt" in the region data, so bus stops and shops all said "Use"; the validator now checks every prompt key in the scenes.
+
+## D-075 Your own car (R12b)
+
+Jonah sells his late father's estate car (£120, once you are on friendly terms). It is parked in Greyford's old quarter, the market, the farm and Cavenmouth; getting in offers "around town" (the city map, free and ten minutes a ride) or "the coast road" (the coast map with car routes: cheaper and quicker than the coach). Car routes are ordinary rows of the route table with mode "car" and an "if" on owning it; a plane will be the same. No driving minigame: the car is about freedom of movement, not a new control scheme.

@@ -66,6 +66,14 @@ func _on_screen_requested(screen: String) -> void:
 		city_map.open(true)
 	elif screen == "world:travel":
 		world_map.open()
+	elif screen == "world:drive":
+		world_map.open(true)
+	elif screen == "map:drive":
+		if WorldMap.city_of(GameState.current_scene_id) != WorldMap.HOME:
+			world_map.open(true)  # out of town the car only knows the coast road
+		else:
+			CityMap.driving = true
+			city_map.open(true)
 	elif screen.begins_with("fish:"):
 		fishing.start(screen.trim_prefix("fish:"))
 	elif screen == "match:football":

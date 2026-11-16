@@ -1386,6 +1386,23 @@
       "next": "rr1"
      },
      {
+      "text": "JONAH_ASK_CAR",
+      "if": {
+       "all": [
+        {
+         "not_flag": "car.owned"
+        },
+        {
+         "relationship_at_least": [
+          "jonah_rook",
+          1
+         ]
+        }
+       ]
+      },
+      "next": "car1"
+     },
+     {
       "text": "BYE",
       "next": null
      }
@@ -1836,6 +1853,61 @@
       ]
      }
     ]
+   },
+   "car1": {
+    "text": "JONAH_CAR_1",
+    "speaker": "NPC_JONAH",
+    "next": "car2"
+   },
+   "car2": {
+    "text": "JONAH_CAR_2",
+    "speaker": "NPC_JONAH",
+    "next": "car3"
+   },
+   "car3": {
+    "text": "JONAH_CAR_3",
+    "speaker": "NPC_JONAH",
+    "choices": [
+     {
+      "text": "JONAH_CAR_BUY",
+      "if": {
+       "money_at_least": 120
+      },
+      "effects": [
+       {
+        "spend_money": 120
+       },
+       {
+        "set_flag": "car.owned"
+       },
+       {
+        "give_item": "car_keys"
+       },
+       {
+        "relationship": [
+         "jonah_rook",
+         1
+        ]
+       },
+       {
+        "remember": [
+         "jonah_rook",
+         "bought_dads_car"
+        ]
+       }
+      ],
+      "next": "car_bought"
+     },
+     {
+      "text": "JONAH_CAR_LATER",
+      "next": "hub"
+     }
+    ]
+   },
+   "car_bought": {
+    "text": "JONAH_CAR_BOUGHT",
+    "speaker": "NPC_JONAH",
+    "next": "hub"
    }
   }
  },
