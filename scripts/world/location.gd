@@ -63,6 +63,11 @@ func _ready() -> void:
 	_refresh_follower()
 	_place_satchel()
 	Incidents.populate(self)
+	if Crowd.defs().has(location_id):
+		var crowd := Crowd.new()
+		crowd.name = "Crowd"
+		add_child(crowd)
+		crowd.setup(location_id, entities)
 	Party.companion_changed.connect(_on_companion_changed)
 	WorldClock.time_changed.connect(_on_time_changed)
 	WorldClock.period_changed.connect(_on_story_changed)

@@ -639,6 +639,11 @@ func _farm_story() -> void:
 	SceneFlow.travel(&"market_street", &"bus_stop")
 	await _wait_location(&"market_street")
 	await _frames(10)
+	var people := SceneFlow.current_location.find_children("*", "Passerby", true, false)
+	_assert(not people.is_empty() or WorldClock.get_period() == "night", "people on the market street")
+	if not people.is_empty():
+		(people[0] as Passerby).speak(_player())
+		await _frames(30)
 	DialogueService.start(&"farm_notice")
 	await _finish_dialogue()
 	_assert(Journal.case_status(&"case_brook_farm") == Journal.STATUS_ACTIVE and CityMap.known("brookside"), "the farm is on the bus map")

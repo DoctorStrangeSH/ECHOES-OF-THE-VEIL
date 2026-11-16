@@ -100,3 +100,7 @@ Foraging is a new node kind (`forage`, ForageSpot): gather once a day, back next
 ## D-070 The Chronicle (R6a)
 
 The journal has a third tab, the Chronicle: the story so far written as a book, in the second person and the present tense (which keeps Russian free of gendered past forms). Chapters (data/story/chronicle.json) follow the acts, with "tales from the margins" for the big side stories; each page has its own condition, usually a case outcome, so the book retells the choices this player made and never the others. A chapter that is not finished ends with "the chapter is still being written". New pages raise a quiet toast once any conversation is over. The validator checks every chapter's keys and conditions, and now also checks quest_outcome references everywhere.
+
+## D-071 Townspeople (R1c)
+
+Streets are no longer empty: a Crowd node per location (data/world/crowds.json) keeps the right number of passers-by out for the time of day (fewer in the rain, almost none at night). They are put together at random from Character Generator layers, walk authored routes along pavements, stop now and then, fade in and out at the route ends, and have no collision. Spoken to, they answer with one line in a bubble, from data/world/chatter.json; lines can depend on the place and on the story (rumours of the Ward after act II, new neighbours after the ending), so the town visibly reacts to what the player did. No dialogue window: talking to a stranger should cost a second.
