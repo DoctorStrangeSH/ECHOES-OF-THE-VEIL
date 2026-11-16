@@ -1,0 +1,48 @@
+{
+ "cases": {
+  "case_dead_letters": {
+   "title": "CASE_DEADLET_TITLE",
+   "summary": "CASE_DEADLET_SUMMARY",
+   "first_stage": "deliver",
+   "stages": {
+    "deliver": "CASE_DEADLET_DELIVER",
+    "return": "CASE_DEADLET_RETURN"
+   },
+   "outcomes": {
+    "delivered": "CASE_DEADLET_DONE"
+   },
+   "transitions": {
+    "deliver": [
+     "return"
+    ]
+   },
+   "objectives": {
+    "deliver": [
+     {
+      "id": "edda",
+      "text": "OBJ_LETTER_EDDA",
+      "done_if": {
+       "flag": "letters.edda"
+      }
+     },
+     {
+      "id": "theo",
+      "text": "OBJ_LETTER_THEO",
+      "done_if": {
+       "flag": "letters.theo"
+      }
+     },
+     {
+      "id": "jonah",
+      "text": "OBJ_LETTER_JONAH",
+      "done_if": {
+       "flag": "letters.jonah"
+      }
+     }
+    ]
+   }
+  }
+ },
+ "evidence": {},
+ "hypotheses": {}
+}

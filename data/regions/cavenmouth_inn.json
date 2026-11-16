@@ -1,0 +1,188 @@
+{
+ "id": "cavenmouth_inn",
+ "name_key": "LOC_CAV_INN",
+ "palette": "rented_room",
+ "options": {
+  "outdoors": false
+ },
+ "layout": {
+  "generator": "room",
+  "width": 18,
+  "height": 11,
+  "door_x": 8
+ },
+ "nodes": [
+  {
+   "kind": "furn",
+   "furn": "window",
+   "x": 72,
+   "y": 62
+  },
+  {
+   "kind": "furn",
+   "furn": "window",
+   "x": 200,
+   "y": 62
+  },
+  {
+   "kind": "furn",
+   "furn": "bookcase_bottles",
+   "x": 120,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "bookcase_bottles",
+   "x": 152,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "counter_left",
+   "x": 120,
+   "y": 104
+  },
+  {
+   "kind": "furn",
+   "furn": "counter_right",
+   "x": 152,
+   "y": 104
+  },
+  {
+   "kind": "furn",
+   "furn": "fireplace",
+   "x": 40,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "table_wood",
+   "x": 56,
+   "y": 120
+  },
+  {
+   "kind": "furn",
+   "furn": "chair_wood",
+   "x": 36,
+   "y": 118
+  },
+  {
+   "kind": "furn",
+   "furn": "chair_wood_b",
+   "x": 76,
+   "y": 118
+  },
+  {
+   "kind": "furn",
+   "furn": "table_wood_b",
+   "x": 220,
+   "y": 124
+  },
+  {
+   "kind": "furn",
+   "furn": "stool_wood",
+   "x": 200,
+   "y": 124
+  },
+  {
+   "kind": "furn",
+   "furn": "stool_wood_b",
+   "x": 240,
+   "y": 126
+  },
+  {
+   "kind": "furn",
+   "furn": "bed_single",
+   "x": 256,
+   "y": 80
+  },
+  {
+   "kind": "furn",
+   "furn": "nightstand",
+   "x": 236,
+   "y": 70
+  },
+  {
+   "kind": "furn",
+   "furn": "rug_check",
+   "x": 140,
+   "y": 150
+  },
+  {
+   "kind": "furn",
+   "furn": "plant_tall",
+   "x": 26,
+   "y": 150
+  },
+  {
+   "kind": "furn",
+   "furn": "grandfather_clock",
+   "x": 184,
+   "y": 64
+  },
+  {
+   "kind": "rest",
+   "name": "InnBed",
+   "id": "rest_cav_inn",
+   "x": 256,
+   "y": 88,
+   "area": [
+    24,
+    18
+   ],
+   "prompt": "PROMPT_REST_INN"
+  },
+  {
+   "kind": "inspect",
+   "name": "FireLook",
+   "id": "inspect_cav_fire",
+   "x": 40,
+   "y": 72,
+   "area": [
+    30,
+    10
+   ],
+   "lines": [
+    "FLAVOR_CAV_INN_FIRE"
+   ]
+  },
+  {
+   "template": "anchors",
+   "points": {
+    "bar": [
+     136,
+     84
+    ],
+    "table": [
+     100,
+     124
+    ]
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "Entrance",
+   "id": "entrance",
+   "x": 136,
+   "y": 156,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ExitDoor",
+   "id": "door_cav_inn_exit",
+   "x": 136,
+   "y": 172,
+   "area": [
+    30,
+    10
+   ],
+   "scene": "cavenmouth",
+   "spawn": "inn_front",
+   "prompt": "PROMPT_EXIT"
+  }
+ ]
+}

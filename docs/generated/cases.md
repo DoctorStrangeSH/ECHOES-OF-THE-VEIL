@@ -123,6 +123,17 @@ flowchart LR
   case_anchor_START(("start")) --> case_anchor_gather
 ```
 
+## case_dead_letters — Dead letters
+
+```mermaid
+flowchart LR
+  case_dead_letters_deliver["deliver<br/>Deliver three old letters in Greyford, …"]
+  case_dead_letters_return["return<br/>All three letters found their people. T…"]
+  case_dead_letters_deliver --> case_dead_letters_return
+  case_dead_letters_out_delivered(["outcome: delivered<br/>The sack at the Cavenmouth po…"])
+  case_dead_letters_START(("start")) --> case_dead_letters_deliver
+```
+
 ## case_agnes — Agnes's Last Card
 
 ```mermaid

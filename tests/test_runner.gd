@@ -1711,6 +1711,14 @@ func test_npc_activities() -> void:
 	check(acts.has("read") and acts.has("work") and acts.has("look") and acts.has("phone"), "people do different things through the day")
 
 
+func test_world_map_routes() -> void:
+	GameState.reset_for_new_game()
+	check(WorldMap.city_of(&"market_street") == "greyford" and WorldMap.city_of(&"cavenmouth_inn") == "cavenmouth", "towns own their scenes")
+	var r := WorldMap.routes_from("greyford")
+	check(r.size() >= 1 and String(r[0]["dest"]) == "cavenmouth" and int(r[0]["fare"]) > CityMap.fare(), "a coach down the coast costs more than the bus")
+	check(WorldMap.routes_from("cavenmouth").any(func(x: Dictionary) -> bool: return String(x["dest"]) == "greyford"), "and comes back")
+
+
 func test_xp_comes_from_play() -> void:
 	GameState.reset_for_new_game()
 	GameState.is_playing = true

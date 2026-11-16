@@ -24,6 +24,19 @@
    "to": "market_street"
   }
  ],
+ "cavenmouth": [],
+ "cavenmouth_inn": [
+  {
+   "node": "ExitDoor",
+   "to": "cavenmouth"
+  }
+ ],
+ "cavenmouth_post": [
+  {
+   "node": "ExitDoor",
+   "to": "cavenmouth"
+  }
+ ],
  "depot_platform": [
   {
    "node": "WayBack",

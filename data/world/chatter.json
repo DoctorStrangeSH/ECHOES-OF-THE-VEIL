@@ -226,6 +226,42 @@
   },
   {
    "text": "CHATTER_CATS"
+  },
+  {
+   "text": "CHATTER_CAV_TIDE",
+   "where": [
+    "cavenmouth"
+   ]
+  },
+  {
+   "text": "CHATTER_CAV_CHIPS",
+   "where": [
+    "cavenmouth"
+   ]
+  },
+  {
+   "text": "CHATTER_CAV_WALTER",
+   "where": [
+    "cavenmouth"
+   ]
+  },
+  {
+   "text": "CHATTER_CAV_GREYFORD",
+   "where": [
+    "cavenmouth"
+   ]
+  },
+  {
+   "text": "CHATTER_CAV_GULL",
+   "where": [
+    "cavenmouth"
+   ]
+  },
+  {
+   "text": "CHATTER_CAV_SEA",
+   "where": [
+    "cavenmouth"
+   ]
   }
  ]
 }

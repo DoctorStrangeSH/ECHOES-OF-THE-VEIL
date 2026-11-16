@@ -1,0 +1,44 @@
+{
+ "_doc": "Towns and the roads between them (R12a, systems/world/world_map.gd). pos: on the coast map (300x220). scenes: which scenes belong to the town (Greyford gets the rest). arrive: [scene, spawn]. Routes: mode (coach now; car and plane later), fare, minutes, optional 'if'.",
+ "cities": {
+  "greyford": {
+   "name": "CITY_GREYFORD",
+   "pos": [
+    118,
+    82
+   ],
+   "desc": "CITY_GREYFORD_DESC",
+   "arrive": [
+    "market_street",
+    "coach_stop"
+   ],
+   "scenes": []
+  },
+  "cavenmouth": {
+   "name": "CITY_CAVENMOUTH",
+   "pos": [
+    214,
+    150
+   ],
+   "desc": "CITY_CAVENMOUTH_DESC",
+   "arrive": [
+    "cavenmouth",
+    "coach_stop"
+   ],
+   "scenes": [
+    "cavenmouth",
+    "cavenmouth_inn",
+    "cavenmouth_post"
+   ]
+  }
+ },
+ "routes": [
+  {
+   "from": "greyford",
+   "to": "cavenmouth",
+   "mode": "coach",
+   "fare": 12,
+   "minutes": 150
+  }
+ ]
+}

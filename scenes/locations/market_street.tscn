@@ -504,3 +504,22 @@ interaction_id = &"read_farm_notice"
 area_size = Vector2(20, 12)
 prompt_key = "PROMPT_READ"
 dialogue_id = &"farm_notice"
+
+[node name="CoachSign" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(404, 392)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/10_Vehicles_Singles_16x16/ME_Singles_Vehicles_16x16_Bus_Stop_Sign_1.png"
+placeholder_size = Vector2i(16, 48)
+placeholder_color = Color(0.188,0.376,0.627, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="CoachUse" parent="Entities" instance=ExtResource("18_screen")]
+position = Vector2(404, 400)
+interaction_id = &"use_market_coach"
+screen = "world:travel"
+
+[node name="CoachStop" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(388, 384)
+script = ExtResource("4_spawn")
+spawn_id = &"coach_stop"
+facing = Vector2(0, 1)

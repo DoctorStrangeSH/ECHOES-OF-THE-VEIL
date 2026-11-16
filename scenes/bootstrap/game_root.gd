@@ -14,6 +14,7 @@ extends Node
 @onready var epilogue: EpilogueScreen = $Epilogue
 var sport: SportMinigame
 var city_map: MapScreen
+var world_map: WorldMapScreen
 
 
 func _ready() -> void:
@@ -22,6 +23,8 @@ func _ready() -> void:
 	add_child(sport)
 	city_map = MapScreen.new()
 	add_child(city_map)
+	world_map = WorldMapScreen.new()
+	add_child(world_map)
 	add_child(CharacterScreen.new())
 	add_child(SeedMenu.new())
 	pause_menu.setup(hud)
@@ -58,6 +61,8 @@ func _on_screen_requested(screen: String) -> void:
 		_train()
 	elif screen == "map:travel":
 		city_map.open(true)
+	elif screen == "world:travel":
+		world_map.open()
 	elif screen == "match:football":
 		var loc := SceneFlow.current_location
 		if loc != null and loc.location_id == &"greyford_park" and loc.find_children("*", "FootballMatch", true, false).is_empty():

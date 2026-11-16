@@ -863,6 +863,42 @@
    "name": "FarmNotice",
    "dialogue": "farm_notice",
    "width": 20
+  },
+  {
+   "kind": "prop",
+   "name": "CoachSign",
+   "tex": "@vehicle/Bus_Stop_Sign_1.png",
+   "x": 404,
+   "y": 392,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#3060a0"
+  },
+  {
+   "kind": "screen",
+   "name": "CoachUse",
+   "id": "use_market_coach",
+   "x": 404,
+   "y": 400,
+   "screen": "world:travel",
+   "prompt": "PROMPT_COACH"
+  },
+  {
+   "kind": "spawn",
+   "name": "CoachStop",
+   "id": "coach_stop",
+   "x": 388,
+   "y": 384,
+   "facing": [
+    0,
+    1
+   ]
   }
  ]
 }

@@ -1,0 +1,53 @@
+{
+ "bridget_knowles": {
+  "name": "NPC_BRIDGET",
+  "body": "Body_05",
+  "eyes": "Eyes_02",
+  "outfit": "Outfit_09_02",
+  "hairstyle": "Hairstyle_12_02",
+  "color": "#c08060",
+  "dialogue": "bridget",
+  "schedule": [
+   {
+    "period": [
+     "morning",
+     "afternoon",
+     "evening"
+    ],
+    "scene": "cavenmouth_inn",
+    "anchor": "bar",
+    "facing": "down",
+    "activity": "work"
+   }
+  ]
+ },
+ "walter_finch": {
+  "name": "NPC_WALTER",
+  "body": "Body_02",
+  "eyes": "Eyes_03",
+  "outfit": "Outfit_14_01",
+  "hairstyle": "Hairstyle_01_05",
+  "accessory": "Accessory_15_Glasses_01",
+  "color": "#7a7a9a",
+  "dialogue": "walter",
+  "schedule": [
+   {
+    "period": [
+     "morning",
+     "afternoon"
+    ],
+    "scene": "cavenmouth_post",
+    "anchor": "counter",
+    "facing": "down",
+    "activity": "read"
+   },
+   {
+    "period": "evening",
+    "scene": "cavenmouth",
+    "anchor": "promenade",
+    "facing": "down",
+    "activity": "look"
+   }
+  ]
+ }
+}
