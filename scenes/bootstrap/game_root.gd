@@ -28,6 +28,10 @@ func _ready() -> void:
 	journal.setup(hud)
 	SceneFlow.register_root(self)
 	EventHub.screen_requested.connect(_on_screen_requested)
+	Journal.case_changed.connect(func(_c: StringName) -> void: _queue_chronicle())
+	EventHub.flag_changed.connect(func(f: StringName, _v: Variant) -> void:
+		if f != Chronicle.SEEN_FLAG:
+			_queue_chronicle())
 	SceneFlow.show_main_menu()
 
 
@@ -72,6 +76,22 @@ func _on_screen_requested(screen: String) -> void:
 		SceneFlow.travel(&"rented_room", &"bed")
 	else:
 		work.open(screen)
+
+
+var _chronicle_queued := false
+
+
+## A new page of the Chronicle gets a quiet toast, once things settle.
+func _queue_chronicle() -> void:
+	if _chronicle_queued:
+		return
+	_chronicle_queued = true
+	await get_tree().create_timer(0.5, true).timeout
+	while DialogueService.is_active:
+		await DialogueService.dialogue_ended
+	_chronicle_queued = false
+	if Chronicle.check_new():
+		EventHub.toast_requested.emit(tr("CHRON_TOAST_NEW"))
 
 
 func show_menu(menu: Node) -> void:

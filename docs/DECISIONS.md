@@ -96,3 +96,7 @@ Farming is deliberately forgiving: a crop grows one step per watered (or rainy) 
 East of the farm: Millwood (forest, lake, pier, Ada's caravan, a campsite with a rest by the fire) and, under the lake, Mill Ford, a Veil location reached by a stair of light from the end of the pier in the evening or at night. It is our first "underwater" place: a whole village on the lake bottom, tinted deep blue. The case (case_drowned_ford) ties the countryside to the main story: the village was flooded in 1962 and then struck out of the town's books by the Census. Hints live in the world: Ada names the pier and the hour, and the memorial stone carries her note for anyone who meets the stone first.
 
 Foraging is a new node kind (`forage`, ForageSpot): gather once a day, back next morning, state in the flag forage.<id>.
+
+## D-070 The Chronicle (R6a)
+
+The journal has a third tab, the Chronicle: the story so far written as a book, in the second person and the present tense (which keeps Russian free of gendered past forms). Chapters (data/story/chronicle.json) follow the acts, with "tales from the margins" for the big side stories; each page has its own condition, usually a case outcome, so the book retells the choices this player made and never the others. A chapter that is not finished ends with "the chapter is still being written". New pages raise a quiet toast once any conversation is over. The validator checks every chapter's keys and conditions, and now also checks quest_outcome references everywhere.

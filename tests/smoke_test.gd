@@ -432,6 +432,16 @@ func _ready() -> void:
 	_assert(GameState.has_flag(&"game.completed") and GameState.has_flag(&"ending.open_record"), "the world goes on after the ending")
 
 	print("SMOKE level at the ending: ", Progression.level)
+	var chapters := Chronicle.open_chapters()
+	for c in chapters:
+		if String(c["id"]) in ["prologue", "maps", "ward", "kindness", "index", "anchor"]:
+			_assert(Chronicle.pages(c).size() >= 2 and Chronicle.finished(c), "the Chronicle tells chapter %s to its end" % c["id"])
+	_assert(chapters.size() >= 7, "the Chronicle tells the whole campaign (%d chapters)" % chapters.size())
+	var js := get_child(0).get_node("Journal") as JournalScreen
+	js.open()
+	js._set_tab("chronicle")
+	await _frames(5)
+	js.close()
 	_assert(Progression.level >= 5, "the campaign levels you up (level %d)" % Progression.level)
 
 	_step = "world incident after the ending"

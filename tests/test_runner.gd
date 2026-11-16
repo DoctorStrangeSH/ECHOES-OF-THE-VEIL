@@ -1653,6 +1653,28 @@ func test_farm_grows_and_pays() -> void:
 	GameState.is_playing = false
 
 
+func test_chronicle_follows_choices() -> void:
+	GameState.reset_for_new_game()
+	GameState.is_playing = true
+	var open := Chronicle.open_chapters()
+	check(open.size() == 1 and String(open[0]["id"]) == "prologue", "a new game opens the prologue")
+	check(Chronicle.pages(open[0]).size() == 1 and not Chronicle.finished(open[0]), "one page, still being written")
+	check(Chronicle.check_new() and not Chronicle.check_new(), "a new page is noticed once")
+	Journal.start_case(&"case_door")
+	Journal.complete_case(&"case_door", &"opened")
+	var pages := Chronicle.pages(Chronicle.open_chapters()[0])
+	check(pages.size() == 2 and pages[1] == "CHRON_PROLOGUE_OPENED" and Chronicle.finished(Chronicle.open_chapters()[0]), "the prologue tells the choice that was made")
+	check(not pages.has("CHRON_PROLOGUE_REPORTED"), "and not the other one")
+	GameState.set_flag(&"act.act1")
+	check(Chronicle.open_chapters().size() == 2, "a new act opens a chapter")
+	for c: Dictionary in Chronicle.chapters():
+		check(tr(String(c["title"])) != String(c["title"]), "chapter %s has a title" % c["id"])
+		for p: Dictionary in c["pages"]:
+			check(tr(String(p["text"])) != String(p["text"]), "page %s is written" % p["text"])
+	GameState.reset_for_new_game()
+	GameState.is_playing = false
+
+
 func test_xp_comes_from_play() -> void:
 	GameState.reset_for_new_game()
 	GameState.is_playing = true

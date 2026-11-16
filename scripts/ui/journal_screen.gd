@@ -78,15 +78,20 @@ func _refresh() -> void:
 	_hint.text = tr("JOURNAL_CLOSE_HINT")
 	(_tabs.get_child(0) as Button).text = tr("JOURNAL_TAB_CASES")
 	(_tabs.get_child(1) as Button).text = tr("JOURNAL_TAB_PEOPLE")
+	(_tabs.get_child(2) as Button).text = tr("JOURNAL_TAB_CHRONICLE")
 	(_tabs.get_child(0) as Button).button_pressed = _tab == "cases"
 	(_tabs.get_child(1) as Button).button_pressed = _tab == "people"
+	(_tabs.get_child(2) as Button).button_pressed = _tab == "chronicle"
 	for c in _cases_list.get_children():
 		c.queue_free()
 	for c in _detail.get_children():
 		c.queue_free()
-	_cases_list.get_parent().visible = _tab == "cases"
+	_cases_list.get_parent().visible = _tab == "cases" or _tab == "chronicle"
 	if _tab == "people":
 		_show_people()
+		return
+	if _tab == "chronicle":
+		_show_chronicle()
 		return
 	if Journal.case_order.is_empty():
 		_detail.add_child(_label(tr("JOURNAL_EMPTY"), UiTheme.INK_DIM))
@@ -208,6 +213,60 @@ func _show_people() -> void:
 		_detail.add_child(_label(tr("JOURNAL_NO_PEOPLE"), UiTheme.INK_DIM))
 
 
+# --- Chronicle (R6a) -------------------------------------------------------------
+
+var _chapter := ""
+
+
+func _show_chronicle() -> void:
+	var open := Chronicle.open_chapters()
+	if open.is_empty():
+		_detail.add_child(_label(tr("CHRON_EMPTY"), UiTheme.INK_DIM))
+		return
+	if _chapter == "" or not open.any(func(c: Dictionary) -> bool: return String(c["id"]) == _chapter):
+		_chapter = String(open[open.size() - 1]["id"])
+	var n := 0
+	var focus: Button = null
+	for c in open:
+		var id := String(c["id"])
+		var b := Button.new()
+		if id == "prologue":
+			b.text = tr("CHRON_PROLOGUE")
+		elif id == "after":
+			b.text = tr("CHRON_AFTER_TITLE")
+		elif id in ["eleventh", "rosalind", "brook", "ford"]:
+			b.text = "· " + tr(String(c["title"]))
+		else:
+			n += 1
+			b.text = tr("CHRON_CHAPTER_N") % n
+		b.add_theme_font_size_override("font_size", 8)
+		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		b.toggle_mode = true
+		b.button_pressed = String(c["id"]) == _chapter
+		b.clip_text = true
+		b.pressed.connect(func() -> void:
+			_chapter = String(c["id"])
+			_refresh())
+		_cases_list.add_child(b)
+		if String(c["id"]) == _chapter:
+			focus = b
+	if focus != null:
+		focus.grab_focus.call_deferred()
+	for c in open:
+		if String(c["id"]) != _chapter:
+			continue
+		if String(c["id"]) in ["eleventh", "rosalind", "brook", "ford"]:
+			_detail.add_child(_label(tr("CHRON_TALE"), UiTheme.INK_DIM, 7))
+		_detail.add_child(_label(tr(String(c["title"])), UiTheme.ACCENT, 11))
+		var epi := _label(tr(String(c["epigraph"])), UiTheme.INK_DIM, 8)
+		epi.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		_detail.add_child(epi)
+		for key in Chronicle.pages(c):
+			_detail.add_child(_label(tr(key), UiTheme.INK, 9))
+		if not Chronicle.finished(c):
+			_detail.add_child(_label("~ " + tr("CHRON_TO_BE_CONTINUED") + " ~", UiTheme.INK_DIM, 8))
+
+
 static func relationship_tier(v: int) -> String:
 	if v >= 6:
 		return "CONFIDANT"
@@ -261,7 +320,7 @@ func _build() -> void:
 	_tabs.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_tabs.alignment = BoxContainer.ALIGNMENT_END
 	head.add_child(_tabs)
-	for tab in ["cases", "people"]:
+	for tab in ["cases", "people", "chronicle"]:
 		var tb := Button.new()
 		tb.toggle_mode = true
 		tb.pressed.connect(_set_tab.bind(tab))
