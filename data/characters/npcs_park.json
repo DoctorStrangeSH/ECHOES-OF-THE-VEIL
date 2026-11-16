@@ -1,0 +1,37 @@
+{
+ "kid_hoops": {
+  "name": "NPC_KID_HOOPS",
+  "premade": "Premade_Character_07",
+  "color": "#d08040",
+  "dialogue": "kid_hoops",
+  "schedule": [
+   {
+    "period": [
+     "morning",
+     "afternoon",
+     "evening"
+    ],
+    "scene": "greyford_park",
+    "anchor": "hoops",
+    "facing": "right"
+   }
+  ]
+ },
+ "park_keeper": {
+  "name": "NPC_PARK_KEEPER",
+  "premade": "Premade_Character_11",
+  "color": "#4080d0",
+  "dialogue": "park_keeper",
+  "schedule": [
+   {
+    "period": [
+     "afternoon",
+     "evening"
+    ],
+    "scene": "greyford_park",
+    "anchor": "goal",
+    "facing": "down"
+   }
+  ]
+ }
+}

@@ -1427,6 +1427,31 @@
     0,
     1
    ]
+  },
+  {
+   "kind": "door",
+   "name": "ParkGate",
+   "id": "door_greyford_park",
+   "x": 272,
+   "y": 410,
+   "area": [
+    24,
+    10
+   ],
+   "scene": "greyford_park",
+   "spawn": "from_town",
+   "prompt": "PROMPT_TO_PARK"
+  },
+  {
+   "kind": "spawn",
+   "name": "FromPark",
+   "id": "from_park",
+   "x": 272,
+   "y": 392,
+   "facing": [
+    0,
+    -1
+   ]
   }
  ]
 }

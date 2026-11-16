@@ -1,0 +1,126 @@
+{
+ "LOC_GREYFORD_PARK": {
+  "en": "Greyford — Quay Gardens",
+  "ru": "Грейфорд — Причальный сквер"
+ },
+ "PROMPT_TO_PARK": {
+  "en": "To the gardens",
+  "ru": "В сквер"
+ },
+ "PROMPT_TO_TOWN": {
+  "en": "Back to the Old Quarter",
+  "ru": "В Старый квартал"
+ },
+ "PROMPT_PLAY": {
+  "en": "Play",
+  "ru": "Сыграть"
+ },
+ "FLAVOR_PARK_COFFEE": {
+  "en": "The coffee kiosk is shaped like a giant paper cup. The man inside has the patience of someone who has been asked about it a thousand times, and the tiredness of someone who still smiles anyway.",
+  "ru": "Кофейный киоск сделан в виде огромного бумажного стакана. У продавца терпение человека, которого спрашивали об этом тысячу раз, и усталость человека, который всё равно улыбается."
+ },
+ "FLAVOR_PARK_ICECREAM": {
+  "en": "A chalkboard lists the flavours. Someone has added, in a child's hand, LANTERN (THE BLUE ONE). There is no blue one. The vendor says children ask for it every November.",
+  "ru": "На грифельной доске список вкусов. Кто-то приписал детским почерком: «ФОНАРНОЕ (ГОЛУБОЕ)». Голубого нет. Продавец говорит, что каждый ноябрь дети просят именно его."
+ },
+ "FLAVOR_PARK_FOUNTAIN": {
+  "en": "Coins glint on the bottom of the fountain. Most are ordinary pennies; one is a tram token, worn smooth, as though someone had held it for years before letting go.",
+  "ru": "На дне фонтана поблёскивают монеты. Почти все обычные пенни, но одна — трамвайный жетон, стёртый до гладкости, будто кто-то держал его в руке годами, прежде чем отпустить."
+ },
+ "NPC_KID_HOOPS": {
+  "en": "Kit",
+  "ru": "Кит"
+ },
+ "KID_HOOPS_1": {
+  "en": "\"You any good? Five shots. Most people get two, and then they blame the wind.\"",
+  "ru": "«Умеешь? Пять бросков. Обычно попадают два раза, а потом валят всё на ветер»."
+ },
+ "KID_HOOPS_2": {
+  "en": "\"Watch the arc, not the hoop. My gran said that. She never played, she just watched a lot.\"",
+  "ru": "«Смотри на дугу, а не на кольцо. Так бабушка говорила. Сама не играла, просто долго смотрела»."
+ },
+ "KID_HOOPS_R": {
+  "en": "\"Wind's picking up. Convenient.\"",
+  "ru": "«Ветер поднимается. Как удобно»."
+ },
+ "NPC_PARK_KEEPER": {
+  "en": "Dev",
+  "ru": "Дев"
+ },
+ "PARK_KEEPER_1": {
+  "en": "\"Penalties? I'll go in goal. I always guess. Sometimes I guess right, and then I'm a genius for a minute.\"",
+  "ru": "«Пенальти? Встану в ворота. Я всегда угадываю. Иногда угадываю правильно, и тогда целую минуту хожу в гениях»."
+ },
+ "PARK_KEEPER_2": {
+  "en": "\"Don't blast it. The last one who blasted it is still looking for the ball in the bay.\"",
+  "ru": "«Только не лупи изо всех сил. Последний, кто лупил, до сих пор ищет мяч в заливе»."
+ },
+ "PARK_KEEPER_R": {
+  "en": "\"Left, right, or the middle. I've narrowed it down.\"",
+  "ru": "«Влево, вправо или в центр. Я сузил круг»."
+ },
+ "SPORT_TITLE_BASKETBALL": {
+  "en": "Five shots",
+  "ru": "Пять бросков"
+ },
+ "SPORT_TITLE_FOOTBALL": {
+  "en": "Penalties",
+  "ru": "Пенальти"
+ },
+ "SPORT_SCORE": {
+  "en": "%d · try %d/%d",
+  "ru": "%d · попытка %d/%d"
+ },
+ "SPORT_HINT_AIM": {
+  "en": "E: pick a corner",
+  "ru": "E: выбрать угол"
+ },
+ "SPORT_HINT_POWER": {
+  "en": "E: when the needle is in the green",
+  "ru": "E: когда стрелка в зелёной зоне"
+ },
+ "SPORT_BASKET": {
+  "en": "Swish. Not even the rim.",
+  "ru": "Чисто. Даже кольцо не задел."
+ },
+ "SPORT_SHORT": {
+  "en": "Short. The ball kisses the front of the rim and drops.",
+  "ru": "Недолёт. Мяч целует дужку кольца и падает."
+ },
+ "SPORT_LONG": {
+  "en": "Long. It clangs off the backboard into the flowerbed.",
+  "ru": "Перелёт. Мяч гремит о щит и укатывается в клумбу."
+ },
+ "SPORT_GOAL": {
+  "en": "Goal. Dev lies in the grass and contemplates the sky.",
+  "ru": "Гол. Дев лежит в траве и созерцает небо."
+ },
+ "SPORT_SAVED": {
+  "en": "Saved. Dev was already there, grinning.",
+  "ru": "Отбил. Дев уже был там и ухмылялся."
+ },
+ "SPORT_OVER": {
+  "en": "Over the bar. Somewhere, a seagull is offended.",
+  "ru": "Выше ворот. Где-то обиделась чайка."
+ },
+ "SPORT_DONE": {
+  "en": "%d of %d.",
+  "ru": "%d из %d."
+ },
+ "SPORT_PAID": {
+  "en": "Someone on the bench tosses you £%d for the show.",
+  "ru": "Кто-то со скамейки бросает тебе £%d за зрелище."
+ },
+ "SPORT_RECORD": {
+  "en": "A new best.",
+  "ru": "Новый рекорд."
+ },
+ "SPORT_CHOICE_PLAY": {
+  "en": "\"Let's play.\"",
+  "ru": "«Давай сыграем»."
+ },
+ "SPORT_CHOICE_LATER": {
+  "en": "\"Later.\"",
+  "ru": "«Потом»."
+ }
+}

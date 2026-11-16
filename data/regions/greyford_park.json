@@ -1,0 +1,668 @@
+{
+ "id": "greyford_park",
+ "name_key": "LOC_GREYFORD_PARK",
+ "palette": "greyford_exterior",
+ "options": {
+  "outdoors": true
+ },
+ "layout": [
+  "ggggggggggggggggsssggggggggggggggggggggggggg",
+  "ggggggggggggggggsssggggggggggggggggggggggggg",
+  "ggggggggggggggggsssggggggggggggggggggggggggg",
+  "ggggggggggggggggsssggggggggggggggggggggggggg",
+  "ggggggggggggggggsssggggggggggggggggggggggggg",
+  "ggggggggggggggggsssggggggggggggggggggggggggg",
+  "ggggggggggggggggsssggggggggggggggggggggggggg",
+  "ggggggggggggggggsssggggggggggggggggggggggggg",
+  "sssssssssssssssssssssssssssssssggggggggggggg",
+  "sssssssssssssssssssssssssssssssggggggggggggg",
+  "sssssssssssssssssssssssssssssssggggggggggggg",
+  "gggggggggggggbbbbbbbbbgggggggggggggggggggggg",
+  "gggggggggggggbbbbbbbbbgggggggggggggggggggggg",
+  "gggggggggggggbbbbbbbbbgggggggggggggggggggggg",
+  "gggggggggggggbbbbbbbbbgggggggggggggggggggggg",
+  "gggggggggggggbbbbbbbbbgggggggggggggggggggggg",
+  "gggggggggggggbbbbbbbbbgggggggggggggggggggggg",
+  "gggggggggggggbbbbbbbbbgggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggg"
+ ],
+ "nodes": [
+  {
+   "kind": "prop",
+   "name": "BasketballCourt",
+   "tex": "modern_exteriors/Modern_Exteriors_16x16/Modern_Exteriors_Complete_Singles_16x16/ME_Singles_School_16x16_Basketball_Court_5.png",
+   "x": 136,
+   "y": 440,
+   "color": "#8a7a70",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0.0
+   ],
+   "layer": "FloorDecor"
+  },
+  {
+   "kind": "prop",
+   "name": "SoccerField",
+   "tex": "modern_exteriors/Modern_Exteriors_16x16/Modern_Exteriors_Complete_Singles_16x16/ME_Singles_School_16x16_Soccer_Court_2.png",
+   "x": 600,
+   "y": 448,
+   "color": "#4a8a3a",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0.0
+   ],
+   "layer": "FloorDecor"
+  },
+  {
+   "kind": "prop",
+   "name": "Fountain",
+   "tex": "@city/Fountain_1.png",
+   "x": 280,
+   "y": 256,
+   "color": "#6a8a5a",
+   "col": [
+    28,
+    16
+   ],
+   "off": [
+    0,
+    -8.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "CoffeeKiosk",
+   "tex": "@city/Kiosk_Coffee_Cup_Example.png",
+   "x": 376,
+   "y": 124,
+   "color": "#a07050"
+  },
+  {
+   "kind": "prop",
+   "name": "IceCreamKiosk",
+   "tex": "@city/Kiosk_Icecream_Example.png",
+   "x": 476,
+   "y": 124,
+   "color": "#e0a0c0"
+  },
+  {
+   "kind": "prop",
+   "name": "BenchN1",
+   "tex": "@city/Bench_2.png",
+   "x": 72,
+   "y": 124,
+   "color": "#6a8a5a",
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "BenchN2",
+   "tex": "@city/Bench_2.png",
+   "x": 168,
+   "y": 124,
+   "color": "#6a8a5a",
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "BenchP1",
+   "tex": "@city/Bench_2.png",
+   "x": 240,
+   "y": 300,
+   "color": "#6a8a5a",
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "BenchP2",
+   "tex": "@city/Bench_2.png",
+   "x": 320,
+   "y": 300,
+   "color": "#6a8a5a",
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp1",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 232,
+   "y": 180,
+   "color": "#6a8a5a",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp2",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 344,
+   "y": 180,
+   "color": "#6a8a5a",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp3",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 120,
+   "y": 176,
+   "color": "#6a8a5a",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp4",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 480,
+   "y": 176,
+   "color": "#6a8a5a",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "InfoSign",
+   "tex": "@city/Info_Sign_2.png",
+   "x": 224,
+   "y": 128,
+   "color": "#6a8a5a",
+   "col": [
+    10,
+    4
+   ],
+   "off": [
+    0,
+    -2.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Bin1",
+   "tex": "@city/Trashbin_7.png",
+   "x": 208,
+   "y": 128,
+   "color": "#6a8a5a",
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree1",
+   "tex": "@city/Tree_11.png",
+   "x": 24,
+   "y": 60,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree2",
+   "tex": "@city/Tree_3.png",
+   "x": 88,
+   "y": 48,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree3",
+   "tex": "@city/Tree_5.png",
+   "x": 150,
+   "y": 70,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree4",
+   "tex": "@city/Tree_11.png",
+   "x": 232,
+   "y": 56,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree5",
+   "tex": "@city/Tree_7.png",
+   "x": 330,
+   "y": 60,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree6",
+   "tex": "@city/Tree_11.png",
+   "x": 400,
+   "y": 72,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree7",
+   "tex": "@city/Tree_3.png",
+   "x": 560,
+   "y": 60,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree8",
+   "tex": "@city/Tree_5.png",
+   "x": 24,
+   "y": 200,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree9",
+   "tex": "@city/Tree_11.png",
+   "x": 390,
+   "y": 250,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree10",
+   "tex": "@city/Tree_7.png",
+   "x": 450,
+   "y": 300,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree11",
+   "tex": "@city/Tree_11.png",
+   "x": 400,
+   "y": 380,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree12",
+   "tex": "@city/Tree_3.png",
+   "x": 470,
+   "y": 420,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree13",
+   "tex": "@city/Tree_5.png",
+   "x": 24,
+   "y": 300,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree14",
+   "tex": "@city/Tree_11.png",
+   "x": 272,
+   "y": 436,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree15",
+   "tex": "@city/Tree_7.png",
+   "x": 330,
+   "y": 430,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers1",
+   "tex": "@city/Flower_Bush_1.png",
+   "x": 200,
+   "y": 200,
+   "color": "#6a8a5a",
+   "col": [
+    30,
+    10
+   ],
+   "off": [
+    0,
+    -5.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers2",
+   "tex": "@city/Flower_Bush_1.png",
+   "x": 360,
+   "y": 200,
+   "color": "#6a8a5a",
+   "col": [
+    30,
+    10
+   ],
+   "off": [
+    0,
+    -5.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers3",
+   "tex": "@city/Flower_Bush_1.png",
+   "x": 200,
+   "y": 300,
+   "color": "#6a8a5a",
+   "col": [
+    30,
+    10
+   ],
+   "off": [
+    0,
+    -5.0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers4",
+   "tex": "@city/Flower_Bush_1.png",
+   "x": 360,
+   "y": 300,
+   "color": "#6a8a5a",
+   "col": [
+    30,
+    10
+   ],
+   "off": [
+    0,
+    -5.0
+   ]
+  },
+  {
+   "kind": "screen",
+   "name": "BasketballUse",
+   "id": "use_basketball",
+   "x": 136,
+   "y": 356,
+   "screen": "sport:basketball",
+   "prompt": "PROMPT_PLAY"
+  },
+  {
+   "kind": "screen",
+   "name": "SoccerUse",
+   "id": "use_football",
+   "x": 600,
+   "y": 396,
+   "screen": "sport:football",
+   "prompt": "PROMPT_PLAY"
+  },
+  {
+   "kind": "inspect",
+   "name": "CoffeeLook",
+   "id": "inspect_park_coffee",
+   "x": 376,
+   "y": 132,
+   "area": [
+    40,
+    10
+   ],
+   "lines": [
+    "FLAVOR_PARK_COFFEE"
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "IceCreamLook",
+   "id": "inspect_park_icecream",
+   "x": 476,
+   "y": 132,
+   "area": [
+    40,
+    10
+   ],
+   "lines": [
+    "FLAVOR_PARK_ICECREAM"
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "FountainLook",
+   "id": "inspect_park_fountain",
+   "x": 280,
+   "y": 264,
+   "area": [
+    30,
+    10
+   ],
+   "lines": [
+    "FLAVOR_PARK_FOUNTAIN"
+   ]
+  },
+  {
+   "kind": "spawn",
+   "name": "FromTown",
+   "id": "from_town",
+   "x": 272,
+   "y": 24,
+   "facing": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "TownGate",
+   "id": "door_park_town",
+   "x": 272,
+   "y": 6,
+   "area": [
+    44,
+    10
+   ],
+   "scene": "greyford_block",
+   "spawn": "from_park",
+   "prompt": "PROMPT_TO_TOWN"
+  },
+  {
+   "template": "anchors",
+   "points": {
+    "hoops": [
+     96,
+     330
+    ],
+    "goal": [
+     600,
+     176
+    ]
+   }
+  }
+ ]
+}

@@ -12,10 +12,13 @@ extends Node
 @onready var work: WorkScreen = $Work
 @onready var repair: RepairMinigame = $Repair
 @onready var epilogue: EpilogueScreen = $Epilogue
+var sport: SportMinigame
 
 
 func _ready() -> void:
 	add_child(WaitMenu.new())
+	sport = SportMinigame.new()
+	add_child(sport)
 	pause_menu.setup(hud)
 	journal.setup(hud)
 	SceneFlow.register_root(self)
@@ -42,7 +45,9 @@ func _on_screen_requested(screen: String) -> void:
 	if DialogueService.is_active:
 		await DialogueService.dialogue_ended
 		await get_tree().process_frame
-	if screen.begins_with("repair:"):
+	if screen.begins_with("sport:"):
+		sport.start(screen.trim_prefix("sport:"))
+	elif screen.begins_with("repair:"):
 		repair.start(StringName(screen.trim_prefix("repair:")))
 	elif screen == "epilogue":
 		epilogue.open()
