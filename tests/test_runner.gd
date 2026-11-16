@@ -1403,3 +1403,57 @@ func test_menus_fit_the_screen() -> void:
 			ui.queue_free()
 			await get_tree().process_frame
 	TranslationServer.set_locale(old)
+
+
+# --- R0: clarity (guidance, wait, settings) ----------------------------------------
+
+func test_quest_guide_says_where_and_when() -> void:
+	GameState.reset_for_new_game()
+	Journal.start_case(&"case_storeroom")
+	WorldClock.wait_until_hour(14)
+	var g := QuestGuide.target(&"case_storeroom")
+	check(g.get("scene", "") == "greyford_block" and not QuestGuide.when_ok(g), "storeroom: Greyford, not in daytime")
+	var text := QuestGuide.describe(g)
+	check(text.contains("T"), "daytime guide tells how to wait: " + text)
+	WorldClock.wait_until_hour(22)
+	check(QuestGuide.when_ok(g), "at night it's time")
+	check(QuestGuide.next_door(&"rented_room", &"greyford_block") == "ExitDoor", "route out of the room")
+	check(QuestGuide.next_door(&"greyford_block", &"rented_room") == "HomeDoor", "route home")
+	check(QuestGuide.next_door(&"rented_room", &"the_anchor") == "", "no route through doors that aren't there yet")
+	check(QuestGuide.next_door(&"greyford_block", &"greyford_block") == "", "no route when already there")
+	Journal.start_case(&"case_radio")
+	check(QuestGuide.target(&"case_radio").get("npc", "") == "edda_halloway", "radio: find Mrs Halloway")
+	GameState.reset_for_new_game()
+
+
+func test_every_open_step_has_a_guide() -> void:
+	for id: StringName in Journal.case_defs:
+		if String(id).begins_with("case_inc_"):
+			continue
+		for st: String in Journal.case_defs[id].get("stages", {}):
+			check(QuestGuide.guides().get(String(id), {}).has(st), "%s/%s has a guide" % [id, st])
+
+
+func test_settings_guidance_modes() -> void:
+	var old := GameSettings.guidance
+	GameSettings.set_guidance("minimal")
+	check(not GameSettings.shows_objective() and not GameSettings.shows_guide(), "minimal hides everything")
+	GameSettings.set_guidance("standard")
+	check(GameSettings.shows_objective() and not GameSettings.shows_guide(), "standard: objective only")
+	GameSettings.cycle_guidance()
+	check(GameSettings.guidance == "minimal", "cycles")
+	GameSettings.set_guidance("detailed")
+	check(GameSettings.shows_guide(), "detailed shows the guide")
+	GameSettings.set_guidance(old)
+	check(InputMap.has_action(&"wait"), "a wait key exists")
+
+
+func test_waiting_skips_to_the_hour() -> void:
+	GameState.reset_for_new_game()
+	WorldClock.wait_until_hour(10)
+	var day := WorldClock.day
+	WorldClock.wait_until_hour(18)
+	check(WorldClock.get_hour() == 18 and WorldClock.day == day, "waited until evening")
+	WorldClock.wait_until_hour(7)
+	check(WorldClock.get_hour() == 7 and WorldClock.day == day + 1, "waited until next morning")
+	GameState.reset_for_new_game()

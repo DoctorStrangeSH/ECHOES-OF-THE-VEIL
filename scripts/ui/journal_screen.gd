@@ -136,6 +136,10 @@ func _show_case(id: StringName) -> void:
 			var tick := "[x] " if o["done"] else "[ ] "
 			var opt := (tr("JOURNAL_OPTIONAL") + " ") if o["optional"] else ""
 			_detail.add_child(_label(tick + opt + Journal.objective_text(o), UiTheme.INK_DIM if o["done"] else UiTheme.INK, 8))
+		if GameSettings.shows_guide():
+			var guide := QuestGuide.describe(QuestGuide.target(id))
+			if guide != "":
+				_detail.add_child(_label(tr("GUIDE_HEADER") + " " + guide, UiTheme.ACCENT, 8))
 		var pin := Button.new()
 		pin.text = tr("JOURNAL_UNPIN") if Journal.pinned == id else tr("JOURNAL_PIN")
 		pin.pressed.connect(_toggle_pin.bind(id))

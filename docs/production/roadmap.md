@@ -1,3 +1,5 @@
+> **2.0:** the plan beyond M8 is in `docs/production/roadmap-2.0.ru.md` (D-065).
+
 # Production Roadmap
 
 This roadmap is milestone-based, not a promise of fixed calendar dates. Estimates should be revised after the first playable slice and asset audit. A solo developer using AI assistance should expect a substantial multi-year project if the intended scope remains large.

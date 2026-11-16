@@ -6,6 +6,7 @@ var _dim: ColorRect
 var _panel: PanelContainer
 var _buttons: VBoxContainer
 var _load_button: Button
+var _settings: SettingsScreen
 var _hud: Hud
 
 
@@ -70,8 +71,13 @@ func _on_load() -> void:
 
 
 func _on_language() -> void:
-	Localization.set_locale("en" if Localization.get_locale().begins_with("ru") else "ru")
-	_refresh_texts()
+	if _settings == null:
+		_settings = SettingsScreen.new()
+		add_child(_settings)
+		_settings.closed.connect(func() -> void:
+			_refresh_texts()
+			(_buttons.get_child(5) as Button).grab_focus())
+	_settings.open()
 
 
 func _on_main_menu() -> void:
@@ -80,7 +86,7 @@ func _on_main_menu() -> void:
 
 
 func _refresh_texts() -> void:
-	var keys := ["MENU_CONTINUE", "MENU_INVENTORY", "MENU_JOURNAL", "MENU_SAVE", "MENU_LOAD", "MENU_LANGUAGE", "MENU_MAIN_MENU", "MENU_QUIT"]
+	var keys := ["MENU_CONTINUE", "MENU_INVENTORY", "MENU_JOURNAL", "MENU_SAVE", "MENU_LOAD", "MENU_SETTINGS", "MENU_MAIN_MENU", "MENU_QUIT"]
 	for i in keys.size():
 		(_buttons.get_child(i) as Button).text = tr(keys[i])
 
