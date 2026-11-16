@@ -1516,3 +1516,16 @@ func test_park_sports_score_and_pay_once_a_day() -> void:
 	s.queue_free()
 	check(QuestGuide.next_door(&"greyford_block", &"greyford_park") == "ParkGate", "the park is reachable from the Old Quarter")
 	GameState.reset_for_new_game()
+
+
+func test_market_street_shops_and_people() -> void:
+	GameState.reset_for_new_game()
+	WorldClock.wait_until_hour(15)
+	check(QuestGuide.next_door(&"greyford_block", &"bakery") == "MarketPath", "Market Street is east of the Old Quarter")
+	check(QuestGuide.next_door(&"market_street", &"cafe") == "CafeDoor", "the café is open in the afternoon")
+	check(NpcRegistry.resolve(&"martha_pell").get("scene", "") == "bakery", "Martha bakes")
+	check(NpcRegistry.resolve(&"lou_ferrante").get("scene", "") == "cafe", "Lou minds the café")
+	check(Economy.shops().has("bakery") and Economy.shops().has("cafe"), "both sell food")
+	WorldClock.wait_until_hour(23)
+	check(QuestGuide.next_door(&"market_street", &"cafe") == "", "closed at night")
+	GameState.reset_for_new_game()

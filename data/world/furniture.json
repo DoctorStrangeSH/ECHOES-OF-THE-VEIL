@@ -443,5 +443,21 @@
  "workbench": {
   "tex": "@library/28.png",
   "depth": 10
+ },
+ "bread_shelf_b": {
+  "tex": "@grocery/202.png",
+  "depth": 12
+ },
+ "oven": {
+  "tex": "@kitchen/150.png",
+  "depth": 10
+ },
+ "counter_top": {
+  "tex": "@kitchen/93.png",
+  "depth": 10
+ },
+ "counter_front": {
+  "tex": "@kitchen/99.png",
+  "depth": 10
  }
 }

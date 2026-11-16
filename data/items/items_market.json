@@ -1,0 +1,46 @@
+{
+ "bread_roll": {
+  "category": "consumable",
+  "name": "ITEM_BREAD_ROLL",
+  "desc": "ITEM_BREAD_ROLL_DESC",
+  "color": "#d0a060",
+  "value": 3,
+  "stack": 9,
+  "use": {
+   "heal": 1
+  }
+ },
+ "meat_pie": {
+  "category": "consumable",
+  "name": "ITEM_MEAT_PIE",
+  "desc": "ITEM_MEAT_PIE_DESC",
+  "color": "#b07040",
+  "value": 7,
+  "stack": 9,
+  "use": {
+   "heal": 3
+  }
+ },
+ "ice_cream": {
+  "category": "consumable",
+  "name": "ITEM_ICE_CREAM",
+  "desc": "ITEM_ICE_CREAM_DESC",
+  "color": "#f0c0d0",
+  "value": 3,
+  "stack": 9,
+  "use": {
+   "heal": 1
+  }
+ },
+ "cocoa": {
+  "category": "consumable",
+  "name": "ITEM_COCOA",
+  "desc": "ITEM_COCOA_DESC",
+  "color": "#7a4a30",
+  "value": 5,
+  "stack": 9,
+  "use": {
+   "heal": 2
+  }
+ }
+}

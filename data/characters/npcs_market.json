@@ -1,0 +1,37 @@
+{
+ "martha_pell": {
+  "name": "NPC_MARTHA",
+  "premade": "Premade_Character_05",
+  "color": "#d0a080",
+  "dialogue": "martha",
+  "schedule": [
+   {
+    "period": [
+     "morning",
+     "afternoon",
+     "evening"
+    ],
+    "scene": "bakery",
+    "anchor": "counter",
+    "facing": "down"
+   }
+  ]
+ },
+ "lou_ferrante": {
+  "name": "NPC_LOU",
+  "premade": "Premade_Character_13",
+  "color": "#80a0d0",
+  "dialogue": "lou",
+  "schedule": [
+   {
+    "period": [
+     "afternoon",
+     "evening"
+    ],
+    "scene": "cafe",
+    "anchor": "counter",
+    "facing": "down"
+   }
+  ]
+ }
+}

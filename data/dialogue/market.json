@@ -1,0 +1,202 @@
+{
+ "martha": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "met.martha"
+    },
+    "node": "intro1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "intro1": {
+    "speaker": "NPC_MARTHA",
+    "text": "MARTHA_INTRO_1",
+    "next": "intro2"
+   },
+   "intro2": {
+    "speaker": "NPC_MARTHA",
+    "text": "MARTHA_INTRO_2",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "met.martha"
+     }
+    ]
+   },
+   "hub": {
+    "speaker": "NPC_MARTHA",
+    "text": "MARTHA_HUB",
+    "choices": [
+     {
+      "text": "MARKET_BUY",
+      "effects": [
+       {
+        "open_screen": "shop:bakery"
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "MARKET_TALK",
+      "if": {
+       "not_flag": "martha.talk1"
+      },
+      "next": "talk1"
+     },
+     {
+      "text": "MARKET_TALK",
+      "if": {
+       "not_flag": "martha.talk2",
+       "flag": "martha.talk1"
+      },
+      "next": "talk2"
+     },
+     {
+      "text": "MARKET_TALK",
+      "if": {
+       "not_flag": "martha.talk3",
+       "flag": "martha.talk2"
+      },
+      "next": "talk3"
+     },
+     {
+      "text": "MARKET_BYE",
+      "next": null
+     }
+    ]
+   },
+   "talk1": {
+    "speaker": "NPC_MARTHA",
+    "text": "MARTHA_TALK_1",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "martha.talk1"
+     }
+    ]
+   },
+   "talk2": {
+    "speaker": "NPC_MARTHA",
+    "text": "MARTHA_TALK_2",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "martha.talk2"
+     }
+    ]
+   },
+   "talk3": {
+    "speaker": "NPC_MARTHA",
+    "text": "MARTHA_TALK_3",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "martha.talk3"
+     }
+    ]
+   }
+  }
+ },
+ "lou": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "met.lou"
+    },
+    "node": "intro1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "intro1": {
+    "speaker": "NPC_LOU",
+    "text": "LOU_INTRO_1",
+    "next": "intro2"
+   },
+   "intro2": {
+    "speaker": "NPC_LOU",
+    "text": "LOU_INTRO_2",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "met.lou"
+     }
+    ]
+   },
+   "hub": {
+    "speaker": "NPC_LOU",
+    "text": "LOU_HUB",
+    "choices": [
+     {
+      "text": "MARKET_BUY",
+      "effects": [
+       {
+        "open_screen": "shop:cafe"
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "MARKET_TALK",
+      "if": {
+       "not_flag": "lou.talk1"
+      },
+      "next": "talk1"
+     },
+     {
+      "text": "MARKET_TALK",
+      "if": {
+       "not_flag": "lou.talk2",
+       "flag": "lou.talk1"
+      },
+      "next": "talk2"
+     },
+     {
+      "text": "MARKET_TALK",
+      "if": {
+       "not_flag": "lou.talk3",
+       "flag": "lou.talk2"
+      },
+      "next": "talk3"
+     },
+     {
+      "text": "MARKET_BYE",
+      "next": null
+     }
+    ]
+   },
+   "talk1": {
+    "speaker": "NPC_LOU",
+    "text": "LOU_TALK_1",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "lou.talk1"
+     }
+    ]
+   },
+   "talk2": {
+    "speaker": "NPC_LOU",
+    "text": "LOU_TALK_2",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "lou.talk2"
+     }
+    ]
+   },
+   "talk3": {
+    "speaker": "NPC_LOU",
+    "text": "LOU_TALK_3",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "lou.talk3"
+     }
+    ]
+   }
+  }
+ }
+}
