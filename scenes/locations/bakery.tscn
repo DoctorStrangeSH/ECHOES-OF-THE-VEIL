@@ -180,6 +180,11 @@ position = Vector2(176, 90)
 script = ExtResource("11_anchor")
 anchor_id = &"counter"
 
+[node name="A_hugh_table" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(96, 126)
+script = ExtResource("11_anchor")
+anchor_id = &"hugh_table"
+
 [node name="Entrance" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(120, 138)
 script = ExtResource("4_spawn")

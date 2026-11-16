@@ -116,3 +116,41 @@ def scatter(tex, name, points, color='#8a7f99', col=(0, 0), layer=None):
             n['layer'] = layer
         out.append(n)
     return out
+
+
+FENCE_SHEET = 'modern_farm/16x16/2_Fences_16x16.png'
+
+
+def fence(x, y, w, h, name, gate=(), gate_side='bottom'):
+    """A rail-fence pen, w x h tiles, top-left tile at (x, y) in tiles.
+    gate: tile indices left open along gate_side ('bottom' or 'top')."""
+    def piece(tx, ty, sx, sy, col, off, n):
+        return {'kind': 'prop', 'name': f'{name}{n}', 'tex': FENCE_SHEET, 'region': [sx * 16, sy * 16, 16, 16],
+                'x': tx * 16 + 8, 'y': ty * 16 + 16, 'col': col, 'off': off, 'color': '#8a6040'}
+    out, n = [], 0
+    for i in range(w):
+        last = i == w - 1
+        for row, sy, side in ((y, 6, 'top'), (y + h - 1, 8, 'bottom')):
+            if side == gate_side and i in gate:
+                continue
+            n += 1
+            out.append(piece(x + i, row, 7 if last else 6, sy, [16, 4], [0, -2], n))
+    for j in range(1, h - 1):
+        n += 1
+        out.append(piece(x, y + j, 6, 7, [4, 16], [-6, -8], n))
+        n += 1
+        out.append(piece(x + w - 1, y + j, 7, 7, [4, 16], [6, -8], n))
+    return out
+
+
+def field(x, y, cols, rows, name, prefix):
+    """A tilled field (tools/art/make_field.py makes its picture) with farm
+    plots on every inner square. x, y: top-left tile."""
+    out = [{'kind': 'prop', 'name': name, 'tex': f'derived/farm/field_{cols}x{rows}.png', 'x': x * 16 + cols * 8,
+            'y': (y + rows) * 16, 'col': [0, 0], 'off': [0, 0], 'layer': 'FloorDecor', 'color': '#7a5030'}]
+    k = 0
+    for j in range(1, rows - 1):
+        for i in range(1, cols - 1):
+            k += 1
+            out.append({'kind': 'plot', 'name': f'{name}Plot{k}', 'id': f'{prefix}_{k}', 'x': (x + i) * 16 + 8, 'y': (y + j) * 16 + 8})
+    return out

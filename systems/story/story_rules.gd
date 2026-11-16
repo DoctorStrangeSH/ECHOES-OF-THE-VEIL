@@ -18,6 +18,7 @@ extends RefCounted
 ##   {"stat_at_least": ["perception", 3]}  {"level_at_least": 5}
 ##   {"faction_at_least": ["civic", 2]}  {"faction_below": ["civic", 0]}  {"knows": ["npc", "fact"]}
 ##   {"not_knows": ["npc", "fact"]}
+##   {"farm": "owned" | "eggs" | "can_buy_hen" | "has_produce" | "can_afford"}
 ##   {"all": [c, ...]}  {"any": [c, ...]}  {"not": c}
 ##
 ## Effects (applied in order):
@@ -31,6 +32,7 @@ extends RefCounted
 ##   {"verdict": ["e", "authentic" | "edited" | "unreliable"]}  (judge a testimony)
 ##   {"first_match": [{"if": cond, "do": [effects]}, ...]}  (first branch that holds)
 ##   {"companion": "id" | ""}  (recruit a companion / send them home)
+##   {"farm": "collect_eggs" | "buy_hen" | "ship" | "pay"}  {"accept_job": "job"} (start a job without the board)
 ##   {"give_xp": n}  {"give_resonance": n}  {"faction": ["keepers", delta]}  {"tell": ["npc", "fact"]}  {"publish": "fact"}
 
 
@@ -120,6 +122,19 @@ static func _check(key: String, arg: Variant) -> bool:
 			return Livelihood.repair_level() >= int(arg)
 		"money_at_least":
 			return Inventory.money >= int(arg)
+		"farm":
+			match String(arg):
+				"owned":
+					return Farm.owned()
+				"eggs":
+					return Farm.eggs > 0
+				"can_buy_hen":
+					return Farm.hens < Farm.MAX_HENS
+				"has_produce":
+					return not Inventory.list("produce").is_empty()
+				"can_afford":
+					return Inventory.money >= Farm.price()
+			return false
 		"faction_at_least":
 			return Society.get_standing(StringName(arg[0])) >= int(arg[1])
 		"stat_at_least":  # ["perception", 3]
@@ -218,6 +233,10 @@ static func _apply_one(key: String, arg: Variant, whole: Dictionary) -> void:
 			Progression.add_xp(int(arg))
 		"give_resonance":
 			Inventory.add_resonance(int(arg))
+		"farm":
+			Farm.act(String(arg))
+		"accept_job":
+			Livelihood.take(StringName(arg))
 		"faction":
 			Society.change_standing(StringName(arg[0]), int(arg[1]))
 		"tell":

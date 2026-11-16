@@ -1613,6 +1613,46 @@ func test_talents_and_weapons() -> void:
 	GameState.is_playing = false
 
 
+func test_farm_grows_and_pays() -> void:
+	GameState.reset_for_new_game()
+	GameState.is_playing = true
+	check(not CityMap.known("brookside"), "the farm is not on the map at first")
+	GameState.set_flag(&"farm.route_known")
+	check(CityMap.known("brookside") and CityMap.fare_to("brookside") > CityMap.fare(), "heard of: the bus goes there, for more")
+	Inventory.add(&"seed_radish", 2, false)
+	check(not Farm.plant(&"t1", &"seed_radish"), "not yours yet")
+	GameState.set_flag(&"farm.owned")
+	check(Farm.plant(&"t1", &"seed_radish") and Farm.state(&"t1") == "growing", "planted")
+	check(not Farm.water(&"t1") or WorldClock.weather == "rain", "no can, no watering")
+	Inventory.add(&"watering_can", 1, false)
+	for i in 3:
+		if not Farm.is_watered(&"t1"):
+			check(Farm.water(&"t1"), "water day %d" % i)
+		WorldClock.sleep_until_hour(8)
+	check(Farm.state(&"t1") == "ready" and Farm.frame(&"t1", 7) == 6, "ripe after three watered days")
+	check(Farm.harvest(&"t1") and Inventory.has(&"radish") and Farm.state(&"t1") == "empty", "harvest, the plant is gone")
+	Farm.plant(&"t2", &"seed_radish")
+	WorldClock.sleep_until_hour(8)
+	var g := int(Farm.plots[&"t2"]["growth"])
+	check(g == (1 if WorldClock.weather_for_day(WorldClock.day - 1) == "rain" else 0), "unwatered dry day: no growth, no withering")
+	Farm.act("welcome")
+	var worth := Farm.ship_all()
+	check(worth > 0 and not Inventory.has(&"radish"), "the crate takes the harvest")
+	var money := Inventory.money
+	WorldClock.sleep_until_hour(8)
+	check(Inventory.money == money + worth and Farm.eggs == 2, "paid next morning; two hens, two eggs")
+	check(Farm.collect_eggs() == 2 and Inventory.has(&"egg", 2), "eggs")
+	Livelihood.take(&"farm_pump")
+	check(Livelihood.active.has(&"farm_pump") and not Livelihood.can_offer(&"farm_pump"), "Hugh's job is given in person, never on the board")
+	var d := GameState.to_dict()
+	GameState.reset_for_new_game()
+	check(Farm.plots.is_empty() and Farm.hens == 0, "reset")
+	GameState.from_dict(d)
+	check(Farm.plots.has(&"t2") and Farm.hens == 2, "the farm survives a save")
+	GameState.reset_for_new_game()
+	GameState.is_playing = false
+
+
 func test_xp_comes_from_play() -> void:
 	GameState.reset_for_new_game()
 	GameState.is_playing = true

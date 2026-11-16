@@ -1,0 +1,196 @@
+{
+ "id": "brook_farmhouse",
+ "name_key": "LOC_BROOK_FARMHOUSE",
+ "palette": "rented_room",
+ "options": {
+  "outdoors": false
+ },
+ "layout": {
+  "generator": "room",
+  "width": 16,
+  "height": 10,
+  "door_x": 7
+ },
+ "nodes": [
+  {
+   "kind": "furn",
+   "furn": "window",
+   "x": 72,
+   "y": 62
+  },
+  {
+   "kind": "furn",
+   "furn": "window",
+   "x": 168,
+   "y": 62
+  },
+  {
+   "kind": "furn",
+   "furn": "bookcase_jars",
+   "x": 38,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "fireplace_brick",
+   "x": 120,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "grandfather_clock",
+   "x": 96,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "stove",
+   "x": 184,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "fridge_b",
+   "x": 206,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "sink",
+   "x": 228,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "table_wood",
+   "x": 200,
+   "y": 110
+  },
+  {
+   "kind": "furn",
+   "furn": "chair_wood",
+   "x": 180,
+   "y": 108
+  },
+  {
+   "kind": "furn",
+   "furn": "chair_wood_b",
+   "x": 220,
+   "y": 108
+  },
+  {
+   "kind": "furn",
+   "furn": "rug_round",
+   "x": 120,
+   "y": 124
+  },
+  {
+   "kind": "furn",
+   "furn": "armchair_red",
+   "x": 96,
+   "y": 112
+  },
+  {
+   "kind": "furn",
+   "furn": "bed_double",
+   "x": 40,
+   "y": 130
+  },
+  {
+   "kind": "furn",
+   "furn": "nightstand",
+   "x": 64,
+   "y": 118
+  },
+  {
+   "kind": "furn",
+   "furn": "dresser_vase",
+   "x": 160,
+   "y": 140
+  },
+  {
+   "kind": "furn",
+   "furn": "plant_small",
+   "x": 230,
+   "y": 150
+  },
+  {
+   "kind": "inspect",
+   "name": "PhotoLook",
+   "id": "inspect_farm_photo",
+   "x": 160,
+   "y": 148,
+   "area": [
+    30,
+    10
+   ],
+   "dialogue": "farm_photo"
+  },
+  {
+   "kind": "inspect",
+   "name": "HearthLook",
+   "id": "inspect_farm_hearth",
+   "x": 120,
+   "y": 72,
+   "area": [
+    30,
+    10
+   ],
+   "lines": [
+    "FLAVOR_FARM_HEARTH"
+   ]
+  },
+  {
+   "kind": "rest",
+   "name": "BedRest",
+   "id": "rest_farm_bed",
+   "x": 40,
+   "y": 134,
+   "area": [
+    30,
+    14
+   ],
+   "show_if": {
+    "flag": "farm.owned"
+   }
+  },
+  {
+   "template": "anchors",
+   "points": {
+    "kitchen": [
+     232,
+     94
+    ],
+    "hearth": [
+     146,
+     96
+    ]
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "Entrance",
+   "id": "entrance",
+   "x": 120,
+   "y": 138,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ExitDoor",
+   "id": "door_farmhouse_exit",
+   "x": 120,
+   "y": 156,
+   "area": [
+    30,
+    10
+   ],
+   "scene": "brook_farm",
+   "spawn": "farmhouse_front",
+   "prompt": "PROMPT_EXIT"
+  }
+ ]
+}

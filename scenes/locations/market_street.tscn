@@ -488,3 +488,19 @@ script = ExtResource("5_inspect")
 interaction_id = &"inspect_gym"
 area_size = Vector2(40, 10)
 lines = PackedStringArray("FLAVOR_MARKET_GYM")
+
+[node name="FarmNotice" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(627, 300)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Sign_2_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.816,0.816,0.816, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="FarmNoticeRead" type="Area2D" parent="Entities"]
+position = Vector2(627, 306)
+script = ExtResource("5_inspect")
+interaction_id = &"read_farm_notice"
+area_size = Vector2(20, 12)
+prompt_key = "PROMPT_READ"
+dialogue_id = &"farm_notice"

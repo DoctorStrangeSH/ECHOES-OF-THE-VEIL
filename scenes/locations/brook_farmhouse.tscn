@@ -1,0 +1,235 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/location.gd" id="1_loc"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2_paint"]
+[ext_resource type="PackedScene" path="res://scenes/props/world_prop.tscn" id="3_prop"]
+[ext_resource type="Script" path="res://scripts/world/spawn_point.gd" id="4_spawn"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="5_inspect"]
+[ext_resource type="Script" path="res://scripts/interaction/door_interactable.gd" id="6_door"]
+[ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
+[ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+[ext_resource type="Script" path="res://scripts/world/conditional_visibility.gd" id="10_cond"]
+[ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
+[ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
+[ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+[ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
+[ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
+[ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
+[ext_resource type="PackedScene" path="res://scenes/world/repair_spot.tscn" id="17_spot"]
+[ext_resource type="PackedScene" path="res://scenes/world/screen_interactable.tscn" id="18_screen"]
+[ext_resource type="PackedScene" path="res://scenes/world/junk_pile.tscn" id="19_junk"]
+
+[node name="BrookFarmhouse" type="Node2D"]
+script = ExtResource("1_loc")
+location_id = &"brook_farmhouse"
+name_key = "LOC_BROOK_FARMHOUSE"
+outdoors = false
+
+[node name="Ground" type="TileMapLayer" parent="."]
+script = ExtResource("2_paint")
+palette_id = "rented_room"
+layout = "################
+#WWWWWWWWWWWWWW#
+#wwwwwwwwwwwwww#
+#ffffffffffffff#
+#ffffffffffffff#
+#ffffffffffffff#
+#ffffffffffffff#
+#ffffffffffffff#
+#ffffffffffffff#
+#######ff#######"
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="NpcAnchors" type="Node2D" parent="."]
+
+[node name="Window_72_62" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(72, 62)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_421.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Window_168_62" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(168, 62)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_421.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="BookcaseJars_38_64" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(38, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_45.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -13)
+
+[node name="FireplaceBrick_120_64" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(120, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_113.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(30, 12)
+collision_offset = Vector2(0, -14)
+
+[node name="GrandfatherClock_96_64" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(96, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_90.png"
+placeholder_size = Vector2i(16, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -12)
+
+[node name="Stove_184_64" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(184, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_148.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(14, 10)
+collision_offset = Vector2(0, -10)
+
+[node name="FridgeB_206_64" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(206, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_164.png"
+placeholder_size = Vector2i(16, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(11, 10)
+collision_offset = Vector2(-1.5, -5)
+
+[node name="Sink_228_64" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(228, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_141.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(22, 8)
+collision_offset = Vector2(1, -5)
+
+[node name="TableWood_200_110" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(200, 110)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_309.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(28, 12)
+collision_offset = Vector2(0, -12)
+
+[node name="ChairWood_180_108" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(180, 108)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_92.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -12)
+
+[node name="ChairWoodB_220_108" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(220, 108)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_93.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -12)
+
+[node name="RugRound_120_124" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(120, 124)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_386.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="ArmchairRed_96_112" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(96, 112)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_206.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(20, 8)
+collision_offset = Vector2(0, -14)
+
+[node name="BedDouble_40_130" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(40, 130)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_217.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(30, 30)
+collision_offset = Vector2(0, -25)
+
+[node name="Nightstand_64_118" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(64, 118)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_429.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(13, 8)
+collision_offset = Vector2(0.5, -10)
+
+[node name="DresserVase_160_140" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(160, 140)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_393.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(29, 10)
+collision_offset = Vector2(-0.5, -14)
+
+[node name="PlantSmall_230_150" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(230, 150)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_15.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -15)
+
+[node name="PhotoLook" type="Area2D" parent="Entities"]
+position = Vector2(160, 148)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_farm_photo"
+area_size = Vector2(30, 10)
+dialogue_id = &"farm_photo"
+
+[node name="HearthLook" type="Area2D" parent="Entities"]
+position = Vector2(120, 72)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_farm_hearth"
+area_size = Vector2(30, 10)
+lines = PackedStringArray("FLAVOR_FARM_HEARTH")
+
+[node name="BedRest" type="Area2D" parent="Entities"]
+position = Vector2(40, 134)
+script = ExtResource("7_rest")
+interaction_id = &"rest_farm_bed"
+area_size = Vector2(30, 14)
+
+[node name="Condition" type="Node" parent="Entities/BedRest"]
+script = ExtResource("10_cond")
+show_if = {"flag": "farm.owned"}
+
+[node name="A_kitchen" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(232, 94)
+script = ExtResource("11_anchor")
+anchor_id = &"kitchen"
+
+[node name="A_hearth" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(146, 96)
+script = ExtResource("11_anchor")
+anchor_id = &"hearth"
+
+[node name="Entrance" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(120, 138)
+script = ExtResource("4_spawn")
+spawn_id = &"entrance"
+facing = Vector2(0, -1)
+
+[node name="ExitDoor" type="Area2D" parent="Entities"]
+position = Vector2(120, 156)
+script = ExtResource("6_door")
+interaction_id = &"door_farmhouse_exit"
+area_size = Vector2(30, 10)
+prompt_key = "PROMPT_EXIT"
+target_scene_id = &"brook_farm"
+target_spawn_id = &"farmhouse_front"

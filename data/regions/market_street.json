@@ -853,6 +853,16 @@
    "lines": [
     "FLAVOR_MARKET_GYM"
    ]
+  },
+  {
+   "template": "sign",
+   "tex": "@farm/Sign_2_16x16.png",
+   "x": 627,
+   "y": 300,
+   "id": "read_farm_notice",
+   "name": "FarmNotice",
+   "dialogue": "farm_notice",
+   "width": 20
   }
  ]
 }

@@ -82,3 +82,11 @@ Decisions are recorded with date, status, and rationale. Revisit only when evide
 Weapons now have a style (fists, blade, heavy, thrust, staff, sling) and a rarity. The equipped weapon is drawn in the hand while attacking (WeaponSwing, arsenal icons at 16 px). Staffs and slings fire a Bolt: a small projectile with its own Hitbox. Sources are Jonah's shop (hatchet, sling), Veil-shard recipes (signal wand, lantern blade, coral trident) and expeditions: each finished run brings back the next relic weapon the player lacks.
 
 Talents live in data/progression/talents.json: four paths of three ordered steps, paid with talent points. A step either adds stat mods (through Progression.mod, so the usual Inventory.stat pipeline applies), adds characteristics, or names a special effect the code checks with Progression.has_special. Talents are saved inside the progression block; no schema change was needed.
+
+## D-068 Brookside Farm (R5)
+
+The farm is bought through a side case (case_brook_farm): a notice at the market bus stop or Martha's gossip, Hugh Penny's trial (mend the well, come back at dusk), Margaret's echo, her tin of letters, and a choice that sets the price (£120 or £90). Every step is said in the world as well as in the journal: Hugh names the hour, the well tells you to come back at sunset, Margaret names the tree.
+
+Districts can carry `open_if`: once you have heard of a place, the bus goes there before your first visit, and further districts have their own fare and ride time.
+
+Farming is deliberately forgiving: a crop grows one step per watered (or rainy) day and never withers; produce goes in the crate and is paid next morning; hens lay every night. Plots are Interactables generated from a `field` template over a derived soil picture (tools/art/make_field.py, private submodule); animals are decorative `critter` nodes. State lives in the Farm autoload and is saved under "farm" (no schema bump: missing means empty).

@@ -1,0 +1,773 @@
+{
+ "farm_notice": {
+  "entries": [
+   {
+    "if": {
+     "not_quest_started": "case_brook_farm"
+    },
+    "node": "n1"
+   }
+  ],
+  "start": "again",
+  "nodes": {
+   "n1": {
+    "text": "FARM_NOTICE_1",
+    "next": "n2"
+   },
+   "n2": {
+    "text": "FARM_NOTICE_2",
+    "next": null,
+    "effects": [
+     {
+      "quest_start": "case_brook_farm"
+     },
+     {
+      "set_flag": "farm.route_known"
+     }
+    ]
+   },
+   "again": {
+    "text": "FARM_NOTICE_AGAIN",
+    "next": null
+   }
+  }
+ },
+ "hugh": {
+  "entries": [
+   {
+    "if": {
+     "farm": "owned"
+    },
+    "node": "after"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_brook_farm",
+      "buy"
+     ]
+    },
+    "node": "buy"
+   },
+   {
+    "if": {
+     "all": [
+      {
+       "quest_stage": [
+        "case_brook_farm",
+        "tin"
+       ]
+      },
+      {
+       "has_item": "margaret_tin"
+      }
+     ]
+    },
+    "node": "tin1"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_brook_farm",
+      "tin"
+     ]
+    },
+    "node": "tin_wait"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_brook_farm",
+      "dusk"
+     ]
+    },
+    "node": "dusk1"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_brook_farm",
+      "pump"
+     ]
+    },
+    "node": "pump_wait"
+   },
+   {
+    "if": {
+     "not_flag": "met.hugh"
+    },
+    "node": "intro1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "intro1": {
+    "text": "HUGH_INTRO_1",
+    "next": "intro2",
+    "effects": [
+     {
+      "set_flag": "met.hugh"
+     }
+    ]
+   },
+   "intro2": {
+    "text": "HUGH_INTRO_2",
+    "speaker": "NPC_HUGH",
+    "next": "intro3"
+   },
+   "intro3": {
+    "text": "HUGH_INTRO_3",
+    "speaker": "NPC_HUGH",
+    "choices": [
+     {
+      "text": "HUGH_ASK_HOW",
+      "next": "task1"
+     },
+     {
+      "text": "HUGH_ASK_PRICE",
+      "next": "price"
+     }
+    ]
+   },
+   "price": {
+    "text": "HUGH_PRICE",
+    "speaker": "NPC_HUGH",
+    "choices": [
+     {
+      "text": "HUGH_ASK_HOW",
+      "next": "task1"
+     }
+    ]
+   },
+   "task1": {
+    "text": "HUGH_TASK_1",
+    "speaker": "NPC_HUGH",
+    "next": "task2",
+    "effects": [
+     {
+      "first_match": [
+       {
+        "if": {
+         "not_quest_started": "case_brook_farm"
+        },
+        "do": [
+         {
+          "quest_start": "case_brook_farm"
+         },
+         {
+          "set_flag": "farm.route_known"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "accept_job": "farm_pump"
+     },
+     {
+      "quest_stage": [
+       "case_brook_farm",
+       "pump"
+      ]
+     }
+    ]
+   },
+   "task2": {
+    "text": "HUGH_TASK_2",
+    "speaker": "NPC_HUGH",
+    "next": null
+   },
+   "hub": {
+    "text": "HUGH_HUB",
+    "speaker": "NPC_HUGH",
+    "choices": [
+     {
+      "text": "HUGH_ASK_HOW",
+      "next": "task1",
+      "if": {
+       "any": [
+        {
+         "not_quest_started": "case_brook_farm"
+        },
+        {
+         "quest_stage": [
+          "case_brook_farm",
+          "visit"
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "text": "MARKET_BYE",
+      "next": null
+     }
+    ]
+   },
+   "pump_wait": {
+    "text": "HUGH_PUMP_WAIT",
+    "speaker": "NPC_HUGH",
+    "next": "hub"
+   },
+   "dusk1": {
+    "text": "HUGH_DUSK_1",
+    "speaker": "NPC_HUGH",
+    "next": "dusk2"
+   },
+   "dusk2": {
+    "text": "HUGH_DUSK_2",
+    "speaker": "NPC_HUGH",
+    "next": "hub"
+   },
+   "tin_wait": {
+    "text": "HUGH_TIN_WAIT",
+    "speaker": "NPC_HUGH",
+    "next": "hub"
+   },
+   "tin1": {
+    "text": "HUGH_TIN_1",
+    "next": "tin2"
+   },
+   "tin2": {
+    "text": "HUGH_TIN_2",
+    "speaker": "NPC_HUGH",
+    "next": "tin3"
+   },
+   "tin3": {
+    "text": "HUGH_TIN_3",
+    "speaker": "NPC_HUGH",
+    "choices": [
+     {
+      "text": "FARM_TELL_TRUTH",
+      "next": "truth1",
+      "effects": [
+       {
+        "take_item": "margaret_tin"
+       },
+       {
+        "set_flag": "farm.price",
+        "value": 120
+       },
+       {
+        "set_flag": "farm.letters_home"
+       },
+       {
+        "relationship": [
+         "hugh_penny",
+         2
+        ]
+       },
+       {
+        "remember": [
+         "hugh_penny",
+         "told_truth_about_margaret"
+        ]
+       },
+       {
+        "quest_stage": [
+         "case_brook_farm",
+         "buy"
+        ]
+       }
+      ]
+     },
+     {
+      "text": "FARM_LEAVE_LETTERS",
+      "next": "stay1",
+      "effects": [
+       {
+        "take_item": "margaret_tin"
+       },
+       {
+        "set_flag": "farm.price",
+        "value": 90
+       },
+       {
+        "set_flag": "farm.letters_stay"
+       },
+       {
+        "relationship": [
+         "hugh_penny",
+         1
+        ]
+       },
+       {
+        "remember": [
+         "hugh_penny",
+         "letters_stay_home"
+        ]
+       },
+       {
+        "quest_stage": [
+         "case_brook_farm",
+         "buy"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "truth1": {
+    "text": "HUGH_TRUTH_1",
+    "speaker": "NPC_HUGH",
+    "next": "truth2"
+   },
+   "truth2": {
+    "text": "HUGH_TRUTH_2",
+    "speaker": "NPC_HUGH",
+    "next": "buy"
+   },
+   "stay1": {
+    "text": "HUGH_STAY_1",
+    "speaker": "NPC_HUGH",
+    "next": "stay2"
+   },
+   "stay2": {
+    "text": "HUGH_STAY_2",
+    "speaker": "NPC_HUGH",
+    "next": "buy"
+   },
+   "buy": {
+    "text": "HUGH_BUY",
+    "speaker": "NPC_HUGH",
+    "choices": [
+     {
+      "text": "FARM_PAY_120",
+      "next": "deal1",
+      "if": {
+       "all": [
+        {
+         "flag_equals": [
+          "farm.price",
+          120
+         ]
+        },
+        {
+         "farm": "can_afford"
+        }
+       ]
+      }
+     },
+     {
+      "text": "FARM_PAY_90",
+      "next": "deal1",
+      "if": {
+       "all": [
+        {
+         "flag_equals": [
+          "farm.price",
+          90
+         ]
+        },
+        {
+         "farm": "can_afford"
+        }
+       ]
+      }
+     },
+     {
+      "text": "FARM_NOT_YET",
+      "next": "wait_money"
+     }
+    ]
+   },
+   "wait_money": {
+    "text": "HUGH_WAIT_MONEY",
+    "speaker": "NPC_HUGH",
+    "next": null
+   },
+   "deal1": {
+    "text": "HUGH_DEAL_1",
+    "next": "deal2",
+    "effects": [
+     {
+      "farm": "pay"
+     },
+     {
+      "set_flag": "farm.owned"
+     },
+     {
+      "farm": "welcome"
+     },
+     {
+      "give_item": "watering_can"
+     },
+     {
+      "give_item": [
+       "seed_radish",
+       6
+      ]
+     },
+     {
+      "first_match": [
+       {
+        "if": {
+         "flag": "farm.letters_stay"
+        },
+        "do": [
+         {
+          "give_item": [
+           "seed_strawberry",
+           3
+          ]
+         },
+         {
+          "quest_complete": [
+           "case_brook_farm",
+           "letters_stay"
+          ]
+         }
+        ]
+       },
+       {
+        "if": {},
+        "do": [
+         {
+          "quest_complete": [
+           "case_brook_farm",
+           "letters_home"
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "give_xp": 40
+     }
+    ]
+   },
+   "deal2": {
+    "text": "HUGH_DEAL_2",
+    "speaker": "NPC_HUGH",
+    "next": "deal3"
+   },
+   "deal3": {
+    "text": "HUGH_DEAL_3",
+    "speaker": "NPC_HUGH",
+    "next": null
+   },
+   "after": {
+    "text": "HUGH_AFTER_HUB",
+    "speaker": "NPC_HUGH",
+    "choices": [
+     {
+      "text": "FARM_ASK_TIPS",
+      "next": "tips"
+     },
+     {
+      "text": "FARM_ASK_LETTERS",
+      "next": "letters_home",
+      "if": {
+       "flag": "farm.letters_home"
+      }
+     },
+     {
+      "text": "FARM_ASK_LETTERS",
+      "next": "letters_stay",
+      "if": {
+       "flag": "farm.letters_stay"
+      }
+     },
+     {
+      "text": "MARKET_BYE",
+      "next": null
+     }
+    ]
+   },
+   "tips": {
+    "text": "HUGH_TIPS",
+    "speaker": "NPC_HUGH",
+    "next": "after"
+   },
+   "letters_home": {
+    "text": "HUGH_LETTERS_HOME",
+    "speaker": "NPC_HUGH",
+    "next": "after"
+   },
+   "letters_stay": {
+    "text": "HUGH_LETTERS_STAY",
+    "speaker": "NPC_HUGH",
+    "next": "after"
+   }
+  }
+ },
+ "margaret": {
+  "entries": [],
+  "start": "m1",
+  "nodes": {
+   "m1": {
+    "text": "MARGARET_1",
+    "next": "m2"
+   },
+   "m2": {
+    "text": "MARGARET_2",
+    "speaker": "NPC_MARGARET",
+    "next": "m3"
+   },
+   "m3": {
+    "text": "MARGARET_3",
+    "speaker": "NPC_MARGARET",
+    "choices": [
+     {
+      "text": "MARGARET_ASK_SONG",
+      "next": "song"
+     },
+     {
+      "text": "MARGARET_ASK_WANT",
+      "next": "want"
+     }
+    ]
+   },
+   "song": {
+    "text": "MARGARET_SONG",
+    "speaker": "NPC_MARGARET",
+    "choices": [
+     {
+      "text": "MARGARET_ASK_WANT",
+      "next": "want"
+     }
+    ]
+   },
+   "want": {
+    "text": "MARGARET_WANT",
+    "speaker": "NPC_MARGARET",
+    "next": "bye",
+    "effects": [
+     {
+      "set_flag": "farm.heard_margaret"
+     }
+    ]
+   },
+   "bye": {
+    "text": "MARGARET_BYE",
+    "speaker": "NPC_MARGARET",
+    "next": null,
+    "effects": [
+     {
+      "quest_stage": [
+       "case_brook_farm",
+       "tin"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "farm_well": {
+  "entries": [
+   {
+    "if": {
+     "quest_stage": [
+      "case_brook_farm",
+      "pump"
+     ]
+    },
+    "node": "broken"
+   },
+   {
+    "if": {
+     "all": [
+      {
+       "quest_stage": [
+        "case_brook_farm",
+        "dusk"
+       ]
+      },
+      {
+       "period": "evening"
+      }
+     ]
+    },
+    "node": "dusk"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_brook_farm",
+      "dusk"
+     ]
+    },
+    "node": "dusk_day"
+   },
+   {
+    "if": {
+     "flag": "farm.well_fixed"
+    },
+    "node": "fixed"
+   }
+  ],
+  "start": "plain",
+  "nodes": {
+   "broken": {
+    "text": "WELL_BROKEN",
+    "next": null
+   },
+   "dusk": {
+    "text": "WELL_DUSK",
+    "next": null
+   },
+   "dusk_day": {
+    "text": "WELL_DUSK_DAY",
+    "next": null
+   },
+   "fixed": {
+    "text": "WELL_FIXED",
+    "next": null,
+    "effects": [
+     {
+      "heal_player": true
+     }
+    ]
+   },
+   "plain": {
+    "text": "WELL_PLAIN",
+    "next": null
+   }
+  }
+ },
+ "farm_apple": {
+  "entries": [
+   {
+    "if": {
+     "quest_stage": [
+      "case_brook_farm",
+      "tin"
+     ]
+    },
+    "node": "tin"
+   }
+  ],
+  "start": "plain",
+  "nodes": {
+   "tin": {
+    "text": "APPLE_TIN",
+    "next": null
+   },
+   "plain": {
+    "text": "APPLE_PLAIN",
+    "next": null
+   }
+  }
+ },
+ "farm_photo": {
+  "entries": [
+   {
+    "if": {
+     "all": [
+      {
+       "farm": "owned"
+      },
+      {
+       "flag": "farm.letters_stay"
+      }
+     ]
+    },
+    "node": "tin"
+   }
+  ],
+  "start": "plain",
+  "nodes": {
+   "tin": {
+    "text": "PHOTO_PLAIN",
+    "next": "tin2"
+   },
+   "tin2": {
+    "text": "PHOTO_TIN",
+    "next": null
+   },
+   "plain": {
+    "text": "PHOTO_PLAIN",
+    "next": null
+   }
+  }
+ },
+ "farm_coop": {
+  "entries": [
+   {
+    "if": {
+     "farm": "owned"
+    },
+    "node": "hub"
+   }
+  ],
+  "start": "hugh",
+  "nodes": {
+   "hugh": {
+    "text": "COOP_NOT_YOURS",
+    "next": null
+   },
+   "hub": {
+    "text": "COOP_HUB",
+    "choices": [
+     {
+      "text": "COOP_COLLECT",
+      "next": null,
+      "if": {
+       "farm": "eggs"
+      },
+      "effects": [
+       {
+        "farm": "collect_eggs"
+       }
+      ]
+     },
+     {
+      "text": "COOP_BUY_HEN",
+      "next": null,
+      "if": {
+       "farm": "can_buy_hen"
+      },
+      "effects": [
+       {
+        "farm": "buy_hen"
+       }
+      ]
+     },
+     {
+      "text": "COOP_LEAVE",
+      "next": null
+     }
+    ]
+   }
+  }
+ },
+ "farm_crate": {
+  "entries": [
+   {
+    "if": {
+     "farm": "owned"
+    },
+    "node": "hub"
+   }
+  ],
+  "start": "hugh",
+  "nodes": {
+   "hugh": {
+    "text": "CRATE_NOT_YOURS",
+    "next": null
+   },
+   "hub": {
+    "text": "CRATE_HUB",
+    "choices": [
+     {
+      "text": "CRATE_SHIP",
+      "next": null,
+      "if": {
+       "farm": "has_produce"
+      },
+      "effects": [
+       {
+        "farm": "ship"
+       }
+      ]
+     },
+     {
+      "text": "COOP_LEAVE",
+      "next": null
+     }
+    ]
+   }
+  }
+ }
+}

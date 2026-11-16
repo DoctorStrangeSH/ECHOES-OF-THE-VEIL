@@ -23,6 +23,7 @@ func _ready() -> void:
 	city_map = MapScreen.new()
 	add_child(city_map)
 	add_child(CharacterScreen.new())
+	add_child(SeedMenu.new())
 	pause_menu.setup(hud)
 	journal.setup(hud)
 	SceneFlow.register_root(self)

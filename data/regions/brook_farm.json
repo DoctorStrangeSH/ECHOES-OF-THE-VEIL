@@ -1,0 +1,1251 @@
+{
+ "id": "brook_farm",
+ "name_key": "LOC_BROOK_FARM",
+ "palette": "brookside",
+ "options": {
+  "outdoors": true
+ },
+ "layout": [
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggwwwwwwggggggggggggggggddgggggggggggggggggggggggg",
+  "ggwwwwwwggggggggggggggggddgggggggggggggggggggggggg",
+  "ggwwwwwwggggggggggggggggddgggggggggggggggggggggggg",
+  "ggwwwwwwggggggggggggggggddgggggggggggggggggggggggg",
+  "ggwwwwwwggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
+ ],
+ "nodes": [
+  {
+   "template": "building",
+   "tex": "@farm/Farmer_House_1_16x16.png",
+   "x": 400,
+   "y": 160,
+   "name": "Farmhouse",
+   "depth": 64,
+   "inset": 6,
+   "door": {
+    "id": "door_brook_farmhouse",
+    "scene": "brook_farmhouse",
+    "spawn": "entrance",
+    "x": 412,
+    "width": 18,
+    "spawn_id": "farmhouse_front"
+   }
+  },
+  {
+   "template": "building",
+   "tex": "@farm/Barn_Small_16x16.png",
+   "x": 640,
+   "y": 232,
+   "name": "Barn",
+   "depth": 72,
+   "inset": 8,
+   "inspect": {
+    "id": "inspect_brook_barn",
+    "lines": [
+     "FLAVOR_FARM_BARN"
+    ],
+    "width": 30
+   }
+  },
+  {
+   "template": "building",
+   "tex": "@farm/Silos_2_16x16.png",
+   "x": 740,
+   "y": 232,
+   "name": "Silo",
+   "depth": 40,
+   "inset": 10
+  },
+  {
+   "kind": "prop",
+   "name": "Tractor",
+   "tex": "@farm/Tractor_Right_Side_16x16.png",
+   "x": 540,
+   "y": 236,
+   "color": "#8a7a5a",
+   "col": [
+    70,
+    20
+   ],
+   "off": [
+    0,
+    -10
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "HayPile1",
+   "tex": "@farm/Hay_Fresh_Pile_16x16.png",
+   "x": 586,
+   "y": 252,
+   "color": "#8a7a5a",
+   "col": [
+    22,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "HayRake",
+   "tex": "@farm/Hay_Dry_Pile_Rake_Red_16x16.png",
+   "x": 700,
+   "y": 260,
+   "color": "#8a7a5a",
+   "col": [
+    22,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "MilkCan1",
+   "tex": "@farm/Milk_Can_1_16x16.png",
+   "x": 612,
+   "y": 250,
+   "color": "#8a7a5a",
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "MilkCan2",
+   "tex": "@farm/Milk_Can_2_16x16.png",
+   "x": 624,
+   "y": 252,
+   "color": "#8a7a5a",
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Sacks",
+   "tex": "@farm/Sack_Jute_Load_1_16x16.png",
+   "x": 672,
+   "y": 254,
+   "color": "#8a7a5a",
+   "col": [
+    26,
+    10
+   ],
+   "off": [
+    0,
+    -6
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "WellBroken",
+   "tex": "@farm/Well_Usable_No_Handle_16x16.png",
+   "x": 320,
+   "y": 208,
+   "color": "#8a7a5a",
+   "col": [
+    26,
+    12
+   ],
+   "off": [
+    0,
+    -6
+   ],
+   "show_if": {
+    "not_flag": "farm.well_fixed"
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "WellMended",
+   "tex": "@farm/Well_Usable_Bucket_Full_16x16.png",
+   "x": 324,
+   "y": 208,
+   "color": "#8a7a5a",
+   "col": [
+    30,
+    12
+   ],
+   "off": [
+    -4,
+    -6
+   ],
+   "show_if": {
+    "flag": "farm.well_fixed"
+   }
+  },
+  {
+   "kind": "inspect",
+   "name": "WellLook",
+   "id": "inspect_farm_well",
+   "x": 320,
+   "y": 216,
+   "area": [
+    30,
+    12
+   ],
+   "dialogue": "farm_well"
+  },
+  {
+   "kind": "spot",
+   "name": "WellSpot",
+   "id": "repair_farm_well",
+   "x": 320,
+   "y": 214,
+   "spot": "farm_well"
+  },
+  {
+   "kind": "prop",
+   "name": "OldApple",
+   "tex": "@fruit/Fruit_Tree_Apple_Ripe_Big_16x16.png",
+   "x": 252,
+   "y": 240,
+   "color": "#4a8a3a",
+   "col": [
+    16,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "AppleLook",
+   "id": "inspect_farm_apple",
+   "x": 252,
+   "y": 248,
+   "area": [
+    40,
+    12
+   ],
+   "dialogue": "farm_apple"
+  },
+  {
+   "kind": "pickup",
+   "name": "TinPickup",
+   "x": 270,
+   "y": 252,
+   "item": "margaret_tin",
+   "flag": "farm.tin_found",
+   "show_if": {
+    "quest_stage": [
+     "case_brook_farm",
+     "tin"
+    ]
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "Doghouse",
+   "tex": "@farm/Doghouse_16x16.png",
+   "x": 476,
+   "y": 176,
+   "color": "#8a7a5a",
+   "col": [
+    28,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "template": "fence",
+   "x": 2,
+   "y": 2,
+   "w": 12,
+   "h": 8,
+   "name": "PastureFence",
+   "gate": [
+    10
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Trough",
+   "tex": "@farm/Drinking_Trough_Horizontal_Full_16x16.png",
+   "x": 120,
+   "y": 140,
+   "color": "#8a7a5a",
+   "col": [
+    30,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Manger",
+   "tex": "@farm/Hay_Manger_Horizontal_Full_16x16.png",
+   "x": 64,
+   "y": 80,
+   "color": "#8a7a5a",
+   "col": [
+    28,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "critter",
+   "name": "Cow1",
+   "tex": "@animal/Cows/Cow_16x16.png",
+   "frame": 48,
+   "x": 90,
+   "y": 110,
+   "pen": [
+    -50,
+    -40,
+    100,
+    70
+   ],
+   "speed": 8
+  },
+  {
+   "kind": "critter",
+   "name": "Cow2",
+   "tex": "@animal/Cows/Cow_Caramel_16x16.png",
+   "frame": 48,
+   "x": 150,
+   "y": 90,
+   "pen": [
+    -50,
+    -40,
+    100,
+    70
+   ],
+   "speed": 8
+  },
+  {
+   "kind": "critter",
+   "name": "Cow3",
+   "tex": "@animal/Cows/Cow_Big_White_16x16.png",
+   "frame": 48,
+   "x": 170,
+   "y": 140,
+   "pen": [
+    -50,
+    -40,
+    100,
+    70
+   ],
+   "speed": 8
+  },
+  {
+   "kind": "prop",
+   "name": "CowSign",
+   "tex": "@farm/Cow_Sign_16x16.png",
+   "x": 232,
+   "y": 168,
+   "color": "#8a7a5a",
+   "col": [
+    4,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "template": "field",
+   "x": 28,
+   "y": 21,
+   "cols": 10,
+   "rows": 5,
+   "name": "Field",
+   "prefix": "brook"
+  },
+  {
+   "kind": "prop",
+   "name": "Scarecrow",
+   "tex": "@farm/Scarecrow_16x16.png",
+   "x": 632,
+   "y": 372,
+   "color": "#8a7a5a",
+   "col": [
+    6,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "template": "fixture",
+   "tex": "@farm/Canopy_Tools_Big_16x16.png",
+   "x": 480,
+   "y": 304,
+   "name": "SeedCanopy",
+   "col": [
+    60,
+    14
+   ],
+   "use": {
+    "kind": "screen",
+    "id": "use_farm_seeds",
+    "screen": "shop:farm_seeds",
+    "prompt": "PROMPT_SEED_BOX",
+    "y": 312
+   }
+  },
+  {
+   "template": "fixture",
+   "tex": "@farm/Crate_Brown_Empty_16x16.png",
+   "x": 430,
+   "y": 388,
+   "name": "ShipCrate",
+   "col": [
+    28,
+    10
+   ],
+   "use": {
+    "kind": "inspect",
+    "id": "use_farm_crate",
+    "dialogue": "farm_crate",
+    "prompt": "PROMPT_CRATE",
+    "y": 394,
+    "area": [
+     30,
+     12
+    ]
+   }
+  },
+  {
+   "template": "fence",
+   "x": 41,
+   "y": 22,
+   "w": 8,
+   "h": 7,
+   "name": "CoopFence",
+   "gate": [
+    1
+   ],
+   "gate_side": "top"
+  },
+  {
+   "kind": "prop",
+   "name": "Coop",
+   "tex": "@farm/Chicken_Coop_16x16.png",
+   "x": 738,
+   "y": 430,
+   "color": "#8a7a5a",
+   "col": [
+    60,
+    30
+   ],
+   "off": [
+    0,
+    -15
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "CoopUse",
+   "id": "use_farm_coop",
+   "x": 738,
+   "y": 438,
+   "area": [
+    34,
+    10
+   ],
+   "dialogue": "farm_coop",
+   "prompt": "PROMPT_COOP"
+  },
+  {
+   "kind": "prop",
+   "name": "Nest",
+   "tex": "@farm/Nest_Chicken_16x16.png",
+   "x": 684,
+   "y": 412,
+   "color": "#8a7a5a",
+   "col": [
+    26,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "ChickenSign",
+   "tex": "@farm/Chicken_Sign_16x16.png",
+   "x": 662,
+   "y": 350,
+   "color": "#8a7a5a",
+   "col": [
+    4,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "critter",
+   "name": "Hen1",
+   "tex": "@animal/Chickens_and_Roosters/Chicken_White_16x16.png",
+   "frame": 16,
+   "x": 684,
+   "y": 410,
+   "pen": [
+    -16,
+    -12,
+    40,
+    30
+   ],
+   "speed": 12,
+   "hen": 1
+  },
+  {
+   "kind": "critter",
+   "name": "Hen2",
+   "tex": "@animal/Chickens_and_Roosters/Chicken_Brown_16x16.png",
+   "frame": 16,
+   "x": 720,
+   "y": 460,
+   "pen": [
+    -16,
+    -12,
+    40,
+    30
+   ],
+   "speed": 12,
+   "hen": 2
+  },
+  {
+   "kind": "critter",
+   "name": "Hen3",
+   "tex": "@animal/Chickens_and_Roosters/Chicken_Golden_16x16.png",
+   "frame": 16,
+   "x": 760,
+   "y": 460,
+   "pen": [
+    -16,
+    -12,
+    40,
+    30
+   ],
+   "speed": 12,
+   "hen": 3
+  },
+  {
+   "kind": "critter",
+   "name": "Hen4",
+   "tex": "@animal/Chickens_and_Roosters/Rooster_Brown_16x16.png",
+   "frame": 16,
+   "x": 700,
+   "y": 440,
+   "pen": [
+    -16,
+    -12,
+    40,
+    30
+   ],
+   "speed": 12,
+   "hen": 4
+  },
+  {
+   "kind": "prop",
+   "name": "Tree1",
+   "tex": "@ftree/Tree_Pine_Green_Big_16x16.png",
+   "x": 264,
+   "y": 96,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree2",
+   "tex": "@ftree/Tree_Oak_Green_Big_16x16.png",
+   "x": 532,
+   "y": 104,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree4",
+   "tex": "@ftree/Tree_Birch_Green_Medium_16x16.png",
+   "x": 774,
+   "y": 112,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree5",
+   "tex": "@ftree/Tree_Oak_Green_Huge_16x16.png",
+   "x": 60,
+   "y": 330,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree6",
+   "tex": "@ftree/Tree_Pine_Green_Big_16x16.png",
+   "x": 140,
+   "y": 300,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree7",
+   "tex": "@ftree/Tree_Birch_Green_Medium_16x16.png",
+   "x": 774,
+   "y": 300,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree8",
+   "tex": "@ftree/Tree_Pine_Green_Big_16x16.png",
+   "x": 40,
+   "y": 470,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree9",
+   "tex": "@ftree/Tree_Oak_Green_Big_16x16.png",
+   "x": 230,
+   "y": 460,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree10",
+   "tex": "@ftree/Tree_Birch_Green_Medium_16x16.png",
+   "x": 320,
+   "y": 300,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "PondRock",
+   "tex": "@farm/Rock_Big_16x16.png",
+   "x": 136,
+   "y": 420,
+   "color": "#8a7a5a",
+   "col": [
+    20,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Log",
+   "tex": "@farm/Trunk_Big_1_16x16.png",
+   "x": 176,
+   "y": 350,
+   "color": "#8a7a5a",
+   "col": [
+    18,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers1",
+   "tex": "@farm/Grass_Tufts_Flowers_1.png",
+   "x": 300,
+   "y": 250,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers2",
+   "tex": "@farm/Grass_Tufts_Flowers_2.png",
+   "x": 352,
+   "y": 262,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers3",
+   "tex": "@farm/Grass_Tufts_Flowers_3.png",
+   "x": 228,
+   "y": 240,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers4",
+   "tex": "@farm/Grass_Tufts_Flowers_4.png",
+   "x": 452,
+   "y": 214,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers5",
+   "tex": "@farm/Grass_Tufts_Flowers_5.png",
+   "x": 520,
+   "y": 180,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers6",
+   "tex": "@farm/Grass_Tufts_Flowers_6.png",
+   "x": 166,
+   "y": 220,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers7",
+   "tex": "@farm/Grass_Tufts_Flowers_7.png",
+   "x": 260,
+   "y": 380,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers8",
+   "tex": "@farm/Grass_Tufts_Flowers_8.png",
+   "x": 350,
+   "y": 420,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers9",
+   "tex": "@farm/Grass_Tufts_Flowers_9.png",
+   "x": 392,
+   "y": 452,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers10",
+   "tex": "@farm/Grass_Tufts_Flowers_10.png",
+   "x": 520,
+   "y": 450,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers11",
+   "tex": "@farm/Grass_Tufts_Flowers_11.png",
+   "x": 600,
+   "y": 452,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers12",
+   "tex": "@farm/Grass_Tufts_Flowers_1.png",
+   "x": 110,
+   "y": 250,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers13",
+   "tex": "@farm/Grass_Tufts_Flowers_2.png",
+   "x": 300,
+   "y": 470,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers14",
+   "tex": "@farm/Grass_Tufts_Flowers_3.png",
+   "x": 470,
+   "y": 470,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers15",
+   "tex": "@farm/Grass_Tufts_Flowers_4.png",
+   "x": 708,
+   "y": 180,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers16",
+   "tex": "@farm/Grass_Tufts_Flowers_5.png",
+   "x": 756,
+   "y": 180,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers17",
+   "tex": "@farm/Grass_Tufts_Flowers_6.png",
+   "x": 36,
+   "y": 180,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers18",
+   "tex": "@farm/Grass_Tufts_Flowers_7.png",
+   "x": 200,
+   "y": 30,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers19",
+   "tex": "@farm/Grass_Tufts_Flowers_8.png",
+   "x": 330,
+   "y": 40,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers20",
+   "tex": "@farm/Grass_Tufts_Flowers_9.png",
+   "x": 470,
+   "y": 50,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers21",
+   "tex": "@farm/Grass_Tufts_Flowers_10.png",
+   "x": 690,
+   "y": 60,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "BusStopSign",
+   "tex": "@vehicle/Bus_Stop_Sign_1.png",
+   "x": 440,
+   "y": 488,
+   "color": "#3060a0",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "screen",
+   "name": "BusStopUse",
+   "id": "use_bus_stop",
+   "x": 440,
+   "y": 496,
+   "screen": "map:travel",
+   "prompt": "PROMPT_BUS"
+  },
+  {
+   "kind": "spawn",
+   "name": "BusStopSpawn",
+   "id": "bus_stop",
+   "x": 424,
+   "y": 500,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "template": "sign",
+   "tex": "@farm/Sign_1_16x16.png",
+   "x": 368,
+   "y": 470,
+   "id": "read_farm_gate_sign",
+   "name": "GateSign",
+   "lines": [
+    "FLAVOR_FARM_GATE_SIGN"
+   ]
+  },
+  {
+   "template": "anchors",
+   "points": {
+    "porch": [
+     440,
+     186
+    ],
+    "field_edge": [
+     430,
+     340
+    ],
+    "well_side": [
+     344,
+     214
+    ]
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "Barrow",
+   "tex": "@farm/Wood_Board_Load_16x16.png",
+   "x": 470,
+   "y": 450,
+   "col": [
+    18,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#8a6040"
+  },
+  {
+   "kind": "prop",
+   "name": "Bucket",
+   "tex": "@farm/Bucket_Load_16x16.png",
+   "x": 356,
+   "y": 214,
+   "col": [
+    12,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#8a8a8a"
+  },
+  {
+   "kind": "prop",
+   "name": "HarvestBox",
+   "tex": "@farm/Box_Load_16x16.png",
+   "x": 640,
+   "y": 440,
+   "col": [
+    28,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#8a6040"
+  }
+ ]
+}

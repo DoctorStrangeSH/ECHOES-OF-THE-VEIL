@@ -93,7 +93,7 @@ func job(id: StringName) -> Dictionary:
 
 func can_offer(id: StringName) -> bool:
 	var d := job(id)
-	if d.is_empty() or (bool(d.get("once", false)) and done_once.has(id)):
+	if d.is_empty() or (bool(d.get("once", false)) and done_once.has(id)) or not bool(d.get("board", true)):
 		return false
 	return StoryRules.evaluate(d.get("requires"))
 
@@ -120,6 +120,15 @@ func accept(id: StringName) -> bool:
 	Sfx.play(&"ui_click")
 	changed.emit()
 	return true
+
+
+## A job given in person (a story effect), not picked from the board.
+func take(id: StringName) -> void:
+	if job(id).is_empty() or active.has(id) or (bool(job(id).get("once", false)) and done_once.has(id)):
+		return
+	offered.erase(id)
+	active.append(id)
+	changed.emit()
 
 
 func abandon(id: StringName) -> void:

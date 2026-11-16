@@ -1,5 +1,6 @@
 {
  "_doc": "Per-location performance budgets, checked by tests/test_runner.gd (test_location_budgets). 'default' applies to every location; add an entry named after a location id to override single limits. nodes: all nodes in the scene file; props: WorldProp sprites; interactables: Area2D interactions; tiles: painted cells; instantiate_ms: time to instance the scene (generous: CI machines are slow).",
  "default": {"nodes": 400, "props": 90, "interactables": 60, "npcs": 12, "enemies": 12, "tiles": 1600, "instantiate_ms": 250},
- "greyford_block": {"nodes": 500, "props": 120}
+ "greyford_block": {"nodes": 500, "props": 120},
+ "brook_farm": {"props": 130, "tiles": 1800, "nodes": 450}
 }

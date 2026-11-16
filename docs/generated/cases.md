@@ -153,6 +153,24 @@ flowchart LR
 
 Evidence that advances this case: `e_rook_stamp`
 
+## case_brook_farm — Brookside
+
+```mermaid
+flowchart LR
+  case_brook_farm_visit["visit<br/>Take the bus from the market to the las…"]
+  case_brook_farm_pump["pump<br/>Mend the winch of the well by the farmh…"]
+  case_brook_farm_dusk["dusk<br/>Come to the well at sunset, after six i…"]
+  case_brook_farm_tin["tin<br/>Margaret asked you to find a tin box un…"]
+  case_brook_farm_buy["buy<br/>Hugh will sell. Gather the money and sh…"]
+  case_brook_farm_visit --> case_brook_farm_pump
+  case_brook_farm_pump --> case_brook_farm_dusk
+  case_brook_farm_dusk --> case_brook_farm_tin
+  case_brook_farm_tin --> case_brook_farm_buy
+  case_brook_farm_out_letters_home(["outcome: letters_home<br/>The farm is yours. Hugh took …"])
+  case_brook_farm_out_letters_stay(["outcome: letters_stay<br/>The farm is yours. Margaret's…"])
+  case_brook_farm_START(("start")) --> case_brook_farm_visit
+```
+
 ## case_door — The Door That Shouldn't Be There
 
 ```mermaid

@@ -30,6 +30,8 @@ static func known(id: String) -> bool:
 	var d: Dictionary = districts().get(id, {})
 	if d.is_empty() or not StoryRules.evaluate(d.get("known_if", {})):
 		return false
+	if d.has("open_if") and StoryRules.evaluate(d["open_if"]):
+		return true  # heard of it: the bus goes there before you have been
 	for s: String in d.get("scenes", []):
 		if GameState.has_flag(StringName("visited." + s)):
 			return true
@@ -50,17 +52,22 @@ static func fare() -> int:
 	return int(data().get("fare", 2))
 
 
+## A district further out can cost more and take longer.
+static func fare_to(id: String) -> int:
+	return int(districts().get(id, {}).get("fare", fare()))
+
+
 ## Ride the bus. Returns false if it can't be done (unknown stop, no money).
 static func ride(to: String) -> bool:
 	var d: Dictionary = districts().get(to, {})
 	var stop: Variant = d.get("stop")
 	if stop == null or not known(to):
 		return false
-	if Inventory.money < fare():
+	if Inventory.money < fare_to(to):
 		EventHub.toast_requested.emit(TranslationServer.translate("BUS_NO_MONEY"))
 		return false
-	Inventory.money -= fare()
-	WorldClock.advance_minutes(int(data().get("ride_minutes", 20)))
+	Inventory.money -= fare_to(to)
+	WorldClock.advance_minutes(int(d.get("ride_minutes", data().get("ride_minutes", 20))))
 	EventHub.toast_requested.emit(String(TranslationServer.translate("BUS_RIDE")) % TranslationServer.translate(String(d["name"])))
 	SceneFlow.travel(StringName(stop[0]), StringName(stop[1]))
 	return true

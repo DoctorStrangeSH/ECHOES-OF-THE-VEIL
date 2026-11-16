@@ -1,0 +1,57 @@
+{
+ "_doc": "Crops (R5). seed/produce: item ids. days: watered days to ripen. regrow: days to fruit again after a harvest (0 = the plant is gone). yield: produce per harvest. sheet: growth stages left to right, frames 16 wide and frame_h tall (the rest of the sheet is the pack's labels), the last one ripe.",
+ "radish": {
+  "seed": "seed_radish",
+  "produce": "radish",
+  "days": 3,
+  "regrow": 0,
+  "yield": 1,
+  "sheet": "modern_farm/16x16/Crops_Growth_16x16/Radish_Growth_Stages_16x16.png",
+  "frame_h": 16
+ },
+ "carrot": {
+  "seed": "seed_carrot",
+  "produce": "carrot",
+  "days": 4,
+  "regrow": 0,
+  "yield": 1,
+  "sheet": "modern_farm/16x16/Crops_Growth_16x16/Carrot_Growth_Stages_16x16.png",
+  "frame_h": 16
+ },
+ "turnip": {
+  "seed": "seed_turnip",
+  "produce": "turnip",
+  "days": 4,
+  "regrow": 0,
+  "yield": 2,
+  "sheet": "modern_farm/16x16/Crops_Growth_16x16/Turnip_Growth_Stages_16x16.png",
+  "frame_h": 16
+ },
+ "tomato": {
+  "seed": "seed_tomato",
+  "produce": "tomato",
+  "days": 6,
+  "regrow": 3,
+  "yield": 2,
+  "sheet": "modern_farm/16x16/Crops_Growth_16x16/Tomato_Growth_Stages_16x16.png",
+  "frame_h": 32
+ },
+ "strawberry": {
+  "seed": "seed_strawberry",
+  "produce": "strawberry",
+  "days": 5,
+  "regrow": 2,
+  "yield": 1,
+  "sheet": "modern_farm/16x16/Crops_Growth_16x16/Strawberry_Growth_Stages_16x16.png",
+  "frame_h": 16
+ },
+ "pumpkin": {
+  "seed": "seed_pumpkin",
+  "produce": "pumpkin",
+  "days": 8,
+  "regrow": 0,
+  "yield": 1,
+  "sheet": "modern_farm/16x16/Crops_Growth_16x16/Pumpkin_Growth_Stages_16x16.png",
+  "frame_h": 32
+ }
+}
