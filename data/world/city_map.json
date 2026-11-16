@@ -1,0 +1,106 @@
+{
+ "_doc": "City map (R2d). Districts: map position (on a 360x200 canvas), the scenes they contain (interiors count as their street), the bus stop spawn, and when the district is known. Bus rides cost a fare and take time.",
+ "fare": 2,
+ "ride_minutes": 20,
+ "districts": {
+  "old_quarter": {
+   "name": "MAP_OLD_QUARTER",
+   "pos": [
+    150,
+    95
+   ],
+   "scenes": [
+    "greyford_block",
+    "rented_room",
+    "municipal_archive",
+    "keepers_rooms",
+    "theo_flat",
+    "theo_new_room",
+    "rook_storeroom",
+    "rook_shop"
+   ],
+   "stop": [
+    "greyford_block",
+    "bus_stop"
+   ]
+  },
+  "gardens": {
+   "name": "MAP_GARDENS",
+   "pos": [
+    150,
+    160
+   ],
+   "scenes": [
+    "greyford_park"
+   ],
+   "stop": [
+    "greyford_park",
+    "bus_stop"
+   ]
+  },
+  "market": {
+   "name": "MAP_MARKET",
+   "pos": [
+    250,
+    100
+   ],
+   "scenes": [
+    "market_street",
+    "bakery",
+    "cafe"
+   ],
+   "stop": [
+    "market_street",
+    "bus_stop"
+   ]
+  },
+  "lighthouse": {
+   "name": "MAP_LIGHTHOUSE",
+   "pos": [
+    50,
+    60
+   ],
+   "scenes": [
+    "lighthouse_point"
+   ],
+   "stop": null
+  },
+  "north_quay": {
+   "name": "MAP_NORTH_QUAY",
+   "pos": [
+    285,
+    40
+   ],
+   "scenes": [
+    "north_quay",
+    "flooded_underpass",
+    "underpass_archive"
+   ],
+   "stop": [
+    "north_quay",
+    "bus_stop"
+   ],
+   "known_if": {
+    "flag": "act.act3"
+   }
+  }
+ },
+ "roads": [
+  [
+   "old_quarter",
+   "gardens"
+  ],
+  [
+   "old_quarter",
+   "market"
+  ],
+  [
+   "old_quarter",
+   "lighthouse"
+  ],
+  [
+   "old_quarter",
+   "north_quay"
+  ]
+ ]
+}

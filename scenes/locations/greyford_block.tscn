@@ -847,3 +847,14 @@ position = Vector2(620, 272)
 script = ExtResource("4_spawn")
 spawn_id = &"from_market"
 facing = Vector2(-1, 0)
+
+[node name="BusStopUse" parent="Entities" instance=ExtResource("18_screen")]
+position = Vector2(300, 374)
+interaction_id = &"use_bus_stop"
+screen = "map:travel"
+
+[node name="BusStopSpawn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(300, 382)
+script = ExtResource("4_spawn")
+spawn_id = &"bus_stop"
+facing = Vector2(0, 1)

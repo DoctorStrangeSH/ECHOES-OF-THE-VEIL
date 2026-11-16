@@ -96,6 +96,7 @@ func _enter_location(scene_id: StringName) -> void:
 		GameState.current_spawn_id = GameState.NEW_GAME_SPAWN
 		GameState.pending_position = null
 	await _transition(_swap_to_location.bind(scene_id))
+	GameState.set_flag(StringName("visited." + String(scene_id)))
 	location_entered.emit(scene_id)
 
 

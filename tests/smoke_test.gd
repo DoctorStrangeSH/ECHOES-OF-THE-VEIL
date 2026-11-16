@@ -509,6 +509,18 @@ func _ready() -> void:
 	SceneFlow.travel(&"greyford_block", &"from_park")
 	await _wait_location(&"greyford_block")
 
+	_step = "city: the number 11 bus"
+	GameState.set_flag(&"visited.market_street")
+	Inventory.money += 5
+	var fare_before := Inventory.money
+	EventHub.screen_requested.emit("map:travel")
+	await _frames(5)
+	(get_child(0).city_map as MapScreen)._ride("market")
+	await _wait_location(&"market_street")
+	_assert(Inventory.money == fare_before - CityMap.fare(), "a bus ride costs the fare")
+	SceneFlow.travel(&"greyford_block", &"bus_stop")
+	await _wait_location(&"greyford_block")
+
 	_step = "endgame: an expedition with combined mechanics"
 	SceneFlow.travel(&"echo_ward", &"rift_return")
 	await _wait_location(&"echo_ward")

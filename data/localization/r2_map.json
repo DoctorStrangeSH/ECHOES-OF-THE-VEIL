@@ -1,0 +1,14 @@
+{
+  "MAP_TITLE": {"en": "Greyford", "ru": "Грейфорд"},
+  "MAP_OLD_QUARTER": {"en": "Old Quarter", "ru": "Старый квартал"},
+  "MAP_GARDENS": {"en": "Quay Gardens", "ru": "Причальный сквер"},
+  "MAP_MARKET": {"en": "Market Street", "ru": "Рыночная улица"},
+  "MAP_LIGHTHOUSE": {"en": "Lighthouse Point", "ru": "Маячный мыс"},
+  "MAP_NORTH_QUAY": {"en": "North Quay", "ru": "Северный причал"},
+  "MAP_LEGEND": {"en": "Blue: bus stop · gold ring: you · ★: where the pinned case leads · M: close", "ru": "Синие — остановки · золотое кольцо — ты · ★ — куда ведёт дело · M — закрыть"},
+  "PROMPT_BUS": {"en": "Bus stop", "ru": "Остановка"},
+  "BUS_TITLE": {"en": "Route 11 · fare £%d", "ru": "Маршрут 11 · проезд £%d"},
+  "BUS_NOWHERE": {"en": "Nowhere else you know yet. The driver shrugs: the timetable only lists the stops you've already been to.", "ru": "Других знакомых мест пока нет. Водитель пожимает плечами: в расписании только те остановки, где уже доводилось бывать."},
+  "BUS_RIDE": {"en": "The number 11 takes its time, as if it, too, had nowhere to be. %s.", "ru": "Одиннадцатый номер не торопится, будто ему тоже некуда спешить. %s."},
+  "BUS_NO_MONEY": {"en": "You count your change twice. It isn't enough for the fare.", "ru": "Ты дважды пересчитываешь мелочь. На проезд не хватает."}
+}

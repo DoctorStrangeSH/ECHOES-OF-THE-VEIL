@@ -2,22 +2,342 @@
  "id": "north_quay",
  "name_key": "LOC_NORTH_QUAY",
  "palette": "greyford_exterior",
- "options": {"outdoors": true},
- "layout": {"generator": "bands", "width": 40, "bands": [["w", 3], ["o", 2], ["s", 7], ["r", 3], ["s", 3]]},
+ "options": {
+  "outdoors": true
+ },
+ "layout": {
+  "generator": "bands",
+  "width": 40,
+  "bands": [
+   [
+    "w",
+    3
+   ],
+   [
+    "o",
+    2
+   ],
+   [
+    "s",
+    7
+   ],
+   [
+    "r",
+    3
+   ],
+   [
+    "s",
+    3
+   ]
+  ]
+ },
  "nodes": [
-  {"template": "building", "tex": "@building/Hardware_Store.png", "x": 176, "y": 192, "name": "MeridianAnnex", "color": "#808890", "depth": 60, "inspect": {"id": "inspect_meridian_annex", "lines": ["QUAY_ANNEX_LOOK"], "width": 30}},
-  {"kind": "prop", "name": "LightTower", "tex": "@worksite/Light_Tower_1.png", "x": 288, "y": 176, "col": [20, 8], "off": [0, -4], "color": "#a0a0a0"},
-  {"kind": "prop", "name": "Excavator", "tex": "@worksite/Excavator_1.png", "x": 400, "y": 190, "col": [40, 20], "off": [0, -10], "color": "#d0a020"},
-  {"kind": "prop", "name": "Lifter", "tex": "@worksite/Scissor_Lifter_1.png", "x": 80, "y": 180, "col": [40, 12], "off": [0, -6], "color": "#e08020"},
-  {"template": "scatter", "tex": "@worksite/Stacked_Material_1.png", "name": "Stack", "points": [[340, 110], [372, 110], [460, 112]], "color": "#8090a0", "col": [28, 10]},
-  {"kind": "prop", "name": "UnderpassSteps", "tex": "@worksite/Entrance_1.png", "x": 540, "y": 200, "col": [0, 0], "off": [0, 0], "color": "#404050"},
-  {"kind": "door", "name": "UnderpassDoor", "id": "door_quay_underpass", "x": 540, "y": 196, "area": [40, 14], "scene": "flooded_underpass", "spawn": "entrance", "prompt": "PROMPT_UNDERPASS", "show_if": {"any": [{"quest_stage": ["case_kindness", "underpass"]}, {"quest_stage": ["case_kindness", "truth"]}, {"quest_stage": ["case_kindness", "decide"]}, {"quest_done": "case_kindness"}]}},
-  {"kind": "inspect", "name": "UnderpassLook", "id": "inspect_underpass_closed", "x": 540, "y": 196, "area": [40, 14], "lines": ["QUAY_UNDERPASS_CLOSED"], "show_if": {"not": {"any": [{"quest_stage": ["case_kindness", "underpass"]}, {"quest_stage": ["case_kindness", "truth"]}, {"quest_stage": ["case_kindness", "decide"]}, {"quest_done": "case_kindness"}]}}},
-  {"kind": "spawn", "name": "UnderpassFront", "id": "underpass_front", "x": 540, "y": 220, "facing": [0, 1]},
-  {"template": "row", "prop": {"tex": "@city/Street_Lamp_1.png", "color": "#444455", "col": [6, 4], "off": [0, -2]}, "at": {"xs": [120, 360, 600], "y": 88}, "name": "QuayLamp"},
-  {"kind": "inspect", "name": "HarbourLook", "id": "inspect_north_harbour", "x": 320, "y": 60, "area": [200, 10], "lines": ["QUAY_HARBOUR_LOOK"]},
-  {"kind": "spawn", "name": "FromGreyford", "id": "from_greyford", "x": 32, "y": 152, "facing": [1, 0]},
-  {"kind": "door", "name": "WayBack", "id": "door_quay_greyford", "x": 6, "y": 152, "area": [12, 40], "scene": "greyford_block", "spawn": "quay_return", "prompt": "PROMPT_TO_GREYFORD"},
-  {"template": "anchors", "points": {"nadiya_quay": [300, 128], "annex": [200, 210]}}
+  {
+   "template": "building",
+   "tex": "@building/Hardware_Store.png",
+   "x": 176,
+   "y": 192,
+   "name": "MeridianAnnex",
+   "color": "#808890",
+   "depth": 60,
+   "inspect": {
+    "id": "inspect_meridian_annex",
+    "lines": [
+     "QUAY_ANNEX_LOOK"
+    ],
+    "width": 30
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "LightTower",
+   "tex": "@worksite/Light_Tower_1.png",
+   "x": 288,
+   "y": 176,
+   "col": [
+    20,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#a0a0a0"
+  },
+  {
+   "kind": "prop",
+   "name": "Excavator",
+   "tex": "@worksite/Excavator_1.png",
+   "x": 400,
+   "y": 190,
+   "col": [
+    40,
+    20
+   ],
+   "off": [
+    0,
+    -10
+   ],
+   "color": "#d0a020"
+  },
+  {
+   "kind": "prop",
+   "name": "Lifter",
+   "tex": "@worksite/Scissor_Lifter_1.png",
+   "x": 80,
+   "y": 180,
+   "col": [
+    40,
+    12
+   ],
+   "off": [
+    0,
+    -6
+   ],
+   "color": "#e08020"
+  },
+  {
+   "template": "scatter",
+   "tex": "@worksite/Stacked_Material_1.png",
+   "name": "Stack",
+   "points": [
+    [
+     340,
+     110
+    ],
+    [
+     372,
+     110
+    ],
+    [
+     460,
+     112
+    ]
+   ],
+   "color": "#8090a0",
+   "col": [
+    28,
+    10
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "UnderpassSteps",
+   "tex": "@worksite/Entrance_1.png",
+   "x": 540,
+   "y": 200,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "color": "#404050"
+  },
+  {
+   "kind": "door",
+   "name": "UnderpassDoor",
+   "id": "door_quay_underpass",
+   "x": 540,
+   "y": 196,
+   "area": [
+    40,
+    14
+   ],
+   "scene": "flooded_underpass",
+   "spawn": "entrance",
+   "prompt": "PROMPT_UNDERPASS",
+   "show_if": {
+    "any": [
+     {
+      "quest_stage": [
+       "case_kindness",
+       "underpass"
+      ]
+     },
+     {
+      "quest_stage": [
+       "case_kindness",
+       "truth"
+      ]
+     },
+     {
+      "quest_stage": [
+       "case_kindness",
+       "decide"
+      ]
+     },
+     {
+      "quest_done": "case_kindness"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "inspect",
+   "name": "UnderpassLook",
+   "id": "inspect_underpass_closed",
+   "x": 540,
+   "y": 196,
+   "area": [
+    40,
+    14
+   ],
+   "lines": [
+    "QUAY_UNDERPASS_CLOSED"
+   ],
+   "show_if": {
+    "not": {
+     "any": [
+      {
+       "quest_stage": [
+        "case_kindness",
+        "underpass"
+       ]
+      },
+      {
+       "quest_stage": [
+        "case_kindness",
+        "truth"
+       ]
+      },
+      {
+       "quest_stage": [
+        "case_kindness",
+        "decide"
+       ]
+      },
+      {
+       "quest_done": "case_kindness"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "UnderpassFront",
+   "id": "underpass_front",
+   "x": 540,
+   "y": 220,
+   "facing": [
+    0,
+    1
+   ]
+  },
+  {
+   "template": "row",
+   "prop": {
+    "tex": "@city/Street_Lamp_1.png",
+    "color": "#444455",
+    "col": [
+     6,
+     4
+    ],
+    "off": [
+     0,
+     -2
+    ]
+   },
+   "at": {
+    "xs": [
+     120,
+     360,
+     600
+    ],
+    "y": 88
+   },
+   "name": "QuayLamp"
+  },
+  {
+   "kind": "inspect",
+   "name": "HarbourLook",
+   "id": "inspect_north_harbour",
+   "x": 320,
+   "y": 60,
+   "area": [
+    200,
+    10
+   ],
+   "lines": [
+    "QUAY_HARBOUR_LOOK"
+   ]
+  },
+  {
+   "kind": "spawn",
+   "name": "FromGreyford",
+   "id": "from_greyford",
+   "x": 32,
+   "y": 152,
+   "facing": [
+    1,
+    0
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "WayBack",
+   "id": "door_quay_greyford",
+   "x": 6,
+   "y": 152,
+   "area": [
+    12,
+    40
+   ],
+   "scene": "greyford_block",
+   "spawn": "quay_return",
+   "prompt": "PROMPT_TO_GREYFORD"
+  },
+  {
+   "template": "anchors",
+   "points": {
+    "nadiya_quay": [
+     300,
+     128
+    ],
+    "annex": [
+     200,
+     210
+    ]
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "BusStopSign",
+   "tex": "@vehicle/Bus_Stop_Sign_1.png",
+   "x": 96,
+   "y": 160,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#3060a0"
+  },
+  {
+   "kind": "screen",
+   "name": "BusStopUse",
+   "id": "use_bus_stop",
+   "x": 96,
+   "y": 168,
+   "screen": "map:travel",
+   "prompt": "PROMPT_BUS"
+  },
+  {
+   "kind": "spawn",
+   "name": "BusStopSpawn",
+   "id": "bus_stop",
+   "x": 96,
+   "y": 176,
+   "facing": [
+    0,
+    1
+   ]
+  }
  ]
 }

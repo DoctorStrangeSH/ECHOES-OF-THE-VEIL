@@ -1529,3 +1529,22 @@ func test_market_street_shops_and_people() -> void:
 	WorldClock.wait_until_hour(23)
 	check(QuestGuide.next_door(&"market_street", &"cafe") == "", "closed at night")
 	GameState.reset_for_new_game()
+
+
+# --- R2d: city map and buses -------------------------------------------------------
+
+func test_city_map_knows_where_you_have_been_and_buses_cost() -> void:
+	GameState.reset_for_new_game()
+	check(CityMap.district_of(&"bakery") == "market" and CityMap.district_of(&"rented_room") == "old_quarter", "interiors belong to their street")
+	GameState.set_flag(&"visited.greyford_block")
+	check(CityMap.known("old_quarter") and not CityMap.known("market"), "only places you've been are on the map")
+	check(CityMap.destinations(&"greyford_block").is_empty(), "no rides before you know anywhere")
+	GameState.set_flag(&"visited.market_street")
+	GameState.set_flag(&"visited.north_quay")
+	check(CityMap.destinations(&"greyford_block") == ["market"], "the bus goes to known stops; North Quay waits for Act III")
+	for id: String in CityMap.districts():
+		var stop: Variant = CityMap.districts()[id].get("stop")
+		if stop != null:
+			check(SceneFlow.has_location(StringName(stop[0])), "%s's stop is a real place" % id)
+	check(InputMap.has_action(&"map"), "M opens the map")
+	GameState.reset_for_new_game()
