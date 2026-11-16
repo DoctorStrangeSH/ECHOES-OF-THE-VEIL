@@ -43,5 +43,38 @@
   },
   "min_level": 1,
   "needs_flag": "expedition.index_complete"
+ },
+ "signal_wand": {
+  "name": "ITEM_SIGNAL_WAND",
+  "inputs": {
+   "veil_shard": 6,
+   "signal_rod": 1
+  },
+  "output": {
+   "signal_wand": 1
+  },
+  "min_level": 1
+ },
+ "lantern_blade": {
+  "name": "ITEM_LANTERN_BLADE",
+  "inputs": {
+   "veil_shard": 14,
+   "rusted_sabre": 1
+  },
+  "output": {
+   "lantern_blade": 1
+  },
+  "min_level": 1
+ },
+ "coral_trident": {
+  "name": "ITEM_CORAL_TRIDENT",
+  "inputs": {
+   "veil_shard": 14,
+   "quay_trident": 1
+  },
+  "output": {
+   "coral_trident": 1
+  },
+  "min_level": 1
  }
 }

@@ -5,6 +5,7 @@ extends CanvasLayer
 
 const FILTERS: PackedStringArray = ["", "weapon", "trinket", "consumable", "material", "key"]
 
+const RARITY_COLORS := {"common": Color(0.85, 0.85, 0.85), "uncommon": Color(0.55, 0.9, 0.55), "rare": Color(0.5, 0.7, 1.0), "epic": Color(0.8, 0.55, 1.0), "legendary": Color(1.0, 0.75, 0.3)}
 var _dim: ColorRect
 var _title: Label
 var _summary: Label
@@ -121,6 +122,11 @@ func _fill_items() -> void:
 		var n := Inventory.count(id)
 		b.text = tr(d.get("name", "")) + (" ×%d" % n if n > 1 else "") + equipped_mark
 		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		if d.has("icon"):
+			b.icon = AssetLibrary.load_texture(String(d["icon"]))
+			b.add_theme_constant_override("icon_max_width", 14)
+		if d.has("rarity"):
+			b.add_theme_color_override("font_color", RARITY_COLORS.get(String(d["rarity"]), UiTheme.INK))
 		b.toggle_mode = true
 		b.button_pressed = id == _selected
 		b.pressed.connect(_select.bind(id))
@@ -141,6 +147,9 @@ func _show_item(id: StringName) -> void:
 		for v: Variant in w.get("combo", []):
 			combo.append(str(int(v)))
 		_detail.add_child(_label(tr("INV_WEAPON_STATS") % ["-".join(combo), int(w.get("reach", 12)), float(w.get("cooldown", 0.35))], UiTheme.INK_DIM, 8))
+		_detail.add_child(_label(tr("WEAPON_STYLE_" + String(w.get("style", "fists")).to_upper()), UiTheme.INK_DIM, 8))
+	if d.has("rarity"):
+		_detail.add_child(_label(tr("RARITY_" + String(d["rarity"]).to_upper()), RARITY_COLORS.get(String(d["rarity"]), UiTheme.INK), 8))
 	var cat: String = d.get("category", "")
 	if cat in ["weapon", "trinket"]:
 		var b := Button.new()

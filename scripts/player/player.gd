@@ -42,6 +42,9 @@ var _dir: LayeredCharacterSprite.Dir = LayeredCharacterSprite.Dir.DOWN
 var _action_anim_time := 0.0  # while > 0, punch/hurt animation owns the sprite
 var _attack_ready_at := 0.0
 var _combo_index := 0
+var _attacks := 0
+var _echo_strike_until := 0.0
+var _swing: WeaponSwing
 var _combo_expires_at := 0.0
 var _knockback := Vector2.ZERO
 var _fainting := false
@@ -58,6 +61,9 @@ var _shake := 0.0
 
 
 func _ready() -> void:
+	_swing = WeaponSwing.new()
+	_swing.visible = false
+	add_child(_swing)
 	add_to_group(&"player")
 	collision_layer = LAYER_PLAYER
 	collision_mask = LAYER_WORLD | LAYER_NPC
@@ -197,6 +203,13 @@ func _attack() -> void:
 		_combo_index = 0
 	var damage := int(combo[_combo_index % combo.size()])
 	var is_finisher := _combo_index % combo.size() == combo.size() - 1
+	_attacks += 1
+	if Progression.has_special("spark") and _attacks % 5 == 0:
+		damage += 2
+		Sfx.play(&"flash", 0.1, -8.0)
+	if Progression.has_special("echo_strike") and now < _echo_strike_until:
+		damage += 3
+		_echo_strike_until = 0.0
 	if is_finisher:
 		damage += int(Inventory.stat("finisher_bonus"))
 	damage += int(Inventory.stat("damage_bonus"))
@@ -212,6 +225,18 @@ func _attack() -> void:
 	hitbox.knockback = float(w.get("knockback", 140)) * (1.5 if is_finisher else 1.0)
 	sprite.play(&"punch", _dir, true)
 	Sfx.play(&"swing", 0.1)
+	var style := String(w.get("style", "fists"))
+	_swing.show_attack(String(Inventory.def(Inventory.equipped.get("weapon", Inventory.DEFAULT_WEAPON)).get("icon", "")), style, facing, cooldown, is_finisher)
+	var bolt_on := String(w.get("bolt_on", ""))
+	if bolt_on == "every" or (bolt_on == "finisher" and is_finisher):
+		var b := Bolt.new()
+		b.dir = facing
+		b.damage = int(w.get("bolt", 1)) + int(Inventory.stat("damage_bonus"))
+		b.range_left = float(w.get("bolt_range", 140))
+		b.pierce = bool(w.get("pierce", false))
+		b.color = Color(1.0, 0.8, 0.5) if style == "sling" else Color(0.7, 0.9, 1.0)
+		b.global_position = global_position + facing * 8.0
+		get_parent().add_child(b)
 	await get_tree().create_timer(0.09, false).timeout
 	if not is_inside_tree() or _fainting:
 		return
@@ -234,6 +259,23 @@ func _dodge() -> void:
 	_knockback = Vector2.ZERO
 	health.grant_invulnerability(DODGE_IFRAMES)
 	Sfx.play(&"dodge")
+	if Progression.has_special("echo_strike"):
+		_echo_strike_until = now + DODGE_TIME + 1.5
+	if Progression.has_special("veil_step"):
+		_veil_step_hit()
+
+
+## Veil step (talent): passing through echoes in a dodge clips them once.
+func _veil_step_hit() -> void:
+	await get_tree().create_timer(DODGE_TIME * 0.6, false).timeout
+	if not is_inside_tree():
+		return
+	for e in get_tree().get_nodes_in_group(&"echo_enemy"):
+		var n := e as Node2D
+		if n != null and n.global_position.distance_to(global_position) < 18.0:
+			var hb := n.find_child("Hurtbox", true, false) as Hurtbox
+			if hb != null:
+				hb.receive(1, global_position, 60.0)
 
 
 func _flash() -> void:
@@ -249,11 +291,15 @@ func _flash() -> void:
 	get_parent().add_child(pulse)
 	Sfx.play(&"flash", 0.02)
 	shake(1.0)
+	var caught := 0
 	for group in [&"echo_enemy", &"boss"]:
 		for e in get_tree().get_nodes_in_group(group):
 			var n := e as Node2D
 			if n != null and n.global_position.distance_to(global_position) <= radius + 8.0 and n.has_method("stun"):
 				n.call("stun", stun)
+				caught += 1
+	if caught > 0 and Progression.has_special("flash_heal"):
+		EventHub.player_heal_requested_amount.emit(1)
 
 
 func _quick_heal() -> void:

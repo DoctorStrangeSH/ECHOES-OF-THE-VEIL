@@ -1,0 +1,87 @@
+{
+ "_doc": "Talents (R3b): four paths, three steps each; a step needs the one before. cost: talent points. mods: stat pipeline (Inventory.stat). stats: characteristic bonuses. special: a named effect the code implements.",
+ "lantern": {
+  "name": "TALENT_PATH_LANTERN",
+  "steps": [
+   {
+    "id": "bright_hands",
+    "mods": {
+     "flash_radius_mult": 1.3
+    }
+   },
+   {
+    "id": "mending_light",
+    "special": "flash_heal"
+   },
+   {
+    "id": "long_shadow",
+    "mods": {
+     "flash_stun_bonus": 0.6,
+     "flash_cooldown_mult": 0.85
+    }
+   }
+  ]
+ },
+ "mechanic": {
+  "name": "TALENT_PATH_MECHANIC",
+  "steps": [
+   {
+    "id": "steady_hands",
+    "mods": {
+     "repair_bonus": 0.06
+    }
+   },
+   {
+    "id": "spark",
+    "special": "spark"
+   },
+   {
+    "id": "salvage",
+    "special": "salvage"
+   }
+  ]
+ },
+ "tracker": {
+  "name": "TALENT_PATH_TRACKER",
+  "steps": [
+   {
+    "id": "keen_eye",
+    "stats": {
+     "perception": 2
+    }
+   },
+   {
+    "id": "light_feet",
+    "mods": {
+     "speed_mult": 1.08,
+     "dodge_distance_mult": 1.15
+    }
+   },
+   {
+    "id": "finisher",
+    "mods": {
+     "finisher_bonus": 2
+    }
+   }
+  ]
+ },
+ "veilwalker": {
+  "name": "TALENT_PATH_VEIL",
+  "steps": [
+   {
+    "id": "thin_skin",
+    "mods": {
+     "max_health": 1
+    }
+   },
+   {
+    "id": "veil_step",
+    "special": "veil_step"
+   },
+   {
+    "id": "echo_strike",
+    "special": "echo_strike"
+   }
+  ]
+ }
+}

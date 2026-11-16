@@ -146,6 +146,8 @@ func complete(id: StringName) -> void:
 	if bool(d.get("once", false)):
 		done_once.append(id)
 	Inventory.add_money(roundi(float(d.get("pay", 0)) * Inventory.stat("pay_mult")))
+	if Progression.has_special("salvage") and int(d.get("scrap", 0)) > 0:
+		Inventory.add(&"scrap", 1, false)
 	if d.has("resonance"):
 		Inventory.add_resonance(int(d["resonance"]))
 	if d.has("client"):

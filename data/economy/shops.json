@@ -14,6 +14,14 @@
    {
     "item": "repair_kit",
     "price": 6
+   },
+   {
+    "item": "hatchet",
+    "price": 24
+   },
+   {
+    "item": "pocket_sling",
+    "price": 22
    }
   ],
   "sells_to": true

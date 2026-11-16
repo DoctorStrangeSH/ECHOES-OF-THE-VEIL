@@ -21,9 +21,14 @@ func _ready() -> void:
 	_panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER, Control.PRESET_MODE_MINSIZE)
 	_panel.grow_horizontal = Control.GROW_DIRECTION_BOTH
 	_panel.grow_vertical = Control.GROW_DIRECTION_BOTH
+	var scroll := ScrollContainer.new()
+	scroll.custom_minimum_size = Vector2(340, 244)
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	scroll.follow_focus = true
+	_panel.add_child(scroll)
 	_box = VBoxContainer.new()
 	_box.add_theme_constant_override("separation", 2)
-	_panel.add_child(_box)
+	scroll.add_child(_box)
 	visible = false
 	Progression.changed.connect(func() -> void:
 		if visible:
@@ -97,6 +102,27 @@ func _build() -> void:
 		_box.add_child(row)
 		if i == _focus_stat or first == null and not plus.disabled:
 			first = plus
+	_box.add_child(_label(tr("TALENT_HEADER") % Progression.talent_points, UiTheme.ACCENT, 9))
+	for path: String in Progression.talent_paths():
+		var pdef: Dictionary = Progression.talent_paths()[path]
+		var row := HBoxContainer.new()
+		var have := PackedStringArray()
+		for st: Dictionary in pdef.get("steps", []):
+			var key := path + "/" + String(st["id"])
+			have.append(("● " if Progression.has_talent(key) else "○ ") + tr("TALENT_" + String(st["id"]).to_upper()))
+		var l := _label(tr(String(pdef["name"])) + ": " + "  ".join(have), UiTheme.INK, 8)
+		l.custom_minimum_size = Vector2(290, 0)
+		row.add_child(l)
+		var next := Progression.next_step(path)
+		var learn := Button.new()
+		learn.text = "+"
+		learn.disabled = next == "" or Progression.talent_points <= 0
+		learn.tooltip_text = tr("TALENT_" + next.get_slice("/", 1).to_upper() + "_DESC") if next != "" else ""
+		learn.pressed.connect(func() -> void: Progression.learn(next))
+		row.add_child(learn)
+		_box.add_child(row)
+		if next != "":
+			_box.add_child(_label("   " + tr("TALENT_NEXT") % [tr("TALENT_" + next.get_slice("/", 1).to_upper()), tr("TALENT_" + next.get_slice("/", 1).to_upper() + "_DESC")], UiTheme.INK_DIM, 7))
 	var close_b := Button.new()
 	close_b.text = tr("CC_BACK")
 	close_b.pressed.connect(close)
