@@ -1457,3 +1457,18 @@ func test_waiting_skips_to_the_hour() -> void:
 	WorldClock.wait_until_hour(7)
 	check(WorldClock.get_hour() == 7 and WorldClock.day == day + 1, "waited until next morning")
 	GameState.reset_for_new_game()
+
+
+# --- R10: music --------------------------------------------------------------------
+
+func test_music_has_every_piece_and_picks_by_situation() -> void:
+	for id: String in Music.TRACKS:
+		var s := Music.stream_for(id)
+		check(s != null and s.get_length() > 20.0, "music %s exists and is a real piece" % id)
+	GameState.reset_for_new_game()
+	GameState.is_playing = false
+	check(Music.pick() == "title", "menu plays the title")
+	Music.override = "epilogue"
+	check(Music.pick() == "epilogue", "epilogue overrides")
+	Music.override = ""
+	check(AudioServer.get_bus_index(&"Music") >= 0, "music has its own bus")

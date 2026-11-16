@@ -15,11 +15,16 @@ const VOLUME_STEPS := 10
 
 var guidance := "detailed"
 var volume := 8  # 0..VOLUME_STEPS
+var music := 7  # 0..VOLUME_STEPS, relative to the master volume
 var fullscreen := false
 var _loaded_locale := ""
 
 
 func _ready() -> void:
+	if AudioServer.get_bus_index(&"Music") < 0:
+		AudioServer.add_bus()
+		AudioServer.set_bus_name(AudioServer.bus_count - 1, &"Music")
+		AudioServer.set_bus_send(AudioServer.bus_count - 1, &"Master")
 	load_settings()
 	apply()
 
@@ -33,6 +38,7 @@ func load_settings() -> void:
 		guidance = "detailed"
 	volume = clampi(int(cfg.get_value("audio", "volume", volume)), 0, VOLUME_STEPS)
 	fullscreen = bool(cfg.get_value("video", "fullscreen", fullscreen))
+	music = clampi(int(cfg.get_value("audio", "music", music)), 0, VOLUME_STEPS)
 	_loaded_locale = String(cfg.get_value("game", "locale", ""))
 	if _loaded_locale != "":
 		Localization.set_locale(_loaded_locale)
@@ -43,6 +49,7 @@ func save_settings() -> void:
 	cfg.set_value("game", "guidance", guidance)
 	cfg.set_value("game", "locale", Localization.get_locale())
 	cfg.set_value("audio", "volume", volume)
+	cfg.set_value("audio", "music", music)
 	cfg.set_value("video", "fullscreen", fullscreen)
 	cfg.save(PATH)
 
@@ -51,6 +58,10 @@ func apply() -> void:
 	var bus := AudioServer.get_bus_index(&"Master")
 	AudioServer.set_bus_mute(bus, volume == 0)
 	AudioServer.set_bus_volume_db(bus, linear_to_db(maxf(0.001, float(volume) / VOLUME_STEPS)))
+	var mb := AudioServer.get_bus_index(&"Music")
+	if mb >= 0:
+		AudioServer.set_bus_mute(mb, music == 0)
+		AudioServer.set_bus_volume_db(mb, linear_to_db(maxf(0.001, float(music) / VOLUME_STEPS)))
 	if DisplayServer.get_name() != "headless":
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if fullscreen else DisplayServer.WINDOW_MODE_WINDOWED)
 	changed.emit()
@@ -69,6 +80,12 @@ func cycle_guidance() -> void:
 
 func cycle_volume() -> void:
 	volume = (volume + 1) % (VOLUME_STEPS + 1)
+	save_settings()
+	apply()
+
+
+func cycle_music() -> void:
+	music = (music + 1) % (VOLUME_STEPS + 1)
 	save_settings()
 	apply()
 

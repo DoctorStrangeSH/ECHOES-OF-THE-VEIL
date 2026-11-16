@@ -21,7 +21,7 @@
   "MENU_MAIN_MENU": {"en": "Main menu", "ru": "Главное меню"},
   "MENU_QUIT": {"en": "Quit", "ru": "Выход"},
   "MENU_NO_ASSETS": {"en": "Art packs not imported — showing placeholders (see README).", "ru": "Графика не импортирована — показаны заглушки (см. README)."},
-  "CREDITS_LIMEZU": {"en": "Art: LimeZu — limezu.itch.io", "ru": "Графика: LimeZu — limezu.itch.io"},
+  "CREDITS_LIMEZU": {"en": "Art: LimeZu (limezu.itch.io), Clockwork Raven Studios · Music: original", "ru": "Графика: LimeZu (limezu.itch.io), Clockwork Raven Studios · Музыка: оригинальная"},
   "LOC_GREYFORD_BLOCK": {"en": "Greyford — Old Quarter", "ru": "Грейфорд — Старый квартал"},
   "LOC_RENTED_ROOM": {"en": "Your rented room", "ru": "Ваша съёмная комната"},
   "CONDO_TEAL_1": {"en": "An intercom with twelve buttons. Eleven names. The twelfth label has been scratched off so many times the plastic is white.", "ru": "Домофон на двенадцать кнопок. Одиннадцать фамилий. Табличку двенадцатой стирали столько раз, что пластик побелел."},

@@ -57,7 +57,7 @@ func _build() -> void:
 	title.name = "Title"
 	title.add_theme_color_override("font_color", UiTheme.ACCENT)
 	_list.add_child(title)
-	for id: String in ["guidance", "volume", "fullscreen", "language"]:
+	for id: String in ["guidance", "volume", "music", "fullscreen", "language"]:
 		var b := Button.new()
 		b.pressed.connect(_on_row.bind(id))
 		b.focus_entered.connect(_show_desc.bind(id))
@@ -81,6 +81,8 @@ func _on_row(id: String) -> void:
 			GameSettings.cycle_guidance()
 		"volume":
 			GameSettings.cycle_volume()
+		"music":
+			GameSettings.cycle_music()
 		"fullscreen":
 			GameSettings.toggle_fullscreen()
 		"language":
@@ -98,6 +100,7 @@ func _refresh() -> void:
 	(_list.get_node("Back") as Button).text = tr("CC_BACK")
 	(_rows["guidance"] as Button).text = tr("SETTINGS_GUIDANCE") % tr("SETTINGS_GUIDANCE_" + GameSettings.guidance.to_upper())
 	(_rows["volume"] as Button).text = tr("SETTINGS_VOLUME") % (GameSettings.volume * 10)
+	(_rows["music"] as Button).text = tr("SETTINGS_MUSIC") % (GameSettings.music * 10)
 	(_rows["fullscreen"] as Button).text = tr("SETTINGS_FULLSCREEN") % tr("SETTINGS_ON" if GameSettings.fullscreen else "SETTINGS_OFF")
 	(_rows["language"] as Button).text = tr("SETTINGS_LANGUAGE") % ("Русский" if Localization.get_locale().begins_with("ru") else "English")
 	_show_desc("guidance")
