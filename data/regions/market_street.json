@@ -894,6 +894,41 @@
     0,
     1
    ]
+  },
+  {
+   "kind": "prop",
+   "name": "MyCar",
+   "tex": "@vehicle/Car_Left_3.png",
+   "x": 300,
+   "y": 346,
+   "col": [
+    56,
+    20
+   ],
+   "off": [
+    0,
+    -10
+   ],
+   "color": "#40a080",
+   "show_if": {
+    "flag": "car.owned"
+   }
+  },
+  {
+   "kind": "inspect",
+   "name": "MyCarUse",
+   "id": "use_my_car",
+   "x": 300,
+   "y": 352,
+   "area": [
+    60,
+    12
+   ],
+   "dialogue": "car",
+   "prompt": "PROMPT_CAR",
+   "show_if": {
+    "flag": "car.owned"
+   }
   }
  ]
 }

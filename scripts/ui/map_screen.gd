@@ -77,6 +77,7 @@ func open(as_travel: bool) -> void:
 
 func close() -> void:
 	visible = false
+	CityMap.driving = false
 	get_tree().paused = false
 
 
@@ -121,8 +122,11 @@ func _step(d: int) -> void:
 func _try_ride() -> void:
 	if CityMap.destinations(GameState.current_scene_id).has(selected):
 		var id := selected
+		var drive := CityMap.driving
 		close()
+		CityMap.driving = drive
 		CityMap.ride(id)
+		CityMap.driving = false
 
 
 # --- Geometry ------------------------------------------------------------------
@@ -169,6 +173,9 @@ func _line(text: String, color: Color, size := 8) -> Label:
 func _refresh() -> void:
 	_title.text = tr("BUS_TITLE") % CityMap.fare() if travel else tr("MAP_TITLE")
 	_hint.text = tr("MAP_HINT_TRAVEL") % CityMap.fare() if travel else tr("MAP_HINT_VIEW")
+	if CityMap.driving:
+		_title.text = tr("CAR_TITLE_TOWN")
+		_hint.text = tr("CAR_HINT_TOWN")
 	for c in _info.get_children():
 		c.queue_free()
 	if selected == "":

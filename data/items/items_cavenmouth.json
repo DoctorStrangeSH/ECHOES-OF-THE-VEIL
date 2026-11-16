@@ -44,5 +44,13 @@
   "use": {
    "heal": 1
   }
+ },
+ "car_keys": {
+  "category": "key",
+  "name": "ITEM_CAR_KEYS",
+  "desc": "ITEM_CAR_KEYS_DESC",
+  "color": "#c0c0c0",
+  "value": 0,
+  "stack": 1
  }
 }

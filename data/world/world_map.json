@@ -39,6 +39,16 @@
    "mode": "coach",
    "fare": 12,
    "minutes": 150
+  },
+  {
+   "from": "greyford",
+   "to": "cavenmouth",
+   "mode": "car",
+   "fare": 3,
+   "minutes": 90,
+   "if": {
+    "flag": "car.owned"
+   }
   }
  ]
 }

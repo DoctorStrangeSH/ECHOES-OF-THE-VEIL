@@ -817,6 +817,23 @@ flowchart TD
   wren_after["after<br/>Director Elias Wren: 'I'll testify. Every minute, every name. It won…"]
 ```
 
+## car.json
+
+### car
+
+```mermaid
+flowchart TD
+  car_START(("start"))
+  car_START --> car_c1
+  car_c1["c1<br/>The seat creaks like an old armchair. The car s…"]
+  car_c1_end_0(["end"])
+  car_c1 -->|"Around town"| car_c1_end_0
+  car_c1_end_1(["end"])
+  car_c1 -->|"Along the coast road"| car_c1_end_1
+  car_c1_end_2(["end"])
+  car_c1 -->|"Stay here"| car_c1_end_2
+```
+
 ## cavenmouth.json
 
 ### bridget
@@ -1595,8 +1612,9 @@ flowchart TD
   jonah_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| jonah_anchor_yes
   jonah_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| jonah_anchor_no
   jonah_hub -->|"Could Rosalind ever come up t… ⟨{flag: rosalind.reunited, all: [{flag: …⟩"| jonah_rr1
-  jonah_hub_end_14(["end"])
-  jonah_hub -->|"Goodbye."| jonah_hub_end_14
+  jonah_hub -->|"Do you know anyone selling a … ⟨{all: [{not_flag: car.owned}, {relation…⟩"| jonah_car1
+  jonah_hub_end_15(["end"])
+  jonah_hub -->|"Goodbye."| jonah_hub_end_15
   jonah_tram1["tram1<br/>Jonah Rook: 'The line closed in '89. But when it rains, peo…"]
   jonah_tram1 --> jonah_tram2
   jonah_tram2["tram2<br/>Jonah Rook: 'So I go and check. Every time. Nothing's ever …"]
@@ -1660,6 +1678,15 @@ flowchart TD
   jonah_dead_letter2["dead_letter2<br/>Jonah Rook: That's her hand. Rosalind made her R's like lit…"]
   jonah_dead_letter2 --> jonah_dead_letter3
   jonah_dead_letter3["dead_letter3<br/>Jonah Rook: I'm going to fix every radio in this town for f…"]
+  jonah_car1["car1<br/>Jonah Rook: A car? Funny it should come up. Dad's old estat…"]
+  jonah_car1 --> jonah_car2
+  jonah_car2["car2<br/>Jonah Rook: I've kept it running. I didn't have the heart t…"]
+  jonah_car2 --> jonah_car3
+  jonah_car3["car3<br/>Jonah Rook: A hundred and twenty, and you let me check the …"]
+  jonah_car3 -->|"Deal. (£120) ⟨{money_at_least: 120}⟩"| jonah_car_bought
+  jonah_car3 -->|"Let me think about it."| jonah_hub
+  jonah_car_bought["car_bought<br/>Jonah Rook: Jonah drops the keys into your palm and holds o…"]
+  jonah_car_bought --> jonah_hub
 ```
 
 ### halloway

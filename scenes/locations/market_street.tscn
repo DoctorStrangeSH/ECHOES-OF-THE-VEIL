@@ -524,3 +524,27 @@ position = Vector2(388, 384)
 script = ExtResource("4_spawn")
 spawn_id = &"coach_stop"
 facing = Vector2(0, 1)
+
+[node name="MyCar" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(300, 346)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/10_Vehicles_Singles_16x16/ME_Singles_Vehicles_16x16_Car_Left_3.png"
+placeholder_size = Vector2i(64, 48)
+placeholder_color = Color(0.251,0.627,0.502, 1)
+collision_size = Vector2(56, 20)
+collision_offset = Vector2(0, -10)
+
+[node name="Condition" type="Node" parent="Entities/MyCar"]
+script = ExtResource("10_cond")
+show_if = {"flag": "car.owned"}
+
+[node name="MyCarUse" type="Area2D" parent="Entities"]
+position = Vector2(300, 352)
+script = ExtResource("5_inspect")
+interaction_id = &"use_my_car"
+area_size = Vector2(60, 12)
+prompt_key = "PROMPT_CAR"
+dialogue_id = &"car"
+
+[node name="Condition" type="Node" parent="Entities/MyCarUse"]
+script = ExtResource("10_cond")
+show_if = {"flag": "car.owned"}

@@ -1749,6 +1749,22 @@ func test_fishing() -> void:
 	GameState.is_playing = false
 
 
+func test_own_car() -> void:
+	GameState.reset_for_new_game()
+	GameState.is_playing = true
+	GameState.current_scene_id = &"market_street"
+	check(WorldMap.route_to("cavenmouth", true).is_empty(), "no car, no car route")
+	GameState.set_flag(&"car.owned")
+	var car := WorldMap.route_to("cavenmouth", true)
+	var coach := WorldMap.route_to("cavenmouth", false)
+	check(not car.is_empty() and int(car["minutes"]) < int(coach["minutes"]) and int(car["fare"]) < int(coach["fare"]), "the car is quicker and cheaper than the coach")
+	CityMap.driving = true
+	check(CityMap.fare_to("market") == 0, "driving round town is free")
+	CityMap.driving = false
+	GameState.reset_for_new_game()
+	GameState.is_playing = false
+
+
 func test_xp_comes_from_play() -> void:
 	GameState.reset_for_new_game()
 	GameState.is_playing = true
