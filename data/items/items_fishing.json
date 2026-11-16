@@ -109,5 +109,13 @@
   "value": 10,
   "stack": 1,
   "icon": "modern_farm/Icons/Icons_16x16/Icons_16x16_Singles/Icons_16x16_Tools_Fishing_Rod.png"
+ },
+ "lobster": {
+  "category": "fish",
+  "name": "FISH_LOBSTER",
+  "desc": "FISH_LOBSTER_DESC",
+  "color": "#c04030",
+  "value": 22,
+  "stack": 20
  }
 }

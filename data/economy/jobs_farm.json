@@ -21,5 +21,25 @@
     ]
    }
   ]
+ },
+ "ferry_engine": {
+  "name": "JOB_FERRY_ENGINE",
+  "desc": "JOB_FERRY_ENGINE_DESC",
+  "client": "agatha_moss",
+  "spot": "ferry_engine",
+  "difficulty": 3,
+  "scrap": 0,
+  "pay": 15,
+  "xp": 6,
+  "once": true,
+  "board": false,
+  "effects": [
+   {
+    "set_flag": "ferry.running"
+   },
+   {
+    "toast": "TOAST_FERRY_RUNNING"
+   }
+  ]
  }
 }

@@ -1,0 +1,123 @@
+{
+ "id": "st_carrow_lighthouse",
+ "name_key": "LOC_CARROW_LIGHTHOUSE",
+ "palette": "rented_room",
+ "options": {
+  "outdoors": false
+ },
+ "layout": {
+  "generator": "room",
+  "width": 16,
+  "height": 10,
+  "door_x": 7
+ },
+ "nodes": [
+  {
+   "kind": "furn",
+   "furn": "window",
+   "x": 64,
+   "y": 62
+  },
+  {
+   "kind": "furn",
+   "furn": "ladder",
+   "x": 128,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "bookcase_c",
+   "x": 40,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "reading_desk",
+   "x": 180,
+   "y": 100
+  },
+  {
+   "kind": "furn",
+   "furn": "chair_wood",
+   "x": 180,
+   "y": 120
+  },
+  {
+   "kind": "furn",
+   "furn": "globe",
+   "x": 40,
+   "y": 120
+  },
+  {
+   "kind": "furn",
+   "furn": "rug_round",
+   "x": 120,
+   "y": 124
+  },
+  {
+   "kind": "furn",
+   "furn": "grandfather_clock",
+   "x": 200,
+   "y": 64
+  },
+  {
+   "kind": "inspect",
+   "name": "LogLook",
+   "id": "inspect_carrow_log",
+   "x": 180,
+   "y": 108,
+   "area": [
+    34,
+    10
+   ],
+   "dialogue": "carrow_log"
+  },
+  {
+   "kind": "inspect",
+   "name": "LadderUp",
+   "id": "inspect_carrow_ladder",
+   "x": 128,
+   "y": 72,
+   "area": [
+    20,
+    10
+   ],
+   "dialogue": "carrow_lamp",
+   "prompt": "PROMPT_CLIMB"
+  },
+  {
+   "template": "anchors",
+   "points": {
+    "desk": [
+     150,
+     100
+    ]
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "Entrance",
+   "id": "entrance",
+   "x": 120,
+   "y": 138,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ExitDoor",
+   "id": "door_carrow_lh_exit",
+   "x": 120,
+   "y": 156,
+   "area": [
+    30,
+    10
+   ],
+   "scene": "st_carrow",
+   "spawn": "lighthouse_front",
+   "prompt": "PROMPT_EXIT"
+  }
+ ]
+}

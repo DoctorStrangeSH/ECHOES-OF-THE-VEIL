@@ -518,6 +518,21 @@
    "tale": true
   },
   {
+   "id": "eighth",
+   "tale": true,
+   "title": "CHRON_EIGHTH_TITLE",
+   "epigraph": "CHRON_EIGHTH_EPI",
+   "if": {
+    "flag": "carrow.answered"
+   },
+   "done_if": {},
+   "pages": [
+    {
+     "text": "CHRON_EIGHTH_OPEN"
+    }
+   ]
+  },
+  {
    "id": "after",
    "title": "CHRON_AFTER_TITLE",
    "epigraph": "CHRON_AFTER_EPI",

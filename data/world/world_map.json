@@ -12,7 +12,11 @@
     "market_street",
     "coach_stop"
    ],
-   "scenes": []
+   "scenes": [],
+   "arrive_ferry": [
+    "greyford_harbour",
+    "ferry_pier"
+   ]
   },
   "cavenmouth": {
    "name": "CITY_CAVENMOUTH",
@@ -30,6 +34,23 @@
     "cavenmouth_inn",
     "cavenmouth_post"
    ]
+  },
+  "st_carrow": {
+   "name": "CITY_ST_CARROW",
+   "pos": [
+    250,
+    200
+   ],
+   "desc": "CITY_ST_CARROW_DESC",
+   "arrive": [
+    "st_carrow",
+    "pier"
+   ],
+   "scenes": [
+    "st_carrow",
+    "st_carrow_lighthouse"
+   ],
+   "known_if": {}
   }
  },
  "routes": [
@@ -48,6 +69,16 @@
    "minutes": 90,
    "if": {
     "flag": "car.owned"
+   }
+  },
+  {
+   "from": "greyford",
+   "to": "st_carrow",
+   "mode": "ferry",
+   "fare": 8,
+   "minutes": 120,
+   "if": {
+    "flag": "ferry.running"
    }
   }
  ]

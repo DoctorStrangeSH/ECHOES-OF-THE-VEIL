@@ -258,6 +258,10 @@ area_size = Vector2(24, 12)
 prompt_key = "PROMPT_READ"
 lines = PackedStringArray("FLAVOR_FERRY_BOARD")
 
+[node name="Condition" type="Node" parent="Entities/FerryUse"]
+script = ExtResource("10_cond")
+show_if = {"not_flag": "ferry.running"}
+
 [node name="FishSpot" parent="Entities" instance=ExtResource("18_screen")]
 position = Vector2(112, 80)
 interaction_id = &"fish_harbour_pier"
@@ -418,3 +422,24 @@ anchor_id = &"office"
 position = Vector2(336, 120)
 script = ExtResource("11_anchor")
 anchor_id = &"ferry_pier"
+
+[node name="FerryTickets" parent="Entities" instance=ExtResource("18_screen")]
+position = Vector2(408, 244)
+interaction_id = &"use_ferry_tickets"
+screen = "world:ferry"
+prompt_key = "PROMPT_FERRY"
+
+[node name="Condition" type="Node" parent="Entities/FerryTickets"]
+script = ExtResource("10_cond")
+show_if = {"flag": "ferry.running"}
+
+[node name="FerryEngine" parent="Entities" instance=ExtResource("17_spot")]
+position = Vector2(360, 130)
+interaction_id = &"repair_ferry_engine"
+spot_id = &"ferry_engine"
+
+[node name="FerryArrive" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(336, 180)
+script = ExtResource("4_spawn")
+spawn_id = &"ferry_pier"
+facing = Vector2(0, 1)

@@ -400,7 +400,10 @@
    "lines": [
     "FLAVOR_FERRY_BOARD"
    ],
-   "prompt": "PROMPT_READ"
+   "prompt": "PROMPT_READ",
+   "show_if": {
+    "not_flag": "ferry.running"
+   }
   },
   {
    "kind": "screen",
@@ -690,6 +693,37 @@
      120
     ]
    }
+  },
+  {
+   "kind": "screen",
+   "name": "FerryTickets",
+   "id": "use_ferry_tickets",
+   "x": 408,
+   "y": 244,
+   "screen": "world:ferry",
+   "prompt": "PROMPT_FERRY",
+   "show_if": {
+    "flag": "ferry.running"
+   }
+  },
+  {
+   "kind": "spot",
+   "name": "FerryEngine",
+   "id": "repair_ferry_engine",
+   "x": 360,
+   "y": 130,
+   "spot": "ferry_engine"
+  },
+  {
+   "kind": "spawn",
+   "name": "FerryArrive",
+   "id": "ferry_pier",
+   "x": 336,
+   "y": 180,
+   "facing": [
+    0,
+    1
+   ]
   }
  ]
 }

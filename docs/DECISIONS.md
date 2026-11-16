@@ -120,3 +120,7 @@ Fishing spots are screen nodes ("fish:sea|harbour|lake") marked by a bucket. A r
 ## D-075 Your own car (R12b)
 
 Jonah sells his late father's estate car (£120, once you are on friendly terms). It is parked in Greyford's old quarter, the market, the farm and Cavenmouth; getting in offers "around town" (the city map, free and ten minutes a ride) or "the coast road" (the coast map with car routes: cheaper and quicker than the coach). Car routes are ordinary rows of the route table with mode "car" and an "if" on owning it; a plane will be the same. No driving minigame: the car is about freedom of movement, not a new control scheme.
+
+## D-076 The island ferry (R12c)
+
+Travel modes are now a string on each route ("coach", "car", "ferry"); a town may name a different arrival point per mode (arrive_ferry: the harbour pier). The ferry to St Carrow starts broken: Agatha hands the player the repair as a job, and the board at the pier becomes a ticket office once it is done. St Carrow is small on purpose (a lighthouse, a chapel, a cottage, a pier for lobster) and carries one quiet story: since November 1962 Greyford's lighthouse counts to seven, and from the island's gallery the player can send the missing eighth flash.
