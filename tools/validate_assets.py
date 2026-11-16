@@ -19,6 +19,8 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 os.chdir(ROOT)
 ART = 'assets/limezu'
 errors, notes = [], []
+# Original work generated in this repo may be tracked: the soundtrack.
+ORIGINAL = re.compile(r'^assets/music/[a-z0-9_]+\.ogg$')
 BINARY = re.compile(r'\.(png|jpe?g|gif|bmp|webp|aseprite|ase|psd|zip|rar|7z|exe|ogg|mp3|ttf|otf)$', re.I)
 
 # --- license guard ---------------------------------------------------------
@@ -29,6 +31,8 @@ except Exception:  # noqa: BLE001 - not a git checkout (e.g. exported folder)
 for f in tracked:
     if f.startswith(ART + '/'):
         errors.append(f'{f}: art pack files must live only in the private submodule')
+    elif ORIGINAL.match(f):
+        pass  # our own generated music (tools/music/compose.py)
     elif BINARY.search(f):
         errors.append(f'{f}: binary asset tracked in the public repo (LimeZu files may not be redistributed)')
     elif f.endswith('.wav') and not f.startswith('assets/audio/sfx/'):
