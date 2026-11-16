@@ -449,6 +449,50 @@ for iid, inc in INCIDENTS.items():
     if not reported:
         err(f'{where}: no dialogue entry handles the report stage')
 
+# --- quest guide (R0) -----------------------------------------------------------
+import subprocess as _sp
+if _sp.run([sys.executable, 'tools/regions/door_graph.py', '--check']).returncode != 0:
+    err('data/world/doors.json is stale: run tools/regions/door_graph.py')
+GUIDES = {k: v for k, v in load('data/story/guides.json').items() if not k.startswith('_')} if os.path.exists('data/story/guides.json') else {}
+def _region_nodes(scene):
+    f = f'data/regions/{scene}.json'
+    if not os.path.exists(f):
+        return set()
+    return {n.get('name') for n in load(f).get('nodes', [])}
+inc_cases = {v.get('case') for v in INCIDENTS.values()}
+for cid, cdef in J['cases'].items():
+    if cid in inc_cases:
+        continue
+    for st in cdef.get('stages', {}):
+        if st not in GUIDES.get(cid, {}):
+            warn(f'guide: {cid} stage {st} has no where/when guide')
+for cid, g in GUIDES.items():
+    cdef = J['cases'].get(cid)
+    if not cdef:
+        err(f'guide: unknown case {cid}'); continue
+    for gkey, t in g.items():
+        st, _, oid = gkey.partition('/')
+        if st not in cdef.get('stages', {}):
+            err(f'guide {cid}: unknown stage {st}')
+        if oid and oid not in {o['id'] for o in cdef.get('objectives', {}).get(st, [])}:
+            err(f'guide {cid}: unknown objective {gkey}')
+        where = f'guide {cid}/{gkey}'
+        if 'npc' in t and t['npc'] not in N:
+            err(f'{where}: unknown npc {t["npc"]}')
+        if 'scene' in t:
+            if t['scene'] not in LOCS:
+                err(f'{where}: unknown scene {t["scene"]}')
+            for nm in (t['node'] if isinstance(t.get('node'), list) else ([t['node']] if 'node' in t else [])):
+                if nm not in _region_nodes(t['scene']):
+                    err(f'{where}: no node {nm} in {t["scene"]}')
+        for pr in (t['period'] if isinstance(t.get('period'), list) else ([t['period']] if 'period' in t else [])):
+            if pr not in ('morning', 'afternoon', 'evening', 'night'):
+                err(f'{where}: bad period {pr}')
+        if 'note' in t:
+            key(t['note'], where)
+        if not any(k in t for k in ('npc', 'scene', 'note')):
+            err(f'{where}: guide says nothing')
+
 # --- scenes ----------------------------------------------------------------
 spawns = {loc: set(re.findall(r'spawn_id = &"([^"]+)"', t)) for loc, t in LOCS.items()}
 anchors = {loc: set(re.findall(r'anchor_id = &"([^"]+)"', t)) for loc, t in LOCS.items()}

@@ -18,7 +18,6 @@
   "MENU_CONTINUE": {"en": "Resume", "ru": "Вернуться в игру"},
   "MENU_SAVE": {"en": "Save", "ru": "Сохранить"},
   "MENU_LOAD": {"en": "Load", "ru": "Загрузить"},
-  "MENU_LANGUAGE": {"en": "Language: English", "ru": "Язык: русский"},
   "MENU_MAIN_MENU": {"en": "Main menu", "ru": "Главное меню"},
   "MENU_QUIT": {"en": "Quit", "ru": "Выход"},
   "MENU_NO_ASSETS": {"en": "Art packs not imported — showing placeholders (see README).", "ru": "Графика не импортирована — показаны заглушки (см. README)."},

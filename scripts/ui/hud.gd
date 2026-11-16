@@ -18,6 +18,10 @@ var _hearts: HeartBar
 var _combat: CombatHud
 var _wallet: Label
 var _objective: Label
+var _guide: Label
+var _keys_hint: Label
+var _controls: PanelContainer
+var _controls_t := 0.0
 var _objective_t := 0.0
 var _toast_label: Label
 var _toast_queue: Array[String] = []
@@ -53,6 +57,26 @@ func _objective_line() -> String:
 	return line
 
 
+## Where/when for the pinned case ("detailed" guidance only).
+func _guide_line() -> String:
+	if Journal.pinned == &"" or not GameSettings.shows_guide():
+		return ""
+	return QuestGuide.describe(QuestGuide.target(Journal.pinned))
+
+
+## First minutes of a new game: a small card with the controls. Disappears
+## after 30 seconds on screen, and never comes back.
+func _update_controls_card(delta: float) -> void:
+	if GameState.has_flag(&"ui.controls_seen"):
+		_controls.visible = false
+		return
+	_controls.visible = not _dialogue_panel.visible
+	if _controls.visible:
+		_controls_t += delta
+	if _controls_t > 30.0:
+		GameState.set_flag(&"ui.controls_seen")
+
+
 func _process(delta: float) -> void:
 	visible = GameState.is_playing
 	if not visible:
@@ -69,7 +93,13 @@ func _process(delta: float) -> void:
 	if _objective_t <= 0.0:
 		_objective_t = 0.4
 		_objective.text = _objective_line()
-	_objective.visible = not _dialogue_panel.visible and _objective.text != ""
+		_guide.text = _guide_line()
+		_keys_hint.text = tr("HUD_KEYS_HINT")
+		(_controls.get_node("Text") as Label).text = tr("HUD_CONTROLS")
+	_objective.visible = GameSettings.shows_objective() and not _dialogue_panel.visible and _objective.text != ""
+	_guide.visible = _objective.visible and GameSettings.shows_guide() and _guide.text != ""
+	_keys_hint.visible = not _dialogue_panel.visible
+	_update_controls_card(delta)
 	if _dialogue_panel.visible and _text_label.visible_ratio < 1.0:
 		var total := maxf(1.0, float(_text_label.get_total_character_count()))
 		_text_label.visible_ratio = minf(1.0, _text_label.visible_ratio + delta * CHARS_PER_SECOND / total)
@@ -252,12 +282,50 @@ func _build() -> void:
 	_objective.add_theme_constant_override("outline_size", 3)
 	_objective.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_objective.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	root.add_child(_objective)
-	_objective.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	_objective.offset_left = -190
-	_objective.offset_right = -6
-	_objective.offset_top = 30
-	_objective.offset_bottom = 60
+	var quest_box := VBoxContainer.new()
+	quest_box.add_theme_constant_override("separation", 0)
+	quest_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	root.add_child(quest_box)
+	quest_box.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+	quest_box.offset_left = -196
+	quest_box.offset_right = -6
+	quest_box.offset_top = 30
+	quest_box.offset_bottom = 110
+	_objective.add_theme_constant_override("line_spacing", -2)
+	quest_box.add_child(_objective)
+
+	_guide = Label.new()
+	_guide.add_theme_font_size_override("font_size", 8)
+	_guide.add_theme_color_override("font_color", UiTheme.INK)
+	_guide.add_theme_color_override("font_outline_color", Color.BLACK)
+	_guide.add_theme_constant_override("outline_size", 3)
+	_guide.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_guide.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	_guide.add_theme_constant_override("line_spacing", -2)
+	quest_box.add_child(_guide)
+
+	_keys_hint = Label.new()
+	_keys_hint.add_theme_font_size_override("font_size", 8)
+	_keys_hint.add_theme_color_override("font_color", Color(UiTheme.INK_DIM, 0.85))
+	_keys_hint.add_theme_color_override("font_outline_color", Color.BLACK)
+	_keys_hint.add_theme_constant_override("outline_size", 2)
+	_keys_hint.text = tr("HUD_KEYS_HINT")
+	root.add_child(_keys_hint)
+	_keys_hint.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT, Control.PRESET_MODE_MINSIZE, 3)
+	_keys_hint.grow_horizontal = Control.GROW_DIRECTION_BEGIN
+	_keys_hint.grow_vertical = Control.GROW_DIRECTION_BEGIN
+
+	_controls = PanelContainer.new()
+	var cl := Label.new()
+	cl.name = "Text"
+	cl.add_theme_font_size_override("font_size", 8)
+	_controls.add_child(cl)
+	root.add_child(_controls)
+	_controls.position = Vector2(6, 6)
+	_controls.visible = false
+
+	var marker := QuestMarker.new()
+	root.add_child(marker)
 
 	_toast_label = Label.new()
 	_toast_label.position = Vector2(10, 22)

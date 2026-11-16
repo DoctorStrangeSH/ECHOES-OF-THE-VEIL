@@ -15,6 +15,7 @@ extends Node
 
 
 func _ready() -> void:
+	add_child(WaitMenu.new())
 	pause_menu.setup(hud)
 	journal.setup(hud)
 	SceneFlow.register_root(self)

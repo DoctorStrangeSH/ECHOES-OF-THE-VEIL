@@ -1,0 +1,305 @@
+{
+ "_doc": "Quest guide (R0, D-064): where and when each stage/objective happens, for the 'detailed' guidance setting. Key: stage or stage/objective. Fields: npc (follows their schedule) or scene + node (a node name, or a list: first visible wins); period (string or list) and or_rain; note (extra text key). Incidents are guided from data/world/incidents.json.",
+ "case_door": {
+  "start": {
+   "scene": "greyford_block",
+   "node": "ImpossibleDoorUse",
+   "note": "GUIDE_NOTE_DOOR_ASK"
+  },
+  "decide": {
+   "scene": "greyford_block",
+   "node": "ImpossibleDoorUse"
+  },
+  "inside": {
+   "scene": "greyford_block",
+   "node": "ImpossibleDoorUse"
+  }
+ },
+ "case_radio": {
+  "deliver": {
+   "npc": "edda_halloway"
+  },
+  "return": {
+   "npc": "jonah_rook"
+  }
+ },
+ "case_quiet": {
+  "start": {
+   "note": "GUIDE_NOTE_QUIET"
+  },
+  "formed": {
+   "npc": "mara_venn"
+  }
+ },
+ "case_lantern_row": {
+  "start": {
+   "note": "GUIDE_NOTE_LATER"
+  }
+ },
+ "case_rosalind": {
+  "start": {
+   "scene": "greyford_block",
+   "node": "GhostTramStopUse",
+   "period": [
+    "evening",
+    "night"
+   ],
+   "or_rain": true
+  },
+  "page": {
+   "npc": "jonah_rook"
+  }
+ },
+ "case_eleventh": {
+  "start": {
+   "scene": "greyford_block",
+   "node": "ArchiveDoor",
+   "period": "night"
+  },
+  "search": {
+   "scene": "municipal_archive",
+   "node": "CabinetUse"
+  },
+  "choice": {
+   "npc": "mara_venn"
+  }
+ },
+ "case_bell": {
+  "parts": {
+   "note": "GUIDE_NOTE_BELL_PARTS"
+  },
+  "ring": {
+   "scene": "greyford_block",
+   "node": "TramBellUse",
+   "period": "night"
+  }
+ },
+ "case_letters": {
+  "deliver": {
+   "note": "GUIDE_NOTE_LETTERS"
+  },
+  "report": {
+   "npc": "nadiya_sol",
+   "period": [
+    "evening",
+    "night"
+   ]
+  }
+ },
+ "case_lighthouse": {
+  "ask": {
+   "npc": "hester_ashby"
+  },
+  "watch": {
+   "scene": "lighthouse_point",
+   "node": "WatchTheLight",
+   "period": "night"
+  },
+  "registry": {
+   "scene": "municipal_archive",
+   "node": "ShelvesLook"
+  },
+  "answer": {
+   "npc": "hester_ashby"
+  }
+ },
+ "case_two_maps": {
+  "incidents": {
+   "note": "GUIDE_NOTE_THREE_PLACES"
+  },
+  "incidents/pattern": {
+   "note": "GUIDE_NOTE_LINK"
+  },
+  "map": {
+   "scene": "theo_new_room",
+   "node": "DeskLook"
+  },
+  "hand": {
+   "note": "GUIDE_NOTE_COMPARE"
+  },
+  "turn": {
+   "npc": "edda_halloway"
+  }
+ },
+ "case_storeroom": {
+  "wall": {
+   "scene": "greyford_block",
+   "node": [
+    "StoreroomDoor",
+    "StoreroomWall"
+   ],
+   "period": [
+    "evening",
+    "night"
+   ]
+  },
+  "wall/clear": {
+   "scene": "rook_storeroom"
+  },
+  "wall/stencil": {
+   "scene": "rook_storeroom",
+   "node": "StencilLook"
+  },
+  "wall/ledger": {
+   "scene": "rook_storeroom",
+   "node": "LedgerLook"
+  },
+  "tell": {
+   "npc": "jonah_rook"
+  }
+ },
+ "case_larger_house": {
+  "measure": {
+   "scene": "theo_flat",
+   "node": "CorridorEnd"
+  },
+  "room": {
+   "scene": "theo_flat",
+   "node": "NewRoomDoor"
+  },
+  "room/clear": {
+   "scene": "theo_new_room"
+  },
+  "room/bed": {
+   "scene": "theo_new_room",
+   "node": "BedLook"
+  },
+  "tell": {
+   "npc": "theo_marsh"
+  }
+ },
+ "case_misplaced": {
+  "ward": {
+   "npc": "ivo_calder"
+  },
+  "residents": {
+   "scene": "echo_ward",
+   "note": "GUIDE_NOTE_RESIDENTS"
+  },
+  "depot": {
+   "scene": "echo_ward",
+   "node": "DepotGate"
+  },
+  "depot/hall": {
+   "scene": "ward_depot"
+  },
+  "depot/boss": {
+   "scene": "depot_platform"
+  },
+  "rosalind": {
+   "npc": "rosalind_rook"
+  },
+  "bring": {
+   "npc": "rosalind_rook",
+   "note": "GUIDE_NOTE_BRING_JONAH"
+  },
+  "bring/jonah": {
+   "npc": "jonah_rook"
+  }
+ },
+ "case_kindness": {
+  "pact": {
+   "npc": "ivo_calder"
+  },
+  "pact/down": {
+   "scene": "municipal_archive",
+   "node": "KeepersStairs"
+  },
+  "quay": {
+   "npc": "nadiya_sol"
+  },
+  "underpass": {
+   "scene": "north_quay",
+   "node": "UnderpassDoor"
+  },
+  "underpass/clear": {
+   "scene": "flooded_underpass"
+  },
+  "underpass/boss": {
+   "scene": "underpass_archive"
+  },
+  "underpass/resonator": {
+   "scene": "underpass_archive",
+   "node": "ResonatorLook"
+  },
+  "underpass/cover": {
+   "note": "GUIDE_NOTE_LINK"
+  },
+  "truth": {
+   "scene": "keepers_rooms"
+  },
+  "decide": {
+   "scene": "keepers_rooms",
+   "node": "SealEngineUse"
+  }
+ },
+ "case_index": {
+  "nodes": {
+   "npc": "sera_vale"
+  },
+  "sites": {
+   "scene": "echo_ward",
+   "node": [
+    "HospitalDoor",
+    "HomeDoor",
+    "StationDoor"
+   ],
+   "note": "GUIDE_NOTE_SITES"
+  },
+  "index": {
+   "npc": "alderman_penhallow"
+  },
+  "vale": {
+   "npc": "sera_vale"
+  }
+ },
+ "case_anchor": {
+  "gather": {
+   "note": "GUIDE_NOTE_ALLIES"
+  },
+  "gather/down": {
+   "scene": "keepers_rooms",
+   "node": "AnchorDescent"
+  },
+  "confront": {
+   "scene": "the_anchor"
+  },
+  "choose": {
+   "scene": "the_anchor",
+   "node": "Heart"
+  }
+ },
+ "case_agnes": {
+  "card": {
+   "scene": "keepers_rooms",
+   "node": "CardIndex"
+  },
+  "tell": {
+   "npc": "mara_venn"
+  },
+  "tell/ivo": {
+   "npc": "ivo_calder"
+  }
+ },
+ "case_rook_and_rook": {
+  "stamp": {
+   "scene": "rook_storeroom",
+   "node": "RookStamp",
+   "period": [
+    "evening",
+    "night"
+   ]
+  },
+  "evening": {
+   "npc": "rosalind_rook",
+   "period": [
+    "evening",
+    "night"
+   ],
+   "note": "GUIDE_NOTE_BRING_JONAH"
+  },
+  "evening/jonah": {
+   "npc": "jonah_rook"
+  }
+ }
+}

@@ -7,6 +7,7 @@ var _title: Label
 var _subtitle: Label
 var _footer: Label
 var _debug_target := 0
+var _settings: SettingsScreen
 var _debug_button: Button
 
 
@@ -36,13 +37,18 @@ func _on_debug_cycle() -> void:
 
 
 func _on_language() -> void:
-	Localization.set_locale("en" if Localization.get_locale().begins_with("ru") else "ru")
-	_refresh()
+	if _settings == null:
+		_settings = SettingsScreen.new()
+		add_child(_settings)
+		_settings.closed.connect(func() -> void:
+			_refresh()
+			(_buttons.get_child(2) as Button).grab_focus())
+	_settings.open()
 
 
 func _refresh() -> void:
 	_subtitle.text = tr("MENU_TAGLINE")
-	var keys := ["MENU_NEW_GAME", "MENU_CONTINUE_GAME", "MENU_LANGUAGE", "MENU_QUIT"]
+	var keys := ["MENU_NEW_GAME", "MENU_CONTINUE_GAME", "MENU_SETTINGS", "MENU_QUIT"]
 	for i in keys.size():
 		(_buttons.get_child(i) as Button).text = tr(keys[i])
 	(_buttons.get_child(1) as Button).disabled = not SaveService.has_any_save()
