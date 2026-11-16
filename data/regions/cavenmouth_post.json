@@ -1,0 +1,128 @@
+{
+ "id": "cavenmouth_post",
+ "name_key": "LOC_CAV_POST",
+ "palette": "rented_room",
+ "options": {
+  "outdoors": false
+ },
+ "layout": {
+  "generator": "room",
+  "width": 16,
+  "height": 10,
+  "door_x": 7
+ },
+ "nodes": [
+  {
+   "kind": "furn",
+   "furn": "window",
+   "x": 56,
+   "y": 62
+  },
+  {
+   "kind": "furn",
+   "furn": "world_map",
+   "x": 120,
+   "y": 60
+  },
+  {
+   "kind": "furn",
+   "furn": "filing_cabinet",
+   "x": 168,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "filing_cabinet",
+   "x": 184,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "shelf_boxes",
+   "x": 208,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "counter_left",
+   "x": 104,
+   "y": 104
+  },
+  {
+   "kind": "furn",
+   "furn": "counter_right",
+   "x": 136,
+   "y": 104
+  },
+  {
+   "kind": "furn",
+   "furn": "crate",
+   "x": 200,
+   "y": 110
+  },
+  {
+   "kind": "furn",
+   "furn": "crate_open",
+   "x": 216,
+   "y": 124
+  },
+  {
+   "kind": "furn",
+   "furn": "stool",
+   "x": 40,
+   "y": 120
+  },
+  {
+   "kind": "furn",
+   "furn": "plant_small",
+   "x": 28,
+   "y": 140
+  },
+  {
+   "kind": "inspect",
+   "name": "SackLook",
+   "id": "inspect_cav_sacks",
+   "x": 208,
+   "y": 118,
+   "area": [
+    34,
+    14
+   ],
+   "dialogue": "cav_sacks"
+  },
+  {
+   "template": "anchors",
+   "points": {
+    "counter": [
+     120,
+     84
+    ]
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "Entrance",
+   "id": "entrance",
+   "x": 120,
+   "y": 138,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ExitDoor",
+   "id": "door_cav_post_exit",
+   "x": 120,
+   "y": 156,
+   "area": [
+    30,
+    10
+   ],
+   "scene": "cavenmouth",
+   "spawn": "post_front",
+   "prompt": "PROMPT_EXIT"
+  }
+ ]
+}

@@ -105,5 +105,19 @@
    }
   ],
   "sells_to": false
+ },
+ "cav_inn": {
+  "name": "SHOP_CAV_INN",
+  "buy": [
+   {
+    "item": "fish_and_chips",
+    "price": 7
+   },
+   {
+    "item": "seaside_rock",
+    "price": 3
+   }
+  ],
+  "sells_to": false
  }
 }

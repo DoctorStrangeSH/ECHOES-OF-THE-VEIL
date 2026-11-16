@@ -1,0 +1,48 @@
+{
+ "letter_edda": {
+  "category": "key",
+  "name": "ITEM_LETTER_EDDA",
+  "desc": "ITEM_LETTER_EDDA_DESC",
+  "color": "#e0d0a0",
+  "value": 0,
+  "stack": 1
+ },
+ "letter_theo": {
+  "category": "key",
+  "name": "ITEM_LETTER_THEO",
+  "desc": "ITEM_LETTER_THEO_DESC",
+  "color": "#e0d0a0",
+  "value": 0,
+  "stack": 1
+ },
+ "letter_jonah": {
+  "category": "key",
+  "name": "ITEM_LETTER_JONAH",
+  "desc": "ITEM_LETTER_JONAH_DESC",
+  "color": "#e0d0a0",
+  "value": 0,
+  "stack": 1
+ },
+ "fish_and_chips": {
+  "category": "consumable",
+  "name": "ITEM_FISH_AND_CHIPS",
+  "desc": "ITEM_FISH_AND_CHIPS_DESC",
+  "color": "#e0b060",
+  "value": 4,
+  "stack": 9,
+  "use": {
+   "heal": 2
+  }
+ },
+ "seaside_rock": {
+  "category": "consumable",
+  "name": "ITEM_SEASIDE_ROCK",
+  "desc": "ITEM_SEASIDE_ROCK_DESC",
+  "color": "#f0a0c0",
+  "value": 2,
+  "stack": 9,
+  "use": {
+   "heal": 1
+  }
+ }
+}

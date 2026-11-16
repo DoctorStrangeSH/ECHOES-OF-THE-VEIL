@@ -234,7 +234,7 @@ func _show_chronicle() -> void:
 			b.text = tr("CHRON_PROLOGUE")
 		elif id == "after":
 			b.text = tr("CHRON_AFTER_TITLE")
-		elif id in ["eleventh", "rosalind", "brook", "ford"]:
+		elif c.get("tale", false):
 			b.text = "· " + tr(String(c["title"]))
 		else:
 			n += 1
@@ -255,7 +255,7 @@ func _show_chronicle() -> void:
 	for c in open:
 		if String(c["id"]) != _chapter:
 			continue
-		if String(c["id"]) in ["eleventh", "rosalind", "brook", "ford"]:
+		if c.get("tale", false):
 			_detail.add_child(_label(tr("CHRON_TALE"), UiTheme.INK_DIM, 7))
 		_detail.add_child(_label(tr(String(c["title"])), UiTheme.ACCENT, 11))
 		var epi := _label(tr(String(c["epigraph"])), UiTheme.INK_DIM, 8)

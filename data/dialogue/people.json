@@ -1070,6 +1070,12 @@
      ]
     },
     "node": "stall1"
+   },
+   {
+    "if": {
+     "has_item": "letter_jonah"
+    },
+    "node": "dead_letter1"
    }
   ],
   "start": "hub",
@@ -1775,6 +1781,61 @@
      }
     ],
     "next": null
+   },
+   "dead_letter1": {
+    "text": "LETTER_JONAH_0",
+    "next": "dead_letter2"
+   },
+   "dead_letter2": {
+    "text": "LETTER_JONAH_1",
+    "speaker": "NPC_JONAH",
+    "next": "dead_letter3"
+   },
+   "dead_letter3": {
+    "text": "LETTER_JONAH_2",
+    "speaker": "NPC_JONAH",
+    "next": null,
+    "effects": [
+     {
+      "take_item": "letter_jonah"
+     },
+     {
+      "set_flag": "letters.jonah"
+     },
+     {
+      "relationship": [
+       "jonah_rook",
+       1
+      ]
+     },
+     {
+      "first_match": [
+       {
+        "if": {
+         "all": [
+          {
+           "flag": "letters.edda"
+          },
+          {
+           "flag": "letters.theo"
+          },
+          {
+           "flag": "letters.jonah"
+          }
+         ]
+        },
+        "do": [
+         {
+          "quest_stage": [
+           "case_dead_letters",
+           "return"
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
    }
   }
  },
@@ -1837,6 +1898,12 @@
      "not_flag": "halloway.rosalind_talk"
     },
     "node": "rosalind"
+   },
+   {
+    "if": {
+     "has_item": "letter_edda"
+    },
+    "node": "dead_letter1"
    }
   ],
   "start": "hub",
@@ -2318,6 +2385,61 @@
      }
     ],
     "next": null
+   },
+   "dead_letter1": {
+    "text": "LETTER_EDDA_0",
+    "next": "dead_letter2"
+   },
+   "dead_letter2": {
+    "text": "LETTER_EDDA_1",
+    "speaker": "NPC_HALLOWAY",
+    "next": "dead_letter3"
+   },
+   "dead_letter3": {
+    "text": "LETTER_EDDA_2",
+    "speaker": "NPC_HALLOWAY",
+    "next": null,
+    "effects": [
+     {
+      "take_item": "letter_edda"
+     },
+     {
+      "set_flag": "letters.edda"
+     },
+     {
+      "relationship": [
+       "edda_halloway",
+       1
+      ]
+     },
+     {
+      "first_match": [
+       {
+        "if": {
+         "all": [
+          {
+           "flag": "letters.edda"
+          },
+          {
+           "flag": "letters.theo"
+          },
+          {
+           "flag": "letters.jonah"
+          }
+         ]
+        },
+        "do": [
+         {
+          "quest_stage": [
+           "case_dead_letters",
+           "return"
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
    }
   }
  },

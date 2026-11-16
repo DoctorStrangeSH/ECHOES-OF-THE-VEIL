@@ -1,5 +1,5 @@
 {
- "_doc": "The Chronicle (R6a): the story so far told as a book, in the journal. A chapter shows once its 'if' holds; each page shows when its own condition holds, so the book follows the player's choices. Until 'done_if' holds the chapter ends with 'to be continued'.",
+ "_doc": "The Chronicle (R6a): the story so far told as a book, in the journal. A chapter shows once its 'if' holds; each page shows when its own condition holds, so the book follows the player's choices. Until 'done_if' holds the chapter ends with 'to be continued'. 'tale': a story from the margins (side case), not a numbered chapter.",
  "chapters": [
   {
    "id": "prologue",
@@ -119,7 +119,8 @@
       ]
      }
     }
-   ]
+   ],
+   "tale": true
   },
   {
    "id": "ward",
@@ -189,7 +190,8 @@
       ]
      }
     }
-   ]
+   ],
+   "tale": true
   },
   {
    "id": "kindness",
@@ -450,7 +452,8 @@
       ]
      }
     }
-   ]
+   ],
+   "tale": true
   },
   {
    "id": "ford",
@@ -486,7 +489,33 @@
       ]
      }
     }
-   ]
+   ],
+   "tale": true
+  },
+  {
+   "id": "letters",
+   "title": "CHRON_LETTERS_TITLE",
+   "epigraph": "CHRON_LETTERS_EPI",
+   "if": {
+    "not": {
+     "not_quest_started": "case_dead_letters"
+    }
+   },
+   "done_if": {
+    "quest_done": "case_dead_letters"
+   },
+   "pages": [
+    {
+     "text": "CHRON_LETTERS_OPEN"
+    },
+    {
+     "text": "CHRON_LETTERS_DONE",
+     "if": {
+      "quest_done": "case_dead_letters"
+     }
+    }
+   ],
+   "tale": true
   },
   {
    "id": "after",

@@ -584,7 +584,7 @@ def screen_ok(s):
         return s[5:] in SHOPS
     if s.startswith('repair:'):
         return s[7:] in JOBS
-    return s in ('jobs', 'workbench', 'business', 'epilogue', 'expeditions', 'sport:basketball', 'sport:football', 'match:football', 'map:travel', 'train:gym')
+    return s in ('jobs', 'workbench', 'business', 'epilogue', 'expeditions', 'sport:basketball', 'sport:football', 'match:football', 'map:travel', 'train:gym', 'world:travel')
 
 CHECK = {
     'evidence': lambda a: a in J['evidence'], 'case': lambda a: a in J['cases'], 'hyp': lambda a: a in J['hypotheses'],

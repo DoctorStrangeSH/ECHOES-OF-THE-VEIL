@@ -718,6 +718,7 @@ func _farm_story() -> void:
 	await _tap(&"pause")
 	await _frames(5)
 	await _millwood_story()
+	await _cavenmouth_story()
 	SceneFlow.travel(&"greyford_block", &"ward_return")
 	await _wait_location(&"greyford_block")
 
@@ -761,6 +762,47 @@ func _millwood_story() -> void:
 	await _talk(&"ada", {"npc": &"ada_fenwick"}, ["FORD_TO_BELL"])
 	await _finish_dialogue()
 	_assert(Journal.case_status(&"case_drowned_ford") == Journal.STATUS_DONE and Inventory.has(&"ford_bell"), "laid to rest; the clapper")
+
+
+## R12a: the coach to Cavenmouth, Walter's letters, three deliveries home.
+func _cavenmouth_story() -> void:
+	_step = "cavenmouth: the coach"
+	WorldClock.wait_until_hour(9)
+	SceneFlow.travel(&"market_street", &"coach_stop")
+	await _wait_location(&"market_street")
+	await _frames(5)
+	Inventory.add_money(40)
+	var money := Inventory.money
+	EventHub.screen_requested.emit("world:travel")
+	await _frames(5)
+	await _tap(&"interact")
+	await _wait_location(&"cavenmouth", 300)
+	await _frames(20)
+	_assert(Inventory.money == money - 12 and WorldMap.city_of(GameState.current_scene_id) == "cavenmouth", "a ticket to the seaside")
+	_assert(not SceneFlow.current_location.find_children("*", "Passerby", true, false).is_empty(), "people on the promenade")
+	_step = "cavenmouth: the post office"
+	SceneFlow.travel(&"cavenmouth_post", &"entrance")
+	await _wait_location(&"cavenmouth_post")
+	await _frames(10)
+	await _talk(&"walter", {"npc": &"walter_finch"}, ["WALTER_ASK_SACK", "WALTER_TAKE_LETTERS", "MARKET_BYE"])
+	await _finish_dialogue()
+	_assert(Inventory.has(&"letter_edda") and Inventory.has(&"letter_theo") and Inventory.has(&"letter_jonah"), "three letters")
+	SceneFlow.travel(&"cavenmouth_inn", &"entrance")
+	await _wait_location(&"cavenmouth_inn")
+	await _frames(10)
+	await _talk(&"bridget", {"npc": &"bridget_knowles"}, ["BRIDGET_ASK_TOWN", "MARKET_BYE"])
+	await _finish_dialogue()
+	_step = "cavenmouth: deliveries"
+	SceneFlow.travel(&"cavenmouth", &"coach_stop")
+	await _wait_location(&"cavenmouth")
+	_assert(WorldMap.travel("greyford"), "the coach home")
+	await _wait_location(&"market_street", 300)
+	for who: Array in [[&"halloway", &"edda_halloway"], [&"theo", &"theo_marsh"], [&"jonah", &"jonah_rook"]]:
+		DialogueService.start(who[0], {"npc": who[1]})
+		await _finish_dialogue()
+	_assert(GameState.has_flag(&"letters.edda") and GameState.has_flag(&"letters.theo") and GameState.has_flag(&"letters.jonah"), "every letter in the right hands")
+	_assert(Journal.case_stage(&"case_dead_letters") == &"return", "back to Walter")
+	Journal.complete_case(&"case_dead_letters", &"delivered")
 
 
 func _find_named(node_name: String) -> Node:

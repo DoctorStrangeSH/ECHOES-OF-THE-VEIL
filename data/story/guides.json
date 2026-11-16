@@ -341,5 +341,23 @@
   "choice": {
    "npc": "ada_fenwick"
   }
+ },
+ "case_dead_letters": {
+  "deliver/edda": {
+   "npc": "edda_halloway"
+  },
+  "deliver/theo": {
+   "npc": "theo_marsh"
+  },
+  "deliver/jonah": {
+   "npc": "jonah_rook"
+  },
+  "return": {
+   "npc": "walter_finch",
+   "note": "GUIDE_NOTE_COACH"
+  },
+  "deliver": {
+   "npc": "edda_halloway"
+  }
  }
 }

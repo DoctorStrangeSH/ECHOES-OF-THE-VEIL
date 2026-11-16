@@ -1,0 +1,238 @@
+{
+ "bridget": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "met.bridget"
+    },
+    "node": "intro1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "intro1": {
+    "text": "BRIDGET_INTRO_1",
+    "next": "intro2",
+    "effects": [
+     {
+      "set_flag": "met.bridget"
+     }
+    ]
+   },
+   "intro2": {
+    "text": "BRIDGET_INTRO_2",
+    "speaker": "NPC_BRIDGET",
+    "next": "hub"
+   },
+   "hub": {
+    "text": "BRIDGET_HUB",
+    "speaker": "NPC_BRIDGET",
+    "choices": [
+     {
+      "text": "MARKET_BUY",
+      "next": null,
+      "effects": [
+       {
+        "open_screen": "shop:cav_inn"
+       }
+      ]
+     },
+     {
+      "text": "BRIDGET_ASK_TOWN",
+      "next": "town"
+     },
+     {
+      "text": "BRIDGET_ASK_ROOM",
+      "next": "room"
+     },
+     {
+      "text": "MARKET_BYE",
+      "next": null
+     }
+    ]
+   },
+   "town": {
+    "text": "BRIDGET_TOWN",
+    "speaker": "NPC_BRIDGET",
+    "next": "hub"
+   },
+   "room": {
+    "text": "BRIDGET_ROOM",
+    "speaker": "NPC_BRIDGET",
+    "next": "hub"
+   }
+  }
+ },
+ "walter": {
+  "entries": [
+   {
+    "if": {
+     "quest_done": "case_dead_letters"
+    },
+    "node": "after"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_dead_letters",
+      "return"
+     ]
+    },
+    "node": "ret1"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_dead_letters",
+      "deliver"
+     ]
+    },
+    "node": "wait"
+   },
+   {
+    "if": {
+     "not_flag": "met.walter"
+    },
+    "node": "intro1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "intro1": {
+    "text": "WALTER_INTRO_1",
+    "next": "intro2",
+    "effects": [
+     {
+      "set_flag": "met.walter"
+     }
+    ]
+   },
+   "intro2": {
+    "text": "WALTER_INTRO_2",
+    "speaker": "NPC_WALTER",
+    "next": "hub"
+   },
+   "hub": {
+    "text": "WALTER_HUB",
+    "speaker": "NPC_WALTER",
+    "choices": [
+     {
+      "text": "WALTER_ASK_SACK",
+      "next": "sack1",
+      "if": {
+       "not_quest_started": "case_dead_letters"
+      }
+     },
+     {
+      "text": "MARKET_BYE",
+      "next": null
+     }
+    ]
+   },
+   "sack1": {
+    "text": "WALTER_SACK_1",
+    "speaker": "NPC_WALTER",
+    "next": "sack2"
+   },
+   "sack2": {
+    "text": "WALTER_SACK_2",
+    "speaker": "NPC_WALTER",
+    "next": "sack3"
+   },
+   "sack3": {
+    "text": "WALTER_SACK_3",
+    "speaker": "NPC_WALTER",
+    "choices": [
+     {
+      "text": "WALTER_TAKE_LETTERS",
+      "next": "take",
+      "effects": [
+       {
+        "quest_start": "case_dead_letters"
+       },
+       {
+        "give_item": "letter_edda"
+       },
+       {
+        "give_item": "letter_theo"
+       },
+       {
+        "give_item": "letter_jonah"
+       }
+      ]
+     },
+     {
+      "text": "WALTER_NOT_NOW",
+      "next": "hub"
+     }
+    ]
+   },
+   "take": {
+    "text": "WALTER_TAKE",
+    "speaker": "NPC_WALTER",
+    "next": "hub"
+   },
+   "wait": {
+    "text": "WALTER_WAIT",
+    "speaker": "NPC_WALTER",
+    "next": "hub"
+   },
+   "ret1": {
+    "text": "WALTER_RETURN_1",
+    "speaker": "NPC_WALTER",
+    "next": "ret2"
+   },
+   "ret2": {
+    "text": "WALTER_RETURN_2",
+    "speaker": "NPC_WALTER",
+    "next": "hub",
+    "effects": [
+     {
+      "give_money": 30
+     },
+     {
+      "give_xp": 50
+     },
+     {
+      "relationship": [
+       "walter_finch",
+       2
+      ]
+     },
+     {
+      "quest_complete": [
+       "case_dead_letters",
+       "delivered"
+      ]
+     }
+    ]
+   },
+   "after": {
+    "text": "WALTER_AFTER",
+    "speaker": "NPC_WALTER",
+    "next": "hub"
+   }
+  }
+ },
+ "cav_sacks": {
+  "entries": [
+   {
+    "if": {
+     "quest_done": "case_dead_letters"
+    },
+    "node": "after"
+   }
+  ],
+  "start": "plain",
+  "nodes": {
+   "plain": {
+    "text": "SACKS_PLAIN",
+    "next": null
+   },
+   "after": {
+    "text": "SACKS_AFTER",
+    "next": null
+   }
+  }
+ }
+}

@@ -108,3 +108,7 @@ Streets are no longer empty: a Crowd node per location (data/world/crowds.json) 
 ## D-072 NPC activities (R1d)
 
 A schedule entry can carry an activity: look (glance around now and then), read, phone, work (a few busy steps to and fro around the anchor). Reading and the phone use the Character Generator's own rows; layered characters get the pack's Books sheet as an extra layer while reading, premade sheets have the book and phone drawn in. Talking interrupts the activity and it resumes when the conversation ends. The validator checks activity names.
+
+## D-073 Other towns (R12a)
+
+Travel between towns is its own layer above the city bus: data/world/world_map.json lists towns (their scenes, where you arrive, a spot on a hand-drawn coast map) and routes with a mode, a fare and a time. Every scene belongs to Greyford unless a town claims it. The first route is a coach from the market to Cavenmouth, a seaside town with an inn, a post office, a beach and its own crowd. Car and plane will be other modes of the same table. The first Cavenmouth story ties back to Greyford on purpose (letters to erased addresses, delivered by hand to Edda, Theo and Jonah), so a second town deepens the first rather than replacing it.

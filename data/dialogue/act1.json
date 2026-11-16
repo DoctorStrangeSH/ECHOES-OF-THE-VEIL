@@ -6,6 +6,12 @@
      "not_flag": "met.theo_marsh"
     },
     "node": "intro1"
+   },
+   {
+    "if": {
+     "has_item": "letter_theo"
+    },
+    "node": "dead_letter1"
    }
   ],
   "start": "hub",
@@ -171,6 +177,61 @@
     "speaker": "NPC_THEO",
     "text": "THEO_AFTER_SETTLED",
     "next": "hub"
+   },
+   "dead_letter1": {
+    "text": "LETTER_THEO_0",
+    "next": "dead_letter2"
+   },
+   "dead_letter2": {
+    "text": "LETTER_THEO_1",
+    "speaker": "NPC_THEO",
+    "next": "dead_letter3"
+   },
+   "dead_letter3": {
+    "text": "LETTER_THEO_2",
+    "speaker": "NPC_THEO",
+    "next": null,
+    "effects": [
+     {
+      "take_item": "letter_theo"
+     },
+     {
+      "set_flag": "letters.theo"
+     },
+     {
+      "relationship": [
+       "theo_marsh",
+       1
+      ]
+     },
+     {
+      "first_match": [
+       {
+        "if": {
+         "all": [
+          {
+           "flag": "letters.edda"
+          },
+          {
+           "flag": "letters.theo"
+          },
+          {
+           "flag": "letters.jonah"
+          }
+         ]
+        },
+        "do": [
+         {
+          "quest_stage": [
+           "case_dead_letters",
+           "return"
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
    }
   }
  },

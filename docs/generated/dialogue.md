@@ -11,6 +11,7 @@ flowchart TD
   theo_START(("start"))
   theo_START --> theo_hub
   theo_START -->|"{not_flag: met.theo_marsh}"| theo_intro1
+  theo_START -->|"{has_item: letter_theo}"| theo_dead_letter1
   theo_intro1["intro1<br/>Theo Marsh: 'Excuse me. You look like someone who notices t…"]
   theo_intro1 --> theo_intro2
   theo_intro2["intro2<br/>Theo Marsh: 'Theo Marsh. Yellow building, ground floor. My …"]
@@ -33,6 +34,11 @@ flowchart TD
   theo_settled["settled<br/>Theo Marsh: 'Plans. Of course.' Relief, and something under…"]
   theo_after["after<br/>Theo Marsh: 'No new rooms since you came. I sleep with the …"]
   theo_after --> theo_hub
+  theo_dead_letter1["dead_letter1<br/>Theo holds the envelope between two fingers, th…"]
+  theo_dead_letter1 --> theo_dead_letter2
+  theo_dead_letter2["dead_letter2<br/>Theo Marsh: Ellie. «Wait by the door, I won't be long.» I w…"]
+  theo_dead_letter2 --> theo_dead_letter3
+  theo_dead_letter3["dead_letter3<br/>Theo Marsh: I'll keep it in my breast pocket. Then if the d…"]
 ```
 
 ### theo_corridor
@@ -811,6 +817,80 @@ flowchart TD
   wren_after["after<br/>Director Elias Wren: 'I'll testify. Every minute, every name. It won…"]
 ```
 
+## cavenmouth.json
+
+### bridget
+
+```mermaid
+flowchart TD
+  bridget_START(("start"))
+  bridget_START --> bridget_hub
+  bridget_START -->|"{not_flag: met.bridget}"| bridget_intro1
+  bridget_intro1["intro1<br/>Behind the bar a broad woman with flour on her …"]
+  bridget_intro1 --> bridget_intro2
+  bridget_intro2["intro2<br/>Bridget Knowles: Come in, come in, let the wind stay outside. Br…"]
+  bridget_intro2 --> bridget_hub
+  bridget_hub["hub<br/>Bridget Knowles: Bridget sets down a glass that is already dry. …"]
+  bridget_hub_end_0(["end"])
+  bridget_hub -->|"'What have you got today?'"| bridget_hub_end_0
+  bridget_hub -->|"What's Cavenmouth like?"| bridget_town
+  bridget_hub -->|"Can I stay the night?"| bridget_room
+  bridget_hub_end_3(["end"])
+  bridget_hub -->|"'I'll be off.'"| bridget_hub_end_3
+  bridget_town["town<br/>Bridget Knowles: People say Cavenmouth is where folk come to get…"]
+  bridget_town --> bridget_hub
+  bridget_room["room<br/>Bridget Knowles: The bed by the window is yours whenever you lik…"]
+  bridget_room --> bridget_hub
+```
+
+### walter
+
+```mermaid
+flowchart TD
+  walter_START(("start"))
+  walter_START --> walter_hub
+  walter_START -->|"{quest_done: case_dead_letters}"| walter_after
+  walter_START -->|"{quest_stage: [case_dead_letters, retur…"| walter_ret1
+  walter_START -->|"{quest_stage: [case_dead_letters, deliv…"| walter_wait
+  walter_START -->|"{not_flag: met.walter}"| walter_intro1
+  walter_intro1["intro1<br/>A thin old man in round glasses is sorting enve…"]
+  walter_intro1 --> walter_intro2
+  walter_intro2["intro2<br/>Walter Finch: Walter Finch, postmaster, forty-one years. Stam…"]
+  walter_intro2 --> walter_hub
+  walter_hub["hub<br/>Walter Finch: Walter straightens a pile of envelopes that is …"]
+  walter_hub -->|"What are the sacks in the cor… ⟨{not_quest_started: case_dead_letters}⟩"| walter_sack1
+  walter_hub_end_1(["end"])
+  walter_hub -->|"'I'll be off.'"| walter_hub_end_1
+  walter_sack1["sack1<br/>Walter Finch: Those? Undeliverable mail. Letters to Greyford,…"]
+  walter_sack1 --> walter_sack2
+  walter_sack2["sack2<br/>Walter Finch: Regulations say I should burn them after a year…"]
+  walter_sack2 --> walter_sack3
+  walter_sack3["sack3<br/>Walter Finch: You live in Greyford, don't you? You have the l…"]
+  walter_sack3 -->|"I'll take them."| walter_take
+  walter_sack3 -->|"Not now."| walter_hub
+  walter_take["take<br/>Walter Finch: Mrs Halloway, Mr Marsh, Mr Rook. Mind the corne…"]
+  walter_take --> walter_hub
+  walter_wait["wait<br/>Walter Finch: Three letters, three doors. I have waited forty…"]
+  walter_wait --> walter_hub
+  walter_ret1["ret1<br/>Walter Finch: All three? Into their hands? Walter takes off h…"]
+  walter_ret1 --> walter_ret2
+  walter_ret2["ret2<br/>Walter Finch: Forty years I held that sack the way one holds …"]
+  walter_ret2 --> walter_hub
+  walter_after["after<br/>Walter Finch: Lighter by three. I weigh it every morning, you…"]
+  walter_after --> walter_hub
+```
+
+### cav_sacks
+
+```mermaid
+flowchart TD
+  cav_sacks_START(("start"))
+  cav_sacks_START --> cav_sacks_plain
+  cav_sacks_START -->|"{quest_done: case_dead_letters}"| cav_sacks_after
+  cav_sacks_plain["plain<br/>Grey mail sacks, stencilled «GREYFORD: RETURNED…"]
+  cav_sacks_after["after<br/>The sacks of returned mail. One of them sits a …"]
+```
+
 ## companions.json
 
 ### agnes_card
@@ -1478,6 +1558,7 @@ flowchart TD
   jonah_START -->|"{remembers: [jonah_rook, told_truth_abo…"| jonah_bell1
   jonah_START -->|"{quest_done: case_bell, not_flag: jonah…"| jonah_bell_after
   jonah_START -->|"{repair_level_at_least: 3, flag: rel.jo…"| jonah_stall1
+  jonah_START -->|"{has_item: letter_jonah}"| jonah_dead_letter1
   jonah_intro1["intro1<br/>Jonah Rook: 'Jonah Rook. I repair things nobody makes any m…"]
   jonah_intro1 --> jonah_intro2
   jonah_intro2["intro2<br/>Jonah Rook: 'You're new? Then you're exactly who I need. I'…"]
@@ -1574,6 +1655,11 @@ flowchart TD
   jonah_rr2["rr2<br/>Jonah Rook: 'Dad's repair stamp. ROOK & DAUGHTER. It was in…"]
   jonah_rr2 --> jonah_hub
   jonah_inc_storeroom["inc_storeroom<br/>Jonah Rook: Safe. Right. Dad would've charged rent to whate…"]
+  jonah_dead_letter1["dead_letter1<br/>Jonah turns the envelope over and over, as if l…"]
+  jonah_dead_letter1 --> jonah_dead_letter2
+  jonah_dead_letter2["dead_letter2<br/>Jonah Rook: That's her hand. Rosalind made her R's like lit…"]
+  jonah_dead_letter2 --> jonah_dead_letter3
+  jonah_dead_letter3["dead_letter3<br/>Jonah Rook: I'm going to fix every radio in this town for f…"]
 ```
 
 ### halloway
@@ -1588,6 +1674,7 @@ flowchart TD
   halloway_START -->|"{not_flag: met.edda_halloway, backgroun…"| halloway_local1
   halloway_START -->|"{not_flag: met.edda_halloway}"| halloway_intro1
   halloway_START -->|"{knows: [edda_halloway, rosalind_erased…"| halloway_rosalind
+  halloway_START -->|"{has_item: letter_edda}"| halloway_dead_letter1
   halloway_intro1["intro1<br/>Edda Halloway: 'So you're my new lodger. Edda Halloway. Rent o…"]
   halloway_local1["local1<br/>Edda Halloway: 'Well I never — {name}! You were this high when…"]
   halloway_local1 --> halloway_local2
@@ -1644,6 +1731,11 @@ flowchart TD
   halloway_kn_leave2["kn_leave2<br/>Edda Halloway: 'Mr Calder asked me to forget, in 1987, and I a…"]
   halloway_kn_leave2 --> halloway_kn_leave3
   halloway_kn_leave3["kn_leave3<br/>Edda Halloway: 'I don't think I can watch.' She leaves the fla…"]
+  halloway_dead_letter1["dead_letter1<br/>Mrs Halloway knows the hand before she has her …"]
+  halloway_dead_letter1 --> halloway_dead_letter2
+  halloway_dead_letter2["dead_letter2<br/>Edda Halloway: Bea. My sister. She writes that the bakery is c…"]
+  halloway_dead_letter2 --> halloway_dead_letter3
+  halloway_dead_letter3["dead_letter3<br/>Edda Halloway: Thank you. No, don't go. Sit with me a minute. …"]
 ```
 
 ### ivo

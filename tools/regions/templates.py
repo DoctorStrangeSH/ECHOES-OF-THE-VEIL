@@ -154,3 +154,28 @@ def field(x, y, cols, rows, name, prefix):
             k += 1
             out.append({'kind': 'plot', 'name': f'{name}Plot{k}', 'id': f'{prefix}_{k}', 'x': (x + i) * 16 + 8, 'y': (y + j) * 16 + 8})
     return out
+
+
+MODULAR = 'modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_'
+
+
+def townhouse(x, y, ground, middle, roof, name, door=None, inspect=None, color='#8a6a5a'):
+    """A town building from the modular pack: a ground floor (base at y), one
+    middle floor and a roof stacked on it. door / inspect as for `building`."""
+    import os
+    from PIL import Image
+    art = os.path.join(os.path.dirname(__file__), '..', '..', 'assets', 'limezu')
+    def h(part):
+        return Image.open(os.path.join(art, MODULAR + part + '.png')).size[1]
+    hg, hm, hr = h(ground), h(middle), h(roof)
+    out = [{'kind': 'prop', 'name': name + 'Ground', 'tex': MODULAR + ground + '.png', 'x': x, 'y': y, 'col': [112, hg - 8], 'off': [0, -(hg - 8) / 2], 'color': color},
+           {'kind': 'prop', 'name': name + 'Middle', 'tex': MODULAR + middle + '.png', 'x': x, 'y': y - hg, 'col': [112, hm], 'off': [0, -hm / 2], 'color': color},
+           {'kind': 'prop', 'name': name + 'Roof', 'tex': MODULAR + roof + '.png', 'x': x, 'y': y - hg - hm, 'col': [112, hr], 'off': [0, -hr / 2], 'color': '#504040'}]
+    if door:
+        out.append({'kind': 'door', 'name': name + 'Door', 'id': door['id'], 'x': door.get('x', x), 'y': y + 6, 'area': [door.get('width', 24), 10],
+                    'scene': door['scene'], 'spawn': door['spawn'], 'prompt': door.get('prompt', 'PROMPT_ENTER_SHOP')})
+        if door.get('spawn_id'):
+            out.append({'kind': 'spawn', 'name': name + 'Front', 'id': door['spawn_id'], 'x': door.get('x', x), 'y': y + 18, 'facing': [0, 1]})
+    if inspect:
+        out.append({'kind': 'inspect', 'name': name + 'Look', 'id': inspect['id'], 'x': inspect.get('x', x), 'y': y + 6, 'area': [inspect.get('width', 60), 10], 'lines': inspect['lines']})
+    return out
