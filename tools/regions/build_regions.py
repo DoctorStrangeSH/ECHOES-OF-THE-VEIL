@@ -235,6 +235,7 @@ def write_tscn(path, loc_id, name_key, palette, layout, nodes, margin=0, opts=No
             L+=[f'[node name="{n["name"]}" parent="Entities" instance=ExtResource("{rid}")]',f'position = {v(n["x"],n["y"])}',f'interaction_id = &"{n["id"]}"']
             if k=='spot': L.append(f'spot_id = &"{n["spot"]}"')
             if k=='screen': L.append(f'screen = "{n["screen"]}"')
+            if n.get('prompt'): L.append(f'prompt_key = "{n["prompt"]}"')
             if n.get('show_if') is not None:
                 L+=['',f'[node name="Condition" type="Node" parent="Entities/{n["name"]}"]','script = ExtResource("10_cond")',f'show_if = {_j.dumps(n["show_if"])}']
         elif k=='plot':

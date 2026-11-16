@@ -698,18 +698,13 @@
    ]
   },
   {
-   "kind": "inspect",
-   "name": "BaitLook",
-   "id": "inspect_bait",
+   "kind": "screen",
+   "name": "BaitShop",
+   "id": "use_market_bait",
    "x": 712,
    "y": 262,
-   "area": [
-    60,
-    10
-   ],
-   "lines": [
-    "FLAVOR_MARKET_BAIT"
-   ]
+   "screen": "shop:market_bait",
+   "prompt": "PROMPT_ENTER_SHOP"
   },
   {
    "kind": "inspect",

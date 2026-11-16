@@ -348,11 +348,13 @@ collision_offset = Vector2(0, -5)
 position = Vector2(136, 436)
 interaction_id = &"use_basketball"
 screen = "sport:basketball"
+prompt_key = "PROMPT_PLAY"
 
 [node name="SoccerUse" parent="Entities" instance=ExtResource("18_screen")]
 position = Vector2(600, 476)
 interaction_id = &"use_football"
 screen = "sport:football"
+prompt_key = "PROMPT_PLAY"
 
 [node name="CoffeeLook" type="Area2D" parent="Entities"]
 position = Vector2(376, 212)
@@ -412,6 +414,7 @@ collision_offset = Vector2(0, -2)
 position = Vector2(312, 138)
 interaction_id = &"use_bus_stop"
 screen = "map:travel"
+prompt_key = "PROMPT_BUS"
 
 [node name="BusStopSpawn" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(312, 146)

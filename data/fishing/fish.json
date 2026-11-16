@@ -1,0 +1,157 @@
+{
+ "_doc": "Fish (R7a). where: sea | harbour | lake. when: parts of the day (empty = any). weather: only in that weather. if: a story condition. weight: how often it bites among those that can. difficulty 1-5: how wildly it darts. value: price (shops pay half).",
+ "mackerel": {
+  "name": "FISH_MACKEREL",
+  "where": [
+   "sea",
+   "harbour"
+  ],
+  "when": [
+   "morning",
+   "afternoon"
+  ],
+  "weight": 5,
+  "difficulty": 1,
+  "value": 6,
+  "color": "#6aa0c0"
+ },
+ "cod": {
+  "name": "FISH_COD",
+  "where": [
+   "sea",
+   "harbour"
+  ],
+  "weight": 4,
+  "difficulty": 2,
+  "value": 9,
+  "color": "#b0a070"
+ },
+ "plaice": {
+  "name": "FISH_PLAICE",
+  "where": [
+   "sea"
+  ],
+  "weight": 3,
+  "difficulty": 2,
+  "value": 10,
+  "color": "#c09060"
+ },
+ "sea_bass": {
+  "name": "FISH_SEA_BASS",
+  "where": [
+   "sea"
+  ],
+  "when": [
+   "evening",
+   "morning"
+  ],
+  "weight": 2,
+  "difficulty": 3,
+  "value": 16,
+  "color": "#a0b0c0"
+ },
+ "conger": {
+  "name": "FISH_CONGER",
+  "where": [
+   "sea",
+   "harbour"
+  ],
+  "when": [
+   "night"
+  ],
+  "weight": 1.5,
+  "difficulty": 4,
+  "value": 24,
+  "color": "#505a60"
+ },
+ "harbour_crab": {
+  "name": "FISH_CRAB",
+  "where": [
+   "harbour"
+  ],
+  "weight": 3,
+  "difficulty": 1,
+  "value": 5,
+  "color": "#d06040"
+ },
+ "herring_1962": {
+  "name": "FISH_HERRING_1962",
+  "where": [
+   "harbour"
+  ],
+  "when": [
+   "night"
+  ],
+  "weather": "rain",
+  "weight": 0.8,
+  "difficulty": 5,
+  "value": 40,
+  "color": "#c0e8ff"
+ },
+ "perch": {
+  "name": "FISH_PERCH",
+  "where": [
+   "lake"
+  ],
+  "weight": 5,
+  "difficulty": 1,
+  "value": 5,
+  "color": "#90a050"
+ },
+ "roach": {
+  "name": "FISH_ROACH",
+  "where": [
+   "lake"
+  ],
+  "when": [
+   "morning",
+   "afternoon",
+   "evening"
+  ],
+  "weight": 4,
+  "difficulty": 1,
+  "value": 4,
+  "color": "#b0b0c0"
+ },
+ "pike": {
+  "name": "FISH_PIKE",
+  "where": [
+   "lake"
+  ],
+  "weight": 1.5,
+  "difficulty": 4,
+  "value": 20,
+  "color": "#607a40"
+ },
+ "carp": {
+  "name": "FISH_CARP",
+  "where": [
+   "lake"
+  ],
+  "when": [
+   "evening"
+  ],
+  "weight": 1.2,
+  "difficulty": 3,
+  "value": 15,
+  "color": "#c0a050"
+ },
+ "bell_carp": {
+  "name": "FISH_BELL_CARP",
+  "where": [
+   "lake"
+  ],
+  "when": [
+   "night"
+  ],
+  "if": {
+   "not": {
+    "not_quest_started": "case_drowned_ford"
+   }
+  },
+  "weight": 0.6,
+  "difficulty": 5,
+  "value": 50,
+  "color": "#d0d8ff"
+ }
+}

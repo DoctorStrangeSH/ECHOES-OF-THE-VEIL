@@ -1719,6 +1719,36 @@ func test_world_map_routes() -> void:
 	check(WorldMap.routes_from("cavenmouth").any(func(x: Dictionary) -> bool: return String(x["dest"]) == "greyford"), "and comes back")
 
 
+func test_fishing() -> void:
+	GameState.reset_for_new_game()
+	GameState.is_playing = true
+	WorldClock.wait_until_hour(10)
+	var sea := FishingMinigame.candidates("sea")
+	check(sea.has("mackerel") and not sea.has("conger") and not sea.has("perch"), "the sea by day: mackerel, no eels, no lake fish")
+	WorldClock.wait_until_hour(23)
+	check(FishingMinigame.candidates("sea").has("conger"), "eels come out at night")
+	check(not FishingMinigame.candidates("lake").has("bell_carp"), "the bell carp only after the bell is heard of")
+	Journal.start_case(&"case_drowned_ford")
+	check(FishingMinigame.candidates("lake").has("bell_carp"), "and then at night on the lake")
+	for id: String in FishingMinigame.fish_defs():
+		check(Inventory.def(StringName(id)).get("category", "") == "fish", "fish %s is an item" % id)
+	var m := FishingMinigame.new()
+	add_child(m)
+	m.start("lake")
+	check(not m.is_open(), "no rod, no fishing")
+	Inventory.add(&"fishing_rod", 1, false)
+	m.start("lake")
+	check(m.is_open(), "with a rod, fishing")
+	m._start_reel()
+	var fid := m._fish_id
+	m._land()
+	check(Inventory.has(StringName(fid)) and FishingMinigame.caught_kinds() == 1, "a catch is landed and counted")
+	m.close()
+	m.queue_free()
+	GameState.reset_for_new_game()
+	GameState.is_playing = false
+
+
 func test_xp_comes_from_play() -> void:
 	GameState.reset_for_new_game()
 	GameState.is_playing = true

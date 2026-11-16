@@ -29,7 +29,6 @@
   "FLAVOR_MARKET_MUSIC": {"en": "A violin in the window has no strings. A card says: STRINGS ON REQUEST. SOME TUNES SHOULD BE ASKED FOR.", "ru": "В витрине скрипка без струн. На карточке: «СТРУНЫ ПО ЗАПРОСУ. НЕКОТОРЫЕ МЕЛОДИИ НУЖНО ПОПРОСИТЬ»."},
   "FLAVOR_MARKET_BUTCHERY": {"en": "The butcher's chalkboard advertises Sunday joints and a fortune-teller's price for liver. The shop smells of sawdust and cold iron.", "ru": "На доске у мясника воскресные окорока и печень по цене гадания. Внутри пахнет опилками и холодным железом."},
   "FLAVOR_MARKET_GYM": {"en": "Through the glass, someone runs on a treadmill towards a poster of a beach. They have been running towards it for a very long time, and it has not come any closer.", "ru": "За стеклом кто-то бежит по дорожке к плакату с пляжем. Бежит очень давно, а пляж всё не приближается."},
-  "FLAVOR_MARKET_BAIT": {"en": "LIVE BAIT, says the sign, and underneath, in a different hand: AND SOMETIMES THINGS THAT AREN'T.", "ru": "«ЖИВАЯ НАЖИВКА», гласит вывеска, а ниже другим почерком: «И ИНОГДА ТО, ЧТО НЕ ЖИВОЕ»."},
   "FLAVOR_MARKET_CANDY": {"en": "The candy cart sells boiled sweets by the quarter. The jars are labelled by colour and, for reasons nobody explains, by year.", "ru": "Тележка торгует леденцами на развес. Банки подписаны по цвету и, по причине, которую никто не объясняет, по году."},
   "ITEM_BREAD_ROLL": {"en": "Bread roll", "ru": "Булочка"},
   "ITEM_BREAD_ROLL_DESC": {"en": "Still warm in the middle. Restores 1 heart.", "ru": "В середине ещё тёплая. Восстанавливает 1 сердце."},

@@ -262,6 +262,19 @@
    "where": [
     "cavenmouth"
    ]
+  },
+  {
+   "text": "CHATTER_FISHING",
+   "where": [
+    "market_street",
+    "greyford_block"
+   ]
+  },
+  {
+   "text": "CHATTER_CAV_FISH",
+   "where": [
+    "cavenmouth"
+   ]
   }
  ]
 }

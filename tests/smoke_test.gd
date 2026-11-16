@@ -792,6 +792,20 @@ func _cavenmouth_story() -> void:
 	await _frames(10)
 	await _talk(&"bridget", {"npc": &"bridget_knowles"}, ["BRIDGET_ASK_TOWN", "MARKET_BYE"])
 	await _finish_dialogue()
+	_step = "cavenmouth: fishing"
+	SceneFlow.travel(&"cavenmouth", &"coach_stop")
+	await _wait_location(&"cavenmouth")
+	Inventory.add_money(20)
+	_assert(Economy.buy(&"cav_bait", 0) and Inventory.has(&"fishing_rod"), "a rod from the bait shop")
+	EventHub.screen_requested.emit("fish:sea")
+	await _frames(5)
+	var fishing := get_child(0).get("fishing") as FishingMinigame
+	_assert(fishing.is_open(), "fishing off the pier")
+	fishing._start_reel()
+	fishing._land()
+	await _frames(5)
+	fishing.close()
+	_assert(FishingMinigame.caught_kinds() >= 1, "something caught")
 	_step = "cavenmouth: deliveries"
 	SceneFlow.travel(&"cavenmouth", &"coach_stop")
 	await _wait_location(&"cavenmouth")
