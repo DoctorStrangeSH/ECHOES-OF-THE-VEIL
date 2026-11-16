@@ -240,8 +240,9 @@ def write_tscn(path, loc_id, name_key, palette, layout, nodes, margin=0, opts=No
     open(path,'w').write('\n'.join(L)+'\n')
 
 
-def preview(out, palette, layout, nodes):
-    """Debug picture: tiles, props, NPCs, interaction areas and markers."""
+def preview(out, palette, layout, nodes, clean=False):
+    """Debug picture: tiles, props, NPCs, interaction areas and markers.
+    clean=True: only tiles and always-visible props (for the city map)."""
     rows=layout.split('\n'); W=max(map(len,rows)); H=len(rows)
     img=Image.new('RGBA',(W*16,H*16),(20,20,28,255)); P=PAL[palette]; cache={}
     for y,row in enumerate(rows):
@@ -254,7 +255,7 @@ def preview(out, palette, layout, nodes):
             img.alpha_composite(cache[t].crop((c[0]*16,c[1]*16,c[0]*16+16,c[1]*16+16)),(x*16,y*16))
     drawables=[]
     for n in nodes:
-        if n['kind']=='prop':
+        if n['kind']=='prop' and not (clean and n.get('show_if')):
             im=Image.open(local(n['tex'])).convert('RGBA')
             if n.get('region'): r=n['region']; im=im.crop((r[0],r[1],r[0]+r[2],r[1]+r[3]))
             drawables.append((n['layer']!='FloorDecor', n['y'], im, n['x']-im.width//2, n['y']-im.height))
@@ -263,6 +264,9 @@ def preview(out, palette, layout, nodes):
             col={0:0,1:6,2:12,3:18}[n['facing']]; fr=im.crop((col*16,32,col*16+16,64)); drawables.append((True,n['y'],fr,n['x']-8,n['y']-32))
     drawables.sort(key=lambda d:(d[0],d[1]))
     for _,_,im,x,y in drawables: img.alpha_composite(im,(int(x),int(y)))
+    if clean:
+        img.save(out)
+        return
     from PIL import ImageDraw; d=ImageDraw.Draw(img)
     for n in nodes:
         if n['kind'] in ('inspect','door','rest'):

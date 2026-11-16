@@ -22,6 +22,33 @@
    "stop": [
     "greyford_block",
     "bus_stop"
+   ],
+   "map_at": [
+    92,
+    58
+   ],
+   "stop_at": [
+    300,
+    382
+   ],
+   "desc": "MAP_DESC_OLD_QUARTER",
+   "places": [
+    {
+     "name": "MAP_PLACE_HOME",
+     "hours": "MAP_HOURS_ALWAYS"
+    },
+    {
+     "name": "MAP_PLACE_ARCHIVE",
+     "hours": "MAP_HOURS_ALWAYS"
+    },
+    {
+     "name": "LOC_ROOK_SHOP",
+     "hours": "MAP_HOURS_ROOK"
+    },
+    {
+     "name": "MAP_PLACE_JOBS",
+     "hours": "MAP_HOURS_ALWAYS"
+    }
    ]
   },
   "gardens": {
@@ -36,6 +63,25 @@
    "stop": [
     "greyford_park",
     "bus_stop"
+   ],
+   "map_at": [
+    90,
+    122
+   ],
+   "stop_at": [
+    312,
+    56
+   ],
+   "desc": "MAP_DESC_GARDENS",
+   "places": [
+    {
+     "name": "MAP_PLACE_COURTS",
+     "hours": "MAP_HOURS_DAYLIGHT"
+    },
+    {
+     "name": "MAP_PLACE_KIOSKS",
+     "hours": "MAP_HOURS_ALWAYS"
+    }
    ]
   },
   "market": {
@@ -52,6 +98,25 @@
    "stop": [
     "market_street",
     "bus_stop"
+   ],
+   "map_at": [
+    186,
+    62
+   ],
+   "stop_at": [
+    600,
+    298
+   ],
+   "desc": "MAP_DESC_MARKET",
+   "places": [
+    {
+     "name": "LOC_BAKERY",
+     "hours": "MAP_HOURS_BAKERY"
+    },
+    {
+     "name": "LOC_CAFE",
+     "hours": "MAP_HOURS_CAFE"
+    }
    ]
   },
   "lighthouse": {
@@ -63,7 +128,18 @@
    "scenes": [
     "lighthouse_point"
    ],
-   "stop": null
+   "stop": null,
+   "map_at": [
+    6,
+    44
+   ],
+   "desc": "MAP_DESC_LIGHTHOUSE",
+   "places": [
+    {
+     "name": "MAP_PLACE_LIGHTHOUSE",
+     "hours": "MAP_HOURS_ALWAYS"
+    }
+   ]
   },
   "north_quay": {
    "name": "MAP_NORTH_QUAY",
@@ -82,7 +158,22 @@
    ],
    "known_if": {
     "flag": "act.act3"
-   }
+   },
+   "map_at": [
+    186,
+    12
+   ],
+   "stop_at": [
+    96,
+    176
+   ],
+   "desc": "MAP_DESC_NORTH_QUAY",
+   "places": [
+    {
+     "name": "MAP_PLACE_UNDERPASS",
+     "hours": "MAP_HOURS_ALWAYS"
+    }
+   ]
   }
  },
  "roads": [
@@ -102,5 +193,10 @@
    "old_quarter",
    "north_quay"
   ]
+ ],
+ "map_scale": 0.125,
+ "canvas": [
+  300,
+  190
  ]
 }
