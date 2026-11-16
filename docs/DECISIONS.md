@@ -104,3 +104,7 @@ The journal has a third tab, the Chronicle: the story so far written as a book, 
 ## D-071 Townspeople (R1c)
 
 Streets are no longer empty: a Crowd node per location (data/world/crowds.json) keeps the right number of passers-by out for the time of day (fewer in the rain, almost none at night). They are put together at random from Character Generator layers, walk authored routes along pavements, stop now and then, fade in and out at the route ends, and have no collision. Spoken to, they answer with one line in a bubble, from data/world/chatter.json; lines can depend on the place and on the story (rumours of the Ward after act II, new neighbours after the ending), so the town visibly reacts to what the player did. No dialogue window: talking to a stranger should cost a second.
+
+## D-072 NPC activities (R1d)
+
+A schedule entry can carry an activity: look (glance around now and then), read, phone, work (a few busy steps to and fro around the anchor). Reading and the phone use the Character Generator's own rows; layered characters get the pack's Books sheet as an extra layer while reading, premade sheets have the book and phone drawn in. Talking interrupts the activity and it resumes when the conversation ends. The validator checks activity names.

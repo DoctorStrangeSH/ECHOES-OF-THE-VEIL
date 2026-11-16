@@ -58,7 +58,8 @@
     },
     "scene": "municipal_archive",
     "anchor": "desk",
-    "facing": "down"
+    "facing": "down",
+    "activity": "read"
    },
    {
     "period": [
@@ -67,7 +68,8 @@
     ],
     "scene": "greyford_block",
     "anchor": "plaza_east",
-    "facing": "left"
+    "facing": "left",
+    "activity": "look"
    },
    {
     "period": "evening",
@@ -102,7 +104,8 @@
     "period": "morning",
     "scene": "greyford_block",
     "anchor": "harbor_rail_east",
-    "facing": "up"
+    "facing": "up",
+    "activity": "look"
    },
    {
     "period": "afternoon",
@@ -111,7 +114,8 @@
     },
     "scene": "rook_shop",
     "anchor": "counter",
-    "facing": "down"
+    "facing": "down",
+    "activity": "work"
    },
    {
     "period": [
@@ -119,13 +123,15 @@
     ],
     "scene": "greyford_block",
     "anchor": "rook_shop",
-    "facing": "left"
+    "facing": "left",
+    "activity": "phone"
    },
    {
     "period": "afternoon",
     "scene": "greyford_block",
     "anchor": "rook_shop",
-    "facing": "left"
+    "facing": "left",
+    "activity": "phone"
    }
   ],
   "factions": []
@@ -152,13 +158,15 @@
     "period": "morning",
     "scene": "greyford_block",
     "anchor": "home_mailbox",
-    "facing": "left"
+    "facing": "left",
+    "activity": "look"
    },
    {
     "period": "afternoon",
     "scene": "greyford_block",
     "anchor": "park_bench_west",
-    "facing": "down"
+    "facing": "down",
+    "activity": "read"
    }
   ],
   "factions": []
@@ -199,13 +207,15 @@
     "period": "afternoon",
     "scene": "greyford_block",
     "anchor": "plaza_west",
-    "facing": "right"
+    "facing": "right",
+    "activity": "phone"
    },
    {
     "period": "evening",
     "scene": "greyford_block",
     "anchor": "park_bench_east",
-    "facing": "down"
+    "facing": "down",
+    "activity": "read"
    }
   ],
   "factions": [
@@ -251,19 +261,22 @@
     },
     "scene": "north_quay",
     "anchor": "nadiya_quay",
-    "facing": "down"
+    "facing": "down",
+    "activity": "phone"
    },
    {
     "period": "evening",
     "scene": "greyford_block",
     "anchor": "plaza_west",
-    "facing": "right"
+    "facing": "right",
+    "activity": "look"
    },
    {
     "period": "night",
     "scene": "greyford_block",
     "anchor": "plaza_north",
-    "facing": "left"
+    "facing": "left",
+    "activity": "look"
    }
   ],
   "factions": [
@@ -283,7 +296,8 @@
     ],
     "scene": "greyford_block",
     "anchor": "plaza_south",
-    "facing": "up"
+    "facing": "up",
+    "activity": "look"
    },
    {
     "period": "evening",
@@ -292,7 +306,8 @@
     },
     "scene": "greyford_block",
     "anchor": "plaza_south",
-    "facing": "up"
+    "facing": "up",
+    "activity": "look"
    }
   ],
   "factions": [

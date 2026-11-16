@@ -15,7 +15,8 @@
     ],
     "scene": "millwood",
     "anchor": "yard",
-    "facing": "down"
+    "facing": "down",
+    "activity": "read"
    },
    {
     "period": [
@@ -24,7 +25,8 @@
     ],
     "scene": "millwood",
     "anchor": "shore",
-    "facing": "up"
+    "facing": "up",
+    "activity": "look"
    }
   ]
  }

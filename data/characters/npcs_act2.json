@@ -27,7 +27,8 @@
    {
     "scene": "echo_ward",
     "anchor": "hall_steps",
-    "facing": "down"
+    "facing": "down",
+    "activity": "look"
    }
   ]
  },
@@ -44,7 +45,8 @@
    {
     "scene": "echo_ward",
     "anchor": "bakery_door",
-    "facing": "down"
+    "facing": "down",
+    "activity": "work"
    }
   ]
  },
@@ -61,7 +63,8 @@
    {
     "scene": "echo_ward",
     "anchor": "quay",
-    "facing": "up"
+    "facing": "up",
+    "activity": "look"
    }
   ]
  },
@@ -78,7 +81,8 @@
    {
     "scene": "echo_ward",
     "anchor": "no11_door",
-    "facing": "down"
+    "facing": "down",
+    "activity": "look"
    }
   ]
  },
@@ -111,7 +115,8 @@
     },
     "scene": "north_quay",
     "anchor": "annex",
-    "facing": "down"
+    "facing": "down",
+    "activity": "phone"
    },
    {
     "if": {
@@ -119,7 +124,8 @@
     },
     "scene": "echo_ward",
     "anchor": "promenade",
-    "facing": "up"
+    "facing": "up",
+    "activity": "look"
    }
   ]
  },

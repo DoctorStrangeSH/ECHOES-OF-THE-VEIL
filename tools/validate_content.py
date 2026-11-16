@@ -571,6 +571,8 @@ for e, locs in enemy_ids.items():
         err(f'enemy_id {e} used more than once ({", ".join(locs)}): defeat flags would collide')
 for nid, n in N.items():
     for e in n.get('schedule', []):
+        if e.get('activity', '') not in ('', 'look', 'read', 'phone', 'work'):
+            err(f'npc {nid}: unknown activity {e.get("activity")}')
         if e.get('scene') not in LOCS:
             err(f'npc {nid}: schedule scene {e.get("scene")} does not exist')
         elif e.get('anchor') not in anchors[e['scene']]:
