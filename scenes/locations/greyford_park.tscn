@@ -1,0 +1,396 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/location.gd" id="1_loc"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2_paint"]
+[ext_resource type="PackedScene" path="res://scenes/props/world_prop.tscn" id="3_prop"]
+[ext_resource type="Script" path="res://scripts/world/spawn_point.gd" id="4_spawn"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="5_inspect"]
+[ext_resource type="Script" path="res://scripts/interaction/door_interactable.gd" id="6_door"]
+[ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
+[ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+[ext_resource type="Script" path="res://scripts/world/conditional_visibility.gd" id="10_cond"]
+[ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
+[ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
+[ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+[ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
+[ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
+[ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
+[ext_resource type="PackedScene" path="res://scenes/world/repair_spot.tscn" id="17_spot"]
+[ext_resource type="PackedScene" path="res://scenes/world/screen_interactable.tscn" id="18_screen"]
+[ext_resource type="PackedScene" path="res://scenes/world/junk_pile.tscn" id="19_junk"]
+
+[node name="GreyfordPark" type="Node2D"]
+script = ExtResource("1_loc")
+location_id = &"greyford_park"
+name_key = "LOC_GREYFORD_PARK"
+outdoors = true
+
+[node name="Ground" type="TileMapLayer" parent="."]
+script = ExtResource("2_paint")
+palette_id = "greyford_exterior"
+layout = "ggggggggggggggggsssggggggggggggggggggggggggg
+ggggggggggggggggsssggggggggggggggggggggggggg
+ggggggggggggggggsssggggggggggggggggggggggggg
+ggggggggggggggggsssggggggggggggggggggggggggg
+ggggggggggggggggsssggggggggggggggggggggggggg
+ggggggggggggggggsssggggggggggggggggggggggggg
+ggggggggggggggggsssggggggggggggggggggggggggg
+ggggggggggggggggsssggggggggggggggggggggggggg
+sssssssssssssssssssssssssssssssggggggggggggg
+sssssssssssssssssssssssssssssssggggggggggggg
+sssssssssssssssssssssssssssssssggggggggggggg
+gggggggggggggbbbbbbbbbgggggggggggggggggggggg
+gggggggggggggbbbbbbbbbgggggggggggggggggggggg
+gggggggggggggbbbbbbbbbgggggggggggggggggggggg
+gggggggggggggbbbbbbbbbgggggggggggggggggggggg
+gggggggggggggbbbbbbbbbgggggggggggggggggggggg
+gggggggggggggbbbbbbbbbgggggggggggggggggggggg
+gggggggggggggbbbbbbbbbgggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggg"
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="NpcAnchors" type="Node2D" parent="."]
+
+[node name="BasketballCourt" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(136, 440)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/Modern_Exteriors_Complete_Singles_16x16/ME_Singles_School_16x16_Basketball_Court_5.png"
+placeholder_size = Vector2i(224, 176)
+placeholder_color = Color(0.541,0.478,0.439, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="SoccerField" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(600, 448)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/Modern_Exteriors_Complete_Singles_16x16/ME_Singles_School_16x16_Soccer_Court_2.png"
+placeholder_size = Vector2i(192, 288)
+placeholder_color = Color(0.290,0.541,0.227, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Fountain" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(280, 256)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Fountain_1.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.416,0.541,0.353, 1)
+collision_size = Vector2(28, 16)
+collision_offset = Vector2(0, -8)
+
+[node name="CoffeeKiosk" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(376, 124)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Kiosk_Coffee_Cup_Example.png"
+placeholder_size = Vector2i(96, 144)
+placeholder_color = Color(0.627,0.439,0.314, 1)
+collision_size = Vector2(92, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="IceCreamKiosk" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(476, 124)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Kiosk_Icecream_Example.png"
+placeholder_size = Vector2i(112, 192)
+placeholder_color = Color(0.878,0.627,0.753, 1)
+collision_size = Vector2(108, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="BenchN1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(72, 124)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Bench_2.png"
+placeholder_size = Vector2i(48, 32)
+placeholder_color = Color(0.416,0.541,0.353, 1)
+collision_size = Vector2(44, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="BenchN2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(168, 124)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Bench_2.png"
+placeholder_size = Vector2i(48, 32)
+placeholder_color = Color(0.416,0.541,0.353, 1)
+collision_size = Vector2(44, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="BenchP1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(240, 300)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Bench_2.png"
+placeholder_size = Vector2i(48, 32)
+placeholder_color = Color(0.416,0.541,0.353, 1)
+collision_size = Vector2(44, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="BenchP2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(320, 300)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Bench_2.png"
+placeholder_size = Vector2i(48, 32)
+placeholder_color = Color(0.416,0.541,0.353, 1)
+collision_size = Vector2(44, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Lamp1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(232, 180)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Street_Lamp_5.png"
+placeholder_size = Vector2i(16, 64)
+placeholder_color = Color(0.416,0.541,0.353, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="Lamp2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(344, 180)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Street_Lamp_5.png"
+placeholder_size = Vector2i(16, 64)
+placeholder_color = Color(0.416,0.541,0.353, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="Lamp3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(120, 176)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Street_Lamp_5.png"
+placeholder_size = Vector2i(16, 64)
+placeholder_color = Color(0.416,0.541,0.353, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="Lamp4" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(480, 176)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Street_Lamp_5.png"
+placeholder_size = Vector2i(16, 64)
+placeholder_color = Color(0.416,0.541,0.353, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="InfoSign" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(224, 128)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Info_Sign_2.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.416,0.541,0.353, 1)
+collision_size = Vector2(10, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="Bin1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(208, 128)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Trashbin_7.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.416,0.541,0.353, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Tree1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(24, 60)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Tree_11.png"
+placeholder_size = Vector2i(48, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(88, 48)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Tree_3.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(150, 70)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Tree_5.png"
+placeholder_size = Vector2i(32, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree4" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(232, 56)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Tree_11.png"
+placeholder_size = Vector2i(48, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree5" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(330, 60)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Tree_7.png"
+placeholder_size = Vector2i(32, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree6" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(400, 72)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Tree_11.png"
+placeholder_size = Vector2i(48, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree7" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(560, 60)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Tree_3.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree8" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(24, 200)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Tree_5.png"
+placeholder_size = Vector2i(32, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree9" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(390, 250)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Tree_11.png"
+placeholder_size = Vector2i(48, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree10" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(450, 300)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Tree_7.png"
+placeholder_size = Vector2i(32, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree11" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(400, 380)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Tree_11.png"
+placeholder_size = Vector2i(48, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree12" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(470, 420)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Tree_3.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree13" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(24, 300)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Tree_5.png"
+placeholder_size = Vector2i(32, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree14" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(272, 436)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Tree_11.png"
+placeholder_size = Vector2i(48, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree15" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(330, 430)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Tree_7.png"
+placeholder_size = Vector2i(32, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Flowers1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(200, 200)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Flower_Bush_1.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.416,0.541,0.353, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Flowers2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(360, 200)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Flower_Bush_1.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.416,0.541,0.353, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Flowers3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(200, 300)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Flower_Bush_1.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.416,0.541,0.353, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Flowers4" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(360, 300)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Flower_Bush_1.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.416,0.541,0.353, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="BasketballUse" parent="Entities" instance=ExtResource("18_screen")]
+position = Vector2(136, 356)
+interaction_id = &"use_basketball"
+screen = "sport:basketball"
+
+[node name="SoccerUse" parent="Entities" instance=ExtResource("18_screen")]
+position = Vector2(600, 396)
+interaction_id = &"use_football"
+screen = "sport:football"
+
+[node name="CoffeeLook" type="Area2D" parent="Entities"]
+position = Vector2(376, 132)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_park_coffee"
+area_size = Vector2(40, 10)
+lines = PackedStringArray("FLAVOR_PARK_COFFEE")
+
+[node name="IceCreamLook" type="Area2D" parent="Entities"]
+position = Vector2(476, 132)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_park_icecream"
+area_size = Vector2(40, 10)
+lines = PackedStringArray("FLAVOR_PARK_ICECREAM")
+
+[node name="FountainLook" type="Area2D" parent="Entities"]
+position = Vector2(280, 264)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_park_fountain"
+area_size = Vector2(30, 10)
+lines = PackedStringArray("FLAVOR_PARK_FOUNTAIN")
+
+[node name="FromTown" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(272, 24)
+script = ExtResource("4_spawn")
+spawn_id = &"from_town"
+facing = Vector2(0, 1)
+
+[node name="TownGate" type="Area2D" parent="Entities"]
+position = Vector2(272, 6)
+script = ExtResource("6_door")
+interaction_id = &"door_park_town"
+area_size = Vector2(44, 10)
+prompt_key = "PROMPT_TO_TOWN"
+target_scene_id = &"greyford_block"
+target_spawn_id = &"from_park"
+
+[node name="A_hoops" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(96, 330)
+script = ExtResource("11_anchor")
+anchor_id = &"hoops"
+
+[node name="A_goal" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(600, 176)
+script = ExtResource("11_anchor")
+anchor_id = &"goal"

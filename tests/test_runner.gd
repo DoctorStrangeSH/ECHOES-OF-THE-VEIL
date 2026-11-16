@@ -1484,3 +1484,35 @@ func test_rook_shop_opens_in_the_afternoon() -> void:
 	WorldClock.wait_until_hour(22)
 	check(QuestGuide.next_door(&"greyford_block", &"rook_shop") == "", "closed at night")
 	GameState.reset_for_new_game()
+
+
+# --- R2: park sports -------------------------------------------------------------
+
+func test_park_sports_score_and_pay_once_a_day() -> void:
+	GameState.reset_for_new_game()
+	var s := SportMinigame.new()
+	add_child(s)
+	s.start("basketball")
+	for i in SportMinigame.ATTEMPTS:
+		s._needle = s._band_c
+		s._shoot()
+		s.attempt += 1
+	check(s.score == SportMinigame.ATTEMPTS, "every shot in the green scores")
+	var money := Inventory.money
+	s._finish()
+	check(Inventory.money == money + SportMinigame.REWARD and int(GameState.get_flag(&"sport.basketball.best", 0)) == 5, "a good round pays and sets the best")
+	s.start("basketball")
+	s.score = 5
+	s._finish()
+	check(Inventory.money == money + SportMinigame.REWARD, "only once a day")
+	s.start("football")
+	s._aim_locked = 0
+	s._needle = 1.0
+	s._band_c = 0.5
+	s._shoot()
+	check(s.score == 0, "a blasted penalty goes over the bar")
+	s._finish()
+	check(not get_tree().paused, "the game unpauses after")
+	s.queue_free()
+	check(QuestGuide.next_door(&"greyford_block", &"greyford_park") == "ParkGate", "the park is reachable from the Old Quarter")
+	GameState.reset_for_new_game()

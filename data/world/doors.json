@@ -182,6 +182,16 @@
      }
     ]
    }
+  },
+  {
+   "node": "ParkGate",
+   "to": "greyford_park"
+  }
+ ],
+ "greyford_park": [
+  {
+   "node": "TownGate",
+   "to": "greyford_block"
   }
  ],
  "keepers_rooms": [

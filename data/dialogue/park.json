@@ -1,0 +1,96 @@
+{
+ "kid_hoops": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "met.kid_hoops"
+    },
+    "node": "intro1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "intro1": {
+    "speaker": "NPC_KID_HOOPS",
+    "text": "KID_HOOPS_1",
+    "next": "intro2"
+   },
+   "intro2": {
+    "speaker": "NPC_KID_HOOPS",
+    "text": "KID_HOOPS_2",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "met.kid_hoops"
+     }
+    ]
+   },
+   "hub": {
+    "speaker": "NPC_KID_HOOPS",
+    "text": "KID_HOOPS_R",
+    "choices": [
+     {
+      "text": "SPORT_CHOICE_PLAY",
+      "effects": [
+       {
+        "open_screen": "sport:basketball"
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "SPORT_CHOICE_LATER",
+      "next": null
+     }
+    ]
+   }
+  }
+ },
+ "park_keeper": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "met.park_keeper"
+    },
+    "node": "intro1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "intro1": {
+    "speaker": "NPC_PARK_KEEPER",
+    "text": "PARK_KEEPER_1",
+    "next": "intro2"
+   },
+   "intro2": {
+    "speaker": "NPC_PARK_KEEPER",
+    "text": "PARK_KEEPER_2",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "met.park_keeper"
+     }
+    ]
+   },
+   "hub": {
+    "speaker": "NPC_PARK_KEEPER",
+    "text": "PARK_KEEPER_R",
+    "choices": [
+     {
+      "text": "SPORT_CHOICE_PLAY",
+      "effects": [
+       {
+        "open_screen": "sport:football"
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "SPORT_CHOICE_LATER",
+      "next": null
+     }
+    ]
+   }
+  }
+ }
+}
