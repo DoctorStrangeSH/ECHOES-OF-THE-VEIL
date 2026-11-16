@@ -221,14 +221,6 @@
   "tex": "@library/49.png",
   "depth": 12
  },
- "counter_mid": {
-  "tex": "@library/50.png",
-  "depth": 12
- },
- "counter_mid_b": {
-  "tex": "@library/51.png",
-  "depth": 12
- },
  "counter_right": {
   "tex": "@library/52.png",
   "depth": 12
@@ -399,5 +391,57 @@
  "table_cloth_white": {
   "tex": "@kitchen/338.png",
   "depth": 12
+ },
+ "sign_closed": {
+  "tex": "@grocery/1.png",
+  "depth": 0
+ },
+ "sign_open": {
+  "tex": "@grocery/2.png",
+  "depth": 0
+ },
+ "shelf_goods": {
+  "tex": "@grocery/98.png",
+  "depth": 10
+ },
+ "shelf_goods_b": {
+  "tex": "@grocery/103.png",
+  "depth": 10
+ },
+ "shelf_goods_c": {
+  "tex": "@grocery/106.png",
+  "depth": 10
+ },
+ "basket_produce": {
+  "tex": "@grocery/117.png",
+  "depth": 6
+ },
+ "display_counter": {
+  "tex": "@grocery/147.png",
+  "depth": 12
+ },
+ "checkout": {
+  "tex": "@grocery/159.png",
+  "depth": 12
+ },
+ "checkout_low": {
+  "tex": "@grocery/170.png",
+  "depth": 12
+ },
+ "bread_shelf": {
+  "tex": "@grocery/201.png",
+  "depth": 12
+ },
+ "cash_register": {
+  "tex": "@grocery/240.png",
+  "depth": 6
+ },
+ "shelf_boxes": {
+  "tex": "@grocery/250.png",
+  "depth": 10
+ },
+ "workbench": {
+  "tex": "@library/28.png",
+  "depth": 10
  }
 }

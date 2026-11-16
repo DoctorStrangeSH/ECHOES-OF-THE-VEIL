@@ -1,10 +1,58 @@
 {
-  "FLAVOR_ROOM_WINDOW": {"en": "Across the street someone's kitchen light comes on and goes off again, as if they'd forgotten what they came in for. Greyford does that: it remembers halfway.", "ru": "Через улицу в чьей-то кухне вспыхивает свет и тут же гаснет, будто хозяин забыл, зачем вошёл. Грейфорд вообще такой: вспоминает наполовину."},
-  "FLAVOR_ROOM_ARMCHAIR": {"en": "The armchair has been sat in by so many tenants that it has opinions. It sighs when you lean back, then settles, like a dog that has decided you'll do.", "ru": "В этом кресле пересидело столько жильцов, что у него появилось собственное мнение. Когда откидываешься, оно вздыхает, а потом успокаивается, как пёс, решивший, что ты сгодишься."},
-  "FLAVOR_ARCHIVE_MAP": {"en": "A map of the county from 1958. Lantern Row is on it, drawn in the same ink as every other street, as if nobody had any reason yet to doubt it.", "ru": "Карта графства 1958 года. Фонарный ряд на ней есть: та же тушь, что и у других улиц, будто ни у кого ещё не было причин в нём сомневаться."},
-  "FLAVOR_ARCHIVE_COUNTER": {"en": "The reception bell has been taped silent. Under the tape, in biro: PLEASE DO NOT RING. WE ARE ALREADY LISTENING.", "ru": "Звонок на стойке заклеен изолентой, чтобы не звенел. Под ней шариковой ручкой: «ПРОСЬБА НЕ ЗВОНИТЬ. МЫ И ТАК СЛУШАЕМ»."},
-  "FLAVOR_THEO_CLOCK": {"en": "The clock is running, but its pendulum swings a fraction too slowly, and each tick lands a little later than the one before. In here, time is also being added to.", "ru": "Часы идут, но маятник качается чуть медленнее, чем нужно, и каждый тик опаздывает на волосок больше предыдущего. Здесь прирастает даже время."},
-  "FLAVOR_THEO_PHOTOS": {"en": "Framed photographs: Theo young, Theo at a wedding, Theo with a woman whose face has been turned towards the wall by someone who loved her too much to look.", "ru": "Фотографии в рамках: Тео молодой, Тео на свадьбе, Тео с женщиной, чью карточку кто-то развернул лицом к стене. Видимо, тот, кто слишком её любил, чтобы смотреть."},
-  "FLAVOR_KEEPERS_CLOCK": {"en": "This clock was stopped on purpose, at eleven minutes past eight. A brass plate underneath says only: SO WE DON'T FORGET WHAT WE AGREED.", "ru": "Эти часы остановили нарочно, на восьми часах одиннадцати минутах. На латунной табличке под ними одна фраза: «ЧТОБЫ НЕ ЗАБЫТЬ, О ЧЁМ МЫ ДОГОВОРИЛИСЬ»."},
-  "FLAVOR_KEEPERS_MAP": {"en": "The Keepers' map of Greyford has more streets than the town does. Each extra one is pinned with a little paper flag, and every flag carries a date.", "ru": "На карте Хранителей у Грейфорда больше улиц, чем у самого города. В каждую лишнюю воткнут бумажный флажок, и на каждом флажке дата."}
+ "FLAVOR_ROOM_WINDOW": {
+  "en": "Across the street someone's kitchen light comes on and goes off again, as if they'd forgotten what they came in for. Greyford does that: it remembers halfway.",
+  "ru": "Через улицу в чьей-то кухне вспыхивает свет и тут же гаснет, будто хозяин забыл, зачем вошёл. Грейфорд вообще такой: вспоминает наполовину."
+ },
+ "FLAVOR_ROOM_ARMCHAIR": {
+  "en": "The armchair has been sat in by so many tenants that it has opinions. It sighs when you lean back, then settles, like a dog that has decided you'll do.",
+  "ru": "В этом кресле пересидело столько жильцов, что у него появилось собственное мнение. Когда откидываешься, оно вздыхает, а потом успокаивается, как пёс, решивший, что ты сгодишься."
+ },
+ "FLAVOR_ARCHIVE_MAP": {
+  "en": "A map of the county from 1958. Lantern Row is on it, drawn in the same ink as every other street, as if nobody had any reason yet to doubt it.",
+  "ru": "Карта графства 1958 года. Фонарный ряд на ней есть: та же тушь, что и у других улиц, будто ни у кого ещё не было причин в нём сомневаться."
+ },
+ "FLAVOR_ARCHIVE_COUNTER": {
+  "en": "The reception bell has been taped silent. Under the tape, in biro: PLEASE DO NOT RING. WE ARE ALREADY LISTENING.",
+  "ru": "Звонок на стойке заклеен изолентой, чтобы не звенел. Под ней шариковой ручкой: «ПРОСЬБА НЕ ЗВОНИТЬ. МЫ И ТАК СЛУШАЕМ»."
+ },
+ "FLAVOR_THEO_CLOCK": {
+  "en": "The clock is running, but its pendulum swings a fraction too slowly, and each tick lands a little later than the one before. In here, time is also being added to.",
+  "ru": "Часы идут, но маятник качается чуть медленнее, чем нужно, и каждый тик опаздывает на волосок больше предыдущего. Здесь прирастает даже время."
+ },
+ "FLAVOR_THEO_PHOTOS": {
+  "en": "Framed photographs: Theo young, Theo at a wedding, Theo with a woman whose face has been turned towards the wall by someone who loved her too much to look.",
+  "ru": "Фотографии в рамках: Тео молодой, Тео на свадьбе, Тео с женщиной, чью карточку кто-то развернул лицом к стене. Видимо, тот, кто слишком её любил, чтобы смотреть."
+ },
+ "FLAVOR_KEEPERS_CLOCK": {
+  "en": "This clock was stopped on purpose, at eleven minutes past eight. A brass plate underneath says only: SO WE DON'T FORGET WHAT WE AGREED.",
+  "ru": "Эти часы остановили нарочно, на восьми часах одиннадцати минутах. На латунной табличке под ними одна фраза: «ЧТОБЫ НЕ ЗАБЫТЬ, О ЧЁМ МЫ ДОГОВОРИЛИСЬ»."
+ },
+ "FLAVOR_KEEPERS_MAP": {
+  "en": "The Keepers' map of Greyford has more streets than the town does. Each extra one is pinned with a little paper flag, and every flag carries a date.",
+  "ru": "На карте Хранителей у Грейфорда больше улиц, чем у самого города. В каждую лишнюю воткнут бумажный флажок, и на каждом флажке дата."
+ },
+ "LOC_ROOK_SHOP": {
+  "en": "Rook Repairs & Hardware",
+  "ru": "«Рук: ремонт и инструменты»"
+ },
+ "PROMPT_ENTER_SHOP": {
+  "en": "Go in",
+  "ru": "Войти"
+ },
+ "FLAVOR_SHOP_WORKBENCH": {
+  "en": "A radio lies open on the bench like a patient. Every valve is labelled in two hands: a careful old one, and Jonah's, which tries to copy it.",
+  "ru": "На верстаке, как пациент на столе, лежит вскрытый радиоприёмник. Каждая лампа подписана двумя почерками: старым и аккуратным, и почерком Джоны, который пытается ему подражать."
+ },
+ "FLAVOR_SHOP_RADIO": {
+  "en": "The shop radio is tuned between two stations. If you stand still long enough, the hiss starts to sound like someone reading out a list.",
+  "ru": "Радио в лавке настроено между двумя станциями. Если постоять неподвижно, шипение начинает походить на голос, зачитывающий список."
+ },
+ "FLAVOR_SHOP_CLOCK": {
+  "en": "ROOK & ROOK, says the brass plate on the clock. Someone has polished the second ROOK so often that it is brighter than the first.",
+  "ru": "«РУК И РУК», гласит латунная табличка на часах. Второе «РУК» натирали так часто, что оно блестит ярче первого."
+ },
+ "FLAVOR_SHOP_DISPLAY": {
+  "en": "Fuses, washers, a tray of keys that open nothing in particular. A card reads: FOUND IN THE WALLS. ASK BEFORE YOU TAKE ONE.",
+  "ru": "Предохранители, шайбы, поднос ключей, которые ничего конкретного не открывают. На карточке: «НАЙДЕНО В СТЕНАХ. ПРЕЖДЕ ЧЕМ ВЗЯТЬ, СПРОСИТЕ»."
+ }
 }
