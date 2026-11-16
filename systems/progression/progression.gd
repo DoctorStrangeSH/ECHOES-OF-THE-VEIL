@@ -34,6 +34,9 @@ var xp := 0
 var points := 0
 var talent_points := 0
 var stats: Dictionary = {}
+## Unlocked talents: "path/step_id" -> true.
+var talents: Dictionary = {}
+static var _talent_defs: Dictionary = {}
 
 
 func _ready() -> void:
@@ -49,6 +52,7 @@ func reset() -> void:
 	points = 0
 	talent_points = 0
 	stats = {}
+	talents = {}
 	for s in STATS:
 		stats[s] = 1
 	changed.emit()
@@ -59,7 +63,61 @@ static func xp_to_next(lvl: int) -> int:
 
 
 func get_stat(s: String) -> int:
-	return int(stats.get(s, 1))
+	var v := int(stats.get(s, 1))
+	for key: String in talents:
+		v += int(talent_def(key).get("stats", {}).get(s, 0))
+	return v
+
+
+# --- Talents ---------------------------------------------------------------------
+
+static func talent_paths() -> Dictionary:
+	if _talent_defs.is_empty():
+		var d: Variant = DataFiles.read_json("res://data/progression/talents.json")
+		for k: String in (d as Dictionary):
+			if not k.begins_with("_"):
+				_talent_defs[k] = d[k]
+	return _talent_defs
+
+
+static func talent_def(key: String) -> Dictionary:
+	var path := key.get_slice("/", 0)
+	var id := key.get_slice("/", 1)
+	for st: Dictionary in talent_paths().get(path, {}).get("steps", []):
+		if String(st["id"]) == id:
+			return st
+	return {}
+
+
+func has_talent(key: String) -> bool:
+	return talents.has(key)
+
+
+## A special effect from any unlocked talent ("flash_heal", "spark", ...).
+func has_special(name: String) -> bool:
+	for key: String in talents:
+		if String(talent_def(key).get("special", "")) == name:
+			return true
+	return false
+
+
+## The next step of a path that can be learned (or "" if none).
+func next_step(path: String) -> String:
+	for st: Dictionary in talent_paths().get(path, {}).get("steps", []):
+		var key := path + "/" + String(st["id"])
+		if not talents.has(key):
+			return key
+	return ""
+
+
+func learn(key: String) -> bool:
+	if talent_points <= 0 or key != next_step(key.get_slice("/", 0)) or talent_def(key).is_empty():
+		return false
+	talents[key] = true
+	talent_points -= 1
+	changed.emit()
+	EventHub.player_stats_changed.emit()
+	return true
 
 
 func add_xp(amount: int) -> void:
@@ -89,8 +147,21 @@ func raise(s: String) -> bool:
 	return true
 
 
-## The characteristics' share of a stat (Inventory.stat adds or multiplies it).
+## The characteristics' and talents' share of a stat (Inventory.stat adds or
+## multiplies it).
 func mod(stat_name: String) -> Variant:
+	var base: Variant = _stat_mod(stat_name)
+	for key: String in talents:
+		var m: Dictionary = talent_def(key).get("mods", {})
+		if m.has(stat_name):
+			if stat_name in Inventory.MULT_STATS:
+				base = (1.0 if base == null else float(base)) * float(m[stat_name])
+			else:
+				base = (0.0 if base == null else float(base)) + float(m[stat_name])
+	return base
+
+
+func _stat_mod(stat_name: String) -> Variant:
 	var over := func(s: String) -> int: return get_stat(s) - 1
 	match stat_name:
 		"damage_bonus":
@@ -130,7 +201,7 @@ func _on_case(id: StringName) -> void:
 # --- Save ------------------------------------------------------------------------
 
 func to_dict() -> Dictionary:
-	return {"level": level, "xp": xp, "points": points, "talent_points": talent_points, "stats": stats.duplicate()}
+	return {"level": level, "xp": xp, "points": points, "talent_points": talent_points, "stats": stats.duplicate(), "talents": talents.keys()}
 
 
 func from_dict(d: Dictionary) -> void:
@@ -142,4 +213,7 @@ func from_dict(d: Dictionary) -> void:
 	for s: String in d.get("stats", {}):
 		if s in STATS:
 			stats[s] = clampi(int(d["stats"][s]), 1, MAX_STAT)
+	for k: String in d.get("talents", []):
+		if not talent_def(k).is_empty():
+			talents[k] = true
 	changed.emit()

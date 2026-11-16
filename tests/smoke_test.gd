@@ -608,6 +608,9 @@ func _ready() -> void:
 	get_tree().quit(0)
 
 
+var _bolt_seen := false
+
+
 func _player() -> Player:
 	return get_tree().get_first_node_in_group(&"player") as Player
 
@@ -624,6 +627,30 @@ func _combat_round() -> void:
 	await _frames(10)
 	await _tap(&"ability")
 	await _frames(10)
+	# Weapons with other styles and talents run through the same round.
+	var keep: StringName = Inventory.equipped.get("weapon", Inventory.DEFAULT_WEAPON)
+	for wid: StringName in [&"pocket_sling", &"hatchet", &"quay_trident"]:
+		if not Inventory.has(wid):
+			Inventory.add(wid, 1, false)
+		Inventory.equip(wid)
+		await _tap(&"attack")
+		await _frames(14)
+		if wid == &"pocket_sling":
+			var bolts := 0
+			for c in p.get_parent().get_children():
+				if c is Bolt:
+					bolts += 1
+			_assert(bolts > 0 or _bolt_seen, "a sling shoots")
+			_bolt_seen = true
+	Inventory.equip(keep)
+	Progression.talents["veilwalker/veil_step"] = true
+	Progression.talents["veilwalker/echo_strike"] = true
+	Progression.talents["mechanic/spark"] = true
+	Progression.talents["lantern/mending_light"] = true
+	await _tap(&"dodge")
+	await _frames(20)
+	await _tap(&"attack")
+	await _frames(12)
 	p.health.take_damage(1, p.global_position + Vector2(10, 0))
 	await _frames(5)
 	await _tap(&"quick_heal")

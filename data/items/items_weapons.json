@@ -1,0 +1,253 @@
+{
+ "rusted_sabre": {
+  "category": "weapon",
+  "name": "ITEM_RUSTED_SABRE",
+  "desc": "ITEM_RUSTED_SABRE_DESC",
+  "color": "#c0c0d0",
+  "value": 14,
+  "icon": "rpg_arsenal/swords/rpg_icons25.png",
+  "rarity": "common",
+  "weapon": {
+   "combo": [
+    2,
+    2,
+    3
+   ],
+   "cooldown": 0.3,
+   "reach": 14,
+   "knockback": 150,
+   "style": "blade"
+  }
+ },
+ "census_knife": {
+  "category": "weapon",
+  "name": "ITEM_CENSUS_KNIFE",
+  "desc": "ITEM_CENSUS_KNIFE_DESC",
+  "color": "#c0c0d0",
+  "value": 16,
+  "icon": "rpg_arsenal/swords/rpg_icons45.png",
+  "rarity": "uncommon",
+  "weapon": {
+   "combo": [
+    1,
+    1,
+    1,
+    3
+   ],
+   "cooldown": 0.2,
+   "reach": 11,
+   "knockback": 110,
+   "style": "blade"
+  }
+ },
+ "keeper_sword": {
+  "category": "weapon",
+  "name": "ITEM_KEEPER_SWORD",
+  "desc": "ITEM_KEEPER_SWORD_DESC",
+  "color": "#c0c0d0",
+  "value": 30,
+  "icon": "rpg_arsenal/swords/rpg_icons32.png",
+  "rarity": "rare",
+  "weapon": {
+   "combo": [
+    2,
+    3,
+    4
+   ],
+   "cooldown": 0.32,
+   "reach": 15,
+   "knockback": 170,
+   "style": "blade"
+  }
+ },
+ "lantern_blade": {
+  "category": "weapon",
+  "name": "ITEM_LANTERN_BLADE",
+  "desc": "ITEM_LANTERN_BLADE_DESC",
+  "color": "#c0c0d0",
+  "value": 0,
+  "icon": "rpg_arsenal/swords/rpg_icons49.png",
+  "rarity": "epic",
+  "weapon": {
+   "combo": [
+    3,
+    3,
+    5
+   ],
+   "cooldown": 0.32,
+   "reach": 15,
+   "knockback": 180,
+   "style": "blade"
+  },
+  "mods": {
+   "flash_cooldown_mult": 0.85
+  }
+ },
+ "hatchet": {
+  "category": "weapon",
+  "name": "ITEM_HATCHET",
+  "desc": "ITEM_HATCHET_DESC",
+  "color": "#c0c0d0",
+  "value": 18,
+  "icon": "rpg_arsenal/axes/rpg_icons89.png",
+  "rarity": "common",
+  "weapon": {
+   "combo": [
+    2,
+    4
+   ],
+   "cooldown": 0.5,
+   "reach": 13,
+   "knockback": 260,
+   "style": "heavy"
+  }
+ },
+ "dockers_axe": {
+  "category": "weapon",
+  "name": "ITEM_DOCKERS_AXE",
+  "desc": "ITEM_DOCKERS_AXE_DESC",
+  "color": "#c0c0d0",
+  "value": 34,
+  "icon": "rpg_arsenal/axes/rpg_icons96.png",
+  "rarity": "rare",
+  "weapon": {
+   "combo": [
+    3,
+    6
+   ],
+   "cooldown": 0.62,
+   "reach": 15,
+   "knockback": 320,
+   "style": "heavy"
+  }
+ },
+ "quay_trident": {
+  "category": "weapon",
+  "name": "ITEM_QUAY_TRIDENT",
+  "desc": "ITEM_QUAY_TRIDENT_DESC",
+  "color": "#c0c0d0",
+  "value": 22,
+  "icon": "rpg_arsenal/tridents/rpg_icons117.png",
+  "rarity": "uncommon",
+  "weapon": {
+   "combo": [
+    2,
+    2,
+    3
+   ],
+   "cooldown": 0.36,
+   "reach": 22,
+   "knockback": 170,
+   "style": "thrust"
+  }
+ },
+ "coral_trident": {
+  "category": "weapon",
+  "name": "ITEM_CORAL_TRIDENT",
+  "desc": "ITEM_CORAL_TRIDENT_DESC",
+  "color": "#c0c0d0",
+  "value": 0,
+  "icon": "rpg_arsenal/tridents/rpg_icons125.png",
+  "rarity": "epic",
+  "weapon": {
+   "combo": [
+    3,
+    3,
+    4
+   ],
+   "cooldown": 0.36,
+   "reach": 24,
+   "knockback": 190,
+   "style": "thrust"
+  }
+ },
+ "signal_wand": {
+  "category": "weapon",
+  "name": "ITEM_SIGNAL_WAND",
+  "desc": "ITEM_SIGNAL_WAND_DESC",
+  "color": "#c0c0d0",
+  "value": 0,
+  "icon": "rpg_arsenal/staffs/rpg_icons69.png",
+  "rarity": "uncommon",
+  "weapon": {
+   "combo": [
+    1,
+    1,
+    2
+   ],
+   "cooldown": 0.36,
+   "reach": 12,
+   "knockback": 120,
+   "style": "staff",
+   "bolt": 3,
+   "bolt_on": "finisher",
+   "bolt_range": 130
+  }
+ },
+ "tide_staff": {
+  "category": "weapon",
+  "name": "ITEM_TIDE_STAFF",
+  "desc": "ITEM_TIDE_STAFF_DESC",
+  "color": "#c0c0d0",
+  "value": 36,
+  "icon": "rpg_arsenal/staffs/rpg_icons85.png",
+  "rarity": "rare",
+  "weapon": {
+   "combo": [
+    1,
+    1,
+    1
+   ],
+   "cooldown": 0.45,
+   "reach": 12,
+   "knockback": 100,
+   "style": "staff",
+   "bolt": 2,
+   "bolt_on": "every",
+   "bolt_range": 150
+  }
+ },
+ "pocket_sling": {
+  "category": "weapon",
+  "name": "ITEM_POCKET_SLING",
+  "desc": "ITEM_POCKET_SLING_DESC",
+  "color": "#c0c0d0",
+  "value": 18,
+  "icon": "rpg_arsenal/slingshots/rpg_icons141.png",
+  "rarity": "common",
+  "weapon": {
+   "combo": [
+    0
+   ],
+   "cooldown": 0.32,
+   "reach": 10,
+   "knockback": 60,
+   "style": "sling",
+   "bolt": 1,
+   "bolt_on": "every",
+   "bolt_range": 140
+  }
+ },
+ "veil_sling": {
+  "category": "weapon",
+  "name": "ITEM_VEIL_SLING",
+  "desc": "ITEM_VEIL_SLING_DESC",
+  "color": "#c0c0d0",
+  "value": 32,
+  "icon": "rpg_arsenal/slingshots/rpg_icons148.png",
+  "rarity": "rare",
+  "weapon": {
+   "combo": [
+    0
+   ],
+   "cooldown": 0.34,
+   "reach": 10,
+   "knockback": 70,
+   "style": "sling",
+   "bolt": 2,
+   "bolt_on": "every",
+   "bolt_range": 170,
+   "pierce": true
+  }
+ }
+}

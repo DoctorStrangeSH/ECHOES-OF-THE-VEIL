@@ -1581,6 +1581,38 @@ func test_progression_levels_points_and_stats() -> void:
 	GameState.is_playing = false
 
 
+func test_talents_and_weapons() -> void:
+	GameState.reset_for_new_game()
+	GameState.is_playing = true
+	check(Progression.talent_paths().size() == 4, "four talent paths")
+	check(not Progression.learn("tracker/keen_eye"), "no talent without a point")
+	Progression.talent_points = 2
+	check(not Progression.learn("tracker/finisher"), "steps go in order")
+	var per := Progression.get_stat("perception")
+	check(Progression.learn("tracker/keen_eye"), "learn the first step")
+	check(Progression.get_stat("perception") == per + 2, "keen eye adds perception")
+	var r := float(Inventory.stat("flash_radius_mult"))
+	check(Progression.learn("lantern/bright_hands") and float(Inventory.stat("flash_radius_mult")) > r * 1.2, "talent mods feed the stat pipeline")
+	check(Progression.talent_points == 0 and Progression.next_step("lantern") == "lantern/mending_light", "points spent, next step known")
+	Progression.talents["veilwalker/veil_step"] = true
+	check(Progression.has_special("veil_step"), "special talents are visible to the code")
+	var d := GameState.to_dict()
+	GameState.reset_for_new_game()
+	GameState.from_dict(d)
+	check(Progression.has_talent("tracker/keen_eye") and Progression.has_talent("lantern/bright_hands"), "talents survive a save")
+	var styles := {}
+	for id: String in ["rusted_sabre", "census_knife", "keeper_sword", "lantern_blade", "hatchet", "dockers_axe", "quay_trident", "coral_trident", "signal_wand", "tide_staff", "pocket_sling", "veil_sling"]:
+		var def := Inventory.def(StringName(id))
+		check(def.get("category", "") == "weapon" and String(def.get("icon", "")).begins_with("rpg_arsenal/"), "weapon %s is defined with an icon" % id)
+		styles[String(def.get("weapon", {}).get("style", ""))] = true
+	check(styles.size() == 5, "five fighting styles")
+	Inventory.add(&"pocket_sling", 1, false)
+	Inventory.equip(&"pocket_sling")
+	check(Inventory.equipped["weapon"] == &"pocket_sling", "a sling can be equipped")
+	GameState.reset_for_new_game()
+	GameState.is_playing = false
+
+
 func test_xp_comes_from_play() -> void:
 	GameState.reset_for_new_game()
 	GameState.is_playing = true

@@ -76,3 +76,9 @@ Decisions are recorded with date, status, and rationale. Revisit only when evide
 - What minimum PC specification should be targeted?
 - Is controller support required for the first demo or only full release?
 - Which languages beyond English and Russian are commercially justified?
+
+## D-067 Weapons and talents (R3b/R4a)
+
+Weapons now have a style (fists, blade, heavy, thrust, staff, sling) and a rarity. The equipped weapon is drawn in the hand while attacking (WeaponSwing, arsenal icons at 16 px). Staffs and slings fire a Bolt: a small projectile with its own Hitbox. Sources are Jonah's shop (hatchet, sling), Veil-shard recipes (signal wand, lantern blade, coral trident) and expeditions: each finished run brings back the next relic weapon the player lacks.
+
+Talents live in data/progression/talents.json: four paths of three ordered steps, paid with talent points. A step either adds stat mods (through Progression.mod, so the usual Inventory.stat pipeline applies), adds characteristics, or names a special effect the code checks with Progression.has_special. Talents are saved inside the progression block; no schema change was needed.

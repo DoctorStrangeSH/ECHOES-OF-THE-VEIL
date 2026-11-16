@@ -15,7 +15,8 @@
    ],
    "cooldown": 0.34,
    "reach": 11,
-   "knockback": 130
+   "knockback": 130,
+   "style": "fists"
   }
  },
  "wrench": {
@@ -32,8 +33,10 @@
    ],
    "cooldown": 0.3,
    "reach": 13,
-   "knockback": 150
-  }
+   "knockback": 150,
+   "style": "heavy"
+  },
+  "icon": "rpg_arsenal/axes/rpg_icons93.png"
  },
  "signal_rod": {
   "category": "weapon",
@@ -49,8 +52,10 @@
    ],
    "cooldown": 0.46,
    "reach": 17,
-   "knockback": 210
-  }
+   "knockback": 210,
+   "style": "thrust"
+  },
+  "icon": "rpg_arsenal/tridents/rpg_icons121.png"
  },
  "tram_token": {
   "category": "trinket",

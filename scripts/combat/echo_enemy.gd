@@ -81,6 +81,7 @@ func _ready() -> void:
 	health.died.connect(_on_died)
 
 	var hurt := Hurtbox.new()
+	hurt.name = "Hurtbox"
 	hurt.team = &"enemy"
 	hurt.health = health
 	hurt.add_child(_rect_shape(Vector2(12, 18), Vector2(0, -9)))

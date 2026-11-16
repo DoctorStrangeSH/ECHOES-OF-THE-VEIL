@@ -187,7 +187,8 @@ func _complete() -> void:
 	for m: String in run["mods"]:
 		cleared["mod:" + m] = true
 	var new_pages := _award_pages()
-	last_result = {"ok": true, "site": run["site"], "shards": shards, "resonance": resonance, "pages": new_pages}
+	var weapon := _award_weapon()
+	last_result = {"ok": true, "site": run["site"], "shards": shards, "resonance": resonance, "pages": new_pages, "weapon": String(weapon)}
 	runs_done += 1
 	run = {}
 	GameState.set_flag(&"expedition.cleared_once", true)
@@ -198,6 +199,19 @@ func _complete() -> void:
 	for p in new_pages:
 		EventHub.toast_requested.emit(tr("EXP_TOAST_PAGE") % tr(String(page_defs()[p].get("title", ""))))
 	SceneFlow.travel(RETURN_SCENE, RETURN_SPAWN)
+
+
+## Each finished run brings back a relic weapon you don't have yet.
+const RELIC_WEAPONS: Array[StringName] = [&"rusted_sabre", &"quay_trident", &"census_knife", &"dockers_axe", &"tide_staff", &"keeper_sword", &"veil_sling"]
+
+
+func _award_weapon() -> StringName:
+	for id in RELIC_WEAPONS:
+		if not Inventory.has(id):
+			Inventory.add(id, 1, false)
+			EventHub.toast_requested.emit(tr("EXP_TOAST_WEAPON") % tr(String(Inventory.def(id).get("name", ""))))
+			return id
+	return &""
 
 
 func _award_pages() -> Array[String]:
