@@ -13,12 +13,15 @@ extends Node
 @onready var repair: RepairMinigame = $Repair
 @onready var epilogue: EpilogueScreen = $Epilogue
 var sport: SportMinigame
+var city_map: MapScreen
 
 
 func _ready() -> void:
 	add_child(WaitMenu.new())
 	sport = SportMinigame.new()
 	add_child(sport)
+	city_map = MapScreen.new()
+	add_child(city_map)
 	pause_menu.setup(hud)
 	journal.setup(hud)
 	SceneFlow.register_root(self)
@@ -45,7 +48,9 @@ func _on_screen_requested(screen: String) -> void:
 	if DialogueService.is_active:
 		await DialogueService.dialogue_ended
 		await get_tree().process_frame
-	if screen == "match:football":
+	if screen == "map:travel":
+		city_map.open(true)
+	elif screen == "match:football":
 		var loc := SceneFlow.current_location
 		if loc != null and loc.location_id == &"greyford_park" and loc.find_children("*", "FootballMatch", true, false).is_empty():
 			var m := FootballMatch.new()

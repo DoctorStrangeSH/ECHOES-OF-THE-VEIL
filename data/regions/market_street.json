@@ -784,6 +784,42 @@
    "scene": "greyford_block",
    "spawn": "from_market",
    "prompt": "PROMPT_TO_TOWN"
+  },
+  {
+   "kind": "prop",
+   "name": "BusStopSign",
+   "tex": "@vehicle/Bus_Stop_Sign_1.png",
+   "x": 600,
+   "y": 282,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#3060a0"
+  },
+  {
+   "kind": "screen",
+   "name": "BusStopUse",
+   "id": "use_bus_stop",
+   "x": 600,
+   "y": 290,
+   "screen": "map:travel",
+   "prompt": "PROMPT_BUS"
+  },
+  {
+   "kind": "spawn",
+   "name": "BusStopSpawn",
+   "id": "bus_stop",
+   "x": 600,
+   "y": 298,
+   "facing": [
+    0,
+    1
+   ]
   }
  ]
 }

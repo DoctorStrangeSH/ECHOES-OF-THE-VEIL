@@ -1477,6 +1477,26 @@
     -1,
     0
    ]
+  },
+  {
+   "kind": "screen",
+   "name": "BusStopUse",
+   "id": "use_bus_stop",
+   "x": 300,
+   "y": 374,
+   "screen": "map:travel",
+   "prompt": "PROMPT_BUS"
+  },
+  {
+   "kind": "spawn",
+   "name": "BusStopSpawn",
+   "id": "bus_stop",
+   "x": 300,
+   "y": 382,
+   "facing": [
+    0,
+    1
+   ]
   }
  ]
 }
