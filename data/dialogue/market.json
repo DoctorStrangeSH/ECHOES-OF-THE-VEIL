@@ -198,5 +198,117 @@
     ]
    }
   }
+ },
+ "sol": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "met.sol"
+    },
+    "node": "intro1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "intro1": {
+    "speaker": "NPC_SOL",
+    "text": "SOL_INTRO_1",
+    "next": "intro2"
+   },
+   "intro2": {
+    "speaker": "NPC_SOL",
+    "text": "SOL_INTRO_2",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "met.sol"
+     }
+    ]
+   },
+   "hub": {
+    "speaker": "NPC_SOL",
+    "text": "SOL_HUB",
+    "choices": [
+     {
+      "text": "SOL_TRAIN",
+      "effects": [
+       {
+        "open_screen": "train:gym"
+       }
+      ],
+      "next": null
+     },
+     {
+      "text": "SOL_LIFT",
+      "if": {
+       "stat_at_least": [
+        "strength",
+        4
+       ],
+       "not_flag": "sol.lifted"
+      },
+      "next": "lift"
+     },
+     {
+      "text": "SOL_PHOTO",
+      "if": {
+       "stat_at_least": [
+        "perception",
+        3
+       ],
+       "not_flag": "sol.photo"
+      },
+      "next": "photo1"
+     },
+     {
+      "text": "MARKET_BYE",
+      "next": null
+     }
+    ]
+   },
+   "lift": {
+    "speaker": "NPC_SOL",
+    "text": "SOL_LIFT_1",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "sol.lifted"
+     },
+     {
+      "give_xp": 20
+     },
+     {
+      "relationship": [
+       "sol_okafor",
+       1
+      ]
+     }
+    ]
+   },
+   "photo1": {
+    "speaker": "NPC_SOL",
+    "text": "SOL_PHOTO_1",
+    "next": "photo2"
+   },
+   "photo2": {
+    "speaker": "NPC_SOL",
+    "text": "SOL_PHOTO_2",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "sol.photo"
+     },
+     {
+      "give_xp": 15
+     },
+     {
+      "relationship": [
+       "sol_okafor",
+       1
+      ]
+     }
+    ]
+   }
+  }
  }
 }

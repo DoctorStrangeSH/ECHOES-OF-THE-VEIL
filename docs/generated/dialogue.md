@@ -973,6 +973,32 @@ flowchart TD
   lou_talk3 --> lou_hub
 ```
 
+### sol
+
+```mermaid
+flowchart TD
+  sol_START(("start"))
+  sol_START --> sol_hub
+  sol_START -->|"{not_flag: met.sol}"| sol_intro1
+  sol_intro1["intro1<br/>Sol Okafor: Sol Okafor has the patience of a man who has ta…"]
+  sol_intro1 --> sol_intro2
+  sol_intro2["intro2<br/>Sol Okafor: 'First rule here: nobody is behind. Second rule…"]
+  sol_intro2 --> sol_hub
+  sol_hub["hub<br/>Sol Okafor: Sol wipes down a bench that nobody has used yet…"]
+  sol_hub_end_0(["end"])
+  sol_hub -->|"'Put me through an hour.'"| sol_hub_end_0
+  sol_hub -->|"(Strength 4) Lift the old ket… ⟨{stat_at_least: [strength, 4], not_flag…⟩"| sol_lift
+  sol_hub -->|"(Perception 3) Ask about the … ⟨{stat_at_least: [perception, 3], not_fl…⟩"| sol_photo1
+  sol_hub_end_3(["end"])
+  sol_hub -->|"'I'll be off.'"| sol_hub_end_3
+  sol_lift["lift<br/>Sol Okafor: The kettlebell leaves the floor with a sound li…"]
+  sol_lift --> sol_hub
+  sol_photo1["photo1<br/>Sol Okafor: Behind the counter, half hidden by a calendar, …"]
+  sol_photo1 --> sol_photo2
+  sol_photo2["photo2<br/>Sol Okafor: 'Annie. My grandmother. That sign is her name, …"]
+  sol_photo2 --> sol_hub
+```
+
 ## park.json
 
 ### kid_hoops

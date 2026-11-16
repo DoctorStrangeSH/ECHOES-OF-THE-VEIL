@@ -271,6 +271,7 @@ func _on_died() -> void:
 	if enemy_id != &"":
 		GameState.set_flag(StringName("defeated.%s" % enemy_id), true)
 	remove_from_group(&"echo_enemy")
+	Progression.add_xp(Progression.XP_ENEMY)
 	Sfx.play(&"enemy_death")
 	_drop_rewards()
 	var t := create_tween()

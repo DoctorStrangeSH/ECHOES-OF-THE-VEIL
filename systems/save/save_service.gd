@@ -10,7 +10,7 @@ extends Node
 signal saved(slot: int)
 signal save_failed(slot: int, message: String)
 
-const SCHEMA_VERSION := 8
+const SCHEMA_VERSION := 9
 const DEFAULT_SLOT := 1
 const MAX_SLOTS := 3
 
@@ -29,9 +29,24 @@ func _init() -> void:
 	_migrations[5] = _migrate_5_to_6
 	_migrations[6] = _migrate_6_to_7
 	_migrations[7] = _migrate_7_to_8
+	_migrations[8] = _migrate_8_to_9
 
 
 ## v5 (M5) adds work and ownership: repair skill, jobs, rent, home, stall.
+## v9 (R3a) adds character progression; an older save starts at level 1
+## with the levels its story has earned (one per closed case, at most 10).
+func _migrate_8_to_9(env: Dictionary) -> Dictionary:
+	var p: Dictionary = env["payload"]
+	if not p.has("progression"):
+		var done := 0
+		for c: Variant in (p.get("journal", {}) as Dictionary).get("cases", {}).values():
+			if c is Dictionary and String(c.get("status", "")) == "done":
+				done += 1
+		var lvl := 1 + mini(done, 10)
+		p["progression"] = {"level": lvl, "points": lvl - 1, "talent_points": lvl / 3}
+	return env
+
+
 ## v8 (M8a) adds expeditions (run in progress, clears, Index pages).
 func _migrate_7_to_8(env: Dictionary) -> Dictionary:
 	var p: Dictionary = env["payload"]

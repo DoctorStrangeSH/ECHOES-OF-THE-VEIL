@@ -93,7 +93,8 @@
    "scenes": [
     "market_street",
     "bakery",
-    "cafe"
+    "cafe",
+    "gym"
    ],
    "stop": [
     "market_street",
@@ -116,6 +117,10 @@
     {
      "name": "LOC_CAFE",
      "hours": "MAP_HOURS_CAFE"
+    },
+    {
+     "name": "LOC_GYM",
+     "hours": "MAP_HOURS_BAKERY"
     }
    ]
   },

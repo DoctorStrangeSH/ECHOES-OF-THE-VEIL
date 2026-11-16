@@ -101,6 +101,7 @@ func reset_for_new_game() -> void:
 	Society.reset()
 	Livelihood.reset()
 	Party.reset()
+	Progression.reset()
 	Expedition.reset()
 
 
@@ -189,6 +190,7 @@ func to_dict(player_node: Node2D = null) -> Dictionary:
 		"society": Society.to_dict(),
 		"life": Livelihood.to_dict(),
 		"party": Party.to_dict(),
+		"progression": Progression.to_dict(),
 		"expedition": Expedition.to_dict(),
 	}
 
@@ -233,4 +235,5 @@ func from_dict(data: Dictionary) -> void:
 	Society.from_dict(data.get("society", {}))
 	Livelihood.from_dict(data.get("life", {}))
 	Party.from_dict(data.get("party", {}))
+	Progression.from_dict(data.get("progression", {}))
 	Expedition.from_dict(data.get("expedition", {}))

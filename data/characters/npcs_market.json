@@ -33,5 +33,23 @@
     "facing": "down"
    }
   ]
+ },
+ "sol_okafor": {
+  "name": "NPC_SOL",
+  "premade": "Premade_Character_19",
+  "color": "#407050",
+  "dialogue": "sol",
+  "schedule": [
+   {
+    "period": [
+     "morning",
+     "afternoon",
+     "evening"
+    ],
+    "scene": "gym",
+    "anchor": "coach",
+    "facing": "down"
+   }
+  ]
  }
 }

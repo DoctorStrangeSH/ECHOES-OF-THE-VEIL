@@ -22,6 +22,7 @@ func _ready() -> void:
 	add_child(sport)
 	city_map = MapScreen.new()
 	add_child(city_map)
+	add_child(CharacterScreen.new())
 	pause_menu.setup(hud)
 	journal.setup(hud)
 	SceneFlow.register_root(self)
@@ -48,7 +49,9 @@ func _on_screen_requested(screen: String) -> void:
 	if DialogueService.is_active:
 		await DialogueService.dialogue_ended
 		await get_tree().process_frame
-	if screen == "map:travel":
+	if screen == "train:gym":
+		_train()
+	elif screen == "map:travel":
 		city_map.open(true)
 	elif screen == "match:football":
 		var loc := SceneFlow.current_location
@@ -78,3 +81,15 @@ func show_menu(menu: Node) -> void:
 func hide_menu() -> void:
 	for child in menu_layer.get_children():
 		child.queue_free()
+
+
+## A session at Sol's gym: an hour, some sweat, experience once a day.
+func _train() -> void:
+	var flag := &"gym.trained_day"
+	if int(GameState.get_flag(flag, -1)) == WorldClock.day:
+		EventHub.toast_requested.emit(tr("GYM_ALREADY"))
+		return
+	GameState.set_flag(flag, WorldClock.day)
+	WorldClock.advance_minutes(60)
+	Progression.add_xp(25)
+	EventHub.toast_requested.emit(tr("GYM_TRAINED"))

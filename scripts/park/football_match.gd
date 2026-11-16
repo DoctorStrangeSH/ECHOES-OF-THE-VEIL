@@ -290,6 +290,7 @@ func finish() -> void:
 		line = tr("MATCH_DRAW") % [our, their]
 	else:
 		line = tr("MATCH_LOST") % [our, their]
+	Progression.add_xp(15 if our > their else (6 if our == their else 3))
 	EventHub.toast_requested.emit(line)
 	ended.emit(our, their)
 	_cleanup()

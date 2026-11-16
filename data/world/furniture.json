@@ -459,5 +459,63 @@
  "counter_front": {
   "tex": "@kitchen/99.png",
   "depth": 10
+ },
+ "punching_bag": {
+  "tex": "@gym/64.png",
+  "depth": 8
+ },
+ "punching_bag_b": {
+  "tex": "@gym/66.png",
+  "depth": 8
+ },
+ "weight_machine": {
+  "tex": "@gym/92.png",
+  "depth": 14
+ },
+ "cable_machine": {
+  "tex": "@gym/91.png",
+  "depth": 12
+ },
+ "leg_press": {
+  "tex": "@gym/95.png",
+  "depth": 14
+ },
+ "bench_press": {
+  "tex": "@gym/97.png",
+  "depth": 12
+ },
+ "dumbbell_rack": {
+  "tex": "@gym/166.png",
+  "depth": 10
+ },
+ "dumbbell_rack_b": {
+  "tex": "@gym/169.png",
+  "depth": 10
+ },
+ "treadmill": {
+  "tex": "@gym/186.png",
+  "depth": 14
+ },
+ "exercise_bike": {
+  "tex": "@gym/188.png",
+  "depth": 10
+ },
+ "gym_ball": {
+  "tex": "@gym/74.png",
+  "depth": 6
+ },
+ "gym_mirror": {
+  "tex": "@gym/118.png",
+  "depth": 0
+ },
+ "gym_mat": {
+  "tex": "@gym/197.png",
+  "depth": 0,
+  "layer": "FloorDecor"
+ },
+ "gym_mat_green": {
+  "tex": "@gym/195.png",
+  "depth": 0,
+  "layer": "FloorDecor"
  }
 }

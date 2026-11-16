@@ -1,150 +1,39 @@
 {
- "MAP_TITLE": {
-  "en": "Greyford",
-  "ru": "Грейфорд"
- },
- "MAP_OLD_QUARTER": {
-  "en": "Old Quarter",
-  "ru": "Старый квартал"
- },
- "MAP_GARDENS": {
-  "en": "Quay Gardens",
-  "ru": "Причальный сквер"
- },
- "MAP_MARKET": {
-  "en": "Market Street",
-  "ru": "Рыночная улица"
- },
- "MAP_LIGHTHOUSE": {
-  "en": "Lighthouse Point",
-  "ru": "Маячный мыс"
- },
- "MAP_NORTH_QUAY": {
-  "en": "North Quay",
-  "ru": "Северный причал"
- },
- "PROMPT_BUS": {
-  "en": "Bus stop",
-  "ru": "Остановка"
- },
- "BUS_TITLE": {
-  "en": "Route 11 · fare £%d",
-  "ru": "Маршрут 11 · проезд £%d"
- },
- "BUS_NOWHERE": {
-  "en": "Nowhere else you know yet. The driver shrugs: the timetable only lists the stops you've already been to.",
-  "ru": "Других знакомых мест пока нет. Водитель пожимает плечами: в расписании только те остановки, где уже доводилось бывать."
- },
- "BUS_RIDE": {
-  "en": "The number 11 takes its time, as if it, too, had nowhere to be. %s.",
-  "ru": "Одиннадцатый номер не торопится, будто ему тоже некуда спешить. %s."
- },
- "BUS_NO_MONEY": {
-  "en": "You count your change twice. It isn't enough for the fare.",
-  "ru": "Ты дважды пересчитываешь мелочь. На проезд не хватает."
- },
- "MAP_DESC_OLD_QUARTER": {
-  "en": "The square, the fountain and the doors that matter. Greyford's oldest streets, and the ones that remember most.",
-  "ru": "Площадь, фонтан и двери, которые что-то значат. Самые старые улицы Грейфорда, и помнят они больше остальных."
- },
- "MAP_DESC_MARKET": {
-  "en": "Bread before eight, cocoa after twelve, gossip all day. The shopfronts change; the people behind them rarely do.",
-  "ru": "Хлеб до восьми, какао после полудня, сплетни весь день. Вывески меняются, люди за прилавками почти никогда."
- },
- "MAP_DESC_GARDENS": {
-  "en": "Grass, benches, a fountain full of wishes. A football pitch where Dev guesses which way you'll shoot.",
-  "ru": "Трава, скамейки, фонтан, полный желаний. Футбольное поле, где Дев угадывает, куда ты ударишь."
- },
- "MAP_DESC_LIGHTHOUSE": {
-  "en": "Steps down from the Old Quarter to the sea wall. The lighthouse counts, and Hester Ashby counts with it.",
-  "ru": "Ступени вниз от Старого квартала к волнорезу. Маяк считает, и Хестер Эшби считает вместе с ним."
- },
- "MAP_DESC_NORTH_QUAY": {
-  "en": "Cranes, containers and the Meridian annex. Under the quay, the old underpass floods with more than water.",
-  "ru": "Краны, контейнеры и корпус «Меридиана». Под причалом старый переход заливает не только водой."
- },
- "MAP_PLACE_HOME": {
-  "en": "Your rented room",
-  "ru": "Твоя съёмная комната"
- },
- "MAP_PLACE_ARCHIVE": {
-  "en": "Municipal Archive",
-  "ru": "Городской архив"
- },
- "MAP_PLACE_JOBS": {
-  "en": "Job board",
-  "ru": "Доска объявлений"
- },
- "MAP_PLACE_COURTS": {
-  "en": "Basketball court and football pitch",
-  "ru": "Баскетбольная площадка и футбольное поле"
- },
- "MAP_PLACE_KIOSKS": {
-  "en": "Coffee and ice-cream kiosks",
-  "ru": "Киоски с кофе и мороженым"
- },
- "MAP_PLACE_LIGHTHOUSE": {
-  "en": "Lighthouse and sea wall",
-  "ru": "Маяк и волнорез"
- },
- "MAP_PLACE_UNDERPASS": {
-  "en": "The flooded underpass",
-  "ru": "Затопленный переход"
- },
- "MAP_HOURS_ALWAYS": {
-  "en": "always",
-  "ru": "всегда"
- },
- "MAP_HOURS_ROOK": {
-  "en": "afternoon and evening",
-  "ru": "днём и вечером"
- },
- "MAP_HOURS_BAKERY": {
-  "en": "6:00–22:00",
-  "ru": "6:00–22:00"
- },
- "MAP_HOURS_CAFE": {
-  "en": "12:00–22:00",
-  "ru": "12:00–22:00"
- },
- "MAP_HOURS_DAYLIGHT": {
-  "en": "morning to evening",
-  "ru": "с утра до вечера"
- },
- "MAP_PLACES": {
-  "en": "Places",
-  "ru": "Места"
- },
- "MAP_PEOPLE": {
-  "en": "Here now",
-  "ru": "Сейчас здесь"
- },
- "MAP_NOBODY": {
-  "en": "nobody you know",
-  "ru": "никого из знакомых"
- },
- "MAP_CASES": {
-  "en": "Your cases lead here",
-  "ru": "Сюда ведут дела"
- },
- "MAP_BUS": {
-  "en": "Bus stop",
-  "ru": "Остановка автобуса"
- },
- "MAP_NO_BUS": {
-  "en": "No bus: walk",
-  "ru": "Автобус не ходит, только пешком"
- },
- "MAP_HINT_VIEW": {
-  "en": "←/→ choose a district · M close",
-  "ru": "←/→ выбрать район · M закрыть"
- },
- "MAP_HINT_TRAVEL": {
-  "en": "←/→ choose · E ride (£%d) · Esc back",
-  "ru": "←/→ выбрать · E ехать (£%d) · Esc назад"
- },
- "MAP_YOU_ARE_HERE": {
-  "en": "You are here",
-  "ru": "Ты здесь"
- }
+  "MAP_TITLE": {"en": "Greyford", "ru": "Грейфорд"},
+  "MAP_OLD_QUARTER": {"en": "Old Quarter", "ru": "Старый квартал"},
+  "MAP_GARDENS": {"en": "Quay Gardens", "ru": "Причальный сквер"},
+  "MAP_MARKET": {"en": "Market Street", "ru": "Рыночная улица"},
+  "MAP_LIGHTHOUSE": {"en": "Lighthouse Point", "ru": "Маячный мыс"},
+  "MAP_NORTH_QUAY": {"en": "North Quay", "ru": "Северный причал"},
+  "PROMPT_BUS": {"en": "Bus stop", "ru": "Остановка"},
+  "BUS_TITLE": {"en": "Route 11 · fare £%d", "ru": "Маршрут 11 · проезд £%d"},
+  "BUS_NOWHERE": {"en": "Nowhere else you know yet. The driver shrugs: the timetable only lists the stops you've already been to.", "ru": "Других знакомых мест пока нет. Водитель пожимает плечами: в расписании только те остановки, где уже доводилось бывать."},
+  "BUS_RIDE": {"en": "The number 11 takes its time, as if it, too, had nowhere to be. %s.", "ru": "Одиннадцатый номер не торопится, будто ему тоже некуда спешить. %s."},
+  "BUS_NO_MONEY": {"en": "You count your change twice. It isn't enough for the fare.", "ru": "Ты дважды пересчитываешь мелочь. На проезд не хватает."},
+  "MAP_DESC_OLD_QUARTER": {"en": "The square, the fountain and the doors that matter. Greyford's oldest streets, and the ones that remember most.", "ru": "Площадь, фонтан и двери, которые что-то значат. Самые старые улицы Грейфорда, и помнят они больше остальных."},
+  "MAP_DESC_MARKET": {"en": "Bread before eight, cocoa after twelve, gossip all day. The shopfronts change; the people behind them rarely do.", "ru": "Хлеб до восьми, какао после полудня, сплетни весь день. Вывески меняются, люди за прилавками почти никогда."},
+  "MAP_DESC_GARDENS": {"en": "Grass, benches, a fountain full of wishes. A football pitch where Dev guesses which way you'll shoot.", "ru": "Трава, скамейки, фонтан, полный желаний. Футбольное поле, где Дев угадывает, куда ты ударишь."},
+  "MAP_DESC_LIGHTHOUSE": {"en": "Steps down from the Old Quarter to the sea wall. The lighthouse counts, and Hester Ashby counts with it.", "ru": "Ступени вниз от Старого квартала к волнорезу. Маяк считает, и Хестер Эшби считает вместе с ним."},
+  "MAP_DESC_NORTH_QUAY": {"en": "Cranes, containers and the Meridian annex. Under the quay, the old underpass floods with more than water.", "ru": "Краны, контейнеры и корпус «Меридиана». Под причалом старый переход заливает не только водой."},
+  "MAP_PLACE_HOME": {"en": "Your rented room", "ru": "Твоя съёмная комната"},
+  "MAP_PLACE_ARCHIVE": {"en": "Municipal Archive", "ru": "Городской архив"},
+  "MAP_PLACE_JOBS": {"en": "Job board", "ru": "Доска объявлений"},
+  "MAP_PLACE_COURTS": {"en": "Basketball court and football pitch", "ru": "Баскетбольная площадка и футбольное поле"},
+  "MAP_PLACE_KIOSKS": {"en": "Coffee and ice-cream kiosks", "ru": "Киоски с кофе и мороженым"},
+  "MAP_PLACE_LIGHTHOUSE": {"en": "Lighthouse and sea wall", "ru": "Маяк и волнорез"},
+  "MAP_PLACE_UNDERPASS": {"en": "The flooded underpass", "ru": "Затопленный переход"},
+  "MAP_HOURS_ALWAYS": {"en": "always", "ru": "всегда"},
+  "MAP_HOURS_ROOK": {"en": "afternoon and evening", "ru": "днём и вечером"},
+  "MAP_HOURS_BAKERY": {"en": "6:00–22:00", "ru": "6:00–22:00"},
+  "MAP_HOURS_CAFE": {"en": "12:00–22:00", "ru": "12:00–22:00"},
+  "MAP_HOURS_DAYLIGHT": {"en": "morning to evening", "ru": "с утра до вечера"},
+  "MAP_PLACES": {"en": "Places", "ru": "Места"},
+  "MAP_PEOPLE": {"en": "Here now", "ru": "Сейчас здесь"},
+  "MAP_NOBODY": {"en": "nobody you know", "ru": "никого из знакомых"},
+  "MAP_CASES": {"en": "Your cases lead here", "ru": "Сюда ведут дела"},
+  "MAP_BUS": {"en": "Bus stop", "ru": "Остановка автобуса"},
+  "MAP_NO_BUS": {"en": "No bus: walk", "ru": "Автобус не ходит, только пешком"},
+  "MAP_HINT_VIEW": {"en": "←/→ choose a district · M close", "ru": "←/→ выбрать район · M закрыть"},
+  "MAP_HINT_TRAVEL": {"en": "←/→ choose · E ride (£%d) · Esc back", "ru": "←/→ выбрать · E ехать (£%d) · Esc назад"},
+  "MAP_YOU_ARE_HERE": {"en": "You are here", "ru": "Ты здесь"}
 }

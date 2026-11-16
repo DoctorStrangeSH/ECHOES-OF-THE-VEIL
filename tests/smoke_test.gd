@@ -422,6 +422,9 @@ func _ready() -> void:
 	await _wait_location(&"rented_room")
 	_assert(GameState.has_flag(&"game.completed") and GameState.has_flag(&"ending.open_record"), "the world goes on after the ending")
 
+	print("SMOKE level at the ending: ", Progression.level)
+	_assert(Progression.level >= 5, "the campaign levels you up (level %d)" % Progression.level)
+
 	_step = "world incident after the ending"
 	_assert(Incidents.active() == &"lanterns", "the morning after, Lantern Row acts up (got %s)" % Incidents.active())
 	SceneFlow.travel(&"echo_lantern_row", &"entrance")

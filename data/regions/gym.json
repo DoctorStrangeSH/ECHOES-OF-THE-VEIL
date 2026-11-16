@@ -1,0 +1,180 @@
+{
+ "id": "gym",
+ "name_key": "LOC_GYM",
+ "palette": "echo_corridor",
+ "options": {
+  "outdoors": false
+ },
+ "layout": {
+  "generator": "room",
+  "width": 20,
+  "height": 11,
+  "door_x": 9
+ },
+ "nodes": [
+  {
+   "kind": "furn",
+   "furn": "gym_mirror",
+   "x": 72,
+   "y": 60
+  },
+  {
+   "kind": "furn",
+   "furn": "gym_mirror",
+   "x": 120,
+   "y": 60
+  },
+  {
+   "kind": "furn",
+   "furn": "treadmill",
+   "x": 184,
+   "y": 72
+  },
+  {
+   "kind": "furn",
+   "furn": "treadmill",
+   "x": 208,
+   "y": 72
+  },
+  {
+   "kind": "furn",
+   "furn": "exercise_bike",
+   "x": 240,
+   "y": 70
+  },
+  {
+   "kind": "furn",
+   "furn": "exercise_bike",
+   "x": 262,
+   "y": 70
+  },
+  {
+   "kind": "furn",
+   "furn": "dumbbell_rack",
+   "x": 40,
+   "y": 72
+  },
+  {
+   "kind": "furn",
+   "furn": "dumbbell_rack_b",
+   "x": 284,
+   "y": 72
+  },
+  {
+   "kind": "furn",
+   "furn": "bench_press",
+   "x": 72,
+   "y": 124
+  },
+  {
+   "kind": "furn",
+   "furn": "weight_machine",
+   "x": 112,
+   "y": 124
+  },
+  {
+   "kind": "furn",
+   "furn": "leg_press",
+   "x": 256,
+   "y": 128
+  },
+  {
+   "kind": "furn",
+   "furn": "punching_bag",
+   "x": 36,
+   "y": 160
+  },
+  {
+   "kind": "furn",
+   "furn": "punching_bag_b",
+   "x": 60,
+   "y": 160
+  },
+  {
+   "kind": "furn",
+   "furn": "gym_mat",
+   "x": 216,
+   "y": 150
+  },
+  {
+   "kind": "furn",
+   "furn": "gym_ball",
+   "x": 290,
+   "y": 160
+  },
+  {
+   "kind": "furn",
+   "furn": "gym_ball",
+   "x": 270,
+   "y": 168
+  },
+  {
+   "kind": "furn",
+   "furn": "plant_tall",
+   "x": 292,
+   "y": 120
+  },
+  {
+   "kind": "inspect",
+   "name": "TreadmillLook",
+   "id": "inspect_gym_treadmill",
+   "x": 196,
+   "y": 80,
+   "area": [
+    40,
+    10
+   ],
+   "lines": [
+    "FLAVOR_GYM_TREADMILL"
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "BagLook",
+   "id": "inspect_gym_bag",
+   "x": 48,
+   "y": 168,
+   "area": [
+    40,
+    10
+   ],
+   "lines": [
+    "FLAVOR_GYM_BAG"
+   ]
+  },
+  {
+   "template": "anchors",
+   "points": {
+    "coach": [
+     160,
+     104
+    ]
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "Entrance",
+   "id": "entrance",
+   "x": 160,
+   "y": 154,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ExitDoor",
+   "id": "door_gym_exit",
+   "x": 160,
+   "y": 172,
+   "area": [
+    30,
+    10
+   ],
+   "scene": "market_street",
+   "spawn": "gym_front",
+   "prompt": "PROMPT_EXIT"
+  }
+ ]
+}
