@@ -18,3 +18,6 @@ desktop.ini
 .vscode/
 __pycache__/
 /build/
+
+# Third-party icon derivatives are generated locally from licensed ZIPs.
+/assets/third_party_icons/
