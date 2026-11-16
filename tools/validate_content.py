@@ -111,6 +111,9 @@ def walk(v, where):
                 refs.append(('fact', a[1], where))
             elif k in RULE_KEYS:
                 refs.append((RULE_KEYS[k], a, where))
+            elif k == 'quest_outcome':
+                refs.append(('case', a[0], where))
+                refs.append(('outcome', a, where))
             elif k in ('quest_stage', 'quest_complete'):
                 refs.append(('case', a[0], where))
                 if k == 'quest_stage':
@@ -201,6 +204,16 @@ for c, v in J['cases'].items():
         for t in [a] + targets:
             if t not in v.get('stages', {}):
                 err(f'case {c}: transition uses unknown stage {t}')
+
+CHRONICLE = load('data/story/chronicle.json') if os.path.exists('data/story/chronicle.json') else {}
+for c in CHRONICLE.get('chapters', []):
+    where = f'chronicle {c.get("id")}'
+    key(c.get('title'), where); key(c.get('epigraph'), where)
+    walk(c.get('if', {}), where); walk(c.get('done_if', {}), where)
+    if not c.get('pages'):
+        err(f'{where}: a chapter needs pages')
+    for p in c.get('pages', []):
+        key(p.get('text'), where); walk(p.get('if', {}), where)
 
 CAMPAIGN = load('data/story/campaign.json')
 for a in CAMPAIGN.get('acts', []):

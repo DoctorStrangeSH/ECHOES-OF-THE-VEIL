@@ -1,0 +1,506 @@
+{
+ "_doc": "The Chronicle (R6a): the story so far told as a book, in the journal. A chapter shows once its 'if' holds; each page shows when its own condition holds, so the book follows the player's choices. Until 'done_if' holds the chapter ends with 'to be continued'.",
+ "chapters": [
+  {
+   "id": "prologue",
+   "title": "CHRON_PROLOGUE_TITLE",
+   "epigraph": "CHRON_PROLOGUE_EPI",
+   "if": {},
+   "done_if": {
+    "quest_done": "case_door"
+   },
+   "pages": [
+    {
+     "text": "CHRON_PROLOGUE_ARRIVE"
+    },
+    {
+     "text": "CHRON_PROLOGUE_OPENED",
+     "if": {
+      "quest_outcome": [
+       "case_door",
+       "opened"
+      ]
+     }
+    },
+    {
+     "text": "CHRON_PROLOGUE_REPORTED",
+     "if": {
+      "quest_outcome": [
+       "case_door",
+       "reported"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "maps",
+   "title": "CHRON_MAPS_TITLE",
+   "epigraph": "CHRON_MAPS_EPI",
+   "if": {
+    "flag": "act.act1"
+   },
+   "done_if": {
+    "quest_done": "case_two_maps"
+   },
+   "pages": [
+    {
+     "text": "CHRON_MAPS_OPEN"
+    },
+    {
+     "text": "CHRON_MAPS_KEPT",
+     "if": {
+      "quest_outcome": [
+       "case_two_maps",
+       "kept"
+      ]
+     }
+    },
+    {
+     "text": "CHRON_MAPS_SHARED",
+     "if": {
+      "quest_outcome": [
+       "case_two_maps",
+       "shared"
+      ]
+     }
+    },
+    {
+     "text": "CHRON_MAPS_QUESTIONED",
+     "if": {
+      "quest_outcome": [
+       "case_two_maps",
+       "questioned"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "eleventh",
+   "title": "CHRON_ELEVENTH_TITLE",
+   "epigraph": "CHRON_ELEVENTH_EPI",
+   "if": {
+    "not": {
+     "not_quest_started": "case_eleventh"
+    }
+   },
+   "done_if": {
+    "quest_done": "case_eleventh"
+   },
+   "pages": [
+    {
+     "text": "CHRON_ELEVENTH_OPEN"
+    },
+    {
+     "text": "CHRON_ELEVENTH_PUBLISHED",
+     "if": {
+      "quest_outcome": [
+       "case_eleventh",
+       "published"
+      ]
+     }
+    },
+    {
+     "text": "CHRON_ELEVENTH_SEALED",
+     "if": {
+      "quest_outcome": [
+       "case_eleventh",
+       "sealed"
+      ]
+     }
+    },
+    {
+     "text": "CHRON_ELEVENTH_HIDDEN",
+     "if": {
+      "quest_outcome": [
+       "case_eleventh",
+       "hidden"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "ward",
+   "title": "CHRON_WARD_TITLE",
+   "epigraph": "CHRON_WARD_EPI",
+   "if": {
+    "flag": "act.act2"
+   },
+   "done_if": {
+    "quest_done": "case_misplaced"
+   },
+   "pages": [
+    {
+     "text": "CHRON_WARD_OPEN"
+    },
+    {
+     "text": "CHRON_WARD_REUNITED",
+     "if": {
+      "quest_outcome": [
+       "case_misplaced",
+       "reunited"
+      ]
+     }
+    },
+    {
+     "text": "CHRON_WARD_APART",
+     "if": {
+      "quest_outcome": [
+       "case_misplaced",
+       "apart"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "rosalind",
+   "title": "CHRON_ROSALIND_TITLE",
+   "epigraph": "CHRON_ROSALIND_EPI",
+   "if": {
+    "not": {
+     "not_quest_started": "case_rosalind"
+    }
+   },
+   "done_if": {
+    "quest_done": "case_rosalind"
+   },
+   "pages": [
+    {
+     "text": "CHRON_ROSALIND_OPEN"
+    },
+    {
+     "text": "CHRON_ROSALIND_TOLD",
+     "if": {
+      "quest_outcome": [
+       "case_rosalind",
+       "told"
+      ]
+     }
+    },
+    {
+     "text": "CHRON_ROSALIND_SPARED",
+     "if": {
+      "quest_outcome": [
+       "case_rosalind",
+       "spared"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "kindness",
+   "title": "CHRON_KINDNESS_TITLE",
+   "epigraph": "CHRON_KINDNESS_EPI",
+   "if": {
+    "flag": "act.act3"
+   },
+   "done_if": {
+    "quest_done": "case_kindness"
+   },
+   "pages": [
+    {
+     "text": "CHRON_KINDNESS_OPEN"
+    },
+    {
+     "text": "CHRON_KINDNESS_MARA",
+     "if": {
+      "all": [
+       {
+        "flag": "act3.confessor_mara"
+       },
+       {
+        "any": [
+         {
+          "quest_stage": [
+           "case_kindness",
+           "truth"
+          ]
+         },
+         {
+          "quest_stage": [
+           "case_kindness",
+           "decide"
+          ]
+         },
+         {
+          "quest_done": "case_kindness"
+         }
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "text": "CHRON_KINDNESS_HALLOWAY",
+     "if": {
+      "all": [
+       {
+        "flag": "act3.confessor_halloway"
+       },
+       {
+        "any": [
+         {
+          "quest_stage": [
+           "case_kindness",
+           "truth"
+          ]
+         },
+         {
+          "quest_stage": [
+           "case_kindness",
+           "decide"
+          ]
+         },
+         {
+          "quest_done": "case_kindness"
+         }
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "text": "CHRON_KINDNESS_IVO",
+     "if": {
+      "all": [
+       {
+        "flag": "act3.confessor_ivo"
+       },
+       {
+        "any": [
+         {
+          "quest_stage": [
+           "case_kindness",
+           "truth"
+          ]
+         },
+         {
+          "quest_stage": [
+           "case_kindness",
+           "decide"
+          ]
+         },
+         {
+          "quest_done": "case_kindness"
+         }
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "text": "CHRON_KINDNESS_SEALED",
+     "if": {
+      "quest_outcome": [
+       "case_kindness",
+       "sealed"
+      ]
+     }
+    },
+    {
+     "text": "CHRON_KINDNESS_OPENED",
+     "if": {
+      "quest_outcome": [
+       "case_kindness",
+       "opened"
+      ]
+     }
+    },
+    {
+     "text": "CHRON_KINDNESS_SOLD",
+     "if": {
+      "quest_outcome": [
+       "case_kindness",
+       "sold"
+      ]
+     }
+    },
+    {
+     "text": "CHRON_KINDNESS_BROKEN",
+     "if": {
+      "quest_outcome": [
+       "case_kindness",
+       "broken"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "index",
+   "title": "CHRON_INDEX_TITLE",
+   "epigraph": "CHRON_INDEX_EPI",
+   "if": {
+    "flag": "act.act4"
+   },
+   "done_if": {
+    "quest_done": "case_index"
+   },
+   "pages": [
+    {
+     "text": "CHRON_INDEX_OPEN"
+    },
+    {
+     "text": "CHRON_INDEX_TURNED",
+     "if": {
+      "quest_outcome": [
+       "case_index",
+       "turned"
+      ]
+     }
+    },
+    {
+     "text": "CHRON_INDEX_CONTINUED",
+     "if": {
+      "quest_outcome": [
+       "case_index",
+       "continued"
+      ]
+     }
+    },
+    {
+     "text": "CHRON_INDEX_STOPPED",
+     "if": {
+      "quest_outcome": [
+       "case_index",
+       "stopped"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "anchor",
+   "title": "CHRON_ANCHOR_TITLE",
+   "epigraph": "CHRON_ANCHOR_EPI",
+   "if": {
+    "flag": "act.act5"
+   },
+   "done_if": {
+    "quest_done": "case_anchor"
+   },
+   "pages": [
+    {
+     "text": "CHRON_ANCHOR_OPEN"
+    },
+    {
+     "text": "CHRON_ANCHOR_OPEN_RECORD",
+     "if": {
+      "quest_outcome": [
+       "case_anchor",
+       "open_record"
+      ]
+     }
+    },
+    {
+     "text": "CHRON_ANCHOR_CUSTODIANS",
+     "if": {
+      "quest_outcome": [
+       "case_anchor",
+       "custodians"
+      ]
+     }
+    },
+    {
+     "text": "CHRON_ANCHOR_ACCORD",
+     "if": {
+      "quest_outcome": [
+       "case_anchor",
+       "accord"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "brook",
+   "title": "CHRON_BROOK_TITLE",
+   "epigraph": "CHRON_BROOK_EPI",
+   "if": {
+    "not": {
+     "not_quest_started": "case_brook_farm"
+    }
+   },
+   "done_if": {
+    "quest_done": "case_brook_farm"
+   },
+   "pages": [
+    {
+     "text": "CHRON_BROOK_OPEN"
+    },
+    {
+     "text": "CHRON_BROOK_HOME",
+     "if": {
+      "quest_outcome": [
+       "case_brook_farm",
+       "letters_home"
+      ]
+     }
+    },
+    {
+     "text": "CHRON_BROOK_STAY",
+     "if": {
+      "quest_outcome": [
+       "case_brook_farm",
+       "letters_stay"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "ford",
+   "title": "CHRON_FORD_TITLE",
+   "epigraph": "CHRON_FORD_EPI",
+   "if": {
+    "not": {
+     "not_quest_started": "case_drowned_ford"
+    }
+   },
+   "done_if": {
+    "quest_done": "case_drowned_ford"
+   },
+   "pages": [
+    {
+     "text": "CHRON_FORD_OPEN"
+    },
+    {
+     "text": "CHRON_FORD_REMEMBERED",
+     "if": {
+      "quest_outcome": [
+       "case_drowned_ford",
+       "remembered"
+      ]
+     }
+    },
+    {
+     "text": "CHRON_FORD_REST",
+     "if": {
+      "quest_outcome": [
+       "case_drowned_ford",
+       "laid_to_rest"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "after",
+   "title": "CHRON_AFTER_TITLE",
+   "epigraph": "CHRON_AFTER_EPI",
+   "if": {
+    "flag": "game.completed"
+   },
+   "done_if": {},
+   "pages": [
+    {
+     "text": "CHRON_AFTER_OPEN"
+    }
+   ]
+  }
+ ]
+}
