@@ -67,10 +67,12 @@ func _on_screen_requested(screen: String) -> void:
 	elif screen == "world:travel":
 		world_map.open()
 	elif screen == "world:drive":
-		world_map.open(true)
+		world_map.open("car")
+	elif screen == "world:ferry":
+		world_map.open("ferry")
 	elif screen == "map:drive":
 		if WorldMap.city_of(GameState.current_scene_id) != WorldMap.HOME:
-			world_map.open(true)  # out of town the car only knows the coast road
+			world_map.open("car")  # out of town the car only knows the coast road
 		else:
 			CityMap.driving = true
 			city_map.open(true)

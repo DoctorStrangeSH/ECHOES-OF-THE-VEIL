@@ -1,0 +1,149 @@
+{
+ "oona": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "met.oona"
+    },
+    "node": "i1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "i1": {
+    "text": "OONA_INTRO_1",
+    "next": "i2",
+    "effects": [
+     {
+      "set_flag": "met.oona"
+     }
+    ]
+   },
+   "i2": {
+    "text": "OONA_INTRO_2",
+    "speaker": "NPC_OONA",
+    "next": "hub"
+   },
+   "hub": {
+    "text": "OONA_HUB",
+    "speaker": "NPC_OONA",
+    "choices": [
+     {
+      "text": "OONA_ASK_LIGHT",
+      "next": "light"
+     },
+     {
+      "text": "OONA_ASK_ISLAND",
+      "next": "island"
+     },
+     {
+      "text": "OONA_ASK_ANSWERED",
+      "if": {
+       "flag": "carrow.answered"
+      },
+      "next": "answered"
+     },
+     {
+      "text": "MARKET_BYE",
+      "next": null
+     }
+    ]
+   },
+   "light": {
+    "text": "OONA_LIGHT",
+    "speaker": "NPC_OONA",
+    "next": "hub"
+   },
+   "island": {
+    "text": "OONA_ISLAND",
+    "speaker": "NPC_OONA",
+    "next": "hub"
+   },
+   "answered": {
+    "text": "OONA_ANSWERED",
+    "speaker": "NPC_OONA",
+    "next": "hub"
+   }
+  }
+ },
+ "carrow_log": {
+  "entries": [],
+  "start": "l1",
+  "nodes": {
+   "l1": {
+    "text": "CARROW_LOG_1",
+    "next": "l2"
+   },
+   "l2": {
+    "text": "CARROW_LOG_2",
+    "next": null
+   }
+  }
+ },
+ "carrow_lamp": {
+  "entries": [
+   {
+    "if": {
+     "all": [
+      {
+       "period": "night"
+      },
+      {
+       "not_flag": "carrow.answered"
+      }
+     ]
+    },
+    "node": "n1"
+   },
+   {
+    "if": {
+     "period": "night"
+    },
+    "node": "n_again"
+   }
+  ],
+  "start": "day",
+  "nodes": {
+   "day": {
+    "text": "CARROW_LAMP_DAY",
+    "next": null
+   },
+   "n1": {
+    "text": "CARROW_LAMP_1",
+    "next": "n2"
+   },
+   "n2": {
+    "text": "CARROW_LAMP_2",
+    "choices": [
+     {
+      "text": "CARROW_ANSWER",
+      "next": "n3",
+      "effects": [
+       {
+        "set_flag": "carrow.answered"
+       },
+       {
+        "give_xp": 30
+       },
+       {
+        "give_resonance": 10
+       }
+      ]
+     },
+     {
+      "text": "CARROW_JUST_WATCH",
+      "next": null
+     }
+    ]
+   },
+   "n3": {
+    "text": "CARROW_LAMP_3",
+    "next": null
+   },
+   "n_again": {
+    "text": "CARROW_LAMP_AGAIN",
+    "next": null
+   }
+  }
+ }
+}

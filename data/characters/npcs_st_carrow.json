@@ -1,0 +1,31 @@
+{
+ "oona_pryce": {
+  "name": "NPC_OONA",
+  "body": "Body_04",
+  "eyes": "Eyes_01",
+  "outfit": "Outfit_19_03",
+  "hairstyle": "Hairstyle_08_05",
+  "color": "#8090a0",
+  "dialogue": "oona",
+  "schedule": [
+   {
+    "period": [
+     "morning",
+     "afternoon",
+     "evening"
+    ],
+    "scene": "st_carrow",
+    "anchor": "lamp_door",
+    "facing": "down",
+    "activity": "look"
+   },
+   {
+    "period": "night",
+    "scene": "st_carrow_lighthouse",
+    "anchor": "desk",
+    "facing": "right",
+    "activity": "read"
+   }
+  ]
+ }
+}

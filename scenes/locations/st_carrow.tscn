@@ -1,0 +1,289 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/location.gd" id="1_loc"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2_paint"]
+[ext_resource type="PackedScene" path="res://scenes/props/world_prop.tscn" id="3_prop"]
+[ext_resource type="Script" path="res://scripts/world/spawn_point.gd" id="4_spawn"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="5_inspect"]
+[ext_resource type="Script" path="res://scripts/interaction/door_interactable.gd" id="6_door"]
+[ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
+[ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+[ext_resource type="Script" path="res://scripts/world/conditional_visibility.gd" id="10_cond"]
+[ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
+[ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
+[ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+[ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
+[ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
+[ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
+[ext_resource type="PackedScene" path="res://scenes/world/repair_spot.tscn" id="17_spot"]
+[ext_resource type="PackedScene" path="res://scenes/world/screen_interactable.tscn" id="18_screen"]
+[ext_resource type="PackedScene" path="res://scenes/world/junk_pile.tscn" id="19_junk"]
+[ext_resource type="Script" path="res://scripts/farm/forage_spot.gd" id="20_forage"]
+
+[node name="StCarrow" type="Node2D"]
+script = ExtResource("1_loc")
+location_id = &"st_carrow"
+name_key = "LOC_ST_CARROW"
+outdoors = true
+
+[node name="Ground" type="TileMapLayer" parent="."]
+script = ExtResource("2_paint")
+palette_id = "cavenmouth"
+layout = "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwdddddddddddddddwwwwwwwwwwwwww
+wwwwwwwwwwwwwdddddddddddddddddddwwwwwwwwwwww
+wwwwwwwwwwwddddddgggggggggggddddddwwwwwwwwww
+wwwwwwwwwddddddgggggggggggggggddddddwwwwwwww
+wwwwwwwwdddddgggggggggggggggggggdddddwwwwwww
+wwwwwwwdddddgggggggggggggggggggggdddddwwwwww
+wwwwwwwddddgggggggggggggggggggggggddddwwwwww
+wwwwwwddddgggggggggggggggggggggggggddddwwwww
+wwwwwwdddgggggggggggggggggggggggggggdddwwwww
+wwwwwwdddgggggggggggggggggggggggggggdddwwwww
+wwwwwwdddgggggggggggggggggggggggggggdddwwwww
+wwwwwwdddgggggggggggggggggggggggggggdddwwwww
+wwwwwwdddggggggggggggoogggggggggggggdddwwwww
+wwwwwwddddgggggggggggooggggggggggggddddwwwww
+wwwwwwwddddggggggggggoogggggggggggddddwwwwww
+wwwwwwwdddddgggggggggooggggggggggdddddwwwwww
+wwwwwwwwdddddggggggggoogggggggggdddddwwwwwww
+wwwwwwwwwddddddggggggoogggggggddddddwwwwwwww
+wwwwwwwwwwwddddddggggoogggggddddddwwwwwwwwww
+wwwwwwwwwwwwwddddddddppdddddddddwwwwwwwwwwww
+wwwwwwwwwwwwwwwddddddppdddddddwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwppwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwppwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwppwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwppwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwppwwwwwwwwwwwwwwwwwwwww"
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="NpcAnchors" type="Node2D" parent="."]
+
+[node name="Lighthouse" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(352, 256)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Example_Lighthouse.png"
+placeholder_size = Vector2i(112, 256)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(88, 40)
+collision_offset = Vector2(0, -20)
+
+[node name="LighthouseDoor" type="Area2D" parent="Entities"]
+position = Vector2(352, 262)
+script = ExtResource("6_door")
+interaction_id = &"door_st_carrow_lighthouse"
+area_size = Vector2(20, 14)
+target_scene_id = &"st_carrow_lighthouse"
+target_spawn_id = &"entrance"
+
+[node name="LighthouseFront" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(352, 276)
+script = ExtResource("4_spawn")
+spawn_id = &"lighthouse_front"
+facing = Vector2(0, 1)
+
+[node name="CottageA" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(176, 248)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Farmer_House_2_16x16.png"
+placeholder_size = Vector2i(160, 144)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(150, 56)
+collision_offset = Vector2(0, -28)
+
+[node name="CottageALook" type="Area2D" parent="Entities"]
+position = Vector2(176, 254)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_carrow_cottage"
+area_size = Vector2(40, 14)
+lines = PackedStringArray("FLAVOR_CARROW_COTTAGE")
+
+[node name="Chapel" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(552, 248)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/19_Graveyard_Singles_16x16/ME_Singles_Graveyard_16x16_Grace_Chapel.png"
+placeholder_size = Vector2i(80, 144)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(72, 40)
+collision_offset = Vector2(0, -20)
+
+[node name="ChapelLook" type="Area2D" parent="Entities"]
+position = Vector2(552, 254)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_carrow_chapel"
+area_size = Vector2(30, 14)
+lines = PackedStringArray("FLAVOR_CARROW_CHAPEL")
+
+[node name="SeaRock1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(120, 380)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Big_Sea_Rock_Vers_1.png"
+placeholder_size = Vector2i(64, 64)
+placeholder_color = Color(0.439,0.439,0.439, 1)
+collision_size = Vector2(24, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="SeaRock2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(600, 370)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Big_Sea_Rock_Vers_2.png"
+placeholder_size = Vector2i(64, 64)
+placeholder_color = Color(0.439,0.439,0.439, 1)
+collision_size = Vector2(24, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="SeaRock3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(80, 200)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Broken_Arch_Sea_Rock_2_Vers_1.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.439,0.439,0.439, 1)
+collision_size = Vector2(24, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="SeaRock4" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(640, 170)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Broken_Arch_Sea_Rock_1_Vers_2.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.439,0.439,0.439, 1)
+collision_size = Vector2(24, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Gull1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(260, 330)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Seagull_Front.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.941,0.941,0.941, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Gull2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(470, 140)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Seagull_Left.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.941,0.941,0.941, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Gull3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(420, 360)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/21_Beach_Singles_16x16/21_Beach_16x16_Seagull_Right.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.941,0.941,0.941, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Tree1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(240, 150)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Pine_Dark_Green_Big_16x16.png"
+placeholder_size = Vector2i(64, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(470, 300)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Pine_Dark_Green_Big_16x16.png"
+placeholder_size = Vector2i(64, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(150, 320)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Pine_Dark_Green_Big_16x16.png"
+placeholder_size = Vector2i(64, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Nets" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(230, 262)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Pier_Clothes_3.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.541,0.541, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="FishCrate" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(300, 330)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Fish_Crate_2.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.376,0.502,0.627, 1)
+collision_size = Vector2(24, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Boat" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(404, 440)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/10_Vehicles_Singles_16x16/ME_Singles_Vehicles_16x16_Boat_1_Up_1.png"
+placeholder_size = Vector2i(32, 64)
+placeholder_color = Color(0.627,0.376,0.251, 1)
+collision_size = Vector2(24, 40)
+collision_offset = Vector2(0, -24)
+
+[node name="FishBucket" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(372, 420)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Fish_Bucket_3.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.376,0.502,0.627, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="FishSpot" parent="Entities" instance=ExtResource("18_screen")]
+position = Vector2(344, 440)
+interaction_id = &"fish_carrow_pier"
+screen = "fish:island"
+prompt_key = "PROMPT_FISH"
+
+[node name="Shore1" type="Area2D" parent="Entities"]
+position = Vector2(200, 360)
+script = ExtResource("20_forage")
+interaction_id = &"forage_carrow_mush_1"
+forage_id = &"carrow_mush_1"
+item_id = &"mushroom"
+amount = 1
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Mushrooms_3.png"
+
+[node name="Shore2" type="Area2D" parent="Entities"]
+position = Vector2(520, 320)
+script = ExtResource("20_forage")
+interaction_id = &"forage_carrow_mush_2"
+forage_id = &"carrow_mush_2"
+item_id = &"mushroom"
+amount = 1
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Mushrooms_6.png"
+
+[node name="FerrySign" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(384, 400)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Sign_1_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.627,0.439,0.251, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="FerryTickets" parent="Entities" instance=ExtResource("18_screen")]
+position = Vector2(384, 408)
+interaction_id = &"use_carrow_ferry"
+screen = "world:ferry"
+prompt_key = "PROMPT_FERRY"
+
+[node name="Pier" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(352, 392)
+script = ExtResource("4_spawn")
+spawn_id = &"pier"
+facing = Vector2(0, -1)
+
+[node name="A_lamp_door" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(396, 276)
+script = ExtResource("11_anchor")
+anchor_id = &"lamp_door"
+
+[node name="A_pier_head" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(330, 380)
+script = ExtResource("11_anchor")
+anchor_id = &"pier_head"

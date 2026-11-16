@@ -1139,13 +1139,19 @@ flowchart TD
   agatha_i2 --> agatha_hub
   agatha_hub["hub<br/>Agatha Moss: Agatha taps the barometer. It still says «Chang…"]
   agatha_hub -->|"When will the ferry run?"| agatha_ferry
+  agatha_hub -->|"I could look at the engine. ⟨{all: [{not_flag: ferry.running}, {not_…⟩"| agatha_fix
+  agatha_hub -->|"How's the ferry? ⟨{flag: ferry.running}⟩"| agatha_running
   agatha_hub -->|"Tell me about the harbour."| agatha_harbour
-  agatha_hub_end_2(["end"])
-  agatha_hub -->|"'I'll be off.'"| agatha_hub_end_2
+  agatha_hub_end_4(["end"])
+  agatha_hub -->|"'I'll be off.'"| agatha_hub_end_4
   agatha_ferry["ferry<br/>Agatha Moss: St Carrow's an island two hours out. Fishermen,…"]
   agatha_ferry --> agatha_hub
   agatha_harbour["harbour<br/>Agatha Moss: Forty boats when I was a girl. Eleven now. The …"]
   agatha_harbour --> agatha_hub
+  agatha_fix["fix<br/>Agatha Moss: The part came on Tuesday, in a crate addressed …"]
+  agatha_fix --> agatha_hub
+  agatha_running["running<br/>Agatha Moss: Running, thanks to you. Tickets at the board by…"]
+  agatha_running --> agatha_hub
 ```
 
 ## lighthouse.json
@@ -2011,6 +2017,63 @@ flowchart TD
   echo_woman_name --> echo_woman_end
   echo_woman_end["end<br/>Woman in green: 'Go back now. The door won't hold much longer —…"]
   echo_woman_after["after<br/>Woman in green: She is already looking at something you can't s…"]
+```
+
+## st_carrow.json
+
+### oona
+
+```mermaid
+flowchart TD
+  oona_START(("start"))
+  oona_START --> oona_hub
+  oona_START -->|"{not_flag: met.oona}"| oona_i1
+  oona_i1["i1<br/>A grey-haired woman in a fisherman's jumper sit…"]
+  oona_i1 --> oona_i2
+  oona_i2["i2<br/>Oona Pryce: Oona Pryce. Keeper, like my mother and her fath…"]
+  oona_i2 --> oona_hub
+  oona_hub["hub<br/>Oona Pryce: Oona breathes on the lens and rubs it again."]
+  oona_hub -->|"Tell me about the lighthouse."| oona_light
+  oona_hub -->|"What's St Carrow like?"| oona_island
+  oona_hub -->|"Last night Greyford counted t… ⟨{flag: carrow.answered}⟩"| oona_answered
+  oona_hub_end_3(["end"])
+  oona_hub -->|"'I'll be off.'"| oona_hub_end_3
+  oona_light["light<br/>Oona Pryce: Ours is the older light. When I was a girl, Gre…"]
+  oona_light --> oona_hub
+  oona_island["island<br/>Oona Pryce: Twelve fishermen, one chapel, no secrets. Well,…"]
+  oona_island --> oona_hub
+  oona_answered["answered<br/>Oona Pryce: I saw. Seven, and then our eighth, from across …"]
+  oona_answered --> oona_hub
+```
+
+### carrow_log
+
+```mermaid
+flowchart TD
+  carrow_log_START(("start"))
+  carrow_log_START --> carrow_log_l1
+  carrow_log_l1["l1<br/>The keepers' log, a century of entries in four …"]
+  carrow_log_l1 --> carrow_log_l2
+  carrow_log_l2["l2<br/>The last entry is today's, in Oona's neat capit…"]
+```
+
+### carrow_lamp
+
+```mermaid
+flowchart TD
+  carrow_lamp_START(("start"))
+  carrow_lamp_START --> carrow_lamp_day
+  carrow_lamp_START -->|"{all: [{period: night}, {not_flag: carr…"| carrow_lamp_n1
+  carrow_lamp_START -->|"{period: night}"| carrow_lamp_n_again
+  carrow_lamp_day["day<br/>The lamp room is bright with daylight and smell…"]
+  carrow_lamp_n1["n1<br/>Night on the gallery. The wind is cold and full…"]
+  carrow_lamp_n1 --> carrow_lamp_n2
+  carrow_lamp_n2["n2<br/>Beside you, the island's great lamp waits on it…"]
+  carrow_lamp_n2 -->|"Open the shutter once: the ei…"| carrow_lamp_n3
+  carrow_lamp_n2_end_1(["end"])
+  carrow_lamp_n2 -->|"Just watch."| carrow_lamp_n2_end_1
+  carrow_lamp_n3["n3<br/>Seven from Greyford, and then the eighth from S…"]
+  carrow_lamp_n_again["n_again<br/>Greyford's light counts to seven. You know now …"]
 ```
 
 ## world.json

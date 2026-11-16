@@ -303,6 +303,28 @@
    "where": [
     "greyford_harbour"
    ]
+  },
+  {
+   "text": "CHATTER_CARROW_1",
+   "where": [
+    "st_carrow"
+   ]
+  },
+  {
+   "text": "CHATTER_CARROW_2",
+   "where": [
+    "st_carrow"
+   ]
+  },
+  {
+   "text": "CHATTER_FERRY_RUNNING",
+   "if": {
+    "flag": "ferry.running"
+   },
+   "where": [
+    "greyford_harbour",
+    "market_street"
+   ]
   }
  ]
 }

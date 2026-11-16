@@ -1,0 +1,391 @@
+{
+ "id": "st_carrow",
+ "name_key": "LOC_ST_CARROW",
+ "palette": "cavenmouth",
+ "options": {
+  "outdoors": true
+ },
+ "layout": [
+  "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+  "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+  "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+  "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+  "wwwwwwwwwwwwwwwdddddddddddddddwwwwwwwwwwwwww",
+  "wwwwwwwwwwwwwdddddddddddddddddddwwwwwwwwwwww",
+  "wwwwwwwwwwwddddddgggggggggggddddddwwwwwwwwww",
+  "wwwwwwwwwddddddgggggggggggggggddddddwwwwwwww",
+  "wwwwwwwwdddddgggggggggggggggggggdddddwwwwwww",
+  "wwwwwwwdddddgggggggggggggggggggggdddddwwwwww",
+  "wwwwwwwddddgggggggggggggggggggggggddddwwwwww",
+  "wwwwwwddddgggggggggggggggggggggggggddddwwwww",
+  "wwwwwwdddgggggggggggggggggggggggggggdddwwwww",
+  "wwwwwwdddgggggggggggggggggggggggggggdddwwwww",
+  "wwwwwwdddgggggggggggggggggggggggggggdddwwwww",
+  "wwwwwwdddgggggggggggggggggggggggggggdddwwwww",
+  "wwwwwwdddggggggggggggoogggggggggggggdddwwwww",
+  "wwwwwwddddgggggggggggooggggggggggggddddwwwww",
+  "wwwwwwwddddggggggggggoogggggggggggddddwwwwww",
+  "wwwwwwwdddddgggggggggooggggggggggdddddwwwwww",
+  "wwwwwwwwdddddggggggggoogggggggggdddddwwwwwww",
+  "wwwwwwwwwddddddggggggoogggggggddddddwwwwwwww",
+  "wwwwwwwwwwwddddddggggoogggggddddddwwwwwwwwww",
+  "wwwwwwwwwwwwwddddddddppdddddddddwwwwwwwwwwww",
+  "wwwwwwwwwwwwwwwddddddppdddddddwwwwwwwwwwwwww",
+  "wwwwwwwwwwwwwwwwwwwwwppwwwwwwwwwwwwwwwwwwwww",
+  "wwwwwwwwwwwwwwwwwwwwwppwwwwwwwwwwwwwwwwwwwww",
+  "wwwwwwwwwwwwwwwwwwwwwppwwwwwwwwwwwwwwwwwwwww",
+  "wwwwwwwwwwwwwwwwwwwwwppwwwwwwwwwwwwwwwwwwwww",
+  "wwwwwwwwwwwwwwwwwwwwwppwwwwwwwwwwwwwwwwwwwww"
+ ],
+ "nodes": [
+  {
+   "template": "building",
+   "tex": "@beachp/Example_Lighthouse.png",
+   "x": 352,
+   "y": 256,
+   "name": "Lighthouse",
+   "depth": 40,
+   "inset": 24,
+   "door": {
+    "id": "door_st_carrow_lighthouse",
+    "scene": "st_carrow_lighthouse",
+    "spawn": "entrance",
+    "spawn_id": "lighthouse_front",
+    "x": 352
+   }
+  },
+  {
+   "template": "building",
+   "tex": "@farm/Farmer_House_2_16x16.png",
+   "x": 176,
+   "y": 248,
+   "name": "CottageA",
+   "depth": 56,
+   "inset": 10,
+   "inspect": {
+    "id": "inspect_carrow_cottage",
+    "lines": [
+     "FLAVOR_CARROW_COTTAGE"
+    ],
+    "width": 40
+   }
+  },
+  {
+   "template": "building",
+   "tex": "@grave/Grace_Chapel.png",
+   "x": 552,
+   "y": 248,
+   "name": "Chapel",
+   "depth": 40,
+   "inset": 8,
+   "inspect": {
+    "id": "inspect_carrow_chapel",
+    "lines": [
+     "FLAVOR_CARROW_CHAPEL"
+    ],
+    "width": 30
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "SeaRock1",
+   "tex": "@beachp/Big_Sea_Rock_Vers_1.png",
+   "x": 120,
+   "y": 380,
+   "color": "#707070",
+   "col": [
+    24,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "SeaRock2",
+   "tex": "@beachp/Big_Sea_Rock_Vers_2.png",
+   "x": 600,
+   "y": 370,
+   "color": "#707070",
+   "col": [
+    24,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "SeaRock3",
+   "tex": "@beachp/Broken_Arch_Sea_Rock_2_Vers_1.png",
+   "x": 80,
+   "y": 200,
+   "color": "#707070",
+   "col": [
+    24,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "SeaRock4",
+   "tex": "@beachp/Broken_Arch_Sea_Rock_1_Vers_2.png",
+   "x": 640,
+   "y": 170,
+   "color": "#707070",
+   "col": [
+    24,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Gull1",
+   "tex": "@beachp/Seagull_Front.png",
+   "x": 260,
+   "y": 330,
+   "color": "#f0f0f0",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Gull2",
+   "tex": "@beachp/Seagull_Left.png",
+   "x": 470,
+   "y": 140,
+   "color": "#f0f0f0",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Gull3",
+   "tex": "@beachp/Seagull_Right.png",
+   "x": 420,
+   "y": 360,
+   "color": "#f0f0f0",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree1",
+   "tex": "@ftree/Tree_Pine_Dark_Green_Big_16x16.png",
+   "x": 240,
+   "y": 150,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree2",
+   "tex": "@ftree/Tree_Pine_Dark_Green_Big_16x16.png",
+   "x": 470,
+   "y": 300,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree3",
+   "tex": "@ftree/Tree_Pine_Dark_Green_Big_16x16.png",
+   "x": 150,
+   "y": 320,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Nets",
+   "tex": "@camp/Pier_Clothes_3.png",
+   "x": 230,
+   "y": 262,
+   "color": "#8a8a8a",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "FishCrate",
+   "tex": "@camp/Fish_Crate_2.png",
+   "x": 300,
+   "y": 330,
+   "color": "#6080a0",
+   "col": [
+    24,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Boat",
+   "tex": "@vehicle/Boat_1_Up_1.png",
+   "x": 404,
+   "y": 440,
+   "color": "#a06040",
+   "col": [
+    24,
+    40
+   ],
+   "off": [
+    0,
+    -24
+   ],
+   "layer": "FloorDecor"
+  },
+  {
+   "kind": "prop",
+   "name": "FishBucket",
+   "tex": "@camp/Fish_Bucket_3.png",
+   "x": 372,
+   "y": 420,
+   "color": "#6080a0",
+   "col": [
+    10,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "screen",
+   "name": "FishSpot",
+   "id": "fish_carrow_pier",
+   "x": 344,
+   "y": 440,
+   "screen": "fish:island",
+   "prompt": "PROMPT_FISH"
+  },
+  {
+   "kind": "forage",
+   "name": "Shore1",
+   "id": "carrow_mush_1",
+   "x": 200,
+   "y": 360,
+   "item": "mushroom",
+   "tex": "@camp/Mushrooms_3.png"
+  },
+  {
+   "kind": "forage",
+   "name": "Shore2",
+   "id": "carrow_mush_2",
+   "x": 520,
+   "y": 320,
+   "item": "mushroom",
+   "tex": "@camp/Mushrooms_6.png"
+  },
+  {
+   "kind": "prop",
+   "name": "FerrySign",
+   "tex": "@farm/Sign_1_16x16.png",
+   "x": 384,
+   "y": 400,
+   "color": "#a07040",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "screen",
+   "name": "FerryTickets",
+   "id": "use_carrow_ferry",
+   "x": 384,
+   "y": 408,
+   "screen": "world:ferry",
+   "prompt": "PROMPT_FERRY"
+  },
+  {
+   "kind": "spawn",
+   "name": "Pier",
+   "id": "pier",
+   "x": 352,
+   "y": 392,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "template": "anchors",
+   "points": {
+    "lamp_door": [
+     396,
+     276
+    ],
+    "pier_head": [
+     330,
+     380
+    ]
+   }
+  }
+ ]
+}

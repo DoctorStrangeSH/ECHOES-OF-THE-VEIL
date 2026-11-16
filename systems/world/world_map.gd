@@ -49,19 +49,19 @@ static func routes_from(city: String) -> Array[Dictionary]:
 	return out
 
 
-## The route to `to` by the chosen means: your own car, or public transport.
-static func route_to(to: String, by_car: bool) -> Dictionary:
+## The route to `to` by one means of travel: "coach", "car" or "ferry".
+static func route_to(to: String, mode: String) -> Dictionary:
 	for r in routes_from(city_of(GameState.current_scene_id)):
-		if String(r["dest"]) == to and (String(r.get("mode", "coach")) == "car") == by_car:
+		if String(r["dest"]) == to and String(r.get("mode", "coach")) == mode:
 			return r
 	return {}
 
 
 ## Go. Returns false when it can't be done (no route, no money).
-static func travel(to: String, by_car := false) -> bool:
+static func travel(to: String, mode := "coach") -> bool:
 	var here := city_of(GameState.current_scene_id)
 	for r in routes_from(here):
-		if String(r["dest"]) != to or (String(r.get("mode", "coach")) == "car") != by_car:
+		if String(r["dest"]) != to or String(r.get("mode", "coach")) != mode:
 			continue
 		var fare := int(r.get("fare", 0))
 		if Inventory.money < fare:
@@ -69,7 +69,7 @@ static func travel(to: String, by_car := false) -> bool:
 			return false
 		Inventory.money -= fare
 		WorldClock.advance_minutes(int(r.get("minutes", 60)))
-		var arrive: Array = cities()[to]["arrive"]
+		var arrive: Array = cities()[to].get("arrive_" + mode, cities()[to]["arrive"])
 		GameState.set_flag(StringName("travel.visited.%s" % to))
 		EventHub.toast_requested.emit(String(TranslationServer.translate("TRAVEL_ARRIVED")) % TranslationServer.translate(String(cities()[to]["name"])))
 		SceneFlow.travel(StringName(arrive[0]), StringName(arrive[1]))

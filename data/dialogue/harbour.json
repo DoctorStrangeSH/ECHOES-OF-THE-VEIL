@@ -83,6 +83,35 @@
       "next": "ferry"
      },
      {
+      "text": "AGATHA_OFFER_FIX",
+      "if": {
+       "all": [
+        {
+         "not_flag": "ferry.running"
+        },
+        {
+         "not_flag": "ferry.fix_offered"
+        }
+       ]
+      },
+      "next": "fix",
+      "effects": [
+       {
+        "set_flag": "ferry.fix_offered"
+       },
+       {
+        "accept_job": "ferry_engine"
+       }
+      ]
+     },
+     {
+      "text": "AGATHA_ASK_FERRY_NOW",
+      "if": {
+       "flag": "ferry.running"
+      },
+      "next": "running"
+     },
+     {
       "text": "AGATHA_ASK_HARBOUR",
       "next": "harbour"
      },
@@ -100,6 +129,16 @@
    "harbour": {
     "text": "AGATHA_HARBOUR",
     "speaker": "NPC_AGATHA",
+    "next": "hub"
+   },
+   "fix": {
+    "speaker": "NPC_AGATHA",
+    "text": "AGATHA_FIX",
+    "next": "hub"
+   },
+   "running": {
+    "speaker": "NPC_AGATHA",
+    "text": "AGATHA_RUNNING",
     "next": "hub"
    }
   }

@@ -418,6 +418,13 @@
    "to": "greyford_block"
   }
  ],
+ "st_carrow": [],
+ "st_carrow_lighthouse": [
+  {
+   "node": "ExitDoor",
+   "to": "st_carrow"
+  }
+ ],
  "the_anchor": [
   {
    "node": "WayBack",
