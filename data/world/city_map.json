@@ -220,6 +220,41 @@
      "hours": "MAP_HOURS_ALWAYS"
     }
    ]
+  },
+  "harbour": {
+   "name": "MAP_HARBOUR",
+   "pos": [
+    40,
+    150
+   ],
+   "scenes": [
+    "greyford_harbour"
+   ],
+   "stop": [
+    "greyford_harbour",
+    "bus_stop"
+   ],
+   "known_if": {},
+   "map_at": [
+    2,
+    100
+   ],
+   "stop_at": [
+    320,
+    384
+   ],
+   "desc": "MAP_DESC_HARBOUR",
+   "places": [
+    {
+     "name": "MAP_PLACE_FISH_MARKET",
+     "hours": "MAP_HOURS_DAYLIGHT"
+    },
+    {
+     "name": "MAP_PLACE_FERRY",
+     "hours": "MAP_HOURS_ALWAYS"
+    }
+   ],
+   "open_if": {}
   }
  },
  "roads": [
@@ -242,6 +277,10 @@
   [
    "market",
    "brookside"
+  ],
+  [
+   "old_quarter",
+   "harbour"
   ]
  ],
  "map_scale": 0.125,

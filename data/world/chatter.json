@@ -285,6 +285,24 @@
     "greyford_block",
     "market_street"
    ]
+  },
+  {
+   "text": "CHATTER_HARBOUR_TAR",
+   "where": [
+    "greyford_harbour"
+   ]
+  },
+  {
+   "text": "CHATTER_HARBOUR_FERRY",
+   "where": [
+    "greyford_harbour"
+   ]
+  },
+  {
+   "text": "CHATTER_HARBOUR_BOATS",
+   "where": [
+    "greyford_harbour"
+   ]
   }
  ]
 }

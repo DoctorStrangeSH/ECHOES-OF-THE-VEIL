@@ -1105,6 +1105,49 @@ flowchart TD
   farm_crate_hub -->|"Leave"| farm_crate_hub_end_1
 ```
 
+## harbour.json
+
+### nell
+
+```mermaid
+flowchart TD
+  nell_START(("start"))
+  nell_START --> nell_hub
+  nell_START -->|"{not_flag: met.nell}"| nell_i1
+  nell_i1["i1<br/>A woman in a rubber apron guts a fish in three …"]
+  nell_i1 --> nell_hub
+  nell_hub["hub<br/>Nell Goodwin: Fresh this morning, all of it, except me. What'…"]
+  nell_hub_end_0(["end"])
+  nell_hub -->|"'What have you got today?'"| nell_hub_end_0
+  nell_hub -->|"What bites round here?"| nell_fish
+  nell_hub_end_2(["end"])
+  nell_hub -->|"'I'll be off.'"| nell_hub_end_2
+  nell_fish["fish<br/>Nell Goodwin: Mackerel by day, cod whenever it likes, conger …"]
+  nell_fish --> nell_hub
+```
+
+### agatha
+
+```mermaid
+flowchart TD
+  agatha_START(("start"))
+  agatha_START --> agatha_hub
+  agatha_START -->|"{not_flag: met.agatha}"| agatha_i1
+  agatha_i1["i1<br/>A woman in a seaman's beanie stands at the offi…"]
+  agatha_i1 --> agatha_i2
+  agatha_i2["i2<br/>Agatha Moss: Agatha Moss, harbourmaster. If you've come abou…"]
+  agatha_i2 --> agatha_hub
+  agatha_hub["hub<br/>Agatha Moss: Agatha taps the barometer. It still says «Chang…"]
+  agatha_hub -->|"When will the ferry run?"| agatha_ferry
+  agatha_hub -->|"Tell me about the harbour."| agatha_harbour
+  agatha_hub_end_2(["end"])
+  agatha_hub -->|"'I'll be off.'"| agatha_hub_end_2
+  agatha_ferry["ferry<br/>Agatha Moss: St Carrow's an island two hours out. Fishermen,…"]
+  agatha_ferry --> agatha_hub
+  agatha_harbour["harbour<br/>Agatha Moss: Forty boats when I was a girl. Eleven now. The …"]
+  agatha_harbour --> agatha_hub
+```
+
 ## lighthouse.json
 
 ### hester

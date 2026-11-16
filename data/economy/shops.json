@@ -139,5 +139,23 @@
    }
   ],
   "sells_to": true
+ },
+ "fishmonger": {
+  "name": "SHOP_FISHMONGER",
+  "buy": [
+   {
+    "item": "mackerel",
+    "price": 8
+   },
+   {
+    "item": "cod",
+    "price": 12
+   },
+   {
+    "item": "fish_and_chips",
+    "price": 7
+   }
+  ],
+  "sells_to": true
  }
 }

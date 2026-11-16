@@ -1,0 +1,47 @@
+{
+ "nell_goodwin": {
+  "name": "NPC_NELL",
+  "body": "Body_03",
+  "eyes": "Eyes_04",
+  "outfit": "Outfit_17_02",
+  "hairstyle": "Hairstyle_15_03",
+  "accessory": "",
+  "color": "#c09070",
+  "dialogue": "nell",
+  "schedule": [
+   {
+    "period": [
+     "morning",
+     "afternoon"
+    ],
+    "scene": "greyford_harbour",
+    "anchor": "stall",
+    "facing": "down",
+    "activity": "work"
+   }
+  ]
+ },
+ "agatha_moss": {
+  "name": "NPC_AGATHA",
+  "body": "Body_06",
+  "eyes": "Eyes_02",
+  "outfit": "Outfit_22_01",
+  "hairstyle": "Hairstyle_05_05",
+  "accessory": "Accessory_11_Beanie_02",
+  "color": "#7090a0",
+  "dialogue": "agatha",
+  "schedule": [
+   {
+    "period": [
+     "morning",
+     "afternoon",
+     "evening"
+    ],
+    "scene": "greyford_harbour",
+    "anchor": "office",
+    "facing": "down",
+    "activity": "look"
+   }
+  ]
+ }
+}
