@@ -1675,6 +1675,26 @@ func test_chronicle_follows_choices() -> void:
 	GameState.is_playing = false
 
 
+func test_crowds_and_chatter() -> void:
+	GameState.reset_for_new_game()
+	check(Crowd.defs().has(&"market_street") and Crowd.defs().has(&"greyford_block"), "streets have people")
+	var c := Crowd.new()
+	c.location_id = &"market_street"
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 7
+	var seen := {}
+	for i in 40:
+		var line := c.line_for(rng)
+		check(tr(line) != line, "a line is written: %s" % line)
+		seen[line] = true
+	check(seen.size() > 5, "people say different things")
+	check(not seen.has("CHATTER_AFTER_OPEN"), "nobody talks about an ending that has not happened")
+	check(not seen.has("CHATTER_QUAY"), "quay talk stays on the quay")
+	var a := Crowd.random_appearance(rng)
+	check(a.premade == "" and a.layer_paths().size() >= 4 or not AssetLibrary.has_limezu(), "a random townsperson is put together from layers")
+	c.free()
+
+
 func test_xp_comes_from_play() -> void:
 	GameState.reset_for_new_game()
 	GameState.is_playing = true

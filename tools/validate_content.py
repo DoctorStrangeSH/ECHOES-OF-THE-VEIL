@@ -215,6 +215,14 @@ for c in CHRONICLE.get('chapters', []):
     for p in c.get('pages', []):
         key(p.get('text'), where); walk(p.get('if', {}), where)
 
+CHATTER = load('data/world/chatter.json') if os.path.exists('data/world/chatter.json') else {}
+for l in CHATTER.get('lines', []):
+    key(l.get('text'), 'chatter'); walk(l.get('if', {}), 'chatter')
+CROWDS = load('data/world/crowds.json') if os.path.exists('data/world/crowds.json') else {}
+for loc in CROWDS:
+    if not loc.startswith('_'):
+        refs.append(('scene', loc, 'crowds'))
+
 CAMPAIGN = load('data/story/campaign.json')
 for a in CAMPAIGN.get('acts', []):
     for k in ('title', 'subtitle'):

@@ -1,0 +1,187 @@
+{
+ "_doc": "Townspeople (R1c, scripts/world/crowd.gd). Per location: routes (polylines in world pixels; people walk them either way and fade out at the end) and how many are out in each part of the day. Rain halves it. Routes follow pavements and paths, clear of the solid props.",
+ "greyford_block": {
+  "routes": [
+   [
+    [
+     0,
+     258
+    ],
+    [
+     640,
+     258
+    ]
+   ],
+   [
+    [
+     0,
+     66
+    ],
+    [
+     640,
+     66
+    ]
+   ],
+   [
+    [
+     0,
+     360
+    ],
+    [
+     640,
+     360
+    ]
+   ],
+   [
+    [
+     16,
+     66
+    ],
+    [
+     16,
+     258
+    ]
+   ]
+  ],
+  "count": {
+   "morning": 5,
+   "afternoon": 7,
+   "evening": 5,
+   "night": 1
+  }
+ },
+ "market_street": {
+  "routes": [
+   [
+    [
+     0,
+     272
+    ],
+    [
+     800,
+     272
+    ]
+   ],
+   [
+    [
+     0,
+     272
+    ],
+    [
+     800,
+     272
+    ]
+   ],
+   [
+    [
+     0,
+     376
+    ],
+    [
+     800,
+     376
+    ]
+   ]
+  ],
+  "count": {
+   "morning": 7,
+   "afternoon": 9,
+   "evening": 5,
+   "night": 1
+  }
+ },
+ "greyford_park": {
+  "routes": [
+   [
+    [
+     280,
+     0
+    ],
+    [
+     280,
+     228
+    ],
+    [
+     0,
+     228
+    ]
+   ],
+   [
+    [
+     280,
+     0
+    ],
+    [
+     280,
+     228
+    ],
+    [
+     496,
+     228
+    ]
+   ],
+   [
+    [
+     0,
+     228
+    ],
+    [
+     496,
+     228
+    ]
+   ],
+   [
+    [
+     280,
+     228
+    ],
+    [
+     236,
+     300
+    ],
+    [
+     280,
+     356
+    ],
+    [
+     324,
+     300
+    ],
+    [
+     280,
+     228
+    ],
+    [
+     280,
+     0
+    ]
+   ]
+  ],
+  "count": {
+   "morning": 4,
+   "afternoon": 6,
+   "evening": 3,
+   "night": 0
+  }
+ },
+ "north_quay": {
+  "routes": [
+   [
+    [
+     0,
+     270
+    ],
+    [
+     640,
+     270
+    ]
+   ]
+  ],
+  "count": {
+   "morning": 3,
+   "afternoon": 3,
+   "evening": 2,
+   "night": 0
+  }
+ }
+}

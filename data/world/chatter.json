@@ -1,0 +1,231 @@
+{
+ "_doc": "What townspeople say when spoken to (R1c). 'if': a story condition; 'where': only in these locations. One line per passer-by; ask again and they're in a hurry.",
+ "lines": [
+  {
+   "text": "CHATTER_GULLS"
+  },
+  {
+   "text": "CHATTER_TRAM"
+  },
+  {
+   "text": "CHATTER_RAIN_GOOD",
+   "if": {
+    "weather": "rain"
+   }
+  },
+  {
+   "text": "CHATTER_NIGHT",
+   "if": {
+    "period": "night"
+   }
+  },
+  {
+   "text": "CHATTER_MORNING",
+   "if": {
+    "period": "morning"
+   }
+  },
+  {
+   "text": "CHATTER_EVENING",
+   "if": {
+    "period": "evening"
+   }
+  },
+  {
+   "text": "CHATTER_NEW"
+  },
+  {
+   "text": "CHATTER_ADDRESS"
+  },
+  {
+   "text": "CHATTER_FOUNTAIN",
+   "where": [
+    "greyford_block"
+   ]
+  },
+  {
+   "text": "CHATTER_HALLOWAY",
+   "where": [
+    "greyford_block"
+   ]
+  },
+  {
+   "text": "CHATTER_JONAH",
+   "where": [
+    "greyford_block",
+    "market_street"
+   ]
+  },
+  {
+   "text": "CHATTER_DOOR",
+   "if": {
+    "not_quest_started": "case_two_maps"
+   },
+   "where": [
+    "greyford_block"
+   ]
+  },
+  {
+   "text": "CHATTER_CRACKS",
+   "if": {
+    "flag": "act.act1"
+   }
+  },
+  {
+   "text": "CHATTER_WARD",
+   "if": {
+    "flag": "act.act2"
+   }
+  },
+  {
+   "text": "CHATTER_KEEPERS",
+   "if": {
+    "flag": "act.act3"
+   }
+  },
+  {
+   "text": "CHATTER_OPEN_HAND",
+   "if": {
+    "flag": "act.act3"
+   }
+  },
+  {
+   "text": "CHATTER_MERIDIAN",
+   "if": {
+    "flag": "act.act4"
+   }
+  },
+  {
+   "text": "CHATTER_WREN",
+   "if": {
+    "flag": "act.act5"
+   }
+  },
+  {
+   "text": "CHATTER_AFTER_OPEN",
+   "if": {
+    "quest_outcome": [
+     "case_anchor",
+     "open_record"
+    ]
+   }
+  },
+  {
+   "text": "CHATTER_AFTER_COUNCIL",
+   "if": {
+    "quest_outcome": [
+     "case_anchor",
+     "custodians"
+    ]
+   }
+  },
+  {
+   "text": "CHATTER_AFTER_ACCORD",
+   "if": {
+    "quest_outcome": [
+     "case_anchor",
+     "accord"
+    ]
+   }
+  },
+  {
+   "text": "CHATTER_BREAD",
+   "where": [
+    "market_street"
+   ]
+  },
+  {
+   "text": "CHATTER_GYM",
+   "where": [
+    "market_street"
+   ]
+  },
+  {
+   "text": "CHATTER_BAIT",
+   "where": [
+    "market_street"
+   ]
+  },
+  {
+   "text": "CHATTER_FARM",
+   "if": {
+    "not_quest_started": "case_brook_farm"
+   },
+   "where": [
+    "market_street"
+   ]
+  },
+  {
+   "text": "CHATTER_FARM_SOLD",
+   "if": {
+    "flag": "farm.owned"
+   },
+   "where": [
+    "market_street"
+   ]
+  },
+  {
+   "text": "CHATTER_PARK_BALL",
+   "where": [
+    "greyford_park"
+   ]
+  },
+  {
+   "text": "CHATTER_PARK_COFFEE",
+   "where": [
+    "greyford_park"
+   ]
+  },
+  {
+   "text": "CHATTER_PARK_HOOPS",
+   "where": [
+    "greyford_park"
+   ]
+  },
+  {
+   "text": "CHATTER_QUAY",
+   "where": [
+    "north_quay"
+   ]
+  },
+  {
+   "text": "CHATTER_QUAY_WORK",
+   "where": [
+    "north_quay"
+   ]
+  },
+  {
+   "text": "CHATTER_FORD",
+   "if": {
+    "all": [
+     {
+      "not": {
+       "quest_outcome": [
+        "case_drowned_ford",
+        "remembered"
+       ]
+      }
+     },
+     {
+      "quest_active": "case_drowned_ford"
+     }
+    ]
+   }
+  },
+  {
+   "text": "CHATTER_FORD_BACK",
+   "if": {
+    "quest_outcome": [
+     "case_drowned_ford",
+     "remembered"
+    ]
+   }
+  },
+  {
+   "text": "CHATTER_LIGHT"
+  },
+  {
+   "text": "CHATTER_CATS"
+  }
+ ]
+}
