@@ -45,7 +45,13 @@ func _on_screen_requested(screen: String) -> void:
 	if DialogueService.is_active:
 		await DialogueService.dialogue_ended
 		await get_tree().process_frame
-	if screen.begins_with("sport:"):
+	if screen == "match:football":
+		var loc := SceneFlow.current_location
+		if loc != null and loc.location_id == &"greyford_park" and loc.find_children("*", "FootballMatch", true, false).is_empty():
+			var m := FootballMatch.new()
+			loc.add_child(m)
+			m.start(loc)
+	elif screen.begins_with("sport:"):
 		sport.start(screen.trim_prefix("sport:"))
 	elif screen.begins_with("repair:"):
 		repair.start(StringName(screen.trim_prefix("repair:")))
