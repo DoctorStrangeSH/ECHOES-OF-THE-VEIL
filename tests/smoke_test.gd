@@ -722,6 +722,7 @@ func _farm_story() -> void:
 	await _number_13()
 	await _night_shift()
 	await _cooking()
+	await _pontoon()
 	await _millwood_story()
 	await _mill_hill_story()
 	await _cavenmouth_story()
@@ -768,6 +769,34 @@ func _millwood_story() -> void:
 	await _talk(&"ada", {"npc": &"ada_fenwick"}, ["FORD_TO_BELL"])
 	await _finish_dialogue()
 	_assert(Journal.case_status(&"case_drowned_ford") == Journal.STATUS_DONE and Inventory.has(&"ford_bell"), "laid to rest; the clapper")
+
+
+## R7c: a hand of pontoon at the Old Millstone.
+func _pontoon() -> void:
+	_step = "pontoon: the Millstone"
+	SceneFlow.travel(&"mill_hill_pub", &"entrance")
+	await _wait_location(&"mill_hill_pub")
+	await _frames(10)
+	_assert(_find_named("CardTable") != null, "a card table at the Millstone")
+	var before := Inventory.money
+	EventHub.screen_requested.emit("cards:millstone")
+	await _frames(10)
+	var t: CardTable = null
+	for n in get_tree().root.find_children("*", "CardTable", true, false):
+		t = n as CardTable
+	_assert(t != null and t.is_open(), "Bess deals you in")
+	var won := 0
+	for i in 5:
+		if not t.deal():
+			break
+		if t.phase == "play":
+			t.stick()
+		won += t.game.payout() - t.game.stake
+		t.phase = "stake"
+	t.close()
+	await _frames(5)
+	_assert(Inventory.money == before + won, "the money adds up after five hands")
+	_assert(GameState.has_flag(&"cards.played"), "a hand played")
 
 
 ## R7b: cook at home; a meal leaves a few hours of a bonus.

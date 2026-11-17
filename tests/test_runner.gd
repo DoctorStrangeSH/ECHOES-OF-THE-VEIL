@@ -1833,6 +1833,42 @@ func test_own_car() -> void:
 	GameState.is_playing = false
 
 
+func test_pontoon_rules() -> void:
+	check(Pontoon.total([[1, "S"], [13, "H"]]) == 21 and Pontoon.is_pontoon([[1, "S"], [13, "H"]]), "an ace and a king: pontoon")
+	check(Pontoon.total([[1, "S"], [1, "H"], [9, "D"]]) == 21, "two aces and a nine: 21 (one ace counts 1)")
+	check(Pontoon.total([[10, "S"], [9, "H"], [5, "D"]]) == 24, "24 is bust")
+	check(Pontoon.is_five_card([[2, "S"], [3, "H"], [2, "D"], [4, "C"], [5, "S"]]), "five cards under 21: a five-card trick")
+	var g := Pontoon.new(1)
+	g.stake = 2
+	g.player = [[10, "S"], [8, "H"]]
+	g.banker = [[10, "D"], [8, "C"]]
+	g.deck = [[5, "S"]]
+	g.stick()
+	check(g.result == Pontoon.Result.LOSE and g.payout() == 0, "a tie goes to the banker")
+	g.result = Pontoon.Result.NONE
+	g.player = [[10, "S"], [9, "H"]]
+	g.banker = [[10, "D"], [5, "C"]]
+	g.deck = [[13, "S"], [2, "H"]]
+	g.stick()
+	check(g.banker.size() == 3 and g.result == Pontoon.Result.WIN and g.payout() == 4, "the banker draws on 15, here busts; you win double your stake back")
+	g.result = Pontoon.Result.NONE
+	g.player = [[10, "S"], [6, "H"]]
+	g.banker = [[10, "D"], [7, "C"]]
+	g.deck = [[2, "S"]]
+	g.stick()
+	check(g.banker.size() == 2 and g.result == Pontoon.Result.LOSE, "the banker stands on 17")
+	var played := 0
+	for seed_v in range(1, 60):
+		var h := Pontoon.new(seed_v)
+		h.deal(1)
+		while h.can_twist() and Pontoon.total(h.player) < 15:
+			h.twist()
+		h.stick()
+		check(h.result != Pontoon.Result.NONE and h.deck.size() + h.player.size() + h.banker.size() == 52, "hand %d settles with 52 cards accounted for" % seed_v)
+		played += 1
+	check(played == 59, "many hands played")
+
+
 func test_cooking_and_meals() -> void:
 	GameState.reset_for_new_game()
 	GameState.is_playing = true

@@ -183,6 +183,15 @@
    "scene": "cavenmouth",
    "spawn": "inn_front",
    "prompt": "PROMPT_EXIT"
+  },
+  {
+   "kind": "screen",
+   "name": "CardTable",
+   "id": "use_cav_cards",
+   "x": 220,
+   "y": 136,
+   "screen": "cards:gull",
+   "prompt": "PROMPT_CARDS"
   }
  ]
 }

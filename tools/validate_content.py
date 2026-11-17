@@ -610,6 +610,8 @@ def screen_ok(s):
         return s[7:] in JOBS
     if s.startswith('fish:'):
         return s[5:] in ('sea', 'harbour', 'lake', 'island')
+    if s in ('cards:millstone', 'cards:gull'):
+        return True
     return s in ('jobs', 'workbench', 'business', 'epilogue', 'expeditions', 'sport:basketball', 'sport:football', 'match:football', 'map:travel', 'train:gym', 'world:travel', 'world:drive', 'map:drive', 'world:ferry', 'world:air', 'cook')
 
 CHECK = {

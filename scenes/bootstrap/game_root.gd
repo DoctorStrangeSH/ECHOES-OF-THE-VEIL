@@ -13,6 +13,7 @@ extends Node
 @onready var repair: RepairMinigame = $Repair
 @onready var epilogue: EpilogueScreen = $Epilogue
 var sport: SportMinigame
+var cards: CardTable
 var city_map: MapScreen
 var world_map: WorldMapScreen
 var fishing: FishingMinigame
@@ -22,6 +23,8 @@ func _ready() -> void:
 	add_child(WaitMenu.new())
 	sport = SportMinigame.new()
 	add_child(sport)
+	cards = CardTable.new()
+	add_child(cards)
 	city_map = MapScreen.new()
 	add_child(city_map)
 	world_map = WorldMapScreen.new()
@@ -89,6 +92,8 @@ func _on_screen_requested(screen: String) -> void:
 			var m := FootballMatch.new()
 			loc.add_child(m)
 			m.start(loc)
+	elif screen.begins_with("cards:"):
+		cards.start(screen.trim_prefix("cards:"))
 	elif screen.begins_with("sport:"):
 		sport.start(screen.trim_prefix("sport:"))
 	elif screen.begins_with("repair:"):
