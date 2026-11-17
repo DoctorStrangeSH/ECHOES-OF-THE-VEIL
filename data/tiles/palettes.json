@@ -1,15 +1,28 @@
 {
- "_doc": "Tile brushes for TilePainter layouts. texture is relative to res://assets/limezu; tiles are atlas cells (16 px) picked deterministically per map cell, or laid out as a repeating block when grid [w, h] is given (row-major); solid adds collision; placeholder is used when the art pack is not imported.",
+ "_doc": "Tile brushes for TilePainter layouts. texture is relative to res://assets/limezu; tiles are atlas cells (16 px) picked deterministically per map cell, or laid out as a repeating block when grid [w, h] is given (row-major); solid adds collision; placeholder is used when the art pack is not imported. A blob brush ({\"blob\": n}) draws block n of LimeZu's Godot autotile sheet with proper edges and corners (data/tiles/blob47.json): \"under\" is the ground drawn beneath its edges when no neighbour says otherwise, \"joins\" lists other characters it connects to, \"opaque\" skips the ground, and \"decor\" scatters tiles over its plain middle.",
  "greyford_exterior": {
   "g": {
-   "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/1_Terrains_and_Fences_16x16.png",
-   "tiles": [
-    [
-     1,
-     7
-    ]
-   ],
-   "placeholder": "#4f8f4a"
+   "blob": 12,
+   "under": "s",
+   "placeholder": "#4f8f4a",
+   "decor": {
+    "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/1_Terrains_and_Fences_16x16.png",
+    "tiles": [
+     [
+      25,
+      2
+     ],
+     [
+      26,
+      2
+     ],
+     [
+      27,
+      2
+     ]
+    ],
+    "density": 0.14
+   }
   },
   "s": {
    "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/2_City_Terrains_16x16.png",
@@ -253,14 +266,27 @@
  },
  "lighthouse_point": {
   "g": {
-   "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/1_Terrains_and_Fences_16x16.png",
-   "tiles": [
-    [
-     1,
-     7
-    ]
-   ],
-   "placeholder": "#4f8f4a"
+   "blob": 12,
+   "under": "s",
+   "placeholder": "#4f8f4a",
+   "decor": {
+    "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/1_Terrains_and_Fences_16x16.png",
+    "tiles": [
+     [
+      25,
+      2
+     ],
+     [
+      26,
+      2
+     ],
+     [
+      27,
+      2
+     ]
+    ],
+    "density": 0.14
+   }
   },
   "s": {
    "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/2_City_Terrains_16x16.png",
@@ -455,14 +481,27 @@
  },
  "brookside": {
   "g": {
-   "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/1_Terrains_and_Fences_16x16.png",
-   "tiles": [
-    [
-     1,
-     7
-    ]
-   ],
-   "placeholder": "#4f8f4a"
+   "blob": 12,
+   "under": "s",
+   "placeholder": "#4f8f4a",
+   "decor": {
+    "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/1_Terrains_and_Fences_16x16.png",
+    "tiles": [
+     [
+      25,
+      2
+     ],
+     [
+      26,
+      2
+     ],
+     [
+      27,
+      2
+     ]
+    ],
+    "density": 0.14
+   }
   },
   "s": {
    "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/2_City_Terrains_16x16.png",
@@ -560,26 +599,34 @@
    "placeholder": "#3f8fb4"
   },
   "d": {
-   "texture": "modern_farm/16x16/1_Terrains_16x16.png",
-   "tiles": [
-    [
-     12,
-     18
-    ]
-   ],
-   "placeholder": "#b08048"
+   "blob": 0,
+   "opaque": true,
+   "placeholder": "#a08a5a"
   }
  },
  "millwood": {
   "g": {
-   "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/1_Terrains_and_Fences_16x16.png",
-   "tiles": [
-    [
-     1,
-     7
-    ]
-   ],
-   "placeholder": "#4f8f4a"
+   "blob": 12,
+   "under": "s",
+   "placeholder": "#4f8f4a",
+   "decor": {
+    "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/1_Terrains_and_Fences_16x16.png",
+    "tiles": [
+     [
+      25,
+      2
+     ],
+     [
+      26,
+      2
+     ],
+     [
+      27,
+      2
+     ]
+    ],
+    "density": 0.14
+   }
   },
   "s": {
    "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/2_City_Terrains_16x16.png",
@@ -677,14 +724,9 @@
    "placeholder": "#3f8fb4"
   },
   "d": {
-   "texture": "modern_farm/16x16/1_Terrains_16x16.png",
-   "tiles": [
-    [
-     12,
-     18
-    ]
-   ],
-   "placeholder": "#b08048"
+   "blob": 0,
+   "opaque": true,
+   "placeholder": "#a08a5a"
   },
   "p": {
    "texture": "modern_farm/16x16/1_Terrains_16x16.png",
@@ -699,14 +741,27 @@
  },
  "cavenmouth": {
   "g": {
-   "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/1_Terrains_and_Fences_16x16.png",
-   "tiles": [
-    [
-     1,
-     7
-    ]
-   ],
-   "placeholder": "#4f8f4a"
+   "blob": 12,
+   "under": "s",
+   "placeholder": "#4f8f4a",
+   "decor": {
+    "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/1_Terrains_and_Fences_16x16.png",
+    "tiles": [
+     [
+      25,
+      2
+     ],
+     [
+      26,
+      2
+     ],
+     [
+      27,
+      2
+     ]
+    ],
+    "density": 0.14
+   }
   },
   "s": {
    "texture": "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/2_City_Terrains_16x16.png",

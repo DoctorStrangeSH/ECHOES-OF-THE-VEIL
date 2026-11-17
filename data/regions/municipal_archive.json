@@ -428,5 +428,8 @@
     "FLAVOR_ARCHIVE_COUNTER"
    ]
   }
- ]
+ ],
+ "dress": {
+  "theme": "office"
+ }
 }

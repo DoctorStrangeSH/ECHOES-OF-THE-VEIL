@@ -219,3 +219,11 @@ area_size = Vector2(30, 10)
 prompt_key = "PROMPT_EXIT"
 target_scene_id = &"market_street"
 target_spawn_id = &"gym_front"
+
+[node name="Dress154_45" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(154, 45)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/7_Art_Singles/Art_Singles_45.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.478,0.416,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)

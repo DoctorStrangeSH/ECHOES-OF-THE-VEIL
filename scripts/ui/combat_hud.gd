@@ -14,6 +14,8 @@ func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	set_anchors_preset(Control.PRESET_FULL_RECT)
 	EventHub.boss_health_changed.connect(_on_boss)
+	# A boss bar belongs to its arena: leaving the place takes it down.
+	SceneFlow.location_entered.connect(func(_id: StringName) -> void: _on_boss("", 0, 0))
 	EventHub.ability_cooldown.connect(_on_cooldown)
 	EventHub.player_health_changed.connect(func(_h: int, m: int) -> void: visible = m > 0 or _boss_max > 0)
 

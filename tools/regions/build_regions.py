@@ -125,6 +125,120 @@ def expand(nodes, ctx):
     return out
 
 
+# Wall hangings and plants for the dressing pass, by room theme. LimeZu's own
+# sample rooms never leave a stretch of wall bare and put plants in free
+# corners; this does the same for rooms that ask for it with "dress".
+_ART = 'modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/'
+_P = {'pic': [_ART + '7_Art_Singles/Art_Singles_%d.png' % i for i in range(41, 47)],
+      'collage': [_ART + '4_Bedroom_Singles/Bedroom_Singles_452.png'],
+      'shelf': [_ART + '2_Living_Room_Singles/Living_Room_Singles_%d.png' % i for i in (59, 60, 61, 62)],
+      'lights': [_ART + '2_Living_Room_Singles/Living_Room_Singles_12.png', _ART + '4_Bedroom_Singles/Bedroom_Singles_463.png'],
+      'bunting': [_ART + '4_Bedroom_Singles/Bedroom_Singles_461.png', _ART + '4_Bedroom_Singles/Bedroom_Singles_462.png'],
+      'board': [_ART + '5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_%d.png' % i for i in (32, 33)],
+      'map': [_ART + '5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_31.png'],
+      'frame': [_ART + '4_Bedroom_Singles/Bedroom_Singles_%d.png' % i for i in (427, 428)],
+      'lamp': [_ART + '4_Bedroom_Singles/Bedroom_Singles_471.png'],
+      'plant': [_ART + '2_Living_Room_Singles/Living_Room_Singles_%d.png' % i for i in (13, 14, 16, 17, 18)]}
+THEMES = {
+    'home': ['pic', 'shelf', 'collage', 'pic', 'lamp', 'shelf', 'pic', 'lights'],
+    'shop': ['board', 'shelf', 'pic', 'bunting', 'shelf', 'pic'],
+    'cafe': ['pic', 'bunting', 'shelf', 'board', 'pic', 'lights'],
+    'tavern': ['pic', 'shelf', 'lights', 'pic', 'shelf', 'lamp'],
+    'office': ['board', 'pic', 'map', 'shelf', 'pic', 'frame'],
+    'bare': ['frame', 'pic'],
+}
+
+
+def dress(nodes, layout, opts, rid):
+    """Extra props: hangings along every free stretch of the back wall and
+    plants in free floor corners. Deterministic for a given room."""
+    rows = layout.split('\n')
+    wall_rows = [y for y, r in enumerate(rows) if 'W' in r or 'w' in r]
+    if not wall_rows:
+        return []
+    top, bot = wall_rows[0] * 16, (wall_rows[-1] + 1) * 16
+    cols = [x for x, ch in enumerate(rows[wall_rows[0]]) if ch == 'W']
+    theme = THEMES[opts.get('theme', 'home')]
+    gap_px = int(opts.get('spacing', 40))
+    seed = sum(map(ord, rid)) + int(opts.get('seed', 0))
+
+    def sprite_box(n):
+        w, h = n['ph']
+        if n.get('region'):
+            return (n['x'] - w / 2, n['y'] - h, n['x'] + w / 2, n['y'])
+        im = Image.open(local(n['tex'])).convert('RGBA')
+        bb = im.getchannel('A').getbbox() or (0, 0, w, h)
+        return (n['x'] - w / 2 + bb[0], n['y'] - h + bb[1], n['x'] - w / 2 + bb[2], n['y'] - h + bb[3])
+
+    props = [n for n in nodes if n['kind'] == 'prop']
+    boxes = [sprite_box(n) for n in props]
+    taken = sorted((b[0] - 4, b[2] + 4) for b in boxes if b[1] < bot - 2 and b[3] > top + 2)
+    for n in nodes:  # doors cut into the back wall
+        if n['kind'] == 'door' and n['y'] < bot + 8:
+            taken.append((n['x'] - n['area'][0] / 2 - 4, n['x'] + n['area'][0] / 2 + 4))
+    out = []
+    k = seed
+    segs = []
+    x0 = None
+    for x in range(min(cols), max(cols) + 2):
+        if x in cols and x0 is None:
+            x0 = x
+        if x not in cols and x0 is not None:
+            segs.append((x0 * 16 + 6, x * 16 - 6))
+            x0 = None
+    for a, b in segs:
+        free = [(a, b)]
+        for t0, t1 in sorted(taken):
+            nxt = []
+            for f0, f1 in free:
+                if t1 <= f0 or t0 >= f1:
+                    nxt.append((f0, f1))
+                else:
+                    if t0 > f0: nxt.append((f0, t0))
+                    if t1 < f1: nxt.append((t1, f1))
+            free = nxt
+        for f0, f1 in free:
+            width = f1 - f0
+            slots = int((width + gap_px / 2) // gap_px)
+            for i in range(slots):
+                kind = theme[k % len(theme)]
+                k += 1
+                tex = _P[kind][k % len(_P[kind])]
+                w, h = size(tex)
+                if w > width - 2:
+                    tex = _P['pic'][k % len(_P['pic'])]
+                    w, h = size(tex)
+                    if w > width - 2:
+                        continue
+                cx = f0 + width * (i + 0.5) / slots
+                im = Image.open(local(tex)).convert('RGBA')
+                bb = im.getchannel('A').getbbox()
+                mid = (top + bot) / 2 - 1
+                y = int(mid + h - (bb[1] + bb[3]) / 2)
+                out.append({'kind': 'prop', 'name': 'Dress%d_%d' % (int(cx), y), 'tex': tex, 'x': int(cx), 'y': y,
+                            'col': [0, 0], 'off': [0, 0], 'color': '#7a6a5a', 'layer': 'FloorDecor'})
+    # Plants in free floor corners.
+    floor = [(x, y) for y, r in enumerate(rows) for x, ch in enumerate(r) if ch == 'f']
+    if floor and opts.get('plants', 2):
+        fx0 = min(x for x, _ in floor) * 16; fx1 = (max(x for x, _ in floor) + 1) * 16
+        fy1 = max(y for _, y in floor if y < len(rows) - 1) * 16 + 16
+        spots = [(fx0 + 10, fy1 - 2), (fx1 - 10, fy1 - 2), (fx0 + 10, bot + 18), (fx1 - 10, bot + 18)]
+        placed = 0
+        for sx, sy in spots:
+            if placed >= int(opts.get('plants', 2)):
+                break
+            clear = all(not (b[0] - 10 < sx < b[2] + 10 and b[1] - 6 < sy < b[3] + 14) for b in boxes)
+            clear = clear and all(abs(n['x'] - sx) > 26 or abs(n['y'] - sy) > 26 for n in nodes
+                                  if n['kind'] in ('door', 'spawn', 'inspect', 'rest', 'anchor', 'pickup'))
+            if clear:
+                tex = _P['plant'][(seed + placed) % len(_P['plant'])]
+                out.append({'kind': 'prop', 'name': 'DressPlant%d' % placed, 'tex': tex, 'x': sx, 'y': sy,
+                            'col': [10, 6], 'off': [0, -3], 'color': '#3f6f4f'})
+                boxes.append((sx - 8, sy - 24, sx + 8, sy))
+                placed += 1
+    return [finish_prop(n) for n in out]
+
+
 def layout_of(spec):
     lay = spec['layout']
     if isinstance(lay, dict):
@@ -265,19 +379,67 @@ def write_tscn(path, loc_id, name_key, palette, layout, nodes, margin=0, opts=No
     open(path,'w').write('\n'.join(L)+'\n')
 
 
+BLOB = json.load(open(os.path.join(ROOT, 'data', 'tiles', 'blob47.json')))
+
+
+def blob_mask(rows, x, y, joins):
+    """Same as TilePainter.blob_mask."""
+    def same(dx, dy):
+        yy, xx = y + dy, x + dx
+        if yy < 0 or yy >= len(rows) or xx < 0 or xx >= len(rows[yy]):
+            return True
+        return rows[yy][xx] in joins
+    n, e, s, w = same(0, -1), same(1, 0), same(0, 1), same(-1, 0)
+    m = (1 if n else 0) | (4 if e else 0) | (16 if s else 0) | (64 if w else 0)
+    if n and e and same(1, -1): m |= 2
+    if s and e and same(1, 1): m |= 8
+    if s and w and same(-1, 1): m |= 32
+    if n and w and same(-1, -1): m |= 128
+    return m
+
+
+def under_char(rows, x, y, joins, fallback):
+    for dx, dy in [(0, -1), (1, 0), (0, 1), (-1, 0), (1, -1), (1, 1), (-1, 1), (-1, -1)]:
+        yy, xx = y + dy, x + dx
+        if 0 <= yy < len(rows) and 0 <= xx < len(rows[yy]):
+            c = rows[yy][xx]
+            if c not in joins and c not in ' .':
+                return c
+    return fallback
+
+
 def preview(out, palette, layout, nodes, clean=False):
     """Debug picture: tiles, props, NPCs, interaction areas and markers.
     clean=True: only tiles and always-visible props (for the city map)."""
     rows=layout.split('\n'); W=max(map(len,rows)); H=len(rows)
     img=Image.new('RGBA',(W*16,H*16),(20,20,28,255)); P=PAL[palette]; cache={}
+    def tile(t, c, x, y):
+        if t not in cache: cache[t]=Image.open(local(t)).convert('RGBA')
+        img.alpha_composite(cache[t].crop((c[0]*16,c[1]*16,c[0]*16+16,c[1]*16+16)),(x*16,y*16))
+    def plain(b, x, y):
+        opts=b['tiles']; g=b.get('grid'); h=(x*73856093)^(y*19349663)
+        c=opts[(y%g[1])*g[0]+(x%g[0])] if g else (opts[abs(h)%len(opts)] if len(opts)>1 else opts[0])
+        tile(b['texture'], c, x, y)
+    over=[]
     for y,row in enumerate(rows):
         for x,ch in enumerate(row):
             if ch in ' .': continue
-            b=P[ch]; t=b['texture']
-            if t not in cache: cache[t]=Image.open(local(t)).convert('RGBA')
-            opts=b['tiles']; g=b.get('grid'); h=(x*73856093)^(y*19349663)
-            c=opts[(y%g[1])*g[0]+(x%g[0])] if g else (opts[abs(h)%len(opts)] if len(opts)>1 else opts[0])
-            img.alpha_composite(cache[t].crop((c[0]*16,c[1]*16,c[0]*16+16,c[1]*16+16)),(x*16,y*16))
+            b=P[ch]
+            if 'blob' in b:
+                joins=ch+b.get('joins','')
+                m=blob_mask(rows,x,y,joins)
+                c=BLOB['tiles'].get(str(m),BLOB['tiles']['255'])
+                over.append((BLOB['sheet'],(c[0],b['blob']*4+c[1]),x,y))
+                if m!=255 or not b.get('opaque'):
+                    u=under_char(rows,x,y,joins,b.get('under',''))
+                    if u in P and 'blob' not in P[u]: plain(P[u],x,y)
+                d=b.get('decor')
+                if d and m==255 and (abs((x*92837111)^(y*689287499)^0x5bd1e995)%1000)<int(d['density']*1000):
+                    o=d['tiles']; over.append((d['texture'],o[abs((y*73856093)^(x*19349663))%len(o)] if len(o)>1 else o[0],x,y))
+                continue
+            plain(b,x,y)
+    over.sort(key=lambda o: o[0]!=BLOB['sheet'])
+    for t,c,x,y in over: tile(t,c,x,y)
     drawables=[]
     for n in nodes:
         if n['kind']=='prop' and not (clean and n.get('show_if')):
@@ -326,6 +488,8 @@ def build(rid, out_path, want_preview=False):
         raise SystemExit(f'{rid}.json: id is {spec["id"]}')
     nodes = expand(spec['nodes'], rid)
     lay = layout_of(spec)
+    if spec.get('dress'):
+        nodes += dress(nodes, lay, spec['dress'], rid)
     write_tscn(out_path, rid, spec['name_key'], spec['palette'], lay, nodes,
                margin=spec.get('camera_margin_tiles', 0), opts=options_of(spec))
     if want_preview:

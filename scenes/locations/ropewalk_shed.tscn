@@ -149,3 +149,91 @@ area_size = Vector2(30, 10)
 prompt_key = "PROMPT_EXIT"
 target_scene_id = &"ropeworks"
 target_spawn_id = &"from_shed"
+
+[node name="Dress44_41" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(44, 41)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_428.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.478,0.416,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Dress125_45" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(125, 45)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/7_Art_Singles/Art_Singles_41.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.478,0.416,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Dress218_41" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(218, 41)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_428.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.478,0.416,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Dress305_45" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(305, 45)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/7_Art_Singles/Art_Singles_43.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.478,0.416,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Dress398_41" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(398, 41)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_428.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.478,0.416,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Dress485_45" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(485, 45)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/7_Art_Singles/Art_Singles_45.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.478,0.416,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Dress566_41" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(566, 41)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_428.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.478,0.416,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Dress600_45" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(600, 45)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/7_Art_Singles/Art_Singles_41.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.478,0.416,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Dress633_41" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(633, 41)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_428.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.478,0.416,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="DressPlant0" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(26, 126)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_18.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.247,0.435,0.310, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="DressPlant1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(646, 126)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_13.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.247,0.435,0.310, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)

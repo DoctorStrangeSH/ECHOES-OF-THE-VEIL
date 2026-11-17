@@ -166,5 +166,8 @@
    "spawn": "from_13",
    "prompt": "PROMPT_EXIT"
   }
- ]
+ ],
+ "dress": {
+  "theme": "home"
+ }
 }

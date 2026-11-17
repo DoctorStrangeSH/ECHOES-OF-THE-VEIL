@@ -246,3 +246,43 @@ anchor_id = &"kitchen"
 [node name="Encounter" type="Node" parent="."]
 script = ExtResource("13_encounter")
 clear_flag = &"echo.cleared"
+
+[node name="Dress38_45" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(38, 45)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/7_Art_Singles/Art_Singles_43.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.478,0.416,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Dress362_48" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(362, 48)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_452.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.478,0.416,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Dress414_45" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(414, 45)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/7_Art_Singles/Art_Singles_45.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.478,0.416,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="DressPlant0" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(454, 158)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_13.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.247,0.435,0.310, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="DressPlant1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(26, 66)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_14.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.247,0.435,0.310, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)

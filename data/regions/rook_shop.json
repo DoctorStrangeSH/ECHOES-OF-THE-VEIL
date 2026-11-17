@@ -216,5 +216,8 @@
    "spawn": "shop_front",
    "prompt": "PROMPT_EXIT"
   }
- ]
+ ],
+ "dress": {
+  "theme": "shop"
+ }
 }

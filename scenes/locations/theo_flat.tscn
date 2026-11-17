@@ -285,3 +285,43 @@ script = ExtResource("5_inspect")
 interaction_id = &"inspect_theo_photos"
 area_size = Vector2(30, 10)
 lines = PackedStringArray("FLAVOR_THEO_PHOTOS")
+
+[node name="Dress79_45" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(79, 45)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/7_Art_Singles/Art_Singles_44.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.478,0.416,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Dress286_45" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(286, 45)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/7_Art_Singles/Art_Singles_45.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.478,0.416,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Dress344_45" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(344, 45)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/7_Art_Singles/Art_Singles_46.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.478,0.416,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Dress472_37" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(472, 37)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_61.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.478,0.416,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Dress536_48" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(536, 48)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_452.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.478,0.416,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
