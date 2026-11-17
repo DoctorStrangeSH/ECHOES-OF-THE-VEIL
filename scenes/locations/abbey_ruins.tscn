@@ -29,6 +29,7 @@ combat_enabled = true
 fixed_tint = Color(0.72, 0.68, 0.85, 1.0)
 enter_dialogue_id = &"abbey_enter"
 enter_condition = {"not_flag": "abbey.entered"}
+music = "abbey"
 
 [node name="Ground" type="TileMapLayer" parent="."]
 script = ExtResource("2_paint")

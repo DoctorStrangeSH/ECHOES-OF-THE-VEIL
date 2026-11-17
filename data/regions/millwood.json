@@ -3,7 +3,8 @@
  "name_key": "LOC_MILLWOOD",
  "palette": "millwood",
  "options": {
-  "outdoors": true
+  "outdoors": true,
+  "music": "village"
  },
  "layout": [
   "gggggggggggggggggggggggggggggggggggggggggggggggggggggggg",

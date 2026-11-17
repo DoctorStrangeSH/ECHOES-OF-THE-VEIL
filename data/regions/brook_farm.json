@@ -3,7 +3,8 @@
  "name_key": "LOC_BROOK_FARM",
  "palette": "brookside",
  "options": {
-  "outdoors": true
+  "outdoors": true,
+  "music": "farm"
  },
  "layout": [
   "gggggggggggggggggggggggggggggggggggggggggggggggggg",

@@ -482,6 +482,18 @@ for line in _lint.stdout.splitlines():
 
 # --- quest guide (R0) -----------------------------------------------------------
 import subprocess as _sp
+# Music: every piece a region or dialogue asks for exists (R10a).
+for f in sorted(glob.glob('data/regions/*.json')):
+    if os.path.basename(f).startswith('_'):
+        continue
+    m = json.load(open(f)).get('options', {}).get('music')
+    if m and not os.path.exists(f'assets/music/{m}.ogg'):
+        err(f'{f}: music "{m}" has no assets/music/{m}.ogg')
+for f in sorted(glob.glob('data/dialogue/*.json')):
+    for did, d in json.load(open(f)).items():
+        if isinstance(d, dict) and d.get('music') and not os.path.exists(f'assets/music/{d["music"]}.ogg'):
+            err(f'{f}: dialogue {did} music "{d["music"]}" has no file')
+
 if _sp.run([sys.executable, 'tools/regions/door_graph.py', '--check']).returncode != 0:
     err('data/world/doors.json is stale: run tools/regions/door_graph.py')
 GUIDES = {k: v for k, v in load('data/story/guides.json').items() if not k.startswith('_')} if os.path.exists('data/story/guides.json') else {}

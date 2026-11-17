@@ -26,6 +26,7 @@ script = ExtResource("1_loc")
 location_id = &"millwood"
 name_key = "LOC_MILLWOOD"
 outdoors = true
+music = "village"
 
 [node name="Ground" type="TileMapLayer" parent="."]
 script = ExtResource("2_paint")

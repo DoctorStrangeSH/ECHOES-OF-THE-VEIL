@@ -27,6 +27,7 @@ name_key = "LOC_SALT_GALLERY"
 outdoors = false
 combat_enabled = true
 fixed_tint = Color(0.86, 0.9, 1.0, 1.0)
+music = "tunnels"
 
 [node name="Ground" type="TileMapLayer" parent="."]
 script = ExtResource("2_paint")

@@ -16,7 +16,8 @@
   "enter_dialogue_id": "salt_store_enter",
   "enter_condition": {
    "not_flag": "salt.store_entered"
-  }
+  },
+  "music": "tunnels"
  },
  "layout": [
   "######################",

@@ -26,6 +26,7 @@ location_id = &"salt_shrine"
 name_key = "LOC_SALT_SHRINE"
 outdoors = false
 fixed_tint = Color(1.0, 0.9, 0.78, 1.0)
+music = "abbey"
 
 [node name="Ground" type="TileMapLayer" parent="."]
 script = ExtResource("2_paint")
