@@ -132,3 +132,7 @@ The art packs have no aeroplanes, only a helicopter and a landing pad, so "the p
 ## D-078 Mill Hill and the abbey (R5c)
 
 The countryside ends in a village rather than a dungeon: Mill Hill lies east of Millwood on foot, small enough to learn in one visit (a green with a well, a pub with a bed, a shop, a chapel, a dead windmill, the vicarage). Its one story sits a lane further east: in the ruins of St Brigid's Abbey (dissolved 1539) the sisters' echoes still keep their last vigil. Clearing them lets Abbess Cecily hand over the rosary of the house, and the player chooses, as at the Drowned Ford, between giving it back (the chapel, resonance) and carrying it (a trinket, +1 heart).
+
+## D-079 One narrator, who says "вы"
+
+Russian text drifted: the main acts and memories addressed the player as "вы", the later content (the farm, the travels, the Chronicle) as "ты". The narrator now says "вы" everywhere: it is the older and larger body of text, it matches the MEM_ memories, and it is gender-neutral by grammar ("вы пришли"), which removes a whole class of workarounds. Characters keep their own register: Hugh, Ada and Jonah may say "ты" to the player, and the player may say "ты" to friends in choices. text_lint now fails CI on "ты", "твой" or a 2nd-person-singular verb in narration (any string that is not a character's line, a player choice or passer-by chatter, outside «» and „“). The same pass rewrote the flattest one-line descriptions of the main acts.

@@ -30,7 +30,7 @@
   "EXP_MOD_LIGHTLESS": {"en": "lightless", "ru": "без света"},
   "EXP_MOD_LIGHTLESS_DESC": {"en": "Only your lantern lights the way; echoes notice you later.", "ru": "Свет только от фонаря, зато эхо замечают позже."},
   "EXP_MOD_FRAGILE": {"en": "fragile", "ru": "хрупкость"},
-  "EXP_MOD_FRAGILE_DESC": {"en": "Every hit you take does one more damage.", "ru": "Каждый удар по тебе на единицу сильнее."},
+  "EXP_MOD_FRAGILE_DESC": {"en": "Every hit you take does one more damage.", "ru": "Каждый удар по вам на единицу сильнее."},
   "EXP_PAGE_1": {"en": "Page I: Admissions", "ru": "Страница I. Приёмный покой"},
   "EXP_PAGE_1_TEXT": {"en": "A ward listed with no beds and forty patients.", "ru": "Палата в списке: коек нет, пациентов сорок."},
   "EXP_PAGE_2": {"en": "Page II: Supper", "ru": "Страница II. Ужин"},
@@ -54,7 +54,7 @@
   "ITEM_SHARD_RIBBON": {"en": "Shard ribbon", "ru": "Лента с осколком"},
   "ITEM_SHARD_RIBBON_DESC": {"en": "A tram token on a ribbon of Veil thread. +2 health.", "ru": "Трамвайный жетон на нитке из Завесы. +2 к здоровью."},
   "ITEM_SHARD_COMPASS": {"en": "Shard compass", "ru": "Компас с осколком"},
-  "ITEM_SHARD_COMPASS_DESC": {"en": "Points at where you are about to be. Dodges recharge faster and go further.", "ru": "Указывает туда, где ты сейчас окажешься. Рывки быстрее и дальше."},
+  "ITEM_SHARD_COMPASS_DESC": {"en": "Points at where you are about to be. Dodges recharge faster and go further.", "ru": "Указывает туда, где вы сейчас окажетесь. Рывки быстрее и дальше."},
   "ITEM_BOUND_INDEX": {"en": "The bound Index", "ru": "Переплетённый Указатель"},
   "ITEM_BOUND_INDEX_DESC": {"en": "All eight pages, sewn together. +2 health, stronger finishers, quicker Flash.", "ru": "Все восемь страниц, сшитые вместе. +2 к здоровью, сильнее добивания, быстрее вспышка."}
 }

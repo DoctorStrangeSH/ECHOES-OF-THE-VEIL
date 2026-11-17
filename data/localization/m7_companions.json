@@ -56,7 +56,7 @@
   "CASE_RR_EVENING": {"en": "Bring Jonah and the stamp to Rosalind in the Ward after dark. Her echo is thinning.", "ru": "Привести Джону и штамп к Розалинд в Палату после темноты. Её эхо истончается."},
   "CASE_RR_VISITED": {"en": "Rosalind crossed into Greyford for a night and saw the shop.", "ru": "Розалинд на одну ночь перешла в Грейфорд и увидела мастерскую."},
   "CASE_RR_FADED": {"en": "You waited too long. Rosalind's echo thinned away before she could cross.", "ru": "Вы ждали слишком долго. Эхо Розалинд истаяло, прежде чем она успела перейти."},
-  "FAIL_ROOK": {"en": "The tram shelter in the Ward is empty. Rosalind's echo has thinned away.", "ru": "Трамвайная остановка в Палате пуста. Эхо Розалинд истаяло."},
+  "FAIL_ROOK": {"en": "The tram shelter in the Ward is empty. Rosalind's echo has thinned away, and the bench she sat on is only a bench now.", "ru": "Трамвайная остановка в Палате пуста. Эхо Розалинд истаяло, и скамейка, на которой она сидела, теперь просто скамейка."},
   "EV_ROOK_STAMP_TITLE": {"en": "ROOK & DAUGHTER — REPAIRED", "ru": "«РУК И ДОЧЬ — ОТРЕМОНТИРОВАНО»"},
   "EV_ROOK_STAMP_BODY": {"en": "Arthur Rook's brass stamp: something from 1989 that is still in Greyford.", "ru": "Латунный штамп Артура Рука: вещь из 1989 года, которая до сих пор есть в Грейфорде."},
   "OBJ_RR_STAMP": {"en": "Find Dad's repair stamp", "ru": "Найти папин штамп"},
