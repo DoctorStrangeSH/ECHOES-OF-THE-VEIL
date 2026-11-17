@@ -463,5 +463,35 @@
    "evening": 3,
    "night": 0
   }
+ },
+ "ropeworks": {
+  "routes": [
+   [
+    [
+     0,
+     280
+    ],
+    [
+     896,
+     280
+    ]
+   ],
+   [
+    [
+     0,
+     376
+    ],
+    [
+     896,
+     376
+    ]
+   ]
+  ],
+  "count": {
+   "morning": 4,
+   "afternoon": 4,
+   "evening": 2,
+   "night": 0
+  }
  }
 }

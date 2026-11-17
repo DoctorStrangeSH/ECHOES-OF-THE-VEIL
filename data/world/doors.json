@@ -463,6 +463,19 @@
    "to": "greyford_block"
   }
  ],
+ "ropewalk_shed": [
+  {
+   "node": "ExitDoor",
+   "to": "ropeworks"
+  }
+ ],
+ "ropeworks": [],
+ "ropeworks_office": [
+  {
+   "node": "ExitDoor",
+   "to": "ropeworks"
+  }
+ ],
  "rowan_terrace": [],
  "salt_cache": [
   {

@@ -1,0 +1,28 @@
+{
+ "cases": {
+  "case_night_shift": {
+   "title": "CASE_NS_TITLE",
+   "summary": "CASE_NS_SUMMARY",
+   "first_stage": "night",
+   "stages": {
+    "night": "CASE_NS_NIGHT",
+    "rope": "CASE_NS_ROPE",
+    "report": "CASE_NS_REPORT"
+   },
+   "outcomes": {
+    "posted": "CASE_NS_POSTED",
+    "clocked": "CASE_NS_CLOCKED"
+   },
+   "transitions": {
+    "night": [
+     "rope"
+    ],
+    "rope": [
+     "report"
+    ]
+   }
+  }
+ },
+ "evidence": {},
+ "hypotheses": {}
+}

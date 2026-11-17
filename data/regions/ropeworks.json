@@ -1,0 +1,556 @@
+{
+ "id": "ropeworks",
+ "name_key": "LOC_ROPEWORKS",
+ "palette": "greyford_exterior",
+ "options": {
+  "outdoors": true
+ },
+ "layout": [
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+  "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+ ],
+ "nodes": [
+  {
+   "template": "building",
+   "tex": "@mil/Dormitory_3.png",
+   "x": 136,
+   "y": 208,
+   "name": "Shed1",
+   "depth": 50,
+   "inset": 4,
+   "inspect": {
+    "id": "inspect_rw_shed1",
+    "lines": [
+     "FLAVOR_RW_SHED"
+    ],
+    "width": 40
+   }
+  },
+  {
+   "template": "building",
+   "tex": "@mil/Dormitory_3.png",
+   "x": 312,
+   "y": 208,
+   "name": "Shed2",
+   "depth": 50,
+   "inset": 4,
+   "door": {
+    "id": "door_rw_shed",
+    "scene": "ropewalk_shed",
+    "spawn": "entrance",
+    "spawn_id": "from_shed",
+    "x": 312,
+    "prompt": "PROMPT_ENTER_ROPEWALK"
+   }
+  },
+  {
+   "template": "building",
+   "tex": "@mil/Dormitory_3.png",
+   "x": 488,
+   "y": 208,
+   "name": "Shed3",
+   "depth": 50,
+   "inset": 4,
+   "inspect": {
+    "id": "inspect_rw_shed3",
+    "lines": [
+     "FLAVOR_RW_SHED_END"
+    ],
+    "width": 40
+   }
+  },
+  {
+   "template": "building",
+   "tex": "@mil/Bunker.png",
+   "x": 650,
+   "y": 216,
+   "name": "Boiler",
+   "depth": 60,
+   "inset": 8,
+   "inspect": {
+    "id": "inspect_rw_boiler",
+    "lines": [
+     "FLAVOR_RW_BOILER"
+    ],
+    "width": 40
+   }
+  },
+  {
+   "template": "building",
+   "tex": "@mil/Dormitory_1.png",
+   "x": 806,
+   "y": 216,
+   "name": "Office",
+   "depth": 50,
+   "inset": 4,
+   "door": {
+    "id": "door_rw_office",
+    "scene": "ropeworks_office",
+    "spawn": "entrance",
+    "spawn_id": "from_office",
+    "x": 830,
+    "prompt": "PROMPT_ENTER_OFFICE"
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "Sign",
+   "tex": "@farm/Sign_2_16x16.png",
+   "x": 40,
+   "y": 272,
+   "color": "#a07040",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "SignLook",
+   "id": "read_rw_sign",
+   "x": 40,
+   "y": 280,
+   "area": [
+    20,
+    10
+   ],
+   "lines": [
+    "FLAVOR_RW_SIGN"
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "Noticeboard",
+   "id": "inspect_rw_board",
+   "x": 740,
+   "y": 236,
+   "area": [
+    24,
+    10
+   ],
+   "dialogue": "rw_board"
+  },
+  {
+   "kind": "prop",
+   "name": "Board",
+   "tex": "@farm/Sign_1_16x16.png",
+   "x": 740,
+   "y": 230,
+   "color": "#a07040",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Plaque",
+   "tex": "@grave/Small_Grey_Tombstone_2.png",
+   "x": 770,
+   "y": 236,
+   "color": "#8a8a8a",
+   "col": [
+    8,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "show_if": {
+    "flag": "ropeworks.plaque"
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "Stack1",
+   "tex": "@work/Stacked_Material_1.png",
+   "x": 600,
+   "y": 250,
+   "color": "#8a8a8a",
+   "col": [
+    24,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Stack2",
+   "tex": "@work/Stacked_Material_3.png",
+   "x": 632,
+   "y": 252,
+   "color": "#8a8a8a",
+   "col": [
+    24,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Stack3",
+   "tex": "@work/Stacked_Material_2.png",
+   "x": 560,
+   "y": 260,
+   "color": "#8a8a8a",
+   "col": [
+    24,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Stack4",
+   "tex": "@work/Stacked_Material_4.png",
+   "x": 212,
+   "y": 262,
+   "color": "#8a8a8a",
+   "col": [
+    24,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Stack5",
+   "tex": "@work/Light_Tower_1.png",
+   "x": 700,
+   "y": 450,
+   "color": "#8a8a8a",
+   "col": [
+    24,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp1",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 140,
+   "y": 284,
+   "color": "#707070",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp2",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 420,
+   "y": 284,
+   "color": "#707070",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp3",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 700,
+   "y": 284,
+   "color": "#707070",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "OldMill",
+   "tex": "@work/Building_Skeleton_2.png",
+   "x": 120,
+   "y": 470,
+   "color": "#606070",
+   "col": [
+    100,
+    30
+   ],
+   "off": [
+    0,
+    -15
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "OldMillLook",
+   "id": "inspect_rw_oldmill",
+   "x": 120,
+   "y": 476,
+   "area": [
+    60,
+    10
+   ],
+   "lines": [
+    "FLAVOR_RW_OLDMILL"
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Excavator",
+   "tex": "@work/Excavator_1.png",
+   "x": 260,
+   "y": 460,
+   "color": "#8a8a8a",
+   "col": [
+    40,
+    16
+   ],
+   "off": [
+    0,
+    -8
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Cone1",
+   "tex": "@work/Cone_1.png",
+   "x": 330,
+   "y": 420,
+   "color": "#8a8a8a",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Cone2",
+   "tex": "@work/Cone_1.png",
+   "x": 346,
+   "y": 420,
+   "color": "#8a8a8a",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Cone3",
+   "tex": "@work/Cone_1.png",
+   "x": 362,
+   "y": 420,
+   "color": "#8a8a8a",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Toolbox",
+   "tex": "@work/Tool_Box_1.png",
+   "x": 420,
+   "y": 440,
+   "color": "#8a8a8a",
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Stack6",
+   "tex": "@work/Stacked_Material_5.png",
+   "x": 820,
+   "y": 450,
+   "color": "#8a8a8a",
+   "col": [
+    24,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Stack7",
+   "tex": "@work/Stacked_Material_6.png",
+   "x": 856,
+   "y": 452,
+   "color": "#8a8a8a",
+   "col": [
+    24,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Barrels",
+   "tex": "@camp/Pier_Barrel_1.png",
+   "x": 760,
+   "y": 440,
+   "color": "#8a8a8a",
+   "col": [
+    12,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "BusStopSign",
+   "tex": "@vehicle/Bus_Stop_Sign_1.png",
+   "x": 600,
+   "y": 376,
+   "color": "#3060a0",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "screen",
+   "name": "BusStopUse",
+   "id": "use_rw_bus",
+   "x": 600,
+   "y": 384,
+   "screen": "map:travel",
+   "prompt": "PROMPT_BUS"
+  },
+  {
+   "kind": "spawn",
+   "name": "BusStopSpawn",
+   "id": "bus_stop",
+   "x": 600,
+   "y": 400,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Bench",
+   "tex": "@city/Bench_2.png",
+   "x": 520,
+   "y": 376,
+   "color": "#8a8a8a",
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "template": "anchors",
+   "points": {
+    "yard": [
+     420,
+     250
+    ],
+    "gate_bench": [
+     520,
+     392
+    ],
+    "office_door": [
+     830,
+     240
+    ]
+   }
+  }
+ ]
+}

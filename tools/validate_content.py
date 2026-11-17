@@ -482,6 +482,14 @@ for line in _lint.stdout.splitlines():
 
 # --- quest guide (R0) -----------------------------------------------------------
 import subprocess as _sp
+# Every region has a LOC_<ID> name: the quest guide names places by it.
+for f in sorted(glob.glob('data/regions/*.json')):
+    if os.path.basename(f).startswith('_'):
+        continue
+    rid = json.load(open(f))['id']
+    if 'LOC_' + rid.upper() not in S:
+        err(f'{f}: no LOC_{rid.upper()} string (the quest guide names the place by it)')
+
 # Music: every piece a region or dialogue asks for exists (R10a).
 for f in sorted(glob.glob('data/regions/*.json')):
     if os.path.basename(f).startswith('_'):

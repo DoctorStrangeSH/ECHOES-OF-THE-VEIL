@@ -1,0 +1,28 @@
+{
+ "ropewalk_rope": {
+  "name": "JOB_ROPEWALK",
+  "desc": "JOB_ROPEWALK_DESC",
+  "client": "bill_kettle",
+  "spot": "ropewalk_rope",
+  "difficulty": 3,
+  "scrap": 0,
+  "pay": 0,
+  "xp": 6,
+  "once": true,
+  "board": false,
+  "effects": [
+   {
+    "set_flag": "ropeworks.rope_done"
+   },
+   {
+    "quest_stage": [
+     "case_night_shift",
+     "report"
+    ]
+   },
+   {
+    "toast": "TOAST_ROPE_DONE"
+   }
+  ]
+ }
+}

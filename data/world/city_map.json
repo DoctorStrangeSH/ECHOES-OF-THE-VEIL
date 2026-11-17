@@ -202,8 +202,8 @@
    "fare": 4,
    "ride_minutes": 45,
    "map_at": [
-    200,
-    140
+    250,
+    178
    ],
    "stop_at": [
     440,
@@ -219,7 +219,8 @@
      "name": "MAP_PLACE_MILLWOOD",
      "hours": "MAP_HOURS_ALWAYS"
     }
-   ]
+   ],
+   "map_size": 0.5
   },
   "harbour": {
    "name": "MAP_HARBOUR",
@@ -318,6 +319,39 @@
     }
    ],
    "map_size": 0.7
+  },
+  "ropeworks": {
+   "name": "MAP_ROPEWORKS",
+   "pos": [
+    290,
+    150
+   ],
+   "scenes": [
+    "ropeworks",
+    "ropewalk_shed",
+    "ropeworks_office"
+   ],
+   "stop": [
+    "ropeworks",
+    "bus_stop"
+   ],
+   "open_if": {},
+   "known_if": {},
+   "map_at": [
+    184,
+    128
+   ],
+   "map_size": 0.7,
+   "stop_at": [
+    600,
+    400
+   ],
+   "places": [
+    {
+     "name": "MAP_PLACE_SHIFTS",
+     "hours": "MAP_HOURS_DAYLIGHT"
+    }
+   ]
   }
  },
  "roads": [
@@ -356,6 +390,10 @@
   [
    "terraces",
    "gardens"
+  ],
+  [
+   "ropeworks",
+   "market"
   ]
  ],
  "map_scale": 0.125,

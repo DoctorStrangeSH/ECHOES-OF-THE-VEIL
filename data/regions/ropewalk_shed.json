@@ -1,0 +1,205 @@
+{
+ "id": "ropewalk_shed",
+ "name_key": "LOC_ROPEWALK",
+ "palette": "salt_tunnels",
+ "options": {
+  "outdoors": false,
+  "music": "tunnels"
+ },
+ "layout": {
+  "generator": "room",
+  "width": 42,
+  "height": 9,
+  "door_x": 20
+ },
+ "nodes": [
+  {
+   "kind": "prop",
+   "name": "Rack1",
+   "tex": "@fishing/67.png",
+   "x": 80,
+   "y": 72,
+   "col": [
+    28,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#806040"
+  },
+  {
+   "kind": "prop",
+   "name": "Rack2",
+   "tex": "@fishing/15.png",
+   "x": 170,
+   "y": 72,
+   "col": [
+    28,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#806040"
+  },
+  {
+   "kind": "prop",
+   "name": "Rack3",
+   "tex": "@fishing/67.png",
+   "x": 260,
+   "y": 72,
+   "col": [
+    28,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#806040"
+  },
+  {
+   "kind": "prop",
+   "name": "Rack4",
+   "tex": "@fishing/15.png",
+   "x": 350,
+   "y": 72,
+   "col": [
+    28,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#806040"
+  },
+  {
+   "kind": "prop",
+   "name": "Rack5",
+   "tex": "@fishing/67.png",
+   "x": 440,
+   "y": 72,
+   "col": [
+    28,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#806040"
+  },
+  {
+   "kind": "prop",
+   "name": "Rack6",
+   "tex": "@fishing/15.png",
+   "x": 530,
+   "y": 72,
+   "col": [
+    28,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#806040"
+  },
+  {
+   "kind": "prop",
+   "name": "Crates",
+   "tex": "@hal/92.png",
+   "x": 40,
+   "y": 120,
+   "col": [
+    28,
+    12
+   ],
+   "off": [
+    0,
+    -6
+   ],
+   "color": "#806040"
+  },
+  {
+   "kind": "prop",
+   "name": "Crates2",
+   "tex": "@hal/94.png",
+   "x": 600,
+   "y": 120,
+   "col": [
+    28,
+    12
+   ],
+   "off": [
+    0,
+    -6
+   ],
+   "color": "#806040"
+  },
+  {
+   "kind": "spot",
+   "name": "RopeSpot",
+   "id": "repair_ropewalk",
+   "x": 560,
+   "y": 110,
+   "spot": "ropewalk_rope"
+  },
+  {
+   "kind": "inspect",
+   "name": "RopeLook",
+   "id": "inspect_rw_rope",
+   "x": 320,
+   "y": 110,
+   "area": [
+    200,
+    12
+   ],
+   "lines": [
+    "FLAVOR_RW_ROPE"
+   ]
+  },
+  {
+   "template": "anchors",
+   "points": {
+    "ropewalk_far": [
+     540,
+     112
+    ],
+    "ropewalk_mid": [
+     320,
+     112
+    ]
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "Entrance",
+   "id": "entrance",
+   "x": 328,
+   "y": 124,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ExitDoor",
+   "id": "door_shed_exit",
+   "x": 328,
+   "y": 140,
+   "area": [
+    30,
+    10
+   ],
+   "scene": "ropeworks",
+   "spawn": "from_shed",
+   "prompt": "PROMPT_EXIT"
+  }
+ ]
+}

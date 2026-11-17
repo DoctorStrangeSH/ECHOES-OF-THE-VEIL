@@ -397,5 +397,21 @@
    "scene": "number_13",
    "node": "Photo"
   }
+ },
+ "case_night_shift": {
+  "night": {
+   "scene": "ropewalk_shed",
+   "node": "RopeLook",
+   "period": "night"
+  },
+  "rope": {
+   "scene": "ropewalk_shed",
+   "node": "RopeSpot",
+   "period": "night"
+  },
+  "report": {
+   "scene": "ropeworks_office",
+   "node": "Cabinet"
+  }
  }
 }

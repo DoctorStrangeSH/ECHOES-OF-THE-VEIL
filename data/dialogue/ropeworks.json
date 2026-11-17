@@ -1,0 +1,398 @@
+{
+ "doyle": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "met.doyle"
+    },
+    "node": "i1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "i1": {
+    "text": "DOYLE_INTRO_1",
+    "next": "i2",
+    "effects": [
+     {
+      "set_flag": "met.doyle"
+     }
+    ]
+   },
+   "i2": {
+    "text": "DOYLE_INTRO_2",
+    "next": "hub",
+    "speaker": "NPC_DOYLE"
+   },
+   "hub": {
+    "speaker": "NPC_DOYLE",
+    "text": "DOYLE_HUB",
+    "choices": [
+     {
+      "text": "DOYLE_ASK_SHIFT",
+      "if": {
+       "period": [
+        "morning",
+        "afternoon"
+       ]
+      },
+      "next": "sh1"
+     },
+     {
+      "text": "DOYLE_ASK_CARD",
+      "if": {
+       "not_quest_started": "case_night_shift"
+      },
+      "next": "c1"
+     },
+     {
+      "text": "DOYLE_ASK_CARD_AGAIN",
+      "if": {
+       "quest_active": "case_night_shift"
+      },
+      "next": "again"
+     },
+     {
+      "text": "DOYLE_ASK_WORKS",
+      "next": "works"
+     },
+     {
+      "text": "MARKET_BYE",
+      "next": null
+     }
+    ]
+   },
+   "sh1": {
+    "text": "DOYLE_SHIFT_1",
+    "next": "sh2",
+    "speaker": "NPC_DOYLE"
+   },
+   "sh2": {
+    "text": "DOYLE_SHIFT_2",
+    "next": "hub",
+    "effects": [
+     {
+      "advance_minutes": 240
+     },
+     {
+      "give_money": 16
+     },
+     {
+      "give_xp": 10
+     },
+     {
+      "toast": "TOAST_SHIFT_DONE"
+     }
+    ]
+   },
+   "c1": {
+    "text": "DOYLE_CARD_1",
+    "next": "c2",
+    "speaker": "NPC_DOYLE"
+   },
+   "c2": {
+    "text": "DOYLE_CARD_2",
+    "next": "c3",
+    "speaker": "NPC_DOYLE"
+   },
+   "c3": {
+    "text": "DOYLE_CARD_3",
+    "next": "hub",
+    "speaker": "NPC_DOYLE",
+    "effects": [
+     {
+      "quest_start": "case_night_shift"
+     }
+    ]
+   },
+   "again": {
+    "text": "DOYLE_AGAIN",
+    "next": "hub",
+    "speaker": "NPC_DOYLE"
+   },
+   "works": {
+    "text": "DOYLE_WORKS",
+    "next": "hub",
+    "speaker": "NPC_DOYLE"
+   }
+  }
+ },
+ "sid": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "met.sid"
+    },
+    "node": "i1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "i1": {
+    "text": "SID_INTRO_1",
+    "next": "i2",
+    "effects": [
+     {
+      "set_flag": "met.sid"
+     }
+    ]
+   },
+   "i2": {
+    "text": "SID_INTRO_2",
+    "next": "hub",
+    "speaker": "NPC_SID"
+   },
+   "hub": {
+    "speaker": "NPC_SID",
+    "text": "SID_HUB",
+    "choices": [
+     {
+      "text": "SID_ASK_ROPE",
+      "next": "r"
+     },
+     {
+      "text": "SID_ASK_KETTLE",
+      "if": {
+       "quest_active": "case_night_shift"
+      },
+      "next": "k"
+     },
+     {
+      "text": "MARKET_BYE",
+      "next": null
+     }
+    ]
+   },
+   "r": {
+    "text": "SID_ROPE",
+    "next": "hub",
+    "speaker": "NPC_SID"
+   },
+   "k": {
+    "text": "SID_KETTLE",
+    "next": "hub",
+    "speaker": "NPC_SID"
+   }
+  }
+ },
+ "kettle": {
+  "entries": [
+   {
+    "if": {
+     "flag": "ropeworks.rope_done"
+    },
+    "node": "after"
+   },
+   {
+    "if": {
+     "not_flag": "ropeworks.met_kettle"
+    },
+    "node": "m1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "m1": {
+    "text": "KETTLE_MEET_1",
+    "next": "m2",
+    "effects": [
+     {
+      "set_flag": "ropeworks.met_kettle"
+     },
+     {
+      "quest_stage": [
+       "case_night_shift",
+       "rope"
+      ]
+     }
+    ]
+   },
+   "m2": {
+    "text": "KETTLE_MEET_2",
+    "next": "hub",
+    "speaker": "NPC_KETTLE"
+   },
+   "hub": {
+    "speaker": "NPC_KETTLE",
+    "text": "KETTLE_HUB",
+    "choices": [
+     {
+      "text": "KETTLE_HELP",
+      "if": {
+       "not_flag": "ropeworks.job_taken"
+      },
+      "effects": [
+       {
+        "set_flag": "ropeworks.job_taken"
+       },
+       {
+        "accept_job": "ropewalk_rope"
+       }
+      ],
+      "next": "help"
+     },
+     {
+      "text": "KETTLE_ASK_WHO",
+      "next": "who"
+     },
+     {
+      "text": "MARKET_BYE",
+      "next": null
+     }
+    ]
+   },
+   "help": {
+    "text": "KETTLE_HELP_1",
+    "next": null,
+    "speaker": "NPC_KETTLE"
+   },
+   "who": {
+    "text": "KETTLE_WHO",
+    "next": "hub",
+    "speaker": "NPC_KETTLE"
+   },
+   "after": {
+    "text": "KETTLE_AFTER",
+    "next": "hub",
+    "speaker": "NPC_KETTLE"
+   }
+  }
+ },
+ "rw_cabinet": {
+  "entries": [
+   {
+    "if": {
+     "quest_done": "case_night_shift"
+    },
+    "node": "done"
+   },
+   {
+    "if": {
+     "quest_stage": [
+      "case_night_shift",
+      "report"
+     ]
+    },
+    "node": "r1"
+   }
+  ],
+  "start": "shut",
+  "nodes": {
+   "shut": {
+    "text": "RW_CABINET_SHUT",
+    "next": null
+   },
+   "done": {
+    "text": "RW_CABINET_DONE",
+    "next": null
+   },
+   "r1": {
+    "text": "RW_REPORT_1",
+    "next": "r2"
+   },
+   "r2": {
+    "text": "RW_REPORT_2",
+    "next": "r3"
+   },
+   "r3": {
+    "text": "RW_REPORT_3",
+    "choices": [
+     {
+      "text": "RW_POST_REPORT",
+      "next": "p1",
+      "effects": [
+       {
+        "set_flag": "ropeworks.plaque"
+       },
+       {
+        "faction": [
+         "civic",
+         1
+        ]
+       },
+       {
+        "give_resonance": 20
+       },
+       {
+        "give_xp": 100
+       },
+       {
+        "relationship": [
+         "frank_doyle",
+         -1
+        ]
+       },
+       {
+        "quest_complete": [
+         "case_night_shift",
+         "posted"
+        ]
+       }
+      ]
+     },
+     {
+      "text": "RW_CLOCK_OUT",
+      "next": "o1",
+      "effects": [
+       {
+        "faction": [
+         "keepers",
+         1
+        ]
+       },
+       {
+        "give_resonance": 10
+       },
+       {
+        "give_xp": 100
+       },
+       {
+        "quest_complete": [
+         "case_night_shift",
+         "clocked"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "p1": {
+    "text": "RW_POSTED_1",
+    "next": "p2"
+   },
+   "p2": {
+    "text": "RW_POSTED_2",
+    "next": null
+   },
+   "o1": {
+    "text": "RW_CLOCKED_1",
+    "next": "o2"
+   },
+   "o2": {
+    "text": "RW_CLOCKED_2",
+    "next": null
+   }
+  }
+ },
+ "rw_board": {
+  "entries": [
+   {
+    "if": {
+     "flag": "ropeworks.plaque"
+    },
+    "node": "plaque"
+   }
+  ],
+  "start": "b",
+  "nodes": {
+   "b": {
+    "text": "RW_BOARD",
+    "next": null
+   },
+   "plaque": {
+    "text": "RW_BOARD_PLAQUE",
+    "next": null
+   }
+  }
+ }
+}

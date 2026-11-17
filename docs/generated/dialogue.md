@@ -2297,6 +2297,124 @@ flowchart TD
   echo_woman_after["after<br/>Woman in green: She is already looking at something you can't s…"]
 ```
 
+## ropeworks.json
+
+### doyle
+
+```mermaid
+flowchart TD
+  doyle_START(("start"))
+  doyle_START --> doyle_hub
+  doyle_START -->|"{not_flag: met.doyle}"| doyle_i1
+  doyle_i1["i1<br/>A foreman in a woolly hat counts coils of rope …"]
+  doyle_i1 --> doyle_i2
+  doyle_i2["i2<br/>Frank Doyle: 'Frank Doyle, foreman. If you've come about a j…"]
+  doyle_i2 --> doyle_hub
+  doyle_hub["hub<br/>Frank Doyle: 'Well? Rope doesn't twist itself. Mostly.'"]
+  doyle_hub -->|"'I'll take a shift.' (four ho… ⟨{period: [morning, afternoon]}⟩"| doyle_sh1
+  doyle_hub -->|"'What happens at night?' ⟨{not_quest_started: case_night_shift}⟩"| doyle_c1
+  doyle_hub -->|"'About the night shift…' ⟨{quest_active: case_night_shift}⟩"| doyle_again
+  doyle_hub -->|"'Tell me about the works.'"| doyle_works
+  doyle_hub_end_4(["end"])
+  doyle_hub -->|"'I'll be off.'"| doyle_hub_end_4
+  doyle_sh1["sh1<br/>Frank Doyle: 'Good. Feed the yarn, keep your fingers out of …"]
+  doyle_sh1 --> doyle_sh2
+  doyle_sh2["sh2<br/>Four hours of yarn, hooks and the long patient …"]
+  doyle_sh2 --> doyle_hub
+  doyle_c1["c1<br/>Frank Doyle: He lowers the clipboard. 'Nothing happens at ni…"]
+  doyle_c1 --> doyle_c2
+  doyle_c2["c2<br/>Frank Doyle: 'Only someone keeps clocking in for it. Every m…"]
+  doyle_c2 --> doyle_c3
+  doyle_c3["c3<br/>Frank Doyle: 'If you're the sort who goes into sheds at nigh…"]
+  doyle_c3 --> doyle_hub
+  doyle_again["again<br/>Frank Doyle: 'The ropewalk, after dark. Leave the lights off…"]
+  doyle_again --> doyle_hub
+  doyle_works["works<br/>Frank Doyle: 'Hundred and seventy years of rope. Ships, bell…"]
+  doyle_works --> doyle_hub
+```
+
+### sid
+
+```mermaid
+flowchart TD
+  sid_START(("start"))
+  sid_START --> sid_hub
+  sid_START -->|"{not_flag: met.sid}"| sid_i1
+  sid_i1["i1<br/>An old man on the bench by the gate reads a rac…"]
+  sid_i1 --> sid_i2
+  sid_i2["i2<br/>Sid Marlow: 'Sid. Forty-four years a roper, man and boy. Th…"]
+  sid_i2 --> sid_hub
+  sid_hub["hub<br/>Sid Marlow: 'Sit down if you like. The bench doesn't charge…"]
+  sid_hub -->|"'How do you make a rope?'"| sid_r
+  sid_hub -->|"'Did you know a Bill Kettle?' ⟨{quest_active: case_night_shift}⟩"| sid_k
+  sid_hub_end_2(["end"])
+  sid_hub -->|"'I'll be off.'"| sid_hub_end_2
+  sid_r["r<br/>Sid Marlow: 'You walk backwards. Whole job's walking backwa…"]
+  sid_r --> sid_hub
+  sid_k["k<br/>Sid Marlow: Sid folds the paper very slowly. 'Bill taught m…"]
+  sid_k --> sid_hub
+```
+
+### kettle
+
+```mermaid
+flowchart TD
+  kettle_START(("start"))
+  kettle_START --> kettle_hub
+  kettle_START -->|"{flag: ropeworks.rope_done}"| kettle_after
+  kettle_START -->|"{not_flag: ropeworks.met_kettle}"| kettle_m1
+  kettle_m1["m1<br/>Halfway down the dark ropewalk a man is walking…"]
+  kettle_m1 --> kettle_m2
+  kettle_m2["m2<br/>Bill Kettle: 'Mind the line. She's nearly done, this one. Th…"]
+  kettle_m2 --> kettle_hub
+  kettle_hub["hub<br/>Bill Kettle: 'Lend a hand, or let a man work.'"]
+  kettle_hub -->|"'Let me help you finish it.' ⟨{not_flag: ropeworks.job_taken}⟩"| kettle_help
+  kettle_hub -->|"'Who are you?'"| kettle_who
+  kettle_hub_end_2(["end"])
+  kettle_hub -->|"'I'll be off.'"| kettle_hub_end_2
+  kettle_help["help<br/>Bill Kettle: 'Wheel's at the far end. Keep her steady. She w…"]
+  kettle_who["who<br/>Bill Kettle: 'Kettle, W. Night shift. Clocked in at ten.' A …"]
+  kettle_who --> kettle_hub
+  kettle_after["after<br/>Bill Kettle: 'Good rope, that. Thirteen hundred and twenty f…"]
+  kettle_after --> kettle_hub
+```
+
+### rw_cabinet
+
+```mermaid
+flowchart TD
+  rw_cabinet_START(("start"))
+  rw_cabinet_START --> rw_cabinet_shut
+  rw_cabinet_START -->|"{quest_done: case_night_shift}"| rw_cabinet_done
+  rw_cabinet_START -->|"{quest_stage: [case_night_shift, report…"| rw_cabinet_r1
+  rw_cabinet_shut["shut<br/>Filing cabinets: personnel, orders, accidents. …"]
+  rw_cabinet_done["done<br/>The ACCIDENTS drawer. One folder now."]
+  rw_cabinet_r1["r1<br/>Now that the rope is finished, you know where t…"]
+  rw_cabinet_r1 --> rw_cabinet_r2
+  rw_cabinet_r2["r2<br/>Rope parted under strain. Cause: hemp of inferi…"]
+  rw_cabinet_r2 --> rw_cabinet_r3
+  rw_cabinet_r3["r3<br/>On the clocking-in rack, Bill's card waits for …"]
+  rw_cabinet_r3 -->|"Pin the report to the works n…"| rw_cabinet_p1
+  rw_cabinet_r3 -->|"Punch his card OUT, quietly, …"| rw_cabinet_o1
+  rw_cabinet_p1["p1<br/>By the morning shift the report has been read b…"]
+  rw_cabinet_p1 --> rw_cabinet_p2
+  rw_cabinet_p2["p2<br/>Doyle reads it twice and says nothing to you fo…"]
+  rw_cabinet_o1["o1<br/>You feed Bill's grey card into the clock. It th…"]
+  rw_cabinet_o1 --> rw_cabinet_o2
+  rw_cabinet_o2["o2<br/>In the morning the card is gone from the rack, …"]
+```
+
+### rw_board
+
+```mermaid
+flowchart TD
+  rw_board_START(("start"))
+  rw_board_START --> rw_board_b
+  rw_board_START -->|"{flag: ropeworks.plaque}"| rw_board_plaque
+  rw_board_b["b<br/>The works noticeboard: shift rotas, a raffle, a…"]
+  rw_board_plaque["plaque<br/>The noticeboard, and beside it the brass plate …"]
+```
+
 ## salt.json
 
 ### salt_enter
