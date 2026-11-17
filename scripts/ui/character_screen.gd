@@ -123,8 +123,29 @@ func _build() -> void:
 		_box.add_child(row)
 		if next != "":
 			_box.add_child(_label("   " + tr("TALENT_NEXT") % [tr("TALENT_" + next.get_slice("/", 1).to_upper()), tr("TALENT_" + next.get_slice("/", 1).to_upper() + "_DESC")], UiTheme.INK_DIM, 7))
+	_build_companions()
 	var close_b := Button.new()
 	close_b.text = tr("CC_BACK")
 	close_b.pressed.connect(close)
 	_box.add_child(close_b)
 	(first if first != null and not first.disabled else close_b).call_deferred("grab_focus")
+
+
+## R8: the bond with each companion met so far, three pips, and "together".
+func _build_companions() -> void:
+	var rows: Array[String] = []
+	for id: String in Party.defs:
+		var sid := StringName(id)
+		if Party.bond_points(sid) <= 0 and not Party.is_companion(sid):
+			continue
+		var t := Party.bond_tier(sid)
+		var pips := "●".repeat(t) + "○".repeat(Party.TIERS.size() - t)
+		var line := tr("COMP_ROW") % [tr(String(Party.def_of(sid).get("name", ""))), pips]
+		if GameState.has_flag(StringName("romance." + id)):
+			line += tr("COMP_ROMANCE")
+		rows.append(line)
+	if rows.is_empty():
+		return
+	_box.add_child(_label(tr("COMP_HEADER"), UiTheme.ACCENT, 9))
+	for r in rows:
+		_box.add_child(_label(r, UiTheme.INK, 8))

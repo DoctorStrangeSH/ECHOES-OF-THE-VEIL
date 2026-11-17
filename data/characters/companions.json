@@ -1,5 +1,5 @@
 {
- "_doc": "Companions (Party). requires: when they will come along; ability: patch_up | pin; power: heal amount / echoes slowed; upgrade: better power/cooldown once a condition holds (personal quests); camp_dialogue: what talking to them says while they follow you.",
+ "_doc": "Companions (Party). requires: when they will come along; ability: patch_up | pin | beam; power: heal amount / echoes slowed; upgrade: better power/cooldown once a condition holds (personal quests); camp_dialogue: what talking to them says while they follow you. upgrades: more upgrades, later ones win (the bond, R8). heart: the bond conversations (camp dialogue nodes), listed for the character screen.",
  "jonah_rook": {
   "name": "NPC_JONAH",
   "ability": "patch_up",
@@ -15,7 +15,18 @@
    },
    "power": 3,
    "cooldown": 30
-  }
+  },
+  "upgrades": [
+   {
+    "if": {
+     "bond_at_least": [
+      "jonah_rook",
+      3
+     ]
+    },
+    "cooldown": 22
+   }
+  ]
  },
  "mara_venn": {
   "name": "NPC_MARA",
@@ -32,6 +43,39 @@
    },
    "power": 2,
    "cooldown": 8
-  }
+  },
+  "upgrades": [
+   {
+    "if": {
+     "bond_at_least": [
+      "mara_venn",
+      3
+     ]
+    },
+    "cooldown": 6
+   }
+  ]
+ },
+ "hester_ashby": {
+  "name": "NPC_HESTER",
+  "ability": "beam",
+  "cooldown": 20,
+  "camp_dialogue": "camp_hester",
+  "requires": {
+   "quest_done": "case_lighthouse"
+  },
+  "power": 2,
+  "upgrades": [
+   {
+    "if": {
+     "bond_at_least": [
+      "hester_ashby",
+      3
+     ]
+    },
+    "power": 3,
+    "cooldown": 15
+   }
+  ]
  }
 }

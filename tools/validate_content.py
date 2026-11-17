@@ -130,7 +130,7 @@ def walk(v, where):
                 refs.append(('item', a[0] if isinstance(a, list) else a, where))
             elif k == 'has_item':
                 refs.append(('item', a if isinstance(a, str) else a[0], where))
-            elif k in ('relationship', 'remember', 'relationship_at_least', 'remembers'):
+            elif k in ('relationship', 'remember', 'relationship_at_least', 'remembers', 'bond', 'bond_at_least'):
                 refs.append(('npc', a[0], where))
                 if k == 'remember':
                     key('MEM_' + a[1].upper(), where + ' (memory text)')

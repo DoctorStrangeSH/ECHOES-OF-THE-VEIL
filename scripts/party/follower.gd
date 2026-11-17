@@ -4,11 +4,15 @@ extends Node
 ## its camp dialogue and uses its ability in fights. Added by Location.
 ##   patch_up - when the player drops to 1 health, heals `power` (once per cooldown)
 ##   pin      - in fights, slows the `power` nearest echoes for a few seconds
-## Personal quests upgrade both (companions.json "upgrade").
+##   beam     - in fights, a lamp flash slows every echo within BEAM_RADIUS
+##              for `power` seconds
+## Personal quests and the bond upgrade them (companions.json "upgrade" and
+## "upgrades": the later entries that hold win).
 
 const TRAIL := 22.0
 const SPEED := 95.0
 const TELEPORT := 170.0
+const BEAM_RADIUS := 160.0
 
 var npc: Npc
 var ability := ""
@@ -26,10 +30,14 @@ func setup(target: Npc, def: Dictionary) -> void:
 	cooldown = float(def.get("cooldown", 30.0))
 	power = int(def.get("power", 2 if ability == "patch_up" else 1))
 	# Personal quests can improve the ability: {"upgrade": {"if": cond, "power": n, "cooldown": s}}
-	var up: Dictionary = def.get("upgrade", {})
-	if not up.is_empty() and StoryRules.evaluate(up.get("if")):
-		power = int(up.get("power", power))
-		cooldown = float(up.get("cooldown", cooldown))
+	var ups: Array = []
+	if def.has("upgrade"):
+		ups.append(def["upgrade"])
+	ups.append_array(def.get("upgrades", []))
+	for up: Dictionary in ups:
+		if StoryRules.evaluate(up.get("if")):
+			power = int(up.get("power", power))
+			cooldown = float(up.get("cooldown", cooldown))
 	npc.collision_layer = 0  # never blocks the player
 	npc.add_child(self)
 
@@ -72,6 +80,8 @@ func _physics_process(delta: float) -> void:
 		_sprite.play(&"idle", _last_dir)
 	if ability == "pin":
 		_try_pin()
+	elif ability == "beam":
+		_try_beam()
 
 
 func _ready_now() -> bool:
@@ -107,3 +117,21 @@ func _try_pin() -> void:
 	for i in mini(power, near.size()):
 		near[i].slow(3.0)
 	Sfx.play(&"flash", 0.0, -8.0)
+
+
+func _try_beam() -> void:
+	var loc := SceneFlow.current_location as Location
+	if loc == null or not loc.combat_enabled or not _ready_now():
+		return
+	var hit: Array[EchoEnemy] = []
+	for e in get_tree().get_nodes_in_group(&"echo_enemy"):
+		var en := e as EchoEnemy
+		if en.global_position.distance_to(npc.global_position) < BEAM_RADIUS and en.health.health > 0:
+			hit.append(en)
+	if hit.is_empty():
+		return
+	_use()
+	for en in hit:
+		en.slow(float(power))
+	CombatFx.flash_ring(npc.get_parent(), npc.global_position, BEAM_RADIUS)
+	Sfx.play(&"flash", 0.0, -4.0)

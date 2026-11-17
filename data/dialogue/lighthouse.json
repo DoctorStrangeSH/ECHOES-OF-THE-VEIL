@@ -84,6 +84,21 @@
       "next": "after"
      },
      {
+      "text": "HESTER_COMPANION_ASK",
+      "if": {
+       "can_join": "hester_ashby",
+       "not": {
+        "companion": "hester_ashby"
+       }
+      },
+      "effects": [
+       {
+        "companion": "hester_ashby"
+       }
+      ],
+      "next": "join"
+     },
+     {
       "text": "BYE",
       "next": null
      }
@@ -232,6 +247,11 @@
     "speaker": "NPC_HESTER",
     "text": "HESTER_AFTER_REAL",
     "next": "hub"
+   },
+   "join": {
+    "speaker": "NPC_HESTER",
+    "text": "HESTER_JOIN",
+    "next": null
    }
   }
  },
@@ -360,6 +380,160 @@
    "found": {
     "text": "LOCKER_FOUND",
     "next": null
+   }
+  }
+ },
+ "camp_hester": {
+  "start": "hub",
+  "nodes": {
+   "hub": {
+    "speaker": "NPC_HESTER",
+    "text": "CAMP_HESTER_HUB",
+    "choices": [
+     {
+      "text": "CAMP_HOW",
+      "next": "how"
+     },
+     {
+      "text": "HEART_HESTER_1_ASK",
+      "if": {
+       "bond_at_least": [
+        "hester_ashby",
+        1
+       ],
+       "not_flag": "bond.hester_ashby.1"
+      },
+      "next": "h1a"
+     },
+     {
+      "text": "HEART_HESTER_2_ASK",
+      "if": {
+       "bond_at_least": [
+        "hester_ashby",
+        2
+       ],
+       "flag": "bond.hester_ashby.1",
+       "not_flag": "bond.hester_ashby.2"
+      },
+      "next": "h2a"
+     },
+     {
+      "text": "HEART_HESTER_3_ASK",
+      "if": {
+       "bond_at_least": [
+        "hester_ashby",
+        3
+       ],
+       "flag": "bond.hester_ashby.2",
+       "not_flag": "bond.hester_ashby.3"
+      },
+      "next": "h3a"
+     },
+     {
+      "text": "CAMP_HESTER_GO_HOME",
+      "effects": [
+       {
+        "companion": ""
+       }
+      ],
+      "next": "home"
+     },
+     {
+      "text": "CAMP_KEEP_GOING",
+      "next": null
+     }
+    ]
+   },
+   "how": {
+    "speaker": "NPC_HESTER",
+    "text": "CAMP_HESTER_HOW",
+    "next": "hub"
+   },
+   "home": {
+    "speaker": "NPC_HESTER",
+    "text": "CAMP_HESTER_HOME",
+    "next": null
+   },
+   "h1a": {
+    "speaker": "NPC_HESTER",
+    "text": "HEART_HESTER_1_A",
+    "next": "h1b"
+   },
+   "h1b": {
+    "speaker": "NPC_HESTER",
+    "text": "HEART_HESTER_1_B",
+    "next": "h1c"
+   },
+   "h1c": {
+    "speaker": "NPC_HESTER",
+    "text": "HEART_HESTER_1_C",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "bond.hester_ashby.1"
+     },
+     {
+      "relationship": [
+       "hester_ashby",
+       1
+      ]
+     }
+    ]
+   },
+   "h2a": {
+    "text": "HEART_HESTER_2_A",
+    "next": "h2b"
+   },
+   "h2b": {
+    "speaker": "NPC_HESTER",
+    "text": "HEART_HESTER_2_B",
+    "next": "h2c"
+   },
+   "h2c": {
+    "speaker": "NPC_HESTER",
+    "text": "HEART_HESTER_2_C",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "bond.hester_ashby.2"
+     },
+     {
+      "relationship": [
+       "hester_ashby",
+       1
+      ]
+     }
+    ]
+   },
+   "h3a": {
+    "speaker": "NPC_HESTER",
+    "text": "HEART_HESTER_3_A",
+    "next": "h3b"
+   },
+   "h3b": {
+    "speaker": "NPC_HESTER",
+    "text": "HEART_HESTER_3_B",
+    "next": "h3c"
+   },
+   "h3c": {
+    "text": "HEART_HESTER_3_C",
+    "next": "h3d"
+   },
+   "h3d": {
+    "speaker": "NPC_HESTER",
+    "text": "HEART_HESTER_3_D",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "bond.hester_ashby.3"
+     },
+     {
+      "relationship": [
+       "hester_ashby",
+       2
+      ]
+     }
+    ]
    }
   }
  }
