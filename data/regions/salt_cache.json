@@ -1,0 +1,125 @@
+{
+ "id": "salt_cache",
+ "name_key": "LOC_SALT_CACHE",
+ "palette": "salt_tunnels",
+ "options": {
+  "outdoors": false,
+  "fixed_tint": {
+   "color": [
+    0.86,
+    0.9,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "layout": [
+  "############",
+  "#WWWWWWWWWW#",
+  "#wwwwwwwwww#",
+  "#ffffffffff#",
+  "#ffffffffff#",
+  "#ffffffffff#",
+  "#ffffffffff#",
+  "#ffffffffff#",
+  "#####ff#####"
+ ],
+ "nodes": [
+  {
+   "kind": "prop",
+   "name": "Chest",
+   "tex": "@hal/95.png",
+   "x": 96,
+   "y": 72,
+   "color": "#7a7068",
+   "col": [
+    28,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "pickup",
+   "name": "Charm",
+   "x": 96,
+   "y": 88,
+   "item": "salt_charm",
+   "flag": "salt.charm_taken"
+  },
+  {
+   "kind": "inspect",
+   "name": "Ledger",
+   "id": "inspect_salt_cache_ledger",
+   "x": 40,
+   "y": 80,
+   "area": [
+    24,
+    12
+   ],
+   "lines": [
+    "SALT_CACHE_1",
+    "SALT_CACHE_2"
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Barrel",
+   "tex": "@camp/Pier_Barrel_1.png",
+   "x": 40,
+   "y": 72,
+   "color": "#7a7068",
+   "col": [
+    12,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Web",
+   "tex": "@hal/26.png",
+   "x": 160,
+   "y": 64,
+   "color": "#7a7068",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ]
+  },
+  {
+   "kind": "spawn",
+   "name": "Entrance",
+   "id": "entrance",
+   "x": 96,
+   "y": 116,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "Exit",
+   "id": "door_cache_exit",
+   "x": 96,
+   "y": 140,
+   "area": [
+    32,
+    8
+   ],
+   "scene": "salt_gallery",
+   "spawn": "from_cache",
+   "prompt": "PROMPT_GO_BACK"
+  }
+ ]
+}

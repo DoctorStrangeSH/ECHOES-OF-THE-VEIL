@@ -1,0 +1,123 @@
+{
+ "id": "salt_shrine",
+ "name_key": "LOC_SALT_SHRINE",
+ "palette": "salt_tunnels",
+ "options": {
+  "outdoors": false,
+  "fixed_tint": {
+   "color": [
+    1.0,
+    0.9,
+    0.78,
+    1.0
+   ]
+  }
+ },
+ "layout": [
+  "############",
+  "#WWWWWWWWWW#",
+  "#wwwwwwwwww#",
+  "#ffffffffff#",
+  "#ffffffffff#",
+  "#ffffffffff#",
+  "#ffffffffff#",
+  "#ffffffffff#",
+  "#####ff#####"
+ ],
+ "nodes": [
+  {
+   "kind": "prop",
+   "name": "Tomb",
+   "tex": "@hal/218.png",
+   "x": 96,
+   "y": 80,
+   "color": "#707070",
+   "col": [
+    44,
+    12
+   ],
+   "off": [
+    0,
+    -6
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "Lost",
+   "id": "inspect_salt_lost",
+   "x": 96,
+   "y": 88,
+   "area": [
+    48,
+    14
+   ],
+   "dialogue": "salt_lost",
+   "priority": 15
+  },
+  {
+   "kind": "pickup",
+   "name": "Tally",
+   "x": 40,
+   "y": 100,
+   "item": "silver_tally",
+   "flag": "salt.tally_taken"
+  },
+  {
+   "kind": "prop",
+   "name": "Candle1",
+   "tex": "@grave/Big_Red_Candle.png",
+   "x": 150,
+   "y": 80,
+   "color": "#e0a040",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Candle2",
+   "tex": "@grave/Small_Red_Candle.png",
+   "x": 40,
+   "y": 76,
+   "color": "#e0a040",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "spawn",
+   "name": "Entrance",
+   "id": "entrance",
+   "x": 96,
+   "y": 116,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "Exit",
+   "id": "door_shrine_exit",
+   "x": 96,
+   "y": 140,
+   "area": [
+    32,
+    8
+   ],
+   "scene": "salt_tally",
+   "spawn": "from_shrine",
+   "prompt": "PROMPT_GO_BACK"
+  }
+ ]
+}

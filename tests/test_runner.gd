@@ -1765,6 +1765,24 @@ func test_own_car() -> void:
 	GameState.is_playing = false
 
 
+func test_salt_tunnels() -> void:
+	GameState.reset_for_new_game()
+	GameState.is_playing = true
+	var base := Inventory.stat("dodge_cooldown_mult")
+	Inventory.add(&"salt_charm", 1, false)
+	Inventory.equip(&"salt_charm")
+	check(is_equal_approx(Inventory.stat("dodge_cooldown_mult"), base * 0.8), "the salt-knot: a quicker dodge")
+	Journal.start_case(&"case_salt_tunnels")
+	check(Journal.case_stage(&"case_salt_tunnels") == &"seals", "two locks to find")
+	var both := {"all": [{"flag": "salt.sluice"}, {"has_item": "tally_key"}]}
+	check(not StoryRules.evaluate(both), "the gate holds")
+	GameState.set_flag(&"salt.sluice", true)
+	Inventory.add(&"tally_key", 1, false)
+	check(StoryRules.evaluate(both), "sluice and key: the gate can open")
+	GameState.reset_for_new_game()
+	GameState.is_playing = false
+
+
 func test_companion_bond() -> void:
 	GameState.reset_for_new_game()
 	GameState.is_playing = true

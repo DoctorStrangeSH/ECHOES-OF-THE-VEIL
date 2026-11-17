@@ -1,0 +1,257 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/location.gd" id="1_loc"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2_paint"]
+[ext_resource type="PackedScene" path="res://scenes/props/world_prop.tscn" id="3_prop"]
+[ext_resource type="Script" path="res://scripts/world/spawn_point.gd" id="4_spawn"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="5_inspect"]
+[ext_resource type="Script" path="res://scripts/interaction/door_interactable.gd" id="6_door"]
+[ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
+[ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+[ext_resource type="Script" path="res://scripts/world/conditional_visibility.gd" id="10_cond"]
+[ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
+[ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
+[ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+[ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
+[ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
+[ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
+[ext_resource type="PackedScene" path="res://scenes/world/repair_spot.tscn" id="17_spot"]
+[ext_resource type="PackedScene" path="res://scenes/world/screen_interactable.tscn" id="18_screen"]
+[ext_resource type="PackedScene" path="res://scenes/world/junk_pile.tscn" id="19_junk"]
+
+[node name="SaltTally" type="Node2D"]
+script = ExtResource("1_loc")
+location_id = &"salt_tally"
+name_key = "LOC_SALT_TALLY"
+outdoors = false
+combat_enabled = true
+fixed_tint = Color(0.86, 0.9, 1.0, 1.0)
+
+[node name="Ground" type="TileMapLayer" parent="."]
+script = ExtResource("2_paint")
+palette_id = "salt_tunnels"
+layout = "################################
+#WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW#
+#wwwwwwwwwwwwwwwwwwwwwwwwwwwwww#
+#ffffffffffffffffffffffffffffff#
+#ffffffffffffffffffffffffffffff#
+#fffffffffffffffffffppppppppppf#
+#fffffffffffffffffffppppppppppf#
+ffffffffffffffffffffppppppppppf#
+ffffffffffffffffffffppppppppppf#
+#fffffffffffffffffffppppppppppf#
+#fffffffffffffffffffppppppppppf#
+#fffffffffffffffffffppppppppppf#
+#fffffffffffffffffffppppppppppf#
+#ffffffffffffffffffffffffffffff#
+#ffffffffffffffffffffffffffffff#
+################################"
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="NpcAnchors" type="Node2D" parent="."]
+
+[node name="Shelf1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(56, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_57.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.502,0.376,0.251, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="ShelfLook1" type="Area2D" parent="Entities"]
+position = Vector2(56, 72)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_salt_shelf_1"
+area_size = Vector2(30, 12)
+lines = PackedStringArray("SALT_SHELF_1")
+
+[node name="Shelf2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(96, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_64.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.502,0.376,0.251, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="ShelfLook2" type="Area2D" parent="Entities"]
+position = Vector2(96, 72)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_salt_shelf_2"
+area_size = Vector2(30, 12)
+lines = PackedStringArray("SALT_SHELF_2")
+
+[node name="Shelf3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(136, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_71.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.502,0.376,0.251, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="ShelfLook3" type="Area2D" parent="Entities"]
+position = Vector2(136, 72)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_salt_shelf_3"
+area_size = Vector2(30, 12)
+interaction_priority = 15
+dialogue_id = &"salt_third_volume"
+
+[node name="Condition" type="Node" parent="Entities/ShelfLook3"]
+script = ExtResource("10_cond")
+show_if = {"not_flag": "salt.shrine_open"}
+
+[node name="Shelf4" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(176, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_58.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.502,0.376,0.251, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="ShelfLook4" type="Area2D" parent="Entities"]
+position = Vector2(176, 72)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_salt_shelf_4"
+area_size = Vector2(30, 12)
+lines = PackedStringArray("SALT_SHELF_4")
+
+[node name="Shelf5" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(216, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_65.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.502,0.376,0.251, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="ShelfLook5" type="Area2D" parent="Entities"]
+position = Vector2(216, 72)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_salt_shelf_5"
+area_size = Vector2(30, 12)
+lines = PackedStringArray("SALT_SHELF_5")
+
+[node name="Shelf6" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(256, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_72.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.502,0.376,0.251, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="ShelfLook6" type="Area2D" parent="Entities"]
+position = Vector2(256, 72)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_salt_shelf_6"
+area_size = Vector2(30, 12)
+lines = PackedStringArray("SALT_SHELF_6")
+
+[node name="ToShrine" type="Area2D" parent="Entities"]
+position = Vector2(136, 54)
+script = ExtResource("6_door")
+interaction_id = &"door_salt_shrine"
+area_size = Vector2(24, 12)
+prompt_key = "PROMPT_SQUEEZE"
+target_scene_id = &"salt_shrine"
+target_spawn_id = &"entrance"
+
+[node name="Condition" type="Node" parent="Entities/ToShrine"]
+script = ExtResource("10_cond")
+show_if = {"flag": "salt.shrine_open"}
+
+[node name="FromShrine" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(150, 90)
+script = ExtResource("4_spawn")
+spawn_id = &"from_shrine"
+facing = Vector2(0, 1)
+
+[node name="Desk" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(440, 120)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_25.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.502,0.376,0.251, 1)
+collision_size = Vector2(28, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Key" parent="Entities" instance=ExtResource("16_pickup")]
+position = Vector2(440, 136)
+interaction_id = &"salt_key_taken"
+item_id = &"tally_key"
+pickup_flag = &"salt.key_taken"
+
+[node name="Coffin" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(470, 236)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_49.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.478,0.439,0.408, 1)
+collision_size = Vector2(28, 12)
+collision_offset = Vector2(0, -6)
+
+[node name="Web" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(488, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_24.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.478,0.439,0.408, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Barrel" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(330, 236)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Pier_Barrel_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.478,0.439,0.408, 1)
+collision_size = Vector2(12, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Grate" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(260, 170)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Grate_2.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.478,0.439,0.408, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="ToHub" type="Area2D" parent="Entities"]
+position = Vector2(4, 128)
+script = ExtResource("6_door")
+interaction_id = &"door_tally_hub"
+area_size = Vector2(8, 32)
+prompt_key = "PROMPT_GO_BACK"
+target_scene_id = &"salt_stair"
+target_spawn_id = &"from_tally"
+
+[node name="FromHub" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(24, 128)
+script = ExtResource("4_spawn")
+spawn_id = &"from_hub"
+facing = Vector2(1, 0)
+
+[node name="Echo1" parent="Entities" instance=ExtResource("12_enemy")]
+position = Vector2(200, 160)
+enemy_id = &"salt_tal_1"
+variant = "hollow"
+
+[node name="Echo2" parent="Entities" instance=ExtResource("12_enemy")]
+position = Vector2(320, 130)
+enemy_id = &"salt_tal_2"
+variant = "clinger"
+
+[node name="Echo3" parent="Entities" instance=ExtResource("12_enemy")]
+position = Vector2(400, 190)
+enemy_id = &"salt_tal_3"
+variant = "wailer"
+
+[node name="Echo4" parent="Entities" instance=ExtResource("12_enemy")]
+position = Vector2(460, 160)
+enemy_id = &"salt_tal_4"
+variant = "clinger"
+
+[node name="Encounter" type="Node" parent="."]
+script = ExtResource("13_encounter")
+clear_flag = &"salt.tally_cleared"

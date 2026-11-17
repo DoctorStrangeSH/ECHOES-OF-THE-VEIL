@@ -595,6 +595,43 @@
    ]
   },
   {
+   "id": "salt",
+   "tale": true,
+   "title": "CHRON_SALT_TITLE",
+   "epigraph": "CHRON_SALT_EPI",
+   "if": {
+    "not": {
+     "not_quest_started": "case_salt_tunnels"
+    }
+   },
+   "done_if": {
+    "quest_done": "case_salt_tunnels"
+   },
+   "pages": [
+    {
+     "text": "CHRON_SALT_OPEN"
+    },
+    {
+     "text": "CHRON_SALT_OPENED",
+     "if": {
+      "quest_outcome": [
+       "case_salt_tunnels",
+       "opened"
+      ]
+     }
+    },
+    {
+     "text": "CHRON_SALT_SEALED",
+     "if": {
+      "quest_outcome": [
+       "case_salt_tunnels",
+       "sealed"
+      ]
+     }
+    }
+   ]
+  },
+  {
    "id": "after",
    "title": "CHRON_AFTER_TITLE",
    "epigraph": "CHRON_AFTER_EPI",

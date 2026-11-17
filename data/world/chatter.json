@@ -369,6 +369,18 @@
    "where": [
     "mill_hill"
    ]
+  },
+  {
+   "text": "CHATTER_SALT_1",
+   "where": [
+    "greyford_harbour"
+   ],
+   "if": {
+    "quest_outcome": [
+     "case_salt_tunnels",
+     "opened"
+    ]
+   }
   }
  ]
 }

@@ -376,5 +376,15 @@
   "rosary": {
    "npc": "thomas_avery"
   }
+ },
+ "case_salt_tunnels": {
+  "seals": {
+   "scene": "salt_stair",
+   "node": "Gate"
+  },
+  "store": {
+   "scene": "salt_store",
+   "node": "Reviser"
+  }
  }
 }

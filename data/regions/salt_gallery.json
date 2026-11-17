@@ -1,0 +1,367 @@
+{
+ "id": "salt_gallery",
+ "name_key": "LOC_SALT_GALLERY",
+ "palette": "salt_tunnels",
+ "options": {
+  "outdoors": false,
+  "combat_enabled": true,
+  "fixed_tint": {
+   "color": [
+    0.86,
+    0.9,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "layout": [
+  "################################",
+  "#WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW#",
+  "#wwwwwwwwwwwwwwwwwwwwwwwwwwwwww#",
+  "#ffffffffffffffffffffffffffffff#",
+  "#ffffffffffffffffffffffffffffff#",
+  "#ffffffffffffffffffffffffffffff#",
+  "#fffppppppppppppppppppppppppfff#",
+  "#fffppppppppppppppppppppppppffff",
+  "#fffppppppppppppppppppppppppffff",
+  "#fffppppppppppppppppppppppppfff#",
+  "#fffppppppppppppppppppppppppfff#",
+  "#fffppppppppppppppppppppppppfff#",
+  "#ffffffffffffffffffffffffffffff#",
+  "#ffffffffffffffffffffffffffffff#",
+  "#ffffffffffffffffffffffffffffff#",
+  "################################"
+ ],
+ "nodes": [
+  {
+   "kind": "prop",
+   "name": "Sluice",
+   "tex": "@hal/177.png",
+   "x": 48,
+   "y": 64,
+   "color": "#606070",
+   "col": [
+    24,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "SluiceUse",
+   "id": "inspect_salt_sluice",
+   "x": 48,
+   "y": 72,
+   "area": [
+    32,
+    14
+   ],
+   "dialogue": "salt_sluice",
+   "priority": 20
+  },
+  {
+   "kind": "inspect",
+   "name": "Crack",
+   "id": "inspect_salt_crack",
+   "x": 304,
+   "y": 56,
+   "area": [
+    28,
+    14
+   ],
+   "dialogue": "salt_crack",
+   "priority": 15,
+   "show_if": {
+    "not_flag": "salt.cache_open"
+   }
+  },
+  {
+   "kind": "door",
+   "name": "ToCache",
+   "id": "door_salt_cache",
+   "x": 304,
+   "y": 54,
+   "area": [
+    28,
+    12
+   ],
+   "scene": "salt_cache",
+   "spawn": "entrance",
+   "prompt": "PROMPT_SQUEEZE",
+   "show_if": {
+    "flag": "salt.cache_open"
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "Rubble",
+   "tex": "@grave/Stone_3.png",
+   "x": 330,
+   "y": 64,
+   "color": "#7a7068",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "show_if": {
+    "flag": "salt.cache_open"
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "FromCache",
+   "id": "from_cache",
+   "x": 304,
+   "y": 80,
+   "facing": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "Note",
+   "id": "inspect_salt_note",
+   "x": 200,
+   "y": 200,
+   "area": [
+    24,
+    12
+   ],
+   "lines": [
+    "SALT_NOTE_1",
+    "SALT_NOTE_2"
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "NoteCrate",
+   "tex": "@hal/97.png",
+   "x": 200,
+   "y": 196,
+   "color": "#7a7068",
+   "col": [
+    28,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Grate1",
+   "tex": "@city/Grate_2.png",
+   "x": 120,
+   "y": 160,
+   "color": "#7a7068",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor"
+  },
+  {
+   "kind": "prop",
+   "name": "Grate2",
+   "tex": "@city/Grate_4.png",
+   "x": 400,
+   "y": 120,
+   "color": "#7a7068",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor"
+  },
+  {
+   "kind": "prop",
+   "name": "Web1",
+   "tex": "@hal/25.png",
+   "x": 24,
+   "y": 80,
+   "color": "#7a7068",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Web2",
+   "tex": "@hal/27.png",
+   "x": 488,
+   "y": 80,
+   "color": "#7a7068",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Crates1",
+   "tex": "@hal/94.png",
+   "x": 440,
+   "y": 96,
+   "color": "#7a7068",
+   "col": [
+    28,
+    12
+   ],
+   "off": [
+    0,
+    -6
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Sacks1",
+   "tex": "@camp/Pier_Barrel_2.png",
+   "x": 140,
+   "y": 96,
+   "color": "#7a7068",
+   "col": [
+    26,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Sacks2",
+   "tex": "@camp/Pier_Barrel_2.png",
+   "x": 400,
+   "y": 236,
+   "color": "#7a7068",
+   "col": [
+    26,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Barrel1",
+   "tex": "@camp/Pier_Barrel_1.png",
+   "x": 240,
+   "y": 96,
+   "color": "#7a7068",
+   "col": [
+    12,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Barrel2",
+   "tex": "@camp/Pier_Barrel_1.png",
+   "x": 60,
+   "y": 236,
+   "color": "#7a7068",
+   "col": [
+    12,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ToHub",
+   "id": "door_gallery_hub",
+   "x": 508,
+   "y": 128,
+   "area": [
+    8,
+    32
+   ],
+   "scene": "salt_stair",
+   "spawn": "from_gallery",
+   "prompt": "PROMPT_GO_BACK"
+  },
+  {
+   "kind": "spawn",
+   "name": "FromHub",
+   "id": "from_hub",
+   "x": 488,
+   "y": 128,
+   "facing": [
+    -1,
+    0
+   ]
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo1",
+   "id": "salt_gal_1",
+   "x": 360,
+   "y": 150,
+   "variant": "clinger"
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo2",
+   "id": "salt_gal_2",
+   "x": 260,
+   "y": 180,
+   "variant": "hollow"
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo3",
+   "id": "salt_gal_3",
+   "x": 150,
+   "y": 130,
+   "variant": "wailer"
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo4",
+   "id": "salt_gal_4",
+   "x": 90,
+   "y": 190,
+   "variant": "hollow"
+  },
+  {
+   "kind": "encounter",
+   "flag": "salt.gallery_cleared"
+  }
+ ]
+}

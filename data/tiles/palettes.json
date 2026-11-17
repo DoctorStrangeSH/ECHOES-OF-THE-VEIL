@@ -835,5 +835,88 @@
    ],
    "placeholder": "#a07040"
   }
+ },
+ "salt_tunnels": {
+  "f": {
+   "texture": "modern_interiors/1_Interiors/16x16/Room_Builder_16x16.png",
+   "tiles": [
+    [
+     46,
+     26
+    ],
+    [
+     47,
+     26
+    ],
+    [
+     48,
+     26
+    ],
+    [
+     46,
+     27
+    ],
+    [
+     47,
+     27
+    ],
+    [
+     48,
+     27
+    ]
+   ],
+   "placeholder": "#6a625a"
+  },
+  "p": {
+   "texture": "modern_interiors/1_Interiors/16x16/Room_Builder_16x16.png",
+   "tiles": [
+    [
+     46,
+     25
+    ],
+    [
+     47,
+     25
+    ],
+    [
+     48,
+     25
+    ]
+   ],
+   "placeholder": "#5c5a5e"
+  },
+  "W": {
+   "texture": "modern_interiors/1_Interiors/16x16/Room_Builder_16x16.png",
+   "tiles": [
+    [
+     1,
+     41
+    ]
+   ],
+   "solid": true,
+   "placeholder": "#8a8680"
+  },
+  "w": {
+   "texture": "modern_interiors/1_Interiors/16x16/Room_Builder_16x16.png",
+   "tiles": [
+    [
+     1,
+     42
+    ]
+   ],
+   "solid": true,
+   "placeholder": "#6e6a66"
+  },
+  "#": {
+   "texture": "modern_interiors/1_Interiors/16x16/Room_Builder_16x16.png",
+   "tiles": [
+    [
+     12,
+     0
+    ]
+   ],
+   "solid": true,
+   "placeholder": "#141318"
+  }
  }
 }

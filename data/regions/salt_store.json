@@ -1,0 +1,285 @@
+{
+ "id": "salt_store",
+ "name_key": "LOC_SALT_STORE",
+ "palette": "salt_tunnels",
+ "options": {
+  "outdoors": false,
+  "combat_enabled": true,
+  "fixed_tint": {
+   "color": [
+    0.86,
+    0.9,
+    1.0,
+    1.0
+   ]
+  },
+  "enter_dialogue_id": "salt_store_enter",
+  "enter_condition": {
+   "not_flag": "salt.store_entered"
+  }
+ },
+ "layout": [
+  "######################",
+  "#WWWWWWWWWWWWWWWWWWWW#",
+  "#wwwwwwwwwwwwwwwwwwww#",
+  "#ffffffffffffffffffff#",
+  "#ffffffffffffffffffff#",
+  "#ffffffffffffffffffff#",
+  "#ffffffffffffffffffff#",
+  "#ffffffffffffffffffff#",
+  "#ffffffffffffffffffff#",
+  "#ffffffffffffffffffff#",
+  "#ffffffffffffffffffff#",
+  "#ffffffffffffffffffff#",
+  "#ffffffffffffffffffff#",
+  "##########ff##########"
+ ],
+ "nodes": [
+  {
+   "kind": "prop",
+   "name": "BarrelL",
+   "tex": "@camp/Pier_Barrel_1.png",
+   "x": 36,
+   "y": 120,
+   "col": [
+    12,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#806040"
+  },
+  {
+   "kind": "prop",
+   "name": "CratesL",
+   "tex": "@hal/92.png",
+   "x": 36,
+   "y": 208,
+   "col": [
+    28,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#806040"
+  },
+  {
+   "kind": "prop",
+   "name": "Rack5",
+   "tex": "@library/47.png",
+   "x": 264,
+   "y": 64,
+   "col": [
+    30,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#806040"
+  },
+  {
+   "kind": "prop",
+   "name": "Rack4",
+   "tex": "@library/46.png",
+   "x": 216,
+   "y": 64,
+   "col": [
+    30,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#806040"
+  },
+  {
+   "kind": "prop",
+   "name": "Rack3",
+   "tex": "@library/45.png",
+   "x": 168,
+   "y": 64,
+   "col": [
+    30,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#806040"
+  },
+  {
+   "kind": "prop",
+   "name": "Rack2",
+   "tex": "@library/44.png",
+   "x": 120,
+   "y": 64,
+   "col": [
+    30,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#806040"
+  },
+  {
+   "kind": "prop",
+   "name": "Rack1",
+   "tex": "@library/43.png",
+   "x": 72,
+   "y": 64,
+   "col": [
+    30,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#806040"
+  },
+  {
+   "kind": "boss",
+   "name": "Reviser",
+   "x": 176,
+   "y": 124,
+   "scene": "res://scenes/combat/reviser.tscn",
+   "set": {
+    "boss_id": "storekeeper",
+    "name_key": "BOSS_STOREKEEPER",
+    "premade": "Premade_Character_13",
+    "pattern": "checker",
+    "summon_variant": "clinger"
+   }
+  },
+  {
+   "kind": "arena",
+   "boss": "Reviser",
+   "flag": "boss.storekeeper.engaged",
+   "x": 176,
+   "y": 124,
+   "size": [
+    288,
+    128
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "Ledger",
+   "id": "inspect_salt_ledger",
+   "x": 176,
+   "y": 124,
+   "area": [
+    40,
+    20
+   ],
+   "dialogue": "salt_ledger",
+   "priority": 30,
+   "show_if": {
+    "flag": "boss.storekeeper.defeated"
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "LadderProp",
+   "tex": "@hal/188.png",
+   "x": 320,
+   "y": 64,
+   "color": "#7a7068",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "show_if": {
+    "flag": "boss.storekeeper.defeated"
+   }
+  },
+  {
+   "kind": "door",
+   "name": "Ladder",
+   "id": "door_salt_ladder",
+   "x": 320,
+   "y": 72,
+   "area": [
+    20,
+    16
+   ],
+   "scene": "greyford_harbour",
+   "spawn": "from_tunnels",
+   "prompt": "PROMPT_CLIMB_UP",
+   "show_if": {
+    "flag": "boss.storekeeper.defeated"
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "Crates2",
+   "tex": "@hal/94.png",
+   "x": 300,
+   "y": 200,
+   "color": "#7a7068",
+   "col": [
+    28,
+    12
+   ],
+   "off": [
+    0,
+    -6
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Web",
+   "tex": "@hal/24.png",
+   "x": 24,
+   "y": 64,
+   "color": "#7a7068",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ]
+  },
+  {
+   "kind": "spawn",
+   "name": "Entrance",
+   "id": "entrance",
+   "x": 176,
+   "y": 196,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "WayBack",
+   "id": "door_store_exit",
+   "x": 176,
+   "y": 220,
+   "area": [
+    32,
+    8
+   ],
+   "scene": "salt_stair",
+   "spawn": "from_store",
+   "prompt": "PROMPT_GO_BACK"
+  }
+ ]
+}
