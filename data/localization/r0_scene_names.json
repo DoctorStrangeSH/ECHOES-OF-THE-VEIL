@@ -1,0 +1,13 @@
+{
+  "LOC_ABBEY_RUINS": {"en": "St Brigid's Abbey (ruins)", "ru": "Аббатство Святой Бригитты (руины)"},
+  "LOC_ASHBRIDGE_MUSEUM": {"en": "Ashbridge Museum of the Region", "ru": "Краеведческий музей Эшбриджа"},
+  "LOC_CAVENMOUTH_INN": {"en": "The Gull and Anchor", "ru": "«Чайка и якорь»"},
+  "LOC_CAVENMOUTH_POST": {"en": "Cavenmouth post office", "ru": "Почта Кейвенмута"},
+  "LOC_GREYFORD_AIRFIELD": {"en": "Greyford airfield", "ru": "Аэродром Грейфорда"},
+  "LOC_GREYFORD_HARBOUR": {"en": "Greyford harbour", "ru": "Гавань Грейфорда"},
+  "LOC_MILL_HILL_PUB": {"en": "The Old Millstone", "ru": "«Старый жёрнов»"},
+  "LOC_MUNICIPAL_ARCHIVE": {"en": "Municipal Archive (sealed)", "ru": "Городской архив (опечатан)"},
+  "LOC_ROPEWALK_SHED": {"en": "The Ropewalk", "ru": "Канатная дорожка"},
+  "LOC_ROPEWORKS_OFFICE": {"en": "Works office", "ru": "Контора фабрики"},
+  "LOC_ST_CARROW_LIGHTHOUSE": {"en": "St Carrow lighthouse", "ru": "Маяк Сент-Кэрроу"}
+}

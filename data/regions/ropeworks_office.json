@@ -1,0 +1,110 @@
+{
+ "id": "ropeworks_office",
+ "name_key": "LOC_RW_OFFICE",
+ "palette": "rented_room",
+ "options": {
+  "outdoors": false
+ },
+ "layout": {
+  "generator": "room",
+  "width": 14,
+  "height": 9,
+  "door_x": 6
+ },
+ "nodes": [
+  {
+   "kind": "furn",
+   "furn": "window",
+   "x": 72,
+   "y": 62
+  },
+  {
+   "kind": "furn",
+   "furn": "filing_cabinet",
+   "x": 40,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "filing_cabinet",
+   "x": 64,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "reading_desk",
+   "x": 136,
+   "y": 100
+  },
+  {
+   "kind": "furn",
+   "furn": "chair_wood",
+   "x": 136,
+   "y": 118
+  },
+  {
+   "kind": "furn",
+   "furn": "coat_stand",
+   "x": 176,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "world_map",
+   "x": 120,
+   "y": 62
+  },
+  {
+   "kind": "inspect",
+   "name": "Cabinet",
+   "id": "inspect_rw_cabinet",
+   "x": 52,
+   "y": 72,
+   "area": [
+    40,
+    12
+   ],
+   "dialogue": "rw_cabinet",
+   "priority": 20
+  },
+  {
+   "kind": "inspect",
+   "name": "ClockRack",
+   "id": "inspect_rw_clock",
+   "x": 176,
+   "y": 120,
+   "area": [
+    20,
+    12
+   ],
+   "lines": [
+    "FLAVOR_RW_CLOCK"
+   ]
+  },
+  {
+   "kind": "spawn",
+   "name": "Entrance",
+   "id": "entrance",
+   "x": 104,
+   "y": 124,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ExitDoor",
+   "id": "door_office_exit",
+   "x": 104,
+   "y": 140,
+   "area": [
+    30,
+    10
+   ],
+   "scene": "ropeworks",
+   "spawn": "from_office",
+   "prompt": "PROMPT_EXIT"
+  }
+ ]
+}

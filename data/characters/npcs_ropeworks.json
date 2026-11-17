@@ -1,0 +1,101 @@
+{
+ "frank_doyle": {
+  "name": "NPC_DOYLE",
+  "body": "Body_07",
+  "eyes": "Eyes_01",
+  "outfit": "Outfit_09_02",
+  "hairstyle": "Hairstyle_06_05",
+  "accessory": "Accessory_11_Beanie_02",
+  "color": "#606050",
+  "dialogue": "doyle",
+  "schedule": [
+   {
+    "period": [
+     "morning",
+     "afternoon"
+    ],
+    "scene": "ropeworks",
+    "anchor": "yard",
+    "facing": "down",
+    "activity": "work"
+   },
+   {
+    "period": [
+     "evening"
+    ],
+    "scene": "ropeworks",
+    "anchor": "office_door",
+    "facing": "down",
+    "activity": "phone"
+   }
+  ]
+ },
+ "sid_marlow": {
+  "name": "NPC_SID",
+  "body": "Body_01",
+  "eyes": "Eyes_05",
+  "outfit": "Outfit_17_02",
+  "hairstyle": "Hairstyle_18_04",
+  "color": "#707060",
+  "dialogue": "sid",
+  "schedule": [
+   {
+    "period": [
+     "morning",
+     "afternoon"
+    ],
+    "scene": "ropeworks",
+    "anchor": "gate_bench",
+    "facing": "down",
+    "activity": "read"
+   }
+  ]
+ },
+ "bill_kettle": {
+  "name": "NPC_KETTLE",
+  "custom_sheet": "modern_exteriors/Modern_Exteriors_16x16/Character_Generator_Addons_16x16/Body_10_Ghost_White_16x16.png",
+  "tint": "#c8dcff",
+  "color": "#c8dcff",
+  "dialogue": "kettle",
+  "schedule": [
+   {
+    "period": [
+     "night"
+    ],
+    "if": {
+     "all": [
+      {
+       "quest_active": "case_night_shift"
+      },
+      {
+       "not_flag": "ropeworks.rope_done"
+      }
+     ]
+    },
+    "scene": "ropewalk_shed",
+    "anchor": "ropewalk_mid",
+    "facing": "right",
+    "activity": "work"
+   },
+   {
+    "period": [
+     "night"
+    ],
+    "if": {
+     "all": [
+      {
+       "quest_active": "case_night_shift"
+      },
+      {
+       "flag": "ropeworks.rope_done"
+      }
+     ]
+    },
+    "scene": "ropewalk_shed",
+    "anchor": "ropewalk_far",
+    "facing": "left",
+    "activity": "look"
+   }
+  ]
+ }
+}

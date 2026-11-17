@@ -720,6 +720,7 @@ func _farm_story() -> void:
 	await _companion_bonds()
 	await _salt_tunnels()
 	await _number_13()
+	await _night_shift()
 	await _millwood_story()
 	await _mill_hill_story()
 	await _cavenmouth_story()
@@ -766,6 +767,43 @@ func _millwood_story() -> void:
 	await _talk(&"ada", {"npc": &"ada_fenwick"}, ["FORD_TO_BELL"])
 	await _finish_dialogue()
 	_assert(Journal.case_status(&"case_drowned_ford") == Journal.STATUS_DONE and Inventory.has(&"ford_bell"), "laid to rest; the clapper")
+
+
+## R2f: the Rope Works: day shifts, and a man still on the night shift.
+func _night_shift() -> void:
+	_step = "rope works: Doyle"
+	WorldClock.wait_until_hour(10)
+	SceneFlow.travel(&"ropeworks", &"bus_stop")
+	await _wait_location(&"ropeworks")
+	await _frames(10)
+	var money := Inventory.money
+	var h := WorldClock.minute_of_day
+	await _talk(&"doyle", {"npc": &"frank_doyle"}, ["DOYLE_ASK_SHIFT", "DOYLE_ASK_CARD", "MARKET_BYE"])
+	await _finish_dialogue()
+	_assert(Inventory.money == money + 16 and WorldClock.minute_of_day >= h + 240, "a four-hour shift for sixteen pounds")
+	_assert(Journal.case_stage(&"case_night_shift") == &"night", "a card clocked IN for a shift that doesn't exist")
+	_step = "rope works: the ropewalk at night"
+	WorldClock.wait_until_hour(23)
+	SceneFlow.travel(&"ropewalk_shed", &"entrance")
+	await _wait_location(&"ropewalk_shed")
+	await _frames(10)
+	_assert(NpcRegistry.resolve(&"bill_kettle").get("scene", "") == "ropewalk_shed", "Bill Kettle walks backwards down the ropewalk")
+	await _talk(&"kettle", {"npc": &"bill_kettle"}, ["KETTLE_HELP"])
+	await _finish_dialogue()
+	_assert(Livelihood.active.has(&"ropewalk_rope"), "a rope of bad hemp to finish")
+	Livelihood.complete(&"ropewalk_rope")
+	_assert(Journal.case_stage(&"case_night_shift") == &"report", "the rope holds")
+	SceneFlow.travel(&"ropeworks_office", &"entrance")
+	await _wait_location(&"ropeworks_office")
+	await _frames(10)
+	await _talk(&"rw_cabinet", {}, ["RW_POST_REPORT"])
+	await _finish_dialogue()
+	_assert(Journal.case_status(&"case_night_shift") == Journal.STATUS_DONE and GameState.has_flag(&"ropeworks.plaque"), "the report goes on the noticeboard")
+	SceneFlow.travel(&"ropeworks", &"from_office")
+	await _wait_location(&"ropeworks")
+	await _frames(10)
+	var plaque := _find_named("Plaque") as CanvasItem
+	_assert(plaque != null and plaque.visible, "a brass plate for W. Kettle")
 
 
 ## R2e: Rowan Terrace goes 12, 14; at night a door appears in the gap.

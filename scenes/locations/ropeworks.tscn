@@ -1,0 +1,389 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/location.gd" id="1_loc"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2_paint"]
+[ext_resource type="PackedScene" path="res://scenes/props/world_prop.tscn" id="3_prop"]
+[ext_resource type="Script" path="res://scripts/world/spawn_point.gd" id="4_spawn"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="5_inspect"]
+[ext_resource type="Script" path="res://scripts/interaction/door_interactable.gd" id="6_door"]
+[ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
+[ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+[ext_resource type="Script" path="res://scripts/world/conditional_visibility.gd" id="10_cond"]
+[ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
+[ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
+[ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+[ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
+[ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
+[ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
+[ext_resource type="PackedScene" path="res://scenes/world/repair_spot.tscn" id="17_spot"]
+[ext_resource type="PackedScene" path="res://scenes/world/screen_interactable.tscn" id="18_screen"]
+[ext_resource type="PackedScene" path="res://scenes/world/junk_pile.tscn" id="19_junk"]
+
+[node name="Ropeworks" type="Node2D"]
+script = ExtResource("1_loc")
+location_id = &"ropeworks"
+name_key = "LOC_ROPEWORKS"
+outdoors = true
+
+[node name="Ground" type="TileMapLayer" parent="."]
+script = ExtResource("2_paint")
+palette_id = "greyford_exterior"
+layout = "oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="NpcAnchors" type="Node2D" parent="."]
+
+[node name="Shed1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(136, 208)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/23_MIlitary_Base_Singles_16x16/23_MIlitary_Base_16x16_Dormitory_3.png"
+placeholder_size = Vector2i(176, 128)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(172, 50)
+collision_offset = Vector2(0, -25)
+
+[node name="Shed1Look" type="Area2D" parent="Entities"]
+position = Vector2(136, 214)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_rw_shed1"
+area_size = Vector2(40, 14)
+lines = PackedStringArray("FLAVOR_RW_SHED")
+
+[node name="Shed2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(312, 208)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/23_MIlitary_Base_Singles_16x16/23_MIlitary_Base_16x16_Dormitory_3.png"
+placeholder_size = Vector2i(176, 128)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(172, 50)
+collision_offset = Vector2(0, -25)
+
+[node name="Shed2Door" type="Area2D" parent="Entities"]
+position = Vector2(312, 214)
+script = ExtResource("6_door")
+interaction_id = &"door_rw_shed"
+area_size = Vector2(20, 14)
+prompt_key = "PROMPT_ENTER_ROPEWALK"
+target_scene_id = &"ropewalk_shed"
+target_spawn_id = &"entrance"
+
+[node name="Shed2Front" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(312, 228)
+script = ExtResource("4_spawn")
+spawn_id = &"from_shed"
+facing = Vector2(0, 1)
+
+[node name="Shed3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(488, 208)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/23_MIlitary_Base_Singles_16x16/23_MIlitary_Base_16x16_Dormitory_3.png"
+placeholder_size = Vector2i(176, 128)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(172, 50)
+collision_offset = Vector2(0, -25)
+
+[node name="Shed3Look" type="Area2D" parent="Entities"]
+position = Vector2(488, 214)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_rw_shed3"
+area_size = Vector2(40, 14)
+lines = PackedStringArray("FLAVOR_RW_SHED_END")
+
+[node name="Boiler" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(650, 216)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/23_MIlitary_Base_Singles_16x16/23_MIlitary_Base_16x16_Bunker.png"
+placeholder_size = Vector2i(128, 192)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(120, 60)
+collision_offset = Vector2(0, -30)
+
+[node name="BoilerLook" type="Area2D" parent="Entities"]
+position = Vector2(650, 222)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_rw_boiler"
+area_size = Vector2(40, 14)
+lines = PackedStringArray("FLAVOR_RW_BOILER")
+
+[node name="Office" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(806, 216)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/23_MIlitary_Base_Singles_16x16/23_MIlitary_Base_16x16_Dormitory_1.png"
+placeholder_size = Vector2i(176, 144)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(172, 50)
+collision_offset = Vector2(0, -25)
+
+[node name="OfficeDoor" type="Area2D" parent="Entities"]
+position = Vector2(830, 222)
+script = ExtResource("6_door")
+interaction_id = &"door_rw_office"
+area_size = Vector2(20, 14)
+prompt_key = "PROMPT_ENTER_OFFICE"
+target_scene_id = &"ropeworks_office"
+target_spawn_id = &"entrance"
+
+[node name="OfficeFront" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(830, 236)
+script = ExtResource("4_spawn")
+spawn_id = &"from_office"
+facing = Vector2(0, 1)
+
+[node name="Sign" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(40, 272)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Sign_2_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.627,0.439,0.251, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="SignLook" type="Area2D" parent="Entities"]
+position = Vector2(40, 280)
+script = ExtResource("5_inspect")
+interaction_id = &"read_rw_sign"
+area_size = Vector2(20, 10)
+lines = PackedStringArray("FLAVOR_RW_SIGN")
+
+[node name="Noticeboard" type="Area2D" parent="Entities"]
+position = Vector2(740, 236)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_rw_board"
+area_size = Vector2(24, 10)
+dialogue_id = &"rw_board"
+
+[node name="Board" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(740, 230)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Sign_1_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.627,0.439,0.251, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="Plaque" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(770, 236)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/19_Graveyard_Singles_16x16/ME_Singles_Graveyard_16x16_Small_Grey_Tombstone_2.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.541,0.541, 1)
+collision_size = Vector2(8, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="Condition" type="Node" parent="Entities/Plaque"]
+script = ExtResource("10_cond")
+show_if = {"flag": "ropeworks.plaque"}
+
+[node name="Stack1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(600, 250)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/8_Worksite_Singles_16x16/ME_Singles_Worksite_16x16_Stacked_Material_1.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.541,0.541, 1)
+collision_size = Vector2(24, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Stack2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(632, 252)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/8_Worksite_Singles_16x16/ME_Singles_Worksite_16x16_Stacked_Material_3.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.541,0.541, 1)
+collision_size = Vector2(24, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Stack3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(560, 260)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/8_Worksite_Singles_16x16/ME_Singles_Worksite_16x16_Stacked_Material_2.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.541,0.541, 1)
+collision_size = Vector2(24, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Stack4" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(212, 262)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/8_Worksite_Singles_16x16/ME_Singles_Worksite_16x16_Stacked_Material_4.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.541,0.541, 1)
+collision_size = Vector2(24, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Stack5" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(700, 450)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/8_Worksite_Singles_16x16/ME_Singles_Worksite_16x16_Light_Tower_1.png"
+placeholder_size = Vector2i(64, 64)
+placeholder_color = Color(0.541,0.541,0.541, 1)
+collision_size = Vector2(24, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Lamp1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(140, 284)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Street_Lamp_5.png"
+placeholder_size = Vector2i(16, 64)
+placeholder_color = Color(0.439,0.439,0.439, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="Lamp2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(420, 284)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Street_Lamp_5.png"
+placeholder_size = Vector2i(16, 64)
+placeholder_color = Color(0.439,0.439,0.439, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="Lamp3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(700, 284)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Street_Lamp_5.png"
+placeholder_size = Vector2i(16, 64)
+placeholder_color = Color(0.439,0.439,0.439, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="OldMill" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(120, 470)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/8_Worksite_Singles_16x16/ME_Singles_Worksite_16x16_Building_Skeleton_2.png"
+placeholder_size = Vector2i(112, 160)
+placeholder_color = Color(0.376,0.376,0.439, 1)
+collision_size = Vector2(100, 30)
+collision_offset = Vector2(0, -15)
+
+[node name="OldMillLook" type="Area2D" parent="Entities"]
+position = Vector2(120, 476)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_rw_oldmill"
+area_size = Vector2(60, 10)
+lines = PackedStringArray("FLAVOR_RW_OLDMILL")
+
+[node name="Excavator" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(260, 460)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/8_Worksite_Singles_16x16/ME_Singles_Worksite_16x16_Excavator_1.png"
+placeholder_size = Vector2i(48, 96)
+placeholder_color = Color(0.541,0.541,0.541, 1)
+collision_size = Vector2(40, 16)
+collision_offset = Vector2(0, -8)
+
+[node name="Cone1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(330, 420)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/8_Worksite_Singles_16x16/ME_Singles_Worksite_16x16_Cone_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.541,0.541, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="Cone2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(346, 420)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/8_Worksite_Singles_16x16/ME_Singles_Worksite_16x16_Cone_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.541,0.541, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="Cone3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(362, 420)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/8_Worksite_Singles_16x16/ME_Singles_Worksite_16x16_Cone_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.541,0.541, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="Toolbox" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(420, 440)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/8_Worksite_Singles_16x16/ME_Singles_Worksite_16x16_Tool_Box_1.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.541,0.541,0.541, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Stack6" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(820, 450)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/8_Worksite_Singles_16x16/ME_Singles_Worksite_16x16_Stacked_Material_5.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.541,0.541, 1)
+collision_size = Vector2(24, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Stack7" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(856, 452)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/8_Worksite_Singles_16x16/ME_Singles_Worksite_16x16_Stacked_Material_6.png"
+placeholder_size = Vector2i(16, 48)
+placeholder_color = Color(0.541,0.541,0.541, 1)
+collision_size = Vector2(24, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Barrels" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(760, 440)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Pier_Barrel_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.541,0.541, 1)
+collision_size = Vector2(12, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="BusStopSign" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(600, 376)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/10_Vehicles_Singles_16x16/ME_Singles_Vehicles_16x16_Bus_Stop_Sign_1.png"
+placeholder_size = Vector2i(16, 48)
+placeholder_color = Color(0.188,0.376,0.627, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="BusStopUse" parent="Entities" instance=ExtResource("18_screen")]
+position = Vector2(600, 384)
+interaction_id = &"use_rw_bus"
+screen = "map:travel"
+prompt_key = "PROMPT_BUS"
+
+[node name="BusStopSpawn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(600, 400)
+script = ExtResource("4_spawn")
+spawn_id = &"bus_stop"
+facing = Vector2(0, -1)
+
+[node name="Bench" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(520, 376)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Bench_2.png"
+placeholder_size = Vector2i(48, 32)
+placeholder_color = Color(0.541,0.541,0.541, 1)
+collision_size = Vector2(44, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="A_yard" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(420, 250)
+script = ExtResource("11_anchor")
+anchor_id = &"yard"
+
+[node name="A_gate_bench" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(520, 392)
+script = ExtResource("11_anchor")
+anchor_id = &"gate_bench"
+
+[node name="A_office_door" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(830, 240)
+script = ExtResource("11_anchor")
+anchor_id = &"office_door"

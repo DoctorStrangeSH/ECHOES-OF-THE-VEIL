@@ -1,0 +1,135 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/location.gd" id="1_loc"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2_paint"]
+[ext_resource type="PackedScene" path="res://scenes/props/world_prop.tscn" id="3_prop"]
+[ext_resource type="Script" path="res://scripts/world/spawn_point.gd" id="4_spawn"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="5_inspect"]
+[ext_resource type="Script" path="res://scripts/interaction/door_interactable.gd" id="6_door"]
+[ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
+[ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+[ext_resource type="Script" path="res://scripts/world/conditional_visibility.gd" id="10_cond"]
+[ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
+[ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
+[ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+[ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
+[ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
+[ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
+[ext_resource type="PackedScene" path="res://scenes/world/repair_spot.tscn" id="17_spot"]
+[ext_resource type="PackedScene" path="res://scenes/world/screen_interactable.tscn" id="18_screen"]
+[ext_resource type="PackedScene" path="res://scenes/world/junk_pile.tscn" id="19_junk"]
+
+[node name="RopeworksOffice" type="Node2D"]
+script = ExtResource("1_loc")
+location_id = &"ropeworks_office"
+name_key = "LOC_RW_OFFICE"
+outdoors = false
+
+[node name="Ground" type="TileMapLayer" parent="."]
+script = ExtResource("2_paint")
+palette_id = "rented_room"
+layout = "##############
+#WWWWWWWWWWWW#
+#wwwwwwwwwwww#
+#ffffffffffff#
+#ffffffffffff#
+#ffffffffffff#
+#ffffffffffff#
+#ffffffffffff#
+######ff######"
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="NpcAnchors" type="Node2D" parent="."]
+
+[node name="Window_72_62" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(72, 62)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_421.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="FilingCabinet_40_64" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(40, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_40.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(13, 8)
+collision_offset = Vector2(-0.5, -4)
+
+[node name="FilingCabinet_64_64" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(64, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_40.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(13, 8)
+collision_offset = Vector2(-0.5, -4)
+
+[node name="ReadingDesk_136_100" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(136, 100)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_25.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(26, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="ChairWood_136_118" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(136, 118)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_92.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -12)
+
+[node name="CoatStand_176_64" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(176, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_104.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(14, 4)
+collision_offset = Vector2(0, -5)
+
+[node name="WorldMap_120_62" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(120, 62)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_31.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Cabinet" type="Area2D" parent="Entities"]
+position = Vector2(52, 72)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_rw_cabinet"
+area_size = Vector2(40, 12)
+interaction_priority = 20
+dialogue_id = &"rw_cabinet"
+
+[node name="ClockRack" type="Area2D" parent="Entities"]
+position = Vector2(176, 120)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_rw_clock"
+area_size = Vector2(20, 12)
+lines = PackedStringArray("FLAVOR_RW_CLOCK")
+
+[node name="Entrance" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(104, 124)
+script = ExtResource("4_spawn")
+spawn_id = &"entrance"
+facing = Vector2(0, -1)
+
+[node name="ExitDoor" type="Area2D" parent="Entities"]
+position = Vector2(104, 140)
+script = ExtResource("6_door")
+interaction_id = &"door_office_exit"
+area_size = Vector2(30, 10)
+prompt_key = "PROMPT_EXIT"
+target_scene_id = &"ropeworks"
+target_spawn_id = &"from_office"

@@ -402,6 +402,27 @@
    "if": {
     "flag": "terrace.13.restored"
    }
+  },
+  {
+   "text": "CHATTER_RW_1",
+   "where": [
+    "ropeworks"
+   ]
+  },
+  {
+   "text": "CHATTER_RW_2",
+   "where": [
+    "ropeworks"
+   ]
+  },
+  {
+   "text": "CHATTER_RW_3",
+   "where": [
+    "ropeworks"
+   ],
+   "if": {
+    "flag": "ropeworks.plaque"
+   }
   }
  ]
 }

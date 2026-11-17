@@ -410,6 +410,20 @@ flowchart LR
   case_drowned_ford_START(("start")) --> case_drowned_ford_listen
 ```
 
+## case_night_shift — The Night Shift
+
+```mermaid
+flowchart LR
+  case_night_shift_night["night<br/>After dark, go into the ropewalk."]
+  case_night_shift_rope["rope<br/>Bill Kettle is still finishing his rope…"]
+  case_night_shift_report["report<br/>The rope held. Look in the works office…"]
+  case_night_shift_night --> case_night_shift_rope
+  case_night_shift_rope --> case_night_shift_report
+  case_night_shift_out_posted(["outcome: posted<br/>The accident report hangs on …"])
+  case_night_shift_out_clocked(["outcome: clocked<br/>Bill Kettle's card is punched…"])
+  case_night_shift_START(("start")) --> case_night_shift_night
+```
+
 ## case_salt_tunnels — Knocking under the Market
 
 ```mermaid
