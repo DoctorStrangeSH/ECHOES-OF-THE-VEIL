@@ -170,3 +170,7 @@ The farm, the rod and the forest finally feed something. Eight recipes (data/coo
 ## D-087 Pontoon in the pubs (R7c)
 
 The card game is pontoon, the British pub cousin of twenty-one, because people in Greyford would actually play it and the rules fit on one line: get closer to 21 than the banker without going over; twist or stick; the banker draws to 17; ties go to the banker; a pontoon (ace and ten-card) or a five-card trick pays double. Stakes are £1, £2 or £5, so it is a pastime, not an income (the house edge is real, as in a real pub). One RPG touch: with Perception 4 you read the banker's face and know whether the hidden card is high or low, which turns a stat into a better decision rather than a better number. Tables at the Old Millstone (Bess deals) and the Gull & Anchor. The rules live in systems/minigames/pontoon.gd and are unit-tested; the table is drawn in code, so it needs no art.
+
+## D-088 The main theme, orchestrated (R10b)
+
+The title theme keeps its two tunes and its key and becomes a 93-second arc that loops: a bell alone counts the echo over a held D while the choir hums; the piano states theme A over harp-like arpeggios; strings take theme B with the flute answering, choir and timpani entering; the echo returns full (strings, choir, organ, timpani on every bar); and the piano closes alone, quiet enough to lead back into the opening bell. Same tools/music pipeline, new voices from R10a.

@@ -74,17 +74,27 @@ def arp(song, track, bar, ch, pattern, step, vel=0.45, up=0, bpb=4):
 # --- Tracks ---------------------------------------------------------------------
 
 def title():
-    s = Song(bpm=72, bars=16, seed=11)
-    s.track("pad", "pad", gain=0.9, reverb=0.45)
-    s.track("lh", "piano", gain=0.75, pan=-0.15, reverb=0.3)
-    s.track("rh", "piano", gain=1.0, pan=0.1, reverb=0.35)
-    s.track("bell", "bell", gain=0.6, pan=0.35, reverb=0.6)
-    s.track("bass", "bass", gain=0.5, reverb=0.1)
-    prog = ["Dm", "Bb", "F", "C", "Dm", "Bb", "Gm", "A"] * 2
-    for i, ch in enumerate(prog):
-        s.chord("pad", i * 4, CHORDS[ch], 4, 0.5 if i < 8 else 0.62)
-        arp(s, "lh", i, ch, [0, 1, 2, 3, 2, 1, 2, 1], 0.5, 0.33 if i < 8 else 0.4, up=-1 if i in (1, 6) else 0)
-        s.note("bass", i * 4, midi(root(ch)) - 12, 3.8, 0.55)
+    """The main theme (R10b): the echo grows from one bell into the whole town.
+
+    0-3   intro: a bell counts the echo (A-D-E-F) over a held D, the choir hums
+    4-11  theme A on the piano, harp-like arpeggios, strings underneath
+    12-19 theme B: strings carry the tune, flute answers, choir and timpani
+    20-23 the echo, full: strings, choir and organ, timpani on every bar
+    24-27 coda: the piano alone, the bell once more, back to the start
+    """
+    s = Song(bpm=72, bars=28, seed=11)
+    s.track("pad", "pad", gain=0.8, reverb=0.5)
+    s.track("ch", "choir", gain=0.75, reverb=0.8)
+    s.track("org", "organ", gain=0.45, reverb=0.7)
+    s.track("lh", "piano", gain=0.7, pan=-0.15, reverb=0.35)
+    s.track("rh", "piano", gain=1.0, pan=0.1, reverb=0.4)
+    s.track("harp", "pluck", gain=0.55, pan=-0.3, reverb=0.5)
+    s.track("str", "strings", gain=0.9, pan=0.15, reverb=0.55)
+    s.track("str2", "strings", gain=0.55, pan=-0.2, reverb=0.55)
+    s.track("fl", "flute", gain=0.6, pan=0.35, reverb=0.5)
+    s.track("bell", "bell", gain=0.6, pan=0.35, reverb=0.7)
+    s.track("timp", "timpani", gain=0.75, reverb=0.5)
+    s.track("bass", "bass", gain=0.55, reverb=0.15)
     a = [("A4", 1.5), ("D5", 0.5), ("E5", 1), ("F5", 1),
          ("F5", 2), ("E5", 1), ("D5", 1),
          ("C5", 1.5), ("A4", 0.5), ("C5", 1), ("F5", 1),
@@ -101,12 +111,62 @@ def title():
          ("D5", 2), ("F5", 1), ("Bb5", 1),
          ("A5", 1.5), ("G5", 0.5), ("E5", 1), ("C#5", 1),
          ("D5", 4)]
-    melody(s, "rh", 0, a, 0.62)
-    melody(s, "rh", 8, b, 0.7)
-    echo(s, "bell", 0, a[:4], vel=0.3)
-    echo(s, "bell", 4, a[14:18], vel=0.3)
-    echo(s, "bell", 8, b[:4], vel=0.28)
-    echo(s, "bell", 12, b[14:18], vel=0.3, shift=0)
+    prog_a = ["Dm", "Bb", "F", "C", "Dm", "Bb", "Gm", "A"]
+    prog_b = ["Dm", "Bb", "F", "C", "Dm", "Bb", "Gm", "A"]
+    # Intro (bars 0-3): a held D, the choir hums, the bell counts the echo.
+    for i in range(4):
+        s.chord("pad", i * 4, CHORDS["Dm"], 4, 0.35 + 0.05 * i)
+        s.note("bass", i * 4, "D2", 4, 0.4)
+    s.chord("ch", 4, ["D4", "A4"], 8, 0.3)
+    melody(s, "bell", 0, [("A5", 2), ("D6", 2), ("E6", 2), ("F6", 6), (None, 4)], 0.4)
+    melody(s, "fl", 2, [(None, 2), ("A5", 1), ("D6", 1), ("E6", 1), ("F6", 3)], 0.35)
+    # Theme A (bars 4-11): piano.
+    for k, ch in enumerate(prog_a):
+        i = 4 + k
+        s.chord("pad", i * 4, CHORDS[ch], 4, 0.45)
+        arp(s, "lh", i, ch, [0, 1, 2, 3, 2, 1, 2, 1], 0.5, 0.33, up=-1 if ch in ("Bb", "Gm") else 0)
+        arp(s, "harp", i, ch, [0, 1, 2, 3], 1.0, 0.25, up=1)
+        s.note("bass", i * 4, midi(root(ch)) - 12, 3.8, 0.5)
+        if k >= 4:
+            s.note("str2", i * 4, midi(CHORDS[ch][1]), 4, 0.3)
+    melody(s, "rh", 4, a, 0.6)
+    echo(s, "bell", 4, a[:4], vel=0.26)
+    # Theme B (bars 12-19): strings take the tune, the flute answers.
+    for k, ch in enumerate(prog_b):
+        i = 12 + k
+        s.chord("pad", i * 4, CHORDS[ch], 4, 0.5)
+        s.chord("ch", i * 4, CHORDS[ch][1:], 4, 0.3)
+        arp(s, "lh", i, ch, [0, 1, 2, 3, 2, 1, 2, 1], 0.5, 0.36)
+        s.note("bass", i * 4, midi(root(ch)) - 12, 3.8, 0.6)
+        s.note("str2", i * 4, midi(CHORDS[ch][0]), 4, 0.35)
+        if k in (0, 4):
+            s.hit("timp", i * 4, 0.55)
+    melody(s, "str", 12, b, 0.55)
+    melody(s, "rh", 12, b, 0.35, octave_shift=1)
+    echo(s, "fl", 12, b[:4], delay=2, vel=0.35, shift=0)
+    echo(s, "fl", 16, b[14:18], delay=2, vel=0.35, shift=0)
+    # The echo, full (bars 20-23).
+    climax = [("A5", 2), ("D6", 1), ("E6", 1), ("F6", 3), ("E6", 1),
+              ("D6", 2), ("Bb5", 2), ("C6", 2), ("A5", 2),
+              ("Bb5", 1.5), ("A5", 0.5), ("G5", 1), ("Bb5", 1), ("A5", 4)]
+    for k, ch in enumerate(["Dm", "Bb", "Gm", "A"]):
+        i = 20 + k
+        s.chord("pad", i * 4, CHORDS[ch], 4, 0.62)
+        s.chord("ch", i * 4, CHORDS[ch], 4, 0.45)
+        s.chord("org", i * 4, CHORDS[ch][:3], 4, 0.4)
+        s.note("bass", i * 4, midi(root(ch)) - 12, 4, 0.7)
+        s.note("str2", i * 4, midi(CHORDS[ch][-1]), 4, 0.45)
+        s.hit("timp", i * 4, 0.75)
+        s.hit("timp", i * 4 + 3.5, 0.4)
+    melody(s, "str", 20, climax, 0.72, octave_shift=-1)
+    melody(s, "fl", 20, climax, 0.4)
+    # Coda (bars 24-27): the piano alone, back to the beginning.
+    for k, ch in enumerate(["Dm", "Bb", "Asus", "Dm"]):
+        i = 24 + k
+        s.chord("pad", i * 4, CHORDS[ch], 4, 0.35 - 0.05 * k)
+        arp(s, "lh", i, ch, [0, 1, 2, 3], 1.0, 0.28)
+    melody(s, "rh", 24, [("A4", 1.5), ("D5", 0.5), ("E5", 1), ("F5", 1), ("E5", 2), ("D5", 2), ("C#5", 3), ("E5", 1), ("D5", 4)], 0.45)
+    s.note("bell", 27 * 4 + 1, "D6", 2, 0.25)
     return s
 
 
