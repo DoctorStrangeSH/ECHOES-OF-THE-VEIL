@@ -21,10 +21,15 @@ static func hitstop(duration: float = 0.05) -> void:
 
 ## Rising number above a hit. `parent` should be the location (world space).
 static func damage_number(parent: Node, at: Vector2, amount: int, color: Color = Color(1, 0.95, 0.8)) -> void:
+	text_pop(parent, at, str(amount), color)
+
+
+## A short floating word above a spot (damage numbers, "guarded").
+static func text_pop(parent: Node, at: Vector2, text: String, color: Color = Color(1, 0.95, 0.8)) -> void:
 	if parent == null:
 		return
 	var l := Label.new()
-	l.text = str(amount)
+	l.text = text
 	l.add_theme_font_size_override("font_size", 8)
 	l.add_theme_color_override("font_color", color)
 	l.add_theme_color_override("font_outline_color", Color.BLACK)

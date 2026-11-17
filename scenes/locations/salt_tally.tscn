@@ -236,7 +236,7 @@ facing = Vector2(1, 0)
 [node name="Echo1" parent="Entities" instance=ExtResource("12_enemy")]
 position = Vector2(200, 160)
 enemy_id = &"salt_tal_1"
-variant = "hollow"
+variant = "warden"
 
 [node name="Echo2" parent="Entities" instance=ExtResource("12_enemy")]
 position = Vector2(320, 130)
@@ -246,7 +246,7 @@ variant = "clinger"
 [node name="Echo3" parent="Entities" instance=ExtResource("12_enemy")]
 position = Vector2(400, 190)
 enemy_id = &"salt_tal_3"
-variant = "wailer"
+variant = "caller"
 
 [node name="Echo4" parent="Entities" instance=ExtResource("12_enemy")]
 position = Vector2(460, 160)

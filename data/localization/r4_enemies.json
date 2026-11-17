@@ -1,0 +1,46 @@
+{
+  "ENEMY_WARDEN": {
+    "en": "Warden",
+    "ru": "Страж"
+  },
+  "ENEMY_DOUBLED": {
+    "en": "Doubled",
+    "ru": "Двойник"
+  },
+  "ENEMY_FLICKER": {
+    "en": "Flicker",
+    "ru": "Мерцающий"
+  },
+  "ENEMY_CALLER": {
+    "en": "Caller",
+    "ru": "Зовущая"
+  },
+  "ENEMY_MOURNER": {
+    "en": "Sitter",
+    "ru": "Сиделка"
+  },
+  "ENEMY_WARDEN_HINT": {
+    "en": "light blows glance off its front. Strike from the side, from behind, or hard",
+    "ru": "лёгкие удары спереди отскакивают. Бейте сбоку, со спины или тяжёлым оружием"
+  },
+  "ENEMY_DOUBLED_HINT": {
+    "en": "it comes apart into two when it falls. Keep room to move",
+    "ru": "падая, распадается надвое. Оставьте себе место для манёвра"
+  },
+  "ENEMY_FLICKER_HINT": {
+    "en": "when it glows, it steps out of the air behind you. Dodge as the glow fades",
+    "ru": "когда засветится, шагнёт из воздуха вам за спину. Уходите рывком, как только свет погаснет"
+  },
+  "ENEMY_CALLER_HINT": {
+    "en": "it keeps calling small echoes to its side. Reach it first",
+    "ru": "всё время зовёт к себе мелких эхо. Сначала доберитесь до неё"
+  },
+  "ENEMY_MOURNER_HINT": {
+    "en": "it heals the echoes around it, and the Lantern Flash doesn't stop it. Finish it first",
+    "ru": "лечит эхо вокруг себя, и вспышка фонаря её не останавливает. Сначала — её"
+  },
+  "COMBAT_GUARDED": {
+    "en": "guarded",
+    "ru": "отбито"
+  }
+}

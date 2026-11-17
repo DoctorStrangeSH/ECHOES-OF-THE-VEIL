@@ -230,7 +230,7 @@ variant = "hollow"
 [node name="Echo2" parent="Entities" instance=ExtResource("12_enemy")]
 position = Vector2(140, 170)
 enemy_id = &"salt_hub_2"
-variant = "hollow"
+variant = "doubled"
 
 [node name="Encounter" type="Node" parent="."]
 script = ExtResource("13_encounter")

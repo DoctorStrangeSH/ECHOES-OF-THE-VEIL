@@ -1,6 +1,174 @@
 {
- "_doc": "Echo enemy variants used by EchoEnemy (scenes set `variant`). New variants need no code: tune these numbers. tint is RGBA 0-1; sheet is an optional LimeZu body sheet; ranged variants throw memory shards instead of lunging. Add more in enemies_*.json.",
- "hollow": {"name": "ENEMY_HOLLOW", "max_health": 3, "move_speed": 34, "chase_speed": 52, "lunge_speed": 190, "windup_time": 0.55, "attack_range": 26, "scale": 1.0, "tint": [0.75, 0.95, 1.0, 0.82], "resonance": 2, "damage": 1},
- "clinger": {"name": "ENEMY_CLINGER", "max_health": 1, "move_speed": 50, "chase_speed": 78, "lunge_speed": 230, "windup_time": 0.3, "attack_range": 22, "scale": 0.8, "tint": [1.0, 0.8, 0.85, 0.8], "resonance": 1, "damage": 1},
- "wailer": {"name": "ENEMY_WAILER", "max_health": 2, "move_speed": 30, "chase_speed": 40, "lunge_speed": 0, "windup_time": 0.7, "attack_range": 110, "scale": 1.0, "tint": [0.8, 0.75, 1.0, 0.8], "resonance": 2, "damage": 1, "ranged": true}
+ "_doc": "Echo enemy variants used by EchoEnemy (scenes set `variant`). New variants need no code: tune these numbers. tint is RGBA 0-1; sheet is an optional LimeZu body sheet; ranged variants throw memory shards instead of lunging. Add more in enemies_*.json. Traits (R4b): guard (frontal block of light hits), split {variant,count}, blink (steps behind the player), summon {variant,every,max}, mend {every,radius,amount}, resist_stun.",
+ "hollow": {
+  "name": "ENEMY_HOLLOW",
+  "max_health": 3,
+  "move_speed": 34,
+  "chase_speed": 52,
+  "lunge_speed": 190,
+  "windup_time": 0.55,
+  "attack_range": 26,
+  "scale": 1.0,
+  "tint": [
+   0.75,
+   0.95,
+   1.0,
+   0.82
+  ],
+  "resonance": 2,
+  "damage": 1
+ },
+ "clinger": {
+  "name": "ENEMY_CLINGER",
+  "max_health": 1,
+  "move_speed": 50,
+  "chase_speed": 78,
+  "lunge_speed": 230,
+  "windup_time": 0.3,
+  "attack_range": 22,
+  "scale": 0.8,
+  "tint": [
+   1.0,
+   0.8,
+   0.85,
+   0.8
+  ],
+  "resonance": 1,
+  "damage": 1
+ },
+ "wailer": {
+  "name": "ENEMY_WAILER",
+  "max_health": 2,
+  "move_speed": 30,
+  "chase_speed": 40,
+  "lunge_speed": 0,
+  "windup_time": 0.7,
+  "attack_range": 110,
+  "scale": 1.0,
+  "tint": [
+   0.8,
+   0.75,
+   1.0,
+   0.8
+  ],
+  "resonance": 2,
+  "damage": 1,
+  "ranged": true
+ },
+ "warden": {
+  "name": "ENEMY_WARDEN",
+  "max_health": 5,
+  "move_speed": 26,
+  "chase_speed": 40,
+  "lunge_speed": 170,
+  "windup_time": 0.8,
+  "attack_range": 28,
+  "scale": 1.25,
+  "tint": [
+   0.7,
+   0.78,
+   0.9,
+   0.9
+  ],
+  "resonance": 4,
+  "damage": 2,
+  "guard": true,
+  "drop_chance": 0.2,
+  "hint": "ENEMY_WARDEN_HINT"
+ },
+ "doubled": {
+  "name": "ENEMY_DOUBLED",
+  "max_health": 3,
+  "move_speed": 36,
+  "chase_speed": 56,
+  "lunge_speed": 200,
+  "windup_time": 0.5,
+  "attack_range": 26,
+  "scale": 1.05,
+  "tint": [
+   0.95,
+   0.75,
+   1.0,
+   0.8
+  ],
+  "resonance": 2,
+  "damage": 1,
+  "split": {
+   "variant": "clinger",
+   "count": 2
+  },
+  "hint": "ENEMY_DOUBLED_HINT"
+ },
+ "flicker": {
+  "name": "ENEMY_FLICKER",
+  "max_health": 2,
+  "move_speed": 40,
+  "chase_speed": 55,
+  "lunge_speed": 220,
+  "windup_time": 0.5,
+  "attack_range": 70,
+  "scale": 0.95,
+  "tint": [
+   1.0,
+   0.95,
+   0.7,
+   0.6
+  ],
+  "resonance": 3,
+  "damage": 1,
+  "blink": true,
+  "hint": "ENEMY_FLICKER_HINT"
+ },
+ "caller": {
+  "name": "ENEMY_CALLER",
+  "max_health": 3,
+  "move_speed": 28,
+  "chase_speed": 36,
+  "lunge_speed": 0,
+  "windup_time": 0.9,
+  "attack_range": 120,
+  "scale": 1.0,
+  "tint": [
+   1.0,
+   0.85,
+   0.7,
+   0.8
+  ],
+  "resonance": 3,
+  "damage": 1,
+  "ranged": true,
+  "summon": {
+   "variant": "clinger",
+   "every": 6.0,
+   "max": 2
+  },
+  "sheet": "modern_exteriors/Modern_Exteriors_16x16/Character_Generator_Addons_16x16/Body_10_Ghost_Green_16x16.png",
+  "hint": "ENEMY_CALLER_HINT"
+ },
+ "mourner": {
+  "name": "ENEMY_MOURNER",
+  "max_health": 4,
+  "move_speed": 24,
+  "chase_speed": 34,
+  "lunge_speed": 160,
+  "windup_time": 0.75,
+  "attack_range": 26,
+  "scale": 1.1,
+  "tint": [
+   0.6,
+   0.7,
+   1.0,
+   0.85
+  ],
+  "resonance": 4,
+  "damage": 1,
+  "mend": {
+   "every": 4.0,
+   "radius": 90.0,
+   "amount": 1
+  },
+  "resist_stun": true,
+  "sheet": "modern_exteriors/Modern_Exteriors_16x16/Character_Generator_Addons_16x16/Body_10_Ghost_Green_16x16.png",
+  "hint": "ENEMY_MOURNER_HINT"
+ }
 }

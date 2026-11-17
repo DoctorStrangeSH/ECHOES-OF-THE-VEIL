@@ -11,7 +11,8 @@
   ],
   "enemies": [
    "hollow",
-   "clinger"
+   "clinger",
+   "mourner"
   ],
   "rooms": [
    {
@@ -108,7 +109,8 @@
   ],
   "enemies": [
    "hollow",
-   "wailer"
+   "wailer",
+   "doubled"
   ],
   "rooms": [
    {
@@ -205,7 +207,8 @@
   ],
   "enemies": [
    "clinger",
-   "wailer"
+   "wailer",
+   "flicker"
   ],
   "rooms": [
    {
@@ -305,7 +308,9 @@
   "enemies": [
    "hollow",
    "wailer",
-   "clinger"
+   "clinger",
+   "warden",
+   "caller"
   ],
   "rooms": [
    {

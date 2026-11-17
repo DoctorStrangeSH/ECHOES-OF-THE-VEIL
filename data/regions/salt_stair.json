@@ -336,7 +336,7 @@
    "id": "salt_hub_2",
    "x": 140,
    "y": 170,
-   "variant": "hollow"
+   "variant": "doubled"
   },
   {
    "kind": "encounter",

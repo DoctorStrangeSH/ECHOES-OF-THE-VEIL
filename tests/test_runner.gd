@@ -694,6 +694,66 @@ func test_enemy_variants_are_data() -> void:
 
 # --- M7: campaign -------------------------------------------------------------------
 
+func test_echo_traits() -> void:
+	var scene := load("res://scenes/combat/echo_enemy.tscn") as PackedScene
+	var room := Node2D.new()
+	add_child(room)
+	# Guard: a light hit from the front glances off, from behind it lands.
+	var w := scene.instantiate() as EchoEnemy
+	w.variant = "warden"
+	room.add_child(w)
+	check(w.guard and w.max_health >= 5, "the Warden guards and is tough")
+	w._dir = LayeredCharacterSprite.Dir.DOWN
+	check(w._modify_damage(1, w.global_position + Vector2(0, 30)) == 0, "a light hit from the front is turned aside")
+	check(w._modify_damage(1, w.global_position + Vector2(0, -30)) == 1, "from behind it lands")
+	check(w._modify_damage(2, w.global_position + Vector2(0, 30)) == 2, "a heavy hit goes through the guard")
+	# Resist stun.
+	var m := scene.instantiate() as EchoEnemy
+	m.variant = "mourner"
+	m.position = Vector2(40, 0)
+	room.add_child(m)
+	m.stun(2.0)
+	check(m.state != EchoEnemy.State.STUNNED, "the Sitter ignores the Lantern Flash")
+	# Mend heals a hurt neighbour.
+	w.health.take_damage(2, Vector2.ZERO)
+	var before := w.health.health
+	m.state = EchoEnemy.State.CHASE
+	m._trait_timer = 0.0
+	m._tick_traits(0.1)
+	check(w.health.health == before + 1, "the Sitter mends the echoes around it")
+	# Split: a Doubled comes apart into two clingers that drop nothing.
+	var d := scene.instantiate() as EchoEnemy
+	d.variant = "doubled"
+	d.position = Vector2(-40, 0)
+	room.add_child(d)
+	var count := func() -> int:
+		var n := 0
+		for c in room.get_children():
+			if c is EchoEnemy and (c as EchoEnemy).variant == "clinger":
+				n += 1
+		return n
+	d.health.take_damage(99, Vector2.ZERO)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	check(count.call() == 2, "the Doubled comes apart in two")
+	for c in room.get_children():
+		if c is EchoEnemy and (c as EchoEnemy).variant == "clinger":
+			check((c as EchoEnemy).resonance_drop == 0, "pieces drop no resonance")
+	# Summon: the Caller calls a clinger, up to its limit.
+	var k := scene.instantiate() as EchoEnemy
+	k.variant = "caller"
+	room.add_child(k)
+	k.state = EchoEnemy.State.CHASE
+	for i in 4:
+		k._trait_timer = 0.0
+		k._tick_traits(0.1)
+		await get_tree().process_frame
+	check(k._summoned.size() == 2, "the Caller calls no more than two")
+	check(EchoEnemy.variants().get(&"flicker", {}).get("blink", false), "the Flicker blinks")
+	room.queue_free()
+	await get_tree().process_frame
+
+
 func test_campaign_acts_start_in_order() -> void:
 	GameState.reset_for_new_game()
 	GameState.is_playing = true

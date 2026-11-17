@@ -483,7 +483,7 @@
    "id": "abbey_3",
    "x": 320,
    "y": 300,
-   "variant": "wailer"
+   "variant": "mourner"
   },
   {
    "kind": "enemy",
@@ -507,7 +507,7 @@
    "id": "abbey_6",
    "x": 320,
    "y": 230,
-   "variant": "hollow"
+   "variant": "flicker"
   },
   {
    "kind": "encounter",
