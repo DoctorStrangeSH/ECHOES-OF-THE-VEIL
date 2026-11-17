@@ -74,7 +74,17 @@ func get_hour() -> int:
 
 
 func time_text() -> String:
-	return "%02d:%02d" % [minute_of_day / 60, minute_of_day % 60]
+	return clock_text(minute_of_day)
+
+
+## "HH:MM" for a minute of the day.
+static func clock_text(minute: int) -> String:
+	return "%02d:%02d" % [minute / 60, minute % 60]
+
+
+## Minutes since the start of day 0: for things that last across midnight.
+func absolute_minute() -> int:
+	return day * MINUTES_PER_DAY + minute_of_day
 
 
 func advance_minutes(amount: int) -> void:

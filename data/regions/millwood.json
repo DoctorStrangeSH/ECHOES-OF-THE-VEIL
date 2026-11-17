@@ -1302,6 +1302,15 @@
     -1,
     0
    ]
+  },
+  {
+   "kind": "screen",
+   "name": "CampfireCook",
+   "id": "use_millwood_fire",
+   "x": 176,
+   "y": 206,
+   "screen": "cook",
+   "prompt": "PROMPT_COOK_FIRE"
   }
  ]
 }

@@ -1833,6 +1833,40 @@ func test_own_car() -> void:
 	GameState.is_playing = false
 
 
+func test_cooking_and_meals() -> void:
+	GameState.reset_for_new_game()
+	GameState.is_playing = true
+	check(Cooking.recipes().size() >= 8, "eight recipes")
+	for id: StringName in Cooking.recipes():
+		var r: Dictionary = Cooking.recipes()[id]
+		check(Inventory.def(StringName(r["makes"])).get("category") == "consumable", "%s makes a dish you can eat" % id)
+		for need: Dictionary in r["needs"]:
+			for item: String in ([need["item"]] if need.has("item") else need["any"]):
+				check(not Inventory.def(StringName(item)).is_empty(), "%s needs a real item: %s" % [id, item])
+	check(not Cooking.can_cook(&"fish_pie"), "nothing in the bag, nothing to cook")
+	Inventory.add(&"cod", 1, false)
+	Inventory.add(&"egg", 1, false)
+	Inventory.add(&"turnip", 1, false)
+	var t0 := WorldClock.absolute_minute()
+	check(Cooking.can_cook(&"fish_pie") and Cooking.cook(&"fish_pie"), "cod, egg and a turnip: a fish pie")
+	check(Inventory.count(&"fish_pie") == 1 and Inventory.count(&"cod") == 0 and Inventory.count(&"turnip") == 0, "the ingredients go into the pie")
+	check(WorldClock.absolute_minute() == t0 + Cooking.COOK_MINUTES, "cooking takes twenty minutes")
+	var dmg := Inventory.stat("damage_bonus")
+	check(Inventory.use(&"fish_pie"), "eat the pie")
+	check(Inventory.meal_active() and is_equal_approx(Inventory.stat("damage_bonus"), dmg + 1.0), "well fed: +1 damage")
+	var saved := Inventory.to_dict()
+	Inventory.meal = {}
+	Inventory.from_dict(saved)
+	check(Inventory.meal_active(), "the meal survives a save")
+	WorldClock.advance_minutes(150)
+	check(not Inventory.meal_active() and is_equal_approx(Inventory.stat("damage_bonus"), dmg), "two hours later it wears off")
+	Inventory.add(&"mackerel", 1, false)
+	Inventory.add(&"perch", 1, false)
+	check(Cooking.have({"any": ["mackerel", "perch"], "n": 2}) == 2, "an 'any' need counts every kind")
+	GameState.reset_for_new_game()
+	GameState.is_playing = false
+
+
 func test_salt_tunnels() -> void:
 	GameState.reset_for_new_game()
 	GameState.is_playing = true

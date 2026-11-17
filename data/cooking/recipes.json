@@ -1,0 +1,131 @@
+{
+ "_doc": "Recipes (R7b, D-086). needs: list of {item, n} or {any: [items], n} (any mix of those items). makes: the dish item (items_cooking.json). Cooking takes 20 minutes at a stove or a campfire (screen 'cook').",
+ "grilled_fish": {
+  "needs": [
+   {
+    "any": [
+     "mackerel",
+     "cod",
+     "plaice",
+     "sea_bass",
+     "conger",
+     "perch",
+     "roach",
+     "pike",
+     "carp"
+    ],
+    "n": 1,
+    "label": "COOK_ANY_FISH"
+   }
+  ],
+  "makes": "grilled_fish"
+ },
+ "veg_soup": {
+  "needs": [
+   {
+    "any": [
+     "radish",
+     "carrot",
+     "turnip",
+     "tomato",
+     "pumpkin"
+    ],
+    "n": 2,
+    "label": "COOK_ANY_VEG"
+   }
+  ],
+  "makes": "veg_soup"
+ },
+ "mushroom_omelette": {
+  "needs": [
+   {
+    "item": "egg",
+    "n": 1
+   },
+   {
+    "item": "mushroom",
+    "n": 1
+   }
+  ],
+  "makes": "mushroom_omelette"
+ },
+ "berry_crumble": {
+  "needs": [
+   {
+    "item": "wild_berries",
+    "n": 2
+   },
+   {
+    "item": "egg",
+    "n": 1
+   }
+  ],
+  "makes": "berry_crumble"
+ },
+ "fish_pie": {
+  "needs": [
+   {
+    "any": [
+     "mackerel",
+     "cod",
+     "plaice",
+     "sea_bass",
+     "conger",
+     "perch",
+     "roach",
+     "pike",
+     "carp"
+    ],
+    "n": 1,
+    "label": "COOK_ANY_FISH"
+   },
+   {
+    "item": "egg",
+    "n": 1
+   },
+   {
+    "any": [
+     "carrot",
+     "turnip"
+    ],
+    "n": 1
+   }
+  ],
+  "makes": "fish_pie"
+ },
+ "crab_stew": {
+  "needs": [
+   {
+    "item": "harbour_crab",
+    "n": 1
+   },
+   {
+    "item": "tomato",
+    "n": 1
+   }
+  ],
+  "makes": "crab_stew"
+ },
+ "strawberry_tea": {
+  "needs": [
+   {
+    "item": "strawberry",
+    "n": 2
+   }
+  ],
+  "makes": "strawberry_tea"
+ },
+ "pumpkin_pie": {
+  "needs": [
+   {
+    "item": "pumpkin",
+    "n": 1
+   },
+   {
+    "item": "egg",
+    "n": 2
+   }
+  ],
+  "makes": "pumpkin_pie"
+ }
+}

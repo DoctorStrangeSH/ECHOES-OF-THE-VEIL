@@ -192,6 +192,15 @@
    "scene": "brook_farm",
    "spawn": "farmhouse_front",
    "prompt": "PROMPT_EXIT"
+  },
+  {
+   "kind": "screen",
+   "name": "StoveUse",
+   "id": "use_farm_stove",
+   "x": 184,
+   "y": 74,
+   "screen": "cook",
+   "prompt": "PROMPT_COOK"
   }
  ]
 }

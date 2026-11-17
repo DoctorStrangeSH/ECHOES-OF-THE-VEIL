@@ -721,6 +721,7 @@ func _farm_story() -> void:
 	await _salt_tunnels()
 	await _number_13()
 	await _night_shift()
+	await _cooking()
 	await _millwood_story()
 	await _mill_hill_story()
 	await _cavenmouth_story()
@@ -767,6 +768,24 @@ func _millwood_story() -> void:
 	await _talk(&"ada", {"npc": &"ada_fenwick"}, ["FORD_TO_BELL"])
 	await _finish_dialogue()
 	_assert(Journal.case_status(&"case_drowned_ford") == Journal.STATUS_DONE and Inventory.has(&"ford_bell"), "laid to rest; the clapper")
+
+
+## R7b: cook at home; a meal leaves a few hours of a bonus.
+func _cooking() -> void:
+	_step = "cooking: the stove at home"
+	SceneFlow.travel(&"rented_room", &"bed")
+	await _wait_location(&"rented_room")
+	await _frames(10)
+	_assert(_find_named("StoveUse") != null, "a stove in the rented room")
+	Inventory.add(&"pumpkin", 1, false)
+	Inventory.add(&"egg", 2, false)
+	var hp := Inventory.stat("max_health")
+	EventHub.screen_requested.emit("cook")
+	await _frames(10)
+	_assert(CookMenu.instance != null and CookMenu.instance.is_open(), "the cooking menu opens")
+	CookMenu.instance.close()
+	_assert(Cooking.cook(&"pumpkin_pie") and Inventory.use(&"pumpkin_pie"), "a pumpkin pie, eaten warm")
+	_assert(Inventory.stat("max_health") == hp + 1.0, "well fed: one more heart for a while")
 
 
 ## R2f: the Rope Works: day shifts, and a man still on the night shift.
