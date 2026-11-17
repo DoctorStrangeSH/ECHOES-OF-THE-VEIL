@@ -141,6 +141,20 @@ func _show_case(id: StringName) -> void:
 			var tick := "[x] " if o["done"] else "[ ] "
 			var opt := (tr("JOURNAL_OPTIONAL") + " ") if o["optional"] else ""
 			_detail.add_child(_label(tick + opt + Journal.objective_text(o), UiTheme.INK_DIM if o["done"] else UiTheme.INK, 8))
+		# A conclusion that is ready to be drawn goes right here, not at the
+		# bottom under the evidence (first-hour playtest, D-090).
+		var first_ready: Button = null
+		for h in Journal.hypotheses_for_case(id):
+			if Journal.hypothesis_status(h) == Journal.HYP_AVAILABLE:
+				var rb := Button.new()
+				rb.text = tr("JOURNAL_FORM_READY") % tr(String(Journal.hypothesis_defs[h].get("title", "")))
+				rb.add_theme_color_override("font_color", UiTheme.ACCENT)
+				rb.pressed.connect(_on_form.bind(h))
+				_detail.add_child(rb)
+				if first_ready == null:
+					first_ready = rb
+		if first_ready != null:
+			first_ready.grab_focus.call_deferred()
 		if GameSettings.shows_guide():
 			var guide := QuestGuide.describe(QuestGuide.target(id))
 			if guide != "":

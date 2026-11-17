@@ -140,7 +140,64 @@
        "period": [
         "evening",
         "night"
+       ],
+       "not_flag": "night.first",
+       "flag": "door.opened"
+      },
+      "effects": [
+       {
+        "sleep_until_hour": 7
+       },
+       {
+        "heal_player": true
+       },
+       {
+        "set_flag": "night.first"
+       },
+       {
+        "save_game": true
+       }
+      ],
+      "next": "n1"
+     },
+     {
+      "text": "REST_SLEEP",
+      "if": {
+       "period": [
+        "evening",
+        "night"
+       ],
+       "not_flag": "night.first",
+       "all": [
+        {
+         "not_flag": "door.opened"
+        }
        ]
+      },
+      "effects": [
+       {
+        "sleep_until_hour": 7
+       },
+       {
+        "heal_player": true
+       },
+       {
+        "set_flag": "night.first"
+       },
+       {
+        "save_game": true
+       }
+      ],
+      "next": "n1_shut"
+     },
+     {
+      "text": "REST_SLEEP",
+      "if": {
+       "period": [
+        "evening",
+        "night"
+       ],
+       "flag": "night.first"
       },
       "effects": [
        {
@@ -171,6 +228,26 @@
    },
    "slept": {
     "text": "REST_SLEPT",
+    "next": null
+   },
+   "n1": {
+    "text": "NIGHT1_1",
+    "next": "n1_open"
+   },
+   "n1_open": {
+    "text": "NIGHT1_OPEN",
+    "next": "n1_end"
+   },
+   "n1_shut": {
+    "text": "NIGHT1_1",
+    "next": "n1_shut2"
+   },
+   "n1_shut2": {
+    "text": "NIGHT1_SHUT",
+    "next": "n1_end"
+   },
+   "n1_end": {
+    "text": "NIGHT1_END",
     "next": null
    }
   }

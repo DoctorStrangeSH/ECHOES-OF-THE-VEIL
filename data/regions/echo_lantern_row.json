@@ -146,6 +146,94 @@
    "layer": "FloorDecor"
   },
   {
+   "kind": "furn",
+   "furn": "coat_stand",
+   "x": 104,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "window",
+   "x": 166,
+   "y": 62
+  },
+  {
+   "kind": "furn",
+   "furn": "radiogram",
+   "x": 268,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "grandfather_clock",
+   "x": 340,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "stove",
+   "x": 384,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "sink",
+   "x": 404,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "chair_wood",
+   "x": 398,
+   "y": 126
+  },
+  {
+   "kind": "furn",
+   "furn": "chair_wood_b",
+   "x": 442,
+   "y": 126
+  },
+  {
+   "kind": "furn",
+   "furn": "armchair_red",
+   "x": 120,
+   "y": 150
+  },
+  {
+   "kind": "furn",
+   "furn": "shelf_toys",
+   "x": 198,
+   "y": 64
+  },
+  {
+   "kind": "inspect",
+   "name": "RadiogramLook",
+   "id": "inspect_echo_radiogram",
+   "x": 268,
+   "y": 74,
+   "area": [
+    24,
+    12
+   ],
+   "lines": [
+    "FLAVOR_ECHO_RADIOGRAM"
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "ClockLook",
+   "id": "inspect_echo_clock",
+   "x": 340,
+   "y": 74,
+   "area": [
+    18,
+    12
+   ],
+   "lines": [
+    "FLAVOR_ECHO_CLOCK"
+   ]
+  },
+  {
    "kind": "spawn",
    "name": "Entrance",
    "id": "entrance",
@@ -208,7 +296,7 @@
    "name": "A_kitchen",
    "id": "kitchen",
    "x": 420,
-   "y": 110
+   "y": 98
   },
   {
    "kind": "encounter",

@@ -22,7 +22,60 @@
      "inside"
     ]
    },
-   "main": true
+   "main": true,
+   "objectives": {
+    "start": [
+     {
+      "id": "look",
+      "text": "OBJ_DOOR_LOOK",
+      "done_if": {
+       "evidence": "e_door_observed"
+      }
+     },
+     {
+      "id": "ask",
+      "text": "OBJ_DOOR_ASK",
+      "progress": [
+       {
+        "evidence": "e_halloway_lantern_row"
+       },
+       {
+        "evidence": "e_mara_lantern_row"
+       },
+       {
+        "evidence": "e_radio_announcement"
+       },
+       {
+        "evidence": "e_city_map"
+       }
+      ],
+      "need": 2
+     },
+     {
+      "id": "link",
+      "text": "OBJ_DOOR_LINK",
+      "done_if": {
+       "hypothesis": "lantern_row_fragment"
+      }
+     }
+    ],
+    "inside": [
+     {
+      "id": "clear",
+      "text": "OBJ_DOOR_CLEAR",
+      "done_if": {
+       "flag": "echo.cleared"
+      }
+     },
+     {
+      "id": "find",
+      "text": "OBJ_DOOR_FIND",
+      "done_if": {
+       "evidence": "e_echo_resident"
+      }
+     }
+    ]
+   }
   },
   "case_radio": {
    "title": "CASE_RADIO_TITLE",

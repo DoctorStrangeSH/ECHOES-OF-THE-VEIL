@@ -11,8 +11,25 @@
    "node": "ImpossibleDoorUse"
   },
   "inside": {
+   "scene": "echo_lantern_row"
+  },
+  "start/look": {
    "scene": "greyford_block",
    "node": "ImpossibleDoorUse"
+  },
+  "start/ask": {
+   "npc": "edda_halloway",
+   "note": "GUIDE_NOTE_DOOR_WHO"
+  },
+  "start/link": {
+   "note": "GUIDE_NOTE_LINK"
+  },
+  "inside/clear": {
+   "scene": "echo_lantern_row",
+   "note": "GUIDE_NOTE_ECHO_FIGHT"
+  },
+  "inside/find": {
+   "npc": "echo_woman"
   }
  },
  "case_radio": {
