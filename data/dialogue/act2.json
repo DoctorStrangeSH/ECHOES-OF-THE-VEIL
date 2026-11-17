@@ -1424,6 +1424,41 @@
       "next": "how"
      },
      {
+      "text": "HEART_JONAH_1_ASK",
+      "if": {
+       "bond_at_least": [
+        "jonah_rook",
+        1
+       ],
+       "not_flag": "bond.jonah_rook.1"
+      },
+      "next": "h1a"
+     },
+     {
+      "text": "HEART_JONAH_2_ASK",
+      "if": {
+       "bond_at_least": [
+        "jonah_rook",
+        2
+       ],
+       "flag": "bond.jonah_rook.1",
+       "not_flag": "bond.jonah_rook.2"
+      },
+      "next": "h2a"
+     },
+     {
+      "text": "HEART_JONAH_3_ASK",
+      "if": {
+       "bond_at_least": [
+        "jonah_rook",
+        3
+       ],
+       "flag": "bond.jonah_rook.2",
+       "not_flag": "bond.jonah_rook.3"
+      },
+      "next": "h3a"
+     },
+     {
       "text": "JONAH_TRADE",
       "effects": [
        {
@@ -1525,6 +1560,153 @@
     "speaker": "NPC_JONAH",
     "text": "ANCHOR_NO_JONAH",
     "next": "hub"
+   },
+   "h1a": {
+    "speaker": "NPC_JONAH",
+    "text": "HEART_JONAH_1_A",
+    "next": "h1b"
+   },
+   "h1b": {
+    "speaker": "NPC_JONAH",
+    "text": "HEART_JONAH_1_B",
+    "next": "h1c"
+   },
+   "h1c": {
+    "speaker": "NPC_JONAH",
+    "text": "HEART_JONAH_1_C",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "bond.jonah_rook.1"
+     },
+     {
+      "relationship": [
+       "jonah_rook",
+       1
+      ]
+     }
+    ]
+   },
+   "h2a": {
+    "speaker": "NPC_JONAH",
+    "text": "HEART_JONAH_2_A",
+    "next": "h2b"
+   },
+   "h2b": {
+    "speaker": "NPC_JONAH",
+    "text": "HEART_JONAH_2_B",
+    "next": "h2c"
+   },
+   "h2c": {
+    "speaker": "NPC_JONAH",
+    "text": "HEART_JONAH_2_C",
+    "choices": [
+     {
+      "text": "HEART_JONAH_2_FORGIVE",
+      "next": "h2d",
+      "effects": [
+       {
+        "set_flag": "bond.jonah_rook.2"
+       },
+       {
+        "set_flag": "jonah.forgives_father"
+       },
+       {
+        "relationship": [
+         "jonah_rook",
+         1
+        ]
+       }
+      ]
+     },
+     {
+      "text": "HEART_JONAH_2_NOT_YET",
+      "next": "h2e",
+      "effects": [
+       {
+        "set_flag": "bond.jonah_rook.2"
+       },
+       {
+        "relationship": [
+         "jonah_rook",
+         1
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "h2d": {
+    "speaker": "NPC_JONAH",
+    "text": "HEART_JONAH_2_D",
+    "next": "hub"
+   },
+   "h2e": {
+    "speaker": "NPC_JONAH",
+    "text": "HEART_JONAH_2_E",
+    "next": "hub"
+   },
+   "h3a": {
+    "text": "HEART_JONAH_3_A",
+    "next": "h3b"
+   },
+   "h3b": {
+    "speaker": "NPC_JONAH",
+    "text": "HEART_JONAH_3_B",
+    "next": "h3c"
+   },
+   "h3c": {
+    "speaker": "NPC_JONAH",
+    "text": "HEART_JONAH_3_C",
+    "choices": [
+     {
+      "text": "HEART_JONAH_3_FRIEND",
+      "next": "h3f",
+      "effects": [
+       {
+        "set_flag": "bond.jonah_rook.3"
+       },
+       {
+        "relationship": [
+         "jonah_rook",
+         1
+        ]
+       }
+      ]
+     },
+     {
+      "text": "HEART_JONAH_3_MORE",
+      "next": "h3r",
+      "effects": [
+       {
+        "set_flag": "bond.jonah_rook.3"
+       },
+       {
+        "set_flag": "romance.jonah_rook"
+       },
+       {
+        "relationship": [
+         "jonah_rook",
+         2
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "h3f": {
+    "speaker": "NPC_JONAH",
+    "text": "HEART_JONAH_3_F",
+    "next": "hub"
+   },
+   "h3r": {
+    "text": "HEART_JONAH_3_R",
+    "next": "h3r2"
+   },
+   "h3r2": {
+    "speaker": "NPC_JONAH",
+    "text": "HEART_JONAH_3_R2",
+    "next": "hub"
    }
   }
  },
@@ -1538,6 +1720,41 @@
      {
       "text": "CAMP_HOW",
       "next": "how"
+     },
+     {
+      "text": "HEART_MARA_1_ASK",
+      "if": {
+       "bond_at_least": [
+        "mara_venn",
+        1
+       ],
+       "not_flag": "bond.mara_venn.1"
+      },
+      "next": "h1a"
+     },
+     {
+      "text": "HEART_MARA_2_ASK",
+      "if": {
+       "bond_at_least": [
+        "mara_venn",
+        2
+       ],
+       "flag": "bond.mara_venn.1",
+       "not_flag": "bond.mara_venn.2"
+      },
+      "next": "h2a"
+     },
+     {
+      "text": "HEART_MARA_3_ASK",
+      "if": {
+       "bond_at_least": [
+        "mara_venn",
+        3
+       ],
+       "flag": "bond.mara_venn.2",
+       "not_flag": "bond.mara_venn.3"
+      },
+      "next": "h3a"
      },
      {
       "text": "CAMP_GO_HOME",
@@ -1633,6 +1850,152 @@
    "anchor_no": {
     "speaker": "NPC_MARA",
     "text": "ANCHOR_NO_MARA",
+    "next": "hub"
+   },
+   "h1a": {
+    "speaker": "NPC_MARA",
+    "text": "HEART_MARA_1_A",
+    "next": "h1b"
+   },
+   "h1b": {
+    "speaker": "NPC_MARA",
+    "text": "HEART_MARA_1_B",
+    "next": "h1c"
+   },
+   "h1c": {
+    "speaker": "NPC_MARA",
+    "text": "HEART_MARA_1_C",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "bond.mara_venn.1"
+     },
+     {
+      "relationship": [
+       "mara_venn",
+       1
+      ]
+     }
+    ]
+   },
+   "h2a": {
+    "text": "HEART_MARA_2_A",
+    "next": "h2b"
+   },
+   "h2b": {
+    "speaker": "NPC_MARA",
+    "text": "HEART_MARA_2_B",
+    "next": "h2c"
+   },
+   "h2c": {
+    "speaker": "NPC_MARA",
+    "text": "HEART_MARA_2_C",
+    "choices": [
+     {
+      "text": "HEART_MARA_2_SEE_ME",
+      "next": "h2d",
+      "effects": [
+       {
+        "set_flag": "bond.mara_venn.2"
+       },
+       {
+        "set_flag": "mara.card_see_also"
+       },
+       {
+        "relationship": [
+         "mara_venn",
+         1
+        ]
+       }
+      ]
+     },
+     {
+      "text": "HEART_MARA_2_HER_CARD",
+      "next": "h2e",
+      "effects": [
+       {
+        "set_flag": "bond.mara_venn.2"
+       },
+       {
+        "relationship": [
+         "mara_venn",
+         1
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "h2d": {
+    "speaker": "NPC_MARA",
+    "text": "HEART_MARA_2_D",
+    "next": "hub"
+   },
+   "h2e": {
+    "speaker": "NPC_MARA",
+    "text": "HEART_MARA_2_E",
+    "next": "hub"
+   },
+   "h3a": {
+    "text": "HEART_MARA_3_A",
+    "next": "h3b"
+   },
+   "h3b": {
+    "speaker": "NPC_MARA",
+    "text": "HEART_MARA_3_B",
+    "next": "h3c"
+   },
+   "h3c": {
+    "speaker": "NPC_MARA",
+    "text": "HEART_MARA_3_C",
+    "choices": [
+     {
+      "text": "HEART_MARA_3_FRIEND",
+      "next": "h3f",
+      "effects": [
+       {
+        "set_flag": "bond.mara_venn.3"
+       },
+       {
+        "relationship": [
+         "mara_venn",
+         1
+        ]
+       }
+      ]
+     },
+     {
+      "text": "HEART_MARA_3_MORE",
+      "next": "h3r",
+      "effects": [
+       {
+        "set_flag": "bond.mara_venn.3"
+       },
+       {
+        "set_flag": "romance.mara_venn"
+       },
+       {
+        "relationship": [
+         "mara_venn",
+         2
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "h3f": {
+    "speaker": "NPC_MARA",
+    "text": "HEART_MARA_3_F",
+    "next": "hub"
+   },
+   "h3r": {
+    "text": "HEART_MARA_3_R",
+    "next": "h3r2"
+   },
+   "h3r2": {
+    "speaker": "NPC_MARA",
+    "text": "HEART_MARA_3_R2",
     "next": "hub"
    }
   },

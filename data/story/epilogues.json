@@ -59,6 +59,14 @@
   },
   {
    "group": "jonah",
+   "text": "EPI_JONAH_ROMANCE",
+   "title": "EPI_T_JONAH",
+   "if": {
+    "flag": "romance.jonah_rook"
+   }
+  },
+  {
+   "group": "jonah",
    "if": {
     "flag": "rosalind.faded"
    },
@@ -142,6 +150,14 @@
   },
   {
    "group": "hester",
+   "text": "EPI_HESTER_BOND",
+   "title": "EPI_T_HESTER",
+   "if": {
+    "flag": "bond.hester_ashby.3"
+   }
+  },
+  {
+   "group": "hester",
    "text": "EPI_HESTER_COUNTS",
    "title": "EPI_T_HESTER",
    "if": {
@@ -162,6 +178,14 @@
    "title": "EPI_T_HESTER",
    "if": {
     "flag": "world.lamp_quiet"
+   }
+  },
+  {
+   "group": "mara",
+   "text": "EPI_MARA_ROMANCE",
+   "title": "EPI_T_MARA",
+   "if": {
+    "flag": "romance.mara_venn"
    }
   },
   {

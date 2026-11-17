@@ -1765,6 +1765,32 @@ func test_own_car() -> void:
 	GameState.is_playing = false
 
 
+func test_companion_bond() -> void:
+	GameState.reset_for_new_game()
+	GameState.is_playing = true
+	check(Party.defs.has("hester_ashby") and Party.def_of(&"hester_ashby").get("ability") == "beam", "Hester is a companion with a lamp")
+	check(not Party.can_join(&"hester_ashby"), "not before her case is solved")
+	check(Party.bond_tier(&"jonah_rook") == 0, "no bond at the start")
+	Party.set_companion(&"jonah_rook")
+	Party.note_kill()
+	check(Party.bond_points(&"jonah_rook") == 1, "an echo beaten together: a bond point")
+	Party.add_bond(&"jonah_rook", Party.TIERS[0] - 1)
+	check(Party.bond_tier(&"jonah_rook") == 1 and StoryRules.evaluate({"bond_at_least": ["jonah_rook", 1]}), "tier one")
+	check(not StoryRules.evaluate({"bond_at_least": ["jonah_rook", 2]}), "not yet tier two")
+	StoryRules.apply([{"bond": ["jonah_rook", 100]}])
+	check(Party.bond_tier(&"jonah_rook") == 3, "the bond effect")
+	var saved := Party.to_dict()
+	Party.reset()
+	check(Party.bond_tier(&"jonah_rook") == 0, "reset clears the bond")
+	Party.from_dict(saved)
+	check(Party.bond_tier(&"jonah_rook") == 3 and Party.companion == &"jonah_rook", "the bond survives a save")
+	Party.set_companion(&"")
+	Party.note_kill()
+	check(Party.bond_points(&"mara_venn") == 0, "no companion, no bond")
+	GameState.reset_for_new_game()
+	GameState.is_playing = false
+
+
 func test_mill_hill_rosary() -> void:
 	GameState.reset_for_new_game()
 	GameState.is_playing = true

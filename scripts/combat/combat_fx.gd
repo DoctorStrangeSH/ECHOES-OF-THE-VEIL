@@ -62,3 +62,27 @@ static func afterimage(source: Node2D, parent: Node, tint: Color = Color(0.6, 0.
 	var tw := ghost.create_tween()
 	tw.tween_property(ghost, "modulate:a", 0.0, 0.25)
 	tw.tween_callback(ghost.queue_free)
+
+
+## An expanding ring of warm light (Hester's lamp flash).
+static func flash_ring(parent: Node, at: Vector2, radius: float, color: Color = Color(1.0, 0.92, 0.6, 0.7)) -> void:
+	if parent == null:
+		return
+	var ring := Line2D.new()
+	ring.width = 2.0
+	ring.default_color = color
+	ring.closed = true
+	ring.position = at
+	ring.z_index = 50
+	parent.add_child(ring)
+	var set_r := func(r: float) -> void:
+		var pts := PackedVector2Array()
+		for i in 40:
+			pts.append(Vector2.from_angle(TAU * i / 40.0) * r)
+		ring.points = pts
+	set_r.call(8.0)
+	var tw := ring.create_tween()
+	tw.set_parallel(true)
+	tw.tween_method(set_r, 8.0, radius, 0.35).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	tw.tween_property(ring, "modulate:a", 0.0, 0.4).set_delay(0.1)
+	tw.chain().tween_callback(ring.queue_free)

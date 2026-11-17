@@ -7,7 +7,7 @@ extends RefCounted
 ##   {"flag": "id"}  {"not_flag": "id"}  {"flag_equals": ["id", value]}
 ##   {"background": "courier"}  {"evidence": "id"}  {"not_evidence": "id"}
 ##   {"hypothesis": "id"}  {"not_hypothesis": "id"}
-##   {"companion": "id" | ""}  {"can_join": "id"}
+##   {"companion": "id" | ""}  {"can_join": "id"}  {"bond_at_least": ["id", tier]}
 ##   {"quest_outcome": ["id", "outcome"]}  {"verdict": ["e", "edited"]}  {"judged": ["e1", ...]}
 ##   {"verdicts_correct_at_least": [["e1", "e2", "e3"], 2]}  {"count_at_least": [[c1, c2, ...], n]}
 ##   {"quest_active": "id"}  {"quest_done": "id"}  {"quest_failed": "id"}  {"quest_stage": ["id", "stage"]} (open cases only)
@@ -31,7 +31,7 @@ extends RefCounted
 ##   {"open_screen": "shop:jonah" | "jobs" | "workbench" | "business"}
 ##   {"verdict": ["e", "authentic" | "edited" | "unreliable"]}  (judge a testimony)
 ##   {"first_match": [{"if": cond, "do": [effects]}, ...]}  (first branch that holds)
-##   {"companion": "id" | ""}  (recruit a companion / send them home)
+##   {"companion": "id" | ""}  (recruit a companion / send them home)  {"bond": ["id", points]}
 ##   {"farm": "collect_eggs" | "buy_hen" | "ship" | "pay"}  {"accept_job": "job"} (start a job without the board)
 ##   {"give_xp": n}  {"give_resonance": n}  {"faction": ["keepers", delta]}  {"tell": ["npc", "fact"]}  {"publish": "fact"}
 
@@ -81,6 +81,8 @@ static func _check(key: String, arg: Variant) -> bool:
 			return Party.companion == StringName(arg)
 		"can_join":
 			return Party.can_join(StringName(arg))
+		"bond_at_least":
+			return Party.bond_tier(StringName(arg[0])) >= int(arg[1])
 		"count_at_least":  # [[cond, cond, ...], n]: at least n of the conditions hold
 			var n := 0
 			for c: Variant in arg[0]:
@@ -204,6 +206,8 @@ static func _apply_one(key: String, arg: Variant, whole: Dictionary) -> void:
 			GameState.change_relationship(StringName(arg[0]), int(arg[1]))
 		"remember":
 			GameState.remember(StringName(arg[0]), String(arg[1]))
+		"bond":
+			Party.add_bond(StringName(arg[0]), int(arg[1]))
 		"toast":
 			EventHub.toast_requested.emit(TranslationServer.translate(String(arg)))
 		"advance_minutes":

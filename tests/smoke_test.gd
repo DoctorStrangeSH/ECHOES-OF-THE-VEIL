@@ -717,6 +717,7 @@ func _farm_story() -> void:
 	await _frames(10)
 	await _tap(&"pause")
 	await _frames(5)
+	await _companion_bonds()
 	await _millwood_story()
 	await _mill_hill_story()
 	await _cavenmouth_story()
@@ -763,6 +764,36 @@ func _millwood_story() -> void:
 	await _talk(&"ada", {"npc": &"ada_fenwick"}, ["FORD_TO_BELL"])
 	await _finish_dialogue()
 	_assert(Journal.case_status(&"case_drowned_ford") == Journal.STATUS_DONE and Inventory.has(&"ford_bell"), "laid to rest; the clapper")
+
+
+## R8: Hester walks with you; the bond opens three talks and a brighter lamp.
+func _companion_bonds() -> void:
+	_step = "companions: Hester joins"
+	WorldClock.wait_until_hour(11)
+	SceneFlow.travel(&"lighthouse_point", &"from_greyford")
+	await _wait_location(&"lighthouse_point")
+	await _frames(10)
+	await _talk(&"hester", {"npc": &"hester_ashby"}, ["HESTER_COMPANION_ASK"])
+	await _finish_dialogue()
+	_assert(Party.companion == &"hester_ashby", "Hester takes her storm lantern and comes along")
+	var before := Party.bond_points(&"hester_ashby")
+	WorldClock.advance_minutes(20)
+	WorldClock.advance_minutes(20)
+	_assert(Party.bond_points(&"hester_ashby") == before + 1, "forty minutes walked together: one bond point")
+	Party.add_bond(&"hester_ashby", Party.TIERS[2])
+	_assert(Party.bond_tier(&"hester_ashby") == 3, "the bond at its top tier")
+	_step = "companions: three talks on the road"
+	await _talk(&"camp_hester", {"npc": &"hester_ashby"}, ["HEART_HESTER_1_ASK", "HEART_HESTER_2_ASK", "HEART_HESTER_3_ASK", "CAMP_KEEP_GOING"])
+	await _finish_dialogue()
+	_assert(GameState.has_flag(&"bond.hester_ashby.3"), "all three of Hester's talks heard; the count taught")
+	SceneFlow.travel(&"greyford_block", &"ward_return")
+	await _wait_location(&"greyford_block")
+	await _frames(10)
+	var f := SceneFlow.current_location.find_children("*", "Follower", true, false)
+	_assert(f.size() == 1 and (f[0] as Follower).ability == "beam" and (f[0] as Follower).power == 3, "Hester follows into town with a brighter lamp")
+	await _talk(&"camp_hester", {"npc": &"hester_ashby"}, ["CAMP_HESTER_GO_HOME"])
+	await _finish_dialogue()
+	_assert(Party.companion == &"", "Hester goes back to the point")
 
 
 ## R5c: Mill Hill and the lights in St Brigid's Abbey.

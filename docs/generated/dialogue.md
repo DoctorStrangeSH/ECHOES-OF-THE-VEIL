@@ -377,13 +377,16 @@ flowchart TD
   camp_jonah_START --> camp_jonah_hub
   camp_jonah_hub["hub<br/>Jonah Rook: 'Need something mended?'"]
   camp_jonah_hub -->|"How are you holding up?"| camp_jonah_how
-  camp_jonah_hub_end_1(["end"])
-  camp_jonah_hub -->|"Let's trade."| camp_jonah_hub_end_1
+  camp_jonah_hub -->|"Why radios, Jonah? ⟨{bond_at_least: [jonah_rook, 1], not_fl…⟩"| camp_jonah_h1a
+  camp_jonah_hub -->|"Tell me about your father. ⟨{bond_at_least: [jonah_rook, 2], flag: …⟩"| camp_jonah_h2a
+  camp_jonah_hub -->|"You've gone quiet, Jonah. ⟨{bond_at_least: [jonah_rook, 3], flag: …⟩"| camp_jonah_h3a
+  camp_jonah_hub_end_4(["end"])
+  camp_jonah_hub -->|"Let's trade."| camp_jonah_hub_end_4
   camp_jonah_hub -->|"Go home for now."| camp_jonah_home
   camp_jonah_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| camp_jonah_anchor_yes
   camp_jonah_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| camp_jonah_anchor_no
-  camp_jonah_hub_end_5(["end"])
-  camp_jonah_hub -->|"Let's keep going."| camp_jonah_hub_end_5
+  camp_jonah_hub_end_8(["end"])
+  camp_jonah_hub -->|"Let's keep going."| camp_jonah_hub_end_8
   camp_jonah_how["how<br/>Jonah Rook: 'Half of me wants to find her. The other half's…"]
   camp_jonah_how --> camp_jonah_hub
   camp_jonah_home["home<br/>Jonah Rook: 'Shout if anything needs fixing.'"]
@@ -391,6 +394,36 @@ flowchart TD
   camp_jonah_anchor_yes --> camp_jonah_hub
   camp_jonah_anchor_no["anchor_no<br/>Jonah Rook: 'I've got a shop and a lot of questions about y…"]
   camp_jonah_anchor_no --> camp_jonah_hub
+  camp_jonah_h1a["h1a<br/>Jonah Rook: 'After Ros went, the kitchen set wouldn't stop …"]
+  camp_jonah_h1a --> camp_jonah_h1b
+  camp_jonah_h1b["h1b<br/>Jonah Rook: 'I was nine. I took it apart on the floor with …"]
+  camp_jonah_h1b --> camp_jonah_h1c
+  camp_jonah_h1c["h1c<br/>Jonah Rook: 'Never found it. Got very good at putting thing…"]
+  camp_jonah_h1c --> camp_jonah_hub
+  camp_jonah_h2a["h2a<br/>Jonah Rook: 'ROOK & DAUGHTER. Every crate. Then one spring …"]
+  camp_jonah_h2a --> camp_jonah_h2b
+  camp_jonah_h2b["h2b<br/>Jonah Rook: 'He stood looking at it for a long time. Didn't…"]
+  camp_jonah_h2b --> camp_jonah_h2c
+  camp_jonah_h2c["h2c<br/>Jonah Rook: 'Now I know the city was doing it to him too. T…"]
+  camp_jonah_h2c -->|"'You can. He was doing the on…"| camp_jonah_h2d
+  camp_jonah_h2c -->|"'Maybe. But you don't have to…"| camp_jonah_h2e
+  camp_jonah_h2d["h2d<br/>Jonah Rook: He nods slowly, as if testing a joint for wobbl…"]
+  camp_jonah_h2d --> camp_jonah_hub
+  camp_jonah_h2e["h2e<br/>Jonah Rook: 'No.' He almost smiles. 'Not today. Thanks for …"]
+  camp_jonah_h2e --> camp_jonah_hub
+  camp_jonah_h3a["h3a<br/>Jonah stops under a streetlamp and fishes in hi…"]
+  camp_jonah_h3a --> camp_jonah_h3b
+  camp_jonah_h3b["h3b<br/>Jonah Rook: 'The shop. Back door. Doors are a big deal in t…"]
+  camp_jonah_h3b --> camp_jonah_h3c
+  camp_jonah_h3c["h3c<br/>Jonah Rook: 'So I'd like there to be one that just opens. F…"]
+  camp_jonah_h3c -->|"'Then I'll knock anyway. Out …"| camp_jonah_h3f
+  camp_jonah_h3c -->|"'And if I wanted to stay long…"| camp_jonah_h3r
+  camp_jonah_h3f["h3f<br/>Jonah Rook: He laughs, properly, for the first time since y…"]
+  camp_jonah_h3f --> camp_jonah_hub
+  camp_jonah_h3r["h3r<br/>For a moment he looks at you the way he looks a…"]
+  camp_jonah_h3r --> camp_jonah_h3r2
+  camp_jonah_h3r2["h3r2<br/>Jonah Rook: 'I'd like that,' he says. 'I'd like that a grea…"]
+  camp_jonah_h3r2 --> camp_jonah_hub
 ```
 
 ### camp_mara
@@ -402,11 +435,14 @@ flowchart TD
   camp_mara_START -->|"{quest_stage: [case_kindness, truth], f…"| camp_mara_not_here
   camp_mara_hub["hub<br/>Mara Venn: 'I'm taking notes. Go on.'"]
   camp_mara_hub -->|"How are you holding up?"| camp_mara_how
+  camp_mara_hub -->|"When did you start keeping re… ⟨{bond_at_least: [mara_venn, 1], not_fla…⟩"| camp_mara_h1a
+  camp_mara_hub -->|"Is there a card for you in yo… ⟨{bond_at_least: [mara_venn, 2], flag: b…⟩"| camp_mara_h2a
+  camp_mara_hub -->|"You're writing something abou… ⟨{bond_at_least: [mara_venn, 3], flag: b…⟩"| camp_mara_h3a
   camp_mara_hub -->|"Go home for now."| camp_mara_home
   camp_mara_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| camp_mara_anchor_yes
   camp_mara_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| camp_mara_anchor_no
-  camp_mara_hub_end_4(["end"])
-  camp_mara_hub -->|"Let's keep going."| camp_mara_hub_end_4
+  camp_mara_hub_end_7(["end"])
+  camp_mara_hub -->|"Let's keep going."| camp_mara_hub_end_7
   camp_mara_how["how<br/>Mara Venn: 'Every record I've ever kept is wrong by two hu…"]
   camp_mara_how --> camp_mara_hub
   camp_mara_home["home<br/>Mara Venn: 'I'll be at the archive. Write things down.'"]
@@ -415,6 +451,36 @@ flowchart TD
   camp_mara_anchor_yes --> camp_mara_hub
   camp_mara_anchor_no["anchor_no<br/>Mara Venn: 'I'll read about it afterwards. I'm not sure I …"]
   camp_mara_anchor_no --> camp_mara_hub
+  camp_mara_h1a["h1a<br/>Mara Venn: 'At seven. Gran gave me a shoebox of blank inde…"]
+  camp_mara_h1a --> camp_mara_h1b
+  camp_mara_h1b["h1b<br/>Mara Venn: 'She taught me the rule: name, date, where, see…"]
+  camp_mara_h1b --> camp_mara_h1c
+  camp_mara_h1c["h1c<br/>Mara Venn: 'I didn't know then that she had written cards …"]
+  camp_mara_h1c --> camp_mara_hub
+  camp_mara_h2a["h2a<br/>Mara hesitates, which she never does, and takes…"]
+  camp_mara_h2a --> camp_mara_h2b
+  camp_mara_h2b["h2b<br/>Mara Venn: 'VENN, MARA. Archivist. Quay Street, top flat.'…"]
+  camp_mara_h2b --> camp_mara_h2c
+  camp_mara_h2c["h2c<br/>Mara Venn: 'It's accurate. Accuracy is the one thing I've …"]
+  camp_mara_h2c -->|"'Write me in. See also: me.'"| camp_mara_h2d
+  camp_mara_h2c -->|"'It's your card. Change it wh…"| camp_mara_h2e
+  camp_mara_h2d["h2d<br/>Mara Venn: She looks at you for a long second, then uncaps…"]
+  camp_mara_h2d --> camp_mara_hub
+  camp_mara_h2e["h2e<br/>Mara Venn: 'Yes.' She tucks the card away. 'Yes, I will. T…"]
+  camp_mara_h2e --> camp_mara_hub
+  camp_mara_h3a["h3a<br/>On the archive steps, in the last light, Mara h…"]
+  camp_mara_h3a --> camp_mara_h3b
+  camp_mara_h3b["h3b<br/>Mara Venn: 'Everyone who matters to this town gets a card.…"]
+  camp_mara_h3b --> camp_mara_h3c
+  camp_mara_h3c["h3c<br/>Mara Venn: 'I'm stuck on the relation field. I don't know …"]
+  camp_mara_h3c -->|"'Friend. In ink.'"| camp_mara_h3f
+  camp_mara_h3c -->|"'Write what you're afraid to …"| camp_mara_h3r
+  camp_mara_h3f["h3f<br/>Mara Venn: 'Friend.' She writes it slowly, in her best han…"]
+  camp_mara_h3f --> camp_mara_hub
+  camp_mara_h3r["h3r<br/>For a while she writes nothing. Then she writes…"]
+  camp_mara_h3r --> camp_mara_h3r2
+  camp_mara_h3r2["h3r2<br/>Mara Venn: 'Filed,' Mara says, and her voice is not steady…"]
+  camp_mara_h3r2 --> camp_mara_hub
 ```
 
 ### harbour_timetable
@@ -1221,8 +1287,9 @@ flowchart TD
   hester_hub -->|"I found what the light is cou… ⟨{quest_stage: [case_lighthouse, answer]}⟩"| hester_answer1
   hester_hub -->|"What was this place?"| hester_point1
   hester_hub -->|"About the light... ⟨{quest_done: case_lighthouse}⟩"| hester_after
-  hester_hub_end_6(["end"])
-  hester_hub -->|"Goodbye."| hester_hub_end_6
+  hester_hub -->|"Would you walk with me for a … ⟨{can_join: hester_ashby, not: {companio…⟩"| hester_join
+  hester_hub_end_7(["end"])
+  hester_hub -->|"Goodbye."| hester_hub_end_7
   hester_light1["light1<br/>Hester Ashby: 'Seven sweeps, then it stops dead. Points at no…"]
   hester_light1 --> hester_light2
   hester_light2["light2<br/>Hester Ashby: 'The council engineer says it's a relay. I say …"]
@@ -1240,6 +1307,7 @@ flowchart TD
   hester_point1 --> hester_hub
   hester_after["after<br/>Hester Ashby: 'It still counts. Some nights I count along. It…"]
   hester_after --> hester_hub
+  hester_join["join<br/>Hester Ashby: 'Forty years I've not been further than the mar…"]
 ```
 
 ### lighthouse_watch
@@ -1292,6 +1360,45 @@ flowchart TD
   lifeboat_locker_force_end_1(["end"])
   lifeboat_locker_force -->|"Leave it"| lifeboat_locker_force_end_1
   lifeboat_locker_found["found<br/>Inside, wrapped in oilcloth: the lifeboat crew'…"]
+```
+
+### camp_hester
+
+```mermaid
+flowchart TD
+  camp_hester_START(("start"))
+  camp_hester_START --> camp_hester_hub
+  camp_hester_hub["hub<br/>Hester Ashby: Hester shifts the lantern to her other hand. 'W…"]
+  camp_hester_hub -->|"How are you holding up?"| camp_hester_how
+  camp_hester_hub -->|"Why do you count, Hester? ⟨{bond_at_least: [hester_ashby, 1], not_…⟩"| camp_hester_h1a
+  camp_hester_hub -->|"You walk the town like it's s… ⟨{bond_at_least: [hester_ashby, 2], flag…⟩"| camp_hester_h2a
+  camp_hester_hub -->|"Teach me to count the way you… ⟨{bond_at_least: [hester_ashby, 3], flag…⟩"| camp_hester_h3a
+  camp_hester_hub -->|"Go back to the point, Hester.…"| camp_hester_home
+  camp_hester_hub_end_5(["end"])
+  camp_hester_hub -->|"Let's keep going."| camp_hester_hub_end_5
+  camp_hester_how["how<br/>Hester Ashby: 'My knees say the town has more hills than it u…"]
+  camp_hester_how --> camp_hester_hub
+  camp_hester_home["home<br/>Hester Ashby: 'Mind how you go. Keep a light by you.'"]
+  camp_hester_h1a["h1a<br/>Hester Ashby: 'My father kept the light before it went automa…"]
+  camp_hester_h1a --> camp_hester_h1b
+  camp_hester_h1b["h1b<br/>Hester Ashby: 'One November I counted seven. I counted again.…"]
+  camp_hester_h1b --> camp_hester_h1c
+  camp_hester_h1c["h1c<br/>Hester Ashby: 'So I kept counting. Sixty years. A girl who ca…"]
+  camp_hester_h1c --> camp_hester_hub
+  camp_hester_h2a["h2a<br/>Hester stops at the corner of Market Street and…"]
+  camp_hester_h2a --> camp_hester_h2b
+  camp_hester_h2b["h2b<br/>Hester Ashby: 'There was a dance hall here. Saturday nights, …"]
+  camp_hester_h2b --> camp_hester_h2c
+  camp_hester_h2c["h2c<br/>Hester Ashby: 'The building's still there. It's a bank now. I…"]
+  camp_hester_h2c --> camp_hester_hub
+  camp_hester_h3a["h3a<br/>Hester Ashby: 'It's not hard. You count what's there. Then yo…"]
+  camp_hester_h3a --> camp_hester_h3b
+  camp_hester_h3b["h3b<br/>Hester Ashby: 'I'm old. When I'm gone, someone ought to know …"]
+  camp_hester_h3b --> camp_hester_h3c
+  camp_hester_h3c["h3c<br/>She presses the lantern's handle into your hand…"]
+  camp_hester_h3c --> camp_hester_h3d
+  camp_hester_h3d["h3d<br/>Hester Ashby: 'Eight out, eight back. Say it.' You say it. 'G…"]
+  camp_hester_h3d --> camp_hester_hub
 ```
 
 ## market.json
