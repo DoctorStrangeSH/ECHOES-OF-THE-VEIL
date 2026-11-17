@@ -159,7 +159,7 @@ def field(x, y, cols, rows, name, prefix):
 MODULAR = 'modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/5_Floor_Modular_Building_Singles_16x16/ME_Singles_Floor_Modular_Building_16x16_'
 
 
-def townhouse(x, y, ground, middle, roof, name, door=None, inspect=None, color='#8a6a5a'):
+def townhouse(x, y, ground, middle, roof, name, door=None, inspect=None, color='#8a6a5a', floors=1):
     """A town building from the modular pack: a ground floor (base at y), one
     middle floor and a roof stacked on it. door / inspect as for `building`."""
     import os
@@ -170,7 +170,9 @@ def townhouse(x, y, ground, middle, roof, name, door=None, inspect=None, color='
     hg, hm, hr = h(ground), h(middle), h(roof)
     out = [{'kind': 'prop', 'name': name + 'Ground', 'tex': MODULAR + ground + '.png', 'x': x, 'y': y, 'col': [112, hg - 8], 'off': [0, -(hg - 8) / 2], 'color': color},
            {'kind': 'prop', 'name': name + 'Middle', 'tex': MODULAR + middle + '.png', 'x': x, 'y': y - hg, 'col': [112, hm], 'off': [0, -hm / 2], 'color': color},
-           {'kind': 'prop', 'name': name + 'Roof', 'tex': MODULAR + roof + '.png', 'x': x, 'y': y - hg - hm, 'col': [112, hr], 'off': [0, -hr / 2], 'color': '#504040'}]
+           {'kind': 'prop', 'name': name + 'Roof', 'tex': MODULAR + roof + '.png', 'x': x, 'y': y - hg - hm * floors, 'col': [112, hr], 'off': [0, -hr / 2], 'color': '#504040'}]
+    for f in range(1, floors):
+        out.append({'kind': 'prop', 'name': name + 'Middle%d' % (f + 1), 'tex': MODULAR + middle + '.png', 'x': x, 'y': y - hg - hm * f, 'col': [112, hm], 'off': [0, -hm / 2], 'color': color})
     if door:
         out.append({'kind': 'door', 'name': name + 'Door', 'id': door['id'], 'x': door.get('x', x), 'y': y + 6, 'area': [door.get('width', 24), 10],
                     'scene': door['scene'], 'spawn': door['spawn'], 'prompt': door.get('prompt', 'PROMPT_ENTER_SHOP')})

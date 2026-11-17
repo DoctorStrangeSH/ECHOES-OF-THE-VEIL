@@ -255,6 +255,37 @@
     }
    ],
    "open_if": {}
+  },
+  "airfield": {
+   "name": "MAP_AIRFIELD",
+   "pos": [
+    140,
+    30
+   ],
+   "scenes": [
+    "greyford_airfield"
+   ],
+   "stop": [
+    "greyford_airfield",
+    "bus_stop"
+   ],
+   "open_if": {},
+   "known_if": {},
+   "map_at": [
+    100,
+    6
+   ],
+   "stop_at": [
+    320,
+    256
+   ],
+   "desc": "MAP_DESC_AIRFIELD",
+   "places": [
+    {
+     "name": "MAP_PLACE_AIR_TAXI",
+     "hours": "MAP_HOURS_ALWAYS"
+    }
+   ]
   }
  },
  "roads": [
@@ -281,6 +312,10 @@
   [
    "old_quarter",
    "harbour"
+  ],
+  [
+   "old_quarter",
+   "airfield"
   ]
  ],
  "map_scale": 0.125,

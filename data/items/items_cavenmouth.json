@@ -52,5 +52,13 @@
   "color": "#c0c0c0",
   "value": 0,
   "stack": 1
+ },
+ "agnes_card": {
+  "category": "key",
+  "name": "ITEM_AGNES_CARD",
+  "desc": "ITEM_AGNES_CARD_DESC",
+  "color": "#e0d8c0",
+  "value": 0,
+  "stack": 1
  }
 }

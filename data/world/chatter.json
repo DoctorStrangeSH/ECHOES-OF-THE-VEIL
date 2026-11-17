@@ -325,6 +325,32 @@
     "greyford_harbour",
     "market_street"
    ]
+  },
+  {
+   "text": "CHATTER_ASH_1",
+   "where": [
+    "ashbridge"
+   ]
+  },
+  {
+   "text": "CHATTER_ASH_2",
+   "where": [
+    "ashbridge"
+   ]
+  },
+  {
+   "text": "CHATTER_ASH_3",
+   "where": [
+    "ashbridge"
+   ]
+  },
+  {
+   "text": "CHATTER_AIRFIELD",
+   "where": [
+    "greyford_block",
+    "market_street",
+    "greyford_harbour"
+   ]
   }
  ]
 }

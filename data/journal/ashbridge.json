@@ -1,0 +1,23 @@
+{
+ "cases": {
+  "case_original_card": {
+   "title": "CASE_CARD_TITLE",
+   "summary": "CASE_CARD_SUMMARY",
+   "first_stage": "ask",
+   "stages": {
+    "ask": "CASE_CARD_ASK",
+    "bring": "CASE_CARD_BRING"
+   },
+   "outcomes": {
+    "returned": "CASE_CARD_DONE"
+   },
+   "transitions": {
+    "ask": [
+     "bring"
+    ]
+   }
+  }
+ },
+ "evidence": {},
+ "hypotheses": {}
+}

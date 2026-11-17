@@ -359,5 +359,13 @@
   "deliver": {
    "npc": "edda_halloway"
   }
+ },
+ "case_original_card": {
+  "ask": {
+   "npc": "imogen_hale"
+  },
+  "bring": {
+   "npc": "mara_venn"
+  }
  }
 }

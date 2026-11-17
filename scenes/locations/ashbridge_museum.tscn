@@ -1,0 +1,164 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/location.gd" id="1_loc"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2_paint"]
+[ext_resource type="PackedScene" path="res://scenes/props/world_prop.tscn" id="3_prop"]
+[ext_resource type="Script" path="res://scripts/world/spawn_point.gd" id="4_spawn"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="5_inspect"]
+[ext_resource type="Script" path="res://scripts/interaction/door_interactable.gd" id="6_door"]
+[ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
+[ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+[ext_resource type="Script" path="res://scripts/world/conditional_visibility.gd" id="10_cond"]
+[ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
+[ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
+[ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+[ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
+[ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
+[ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
+[ext_resource type="PackedScene" path="res://scenes/world/repair_spot.tscn" id="17_spot"]
+[ext_resource type="PackedScene" path="res://scenes/world/screen_interactable.tscn" id="18_screen"]
+[ext_resource type="PackedScene" path="res://scenes/world/junk_pile.tscn" id="19_junk"]
+
+[node name="AshbridgeMuseum" type="Node2D"]
+script = ExtResource("1_loc")
+location_id = &"ashbridge_museum"
+name_key = "LOC_ASH_MUSEUM"
+outdoors = false
+
+[node name="Ground" type="TileMapLayer" parent="."]
+script = ExtResource("2_paint")
+palette_id = "rented_room"
+layout = "##################
+#WWWWWWWWWWWWWWWW#
+#wwwwwwwwwwwwwwww#
+#ffffffffffffffff#
+#ffffffffffffffff#
+#ffffffffffffffff#
+#ffffffffffffffff#
+#ffffffffffffffff#
+#ffffffffffffffff#
+#ffffffffffffffff#
+########ff########"
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="NpcAnchors" type="Node2D" parent="."]
+
+[node name="Window_56_62" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(56, 62)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_421.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Window_200_62" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(200, 62)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_421.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="DisplayCounter_56_110" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(56, 110)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/16_Grocery_Store_Singles/Grocery_Store_Singles_147.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(28, 12)
+collision_offset = Vector2(0, -13)
+
+[node name="DisplayCounter_104_110" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(104, 110)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/16_Grocery_Store_Singles/Grocery_Store_Singles_147.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(28, 12)
+collision_offset = Vector2(0, -13)
+
+[node name="DisplayCounter_200_110" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(200, 110)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/16_Grocery_Store_Singles/Grocery_Store_Singles_147.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(28, 12)
+collision_offset = Vector2(0, -13)
+
+[node name="Globe_152_72" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(152, 72)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_34.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(11, 6)
+collision_offset = Vector2(-0.5, -13)
+
+[node name="BookcaseC_250_64" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(250, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_60.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -11)
+
+[node name="PlantTall_24_150" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(24, 150)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_17.png"
+placeholder_size = Vector2i(16, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -10)
+
+[node name="RugCheck_150_140" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(150, 140)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_385.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="CaseA" type="Area2D" parent="Entities"]
+position = Vector2(56, 118)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_mus_a"
+area_size = Vector2(30, 10)
+lines = PackedStringArray("FLAVOR_MUS_A")
+
+[node name="CaseB" type="Area2D" parent="Entities"]
+position = Vector2(104, 118)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_mus_b"
+area_size = Vector2(30, 10)
+dialogue_id = &"mus_census"
+
+[node name="CaseC" type="Area2D" parent="Entities"]
+position = Vector2(200, 118)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_mus_c"
+area_size = Vector2(30, 10)
+lines = PackedStringArray("FLAVOR_MUS_C")
+
+[node name="A_desk" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(152, 96)
+script = ExtResource("11_anchor")
+anchor_id = &"desk"
+
+[node name="Entrance" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(136, 156)
+script = ExtResource("4_spawn")
+spawn_id = &"entrance"
+facing = Vector2(0, -1)
+
+[node name="ExitDoor" type="Area2D" parent="Entities"]
+position = Vector2(136, 172)
+script = ExtResource("6_door")
+interaction_id = &"door_ash_museum_exit"
+area_size = Vector2(30, 10)
+prompt_key = "PROMPT_EXIT"
+target_scene_id = &"ashbridge"
+target_spawn_id = &"museum_front"

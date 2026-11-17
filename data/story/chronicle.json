@@ -533,6 +533,31 @@
    ]
   },
   {
+   "id": "card",
+   "tale": true,
+   "title": "CHRON_CARD_TITLE",
+   "epigraph": "CHRON_CARD_EPI",
+   "if": {
+    "not": {
+     "not_quest_started": "case_original_card"
+    }
+   },
+   "done_if": {
+    "quest_done": "case_original_card"
+   },
+   "pages": [
+    {
+     "text": "CHRON_CARD_OPEN"
+    },
+    {
+     "text": "CHRON_CARD_DONE",
+     "if": {
+      "quest_done": "case_original_card"
+     }
+    }
+   ]
+  },
+  {
    "id": "after",
    "title": "CHRON_AFTER_TITLE",
    "epigraph": "CHRON_AFTER_EPI",

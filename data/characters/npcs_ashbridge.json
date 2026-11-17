@@ -1,0 +1,31 @@
+{
+ "imogen_hale": {
+  "name": "NPC_IMOGEN",
+  "body": "Body_07",
+  "eyes": "Eyes_05",
+  "outfit": "Outfit_25_02",
+  "hairstyle": "Hairstyle_18_04",
+  "accessory": "Accessory_15_Glasses_02",
+  "color": "#a080c0",
+  "dialogue": "imogen",
+  "schedule": [
+   {
+    "period": [
+     "morning",
+     "afternoon"
+    ],
+    "scene": "ashbridge_museum",
+    "anchor": "desk",
+    "facing": "down",
+    "activity": "read"
+   },
+   {
+    "period": "evening",
+    "scene": "ashbridge",
+    "anchor": "plaza",
+    "facing": "down",
+    "activity": "look"
+   }
+  ]
+ }
+}

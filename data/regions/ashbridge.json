@@ -1,0 +1,527 @@
+{
+ "id": "ashbridge",
+ "name_key": "LOC_ASHBRIDGE",
+ "palette": "greyford_exterior",
+ "options": {
+  "outdoors": true
+ },
+ "layout": [
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssoooooooooooooooooooooossssssssssssss",
+  "ssssssssssssssoooooooooooooooooooooossssssssssssss",
+  "ssgggggggggsssoooooooooooooooooooooossssggggggggss",
+  "ssgggggggggsssoooooooooooooooooooooossssggggggggss",
+  "ssgggggggggsssoooooooooooooooooooooossssggggggggss",
+  "ssgggggggggsssoooooooooooooooooooooossssggggggggss",
+  "ssgggggggggsssoooooooooooooooooooooossssggggggggss",
+  "ssgggggggggsssoooooooooooooooooooooossssggggggggss",
+  "ssgggggggggsssoooooooooooooooooooooossssggggggggss",
+  "ssssssssssssssoooooooooooooooooooooossssssssssssss"
+ ],
+ "nodes": [
+  {
+   "template": "townhouse",
+   "x": 72,
+   "y": 288,
+   "ground": "Ground_Floor_Condo_10",
+   "middle": "Middle_Floor_5",
+   "roof": "Roof_3",
+   "name": "Hotel",
+   "floors": 2,
+   "inspect": {
+    "id": "inspect_ash_hotel",
+    "lines": [
+     "FLAVOR_ASH_HOTEL"
+    ]
+   }
+  },
+  {
+   "template": "townhouse",
+   "x": 200,
+   "y": 288,
+   "ground": "Ground_Floor_Condo_1",
+   "middle": "Middle_Floor_9",
+   "roof": "Roof_7",
+   "name": "Museum",
+   "floors": 2,
+   "door": {
+    "id": "door_ash_museum",
+    "scene": "ashbridge_museum",
+    "spawn": "entrance",
+    "spawn_id": "museum_front",
+    "prompt": "PROMPT_ENTER_MUSEUM"
+   }
+  },
+  {
+   "template": "townhouse",
+   "x": 328,
+   "y": 288,
+   "ground": "Ground_Floor_Condo_7",
+   "middle": "Middle_Floor_3",
+   "roof": "Roof_7",
+   "name": "Bureau",
+   "floors": 2,
+   "inspect": {
+    "id": "inspect_ash_bureau",
+    "lines": [
+     "FLAVOR_ASH_BUREAU"
+    ],
+    "x": 338
+   }
+  },
+  {
+   "template": "townhouse",
+   "x": 456,
+   "y": 288,
+   "ground": "Ground_Floor_Shop_7",
+   "middle": "Middle_Floor_13",
+   "roof": "Roof_6",
+   "name": "Books",
+   "floors": 1,
+   "inspect": {
+    "id": "inspect_ash_books",
+    "lines": [
+     "FLAVOR_ASH_BOOKS"
+    ]
+   }
+  },
+  {
+   "template": "townhouse",
+   "x": 584,
+   "y": 288,
+   "ground": "Ground_Floor_Ice_Cream_Shop_3",
+   "middle": "Middle_Floor_1",
+   "roof": "Roof_2",
+   "name": "Cafe",
+   "floors": 1,
+   "inspect": {
+    "id": "inspect_ash_cafe",
+    "lines": [
+     "FLAVOR_ASH_CAFE"
+    ]
+   }
+  },
+  {
+   "template": "townhouse",
+   "x": 712,
+   "y": 288,
+   "ground": "Ground_Floor_Bakery_5",
+   "middle": "Middle_Floor_7",
+   "roof": "Roof_4",
+   "name": "Shop2",
+   "floors": 1,
+   "inspect": {
+    "id": "inspect_ash_shop",
+    "lines": [
+     "FLAVOR_ASH_SHOP"
+    ]
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp1",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 16,
+   "y": 314,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#808080"
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp2",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 136,
+   "y": 314,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#808080"
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp3",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 264,
+   "y": 314,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#808080"
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp4",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 392,
+   "y": 314,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#808080"
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp5",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 520,
+   "y": 314,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#808080"
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp6",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 648,
+   "y": 314,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#808080"
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp7",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 776,
+   "y": 314,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#808080"
+  },
+  {
+   "kind": "prop",
+   "name": "Fountain",
+   "tex": "@city/Fountain_1.png",
+   "x": 400,
+   "y": 472,
+   "col": [
+    60,
+    30
+   ],
+   "off": [
+    0,
+    -15
+   ],
+   "color": "#80a0c0"
+  },
+  {
+   "kind": "inspect",
+   "name": "FountainLook",
+   "id": "inspect_ash_fountain",
+   "x": 400,
+   "y": 480,
+   "area": [
+    70,
+    10
+   ],
+   "lines": [
+    "FLAVOR_ASH_FOUNTAIN"
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Bench1",
+   "tex": "@city/Bench_2.png",
+   "x": 260,
+   "y": 412,
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#8a6a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Bench2",
+   "tex": "@city/Bench_2.png",
+   "x": 540,
+   "y": 412,
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#8a6a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Bench3",
+   "tex": "@city/Bench_2.png",
+   "x": 260,
+   "y": 532,
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#8a6a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Bench4",
+   "tex": "@city/Bench_2.png",
+   "x": 540,
+   "y": 532,
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#8a6a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Tree1",
+   "tex": "@ftree/Tree_Oak_Green_Big_16x16.png",
+   "x": 60,
+   "y": 462,
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#3f7f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "Tree2",
+   "tex": "@ftree/Tree_Oak_Green_Big_16x16.png",
+   "x": 120,
+   "y": 532,
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#3f7f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "Tree3",
+   "tex": "@ftree/Tree_Oak_Green_Big_16x16.png",
+   "x": 700,
+   "y": 462,
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#3f7f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "Tree4",
+   "tex": "@ftree/Tree_Oak_Green_Big_16x16.png",
+   "x": 760,
+   "y": 532,
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#3f7f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers1",
+   "tex": "@city/Flower_Bush_1.png",
+   "x": 30,
+   "y": 502,
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ],
+   "color": "#c06080"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers2",
+   "tex": "@city/Flower_Bush_2.png",
+   "x": 150,
+   "y": 452,
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ],
+   "color": "#c06080"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers3",
+   "tex": "@city/Flower_Bush_3.png",
+   "x": 650,
+   "y": 502,
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ],
+   "color": "#c06080"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers4",
+   "tex": "@city/Flower_Bush_4.png",
+   "x": 740,
+   "y": 442,
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ],
+   "color": "#c06080"
+  },
+  {
+   "kind": "prop",
+   "name": "AirSign",
+   "tex": "@farm/Sign_1_16x16.png",
+   "x": 432,
+   "y": 392,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#a07040"
+  },
+  {
+   "kind": "screen",
+   "name": "AirDesk",
+   "id": "use_ash_air",
+   "x": 432,
+   "y": 400,
+   "screen": "world:air",
+   "prompt": "PROMPT_FLIGHT"
+  },
+  {
+   "kind": "spawn",
+   "name": "Arrive",
+   "id": "air_stop",
+   "x": 416,
+   "y": 384,
+   "facing": [
+    0,
+    1
+   ]
+  },
+  {
+   "template": "anchors",
+   "points": {
+    "plaza": [
+     320,
+     452
+    ],
+    "museum_desk": [
+     120,
+     122
+    ]
+   }
+  }
+ ]
+}

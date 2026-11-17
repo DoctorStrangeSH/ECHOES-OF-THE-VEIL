@@ -1,0 +1,312 @@
+{
+ "id": "greyford_airfield",
+ "name_key": "LOC_AIRFIELD",
+ "palette": "greyford_exterior",
+ "options": {
+  "outdoors": true
+ },
+ "layout": [
+  "gggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggg",
+  "ggggggoooooooooooooooogggggggggggggggggg",
+  "ggggggoooooooooooooooogggggggggggggggggg",
+  "ggggggoooooooooooooooogggggggggggggggggg",
+  "ggggggoooooooooooooooogggggggggggggggggg",
+  "ggggggoooooooooooooooogggggggggggggggggg",
+  "ggggggoooooooooooooooogggggggggggggggggg",
+  "ggggggoooooooooooooooogggggggggggggggggg",
+  "ggggggoooooooooooooooogggggggggggggggggg",
+  "ggggggoooooooooooooooogggggggggggggggggg",
+  "ggggggoooooooooooooooogggggggggggggggggg",
+  "ggggggoooooooooooooooogggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggg",
+  "ssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssss",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "ssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssss"
+ ],
+ "nodes": [
+  {
+   "kind": "prop",
+   "name": "Pad",
+   "tex": "@vehicle/Helicopter_Landing_Pad_1.png",
+   "x": 224,
+   "y": 200,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#606060"
+  },
+  {
+   "kind": "prop",
+   "name": "Heli",
+   "tex": "@vehicle/Helicopter_1.png",
+   "x": 224,
+   "y": 140,
+   "col": [
+    120,
+    40
+   ],
+   "off": [
+    0,
+    -20
+   ],
+   "color": "#c03030"
+  },
+  {
+   "kind": "screen",
+   "name": "FlightDesk",
+   "id": "use_air_desk",
+   "x": 440,
+   "y": 222,
+   "screen": "world:air",
+   "prompt": "PROMPT_FLIGHT"
+  },
+  {
+   "template": "building",
+   "tex": "@camp/Mobile_House_Small_1.png",
+   "x": 440,
+   "y": 216,
+   "name": "Terminal",
+   "depth": 40,
+   "inset": 8,
+   "inspect": {
+    "id": "inspect_airfield_terminal",
+    "lines": [
+     "FLAVOR_AIRFIELD_TERMINAL"
+    ],
+    "width": 10,
+    "x": 470
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "Fuel1",
+   "tex": "@city/Hydrant_1.png",
+   "x": 80,
+   "y": 120,
+   "col": [
+    8,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#c03030"
+  },
+  {
+   "kind": "prop",
+   "name": "Cone1",
+   "tex": "@work/Cone_1.png",
+   "x": 104,
+   "y": 60,
+   "col": [
+    8,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#e08020"
+  },
+  {
+   "kind": "prop",
+   "name": "Cone2",
+   "tex": "@work/Cone_1.png",
+   "x": 344,
+   "y": 60,
+   "col": [
+    8,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#e08020"
+  },
+  {
+   "kind": "prop",
+   "name": "Light",
+   "tex": "@work/Light_Tower_1.png",
+   "x": 560,
+   "y": 120,
+   "col": [
+    16,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#808080"
+  },
+  {
+   "kind": "prop",
+   "name": "BusStopSign",
+   "tex": "@vehicle/Bus_Stop_Sign_1.png",
+   "x": 320,
+   "y": 248,
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ],
+   "color": "#3060a0"
+  },
+  {
+   "kind": "screen",
+   "name": "BusStopUse",
+   "id": "use_bus_stop",
+   "x": 320,
+   "y": 256,
+   "screen": "map:travel",
+   "prompt": "PROMPT_BUS"
+  },
+  {
+   "kind": "spawn",
+   "name": "BusStopSpawn",
+   "id": "bus_stop",
+   "x": 304,
+   "y": 240,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "spawn",
+   "name": "Pad",
+   "id": "helipad",
+   "x": 224,
+   "y": 216,
+   "facing": [
+    0,
+    1
+   ]
+  },
+  {
+   "template": "anchors",
+   "points": {
+    "desk": [
+     476,
+     230
+    ]
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "Tree1",
+   "tex": "@ftree/Tree_Oak_Green_Big_16x16.png",
+   "x": 44,
+   "y": 100,
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#3f7f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "Tree2",
+   "tex": "@ftree/Tree_Oak_Green_Big_16x16.png",
+   "x": 600,
+   "y": 100,
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#3f7f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "Tree3",
+   "tex": "@ftree/Tree_Oak_Green_Big_16x16.png",
+   "x": 44,
+   "y": 200,
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#3f7f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "Tree4",
+   "tex": "@ftree/Tree_Oak_Green_Big_16x16.png",
+   "x": 596,
+   "y": 200,
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#3f7f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "MyCar",
+   "tex": "@vehicle/Car_Left_3.png",
+   "x": 150,
+   "y": 290,
+   "col": [
+    56,
+    20
+   ],
+   "off": [
+    0,
+    -10
+   ],
+   "color": "#40a080",
+   "show_if": {
+    "flag": "car.owned"
+   }
+  },
+  {
+   "kind": "inspect",
+   "name": "MyCarUse",
+   "id": "use_my_car",
+   "x": 150,
+   "y": 296,
+   "area": [
+    60,
+    12
+   ],
+   "dialogue": "car",
+   "prompt": "PROMPT_CAR",
+   "show_if": {
+    "flag": "car.owned"
+   }
+  }
+ ]
+}

@@ -124,3 +124,7 @@ Jonah sells his late father's estate car (£120, once you are on friendly terms)
 ## D-076 The island ferry (R12c)
 
 Travel modes are now a string on each route ("coach", "car", "ferry"); a town may name a different arrival point per mode (arrive_ferry: the harbour pier). The ferry to St Carrow starts broken: Agatha hands the player the repair as a job, and the board at the pier becomes a ticket office once it is done. St Carrow is small on purpose (a lighthouse, a chapel, a cottage, a pier for lobster) and carries one quiet story: since November 1962 Greyford's lighthouse counts to seven, and from the island's gallery the player can send the missing eighth flash.
+
+## D-077 By air (R12d)
+
+The art packs have no aeroplanes, only a helicopter and a landing pad, so "the plane" is an air taxi: a new Greyford district (the airfield, always on the bus map) and an "air" route to Ashbridge, the county town an hour away. Ashbridge is the first place built for scale rather than intimacy (three-storey townhouses, a square with a fountain, the regional Census Bureau still open), and its story points back home: Agnes Venn's census card is under glass in the museum as a "specimen", and it can go to Mara, by argument (Intellect 3) or by a donation.

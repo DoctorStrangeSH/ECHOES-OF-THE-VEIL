@@ -590,7 +590,7 @@ def screen_ok(s):
         return s[7:] in JOBS
     if s.startswith('fish:'):
         return s[5:] in ('sea', 'harbour', 'lake', 'island')
-    return s in ('jobs', 'workbench', 'business', 'epilogue', 'expeditions', 'sport:basketball', 'sport:football', 'match:football', 'map:travel', 'train:gym', 'world:travel', 'world:drive', 'map:drive', 'world:ferry')
+    return s in ('jobs', 'workbench', 'business', 'epilogue', 'expeditions', 'sport:basketball', 'sport:football', 'match:football', 'map:travel', 'train:gym', 'world:travel', 'world:drive', 'map:drive', 'world:ferry', 'world:air')
 
 CHECK = {
     'evidence': lambda a: a in J['evidence'], 'case': lambda a: a in J['cases'], 'hyp': lambda a: a in J['hypotheses'],

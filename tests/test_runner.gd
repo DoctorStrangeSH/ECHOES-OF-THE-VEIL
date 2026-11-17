@@ -1538,10 +1538,10 @@ func test_city_map_knows_where_you_have_been_and_buses_cost() -> void:
 	check(CityMap.district_of(&"bakery") == "market" and CityMap.district_of(&"rented_room") == "old_quarter", "interiors belong to their street")
 	GameState.set_flag(&"visited.greyford_block")
 	check(CityMap.known("old_quarter") and not CityMap.known("market"), "only places you've been are on the map")
-	check(CityMap.destinations(&"greyford_block") == ["harbour"], "before you know anywhere, only the harbour: every bus goes there")
+	check(CityMap.destinations(&"greyford_block") == ["harbour", "airfield"], "before you know anywhere, only the harbour and the airfield: every bus goes there")
 	GameState.set_flag(&"visited.market_street")
 	GameState.set_flag(&"visited.north_quay")
-	check(CityMap.destinations(&"greyford_block") == ["market", "harbour"], "the bus goes to known stops; North Quay waits for Act III")
+	check(CityMap.destinations(&"greyford_block") == ["market", "harbour", "airfield"], "the bus goes to known stops; North Quay waits for Act III")
 	for id: String in CityMap.districts():
 		var stop: Variant = CityMap.districts()[id].get("stop")
 		if stop != null:
