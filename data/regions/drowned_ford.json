@@ -529,7 +529,7 @@
    "id": "ford_3",
    "x": 470,
    "y": 236,
-   "variant": "wailer"
+   "variant": "caller"
   },
   {
    "kind": "enemy",
@@ -537,7 +537,7 @@
    "id": "ford_4",
    "x": 560,
    "y": 262,
-   "variant": "hollow"
+   "variant": "doubled"
   },
   {
    "kind": "enemy",

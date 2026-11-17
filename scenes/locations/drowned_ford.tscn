@@ -624,12 +624,12 @@ variant = "clinger"
 [node name="Echo3" parent="Entities" instance=ExtResource("12_enemy")]
 position = Vector2(470, 236)
 enemy_id = &"ford_3"
-variant = "wailer"
+variant = "caller"
 
 [node name="Echo4" parent="Entities" instance=ExtResource("12_enemy")]
 position = Vector2(560, 262)
 enemy_id = &"ford_4"
-variant = "hollow"
+variant = "doubled"
 
 [node name="Echo5" parent="Entities" instance=ExtResource("12_enemy")]
 position = Vector2(620, 360)

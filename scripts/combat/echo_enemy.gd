@@ -5,6 +5,14 @@ extends CharacterBody2D
 ##   hollow  - steady melee lunger (3 HP)
 ##   clinger - small, fast, fragile, short wind-up (1 HP)
 ##   wailer  - keeps its distance and throws memory shards (2 HP)
+## Behaviour traits (R4b, D-083), any variant may combine them:
+##   guard         - turns aside light hits (damage 1) from the front; strike
+##                   from the side or behind, or hit hard
+##   split         - {"variant", "count"}: comes apart into smaller echoes
+##   blink         - ends its wind-up by stepping out of the air behind you
+##   summon        - {"variant", "every", "max"}: calls more echoes while it lives
+##   mend          - {"every", "radius", "amount"}: heals the echoes around it
+##   resist_stun   - the Lantern Flash does not stop it
 ## Readable state machine: drift -> chase -> wind-up (clear glow telegraph) ->
 ## lunge/shoot -> recover. Hit flash, knockback, stun from the Lantern Flash.
 ## Stays defeated once beaten (flag "defeated.<enemy_id>"). Drops Resonance.
@@ -28,6 +36,8 @@ static var _variants: Dictionary = {}
 @export var recover_time: float = 0.6
 ## Chance to drop a consumable on defeat.
 @export var item_drop_chance: float = 0.12
+## -1: use the variant's resonance; spawned echoes (split, summon) drop none.
+var resonance_drop_override := -1
 
 var state: State = State.DRIFT
 var health: Health
@@ -43,6 +53,14 @@ var base_tint := Color.WHITE
 var _slow_until := 0.0
 var contact_damage := 1
 var sheet := SHEET
+var guard := false
+var split: Dictionary = {}
+var blink := false
+var summon: Dictionary = {}
+var mend: Dictionary = {}
+var resist_stun := false
+var _summoned: Array[EchoEnemy] = []
+var _trait_timer := 0.0
 
 var _timer := 0.0
 var _lunge_dir := Vector2.ZERO
@@ -87,6 +105,8 @@ func _ready() -> void:
 	hurt.add_child(_rect_shape(Vector2(12, 18), Vector2(0, -9)))
 	add_child(hurt)
 	hurt.hit.connect(_on_hit)
+	hurt.modifier = _modify_damage
+	hurt.blocked.connect(_on_blocked)
 
 	_hitbox = Hitbox.new()
 	_hitbox.team = &"enemy"
@@ -119,13 +139,20 @@ func _apply_variant() -> void:
 	windup_time = float(v["windup_time"])
 	attack_range = float(v["attack_range"])
 	ranged = bool(v.get("ranged", false))
-	resonance_drop = int(v["resonance"])
+	resonance_drop = int(v["resonance"]) if resonance_drop_override < 0 else resonance_drop_override
 	var t: Array = v.get("tint", [1, 1, 1, 1])
 	base_tint = Color(float(t[0]), float(t[1]), float(t[2]), float(t[3]))
 	contact_damage = int(v.get("damage", 1))
 	sheet = String(v.get("sheet", SHEET))
 	item_drop_chance = float(v.get("drop_chance", item_drop_chance))
 	sprite.scale = Vector2.ONE * float(v["scale"])
+	guard = bool(v.get("guard", false))
+	split = v.get("split", {})
+	blink = bool(v.get("blink", false))
+	summon = v.get("summon", {})
+	mend = v.get("mend", {})
+	resist_stun = bool(v.get("resist_stun", false))
+	_trait_timer = float(summon.get("every", mend.get("every", 0.0))) * 0.5
 
 
 func _physics_process(delta: float) -> void:
@@ -138,6 +165,8 @@ func _physics_process(delta: float) -> void:
 	var desired := Vector2.ZERO
 	var blocked := GameState.is_player_locked() or SceneFlow.is_transitioning
 
+	if state in [State.CHASE, State.RECOVER] and not blocked:
+		_tick_traits(delta)
 	match state:
 		State.DRIFT:
 			desired = _drift_dir * move_speed
@@ -145,6 +174,7 @@ func _physics_process(delta: float) -> void:
 				_pick_drift()
 			if player != null and dist < sight_range and not blocked:
 				state = State.CHASE
+				_announce()
 		State.CHASE:
 			if player == null or dist > sight_range * 1.5 or blocked:
 				state = State.DRIFT
@@ -172,6 +202,8 @@ func _physics_process(delta: float) -> void:
 					state = State.RECOVER
 					_timer = recover_time + 1.2
 				else:
+					if blink:
+						_blink_behind(player)
 					state = State.LUNGE
 					_timer = lunge_time
 					_hit_this_lunge = false
@@ -217,6 +249,9 @@ func is_slowed() -> bool:
 
 func stun(seconds: float) -> void:
 	if state == State.DEAD:
+		return
+	if resist_stun:
+		_flash = 0.08
 		return
 	state = State.STUNNED
 	_timer = seconds
@@ -271,11 +306,18 @@ func _on_died() -> void:
 	collision_mask = 0
 	if enemy_id != &"":
 		GameState.set_flag(StringName("defeated.%s" % enemy_id), true)
-	remove_from_group(&"echo_enemy")
+	if split.is_empty():
+		remove_from_group(&"echo_enemy")
+	else:
+		# Stay counted until the pieces are in the room, so an encounter
+		# does not clear between the two.
+		remove_from_group.call_deferred(&"echo_enemy")
 	Progression.add_xp(Progression.XP_ENEMY)
 	Party.note_kill()
 	Sfx.play(&"enemy_death")
 	_drop_rewards()
+	if not split.is_empty():
+		_split_apart()
 	var t := create_tween()
 	t.set_parallel(true)
 	t.tween_property(self, "modulate:a", 0.0, 0.6)
@@ -293,6 +335,114 @@ func _drop_rewards() -> void:
 		mote.item_id = &"sandwich"
 		mote.global_position = global_position
 		get_parent().add_child.call_deferred(mote)
+
+
+## The first time the player meets a new kind of echo, a line on how to
+## fight it (variants with a "hint").
+func _announce() -> void:
+	var v: Dictionary = variants().get(StringName(variant), {})
+	if not v.has("hint"):
+		return
+	var f := StringName("seen.enemy." + variant)
+	if GameState.has_flag(f):
+		return
+	GameState.set_flag(f, true)
+	EventHub.toast_requested.emit("%s: %s" % [tr(String(v.get("name", ""))), tr(String(v["hint"]))])
+
+
+## Guard: light hits from the side it faces glance off.
+func _modify_damage(damage: int, from_position: Vector2) -> int:
+	if not guard or damage >= 2 or state in [State.STUNNED, State.DEAD]:
+		return damage
+	var facing := _facing_vector()
+	var from := (from_position - global_position).normalized()
+	return 0 if from.dot(facing) > 0.35 else damage
+
+
+func _facing_vector() -> Vector2:
+	match _dir:
+		LayeredCharacterSprite.Dir.UP:
+			return Vector2.UP
+		LayeredCharacterSprite.Dir.LEFT:
+			return Vector2.LEFT
+		LayeredCharacterSprite.Dir.RIGHT:
+			return Vector2.RIGHT
+	return Vector2.DOWN
+
+
+func _on_blocked(from_position: Vector2) -> void:
+	_knockback = (global_position - from_position).normalized() * 40.0
+	_flash = 0.04
+	Sfx.play(&"stamp", 0.15, -6.0)
+	CombatFx.text_pop(get_parent(), global_position, tr("COMBAT_GUARDED"))
+
+
+func _tick_traits(delta: float) -> void:
+	if summon.is_empty() and mend.is_empty():
+		return
+	_trait_timer -= delta
+	if _trait_timer > 0.0:
+		return
+	if not summon.is_empty():
+		_trait_timer = float(summon.get("every", 6.0))
+		_summoned = _summoned.filter(func(e: EchoEnemy) -> bool: return is_instance_valid(e) and e.state != State.DEAD)
+		if _summoned.size() < int(summon.get("max", 2)):
+			var e := _spawn_echo(String(summon.get("variant", "clinger")), global_position + Vector2.from_angle(randf() * TAU) * 18.0)
+			if e != null:
+				_summoned.append(e)
+				Sfx.play(&"stamp_warn", 0.15, -8.0)
+	if not mend.is_empty():
+		_trait_timer = float(mend.get("every", 4.0))
+		var r := float(mend.get("radius", 90.0))
+		var healed := false
+		for n in get_tree().get_nodes_in_group(&"echo_enemy"):
+			var o := n as EchoEnemy
+			if o == self or o.health == null or o.health.is_dead():
+				continue
+			if o.global_position.distance_to(global_position) < r and o.health.health < o.health.max_health:
+				o.health.heal(int(mend.get("amount", 1)))
+				o._flash = 0.1
+				healed = true
+		if healed:
+			CombatFx.flash_ring(get_parent(), global_position, r, Color(0.6, 0.8, 1.0, 0.5))
+
+
+func _split_apart() -> void:
+	var n := int(split.get("count", 2))
+	for i in n:
+		var off := Vector2.from_angle(TAU * i / n + randf() * 0.5) * 14.0
+		var e := _spawn_echo(String(split.get("variant", "clinger")), global_position + off)
+		if e != null:
+			e._knockback = off.normalized() * 120.0
+
+
+func _spawn_echo(v: String, at: Vector2) -> EchoEnemy:
+	if get_parent() == null:
+		return null
+	var e: EchoEnemy = load("res://scenes/combat/echo_enemy.tscn").instantiate()
+	e.variant = v
+	e.resonance_drop_override = 0
+	e.position = (get_parent() as Node2D).to_local(at) if get_parent() is Node2D else at
+	get_parent().add_child.call_deferred(e)
+	return e
+
+
+## Blink: the wind-up ends with the echo stepping out of the air behind you.
+func _blink_behind(player: Node2D) -> void:
+	if player == null:
+		return
+	var away := (player.global_position - global_position).normalized()
+	var target := player.global_position + away * 26.0
+	var q := PhysicsPointQueryParameters2D.new()
+	q.position = target
+	q.collision_mask = 1
+	if not get_world_2d().direct_space_state.intersect_point(q, 1).is_empty():
+		return
+	CombatFx.flash_ring(get_parent(), global_position, 14.0, Color(1, 1, 0.8, 0.6))
+	global_position = target
+	_lunge_dir = (player.global_position - target).normalized()
+	_dir = LayeredCharacterSprite.dir_from_vector(_lunge_dir, _dir)
+	Sfx.play(&"dodge", 0.1, -6.0)
 
 
 static func _rect_shape(size: Vector2, offset: Vector2) -> CollisionShape2D:

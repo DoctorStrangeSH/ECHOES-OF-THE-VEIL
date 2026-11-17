@@ -291,7 +291,7 @@ variant = "clinger"
 [node name="Echo3" parent="Entities" instance=ExtResource("12_enemy")]
 position = Vector2(320, 300)
 enemy_id = &"abbey_3"
-variant = "wailer"
+variant = "mourner"
 
 [node name="Echo4" parent="Entities" instance=ExtResource("12_enemy")]
 position = Vector2(150, 380)
@@ -306,7 +306,7 @@ variant = "clinger"
 [node name="Echo6" parent="Entities" instance=ExtResource("12_enemy")]
 position = Vector2(320, 230)
 enemy_id = &"abbey_6"
-variant = "hollow"
+variant = "flicker"
 
 [node name="Encounter" type="Node" parent="."]
 script = ExtResource("13_encounter")
