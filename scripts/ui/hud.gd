@@ -6,7 +6,7 @@ extends CanvasLayer
 ## Lines that end in a choice print this much faster: the question is the
 ## point, and the player is waiting to answer it.
 const CHOICE_SPEEDUP := 3.0
-const NARRATOR_INK := Color(0.9, 0.84, 0.72)
+const NARRATOR_INK := Color(0.4, 0.25, 0.13)
 const TOAST_QUEUE_MAX := 4
 
 var _prompt_panel: PanelContainer
@@ -22,7 +22,7 @@ var _combat: CombatHud
 var _wallet: Label
 var _objective: Label
 var _guide: Label
-var _keys_hint: Label
+var _keys_hint: HBoxContainer
 var _controls: PanelContainer
 var _controls_t := 0.0
 var _objective_t := 0.0
@@ -105,7 +105,7 @@ func _process(delta: float) -> void:
 		_objective_t = 0.4
 		_objective.text = _objective_line()
 		_guide.text = _guide_line()
-		_keys_hint.text = tr("HUD_KEYS_HINT")
+		_label_bar()
 		(_controls.get_node("Text") as Label).text = tr("HUD_CONTROLS")
 	_objective.visible = GameSettings.shows_objective() and not _dialogue_panel.visible and _objective.text != ""
 	_guide.visible = _objective.visible and GameSettings.shows_guide() and _guide.text != ""
@@ -244,6 +244,28 @@ func _on_focus_changed(prompt: String) -> void:
 	_prompt_label.text = "[%s] %s" % [UiTheme.action_hint(&"interact"), prompt]
 
 
+const BAR := [["journal", &"journal"], ["inventory", &"inventory"], ["character", &"character"], ["map", &"map"], ["wait", &"wait"], ["game", &"pause"]]
+
+
+func _label_bar() -> void:
+	for i in BAR.size():
+		var b := _keys_hint.get_child(i) as Button
+		b.text = "%s %s" % [UiTheme.action_hint(BAR[i][1]), tr("HUD_BAR_" + String(BAR[i][0]).to_upper())]
+
+
+func _on_bar(what: String) -> void:
+	if DialogueService.is_active:
+		return
+	if what == "wait":
+		var e := InputEventAction.new()
+		e.action = &"wait"
+		e.pressed = true
+		Input.parse_input_event(e)
+		return
+	if GameMenu.instance != null:
+		GameMenu.instance.open(what)
+
+
 func _on_health_changed(health: int, max_health: int) -> void:
 	_hearts.set_health(health, max_health)
 
@@ -293,7 +315,7 @@ func _build() -> void:
 	box.add_theme_constant_override("separation", 3)
 	_name_plate = PanelContainer.new()
 	var plate := StyleBoxFlat.new()
-	plate.bg_color = Color(0.16, 0.22, 0.3)
+	plate.bg_color = Color(0.36, 0.22, 0.13)
 	plate.set_corner_radius_all(2)
 	plate.content_margin_left = 6
 	plate.content_margin_right = 6
@@ -302,7 +324,7 @@ func _build() -> void:
 	_name_plate.add_theme_stylebox_override("panel", plate)
 	_name_plate.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 	_speaker_label = Label.new()
-	_speaker_label.add_theme_color_override("font_color", UiTheme.ACCENT)
+	_speaker_label.add_theme_color_override("font_color", Color(0.99, 0.93, 0.8))
 	_name_plate.add_child(_speaker_label)
 	_italic = FontVariation.new()
 	_italic.base_font = ThemeDB.fallback_font
@@ -327,9 +349,7 @@ func _build() -> void:
 	_dialogue_panel.visible = false
 
 	_clock_label = Label.new()
-	_clock_label.add_theme_font_size_override("font_size", 8)
-	_clock_label.add_theme_color_override("font_outline_color", Color.BLACK)
-	_clock_label.add_theme_constant_override("outline_size", 3)
+	UiTheme.hud_label(_clock_label)
 	root.add_child(_clock_label)
 	_clock_label.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT, Control.PRESET_MODE_MINSIZE, 6)
 	_clock_label.grow_horizontal = Control.GROW_DIRECTION_BEGIN
@@ -343,9 +363,7 @@ func _build() -> void:
 	_combat.visible = false
 
 	_wallet = Label.new()
-	_wallet.add_theme_font_size_override("font_size", 8)
-	_wallet.add_theme_color_override("font_outline_color", Color.BLACK)
-	_wallet.add_theme_constant_override("outline_size", 3)
+	UiTheme.hud_label(_wallet)
 	root.add_child(_wallet)
 	_wallet.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT, Control.PRESET_MODE_MINSIZE, 6)
 	_wallet.grow_horizontal = Control.GROW_DIRECTION_BEGIN
@@ -353,10 +371,7 @@ func _build() -> void:
 	_wallet.offset_bottom = 28
 
 	_objective = Label.new()
-	_objective.add_theme_font_size_override("font_size", 8)
-	_objective.add_theme_color_override("font_color", UiTheme.ACCENT)
-	_objective.add_theme_color_override("font_outline_color", Color.BLACK)
-	_objective.add_theme_constant_override("outline_size", 3)
+	UiTheme.hud_label(_objective, UiTheme.HUD_ACCENT)
 	_objective.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_objective.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	var quest_box := VBoxContainer.new()
@@ -372,21 +387,22 @@ func _build() -> void:
 	quest_box.add_child(_objective)
 
 	_guide = Label.new()
-	_guide.add_theme_font_size_override("font_size", 8)
-	_guide.add_theme_color_override("font_color", UiTheme.INK)
-	_guide.add_theme_color_override("font_outline_color", Color.BLACK)
-	_guide.add_theme_constant_override("outline_size", 3)
+	UiTheme.hud_label(_guide)
 	_guide.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_guide.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	_guide.add_theme_constant_override("line_spacing", -2)
 	quest_box.add_child(_guide)
 
-	_keys_hint = Label.new()
-	_keys_hint.add_theme_font_size_override("font_size", 8)
-	_keys_hint.add_theme_color_override("font_color", Color(UiTheme.INK_DIM, 0.85))
-	_keys_hint.add_theme_color_override("font_outline_color", Color.BLACK)
-	_keys_hint.add_theme_constant_override("outline_size", 2)
-	_keys_hint.text = tr("HUD_KEYS_HINT")
+	# A row of small buttons in the corner: the same things the keys open,
+	# for the mouse. Each says its key too.
+	_keys_hint = HBoxContainer.new()
+	_keys_hint.add_theme_constant_override("separation", 1)
+	for spec: Array in BAR:
+		var b := Button.new()
+		b.focus_mode = Control.FOCUS_NONE
+		b.add_theme_font_size_override("font_size", 7)
+		b.pressed.connect(_on_bar.bind(spec[0]))
+		_keys_hint.add_child(b)
 	root.add_child(_keys_hint)
 	_keys_hint.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT, Control.PRESET_MODE_MINSIZE, 3)
 	_keys_hint.grow_horizontal = Control.GROW_DIRECTION_BEGIN
@@ -406,7 +422,6 @@ func _build() -> void:
 
 	_toast_label = Label.new()
 	_toast_label.position = Vector2(10, 22)
-	_toast_label.add_theme_color_override("font_outline_color", Color.BLACK)
-	_toast_label.add_theme_constant_override("outline_size", 3)
+	UiTheme.hud_label(_toast_label, UiTheme.HUD_INK, 9)
 	_toast_label.modulate.a = 0.0
 	root.add_child(_toast_label)

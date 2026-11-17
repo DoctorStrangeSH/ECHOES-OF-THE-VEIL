@@ -128,7 +128,7 @@ func _draw_gauge() -> void:
 	_root.draw_rect(Rect2(x - 12, y - 34, w + 24, 64), Color(0.06, 0.06, 0.1, 0.92))
 	_root.draw_rect(Rect2(x - 12, y - 34, w + 24, 64), UiTheme.PANEL_EDGE, false, 1.0)
 	var title := tr(Livelihood.job(job_id).get("name", ""))
-	_root.draw_string(font, Vector2(x, y - 20), title, HORIZONTAL_ALIGNMENT_CENTER, w, 9, UiTheme.ACCENT)
+	_root.draw_string(font, Vector2(x, y - 20), title, HORIZONTAL_ALIGNMENT_CENTER, w, 9, UiTheme.HUD_ACCENT)
 	_root.draw_rect(Rect2(x, y - 6, w, 12), Color(0.15, 0.15, 0.2))
 	var zx := x + (_zone_center - _zone_width / 2.0) * w
 	_root.draw_rect(Rect2(zx, y - 6, _zone_width * w, 12), Color(0.3, 0.8, 0.45, 0.85))
@@ -139,4 +139,4 @@ func _draw_gauge() -> void:
 	var status := tr("REPAIR_STATUS") % [_hits, _needed, 3 - _misses]
 	if _used_kit:
 		status += "  " + tr("REPAIR_KIT_USED")
-	_root.draw_string(font, Vector2(x, y + 22), status, HORIZONTAL_ALIGNMENT_CENTER, w, 8, UiTheme.INK_DIM)
+	_root.draw_string(font, Vector2(x, y + 22), status, HORIZONTAL_ALIGNMENT_CENTER, w, 8, UiTheme.HUD_DIM)

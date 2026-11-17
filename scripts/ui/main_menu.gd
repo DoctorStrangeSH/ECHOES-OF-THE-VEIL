@@ -61,10 +61,7 @@ func _refresh() -> void:
 
 
 func _build() -> void:
-	var bg := ColorRect.new()
-	bg.color = Color(0.05, 0.05, 0.08)
-	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
-	add_child(bg)
+	UiTheme.backdrop(self)
 
 	var center := VBoxContainer.new()
 	center.set_anchors_and_offsets_preset(Control.PRESET_CENTER, Control.PRESET_MODE_MINSIZE)
@@ -77,8 +74,8 @@ func _build() -> void:
 	_title = Label.new()
 	_title.text = "ECHOES OF THE VEIL"
 	_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_title.add_theme_font_size_override("font_size", 22)
-	_title.add_theme_color_override("font_color", UiTheme.ACCENT)
+	UiTheme.hud_label(_title, Color(1.0, 0.93, 0.78), 22)
+	_title.add_theme_constant_override("outline_size", 5)
 	center.add_child(_title)
 
 	_subtitle = Label.new()
@@ -86,7 +83,7 @@ func _build() -> void:
 	_subtitle.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_subtitle.custom_minimum_size = Vector2(400, 0)
 	_subtitle.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	_subtitle.add_theme_color_override("font_color", UiTheme.INK_DIM)
+	UiTheme.hud_label(_subtitle, UiTheme.HUD_INK, 9)
 	center.add_child(_subtitle)
 
 	var spacer := Control.new()
@@ -118,8 +115,7 @@ func _build() -> void:
 
 	_footer = Label.new()
 	_footer.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_footer.add_theme_font_size_override("font_size", 7)
-	_footer.add_theme_color_override("font_color", UiTheme.INK_DIM)
+	UiTheme.hud_label(_footer, UiTheme.HUD_DIM, 7)
 	add_child(_footer)
 	_footer.set_anchors_and_offsets_preset(Control.PRESET_CENTER_BOTTOM, Control.PRESET_MODE_MINSIZE, 6)
 	_footer.grow_horizontal = Control.GROW_DIRECTION_BOTH

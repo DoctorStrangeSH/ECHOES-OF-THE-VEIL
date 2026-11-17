@@ -16,13 +16,10 @@ func _ready() -> void:
 	dim.theme = UiTheme.get_theme()
 	add_child(dim)
 	_panel = PanelContainer.new()
-	_panel.custom_minimum_size = Vector2(330, 0)
 	dim.add_child(_panel)
-	_panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER, Control.PRESET_MODE_MINSIZE)
-	_panel.grow_horizontal = Control.GROW_DIRECTION_BOTH
-	_panel.grow_vertical = Control.GROW_DIRECTION_BOTH
+	GameMenu.place_window(_panel)
 	var scroll := ScrollContainer.new()
-	scroll.custom_minimum_size = Vector2(340, 244)
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	scroll.follow_focus = true
 	_panel.add_child(scroll)
@@ -126,11 +123,9 @@ func _build() -> void:
 	_build_companions()
 	if Inventory.meal_active():
 		_box.add_child(_label(tr("MEAL_LINE") % [tr(String(Inventory.meal.get("desc", ""))), WorldClock.clock_text(int(Inventory.meal["until"]) % (24 * 60))], UiTheme.INK, 8))
-	var close_b := Button.new()
-	close_b.text = tr("CC_BACK")
-	close_b.pressed.connect(close)
-	_box.add_child(close_b)
-	(first if first != null and not first.disabled else close_b).call_deferred("grab_focus")
+	# Closing is the tab strip's ✕ (or C / Esc); focus starts at the top.
+	if first != null and not first.disabled:
+		first.call_deferred("grab_focus")
 
 
 ## R8: the bond with each companion met so far, three pips, and "together".

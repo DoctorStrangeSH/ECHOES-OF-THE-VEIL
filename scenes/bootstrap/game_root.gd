@@ -31,9 +31,17 @@ func _ready() -> void:
 	add_child(world_map)
 	fishing = FishingMinigame.new()
 	add_child(fishing)
-	add_child(CharacterScreen.new())
+	var character := CharacterScreen.new()
+	character.name = "CharacterScreen"
+	add_child(character)
+	var menu := GameMenu.new()
+	menu.name = "GameMenu"
+	menu.setup(self)
+	add_child(menu)
 	add_child(SeedMenu.new())
 	add_child(CookMenu.new())
+	UiTheme.apply_cursors(get_window())
+	get_window().size_changed.connect(func() -> void: UiTheme.apply_cursors(get_window()))
 	pause_menu.setup(hud)
 	journal.setup(hud)
 	SceneFlow.register_root(self)

@@ -172,14 +172,14 @@ func _draw_game() -> void:
 	var vp := _root.get_viewport_rect().size
 	var panel := Rect2(vp.x * 0.5 - 150, vp.y * 0.5 - 70, 300, 140)
 	_root.draw_rect(panel, Color(0.06, 0.06, 0.09, 0.92))
-	_root.draw_rect(panel, UiTheme.ACCENT, false, 1.0)
+	_root.draw_rect(panel, UiTheme.HUD_ACCENT, false, 1.0)
 	var font := _root.get_theme_default_font()
 	var title := tr("SPORT_TITLE_" + game.to_upper()) + "   " + tr("SPORT_SCORE") % [score, attempt + (0 if phase == "result" else 1), ATTEMPTS]
-	_root.draw_string(font, panel.position + Vector2(10, 16), title, HORIZONTAL_ALIGNMENT_LEFT, -1, 9, UiTheme.ACCENT)
+	_root.draw_string(font, panel.position + Vector2(10, 16), title, HORIZONTAL_ALIGNMENT_LEFT, -1, 9, UiTheme.HUD_ACCENT)
 	var hint := tr("SPORT_HINT_AIM") if phase == "aim" else tr("SPORT_HINT_POWER")
 	if phase == "result":
 		hint = _last
-	_root.draw_string(font, panel.position + Vector2(10, 132), hint, HORIZONTAL_ALIGNMENT_LEFT, 280, 8, UiTheme.INK)
+	_root.draw_string(font, panel.position + Vector2(10, 132), hint, HORIZONTAL_ALIGNMENT_LEFT, 280, 8, UiTheme.HUD_INK)
 	if game == "football":
 		var goal := Rect2(panel.position + Vector2(60, 28), Vector2(180, 44))
 		_root.draw_rect(goal, Color(0.15, 0.4, 0.2))

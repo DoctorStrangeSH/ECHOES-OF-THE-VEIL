@@ -209,18 +209,21 @@ func _on_begin() -> void:
 # --- UI --------------------------------------------------------------------------
 
 func _build() -> void:
-	var bg := ColorRect.new()
-	bg.color = Color(0.05, 0.05, 0.08)
-	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
-	add_child(bg)
+	UiTheme.backdrop(self)
+	var sheet := PanelContainer.new()
+	sheet.set_anchors_preset(Control.PRESET_FULL_RECT)
+	sheet.offset_left = 6
+	sheet.offset_top = 4
+	sheet.offset_right = -6
+	sheet.offset_bottom = -4
+	add_child(sheet)
 
 	# Everything must fit the 480x270 viewport (tested); the scroll container
 	# is only a safety net for long translations.
 	var scroll := ScrollContainer.new()
-	scroll.set_anchors_preset(Control.PRESET_FULL_RECT)
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	scroll.follow_focus = true
-	add_child(scroll)
+	sheet.add_child(scroll)
 	var margin := MarginContainer.new()
 	margin.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	margin.size_flags_vertical = Control.SIZE_EXPAND_FILL

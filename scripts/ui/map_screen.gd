@@ -47,8 +47,7 @@ func _ready() -> void:
 	panel.add_child(_info)
 	_hint = Label.new()
 	_hint.position = Vector2(8, 254)
-	_hint.add_theme_font_size_override("font_size", 8)
-	_hint.add_theme_color_override("font_color", UiTheme.INK_DIM)
+	UiTheme.hud_label(_hint, UiTheme.HUD_DIM)
 	_root.add_child(_hint)
 	visible = false
 
@@ -71,6 +70,8 @@ func open(as_travel: bool) -> void:
 		if not dests.is_empty():
 			selected = dests[0]
 	visible = true
+	# As a tab of the game window the strip of tabs takes the title's place.
+	_title.visible = travel
 	get_tree().paused = true
 	_refresh()
 
@@ -184,7 +185,7 @@ func _refresh() -> void:
 	var d: Dictionary = CityMap.districts()[selected]
 	_line(tr(String(d["name"])), UiTheme.ACCENT, 10)
 	if selected == CityMap.district_of(GameState.current_scene_id):
-		_line(tr("MAP_YOU_ARE_HERE"), Color(1.0, 0.85, 0.35))
+		_line(tr("MAP_YOU_ARE_HERE"), UiTheme.GOLD)
 	_line(tr(String(d.get("desc", ""))), UiTheme.INK_DIM)
 	_line(tr("MAP_PLACES"), UiTheme.ACCENT)
 	for pl: Dictionary in d.get("places", []):
@@ -207,11 +208,11 @@ func _refresh() -> void:
 	if not cases.is_empty() and GameSettings.shows_objective():
 		_line(tr("MAP_CASES"), UiTheme.ACCENT)
 		_line(", ".join(cases), UiTheme.INK)
-	_line(tr("MAP_BUS") if d.get("stop") != null else tr("MAP_NO_BUS"), Color(0.55, 0.75, 1.0))
+	_line(tr("MAP_BUS") if d.get("stop") != null else tr("MAP_NO_BUS"), UiTheme.BLUE)
 	if d.get("stop") != null and CityMap.fare_to(selected) != CityMap.fare():
-		_line(tr("MAP_BUS_FARE") % [CityMap.fare_to(selected), int(d.get("ride_minutes", 20))], Color(0.55, 0.75, 1.0))
+		_line(tr("MAP_BUS_FARE") % [CityMap.fare_to(selected), int(d.get("ride_minutes", 20))], UiTheme.BLUE)
 	if travel and CityMap.destinations(GameState.current_scene_id).is_empty():
-		_line(tr("BUS_NOWHERE"), Color(1.0, 0.7, 0.5))
+		_line(tr("BUS_NOWHERE"), UiTheme.WARN)
 
 
 static func _met(npc: StringName) -> bool:

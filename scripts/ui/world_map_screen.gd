@@ -140,17 +140,17 @@ func _refresh() -> void:
 	_line(tr(String(c.get("desc", ""))), UiTheme.INK_DIM)
 	var here := WorldMap.city_of(GameState.current_scene_id)
 	if selected == here:
-		_line(tr("MAP_YOU_ARE_HERE"), Color(1.0, 0.85, 0.35))
+		_line(tr("MAP_YOU_ARE_HERE"), UiTheme.GOLD)
 		return
 	var r := _route_to(selected)
 	if r.is_empty():
-		_line(tr("TRAVEL_NO_ROUTE"), Color(1.0, 0.7, 0.5))
+		_line(tr("TRAVEL_NO_ROUTE"), UiTheme.WARN)
 		return
-	_line(tr("TRAVEL_MODE_" + String(r.get("mode", "coach")).to_upper()), Color(0.55, 0.75, 1.0))
+	_line(tr("TRAVEL_MODE_" + String(r.get("mode", "coach")).to_upper()), UiTheme.BLUE)
 	var minutes := int(r.get("minutes", 60))
 	_line(tr("TRAVEL_TICKET") % [int(r.get("fare", 0)), minutes / 60, minutes % 60], UiTheme.INK)
 	if Inventory.money < int(r.get("fare", 0)):
-		_line(tr("TRAVEL_NO_MONEY"), Color(1.0, 0.6, 0.5))
+		_line(tr("TRAVEL_NO_MONEY"), UiTheme.WARN)
 
 
 func _process(delta: float) -> void:

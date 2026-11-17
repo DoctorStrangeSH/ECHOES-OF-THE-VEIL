@@ -226,10 +226,10 @@ func _draw_game() -> void:
 	var vp := _root.get_viewport_rect().size
 	var panel := Rect2(vp.x * 0.5 - 150, vp.y - 128, 300, 116)
 	_root.draw_rect(panel, Color(0.06, 0.06, 0.09, 0.92))
-	_root.draw_rect(panel, UiTheme.ACCENT, false, 1.0)
+	_root.draw_rect(panel, UiTheme.HUD_ACCENT, false, 1.0)
 	var font := _root.get_theme_default_font()
-	_root.draw_string(font, panel.position + Vector2(10, 15), tr("FISH_TITLE_" + water.to_upper()), HORIZONTAL_ALIGNMENT_LEFT, -1, 9, UiTheme.ACCENT)
-	_root.draw_string(font, panel.position + Vector2(190, 15), tr("FISH_KINDS") % [caught_kinds(), fish_defs().size()], HORIZONTAL_ALIGNMENT_LEFT, -1, 8, UiTheme.INK_DIM)
+	_root.draw_string(font, panel.position + Vector2(10, 15), tr("FISH_TITLE_" + water.to_upper()), HORIZONTAL_ALIGNMENT_LEFT, -1, 9, UiTheme.HUD_ACCENT)
+	_root.draw_string(font, panel.position + Vector2(190, 15), tr("FISH_KINDS") % [caught_kinds(), fish_defs().size()], HORIZONTAL_ALIGNMENT_LEFT, -1, 8, UiTheme.HUD_DIM)
 	var water_r := Rect2(panel.position + Vector2(10, 24), Vector2(280, 54))
 	_root.draw_rect(water_r, Color(0.16, 0.32, 0.45) if water != "lake" else Color(0.14, 0.3, 0.32))
 	for i in 5:
@@ -270,5 +270,5 @@ func _draw_game() -> void:
 			hint = tr("FISH_HINT_REEL")
 		"result":
 			hint = _last + "  " + tr("FISH_HINT_AGAIN")
-	_root.draw_string(font, panel.position + Vector2(10, 92), hint, HORIZONTAL_ALIGNMENT_LEFT, 280, 8, UiTheme.INK)
-	_root.draw_string(font, panel.position + Vector2(10, 108), tr("FISH_HINT_LEAVE"), HORIZONTAL_ALIGNMENT_LEFT, 280, 7, UiTheme.INK_DIM)
+	_root.draw_string(font, panel.position + Vector2(10, 92), hint, HORIZONTAL_ALIGNMENT_LEFT, 280, 8, UiTheme.HUD_INK)
+	_root.draw_string(font, panel.position + Vector2(10, 108), tr("FISH_HINT_LEAVE"), HORIZONTAL_ALIGNMENT_LEFT, 280, 7, UiTheme.HUD_DIM)

@@ -5,9 +5,9 @@ extends CanvasLayer
 ## Pauses the game while open.
 
 const KIND_COLORS := {
-	"observed": Color(0.55, 0.85, 0.95),
-	"reported": Color(0.95, 0.8, 0.5),
-	"recorded": Color(0.7, 0.9, 0.6),
+	"observed": UiTheme.ACCENT,
+	"reported": UiTheme.GOLD,
+	"recorded": UiTheme.GOOD,
 }
 
 var _dim: ColorRect
@@ -47,7 +47,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 const CATEGORIES: Array[String] = ["main", "side", "errand", "incident"]
-const CAT_COLORS := {"main": Color(1.0, 0.82, 0.45), "side": Color(0.55, 0.85, 0.95), "errand": Color(0.7, 0.9, 0.6), "incident": Color(0.95, 0.6, 0.65)}
+const CAT_COLORS := {"main": UiTheme.GOLD, "side": UiTheme.ACCENT, "errand": UiTheme.GOOD, "incident": UiTheme.WARN}
 
 
 func _can_open() -> bool:
@@ -155,7 +155,7 @@ func _show_case(id: StringName) -> void:
 	if st == Journal.STATUS_ACTIVE:
 		var left := Journal.days_left(id)
 		if left >= 0:
-			_detail.add_child(_label(tr("JOURNAL_DAYS_LEFT") % left, Color(1.0, 0.6, 0.5)))
+			_detail.add_child(_label(tr("JOURNAL_DAYS_LEFT") % left, UiTheme.WARN))
 		for o in Journal.objectives_for(id):
 			var tick := "[x] " if o["done"] else "[ ] "
 			var opt := (tr("JOURNAL_OPTIONAL") + " ") if o["optional"] else ""
@@ -336,12 +336,8 @@ func _build() -> void:
 	_dim.theme = UiTheme.get_theme()
 	add_child(_dim)
 	var panel := PanelContainer.new()
-	panel.set_anchors_preset(Control.PRESET_FULL_RECT)
-	panel.offset_left = 16
-	panel.offset_top = 12
-	panel.offset_right = -16
-	panel.offset_bottom = -12
 	_dim.add_child(panel)
+	GameMenu.place_window(panel)
 	var root := VBoxContainer.new()
 	panel.add_child(root)
 	var head := HBoxContainer.new()
@@ -381,3 +377,4 @@ func _build() -> void:
 	_hint.add_theme_font_size_override("font_size", 7)
 	_hint.add_theme_color_override("font_color", UiTheme.INK_DIM)
 	root.add_child(_hint)
+	_hint.visible = false  # the tab strip's ✕ and Esc close the window
