@@ -718,6 +718,7 @@ func _farm_story() -> void:
 	await _tap(&"pause")
 	await _frames(5)
 	await _millwood_story()
+	await _mill_hill_story()
 	await _cavenmouth_story()
 	SceneFlow.travel(&"greyford_block", &"ward_return")
 	await _wait_location(&"greyford_block")
@@ -762,6 +763,40 @@ func _millwood_story() -> void:
 	await _talk(&"ada", {"npc": &"ada_fenwick"}, ["FORD_TO_BELL"])
 	await _finish_dialogue()
 	_assert(Journal.case_status(&"case_drowned_ford") == Journal.STATUS_DONE and Inventory.has(&"ford_bell"), "laid to rest; the clapper")
+
+
+## R5c: Mill Hill and the lights in St Brigid's Abbey.
+func _mill_hill_story() -> void:
+	_step = "mill hill: the village"
+	WorldClock.wait_until_hour(11)
+	SceneFlow.travel(&"mill_hill", &"from_millwood")
+	await _wait_location(&"mill_hill")
+	await _frames(10)
+	_assert(_find_named("ToAbbey") != null and _find_named("ShopUse") != null, "a lane to the abbey; the village shop")
+	await _talk(&"avery", {"npc": &"thomas_avery"}, ["AVERY_ASK_LIGHTS", "MARKET_BYE"])
+	await _finish_dialogue()
+	_assert(Journal.case_stage(&"case_abbey_lights") == &"ask", "the vicar asks about the lights")
+	_step = "mill hill: the abbey"
+	SceneFlow.travel(&"abbey_ruins", &"from_village")
+	await _wait_location(&"abbey_ruins")
+	await _frames(20)
+	await _finish_dialogue()
+	await _clear_enemies()
+	await _frames(10)
+	_assert(GameState.has_flag(&"abbey.cleared"), "the vigil is over")
+	DialogueService.start(&"abbey_altar")
+	await _finish_dialogue()
+	_assert(Inventory.has(&"abbess_rosary") and Journal.case_stage(&"case_abbey_lights") == &"rosary", "the abbess's rosary")
+	SceneFlow.travel(&"mill_hill", &"from_abbey")
+	await _wait_location(&"mill_hill")
+	await _frames(10)
+	await _talk(&"avery", {"npc": &"thomas_avery"}, ["ABBEY_TO_KEEP"])
+	await _finish_dialogue()
+	_assert(Journal.case_status(&"case_abbey_lights") == Journal.STATUS_DONE and Inventory.has(&"brigid_rosary"), "kept; a rosary that counts with your heart")
+	SceneFlow.travel(&"mill_hill_pub", &"entrance")
+	await _wait_location(&"mill_hill_pub")
+	await _frames(10)
+	_assert(_find_named("PubBed") != null and _find_named("BarUse") != null, "a bed and a bar at the Millstone")
 
 
 ## R12a: the coach to Cavenmouth, Walter's letters, three deliveries home.

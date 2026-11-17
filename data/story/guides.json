@@ -367,5 +367,14 @@
   "bring": {
    "npc": "mara_venn"
   }
+ },
+ "case_abbey_lights": {
+  "ask": {
+   "scene": "abbey_ruins",
+   "node": "Altar"
+  },
+  "rosary": {
+   "npc": "thomas_avery"
+  }
  }
 }

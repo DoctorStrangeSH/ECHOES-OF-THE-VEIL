@@ -1,0 +1,541 @@
+{
+ "id": "abbey_ruins",
+ "name_key": "LOC_ABBEY",
+ "palette": "brookside",
+ "options": {
+  "outdoors": true,
+  "combat_enabled": true,
+  "fixed_tint": {
+   "color": [
+    0.72,
+    0.68,
+    0.85,
+    1.0
+   ]
+  },
+  "enter_dialogue_id": "abbey_enter",
+  "enter_condition": {
+   "not_flag": "abbey.entered"
+  }
+ },
+ "layout": [
+  "gggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggddggggggggggggggggggg",
+  "gggggggggggggggggggddggggggggggggggggggg",
+  "gggggggggggggggggggddggggggggggggggggggg",
+  "gggggggggggggggggggddggggggggggggggggggg",
+  "dddddddddddddddddddddddddddddddddddddddd",
+  "dddddddddddddddddddddddddddddddddddddddd",
+  "dddddddddddddddddddddddddddddddddddddddd",
+  "dddddddddddddddddddddddddddddddddddddddd",
+  "gggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggg"
+ ],
+ "nodes": [
+  {
+   "kind": "prop",
+   "name": "Abbey",
+   "tex": "@grave/Grace_Chapel_With_Gate.png",
+   "x": 320,
+   "y": 168,
+   "color": "#606070",
+   "col": [
+    96,
+    40
+   ],
+   "off": [
+    0,
+    -20
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "Altar",
+   "id": "inspect_abbey_altar",
+   "x": 320,
+   "y": 176,
+   "area": [
+    40,
+    12
+   ],
+   "dialogue": "abbey_altar",
+   "priority": 20
+  },
+  {
+   "kind": "prop",
+   "name": "Rubble1",
+   "tex": "@grave/Stone_1.png",
+   "x": 120,
+   "y": 140,
+   "color": "#707070",
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Rubble2",
+   "tex": "@grave/Stone_2.png",
+   "x": 160,
+   "y": 120,
+   "color": "#707070",
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Rubble3",
+   "tex": "@grave/Stone_3.png",
+   "x": 500,
+   "y": 130,
+   "color": "#707070",
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Rubble4",
+   "tex": "@grave/Stone_4.png",
+   "x": 540,
+   "y": 150,
+   "color": "#707070",
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Rubble5",
+   "tex": "@grave/Stone_5.png",
+   "x": 90,
+   "y": 360,
+   "color": "#707070",
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Rubble6",
+   "tex": "@grave/Stone_6.png",
+   "x": 560,
+   "y": 360,
+   "color": "#707070",
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Rubble7",
+   "tex": "@grave/Stone_7.png",
+   "x": 200,
+   "y": 380,
+   "color": "#707070",
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Rubble8",
+   "tex": "@grave/Stone_8.png",
+   "x": 440,
+   "y": 390,
+   "color": "#707070",
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tomb1",
+   "tex": "@grave/Small_Grey_Tombstone_2.png",
+   "x": 80,
+   "y": 320,
+   "color": "#808080",
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tomb2",
+   "tex": "@grave/Small_Grey_Tombstone_4.png",
+   "x": 120,
+   "y": 330,
+   "color": "#808080",
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tomb3",
+   "tex": "@grave/Marble_Grey_Tombstone_1.png",
+   "x": 160,
+   "y": 320,
+   "color": "#808080",
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tomb4",
+   "tex": "@grave/Small_Brown_Tombstone_3.png",
+   "x": 480,
+   "y": 320,
+   "color": "#808080",
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tomb5",
+   "tex": "@grave/Long_Tombstone_1.png",
+   "x": 520,
+   "y": 330,
+   "color": "#808080",
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tomb6",
+   "tex": "@grave/Small_Black_Tombstone_2.png",
+   "x": 560,
+   "y": 320,
+   "color": "#808080",
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tomb7",
+   "tex": "@grave/Marble_Brown_Tombstone_2.png",
+   "x": 240,
+   "y": 340,
+   "color": "#808080",
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tomb8",
+   "tex": "@grave/Small_Grey_Tombstone_6.png",
+   "x": 400,
+   "y": 340,
+   "color": "#808080",
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Candle1",
+   "tex": "@grave/Big_Red_Candle.png",
+   "x": 260,
+   "y": 190,
+   "color": "#e0a040",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Candle2",
+   "tex": "@grave/Big_Brown_Candle.png",
+   "x": 380,
+   "y": 190,
+   "color": "#e0a040",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Candle3",
+   "tex": "@grave/Small_Red_Candle.png",
+   "x": 290,
+   "y": 200,
+   "color": "#e0a040",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Candle4",
+   "tex": "@grave/Medium_Brown_Candle.png",
+   "x": 350,
+   "y": 200,
+   "color": "#e0a040",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "DeadTree1",
+   "tex": "@grave/Big_Tree_.png",
+   "x": 60,
+   "y": 200,
+   "color": "#605040",
+   "col": [
+    16,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "DeadTree2",
+   "tex": "@grave/Big_Tree_.png",
+   "x": 590,
+   "y": 210,
+   "color": "#605040",
+   "col": [
+    16,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Crow1",
+   "tex": "@grave/Crow_Front.png",
+   "x": 540,
+   "y": 300,
+   "color": "#202020",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "GateL",
+   "tex": "@grave/High_Gate.png",
+   "x": 40,
+   "y": 250,
+   "color": "#404040",
+   "col": [
+    16,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo1",
+   "id": "abbey_1",
+   "x": 200,
+   "y": 250,
+   "variant": "hollow"
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo2",
+   "id": "abbey_2",
+   "x": 440,
+   "y": 250,
+   "variant": "clinger"
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo3",
+   "id": "abbey_3",
+   "x": 320,
+   "y": 300,
+   "variant": "wailer"
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo4",
+   "id": "abbey_4",
+   "x": 150,
+   "y": 380,
+   "variant": "hollow"
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo5",
+   "id": "abbey_5",
+   "x": 500,
+   "y": 380,
+   "variant": "clinger"
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo6",
+   "id": "abbey_6",
+   "x": 320,
+   "y": 230,
+   "variant": "hollow"
+  },
+  {
+   "kind": "encounter",
+   "flag": "abbey.cleared"
+  },
+  {
+   "kind": "door",
+   "name": "ToVillage",
+   "id": "door_abbey_village",
+   "x": 4,
+   "y": 256,
+   "area": [
+    8,
+    48
+   ],
+   "scene": "mill_hill",
+   "spawn": "from_abbey",
+   "prompt": "PROMPT_GO_VILLAGE"
+  },
+  {
+   "kind": "spawn",
+   "name": "FromVillage",
+   "id": "from_village",
+   "x": 24,
+   "y": 256,
+   "facing": [
+    1,
+    0
+   ]
+  }
+ ]
+}

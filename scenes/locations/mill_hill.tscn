@@ -1,0 +1,400 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/location.gd" id="1_loc"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2_paint"]
+[ext_resource type="PackedScene" path="res://scenes/props/world_prop.tscn" id="3_prop"]
+[ext_resource type="Script" path="res://scripts/world/spawn_point.gd" id="4_spawn"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="5_inspect"]
+[ext_resource type="Script" path="res://scripts/interaction/door_interactable.gd" id="6_door"]
+[ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
+[ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+[ext_resource type="Script" path="res://scripts/world/conditional_visibility.gd" id="10_cond"]
+[ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
+[ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
+[ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+[ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
+[ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
+[ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
+[ext_resource type="PackedScene" path="res://scenes/world/repair_spot.tscn" id="17_spot"]
+[ext_resource type="PackedScene" path="res://scenes/world/screen_interactable.tscn" id="18_screen"]
+[ext_resource type="PackedScene" path="res://scenes/world/junk_pile.tscn" id="19_junk"]
+
+[node name="MillHill" type="Node2D"]
+script = ExtResource("1_loc")
+location_id = &"mill_hill"
+name_key = "LOC_MILL_HILL"
+outdoors = true
+
+[node name="Ground" type="TileMapLayer" parent="."]
+script = ExtResource("2_paint")
+palette_id = "brookside"
+layout = "gggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggggggggggg
+ggggggggggggggggggggggddgggggggggggggggggggggggggg
+ggggggggggggggggggggggddgggggggggggggggggggggggggg
+ggggggggggggggggggggggddgggggggggggggggggggggggggg
+ggggggggggggggggggggggddgggggggggggggggggggggggggg
+ggggggggggggggggggggggddgggggggggggggggggggggggggg
+ssssssssssssssssssssssssssssssssssssssssssssssssss
+rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+ssssssssssssssssssssssssssssssssssssssssssssssssss
+ggggggggggggggggggggggggddgggggggggggggggggggggggg
+ggggggggggggggggggggggggddgggggggggggggggggggggggg
+ggggggggggggggggggggggggddgggggggggggggggggggggggg
+ggggggggggggggggggggggggddgggggggggggggggggggggggg
+ggggggggggggggggggggggggddgggggggggggggggggggggggg
+ggggggggggggggggggggggggddgggggggggggggggggggggggg
+ggggggggggggggggggggggggddgggggggggggggggggggggggg
+ggggggggggggggggggggggggddgggggggggggggggggggggggg
+ggggggggggggggggggggggggddgggggggggggggggggggggggg
+ggggggggggggggggggggggggddgggggggggggggggggggggggg
+ggggggggggggggggggggggggddgggggggggggggggggggggggg
+ggggggggggggggggggggggggddgggggggggggggggggggggggg
+ggggggggggggggggggggggggddgggggggggggggggggggggggg"
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="NpcAnchors" type="Node2D" parent="."]
+
+[node name="CottageA" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(100, 280)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Farmer_House_1_16x16.png"
+placeholder_size = Vector2i(128, 160)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(122, 56)
+collision_offset = Vector2(0, -28)
+
+[node name="CottageALook" type="Area2D" parent="Entities"]
+position = Vector2(100, 286)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_mh_cottage"
+area_size = Vector2(30, 14)
+lines = PackedStringArray("FLAVOR_MH_COTTAGE")
+
+[node name="Pub" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(352, 280)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/24_Additional_Houses_Singles_16x16/24_Additional_Houses_Post_Apocalyptic_House_1_16x16.png"
+placeholder_size = Vector2i(208, 160)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(200, 60)
+collision_offset = Vector2(0, -30)
+
+[node name="PubDoor" type="Area2D" parent="Entities"]
+position = Vector2(368, 286)
+script = ExtResource("6_door")
+interaction_id = &"door_mh_pub"
+area_size = Vector2(20, 14)
+prompt_key = "PROMPT_ENTER_PUB"
+target_scene_id = &"mill_hill_pub"
+target_spawn_id = &"entrance"
+
+[node name="PubFront" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(368, 300)
+script = ExtResource("4_spawn")
+spawn_id = &"pub_front"
+facing = Vector2(0, 1)
+
+[node name="Vicarage" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(640, 288)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/24_Additional_Houses_Singles_16x16/24_Additional_Houses_Country_House_16x16.png"
+placeholder_size = Vector2i(288, 256)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(278, 80)
+collision_offset = Vector2(0, -40)
+
+[node name="VicarageLook" type="Area2D" parent="Entities"]
+position = Vector2(640, 294)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_mh_vicarage"
+area_size = Vector2(40, 14)
+lines = PackedStringArray("FLAVOR_MH_VICARAGE")
+
+[node name="Church" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(160, 534)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/19_Graveyard_Singles_16x16/ME_Singles_Graveyard_16x16_Grace_Chapel.png"
+placeholder_size = Vector2i(80, 144)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(72, 40)
+collision_offset = Vector2(0, -20)
+
+[node name="ChurchLook" type="Area2D" parent="Entities"]
+position = Vector2(160, 540)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_mh_church"
+area_size = Vector2(30, 14)
+lines = PackedStringArray("FLAVOR_MH_CHURCH")
+
+[node name="Shop" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(560, 544)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/24_Additional_Houses_Singles_16x16/24_Additional_Houses_Post_Apocalyptic_House_2_16x16.png"
+placeholder_size = Vector2i(208, 160)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(200, 60)
+collision_offset = Vector2(0, -30)
+
+[node name="ShopUse" parent="Entities" instance=ExtResource("18_screen")]
+position = Vector2(584, 552)
+interaction_id = &"use_mh_shop"
+screen = "shop:mh_shop"
+prompt_key = "PROMPT_ENTER_SHOP"
+
+[node name="Windmill" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(760, 534)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/24_Additional_Houses_Singles_16x16/24_Additional_Houses_Post_Apocalyptic_House_Wind_Mill_16x16.png"
+placeholder_size = Vector2i(64, 128)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(54, 30)
+collision_offset = Vector2(0, -15)
+
+[node name="WindmillLook" type="Area2D" parent="Entities"]
+position = Vector2(760, 540)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_mh_mill"
+area_size = Vector2(30, 14)
+lines = PackedStringArray("FLAVOR_MH_MILL")
+
+[node name="Well" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(400, 464)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Well_Stone_16x16.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.502,0.502,0.502, 1)
+collision_size = Vector2(22, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Bench1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(320, 424)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Bench_2.png"
+placeholder_size = Vector2i(48, 32)
+placeholder_color = Color(0.541,0.416,0.290, 1)
+collision_size = Vector2(44, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Bench2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(470, 424)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Bench_2.png"
+placeholder_size = Vector2i(48, 32)
+placeholder_color = Color(0.541,0.416,0.290, 1)
+collision_size = Vector2(44, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Bench3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(320, 534)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Bench_2.png"
+placeholder_size = Vector2i(48, 32)
+placeholder_color = Color(0.541,0.416,0.290, 1)
+collision_size = Vector2(44, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Bench4" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(428, 534)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Bench_2.png"
+placeholder_size = Vector2i(48, 32)
+placeholder_color = Color(0.541,0.416,0.290, 1)
+collision_size = Vector2(44, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Tree1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(40, 184)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Birch_Green_Medium_16x16.png"
+placeholder_size = Vector2i(48, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(220, 164)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Oak_Green_Big_16x16.png"
+placeholder_size = Vector2i(80, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(500, 154)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Birch_Green_Medium_16x16.png"
+placeholder_size = Vector2i(48, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree4" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(40, 560)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Oak_Green_Big_16x16.png"
+placeholder_size = Vector2i(80, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree5" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(270, 564)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Birch_Green_Medium_16x16.png"
+placeholder_size = Vector2i(48, 64)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Tree6" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(680, 150)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Oak_Green_Big_16x16.png"
+placeholder_size = Vector2i(80, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Flowers1" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(70, 444)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Grass_Tufts_Flowers_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.353,0.604,0.290, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Flowers2" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(260, 474)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Grass_Tufts_Flowers_2.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.353,0.604,0.290, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Flowers3" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(380, 394)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Grass_Tufts_Flowers_3.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.353,0.604,0.290, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Flowers4" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(520, 484)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Grass_Tufts_Flowers_4.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.353,0.604,0.290, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Flowers5" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(640, 464)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Grass_Tufts_Flowers_5.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.353,0.604,0.290, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Flowers6" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(110, 364)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Grass_Tufts_Flowers_6.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.353,0.604,0.290, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Flowers7" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(450, 194)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Grass_Tufts_Flowers_7.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.353,0.604,0.290, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Flowers8" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(250, 304)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Grass_Tufts_Flowers_8.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.353,0.604,0.290, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="VillageSign" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(40, 304)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Sign_1_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.627,0.439,0.251, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="SignLook" type="Area2D" parent="Entities"]
+position = Vector2(40, 312)
+script = ExtResource("5_inspect")
+interaction_id = &"read_mh_sign"
+area_size = Vector2(20, 10)
+lines = PackedStringArray("FLAVOR_MH_SIGN")
+
+[node name="AbbeySign" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(760, 304)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Props_and_Buildings_16x16/Sign_2_16x16.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.627,0.439,0.251, 1)
+collision_size = Vector2(6, 4)
+collision_offset = Vector2(0, -2)
+
+[node name="AbbeySignLook" type="Area2D" parent="Entities"]
+position = Vector2(760, 312)
+script = ExtResource("5_inspect")
+interaction_id = &"read_mh_abbey_sign"
+area_size = Vector2(20, 10)
+lines = PackedStringArray("FLAVOR_MH_ABBEY_SIGN")
+
+[node name="ToMillwood" type="Area2D" parent="Entities"]
+position = Vector2(4, 328)
+script = ExtResource("6_door")
+interaction_id = &"door_village_millwood"
+area_size = Vector2(8, 40)
+prompt_key = "PROMPT_GO_MILLWOOD"
+target_scene_id = &"millwood"
+target_spawn_id = &"from_village"
+
+[node name="FromMillwood" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(22, 328)
+script = ExtResource("4_spawn")
+spawn_id = &"from_millwood"
+facing = Vector2(1, 0)
+
+[node name="ToAbbey" type="Area2D" parent="Entities"]
+position = Vector2(796, 328)
+script = ExtResource("6_door")
+interaction_id = &"door_village_abbey"
+area_size = Vector2(8, 40)
+prompt_key = "PROMPT_GO_ABBEY"
+target_scene_id = &"abbey_ruins"
+target_spawn_id = &"from_village"
+
+[node name="FromAbbey" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(778, 328)
+script = ExtResource("4_spawn")
+spawn_id = &"from_abbey"
+facing = Vector2(-1, 0)
+
+[node name="A_church_door" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(184, 552)
+script = ExtResource("11_anchor")
+anchor_id = &"church_door"
+
+[node name="A_green" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(400, 494)
+script = ExtResource("11_anchor")
+anchor_id = &"green"
+
+[node name="A_vicarage_gate" type="Marker2D" parent="NpcAnchors"]
+position = Vector2(620, 304)
+script = ExtResource("11_anchor")
+anchor_id = &"vicarage_gate"

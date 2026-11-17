@@ -1,0 +1,355 @@
+{
+ "avery": {
+  "entries": [
+   {
+    "if": {
+     "quest_outcome": [
+      "case_abbey_lights",
+      "kept"
+     ]
+    },
+    "node": "after_kept"
+   },
+   {
+    "if": {
+     "quest_outcome": [
+      "case_abbey_lights",
+      "returned"
+     ]
+    },
+    "node": "after_ret"
+   },
+   {
+    "if": {
+     "has_item": "abbess_rosary"
+    },
+    "node": "ros1"
+   },
+   {
+    "if": {
+     "not_flag": "met.avery"
+    },
+    "node": "i1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "i1": {
+    "text": "AVERY_INTRO_1",
+    "next": "i2",
+    "effects": [
+     {
+      "set_flag": "met.avery"
+     }
+    ]
+   },
+   "i2": {
+    "text": "AVERY_INTRO_2",
+    "speaker": "NPC_AVERY",
+    "next": "hub"
+   },
+   "hub": {
+    "text": "AVERY_HUB",
+    "speaker": "NPC_AVERY",
+    "choices": [
+     {
+      "text": "AVERY_ASK_LIGHTS",
+      "next": "l1",
+      "if": {
+       "not_quest_started": "case_abbey_lights"
+      }
+     },
+     {
+      "text": "AVERY_ASK_LIGHTS_AGAIN",
+      "next": "again",
+      "if": {
+       "quest_active": "case_abbey_lights"
+      }
+     },
+     {
+      "text": "AVERY_ASK_VILLAGE",
+      "next": "village"
+     },
+     {
+      "text": "MARKET_BYE",
+      "next": null
+     }
+    ]
+   },
+   "l1": {
+    "text": "AVERY_LIGHTS_1",
+    "speaker": "NPC_AVERY",
+    "next": "l2"
+   },
+   "l2": {
+    "text": "AVERY_LIGHTS_2",
+    "speaker": "NPC_AVERY",
+    "next": "l3"
+   },
+   "l3": {
+    "text": "AVERY_LIGHTS_3",
+    "speaker": "NPC_AVERY",
+    "next": "hub",
+    "effects": [
+     {
+      "quest_start": "case_abbey_lights"
+     }
+    ]
+   },
+   "again": {
+    "text": "AVERY_AGAIN",
+    "speaker": "NPC_AVERY",
+    "next": "hub"
+   },
+   "village": {
+    "text": "AVERY_VILLAGE",
+    "speaker": "NPC_AVERY",
+    "next": "hub"
+   },
+   "ros1": {
+    "text": "AVERY_ROS_1",
+    "next": "ros2"
+   },
+   "ros2": {
+    "text": "AVERY_ROS_2",
+    "speaker": "NPC_AVERY",
+    "next": "ros3"
+   },
+   "ros3": {
+    "text": "AVERY_ROS_3",
+    "speaker": "NPC_AVERY",
+    "choices": [
+     {
+      "text": "ABBEY_TO_CHURCH",
+      "next": "ret1",
+      "effects": [
+       {
+        "take_item": "abbess_rosary"
+       },
+       {
+        "set_flag": "abbey.returned"
+       },
+       {
+        "relationship": [
+         "thomas_avery",
+         2
+        ]
+       },
+       {
+        "give_resonance": 15
+       },
+       {
+        "give_xp": 60
+       },
+       {
+        "quest_complete": [
+         "case_abbey_lights",
+         "returned"
+        ]
+       }
+      ]
+     },
+     {
+      "text": "ABBEY_TO_KEEP",
+      "next": "keep1",
+      "effects": [
+       {
+        "take_item": "abbess_rosary"
+       },
+       {
+        "give_item": "brigid_rosary"
+       },
+       {
+        "relationship": [
+         "thomas_avery",
+         1
+        ]
+       },
+       {
+        "give_xp": 60
+       },
+       {
+        "quest_complete": [
+         "case_abbey_lights",
+         "kept"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "ret1": {
+    "text": "AVERY_RET_1",
+    "speaker": "NPC_AVERY",
+    "next": "ret2"
+   },
+   "ret2": {
+    "text": "AVERY_RET_2",
+    "next": null
+   },
+   "keep1": {
+    "text": "AVERY_KEEP_1",
+    "speaker": "NPC_AVERY",
+    "next": "keep2"
+   },
+   "keep2": {
+    "text": "AVERY_KEEP_2",
+    "next": null
+   },
+   "after_kept": {
+    "text": "AVERY_AFTER_KEPT",
+    "speaker": "NPC_AVERY",
+    "next": "hub"
+   },
+   "after_ret": {
+    "text": "AVERY_AFTER_RET",
+    "speaker": "NPC_AVERY",
+    "next": "hub"
+   }
+  }
+ },
+ "bess": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "met.bess"
+    },
+    "node": "i1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "i1": {
+    "text": "BESS_INTRO_1",
+    "next": "i2",
+    "effects": [
+     {
+      "set_flag": "met.bess"
+     }
+    ]
+   },
+   "i2": {
+    "text": "BESS_INTRO_2",
+    "speaker": "NPC_BESS",
+    "next": "hub"
+   },
+   "hub": {
+    "text": "BESS_HUB",
+    "speaker": "NPC_BESS",
+    "choices": [
+     {
+      "text": "BESS_ASK_NAME",
+      "next": "name"
+     },
+     {
+      "text": "BESS_ASK_ABBEY",
+      "next": "abbey"
+     },
+     {
+      "text": "MARKET_BYE",
+      "next": null
+     }
+    ]
+   },
+   "name": {
+    "text": "BESS_NAME",
+    "speaker": "NPC_BESS",
+    "next": "hub"
+   },
+   "abbey": {
+    "text": "BESS_ABBEY",
+    "speaker": "NPC_BESS",
+    "next": "hub"
+   }
+  }
+ },
+ "abbey_enter": {
+  "entries": [],
+  "start": "e1",
+  "nodes": {
+   "e1": {
+    "text": "ABBEY_ENTER_1",
+    "next": "e2",
+    "effects": [
+     {
+      "set_flag": "abbey.entered"
+     }
+    ]
+   },
+   "e2": {
+    "text": "ABBEY_ENTER_2",
+    "next": null
+   }
+  }
+ },
+ "abbey_altar": {
+  "entries": [
+   {
+    "if": {
+     "any": [
+      {
+       "has_item": "abbess_rosary"
+      },
+      {
+       "quest_done": "case_abbey_lights"
+      }
+     ]
+    },
+    "node": "empty"
+   },
+   {
+    "if": {
+     "all": [
+      {
+       "flag": "abbey.cleared"
+      },
+      {
+       "quest_active": "case_abbey_lights"
+      }
+     ]
+    },
+    "node": "r1"
+   },
+   {
+    "if": {
+     "flag": "abbey.cleared"
+    },
+    "node": "quiet"
+   }
+  ],
+  "start": "blocked",
+  "nodes": {
+   "blocked": {
+    "text": "ALTAR_BLOCKED",
+    "next": null
+   },
+   "quiet": {
+    "text": "ALTAR_QUIET",
+    "next": null
+   },
+   "empty": {
+    "text": "ALTAR_EMPTY",
+    "next": null
+   },
+   "r1": {
+    "text": "ALTAR_ROS_1",
+    "next": "r2"
+   },
+   "r2": {
+    "text": "ALTAR_ROS_2",
+    "next": null,
+    "effects": [
+     {
+      "give_item": "abbess_rosary"
+     },
+     {
+      "quest_stage": [
+       "case_abbey_lights",
+       "rosary"
+      ]
+     }
+    ]
+   }
+  }
+ }
+}

@@ -351,6 +351,24 @@
     "market_street",
     "greyford_harbour"
    ]
+  },
+  {
+   "text": "CHATTER_MH_1",
+   "where": [
+    "mill_hill"
+   ]
+  },
+  {
+   "text": "CHATTER_MH_2",
+   "where": [
+    "mill_hill"
+   ]
+  },
+  {
+   "text": "CHATTER_MH_3",
+   "where": [
+    "mill_hill"
+   ]
   }
  ]
 }

@@ -157,5 +157,37 @@
    }
   ],
   "sells_to": true
+ },
+ "mh_pub": {
+  "name": "SHOP_MH_PUB",
+  "buy": [
+   {
+    "item": "ploughmans",
+    "price": 8
+   },
+   {
+    "item": "cider",
+    "price": 4
+   }
+  ],
+  "sells_to": false
+ },
+ "mh_shop": {
+  "name": "SHOP_MH_SHOP",
+  "buy": [
+   {
+    "item": "ploughmans",
+    "price": 7
+   },
+   {
+    "item": "cider",
+    "price": 4
+   },
+   {
+    "item": "seaside_rock",
+    "price": 3
+   }
+  ],
+  "sells_to": true
  }
 }

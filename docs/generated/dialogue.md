@@ -1381,6 +1381,107 @@ flowchart TD
   sol_photo2 --> sol_hub
 ```
 
+## mill_hill.json
+
+### avery
+
+```mermaid
+flowchart TD
+  avery_START(("start"))
+  avery_START --> avery_hub
+  avery_START -->|"{quest_outcome: [case_abbey_lights, kep…"| avery_after_kept
+  avery_START -->|"{quest_outcome: [case_abbey_lights, ret…"| avery_after_ret
+  avery_START -->|"{has_item: abbess_rosary}"| avery_ros1
+  avery_START -->|"{not_flag: met.avery}"| avery_i1
+  avery_i1["i1<br/>A thin man in a cardigan the colour of wet slat…"]
+  avery_i1 --> avery_i2
+  avery_i2["i2<br/>Rev. Thomas Avery: 'Thomas Avery. Vicar, for my sins, which the pa…"]
+  avery_i2 --> avery_hub
+  avery_hub["hub<br/>Rev. Thomas Avery: 'Well? I have tea, time, and a sermon I'd rathe…"]
+  avery_hub -->|"'Has anything strange happene… ⟨{not_quest_started: case_abbey_lights}⟩"| avery_l1
+  avery_hub -->|"'About the lights in the abbe… ⟨{quest_active: case_abbey_lights}⟩"| avery_again
+  avery_hub -->|"'Tell me about Mill Hill.'"| avery_village
+  avery_hub_end_3(["end"])
+  avery_hub -->|"'I'll be off.'"| avery_hub_end_3
+  avery_l1["l1<br/>Rev. Thomas Avery: 'Strange.' He weighs the word. 'For three weeks…"]
+  avery_l1 --> avery_l2
+  avery_l2["l2<br/>Rev. Thomas Avery: 'In 1539 the King's men came to close St Brigid…"]
+  avery_l2 --> avery_l3
+  avery_l3["l3<br/>Rev. Thomas Avery: 'I'm not brave enough to go in, and I'm too hon…"]
+  avery_l3 --> avery_hub
+  avery_again["again<br/>Rev. Thomas Avery: 'East along the lane, past the windmill. Go by …"]
+  avery_again --> avery_hub
+  avery_village["village<br/>Rev. Thomas Avery: 'Two hundred souls, one pub, one shop, one chur…"]
+  avery_village --> avery_hub
+  avery_ros1["ros1<br/>You hold out the rosary. The vicar does not tak…"]
+  avery_ros1 --> avery_ros2
+  avery_ros2["ros2<br/>Rev. Thomas Avery: 'Boxwood. Worn flat on one side, where the thum…"]
+  avery_ros2 --> avery_ros3
+  avery_ros3["ros3<br/>Rev. Thomas Avery: 'It belongs to the church, by every rule I swor…"]
+  avery_ros3 -->|"'Hang it in the chapel. Let t…"| avery_ret1
+  avery_ros3 -->|"'I think she meant me to carr…"| avery_keep1
+  avery_ret1["ret1<br/>Rev. Thomas Avery: 'Then that's what we'll do. A hook by the font,…"]
+  avery_ret1 --> avery_ret2
+  avery_ret2["ret2<br/>That evening the chapel bell rings for no servi…"]
+  avery_keep1["keep1<br/>Rev. Thomas Avery: 'Then carry it.' He folds your fingers over the…"]
+  avery_keep1 --> avery_keep2
+  avery_keep2["keep2<br/>The beads are warm, the way a hand is warm afte…"]
+  avery_after_kept["after_kept<br/>Rev. Thomas Avery: 'Still keeping watch? Good. I've stopped hearin…"]
+  avery_after_kept --> avery_hub
+  avery_after_ret["after_ret<br/>Rev. Thomas Avery: 'Old Mrs Pike lights a candle under the rosary …"]
+  avery_after_ret --> avery_hub
+```
+
+### bess
+
+```mermaid
+flowchart TD
+  bess_START(("start"))
+  bess_START --> bess_hub
+  bess_START -->|"{not_flag: met.bess}"| bess_i1
+  bess_i1["i1<br/>Behind the bar a broad woman dries a glass that…"]
+  bess_i1 --> bess_i2
+  bess_i2["i2<br/>Bess Thorne: 'Bess. This is the Millstone. Food's honest, ci…"]
+  bess_i2 --> bess_hub
+  bess_hub["hub<br/>Bess Thorne: 'Something to eat, something to drink, or somet…"]
+  bess_hub -->|"'Why is the millstone over th…"| bess_name
+  bess_hub -->|"'What do people say about the…"| bess_abbey
+  bess_hub_end_2(["end"])
+  bess_hub -->|"'I'll be off.'"| bess_hub_end_2
+  bess_name["name<br/>Bess Thorne: 'Two brothers owned the mill. One wanted to sel…"]
+  bess_name --> bess_hub
+  bess_abbey["abbey<br/>Bess Thorne: 'Kids dare each other to touch the gate. Lately…"]
+  bess_abbey --> bess_hub
+```
+
+### abbey_enter
+
+```mermaid
+flowchart TD
+  abbey_enter_START(("start"))
+  abbey_enter_START --> abbey_enter_e1
+  abbey_enter_e1["e1<br/>The lane ends at a gate with no wall on either …"]
+  abbey_enter_e1 --> abbey_enter_e2
+  abbey_enter_e2["e2<br/>Between the graves, pale shapes kneel in rows, …"]
+```
+
+### abbey_altar
+
+```mermaid
+flowchart TD
+  abbey_altar_START(("start"))
+  abbey_altar_START --> abbey_altar_blocked
+  abbey_altar_START -->|"{any: [{has_item: abbess_rosary}, {ques…"| abbey_altar_empty
+  abbey_altar_START -->|"{all: [{flag: abbey.cleared}, {quest_ac…"| abbey_altar_r1
+  abbey_altar_START -->|"{flag: abbey.cleared}"| abbey_altar_quiet
+  abbey_altar_blocked["blocked<br/>Candles burn on the broken altar in the shape o…"]
+  abbey_altar_quiet["quiet<br/>A plain stone altar, scarred where the King's m…"]
+  abbey_altar_empty["empty<br/>The altar is bare. The wax smell has gone. A bi…"]
+  abbey_altar_r1["r1<br/>The candles gutter out one by one, from the edg…"]
+  abbey_altar_r1 --> abbey_altar_r2
+  abbey_altar_r2["r2<br/>A rosary of boxwood beads drops into your palm,…"]
+```
+
 ## millwood.json
 
 ### ada
