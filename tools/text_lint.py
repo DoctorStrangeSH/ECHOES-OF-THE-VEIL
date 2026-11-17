@@ -7,6 +7,10 @@ unbalanced quotes/brackets, a doubled word ("the the", "и и"), a missing
 translation that is identical to the English in the Russian column.
 Warnings: three or more very short sentences in a row ("Ночь. Темно. Тихо."),
 the flat style the narrative guide (docs/narrative/style-guide.ru.md) avoids.
+Narrator voice (D-079): Russian narration and UI address the player as "вы".
+Lines spoken by a character (a dialogue node with a speaker, a player
+choice, passer-by chatter) and text inside «» or „“ may say "ты"; anything
+else that uses "ты"/"твой" or a 2nd-person-singular verb is an error.
 
     python3 tools/text_lint.py          # report
 """
@@ -45,8 +49,40 @@ def check(key, lang, s, errors, warnings):
                 break
 
 
+TY = re.compile(r'(?<![а-яёА-ЯЁ])(ты|тебя|тебе|тобой|твой|твоя|твоё|твои|твоих|твоей|твоему|твоим|твою)(?![а-яёА-ЯЁ])', re.I)
+V2SG = re.compile(r'(?<![а-яёА-ЯЁ])[а-яё]{3,}(ешь|ёшь|ишь)(ся)?(?![а-яёА-ЯЁ])', re.I)
+NOT_VERB = {'лишь', 'мышь', 'тишь', 'глушь', 'вишь', 'камыш', 'малыш', 'шалаш', 'гараж'}
+SPOKEN_PREFIX = ('CHATTER_',)
+
+
+def spoken_keys():
+    """Keys a character says (speaker set) or the player picks (choices)."""
+    out = set()
+    for f in glob.glob('data/dialogue/*.json'):
+        for d in json.load(open(f)).values():
+            if not isinstance(d, dict):
+                continue
+            for n in d.get('nodes', {}).values():
+                if n.get('speaker') and 'text' in n:
+                    out.add(n['text'])
+                for c in n.get('choices', []):
+                    out.add(c.get('text'))
+    return out
+
+
+def check_voice(key, ru, spoken, errors):
+    if key in spoken or key.startswith(SPOKEN_PREFIX):
+        return
+    narr = re.sub(r'«[^»]*»|„[^“]*“', '', ru)
+    m = TY.search(narr)
+    v = [x.group(0) for x in V2SG.finditer(narr) if x.group(0).lower() not in NOT_VERB]
+    if m or v:
+        errors.append(f'{key} [ru]: narration says "ты" ("{m.group(0) if m else v[0]}"); the narrator uses "вы"')
+
+
 def main():
     errors, warnings = [], []
+    spoken = spoken_keys()
     for f in sorted(glob.glob('data/localization/*.json')):
         for k, v in json.load(open(f)).items():
             if not isinstance(v, dict):
@@ -55,6 +91,8 @@ def main():
                 if isinstance(v.get(lang), str):
                     check(k, lang, v[lang], errors, warnings)
             en, ru = v.get('en', ''), v.get('ru', '')
+            if isinstance(ru, str):
+                check_voice(k, ru, spoken, errors)
             if en and ru and en == ru and not k.endswith('END_TITLE') and re.search(r'[a-zA-Z]{4,}', en) and not SKIP_SHORT.match(k) and ' ' in en:
                 errors.append(f'{k}: Russian text is still English')
     for w in warnings:

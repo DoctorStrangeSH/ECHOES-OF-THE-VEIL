@@ -82,11 +82,11 @@ flowchart TD
   new_room_desk_START --> new_room_desk_idle
   new_room_desk_START -->|"{quest_stage: [case_two_maps, map]}"| new_room_desk_map1
   new_room_desk_START -->|"{evidence: e_two_maps}"| new_room_desk_seen
-  new_room_desk_idle["idle<br/>A child's desk. Crayons, worn to stubs. Nothing…"]
+  new_room_desk_idle["idle<br/>A child's desk with crayons worn to stubs, ever…"]
   new_room_desk_map1["map1<br/>Under the blotter, folded eight times: a map of…"]
   new_room_desk_map1 --> new_room_desk_map2
   new_room_desk_map2["map2<br/>Underneath, in pencil, other streets: Lantern R…"]
-  new_room_desk_seen["seen<br/>The blotter, now with nothing under it."]
+  new_room_desk_seen["seen<br/>The blotter lies square on the desk, and now th…"]
 ```
 
 ### storeroom_enter
@@ -104,7 +104,7 @@ flowchart TD
 flowchart TD
   storeroom_crate_START(("start"))
   storeroom_crate_START --> storeroom_crate_1
-  storeroom_crate_1["1<br/>A crate stencilled ROOK & DAUGHTER — REPAIRS."]
+  storeroom_crate_1["1<br/>A crate stencilled ROOK & DAUGHTER — REPAIRS. O…"]
   storeroom_crate_1 --> storeroom_crate_2
   storeroom_crate_2["2<br/>Under the address, the same stencil adds a mark…"]
 ```
@@ -454,7 +454,7 @@ flowchart TD
   seal_engine_START -->|"{quest_stage: [case_kindness, decide]}"| seal_engine_decide1
   seal_engine_START -->|"{quest_done: case_kindness}"| seal_engine_after
   seal_engine_idle["idle<br/>The Seal Engine hums one low note. The floor hu…"]
-  seal_engine_after["after<br/>The engine hums. Greyford will remember who cho…"]
+  seal_engine_after["after<br/>The engine hums under the floor. Somewhere abov…"]
   seal_engine_decide1["decide1<br/>The resonator and the Seal Engine hum the same …"]
   seal_engine_decide1 -->|"Give it to the Keepers. The s…"| seal_engine_kept
   seal_engine_decide1 -->|"Give it to Nadiya. Open the W…"| seal_engine_opened
@@ -496,7 +496,7 @@ flowchart TD
   resonator_found_START --> resonator_found_1
   resonator_found_1["1<br/>Among the dry files: a brass device the size of…"]
   resonator_found_1 --> resonator_found_2
-  resonator_found_2["2<br/>It's warm in your hands. It wants to be used."]
+  resonator_found_2["2<br/>It is warm in your hands, warmer than brass has…"]
 ```
 
 ## act4.json
@@ -606,7 +606,7 @@ flowchart TD
   recon_memory_hospital_START -->|"{flag: site.hospital.done}"| recon_memory_hospital_after
   recon_memory_hospital_START -->|"{judged: [e_t_nurse_log, e_t_admissions…"| recon_memory_hospital_r1
   recon_memory_hospital_wait["wait<br/>The night won't come together yet. Judge every …"]
-  recon_memory_hospital_after["after<br/>The records room, as you put it back together."]
+  recon_memory_hospital_after["after<br/>The records room, as you put it back together: …"]
   recon_memory_hospital_r1["r1<br/>You lay the three accounts side by side and let…"]
 ```
 
@@ -682,7 +682,7 @@ flowchart TD
   recon_memory_home_START -->|"{flag: site.home.done}"| recon_memory_home_after
   recon_memory_home_START -->|"{judged: [e_t_child_diary, e_t_eviction…"| recon_memory_home_r1
   recon_memory_home_wait["wait<br/>The night won't come together yet. Judge every …"]
-  recon_memory_home_after["after<br/>The kitchen, as you put it back together."]
+  recon_memory_home_after["after<br/>The kitchen, as you put it back together. Seven…"]
   recon_memory_home_r1["r1<br/>You lay the three accounts side by side and let…"]
 ```
 
@@ -758,7 +758,7 @@ flowchart TD
   recon_memory_station_START -->|"{flag: site.station.done}"| recon_memory_station_after
   recon_memory_station_START -->|"{judged: [e_t_station_log, e_t_letter, …"| recon_memory_station_r1
   recon_memory_station_wait["wait<br/>The night won't come together yet. Judge every …"]
-  recon_memory_station_after["after<br/>The platform, as you put it back together."]
+  recon_memory_station_after["after<br/>The platform, as you put it back together. The …"]
   recon_memory_station_r1["r1<br/>You lay the three accounts side by side and let…"]
 ```
 
@@ -1913,7 +1913,7 @@ flowchart TD
   halloway_radio1 --> halloway_radio2
   halloway_radio2["radio2<br/>Static, then a calm voice: '...next stop, Lante…"]
   halloway_radio2 --> halloway_radio3
-  halloway_radio3["radio3<br/>Mrs Halloway turns it off very quickly."]
+  halloway_radio3["radio3<br/>Mrs Halloway turns it off very quickly, the way…"]
   halloway_radio3 --> halloway_radio4
   halloway_radio4["radio4<br/>Edda Halloway: 'Lantern Row was before the redevelopment. Befo…"]
   halloway_hub["hub<br/>Edda Halloway: 'Settling in, dear?'"]
@@ -2251,7 +2251,7 @@ flowchart TD
 flowchart TD
   rest_START(("start"))
   rest_START --> rest_ask
-  rest_ask["ask<br/>The bed creaks. What now?"]
+  rest_ask["ask<br/>The bed creaks the way it creaked for every ten…"]
   rest_ask -->|"Rest a moment (save)"| rest_saved
   rest_ask -->|"Wait until evening (save) ⟨{period: [morning, afternoon]}⟩"| rest_waited
   rest_ask -->|"Sleep until morning (save) ⟨{period: [evening, night]}⟩"| rest_slept
@@ -2367,7 +2367,7 @@ flowchart TD
   echo_photo_1["1<br/>A framed photo of a street party under paper la…"]
   echo_photo_1 --> echo_photo_2
   echo_photo_2["2<br/>— except one child at the edge, who looks exact…"]
-  echo_photo_again["again<br/>The child in the photo is still looking at you."]
+  echo_photo_again["again<br/>The child in the photo is still looking at you,…"]
 ```
 
 ### echo_entrance
@@ -2446,7 +2446,7 @@ flowchart TD
   census_cabinet_1["1<br/>Drawer L. Folders for nineteen houses on Lanter…"]
   census_cabinet_1 --> census_cabinet_2
   census_cabinet_2["2<br/>'Venn, Agnes. Census enumerator.' Below it, pag…"]
-  census_cabinet_after["after<br/>Drawer L, emptier than before."]
+  census_cabinet_after["after<br/>Drawer L, emptier than before. The runners stil…"]
 ```
 
 ### archive_shelves
@@ -2469,7 +2469,7 @@ flowchart TD
   sos_box_START(("start"))
   sos_box_START --> sos_box_idle
   sos_box_START -->|"{has_item: letter_lantern}"| sos_box_post
-  sos_box_idle["idle<br/>An emergency box. Inside, a slot marked POST."]
+  sos_box_idle["idle<br/>An emergency box, the red paint gone pink with …"]
   sos_box_post["post<br/>You post Nadiya's letter. A dry, papery sound, …"]
 ```
 
@@ -2481,13 +2481,13 @@ flowchart TD
   old_bell_START --> old_bell_idle
   old_bell_START -->|"{quest_stage: [case_bell, ring], period…"| old_bell_ring1
   old_bell_START -->|"{quest_stage: [case_bell, ring]}"| old_bell_wait
-  old_bell_idle["idle<br/>The old harbour tram stop. Somebody has polishe…"]
-  old_bell_wait["wait<br/>The bell is ready. Jonah said she comes at nigh…"]
+  old_bell_idle["idle<br/>The old harbour tram stop. Nobody has caught a …"]
+  old_bell_wait["wait<br/>The bell is ready on its hook, cold and patient…"]
   old_bell_ring1["ring1<br/>The bell's note goes out over the water and doe…"]
   old_bell_ring1 --> old_bell_ring2
   old_bell_ring2["ring2<br/>In the black water, a girl in a school coat loo…"]
   old_bell_ring2 --> old_bell_ring3
-  old_bell_ring3["ring3<br/>She is waiting for an answer."]
+  old_bell_ring3["ring3<br/>She is waiting for an answer, with the stillnes…"]
   old_bell_ring3 -->|"'Yes. Every day.'"| old_bell_waiting
   old_bell_ring3 -->|"'Go home, Rosalind.'"| old_bell_home
   old_bell_waiting["waiting<br/>She smiles like someone who's been told the rig…"]

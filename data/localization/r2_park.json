@@ -26,17 +26,17 @@
   "SPORT_SAVED": {"en": "Saved. Dev was already there, grinning.", "ru": "Отбил. Дев уже был там и ухмылялся."},
   "SPORT_OVER": {"en": "Over the bar. Somewhere, a seagull is offended.", "ru": "Выше ворот. Где-то обиделась чайка."},
   "SPORT_DONE": {"en": "%d of %d.", "ru": "%d из %d."},
-  "SPORT_PAID": {"en": "Someone on the bench tosses you £%d for the show.", "ru": "Кто-то со скамейки бросает тебе £%d за зрелище."},
+  "SPORT_PAID": {"en": "Someone on the bench tosses you £%d for the show.", "ru": "Кто-то со скамейки бросает вам £%d за зрелище."},
   "SPORT_RECORD": {"en": "A new best.", "ru": "Новый рекорд."},
   "SPORT_CHOICE_PLAY": {"en": "\"Let's play.\"", "ru": "«Давай сыграем»."},
   "SPORT_CHOICE_LATER": {"en": "\"Later.\"", "ru": "«Потом»."},
   "MATCH_CHOICE": {"en": "\"Fancy a proper match?\"", "ru": "«Сыграем настоящий матч?»"},
   "SPORT_CHOICE_PENALTIES": {"en": "\"Just penalties.\"", "ru": "«Просто пенальти»."},
-  "MATCH_START": {"en": "Kick-off. Run into the ball to dribble, J to shoot. You attack the top goal.", "ru": "Начали! Бег в мяч — вести, J — удар. Атакуешь верхние ворота."},
+  "MATCH_START": {"en": "Kick-off. Run into the ball to dribble, J to shoot. You attack the top goal.", "ru": "Начали! Бег в мяч — вести, J — удар. Атакуете верхние ворота."},
   "MATCH_SCORE": {"en": "%d:%d · %d:%02d", "ru": "%d:%d · %d:%02d"},
   "MATCH_GOAL_US": {"en": "Goal! %d:%d. Somebody on the bench spills their coffee.", "ru": "Гол! %d:%d. Кто-то на скамейке проливает кофе."},
   "MATCH_GOAL_THEM": {"en": "They score. %d:%d. Dev celebrates as if it were a cup final.", "ru": "Пропустили. %d:%d. Дев празднует так, будто это финал кубка."},
   "MATCH_WON": {"en": "Full time, %d:%d to your side. Dev shakes your hand and pretends the sun was in his eyes.", "ru": "Финальный свисток, %d:%d в вашу пользу. Дев жмёт руку и делает вид, что ему мешало солнце."},
   "MATCH_DRAW": {"en": "Full time, %d:%d. Everyone agrees it was a moral victory, for different reasons.", "ru": "Финальный свисток, %d:%d. Все сходятся на моральной победе, каждый по своей причине."},
-  "MATCH_LOST": {"en": "Full time, %d:%d to them. 'Rematch tomorrow,' says your full-back, already planning.", "ru": "Финальный свисток, %d:%d в их пользу. «Завтра реванш», — говорит твой защитник и уже что-то прикидывает."}
+  "MATCH_LOST": {"en": "Full time, %d:%d to them. 'Rematch tomorrow,' says your full-back, already planning.", "ru": "Финальный свисток, %d:%d в их пользу. «Завтра реванш», — говорит ваш защитник и уже что-то прикидывает."}
 }
