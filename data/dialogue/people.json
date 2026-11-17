@@ -168,7 +168,7 @@
       ]
      }
     ],
-    "next": null
+    "next": "hub"
    },
    "hub": {
     "speaker": "NPC_MARA",
@@ -2028,7 +2028,7 @@
       "set_flag": "met.edda_halloway"
      }
     ],
-    "next": null
+    "next": "hub"
    },
    "local1": {
     "speaker": "NPC_HALLOWAY",
@@ -2052,7 +2052,7 @@
       "set_flag": "halloway.forgot_your_street"
      }
     ],
-    "next": null
+    "next": "hub"
    },
    "radio1": {
     "speaker": "NPC_HALLOWAY",
@@ -2659,7 +2659,7 @@
       "set_flag": "met.ivo_calder"
      }
     ],
-    "next": null
+    "next": "hub"
    },
    "hub": {
     "speaker": "NPC_IVO",
@@ -3263,7 +3263,7 @@
       "set_flag": "met.nadiya_sol"
      }
     ],
-    "next": null
+    "next": "hub"
    },
    "hub": {
     "speaker": "NPC_NADIYA",
