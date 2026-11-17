@@ -144,6 +144,8 @@ func _next_toast() -> void:
 	_toast_busy = true
 	_toast_label.text = _toast_queue.pop_front()
 	_toast_label.modulate.a = 1.0
+	# Below the controls card while it is up, so the two never overlap.
+	_toast_label.position.y = (_controls.position.y + _controls.size.y + 4.0) if _controls.visible else 22.0
 	var tween := create_tween()
 	tween.tween_interval(1.6)
 	tween.tween_property(_toast_label, "modulate:a", 0.0, 0.4)

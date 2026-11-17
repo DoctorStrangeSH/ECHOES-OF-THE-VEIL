@@ -83,6 +83,9 @@ func _build() -> void:
 
 	_subtitle = Label.new()
 	_subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_subtitle.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_subtitle.custom_minimum_size = Vector2(400, 0)
+	_subtitle.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	_subtitle.add_theme_color_override("font_color", UiTheme.INK_DIM)
 	center.add_child(_subtitle)
 

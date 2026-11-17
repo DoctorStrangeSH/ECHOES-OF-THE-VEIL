@@ -120,7 +120,9 @@ func _queue_chronicle() -> void:
 	while DialogueService.is_active:
 		await DialogueService.dialogue_ended
 	_chronicle_queued = false
-	if Chronicle.check_new():
+	# The opening page needs no toast: the controls card is up and the
+	# player has not opened the journal yet. Later pages do.
+	if Chronicle.check_new() and GameState.has_flag(&"ui.controls_seen"):
 		EventHub.toast_requested.emit(tr("CHRON_TOAST_NEW"))
 
 

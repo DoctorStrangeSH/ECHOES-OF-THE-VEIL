@@ -1,18 +1,95 @@
 {
  "intro": {
+  "entries": [
+   {
+    "if": {
+     "background": "returning_local"
+    },
+    "node": "1_returning_local"
+   },
+   {
+    "if": {
+     "background": "archivist"
+    },
+    "node": "1_archivist"
+   },
+   {
+    "if": {
+     "background": "repair_technician"
+    },
+    "node": "1_repair_technician"
+   },
+   {
+    "if": {
+     "background": "courier"
+    },
+    "node": "1_courier"
+   }
+  ],
   "start": "1",
   "nodes": {
+   "1_returning_local": {
+    "text": "INTRO_1",
+    "next": "bg_returning_local"
+   },
+   "bg_returning_local": {
+    "text": "INTRO_BG_RETURNING_LOCAL",
+    "next": "2"
+   },
+   "1_archivist": {
+    "text": "INTRO_1",
+    "next": "bg_archivist"
+   },
+   "bg_archivist": {
+    "text": "INTRO_BG_ARCHIVIST",
+    "next": "2"
+   },
+   "1_repair_technician": {
+    "text": "INTRO_1",
+    "next": "bg_repair_technician"
+   },
+   "bg_repair_technician": {
+    "text": "INTRO_BG_REPAIR_TECHNICIAN",
+    "next": "2"
+   },
+   "1_courier": {
+    "text": "INTRO_1",
+    "next": "bg_courier"
+   },
+   "bg_courier": {
+    "text": "INTRO_BG_COURIER",
+    "next": "2"
+   },
    "1": {
     "text": "INTRO_1",
     "next": "2"
    },
    "2": {
     "text": "INTRO_2",
+    "next": "door1"
+   },
+   "door1": {
+    "text": "INTRO_DOOR_1",
+    "next": "door2",
+    "effects": [
+     {
+      "camera_look": [
+       328,
+       170
+      ]
+     }
+    ]
+   },
+   "door2": {
+    "text": "INTRO_DOOR_2",
     "next": "3"
    },
    "3": {
     "text": "INTRO_3",
     "effects": [
+     {
+      "camera_back": true
+     },
      {
       "set_flag": "intro.done"
      },
