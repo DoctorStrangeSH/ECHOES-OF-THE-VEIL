@@ -129,7 +129,7 @@ func _line(text: String, color: Color, size := 8) -> void:
 
 
 func _refresh() -> void:
-	(_root.get_node("Title") as Label).text = tr("CAR_TITLE") if mode == "car" else (tr("FERRY_TITLE") if mode == "ferry" else tr("TRAVEL_TITLE"))
+	(_root.get_node("Title") as Label).text = tr("CAR_TITLE") if mode == "car" else (tr("FERRY_TITLE") if mode == "ferry" else (tr("AIR_TITLE") if mode == "air" else tr("TRAVEL_TITLE")))
 	_hint.text = tr("TRAVEL_HINT")
 	for c in _info.get_children():
 		c.queue_free()

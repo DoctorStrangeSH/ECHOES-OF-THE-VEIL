@@ -123,6 +123,17 @@ flowchart LR
   case_anchor_START(("start")) --> case_anchor_gather
 ```
 
+## case_original_card — A specimen
+
+```mermaid
+flowchart LR
+  case_original_card_ask["ask<br/>Talk to the curator, Dr Hale, about the…"]
+  case_original_card_bring["bring<br/>Take Agnes Venn's card to Mara in Greyf…"]
+  case_original_card_ask --> case_original_card_bring
+  case_original_card_out_returned(["outcome: returned<br/>Agnes Venn's card hangs on Ma…"])
+  case_original_card_START(("start")) --> case_original_card_ask
+```
+
 ## case_dead_letters — Dead letters
 
 ```mermaid

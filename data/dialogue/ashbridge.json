@@ -1,0 +1,175 @@
+{
+ "imogen": {
+  "entries": [
+   {
+    "if": {
+     "quest_stage": [
+      "case_original_card",
+      "ask"
+     ]
+    },
+    "node": "ask1"
+   },
+   {
+    "if": {
+     "not_flag": "met.imogen"
+    },
+    "node": "i1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "i1": {
+    "text": "IMOGEN_INTRO_1",
+    "next": "i2",
+    "effects": [
+     {
+      "set_flag": "met.imogen"
+     }
+    ]
+   },
+   "i2": {
+    "text": "IMOGEN_INTRO_2",
+    "speaker": "NPC_IMOGEN",
+    "next": "hub"
+   },
+   "hub": {
+    "text": "IMOGEN_HUB",
+    "speaker": "NPC_IMOGEN",
+    "choices": [
+     {
+      "text": "IMOGEN_ASK_MUSEUM",
+      "next": "museum"
+     },
+     {
+      "text": "IMOGEN_ASK_ASHBRIDGE",
+      "next": "city"
+     },
+     {
+      "text": "MARKET_BYE",
+      "next": null
+     }
+    ]
+   },
+   "museum": {
+    "text": "IMOGEN_MUSEUM",
+    "speaker": "NPC_IMOGEN",
+    "next": "hub"
+   },
+   "city": {
+    "text": "IMOGEN_CITY",
+    "speaker": "NPC_IMOGEN",
+    "next": "hub"
+   },
+   "ask1": {
+    "text": "IMOGEN_ASK_1",
+    "speaker": "NPC_IMOGEN",
+    "next": "ask2"
+   },
+   "ask2": {
+    "text": "IMOGEN_ASK_2",
+    "speaker": "NPC_IMOGEN",
+    "choices": [
+     {
+      "text": "IMOGEN_PERSUADE",
+      "if": {
+       "stat_at_least": [
+        "intellect",
+        3
+       ]
+      },
+      "next": "yes1",
+      "effects": [
+       {
+        "give_item": "agnes_card"
+       },
+       {
+        "quest_stage": [
+         "case_original_card",
+         "bring"
+        ]
+       },
+       {
+        "give_xp": 20
+       }
+      ]
+     },
+     {
+      "text": "IMOGEN_DONATE",
+      "if": {
+       "money_at_least": 50
+      },
+      "next": "yes2",
+      "effects": [
+       {
+        "spend_money": 50
+       },
+       {
+        "give_item": "agnes_card"
+       },
+       {
+        "quest_stage": [
+         "case_original_card",
+         "bring"
+        ]
+       }
+      ]
+     },
+     {
+      "text": "IMOGEN_LEAVE",
+      "next": null
+     }
+    ]
+   },
+   "yes1": {
+    "text": "IMOGEN_YES_1",
+    "speaker": "NPC_IMOGEN",
+    "next": null
+   },
+   "yes2": {
+    "text": "IMOGEN_YES_2",
+    "speaker": "NPC_IMOGEN",
+    "next": null
+   }
+  }
+ },
+ "mus_census": {
+  "entries": [
+   {
+    "if": {
+     "all": [
+      {
+       "not": {
+        "not_quest_started": "case_eleventh"
+       }
+      },
+      {
+       "not_quest_started": "case_original_card"
+      }
+     ]
+    },
+    "node": "agnes1"
+   }
+  ],
+  "start": "plain",
+  "nodes": {
+   "plain": {
+    "text": "MUS_CENSUS_PLAIN",
+    "next": null
+   },
+   "agnes1": {
+    "text": "MUS_CENSUS_AGNES_1",
+    "next": "agnes2"
+   },
+   "agnes2": {
+    "text": "MUS_CENSUS_AGNES_2",
+    "next": null,
+    "effects": [
+     {
+      "quest_start": "case_original_card"
+     }
+    ]
+   }
+  }
+ }
+}

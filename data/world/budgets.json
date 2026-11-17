@@ -3,5 +3,6 @@
  "default": {"nodes": 400, "props": 90, "interactables": 60, "npcs": 12, "enemies": 12, "tiles": 1600, "instantiate_ms": 250},
  "greyford_block": {"nodes": 500, "props": 120},
  "brook_farm": {"props": 130, "tiles": 1800, "nodes": 450},
- "millwood": {"tiles": 2100}
+ "millwood": {"tiles": 2100},
+ "ashbridge": {"tiles": 1800}
 }

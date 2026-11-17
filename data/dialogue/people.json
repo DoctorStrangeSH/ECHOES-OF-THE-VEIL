@@ -134,6 +134,12 @@
      "not_quest_started": "case_eleventh"
     },
     "node": "eleventh1"
+   },
+   {
+    "if": {
+     "has_item": "agnes_card"
+    },
+    "node": "agnes_card1"
    }
   ],
   "start": "hub",
@@ -972,6 +978,40 @@
      }
     ],
     "next": null
+   },
+   "agnes_card1": {
+    "text": "MARA_CARD_0",
+    "next": "agnes_card2"
+   },
+   "agnes_card2": {
+    "text": "MARA_CARD_1",
+    "speaker": "NPC_MARA",
+    "next": "agnes_card3"
+   },
+   "agnes_card3": {
+    "text": "MARA_CARD_2",
+    "speaker": "NPC_MARA",
+    "next": null,
+    "effects": [
+     {
+      "take_item": "agnes_card"
+     },
+     {
+      "relationship": [
+       "mara_venn",
+       2
+      ]
+     },
+     {
+      "give_xp": 40
+     },
+     {
+      "quest_complete": [
+       "case_original_card",
+       "returned"
+      ]
+     }
+    ]
    }
   }
  },

@@ -817,6 +817,53 @@ flowchart TD
   wren_after["after<br/>Director Elias Wren: 'I'll testify. Every minute, every name. It won…"]
 ```
 
+## ashbridge.json
+
+### imogen
+
+```mermaid
+flowchart TD
+  imogen_START(("start"))
+  imogen_START --> imogen_hub
+  imogen_START -->|"{quest_stage: [case_original_card, ask]}"| imogen_ask1
+  imogen_START -->|"{not_flag: met.imogen}"| imogen_i1
+  imogen_i1["i1<br/>A woman in tortoiseshell glasses looks up from …"]
+  imogen_i1 --> imogen_i2
+  imogen_i2["i2<br/>Dr Imogen Hale: Dr Imogen Hale, curator. Welcome. Please don't …"]
+  imogen_i2 --> imogen_hub
+  imogen_hub["hub<br/>Dr Imogen Hale: The curator marks her place in the catalogue wi…"]
+  imogen_hub -->|"What's in the museum?"| imogen_museum
+  imogen_hub -->|"What's Ashbridge like?"| imogen_city
+  imogen_hub_end_2(["end"])
+  imogen_hub -->|"'I'll be off.'"| imogen_hub_end_2
+  imogen_museum["museum<br/>Dr Imogen Hale: The sea, the land, and the paperwork in between…"]
+  imogen_museum --> imogen_hub
+  imogen_city["city<br/>Dr Imogen Hale: The county town. Everything that happens on the…"]
+  imogen_city --> imogen_hub
+  imogen_ask1["ask1<br/>Dr Imogen Hale: The Venn card? It's on loan from the Bureau, a …"]
+  imogen_ask1 --> imogen_ask2
+  imogen_ask2["ask2<br/>Dr Imogen Hale: Dr Hale listens without interrupting, which in …"]
+  imogen_ask2 -->|"(Intellect 3) It isn't a spec… ⟨{stat_at_least: [intellect, 3]}⟩"| imogen_yes1
+  imogen_ask2 -->|"I'll make a donation to the m… ⟨{money_at_least: 50}⟩"| imogen_yes2
+  imogen_ask2_end_2(["end"])
+  imogen_ask2 -->|"Never mind."| imogen_ask2_end_2
+  imogen_yes1["yes1<br/>Dr Imogen Hale: You're right, of course. I wrote the label myse…"]
+  imogen_yes2["yes2<br/>Dr Imogen Hale: A donation to the acquisitions fund, and in ret…"]
+```
+
+### mus_census
+
+```mermaid
+flowchart TD
+  mus_census_START(("start"))
+  mus_census_START --> mus_census_plain
+  mus_census_START -->|"{all: [{not: {not_quest_started: case_e…"| mus_census_agnes1
+  mus_census_plain["plain<br/>«The Census of 1962: An Age of Order». Under gl…"]
+  mus_census_agnes1["agnes1<br/>«The Census of 1962: An Age of Order». Under gl…"]
+  mus_census_agnes1 --> mus_census_agnes2
+  mus_census_agnes2["agnes2<br/>Mara's grandmother, under glass, in a museum, a…"]
+```
+
 ## car.json
 
 ### car
@@ -1510,6 +1557,7 @@ flowchart TD
   mara_START -->|"{flag: door.vanished, not_flag: mara.he…"| mara_echo_secret
   mara_START -->|"{hypothesis: lantern_row_fragment, not_…"| mara_decide
   mara_START -->|"{flag: rel.mara_venn.friend, quest_done…"| mara_eleventh1
+  mara_START -->|"{has_item: agnes_card}"| mara_agnes_card1
   mara_intro1["intro1<br/>Mara Venn: You're the new tenant in the brown house on the…"]
   mara_intro1 --> mara_intro2
   mara_intro2["intro2<br/>Mara Venn: 'Redevelopment.' They say that word the way peo…"]
@@ -1606,6 +1654,11 @@ flowchart TD
   mara_ag_both["ag_both<br/>Mara Venn: 'Both.' She nods slowly. 'I can live with both.…"]
   mara_ag_dismiss["ag_dismiss<br/>Mara Venn: 'Let her go.' Mara looks at you for a long mome…"]
   mara_inc_lanterns["inc_lanterns<br/>Mara Venn: Quiet? Good. I was starting to think the ending…"]
+  mara_agnes_card1["agnes_card1<br/>Mara turns the card over twice, as if the back …"]
+  mara_agnes_card1 --> mara_agnes_card2
+  mara_agnes_card2["agnes_card2<br/>Mara Venn: «She sang.» Someone in that office knew her. So…"]
+  mara_agnes_card2 --> mara_agnes_card3
+  mara_agnes_card3["agnes_card3<br/>Mara Venn: This goes on the wall, next to her photograph. …"]
 ```
 
 ### jonah

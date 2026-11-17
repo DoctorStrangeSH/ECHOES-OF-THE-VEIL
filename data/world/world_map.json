@@ -16,6 +16,10 @@
    "arrive_ferry": [
     "greyford_harbour",
     "ferry_pier"
+   ],
+   "arrive_air": [
+    "greyford_airfield",
+    "helipad"
    ]
   },
   "cavenmouth": {
@@ -51,6 +55,23 @@
     "st_carrow_lighthouse"
    ],
    "known_if": {}
+  },
+  "ashbridge": {
+   "name": "CITY_ASHBRIDGE",
+   "pos": [
+    40,
+    40
+   ],
+   "desc": "CITY_ASHBRIDGE_DESC",
+   "arrive": [
+    "ashbridge",
+    "air_stop"
+   ],
+   "scenes": [
+    "ashbridge",
+    "ashbridge_museum"
+   ],
+   "known_if": {}
   }
  },
  "routes": [
@@ -80,6 +101,13 @@
    "if": {
     "flag": "ferry.running"
    }
+  },
+  {
+   "from": "greyford",
+   "to": "ashbridge",
+   "mode": "air",
+   "fare": 40,
+   "minutes": 60
   }
  ]
 }

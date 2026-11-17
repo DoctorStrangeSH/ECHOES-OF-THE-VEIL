@@ -1,0 +1,144 @@
+{
+ "id": "ashbridge_museum",
+ "name_key": "LOC_ASH_MUSEUM",
+ "palette": "rented_room",
+ "options": {
+  "outdoors": false
+ },
+ "layout": {
+  "generator": "room",
+  "width": 18,
+  "height": 11,
+  "door_x": 8
+ },
+ "nodes": [
+  {
+   "kind": "furn",
+   "furn": "window",
+   "x": 56,
+   "y": 62
+  },
+  {
+   "kind": "furn",
+   "furn": "window",
+   "x": 200,
+   "y": 62
+  },
+  {
+   "kind": "furn",
+   "furn": "display_counter",
+   "x": 56,
+   "y": 110
+  },
+  {
+   "kind": "furn",
+   "furn": "display_counter",
+   "x": 104,
+   "y": 110
+  },
+  {
+   "kind": "furn",
+   "furn": "display_counter",
+   "x": 200,
+   "y": 110
+  },
+  {
+   "kind": "furn",
+   "furn": "globe",
+   "x": 152,
+   "y": 72
+  },
+  {
+   "kind": "furn",
+   "furn": "bookcase_c",
+   "x": 250,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "plant_tall",
+   "x": 24,
+   "y": 150
+  },
+  {
+   "kind": "furn",
+   "furn": "rug_check",
+   "x": 150,
+   "y": 140
+  },
+  {
+   "kind": "inspect",
+   "name": "CaseA",
+   "id": "inspect_mus_a",
+   "x": 56,
+   "y": 118,
+   "area": [
+    30,
+    10
+   ],
+   "lines": [
+    "FLAVOR_MUS_A"
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "CaseB",
+   "id": "inspect_mus_b",
+   "x": 104,
+   "y": 118,
+   "area": [
+    30,
+    10
+   ],
+   "dialogue": "mus_census"
+  },
+  {
+   "kind": "inspect",
+   "name": "CaseC",
+   "id": "inspect_mus_c",
+   "x": 200,
+   "y": 118,
+   "area": [
+    30,
+    10
+   ],
+   "lines": [
+    "FLAVOR_MUS_C"
+   ]
+  },
+  {
+   "template": "anchors",
+   "points": {
+    "desk": [
+     152,
+     96
+    ]
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "Entrance",
+   "id": "entrance",
+   "x": 136,
+   "y": 156,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ExitDoor",
+   "id": "door_ash_museum_exit",
+   "x": 136,
+   "y": 172,
+   "area": [
+    30,
+    10
+   ],
+   "scene": "ashbridge",
+   "spawn": "museum_front",
+   "prompt": "PROMPT_EXIT"
+  }
+ ]
+}
