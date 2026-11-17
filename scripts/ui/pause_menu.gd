@@ -32,6 +32,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		open()
 
 
+func is_open() -> bool:
+	return _dim.visible
+
+
 func _can_open() -> bool:
 	return GameState.is_playing and not SceneFlow.is_transitioning \
 		and not (_hud != null and _hud.dialogue_open)
@@ -99,12 +103,12 @@ func _build() -> void:
 	add_child(_dim)
 	_panel = PanelContainer.new()
 	_dim.add_child(_panel)
-	_panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER, Control.PRESET_MODE_MINSIZE)
-	_panel.grow_horizontal = Control.GROW_DIRECTION_BOTH
-	_panel.grow_vertical = Control.GROW_DIRECTION_BOTH
+	GameMenu.place_window(_panel)
+	var center := CenterContainer.new()
+	_panel.add_child(center)
 	_buttons = VBoxContainer.new()
 	_buttons.add_theme_constant_override("separation", 4)
-	_panel.add_child(_buttons)
+	center.add_child(_buttons)
 	var actions: Array[Callable] = [close, _on_inventory, _on_journal, _on_save, _on_load, _on_language, _on_main_menu, func() -> void: get_tree().quit()]
 	for action in actions:
 		var b := Button.new()
@@ -112,3 +116,6 @@ func _build() -> void:
 		b.pressed.connect(action)
 		_buttons.add_child(b)
 	_load_button = _buttons.get_child(4) as Button
+	# Things and Journal are tabs of the same window now.
+	_buttons.get_child(1).visible = false
+	_buttons.get_child(2).visible = false

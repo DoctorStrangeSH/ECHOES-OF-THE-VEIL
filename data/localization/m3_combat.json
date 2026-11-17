@@ -10,7 +10,7 @@
   "INV_HINT": {"en": "I / Esc — close", "ru": "I / Esc — закрыть"},
   "INV_SUMMARY": {"en": "Weapon: %s · Trinket: %s · £%d · Resonance %d", "ru": "Оружие: %s · Амулет: %s · £%d · Резонанс %d"},
   "INV_TAB_ITEMS": {"en": "Items", "ru": "Вещи"},
-  "INV_TAB_ATTUNEMENTS": {"en": "Attunements", "ru": "Настройки"},
+  "INV_TAB_ATTUNEMENTS": {"en": "Attunements", "ru": "Созвучия"},
   "INV_FILTER_ALL": {"en": "All", "ru": "Все"},
   "INV_FILTER_WEAPON": {"en": "Weapons", "ru": "Оружие"},
   "INV_FILTER_TRINKET": {"en": "Trinkets", "ru": "Амулеты"},

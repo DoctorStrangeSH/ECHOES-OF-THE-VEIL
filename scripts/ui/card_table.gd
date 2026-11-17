@@ -144,13 +144,13 @@ func _draw_table() -> void:
 	_root.draw_rect(panel, Color(0.12, 0.3, 0.2))
 	_root.draw_rect(panel.grow(-3), Color(0.55, 0.42, 0.22), false, 2.0)
 	var font := _root.get_theme_default_font()
-	_root.draw_string(font, panel.position + Vector2(10, 16), tr("CARDS_TITLE"), HORIZONTAL_ALIGNMENT_LEFT, -1, 9, UiTheme.ACCENT)
-	_root.draw_string(font, panel.position + Vector2(220, 16), "£%d" % Inventory.money, HORIZONTAL_ALIGNMENT_RIGHT, 90, 9, UiTheme.INK)
+	_root.draw_string(font, panel.position + Vector2(10, 16), tr("CARDS_TITLE"), HORIZONTAL_ALIGNMENT_LEFT, -1, 9, UiTheme.HUD_ACCENT)
+	_root.draw_string(font, panel.position + Vector2(220, 16), "£%d" % Inventory.money, HORIZONTAL_ALIGNMENT_RIGHT, 90, 9, UiTheme.HUD_INK)
 	if phase != "stake" or not game.player.is_empty():
 		var hide := phase == "play"
-		_root.draw_string(font, panel.position + Vector2(10, 32), tr("CARDS_BANKER") + ("" if hide else "  %d" % Pontoon.total(game.banker)), HORIZONTAL_ALIGNMENT_LEFT, -1, 8, UiTheme.INK)
+		_root.draw_string(font, panel.position + Vector2(10, 32), tr("CARDS_BANKER") + ("" if hide else "  %d" % Pontoon.total(game.banker)), HORIZONTAL_ALIGNMENT_LEFT, -1, 8, UiTheme.HUD_INK)
 		_hand(panel.position + Vector2(14, 38), game.banker, hide)
-		_root.draw_string(font, panel.position + Vector2(10, 102), tr("CARDS_YOU") + "  %d" % Pontoon.total(game.player), HORIZONTAL_ALIGNMENT_LEFT, -1, 8, UiTheme.INK)
+		_root.draw_string(font, panel.position + Vector2(10, 102), tr("CARDS_YOU") + "  %d" % Pontoon.total(game.player), HORIZONTAL_ALIGNMENT_LEFT, -1, 8, UiTheme.HUD_INK)
 		_hand(panel.position + Vector2(14, 108), game.player, false)
 	var hint := ""
 	match phase:
@@ -165,7 +165,7 @@ func _draw_table() -> void:
 			hint = tr("CARDS_HINT_NEXT")
 	if _line != "":
 		_root.draw_string(font, panel.position + Vector2(10, 166), _line, HORIZONTAL_ALIGNMENT_LEFT, 300, 8, Color(1.0, 0.9, 0.6))
-	_root.draw_string(font, panel.position + Vector2(10, 178), hint, HORIZONTAL_ALIGNMENT_LEFT, 300, 7, UiTheme.INK)
+	_root.draw_string(font, panel.position + Vector2(10, 178), hint, HORIZONTAL_ALIGNMENT_LEFT, 300, 7, UiTheme.HUD_INK)
 
 
 func _hand(at: Vector2, hand: Array, hide_second: bool) -> void:

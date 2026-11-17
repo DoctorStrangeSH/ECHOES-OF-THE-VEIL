@@ -23,6 +23,7 @@ const LAYER_INTERACTABLE := 1 << 2
 
 
 func _ready() -> void:
+	add_to_group(&"interactable")
 	collision_layer = LAYER_INTERACTABLE
 	collision_mask = 0
 	monitoring = false

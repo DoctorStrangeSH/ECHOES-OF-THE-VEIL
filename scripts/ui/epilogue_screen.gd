@@ -33,18 +33,18 @@ func _ready() -> void:
 	_panel.add_child(box)
 	_title = Label.new()
 	_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_title.add_theme_color_override("font_color", UiTheme.ACCENT)
+	_title.add_theme_color_override("font_color", UiTheme.HUD_ACCENT)
 	_title.add_theme_font_size_override("font_size", 12)
 	box.add_child(_title)
 	_body = Label.new()
 	_body.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_body.add_theme_color_override("font_color", UiTheme.INK)
+	_body.add_theme_color_override("font_color", UiTheme.HUD_INK)
 	_body.add_theme_font_size_override("font_size", 9)
 	box.add_child(_body)
 	_hint = Label.new()
 	_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_hint.add_theme_color_override("font_color", UiTheme.INK_DIM)
+	_hint.add_theme_color_override("font_color", UiTheme.HUD_DIM)
 	_hint.add_theme_font_size_override("font_size", 8)
 	box.add_child(_hint)
 	visible = false

@@ -5,8 +5,11 @@ extends CanvasLayer
 
 const FILTERS: PackedStringArray = ["", "weapon", "trinket", "consumable", "material", "farm", "key"]
 
-const RARITY_COLORS := {"common": Color(0.85, 0.85, 0.85), "uncommon": Color(0.55, 0.9, 0.55), "rare": Color(0.5, 0.7, 1.0), "epic": Color(0.8, 0.55, 1.0), "legendary": Color(1.0, 0.75, 0.3)}
+const RARITY_COLORS := {"common": UiTheme.INK, "uncommon": UiTheme.GOOD, "rare": UiTheme.BLUE, "epic": Color(0.45, 0.2, 0.6), "legendary": UiTheme.GOLD}
 var _dim: ColorRect
+var _hero: LayeredCharacterSprite
+var _hero_name: Label
+var _hero_gear: Label
 var _title: Label
 var _summary: Label
 var _tabs: HBoxContainer
@@ -49,6 +52,8 @@ func open() -> void:
 	get_tree().paused = true
 	_dim.visible = true
 	Sfx.play(&"ui_open")
+	_hero.appearance = GameState.player_appearance
+	_hero.play(&"idle", LayeredCharacterSprite.Dir.DOWN, true)
 	_refresh()
 
 
@@ -88,6 +93,8 @@ func _refresh() -> void:
 	var trinket: StringName = Inventory.equipped.get("trinket", &"")
 	var trinket_name := tr(Inventory.def(trinket).get("name", "")) if trinket != &"" else tr("CC_NONE")
 	_summary.text = tr("INV_SUMMARY") % [weapon_name, trinket_name, Inventory.money, Inventory.resonance]
+	_hero_name.text = GameState.player_name
+	_hero_gear.text = "%s\n%s\n%s" % [tr("INV_HERO_LEVEL") % Progression.level, weapon_name, trinket_name]
 	for i in _tabs.get_child_count():
 		var b := _tabs.get_child(i) as Button
 		b.button_pressed = (i == 0 and _tab == "items") or (i == 1 and _tab == "attunements")
@@ -196,7 +203,7 @@ func _fill_attunements() -> void:
 	if req != &"" and not Inventory.has_attunement(req):
 		_detail.add_child(_label(tr("INV_REQUIRES") % tr(Inventory.attunement_defs[req].get("name", "")), UiTheme.INK_DIM, 8))
 	if Inventory.has_attunement(_selected):
-		_detail.add_child(_label(tr("INV_ATTUNED"), Color(0.6, 0.95, 0.7)))
+		_detail.add_child(_label(tr("INV_ATTUNED"), UiTheme.GOOD))
 	else:
 		var b := Button.new()
 		b.text = tr("INV_ATTUNE")
@@ -222,12 +229,8 @@ func _build() -> void:
 	_dim.theme = UiTheme.get_theme()
 	add_child(_dim)
 	var panel := PanelContainer.new()
-	panel.set_anchors_preset(Control.PRESET_FULL_RECT)
-	panel.offset_left = 16
-	panel.offset_top = 12
-	panel.offset_right = -16
-	panel.offset_bottom = -12
 	_dim.add_child(panel)
+	GameMenu.place_window(panel)
 	var root := VBoxContainer.new()
 	root.add_theme_constant_override("separation", 4)
 	panel.add_child(root)
@@ -262,8 +265,35 @@ func _build() -> void:
 	cols.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	cols.add_theme_constant_override("separation", 8)
 	root.add_child(cols)
+	# The hero, as you look now: what you wear and carry shows on them.
+	var doll := PanelContainer.new()
+	doll.add_theme_stylebox_override("panel", UiTheme.inset_style())
+	doll.custom_minimum_size = Vector2(76, 0)
+	cols.add_child(doll)
+	var doll_box := VBoxContainer.new()
+	doll_box.add_theme_constant_override("separation", 2)
+	doll.add_child(doll_box)
+	var stage := Control.new()
+	stage.custom_minimum_size = Vector2(68, 100)
+	doll_box.add_child(stage)
+	_hero = LayeredCharacterSprite.new()
+	_hero.scale = Vector2(3, 3)
+	_hero.position = Vector2(34, 98)
+	stage.add_child(_hero)
+	_hero_name = Label.new()
+	_hero_name.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_hero_name.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_hero_name.add_theme_color_override("font_color", UiTheme.INK)
+	doll_box.add_child(_hero_name)
+	_hero_gear = Label.new()
+	_hero_gear.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_hero_gear.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_hero_gear.add_theme_font_size_override("font_size", 7)
+	_hero_gear.add_theme_color_override("font_color", UiTheme.INK_DIM)
+	_hero_gear.custom_minimum_size = Vector2(68, 0)
+	doll_box.add_child(_hero_gear)
 	var left := ScrollContainer.new()
-	left.custom_minimum_size = Vector2(150, 0)
+	left.custom_minimum_size = Vector2(130, 0)
 	left.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	cols.add_child(left)
 	_list = VBoxContainer.new()
@@ -281,3 +311,4 @@ func _build() -> void:
 	_hint.add_theme_font_size_override("font_size", 7)
 	_hint.add_theme_color_override("font_color", UiTheme.INK_DIM)
 	root.add_child(_hint)
+	_hint.visible = false  # the tab strip's ✕ and Esc close the window

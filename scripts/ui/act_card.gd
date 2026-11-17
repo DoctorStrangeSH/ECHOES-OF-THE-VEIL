@@ -34,12 +34,12 @@ func _ready() -> void:
 	_band.add_child(box)
 	_title = Label.new()
 	_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_title.add_theme_color_override("font_color", UiTheme.ACCENT)
+	_title.add_theme_color_override("font_color", UiTheme.HUD_ACCENT)
 	_title.add_theme_font_size_override("font_size", 10)
 	box.add_child(_title)
 	_subtitle = Label.new()
 	_subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_subtitle.add_theme_color_override("font_color", UiTheme.INK)
+	_subtitle.add_theme_color_override("font_color", UiTheme.HUD_INK)
 	_subtitle.add_theme_font_size_override("font_size", 16)
 	box.add_child(_subtitle)
 	_band.modulate.a = 0.0

@@ -39,6 +39,13 @@ var hitbox: Hitbox
 
 var _focused: Interactable = null
 var _focus_mark: FocusMark = null
+## Mouse control: where a click asked to walk, or what it asked to use.
+var _move_target: Variant = null
+var _click_target: Interactable = null
+var _stuck_t := 0.0
+var _last_pos := Vector2.ZERO
+var _hover: Interactable = null
+var _mouse_held := false
 var _dir: LayeredCharacterSprite.Dir = LayeredCharacterSprite.Dir.DOWN
 var _action_anim_time := 0.0  # while > 0, punch/hurt animation owns the sprite
 var _attack_ready_at := 0.0
@@ -134,6 +141,12 @@ func _physics_process(delta: float) -> void:
 	var input := Vector2.ZERO
 	if not _is_blocked():
 		input = Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")
+		if input != Vector2.ZERO:
+			_cancel_click()
+		else:
+			input = _mouse_steer(delta)
+	else:
+		_cancel_click()
 	# get_vector already clamps diagonals to length 1 (no faster diagonal movement).
 	var speed := (sprint_speed if Input.is_action_pressed(&"sprint") else walk_speed) * Inventory.stat("speed_mult")
 	if _action_anim_time > 0.0:
@@ -167,8 +180,17 @@ func _physics_process(delta: float) -> void:
 		_report_cooldowns()
 
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT and not event.pressed:
+		_mouse_held = false
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if _is_blocked():
+		return
+	if event is InputEventMouseButton and event.pressed and _on_mouse_click(event as InputEventMouseButton):
+		_mouse_held = (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT and _move_target != null
+		get_viewport().set_input_as_handled()
 		return
 	if event.is_action_pressed(&"interact"):
 		if _focused != null and is_instance_valid(_focused):
@@ -188,6 +210,106 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed(&"quick_heal"):
 		get_viewport().set_input_as_handled()
 		_quick_heal()
+
+
+# --- Mouse -----------------------------------------------------------------------
+
+## Left click on something you can use: walk up to it and use it. Elsewhere:
+## walk there (hold to keep walking towards the pointer). In the Veil a click
+## on empty ground strikes towards the pointer and the right button dashes
+## that way. Returns true when the click was taken.
+func _on_mouse_click(e: InputEventMouseButton) -> bool:
+	var at := get_canvas_transform().affine_inverse() * e.position
+	if e.button_index == MOUSE_BUTTON_LEFT:
+		var it := interactable_at(at)
+		if it != null:
+			_click_target = it
+			_move_target = null
+			return true
+		if combat_enabled:
+			_face((at - global_position).normalized())
+			return false  # the attack action handles it
+		_move_target = at
+		_click_target = null
+		return true
+	if e.button_index == MOUSE_BUTTON_RIGHT and combat_enabled:
+		_face((at - global_position).normalized())
+	return false
+
+
+## Something usable under the pointer (or within a few pixels of it).
+func interactable_at(p: Vector2) -> Interactable:
+	var best: Interactable = null
+	var best_d := 10.0
+	for node in get_tree().get_nodes_in_group(&"interactable"):
+		var it := node as Interactable
+		if it == null or not it.is_visible_in_tree() or not it.can_interact(self):
+			continue
+		var r := Rect2(it.global_position - it.area_size / 2.0, it.area_size)
+		# Also the thing itself, which usually stands just above its zone.
+		r = r.merge(Rect2(r.position - Vector2(0, 18), Vector2(r.size.x, 18)))
+		var d := p.distance_to(p.clamp(r.position, r.end))
+		if d < best_d:
+			best_d = d
+			best = it
+	return best
+
+
+func _mouse_steer(delta: float) -> Vector2:
+	if _click_target != null:
+		if not is_instance_valid(_click_target) or not _click_target.can_interact(self):
+			_cancel_click()
+			return Vector2.ZERO
+		# Close enough: turn to it and use it, whichever side you came from.
+		if _focused == _click_target or global_position.distance_to(_click_target.global_position) < 24.0:
+			var it := _click_target
+			_cancel_click()
+			_face((it.global_position - global_position).normalized())
+			it.interact(self)
+			return Vector2.ZERO
+		var stand := _click_target.global_position + Vector2(0, _click_target.area_size.y / 2.0 + 6.0)
+		return _steer_to(stand, delta)
+	if _move_target == null:
+		return Vector2.ZERO
+	if _mouse_held and not combat_enabled:
+		_move_target = get_global_mouse_position()
+	return _steer_to(_move_target, delta)
+
+
+func _steer_to(p: Vector2, delta: float) -> Vector2:
+	var to := p - global_position
+	if to.length() < 3.0:
+		_cancel_click()
+		return Vector2.ZERO
+	# Give up when a wall is in the way instead of pushing against it.
+	if global_position.distance_to(_last_pos) < 0.4:
+		_stuck_t += delta
+		if _stuck_t > 0.45:
+			_cancel_click()
+			return Vector2.ZERO
+	else:
+		_stuck_t = 0.0
+	_last_pos = global_position
+	return to.normalized()
+
+
+func _cancel_click() -> void:
+	_move_target = null
+	_click_target = null
+	_stuck_t = 0.0
+
+
+func _process(_delta: float) -> void:
+	# A hand over anything you can use.
+	if _is_blocked() or DialogueService.is_active:
+		if _hover != null:
+			_hover = null
+			Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+		return
+	var h := interactable_at(get_global_mouse_position())
+	if h != _hover:
+		_hover = h
+		Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND if h != null else Input.CURSOR_ARROW)
 
 
 # --- Actions -------------------------------------------------------------------

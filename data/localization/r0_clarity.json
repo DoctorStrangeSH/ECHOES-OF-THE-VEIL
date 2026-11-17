@@ -30,7 +30,6 @@
   "GUIDE_NOTE_BRING_JONAH": {"en": "Ask Jonah to come with you first.", "ru": "Сначала позовите Джону с собой."},
   "GUIDE_NOTE_SITES": {"en": "Three doors at the bottom of the Ward street: hospital, kitchen, station. Weigh each testimony.", "ru": "Три двери внизу улицы Палаты: больница, кухня, станция. Оцените каждое свидетельство."},
   "GUIDE_NOTE_ALLIES": {"en": "Ask the people you trust (Jonah, Mara, Ivo, Nadiya, the Alderman, Dr Vale) to stand with you, then go down past the Seal.", "ru": "Попросите тех, кому доверяете (Джону, Мару, Иво, Надию, олдермена, доктора Вейл), встать рядом, потом спускайтесь мимо Печати."},
-  "HUD_KEYS_HINT": {"en": "Tab journal · M map · C character · T wait · Esc menu", "ru": "Tab журнал · M карта · C персонаж · T ждать · Esc меню"},
   "HUD_CONTROLS": {"en": "WASD: move · Shift: run\nE: talk / look / use\nJ or LMB: attack · Space: dodge\nTab: journal · I: things · M: map · C: you\nT: wait for evening/night\nEsc: menu, settings", "ru": "WASD: ходить · Shift: бег\nE: говорить, осматривать\nJ или ЛКМ: удар · Пробел: рывок\nTab: журнал · I: вещи · M: карта · C: персонаж\nT: подождать до вечера/ночи\nEsc: меню, настройки"},
   "WAIT_TITLE": {"en": "It's %s. Wait until…", "ru": "Сейчас %s. Подождать до…"},
   "WAIT_EVENING": {"en": "evening (18:00)", "ru": "вечера (18:00)"},
@@ -68,5 +67,18 @@
   "JOURNAL_CAT_MAIN": {"en": "STORY", "ru": "СЮЖЕТ"},
   "JOURNAL_CAT_SIDE": {"en": "OTHER STORIES", "ru": "ИСТОРИИ ГОРОДА"},
   "JOURNAL_CAT_ERRAND": {"en": "ERRANDS", "ru": "ПОРУЧЕНИЯ"},
-  "JOURNAL_CAT_INCIDENT": {"en": "INCIDENTS", "ru": "ПРОИСШЕСТВИЯ"}
+  "JOURNAL_CAT_INCIDENT": {"en": "INCIDENTS", "ru": "ПРОИСШЕСТВИЯ"},
+  "TAB_JOURNAL": {"en": "Journal", "ru": "Журнал"},
+  "TAB_INVENTORY": {"en": "Things", "ru": "Вещи"},
+  "TAB_CHARACTER": {"en": "Character", "ru": "Герой"},
+  "TAB_MAP": {"en": "Map", "ru": "Карта"},
+  "TAB_GAME": {"en": "Game", "ru": "Игра"},
+  "MENU_CLOSE": {"en": "Close (Esc)", "ru": "Закрыть (Esc)"},
+  "INV_HERO_LEVEL": {"en": "Level %d", "ru": "Уровень %d"},
+  "HUD_BAR_JOURNAL": {"en": "Journal", "ru": "Журнал"},
+  "HUD_BAR_INVENTORY": {"en": "Things", "ru": "Вещи"},
+  "HUD_BAR_CHARACTER": {"en": "Character", "ru": "Герой"},
+  "HUD_BAR_MAP": {"en": "Map", "ru": "Карта"},
+  "HUD_BAR_WAIT": {"en": "Wait", "ru": "Ждать"},
+  "HUD_BAR_GAME": {"en": "Menu", "ru": "Меню"}
 }
