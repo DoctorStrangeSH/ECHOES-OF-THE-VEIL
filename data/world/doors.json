@@ -249,7 +249,12 @@
    "to": "market_street"
   }
  ],
- "greyford_harbour": [],
+ "greyford_harbour": [
+  {
+   "node": "ToTunnels",
+   "to": "salt_stair"
+  }
+ ],
  "greyford_park": [
   {
    "node": "TownGate",
@@ -450,6 +455,78 @@
   {
    "node": "WayBack",
    "to": "greyford_block"
+  }
+ ],
+ "salt_cache": [
+  {
+   "node": "Exit",
+   "to": "salt_gallery"
+  }
+ ],
+ "salt_gallery": [
+  {
+   "node": "ToCache",
+   "to": "salt_cache",
+   "show_if": {
+    "flag": "salt.cache_open"
+   }
+  },
+  {
+   "node": "ToHub",
+   "to": "salt_stair"
+  }
+ ],
+ "salt_shrine": [
+  {
+   "node": "Exit",
+   "to": "salt_tally"
+  }
+ ],
+ "salt_stair": [
+  {
+   "node": "ToHarbour",
+   "to": "greyford_harbour"
+  },
+  {
+   "node": "ToStore",
+   "to": "salt_store",
+   "show_if": {
+    "flag": "salt.gate_open"
+   }
+  },
+  {
+   "node": "ToGallery",
+   "to": "salt_gallery"
+  },
+  {
+   "node": "ToTally",
+   "to": "salt_tally"
+  }
+ ],
+ "salt_store": [
+  {
+   "node": "Ladder",
+   "to": "greyford_harbour",
+   "show_if": {
+    "flag": "boss.storekeeper.defeated"
+   }
+  },
+  {
+   "node": "WayBack",
+   "to": "salt_stair"
+  }
+ ],
+ "salt_tally": [
+  {
+   "node": "ToShrine",
+   "to": "salt_shrine",
+   "show_if": {
+    "flag": "salt.shrine_open"
+   }
+  },
+  {
+   "node": "ToHub",
+   "to": "salt_stair"
   }
  ],
  "st_carrow": [],

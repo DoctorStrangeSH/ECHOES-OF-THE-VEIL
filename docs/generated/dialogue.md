@@ -1226,6 +1226,7 @@ flowchart TD
 flowchart TD
   nell_START(("start"))
   nell_START --> nell_hub
+  nell_START -->|"{all: [{quest_done: case_salt_tunnels},…"| nell_salt_done
   nell_START -->|"{not_flag: met.nell}"| nell_i1
   nell_i1["i1<br/>A woman in a rubber apron guts a fish in three …"]
   nell_i1 --> nell_hub
@@ -1233,10 +1234,26 @@ flowchart TD
   nell_hub_end_0(["end"])
   nell_hub -->|"'What have you got today?'"| nell_hub_end_0
   nell_hub -->|"What bites round here?"| nell_fish
-  nell_hub_end_2(["end"])
-  nell_hub -->|"'I'll be off.'"| nell_hub_end_2
+  nell_hub -->|"You look like you haven't sle… ⟨{not_quest_started: case_salt_tunnels}⟩"| nell_k1
+  nell_hub -->|"About the knocking under the … ⟨{quest_active: case_salt_tunnels}⟩"| nell_k_again
+  nell_hub_end_4(["end"])
+  nell_hub -->|"'I'll be off.'"| nell_hub_end_4
   nell_fish["fish<br/>Nell Goodwin: Mackerel by day, cod whenever it likes, conger …"]
   nell_fish --> nell_hub
+  nell_k1["k1<br/>Nell Goodwin: 'Haven't. Three nights now. Three knocks under …"]
+  nell_k1 --> nell_k2
+  nell_k2["k2<br/>Nell Goodwin: 'There are tunnels down there. Salt tunnels. My…"]
+  nell_k2 --> nell_k3
+  nell_k3["k3<br/>Nell Goodwin: 'I'm not going down. I've got a stall and a tem…"]
+  nell_k3 --> nell_k4
+  nell_k4["k4<br/>She presses a key into your hand, black with ag…"]
+  nell_k4 --> nell_hub
+  nell_k_again["k_again<br/>Nell Goodwin: 'Still knocking. Last night it stamped twice. I…"]
+  nell_k_again --> nell_hub
+  nell_salt_done["salt_done<br/>Nell Goodwin: 'Slept like a cod last night. Whatever you did …"]
+  nell_salt_done --> nell_salt_done2
+  nell_salt_done2["salt_done2<br/>Under the mackerel, folded small, are forty pou…"]
+  nell_salt_done2 --> nell_hub
 ```
 
 ### agatha
@@ -2278,6 +2295,126 @@ flowchart TD
   echo_woman_name --> echo_woman_end
   echo_woman_end["end<br/>Woman in green: 'Go back now. The door won't hold much longer —…"]
   echo_woman_after["after<br/>Woman in green: She is already looking at something you can't s…"]
+```
+
+## salt.json
+
+### salt_enter
+
+```mermaid
+flowchart TD
+  salt_enter_START(("start"))
+  salt_enter_START --> salt_enter_e1
+  salt_enter_e1["e1<br/>The stair goes down further than the quay is ta…"]
+  salt_enter_e1 --> salt_enter_e2
+  salt_enter_e2["e2<br/>Somewhere ahead, three knocks, a pause, a stamp…"]
+```
+
+### salt_store_enter
+
+```mermaid
+flowchart TD
+  salt_store_enter_START(("start"))
+  salt_store_enter_START --> salt_store_enter_e1
+  salt_store_enter_e1["e1<br/>A long room of shelves and crates, every one st…"]
+  salt_store_enter_e1 --> salt_store_enter_e2
+  salt_store_enter_e2["e2<br/>The Storekeeper: 'Name? No. You have one, I can tell. Then you'r…"]
+```
+
+### salt_gate
+
+```mermaid
+flowchart TD
+  salt_gate_START(("start"))
+  salt_gate_START --> salt_gate_shut
+  salt_gate_START -->|"{all: [{flag: salt.sluice}, {has_item: …"| salt_gate_open
+  salt_gate_START -->|"{flag: salt.sluice}"| salt_gate_half_water
+  salt_gate_START -->|"{has_item: tally_key}"| salt_gate_half_key
+  salt_gate_shut["shut<br/>Iron bars, newer than the tunnel. Two locks: a …"]
+  salt_gate_shut --> salt_gate_shut2
+  salt_gate_shut2["shut2<br/>Behind the bars, the knocking is very close."]
+  salt_gate_half_water["half_water<br/>The chain hangs slack now, the water drained. T…"]
+  salt_gate_half_key["half_key<br/>The key fits, but the chain holds the bars down…"]
+  salt_gate_open["open<br/>The tally key turns with a sound like a ledger …"]
+  salt_gate_open --> salt_gate_open2
+  salt_gate_open2["open2<br/>The bars rise into the ceiling. Beyond them, th…"]
+```
+
+### salt_sluice
+
+```mermaid
+flowchart TD
+  salt_sluice_START(("start"))
+  salt_sluice_START --> salt_sluice_turn
+  salt_sluice_START -->|"{flag: salt.sluice}"| salt_sluice_done
+  salt_sluice_START -->|"{not_flag: salt.gallery_cleared}"| salt_sluice_busy
+  salt_sluice_busy["busy<br/>An iron wheel on a chain: a sluice. You can't t…"]
+  salt_sluice_turn["turn<br/>The wheel is stiff with salt. You put your whol…"]
+  salt_sluice_turn --> salt_sluice_turn2
+  salt_sluice_turn2["turn2<br/>Somewhere under the floor, brine drains away wi…"]
+  salt_sluice_done["done<br/>The wheel stands open. The gallery smells of we…"]
+```
+
+### salt_crack
+
+```mermaid
+flowchart TD
+  salt_crack_START(("start"))
+  salt_crack_START --> salt_crack_miss
+  salt_crack_START -->|"{stat_at_least: [perception, 3]}"| salt_crack_see
+  salt_crack_miss["miss<br/>Old salt-crusted stone. Something about this st…"]
+  salt_crack_see["see<br/>The salt seams run neatly everywhere except her…"]
+  salt_crack_see --> salt_crack_see2
+  salt_crack_see2["see2<br/>You lean on the line and a whole panel of false…"]
+```
+
+### salt_third_volume
+
+```mermaid
+flowchart TD
+  salt_third_volume_START(("start"))
+  salt_third_volume_START --> salt_third_volume_t1
+  salt_third_volume_t1["t1<br/>The third volume from the left: INVENTORY OF TH…"]
+  salt_third_volume_t1 --> salt_third_volume_t2
+  salt_third_volume_t2["t2<br/>With a click, the shelf beside it swings an inc…"]
+```
+
+### salt_lost
+
+```mermaid
+flowchart TD
+  salt_lost_START(("start"))
+  salt_lost_START --> salt_lost_l1
+  salt_lost_START -->|"{flag: salt.lost_seen}"| salt_lost_again
+  salt_lost_l1["l1<br/>A stone shelf, and on it, set out neatly, the o…"]
+  salt_lost_l1 --> salt_lost_l2
+  salt_lost_l2["l2<br/>A card propped against the ring, in the Storeke…"]
+  salt_lost_l2 --> salt_lost_l3
+  salt_lost_l3["l3<br/>He catalogued the whole town's loss and kept on…"]
+  salt_lost_again["again<br/>The candles burn. Nothing here is listed, and n…"]
+```
+
+### salt_ledger
+
+```mermaid
+flowchart TD
+  salt_ledger_START(("start"))
+  salt_ledger_START --> salt_ledger_l1
+  salt_ledger_START -->|"{quest_done: case_salt_tunnels}"| salt_ledger_after
+  salt_ledger_l1["l1<br/>The Storekeeper is gone. On the desk lies the m…"]
+  salt_ledger_l1 --> salt_ledger_l2
+  salt_ledger_l2["l2<br/>Every crate in this room was someone's. The tow…"]
+  salt_ledger_l2 --> salt_ledger_l3
+  salt_ledger_l3["l3<br/>The store can stay as it is, sealed and quiet, …"]
+  salt_ledger_l3 -->|"Open the store. Let people co…"| salt_ledger_op
+  salt_ledger_l3 -->|"Seal it again. Some things sh…"| salt_ledger_se
+  salt_ledger_op["op<br/>You prop the master ledger open on the desk and…"]
+  salt_ledger_op --> salt_ledger_op2
+  salt_ledger_op2["op2<br/>By the end of the week there is a queue on the …"]
+  salt_ledger_se["se<br/>You close the master ledger, gently, the way yo…"]
+  salt_ledger_se --> salt_ledger_se2
+  salt_ledger_se2["se2<br/>On your way out, you lock the bars behind you. …"]
+  salt_ledger_after["after<br/>The master ledger, closed or open as you left i…"]
 ```
 
 ## st_carrow.json

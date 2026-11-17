@@ -1,0 +1,29 @@
+{
+ "tally_key": {
+  "category": "key",
+  "name": "ITEM_TALLY_KEY",
+  "desc": "ITEM_TALLY_KEY_DESC",
+  "color": "#a08040",
+  "value": 0,
+  "stack": 1
+ },
+ "salt_charm": {
+  "category": "trinket",
+  "name": "ITEM_SALT_CHARM",
+  "desc": "ITEM_SALT_CHARM_DESC",
+  "color": "#e0e0f0",
+  "value": 30,
+  "mods": {
+   "dodge_cooldown_mult": 0.8,
+   "speed_mult": 1.05
+  }
+ },
+ "silver_tally": {
+  "category": "valuable",
+  "name": "ITEM_SILVER_TALLY",
+  "desc": "ITEM_SILVER_TALLY_DESC",
+  "color": "#c0c0d0",
+  "value": 40,
+  "stack": 1
+ }
+}

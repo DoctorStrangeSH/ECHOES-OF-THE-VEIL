@@ -718,6 +718,7 @@ func _farm_story() -> void:
 	await _tap(&"pause")
 	await _frames(5)
 	await _companion_bonds()
+	await _salt_tunnels()
 	await _millwood_story()
 	await _mill_hill_story()
 	await _cavenmouth_story()
@@ -764,6 +765,101 @@ func _millwood_story() -> void:
 	await _talk(&"ada", {"npc": &"ada_fenwick"}, ["FORD_TO_BELL"])
 	await _finish_dialogue()
 	_assert(Journal.case_status(&"case_drowned_ford") == Journal.STATUS_DONE and Inventory.has(&"ford_bell"), "laid to rest; the clapper")
+
+
+## R9a: the salt tunnels under the harbour, a dungeon with two branches,
+## two secrets, a gate with two locks and the Storekeeper.
+func _salt_tunnels() -> void:
+	_step = "salt: Nell's key"
+	WorldClock.wait_until_hour(10)
+	SceneFlow.travel(&"greyford_harbour", &"bus_stop")
+	await _wait_location(&"greyford_harbour")
+	await _frames(10)
+	await _talk(&"nell", {"npc": &"nell_goodwin"}, ["NELL_ASK_KNOCKING"])
+	await _finish_dialogue()
+	_assert(GameState.has_flag(&"salt.known") and Journal.case_stage(&"case_salt_tunnels") == &"seals", "Nell gives the key to the grate")
+	SceneFlow.travel(&"salt_stair", &"from_harbour")
+	await _wait_location(&"salt_stair")
+	await _frames(20)
+	await _finish_dialogue()
+	await _clear_enemies()
+	DialogueService.start(&"salt_gate")
+	await _finish_dialogue()
+	_assert(not GameState.has_flag(&"salt.gate_open"), "the gate holds with both locks shut")
+	_step = "salt: the brine gallery"
+	SceneFlow.travel(&"salt_gallery", &"from_hub")
+	await _wait_location(&"salt_gallery")
+	await _frames(20)
+	await _clear_enemies()
+	await _frames(10)
+	DialogueService.start(&"salt_sluice")
+	await _finish_dialogue()
+	_assert(GameState.has_flag(&"salt.sluice"), "the sluice drains")
+	var keen := Inventory.stat("perception") >= 3.0
+	DialogueService.start(&"salt_crack")
+	await _finish_dialogue()
+	_assert(GameState.has_flag(&"salt.cache_open") == keen, "the false wall opens only to a sharp eye")
+	if not keen:
+		GameState.set_flag(&"salt.cache_open", true)
+	await _frames(5)
+	_assert(_find_named("ToCache") != null and (_find_named("ToCache") as CanvasItem).visible, "a way into the smugglers' cache")
+	SceneFlow.travel(&"salt_cache", &"entrance")
+	await _wait_location(&"salt_cache")
+	await _frames(10)
+	(_find_named("Charm") as Interactable).interact(_player())
+	_assert(Inventory.has(&"salt_charm"), "the smuggler's salt-knot")
+	_step = "salt: the tally room"
+	SceneFlow.travel(&"salt_tally", &"from_hub")
+	await _wait_location(&"salt_tally")
+	await _frames(20)
+	await _clear_enemies()
+	await _frames(10)
+	(_find_named("Key") as Interactable).interact(_player())
+	_assert(Inventory.has(&"tally_key"), "the tally key")
+	DialogueService.start(&"salt_third_volume")
+	await _finish_dialogue()
+	SceneFlow.travel(&"salt_shrine", &"entrance")
+	await _wait_location(&"salt_shrine")
+	await _frames(10)
+	DialogueService.start(&"salt_lost")
+	await _finish_dialogue()
+	_assert(GameState.has_flag(&"salt.lost_seen"), "the shelf of lost things")
+	_step = "salt: the store"
+	SceneFlow.travel(&"salt_stair", &"from_tally")
+	await _wait_location(&"salt_stair")
+	await _frames(10)
+	DialogueService.start(&"salt_gate")
+	await _finish_dialogue()
+	_assert(GameState.has_flag(&"salt.gate_open") and Journal.case_stage(&"case_salt_tunnels") == &"store", "both locks free: the gate rises")
+	SceneFlow.travel(&"salt_store", &"entrance")
+	await _wait_location(&"salt_store")
+	await _frames(10)
+	await _finish_dialogue()
+	var boss := _find_node_of(SceneFlow.current_location, "Reviser") as Reviser
+	_assert(boss != null and boss.boss_id == &"storekeeper", "the Storekeeper at his desk")
+	if boss != null:
+		boss.engage()
+		for i in 600:
+			await _frames(4)
+			if not is_instance_valid(boss) or boss.state == Reviser.State.DEAD:
+				break
+			EventHub.player_heal_requested_amount.emit(5)
+			boss.health.take_damage(1, boss.global_position + Vector2(12, 0))
+	await _frames(30)
+	_assert(GameState.has_flag(&"boss.storekeeper.defeated"), "the Storekeeper is beaten")
+	await _talk(&"salt_ledger", {}, ["SALT_OPEN_STORE"])
+	await _finish_dialogue()
+	_assert(Journal.case_status(&"case_salt_tunnels") == Journal.STATUS_DONE, "the store is opened")
+	await _frames(5)
+	var ladder := _find_named("Ladder")
+	_assert(ladder != null and (ladder as CanvasItem).visible, "a ladder straight up to the quay")
+	SceneFlow.travel(&"greyford_harbour", &"from_tunnels")
+	await _wait_location(&"greyford_harbour")
+	await _frames(10)
+	var money := Inventory.money
+	await _talk(&"nell", {"npc": &"nell_goodwin"}, [])
+	await _finish_dialogue()
+	_assert(Inventory.money == money + 40, "Nell sleeps, and pays")
 
 
 ## R8: Hester walks with you; the bond opens three talks and a brighter lamp.

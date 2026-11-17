@@ -1,0 +1,348 @@
+{
+ "salt_enter": {
+  "entries": [],
+  "start": "e1",
+  "nodes": {
+   "e1": {
+    "text": "SALT_ENTER_1",
+    "next": "e2",
+    "effects": [
+     {
+      "set_flag": "salt.entered"
+     }
+    ]
+   },
+   "e2": {
+    "text": "SALT_ENTER_2",
+    "next": null
+   }
+  }
+ },
+ "salt_store_enter": {
+  "entries": [],
+  "start": "e1",
+  "nodes": {
+   "e1": {
+    "text": "STORE_ENTER_1",
+    "next": "e2",
+    "effects": [
+     {
+      "set_flag": "salt.store_entered"
+     }
+    ]
+   },
+   "e2": {
+    "text": "STORE_ENTER_2",
+    "next": null,
+    "speaker": "BOSS_STOREKEEPER"
+   }
+  }
+ },
+ "salt_gate": {
+  "entries": [
+   {
+    "if": {
+     "all": [
+      {
+       "flag": "salt.sluice"
+      },
+      {
+       "has_item": "tally_key"
+      }
+     ]
+    },
+    "node": "open"
+   },
+   {
+    "if": {
+     "flag": "salt.sluice"
+    },
+    "node": "half_water"
+   },
+   {
+    "if": {
+     "has_item": "tally_key"
+    },
+    "node": "half_key"
+   }
+  ],
+  "start": "shut",
+  "nodes": {
+   "shut": {
+    "text": "SALT_GATE_SHUT",
+    "next": "shut2"
+   },
+   "shut2": {
+    "text": "SALT_GATE_SHUT_2",
+    "next": null
+   },
+   "half_water": {
+    "text": "SALT_GATE_HALF_WATER",
+    "next": null
+   },
+   "half_key": {
+    "text": "SALT_GATE_HALF_KEY",
+    "next": null
+   },
+   "open": {
+    "text": "SALT_GATE_OPEN",
+    "next": "open2",
+    "effects": [
+     {
+      "take_item": "tally_key"
+     }
+    ]
+   },
+   "open2": {
+    "text": "SALT_GATE_OPEN_2",
+    "next": null,
+    "effects": [
+     {
+      "set_flag": "salt.gate_open"
+     },
+     {
+      "quest_stage": [
+       "case_salt_tunnels",
+       "store"
+      ]
+     },
+     {
+      "give_xp": 40
+     }
+    ]
+   }
+  }
+ },
+ "salt_sluice": {
+  "entries": [
+   {
+    "if": {
+     "flag": "salt.sluice"
+    },
+    "node": "done"
+   },
+   {
+    "if": {
+     "not_flag": "salt.gallery_cleared"
+    },
+    "node": "busy"
+   }
+  ],
+  "start": "turn",
+  "nodes": {
+   "busy": {
+    "text": "SALT_SLUICE_BUSY",
+    "next": null
+   },
+   "turn": {
+    "text": "SALT_SLUICE_1",
+    "next": "turn2"
+   },
+   "turn2": {
+    "text": "SALT_SLUICE_2",
+    "next": null,
+    "effects": [
+     {
+      "set_flag": "salt.sluice"
+     },
+     {
+      "toast": "SALT_SLUICE_TOAST"
+     }
+    ]
+   },
+   "done": {
+    "text": "SALT_SLUICE_DONE",
+    "next": null
+   }
+  }
+ },
+ "salt_crack": {
+  "entries": [
+   {
+    "if": {
+     "stat_at_least": [
+      "perception",
+      3
+     ]
+    },
+    "node": "see"
+   }
+  ],
+  "start": "miss",
+  "nodes": {
+   "miss": {
+    "text": "SALT_CRACK_MISS",
+    "next": null
+   },
+   "see": {
+    "text": "SALT_CRACK_SEE",
+    "next": "see2"
+   },
+   "see2": {
+    "text": "SALT_CRACK_OPEN",
+    "next": null,
+    "effects": [
+     {
+      "set_flag": "salt.cache_open"
+     },
+     {
+      "give_xp": 30
+     }
+    ]
+   }
+  }
+ },
+ "salt_third_volume": {
+  "entries": [],
+  "start": "t1",
+  "nodes": {
+   "t1": {
+    "text": "SALT_THIRD_1",
+    "next": "t2"
+   },
+   "t2": {
+    "text": "SALT_THIRD_2",
+    "next": null,
+    "effects": [
+     {
+      "set_flag": "salt.shrine_open"
+     },
+     {
+      "give_xp": 30
+     }
+    ]
+   }
+  }
+ },
+ "salt_lost": {
+  "entries": [
+   {
+    "if": {
+     "flag": "salt.lost_seen"
+    },
+    "node": "again"
+   }
+  ],
+  "start": "l1",
+  "nodes": {
+   "l1": {
+    "text": "SALT_LOST_1",
+    "next": "l2"
+   },
+   "l2": {
+    "text": "SALT_LOST_2",
+    "next": "l3"
+   },
+   "l3": {
+    "text": "SALT_LOST_3",
+    "next": null,
+    "effects": [
+     {
+      "set_flag": "salt.lost_seen"
+     },
+     {
+      "give_resonance": 20
+     }
+    ]
+   },
+   "again": {
+    "text": "SALT_LOST_AGAIN",
+    "next": null
+   }
+  }
+ },
+ "salt_ledger": {
+  "entries": [
+   {
+    "if": {
+     "quest_done": "case_salt_tunnels"
+    },
+    "node": "after"
+   }
+  ],
+  "start": "l1",
+  "nodes": {
+   "l1": {
+    "text": "SALT_LEDGER_1",
+    "next": "l2"
+   },
+   "l2": {
+    "text": "SALT_LEDGER_2",
+    "next": "l3"
+   },
+   "l3": {
+    "text": "SALT_LEDGER_3",
+    "choices": [
+     {
+      "text": "SALT_OPEN_STORE",
+      "next": "op",
+      "effects": [
+       {
+        "set_flag": "salt.store_opened"
+       },
+       {
+        "faction": [
+         "unwritten",
+         1
+        ]
+       },
+       {
+        "give_resonance": 20
+       },
+       {
+        "give_xp": 120
+       },
+       {
+        "quest_complete": [
+         "case_salt_tunnels",
+         "opened"
+        ]
+       }
+      ]
+     },
+     {
+      "text": "SALT_SEAL_STORE",
+      "next": "se",
+      "effects": [
+       {
+        "faction": [
+         "keepers",
+         1
+        ]
+       },
+       {
+        "give_xp": 120
+       },
+       {
+        "quest_complete": [
+         "case_salt_tunnels",
+         "sealed"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "op": {
+    "text": "SALT_OPENED_1",
+    "next": "op2"
+   },
+   "op2": {
+    "text": "SALT_OPENED_2",
+    "next": null
+   },
+   "se": {
+    "text": "SALT_SEALED_1",
+    "next": "se2"
+   },
+   "se2": {
+    "text": "SALT_SEALED_2",
+    "next": null
+   },
+   "after": {
+    "text": "SALT_LEDGER_AFTER",
+    "next": null
+   }
+  }
+ }
+}

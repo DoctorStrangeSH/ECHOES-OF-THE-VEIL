@@ -1,0 +1,24 @@
+{
+ "cases": {
+  "case_salt_tunnels": {
+   "title": "CASE_SALT_TITLE",
+   "summary": "CASE_SALT_SUMMARY",
+   "first_stage": "seals",
+   "stages": {
+    "seals": "CASE_SALT_SEALS",
+    "store": "CASE_SALT_STORE"
+   },
+   "outcomes": {
+    "opened": "CASE_SALT_OPENED",
+    "sealed": "CASE_SALT_SEALED"
+   },
+   "transitions": {
+    "seals": [
+     "store"
+    ]
+   }
+  }
+ },
+ "evidence": {},
+ "hypotheses": {}
+}

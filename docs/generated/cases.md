@@ -410,3 +410,15 @@ flowchart LR
   case_drowned_ford_START(("start")) --> case_drowned_ford_listen
 ```
 
+## case_salt_tunnels — Knocking under the Market
+
+```mermaid
+flowchart LR
+  case_salt_tunnels_seals["seals<br/>Go down through the grate on the quay. …"]
+  case_salt_tunnels_store["store<br/>The gate is open. Find whoever is stamp…"]
+  case_salt_tunnels_seals --> case_salt_tunnels_store
+  case_salt_tunnels_out_opened(["outcome: opened<br/>The Unclaimed Store is open, …"])
+  case_salt_tunnels_out_sealed(["outcome: sealed<br/>The Unclaimed Store is sealed…"])
+  case_salt_tunnels_START(("start")) --> case_salt_tunnels_seals
+```
+

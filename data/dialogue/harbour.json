@@ -3,6 +3,19 @@
   "entries": [
    {
     "if": {
+     "all": [
+      {
+       "quest_done": "case_salt_tunnels"
+      },
+      {
+       "not_flag": "salt.nell_paid"
+      }
+     ]
+    },
+    "node": "salt_done"
+   },
+   {
+    "if": {
      "not_flag": "met.nell"
     },
     "node": "i1"
@@ -37,6 +50,20 @@
       "next": "fish"
      },
      {
+      "text": "NELL_ASK_KNOCKING",
+      "if": {
+       "not_quest_started": "case_salt_tunnels"
+      },
+      "next": "k1"
+     },
+     {
+      "text": "NELL_ASK_TUNNELS",
+      "if": {
+       "quest_active": "case_salt_tunnels"
+      },
+      "next": "k_again"
+     },
+     {
       "text": "MARKET_BYE",
       "next": null
      }
@@ -46,6 +73,61 @@
     "text": "NELL_FISH",
     "speaker": "NPC_NELL",
     "next": "hub"
+   },
+   "k1": {
+    "text": "NELL_KNOCK_1",
+    "next": "k2",
+    "speaker": "NPC_NELL"
+   },
+   "k2": {
+    "text": "NELL_KNOCK_2",
+    "next": "k3",
+    "speaker": "NPC_NELL"
+   },
+   "k3": {
+    "text": "NELL_KNOCK_3",
+    "next": "k4",
+    "speaker": "NPC_NELL"
+   },
+   "k4": {
+    "text": "NELL_KNOCK_4",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "salt.known"
+     },
+     {
+      "quest_start": "case_salt_tunnels"
+     }
+    ]
+   },
+   "k_again": {
+    "text": "NELL_KNOCK_AGAIN",
+    "next": "hub",
+    "speaker": "NPC_NELL"
+   },
+   "salt_done": {
+    "text": "NELL_SALT_DONE",
+    "next": "salt_done2",
+    "speaker": "NPC_NELL"
+   },
+   "salt_done2": {
+    "text": "NELL_SALT_PAY",
+    "next": "hub",
+    "effects": [
+     {
+      "set_flag": "salt.nell_paid"
+     },
+     {
+      "give_money": 40
+     },
+     {
+      "relationship": [
+       "nell_goodwin",
+       2
+      ]
+     }
+    ]
    }
   }
  },

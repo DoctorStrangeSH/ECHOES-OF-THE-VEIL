@@ -1,0 +1,397 @@
+{
+ "id": "salt_tally",
+ "name_key": "LOC_SALT_TALLY",
+ "palette": "salt_tunnels",
+ "options": {
+  "outdoors": false,
+  "combat_enabled": true,
+  "fixed_tint": {
+   "color": [
+    0.86,
+    0.9,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "layout": [
+  "################################",
+  "#WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW#",
+  "#wwwwwwwwwwwwwwwwwwwwwwwwwwwwww#",
+  "#ffffffffffffffffffffffffffffff#",
+  "#ffffffffffffffffffffffffffffff#",
+  "#fffffffffffffffffffppppppppppf#",
+  "#fffffffffffffffffffppppppppppf#",
+  "ffffffffffffffffffffppppppppppf#",
+  "ffffffffffffffffffffppppppppppf#",
+  "#fffffffffffffffffffppppppppppf#",
+  "#fffffffffffffffffffppppppppppf#",
+  "#fffffffffffffffffffppppppppppf#",
+  "#fffffffffffffffffffppppppppppf#",
+  "#ffffffffffffffffffffffffffffff#",
+  "#ffffffffffffffffffffffffffffff#",
+  "################################"
+ ],
+ "nodes": [
+  {
+   "kind": "prop",
+   "name": "Shelf1",
+   "tex": "@library/57.png",
+   "x": 56,
+   "y": 64,
+   "color": "#806040",
+   "col": [
+    30,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "ShelfLook1",
+   "id": "inspect_salt_shelf_1",
+   "x": 56,
+   "y": 72,
+   "area": [
+    30,
+    12
+   ],
+   "lines": [
+    "SALT_SHELF_1"
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Shelf2",
+   "tex": "@library/64.png",
+   "x": 96,
+   "y": 64,
+   "color": "#806040",
+   "col": [
+    30,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "ShelfLook2",
+   "id": "inspect_salt_shelf_2",
+   "x": 96,
+   "y": 72,
+   "area": [
+    30,
+    12
+   ],
+   "lines": [
+    "SALT_SHELF_2"
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Shelf3",
+   "tex": "@library/71.png",
+   "x": 136,
+   "y": 64,
+   "color": "#806040",
+   "col": [
+    30,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "ShelfLook3",
+   "id": "inspect_salt_shelf_3",
+   "x": 136,
+   "y": 72,
+   "area": [
+    30,
+    12
+   ],
+   "dialogue": "salt_third_volume",
+   "priority": 15,
+   "show_if": {
+    "not_flag": "salt.shrine_open"
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "Shelf4",
+   "tex": "@library/58.png",
+   "x": 176,
+   "y": 64,
+   "color": "#806040",
+   "col": [
+    30,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "ShelfLook4",
+   "id": "inspect_salt_shelf_4",
+   "x": 176,
+   "y": 72,
+   "area": [
+    30,
+    12
+   ],
+   "lines": [
+    "SALT_SHELF_4"
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Shelf5",
+   "tex": "@library/65.png",
+   "x": 216,
+   "y": 64,
+   "color": "#806040",
+   "col": [
+    30,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "ShelfLook5",
+   "id": "inspect_salt_shelf_5",
+   "x": 216,
+   "y": 72,
+   "area": [
+    30,
+    12
+   ],
+   "lines": [
+    "SALT_SHELF_5"
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Shelf6",
+   "tex": "@library/72.png",
+   "x": 256,
+   "y": 64,
+   "color": "#806040",
+   "col": [
+    30,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "ShelfLook6",
+   "id": "inspect_salt_shelf_6",
+   "x": 256,
+   "y": 72,
+   "area": [
+    30,
+    12
+   ],
+   "lines": [
+    "SALT_SHELF_6"
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ToShrine",
+   "id": "door_salt_shrine",
+   "x": 136,
+   "y": 54,
+   "area": [
+    24,
+    12
+   ],
+   "scene": "salt_shrine",
+   "spawn": "entrance",
+   "prompt": "PROMPT_SQUEEZE",
+   "show_if": {
+    "flag": "salt.shrine_open"
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "FromShrine",
+   "id": "from_shrine",
+   "x": 150,
+   "y": 90,
+   "facing": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Desk",
+   "tex": "@library/25.png",
+   "x": 440,
+   "y": 120,
+   "color": "#806040",
+   "col": [
+    28,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "pickup",
+   "name": "Key",
+   "x": 440,
+   "y": 136,
+   "item": "tally_key",
+   "flag": "salt.key_taken"
+  },
+  {
+   "kind": "prop",
+   "name": "Coffin",
+   "tex": "@hal/49.png",
+   "x": 470,
+   "y": 236,
+   "color": "#7a7068",
+   "col": [
+    28,
+    12
+   ],
+   "off": [
+    0,
+    -6
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Web",
+   "tex": "@hal/24.png",
+   "x": 488,
+   "y": 64,
+   "color": "#7a7068",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Barrel",
+   "tex": "@camp/Pier_Barrel_1.png",
+   "x": 330,
+   "y": 236,
+   "color": "#7a7068",
+   "col": [
+    12,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Grate",
+   "tex": "@city/Grate_2.png",
+   "x": 260,
+   "y": 170,
+   "color": "#7a7068",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor"
+  },
+  {
+   "kind": "door",
+   "name": "ToHub",
+   "id": "door_tally_hub",
+   "x": 4,
+   "y": 128,
+   "area": [
+    8,
+    32
+   ],
+   "scene": "salt_stair",
+   "spawn": "from_tally",
+   "prompt": "PROMPT_GO_BACK"
+  },
+  {
+   "kind": "spawn",
+   "name": "FromHub",
+   "id": "from_hub",
+   "x": 24,
+   "y": 128,
+   "facing": [
+    1,
+    0
+   ]
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo1",
+   "id": "salt_tal_1",
+   "x": 200,
+   "y": 160,
+   "variant": "hollow"
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo2",
+   "id": "salt_tal_2",
+   "x": 320,
+   "y": 130,
+   "variant": "clinger"
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo3",
+   "id": "salt_tal_3",
+   "x": 400,
+   "y": 190,
+   "variant": "wailer"
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo4",
+   "id": "salt_tal_4",
+   "x": 460,
+   "y": 160,
+   "variant": "clinger"
+  },
+  {
+   "kind": "encounter",
+   "flag": "salt.tally_cleared"
+  }
+ ]
+}

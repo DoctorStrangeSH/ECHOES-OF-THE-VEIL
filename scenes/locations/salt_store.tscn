@@ -1,0 +1,198 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/location.gd" id="1_loc"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2_paint"]
+[ext_resource type="PackedScene" path="res://scenes/props/world_prop.tscn" id="3_prop"]
+[ext_resource type="Script" path="res://scripts/world/spawn_point.gd" id="4_spawn"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="5_inspect"]
+[ext_resource type="Script" path="res://scripts/interaction/door_interactable.gd" id="6_door"]
+[ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
+[ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+[ext_resource type="Script" path="res://scripts/world/conditional_visibility.gd" id="10_cond"]
+[ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
+[ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
+[ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+[ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
+[ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
+[ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
+[ext_resource type="PackedScene" path="res://scenes/world/repair_spot.tscn" id="17_spot"]
+[ext_resource type="PackedScene" path="res://scenes/world/screen_interactable.tscn" id="18_screen"]
+[ext_resource type="PackedScene" path="res://scenes/world/junk_pile.tscn" id="19_junk"]
+[ext_resource type="PackedScene" path="res://scenes/combat/reviser.tscn" id="20_boss_reviser"]
+
+[node name="SaltStore" type="Node2D"]
+script = ExtResource("1_loc")
+location_id = &"salt_store"
+name_key = "LOC_SALT_STORE"
+outdoors = false
+combat_enabled = true
+fixed_tint = Color(0.86, 0.9, 1.0, 1.0)
+enter_dialogue_id = &"salt_store_enter"
+enter_condition = {"not_flag": "salt.store_entered"}
+
+[node name="Ground" type="TileMapLayer" parent="."]
+script = ExtResource("2_paint")
+palette_id = "salt_tunnels"
+layout = "######################
+#WWWWWWWWWWWWWWWWWWWW#
+#wwwwwwwwwwwwwwwwwwww#
+#ffffffffffffffffffff#
+#ffffffffffffffffffff#
+#ffffffffffffffffffff#
+#ffffffffffffffffffff#
+#ffffffffffffffffffff#
+#ffffffffffffffffffff#
+#ffffffffffffffffffff#
+#ffffffffffffffffffff#
+#ffffffffffffffffffff#
+#ffffffffffffffffffff#
+##########ff##########"
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="NpcAnchors" type="Node2D" parent="."]
+
+[node name="BarrelL" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(36, 120)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Pier_Barrel_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.502,0.376,0.251, 1)
+collision_size = Vector2(12, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="CratesL" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(36, 208)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_92.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.502,0.376,0.251, 1)
+collision_size = Vector2(28, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Rack5" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(264, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_47.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.502,0.376,0.251, 1)
+collision_size = Vector2(30, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Rack4" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(216, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_46.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.502,0.376,0.251, 1)
+collision_size = Vector2(30, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Rack3" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(168, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_45.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.502,0.376,0.251, 1)
+collision_size = Vector2(30, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Rack2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(120, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_44.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.502,0.376,0.251, 1)
+collision_size = Vector2(30, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Rack1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(72, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_43.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.502,0.376,0.251, 1)
+collision_size = Vector2(30, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Reviser" parent="Entities" instance=ExtResource("20_boss_reviser")]
+position = Vector2(176, 124)
+boss_id = "storekeeper"
+name_key = "BOSS_STOREKEEPER"
+premade = "Premade_Character_13"
+pattern = "checker"
+summon_variant = "clinger"
+
+[node name="BossArena" type="Area2D" parent="."]
+position = Vector2(176, 124)
+script = ExtResource("15_arena")
+boss_path = NodePath("../Entities/Reviser")
+engaged_flag = &"boss.storekeeper.engaged"
+area_size = Vector2(288, 128)
+
+[node name="Ledger" type="Area2D" parent="Entities"]
+position = Vector2(176, 124)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_salt_ledger"
+area_size = Vector2(40, 20)
+interaction_priority = 30
+dialogue_id = &"salt_ledger"
+
+[node name="Condition" type="Node" parent="Entities/Ledger"]
+script = ExtResource("10_cond")
+show_if = {"flag": "boss.storekeeper.defeated"}
+
+[node name="LadderProp" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(320, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_188.png"
+placeholder_size = Vector2i(16, 48)
+placeholder_color = Color(0.478,0.439,0.408, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Condition" type="Node" parent="Entities/LadderProp"]
+script = ExtResource("10_cond")
+show_if = {"flag": "boss.storekeeper.defeated"}
+
+[node name="Ladder" type="Area2D" parent="Entities"]
+position = Vector2(320, 72)
+script = ExtResource("6_door")
+interaction_id = &"door_salt_ladder"
+area_size = Vector2(20, 16)
+prompt_key = "PROMPT_CLIMB_UP"
+target_scene_id = &"greyford_harbour"
+target_spawn_id = &"from_tunnels"
+
+[node name="Condition" type="Node" parent="Entities/Ladder"]
+script = ExtResource("10_cond")
+show_if = {"flag": "boss.storekeeper.defeated"}
+
+[node name="Crates2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(300, 200)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_94.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.478,0.439,0.408, 1)
+collision_size = Vector2(28, 12)
+collision_offset = Vector2(0, -6)
+
+[node name="Web" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(24, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_24.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.478,0.439,0.408, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Entrance" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(176, 196)
+script = ExtResource("4_spawn")
+spawn_id = &"entrance"
+facing = Vector2(0, -1)
+
+[node name="WayBack" type="Area2D" parent="Entities"]
+position = Vector2(176, 220)
+script = ExtResource("6_door")
+interaction_id = &"door_store_exit"
+area_size = Vector2(32, 8)
+prompt_key = "PROMPT_GO_BACK"
+target_scene_id = &"salt_stair"
+target_spawn_id = &"from_store"

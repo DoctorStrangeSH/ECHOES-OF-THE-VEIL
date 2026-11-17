@@ -724,6 +724,52 @@
     0,
     1
    ]
+  },
+  {
+   "kind": "prop",
+   "name": "TunnelGrate",
+   "tex": "@city/Grate_1.png",
+   "x": 240,
+   "y": 216,
+   "color": "#505050",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor"
+  },
+  {
+   "kind": "door",
+   "name": "ToTunnels",
+   "id": "door_harbour_tunnels",
+   "x": 240,
+   "y": 216,
+   "area": [
+    20,
+    14
+   ],
+   "scene": "salt_stair",
+   "spawn": "from_harbour",
+   "prompt": "PROMPT_GO_DOWN",
+   "required_flag": "salt.known",
+   "locked": [
+    "SALT_GRATE_LOCKED"
+   ]
+  },
+  {
+   "kind": "spawn",
+   "name": "FromTunnels",
+   "id": "from_tunnels",
+   "x": 240,
+   "y": 236,
+   "facing": [
+    0,
+    1
+   ]
   }
  ]
 }

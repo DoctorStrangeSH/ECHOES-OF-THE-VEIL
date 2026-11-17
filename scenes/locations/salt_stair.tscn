@@ -1,0 +1,236 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/location.gd" id="1_loc"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2_paint"]
+[ext_resource type="PackedScene" path="res://scenes/props/world_prop.tscn" id="3_prop"]
+[ext_resource type="Script" path="res://scripts/world/spawn_point.gd" id="4_spawn"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="5_inspect"]
+[ext_resource type="Script" path="res://scripts/interaction/door_interactable.gd" id="6_door"]
+[ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
+[ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+[ext_resource type="Script" path="res://scripts/world/conditional_visibility.gd" id="10_cond"]
+[ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
+[ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
+[ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+[ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
+[ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
+[ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
+[ext_resource type="PackedScene" path="res://scenes/world/repair_spot.tscn" id="17_spot"]
+[ext_resource type="PackedScene" path="res://scenes/world/screen_interactable.tscn" id="18_screen"]
+[ext_resource type="PackedScene" path="res://scenes/world/junk_pile.tscn" id="19_junk"]
+
+[node name="SaltStair" type="Node2D"]
+script = ExtResource("1_loc")
+location_id = &"salt_stair"
+name_key = "LOC_SALT_STAIR"
+outdoors = false
+combat_enabled = true
+fixed_tint = Color(0.86, 0.9, 1.0, 1.0)
+enter_dialogue_id = &"salt_enter"
+enter_condition = {"not_flag": "salt.entered"}
+
+[node name="Ground" type="TileMapLayer" parent="."]
+script = ExtResource("2_paint")
+palette_id = "salt_tunnels"
+layout = "########################
+#WWWWWWWWWWWWWWWWWWWWWW#
+#wwwwwwwwwwwwwwwwwwwwww#
+#ffffffffffffffffffffff#
+#ffffffffffffffffffffff#
+#ffffffffffffffffffffff#
+#ffffffffffffffffffffff#
+ffffffffffffffffffffffff
+fffffffffppppppfffffffff
+#ffffffffppppppffffffff#
+#ffffffffppppppffffffff#
+#ffffffffppppppffffffff#
+#ffffffffppppppffffffff#
+###########ff###########"
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="NpcAnchors" type="Node2D" parent="."]
+
+[node name="Stairs" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(56, 96)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_216.png"
+placeholder_size = Vector2i(48, 64)
+placeholder_color = Color(0.478,0.439,0.408, 1)
+collision_size = Vector2(40, 20)
+collision_offset = Vector2(0, -12)
+
+[node name="ToHarbour" type="Area2D" parent="Entities"]
+position = Vector2(56, 104)
+script = ExtResource("6_door")
+interaction_id = &"door_salt_up"
+area_size = Vector2(32, 12)
+prompt_key = "PROMPT_CLIMB_UP"
+target_scene_id = &"greyford_harbour"
+target_spawn_id = &"from_tunnels"
+
+[node name="FromHarbour" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(56, 124)
+script = ExtResource("4_spawn")
+spawn_id = &"from_harbour"
+facing = Vector2(0, 1)
+
+[node name="Web1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(24, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_24.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.478,0.439,0.408, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Web2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(360, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_26.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.478,0.439,0.408, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Crates1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(120, 96)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_92.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.478,0.439,0.408, 1)
+collision_size = Vector2(28, 12)
+collision_offset = Vector2(0, -6)
+
+[node name="Crate2" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(330, 100)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_97.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.478,0.439,0.408, 1)
+collision_size = Vector2(28, 12)
+collision_offset = Vector2(0, -6)
+
+[node name="Sacks" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(290, 200)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Pier_Barrel_2.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.478,0.439,0.408, 1)
+collision_size = Vector2(26, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Barrel" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(72, 204)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Pier_Barrel_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.478,0.439,0.408, 1)
+collision_size = Vector2(12, 8)
+collision_offset = Vector2(0, -4)
+
+[node name="Grate1" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(200, 150)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Grate_2.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.478,0.439,0.408, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="BarsL" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(184, 224)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/18_Jail_Singles/Jail_Singles_23.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.314,0.314,0.376, 1)
+collision_size = Vector2(16, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Condition" type="Node" parent="Entities/BarsL"]
+script = ExtResource("10_cond")
+show_if = {"not_flag": "salt.gate_open"}
+
+[node name="BarsR" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(200, 224)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/18_Jail_Singles/Jail_Singles_23.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.314,0.314,0.376, 1)
+collision_size = Vector2(16, 10)
+collision_offset = Vector2(0, -5)
+
+[node name="Condition" type="Node" parent="Entities/BarsR"]
+script = ExtResource("10_cond")
+show_if = {"not_flag": "salt.gate_open"}
+
+[node name="Gate" type="Area2D" parent="Entities"]
+position = Vector2(192, 200)
+script = ExtResource("5_inspect")
+interaction_id = &"inspect_salt_gate"
+area_size = Vector2(40, 16)
+interaction_priority = 20
+dialogue_id = &"salt_gate"
+
+[node name="Condition" type="Node" parent="Entities/Gate"]
+script = ExtResource("10_cond")
+show_if = {"not_flag": "salt.gate_open"}
+
+[node name="ToStore" type="Area2D" parent="Entities"]
+position = Vector2(192, 220)
+script = ExtResource("6_door")
+interaction_id = &"door_salt_store"
+area_size = Vector2(32, 8)
+prompt_key = "PROMPT_GO_DEEPER"
+target_scene_id = &"salt_store"
+target_spawn_id = &"entrance"
+
+[node name="Condition" type="Node" parent="Entities/ToStore"]
+script = ExtResource("10_cond")
+show_if = {"flag": "salt.gate_open"}
+
+[node name="FromStore" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(192, 196)
+script = ExtResource("4_spawn")
+spawn_id = &"from_store"
+facing = Vector2(0, -1)
+
+[node name="ToGallery" type="Area2D" parent="Entities"]
+position = Vector2(4, 128)
+script = ExtResource("6_door")
+interaction_id = &"door_salt_gallery"
+area_size = Vector2(8, 32)
+prompt_key = "PROMPT_GO_GALLERY"
+target_scene_id = &"salt_gallery"
+target_spawn_id = &"from_hub"
+
+[node name="FromGallery" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(24, 128)
+script = ExtResource("4_spawn")
+spawn_id = &"from_gallery"
+facing = Vector2(1, 0)
+
+[node name="ToTally" type="Area2D" parent="Entities"]
+position = Vector2(380, 128)
+script = ExtResource("6_door")
+interaction_id = &"door_salt_tally"
+area_size = Vector2(8, 32)
+prompt_key = "PROMPT_GO_TALLY"
+target_scene_id = &"salt_tally"
+target_spawn_id = &"from_hub"
+
+[node name="FromTally" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(360, 128)
+script = ExtResource("4_spawn")
+spawn_id = &"from_tally"
+facing = Vector2(-1, 0)
+
+[node name="Echo1" parent="Entities" instance=ExtResource("12_enemy")]
+position = Vector2(260, 140)
+enemy_id = &"salt_hub_1"
+variant = "hollow"
+
+[node name="Echo2" parent="Entities" instance=ExtResource("12_enemy")]
+position = Vector2(140, 170)
+enemy_id = &"salt_hub_2"
+variant = "hollow"
+
+[node name="Encounter" type="Node" parent="."]
+script = ExtResource("13_encounter")
+clear_flag = &"salt.hub_cleared"

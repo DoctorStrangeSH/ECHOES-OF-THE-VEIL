@@ -443,3 +443,28 @@ position = Vector2(336, 180)
 script = ExtResource("4_spawn")
 spawn_id = &"ferry_pier"
 facing = Vector2(0, 1)
+
+[node name="TunnelGrate" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(240, 216)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Grate_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.314,0.314,0.314, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="ToTunnels" type="Area2D" parent="Entities"]
+position = Vector2(240, 216)
+script = ExtResource("6_door")
+interaction_id = &"door_harbour_tunnels"
+area_size = Vector2(20, 14)
+prompt_key = "PROMPT_GO_DOWN"
+target_scene_id = &"salt_stair"
+target_spawn_id = &"from_harbour"
+required_flag = &"salt.known"
+locked_lines = PackedStringArray("SALT_GRATE_LOCKED")
+
+[node name="FromTunnels" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(240, 236)
+script = ExtResource("4_spawn")
+spawn_id = &"from_tunnels"
+facing = Vector2(0, 1)

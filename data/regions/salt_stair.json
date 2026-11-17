@@ -1,0 +1,345 @@
+{
+ "id": "salt_stair",
+ "name_key": "LOC_SALT_STAIR",
+ "palette": "salt_tunnels",
+ "options": {
+  "outdoors": false,
+  "combat_enabled": true,
+  "fixed_tint": {
+   "color": [
+    0.86,
+    0.9,
+    1.0,
+    1.0
+   ]
+  },
+  "enter_dialogue_id": "salt_enter",
+  "enter_condition": {
+   "not_flag": "salt.entered"
+  }
+ },
+ "layout": [
+  "########################",
+  "#WWWWWWWWWWWWWWWWWWWWWW#",
+  "#wwwwwwwwwwwwwwwwwwwwww#",
+  "#ffffffffffffffffffffff#",
+  "#ffffffffffffffffffffff#",
+  "#ffffffffffffffffffffff#",
+  "#ffffffffffffffffffffff#",
+  "ffffffffffffffffffffffff",
+  "fffffffffppppppfffffffff",
+  "#ffffffffppppppffffffff#",
+  "#ffffffffppppppffffffff#",
+  "#ffffffffppppppffffffff#",
+  "#ffffffffppppppffffffff#",
+  "###########ff###########"
+ ],
+ "nodes": [
+  {
+   "kind": "prop",
+   "name": "Stairs",
+   "tex": "@hal/216.png",
+   "x": 56,
+   "y": 96,
+   "color": "#7a7068",
+   "col": [
+    40,
+    20
+   ],
+   "off": [
+    0,
+    -12
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ToHarbour",
+   "id": "door_salt_up",
+   "x": 56,
+   "y": 104,
+   "area": [
+    32,
+    12
+   ],
+   "scene": "greyford_harbour",
+   "spawn": "from_tunnels",
+   "prompt": "PROMPT_CLIMB_UP"
+  },
+  {
+   "kind": "spawn",
+   "name": "FromHarbour",
+   "id": "from_harbour",
+   "x": 56,
+   "y": 124,
+   "facing": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Web1",
+   "tex": "@hal/24.png",
+   "x": 24,
+   "y": 64,
+   "color": "#7a7068",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Web2",
+   "tex": "@hal/26.png",
+   "x": 360,
+   "y": 64,
+   "color": "#7a7068",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Crates1",
+   "tex": "@hal/92.png",
+   "x": 120,
+   "y": 96,
+   "color": "#7a7068",
+   "col": [
+    28,
+    12
+   ],
+   "off": [
+    0,
+    -6
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Crate2",
+   "tex": "@hal/97.png",
+   "x": 330,
+   "y": 100,
+   "color": "#7a7068",
+   "col": [
+    28,
+    12
+   ],
+   "off": [
+    0,
+    -6
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Sacks",
+   "tex": "@camp/Pier_Barrel_2.png",
+   "x": 290,
+   "y": 200,
+   "color": "#7a7068",
+   "col": [
+    26,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Barrel",
+   "tex": "@camp/Pier_Barrel_1.png",
+   "x": 72,
+   "y": 204,
+   "color": "#7a7068",
+   "col": [
+    12,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Grate1",
+   "tex": "@city/Grate_2.png",
+   "x": 200,
+   "y": 150,
+   "color": "#7a7068",
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor"
+  },
+  {
+   "kind": "prop",
+   "name": "BarsL",
+   "tex": "@jail/23.png",
+   "x": 184,
+   "y": 224,
+   "color": "#505060",
+   "col": [
+    16,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "show_if": {
+    "not_flag": "salt.gate_open"
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "BarsR",
+   "tex": "@jail/23.png",
+   "x": 200,
+   "y": 224,
+   "color": "#505060",
+   "col": [
+    16,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "show_if": {
+    "not_flag": "salt.gate_open"
+   }
+  },
+  {
+   "kind": "inspect",
+   "name": "Gate",
+   "id": "inspect_salt_gate",
+   "x": 192,
+   "y": 200,
+   "area": [
+    40,
+    16
+   ],
+   "dialogue": "salt_gate",
+   "priority": 20,
+   "show_if": {
+    "not_flag": "salt.gate_open"
+   }
+  },
+  {
+   "kind": "door",
+   "name": "ToStore",
+   "id": "door_salt_store",
+   "x": 192,
+   "y": 220,
+   "area": [
+    32,
+    8
+   ],
+   "scene": "salt_store",
+   "spawn": "entrance",
+   "prompt": "PROMPT_GO_DEEPER",
+   "show_if": {
+    "flag": "salt.gate_open"
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "FromStore",
+   "id": "from_store",
+   "x": 192,
+   "y": 196,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ToGallery",
+   "id": "door_salt_gallery",
+   "x": 4,
+   "y": 128,
+   "area": [
+    8,
+    32
+   ],
+   "scene": "salt_gallery",
+   "spawn": "from_hub",
+   "prompt": "PROMPT_GO_GALLERY"
+  },
+  {
+   "kind": "spawn",
+   "name": "FromGallery",
+   "id": "from_gallery",
+   "x": 24,
+   "y": 128,
+   "facing": [
+    1,
+    0
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ToTally",
+   "id": "door_salt_tally",
+   "x": 380,
+   "y": 128,
+   "area": [
+    8,
+    32
+   ],
+   "scene": "salt_tally",
+   "spawn": "from_hub",
+   "prompt": "PROMPT_GO_TALLY"
+  },
+  {
+   "kind": "spawn",
+   "name": "FromTally",
+   "id": "from_tally",
+   "x": 360,
+   "y": 128,
+   "facing": [
+    -1,
+    0
+   ]
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo1",
+   "id": "salt_hub_1",
+   "x": 260,
+   "y": 140,
+   "variant": "hollow"
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo2",
+   "id": "salt_hub_2",
+   "x": 140,
+   "y": 170,
+   "variant": "hollow"
+  },
+  {
+   "kind": "encounter",
+   "flag": "salt.hub_cleared"
+  }
+ ]
+}
