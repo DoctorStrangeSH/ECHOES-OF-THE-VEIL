@@ -1,0 +1,22 @@
+{
+  "PROMPT_CARDS": {"en": "Sit in on a hand of pontoon", "ru": "Сыграть в понтун"},
+  "CARDS_TITLE": {"en": "Pontoon · get closer to 21 than the banker", "ru": "Понтун · наберите ближе к 21, чем банкир"},
+  "CARDS_BANKER": {"en": "Banker", "ru": "Банкир"},
+  "CARDS_YOU": {"en": "You", "ru": "Вы"},
+  "CARDS_HINT_STAKE": {"en": "←/→ stake £%d · E deal · Esc leave", "ru": "←/→ ставка £%d · E сдать · Esc уйти"},
+  "CARDS_HINT_PLAY": {"en": "E twist (another card) · Space stick", "ru": "E ещё карту · Пробел хватит"},
+  "CARDS_HINT_NEXT": {"en": "E next hand", "ru": "E следующая раздача"},
+  "CARDS_NO_MONEY": {"en": "Not enough on the table for that stake.", "ru": "На такую ставку денег не хватает."},
+  "CARDS_WIN": {"en": "You win: %d against %d.", "ru": "Вы выиграли: %d против %d."},
+  "CARDS_LOSE": {"en": "The banker takes it: %d against %d.", "ru": "Банкир забирает: %d против %d."},
+  "CARDS_BUST": {"en": "Bust: %d. (The banker had %d.)", "ru": "Перебор: %d. (У банкира было %d.)"},
+  "CARDS_PONTOON": {"en": "Pontoon! An ace and a ten: paid double. (%d against %d)", "ru": "Понтун! Туз и десятка: двойная выплата. (%d против %d)"},
+  "CARDS_FIVE_CARD": {"en": "Five-card trick! Paid double. (%d against %d)", "ru": "Пять карт без перебора! Двойная выплата. (%d против %d)"},
+  "CARDS_READ_HIGH": {"en": "The banker's face says: a high card underneath.", "ru": "По лицу банкира видно: внизу крупная карта."},
+  "CARDS_READ_LOW": {"en": "The banker's face says: nothing much underneath.", "ru": "По лицу банкира видно: внизу мелочь."},
+  "CARDS_WELCOME_MILLSTONE": {"en": "Bess shuffles like she's settling an argument. \"Penny a point? No. Pound a hand. Sit.\"", "ru": "Бесс тасует так, будто заканчивает спор. «По пенни за очко? Нет. По фунту за раздачу. Садитесь»."},
+  "CARDS_WELCOME_GULL": {"en": "Two fishermen shift along the bench to make room. The dealer has a gold tooth and very clean hands.", "ru": "Двое рыбаков сдвигаются по скамье, освобождая место. У сдающего золотой зуб и очень чистые руки."},
+  "CARDS_SESSION_UP": {"en": "You leave the table £%d up.", "ru": "Вы уходите из-за стола с выигрышем £%d."},
+  "CARDS_SESSION_DOWN": {"en": "You leave the table £%d down.", "ru": "Вы уходите из-за стола, проиграв £%d."},
+  "CARDS_BANKER_BUST": {"en": "You win with %d: the banker went bust on %d.", "ru": "Вы выиграли с %d: у банкира перебор, %d."}
+}

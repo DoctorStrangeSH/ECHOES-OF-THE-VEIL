@@ -232,3 +232,9 @@ area_size = Vector2(30, 10)
 prompt_key = "PROMPT_EXIT"
 target_scene_id = &"cavenmouth"
 target_spawn_id = &"inn_front"
+
+[node name="CardTable" parent="Entities" instance=ExtResource("18_screen")]
+position = Vector2(220, 136)
+interaction_id = &"use_cav_cards"
+screen = "cards:gull"
+prompt_key = "PROMPT_CARDS"

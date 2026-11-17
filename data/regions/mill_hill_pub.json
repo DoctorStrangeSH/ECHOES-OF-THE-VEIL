@@ -185,6 +185,15 @@
    "scene": "mill_hill",
    "spawn": "pub_front",
    "prompt": "PROMPT_EXIT"
+  },
+  {
+   "kind": "screen",
+   "name": "CardTable",
+   "id": "use_mh_cards",
+   "x": 56,
+   "y": 136,
+   "screen": "cards:millstone",
+   "prompt": "PROMPT_CARDS"
   }
  ]
 }
