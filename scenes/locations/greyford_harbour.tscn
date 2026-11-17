@@ -26,6 +26,7 @@ location_id = &"greyford_harbour"
 name_key = "LOC_HARBOUR"
 outdoors = true
 music = "harbour"
+traffic = {"lanes": [{"y": 330, "dir": -1}]}
 
 [node name="Ground" type="TileMapLayer" parent="."]
 script = ExtResource("2_paint")
@@ -240,7 +241,7 @@ collision_offset = Vector2(0, -20)
 position = Vector2(560, 306)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_harbour_office"
-area_size = Vector2(40, 14)
+area_size = Vector2(40, 16)
 lines = PackedStringArray("FLAVOR_HARBOUR_OFFICE")
 
 [node name="FerrySign" parent="Entities" instance=ExtResource("3_prop")]
@@ -255,7 +256,7 @@ collision_offset = Vector2(0, -2)
 position = Vector2(408, 244)
 script = ExtResource("5_inspect")
 interaction_id = &"read_ferry_board"
-area_size = Vector2(24, 12)
+area_size = Vector2(24, 16)
 prompt_key = "PROMPT_READ"
 lines = PackedStringArray("FLAVOR_FERRY_BOARD")
 
@@ -401,7 +402,7 @@ show_if = {"flag": "car.owned"}
 position = Vector2(180, 346)
 script = ExtResource("5_inspect")
 interaction_id = &"use_my_car"
-area_size = Vector2(60, 12)
+area_size = Vector2(60, 16)
 prompt_key = "PROMPT_CAR"
 dialogue_id = &"car"
 

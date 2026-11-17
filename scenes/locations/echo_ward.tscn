@@ -86,7 +86,7 @@ collision_offset = Vector2(0, -40)
 position = Vector2(136, 262)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_ward_hall"
-area_size = Vector2(30, 14)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("WARD_HALL_LOOK")
 
 [node name="Bakery" parent="Entities" instance=ExtResource("3_prop")]
@@ -101,7 +101,7 @@ collision_offset = Vector2(0, -64)
 position = Vector2(256, 262)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_bakery"
-area_size = Vector2(24, 14)
+area_size = Vector2(24, 16)
 lines = PackedStringArray("WARD_BAKERY_LOOK")
 
 [node name="TallHouseMid" parent="Entities" instance=ExtResource("3_prop")]
@@ -124,7 +124,7 @@ collision_offset = Vector2(0, -40)
 position = Vector2(416, 262)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_number_eleven"
-area_size = Vector2(24, 14)
+area_size = Vector2(24, 16)
 lines = PackedStringArray("WARD_NO11_LOOK")
 
 [node name="TallHouseEast" parent="Entities" instance=ExtResource("3_prop")]
@@ -215,7 +215,7 @@ collision_offset = Vector2(0, 0)
 position = Vector2(64, 288)
 script = ExtResource("5_inspect")
 interaction_id = &"read_ward_notice"
-area_size = Vector2(18, 12)
+area_size = Vector2(20, 16)
 prompt_key = "PROMPT_READ"
 lines = PackedStringArray("WARD_NOTICE_1", "WARD_NOTICE_2")
 

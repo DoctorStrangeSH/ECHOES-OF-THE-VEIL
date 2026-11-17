@@ -121,6 +121,10 @@ def expand(nodes, ctx):
         else:
             if n['kind'] == 'furn':
                 n = furn_to_prop(n, ctx)
+            if n['kind'] == 'inspect' and 'area' in n:
+                # Thin strips were easy to miss by a few pixels; anything you
+                # can read or look at is at least 20x16.
+                n = dict(n, area=[max(n['area'][0], 20), max(n['area'][1], 16)])
             out.append(finish_prop(n) if n['kind'] == 'prop' else n)
     return out
 

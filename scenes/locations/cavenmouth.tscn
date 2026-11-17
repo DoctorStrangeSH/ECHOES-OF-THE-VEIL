@@ -26,6 +26,7 @@ location_id = &"cavenmouth"
 name_key = "LOC_CAVENMOUTH"
 outdoors = true
 music = "harbour"
+traffic = {"lanes": [{"y": 318, "dir": -1}]}
 
 [node name="Ground" type="TileMapLayer" parent="."]
 script = ExtResource("2_paint")
@@ -139,7 +140,7 @@ collision_offset = Vector2(0, -48)
 position = Vector2(200, 262)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_cav_bakery"
-area_size = Vector2(60, 10)
+area_size = Vector2(60, 16)
 lines = PackedStringArray("FLAVOR_CAV_BAKERY")
 
 [node name="PostGround" parent="Entities" instance=ExtResource("3_prop")]
@@ -239,7 +240,7 @@ collision_offset = Vector2(0, -48)
 position = Vector2(584, 262)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_cav_shop"
-area_size = Vector2(60, 10)
+area_size = Vector2(60, 16)
 lines = PackedStringArray("FLAVOR_CAV_SHOP")
 
 [node name="BankGround" parent="Entities" instance=ExtResource("3_prop")]
@@ -270,7 +271,7 @@ collision_offset = Vector2(0, -48)
 position = Vector2(712, 262)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_cav_bank"
-area_size = Vector2(60, 10)
+area_size = Vector2(60, 16)
 lines = PackedStringArray("FLAVOR_CAV_BANK")
 
 [node name="PostBox" parent="Entities" instance=ExtResource("3_prop")]
@@ -553,7 +554,7 @@ collision_offset = Vector2(0, -4)
 position = Vector2(592, 500)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_cav_pier"
-area_size = Vector2(32, 12)
+area_size = Vector2(32, 16)
 lines = PackedStringArray("FLAVOR_CAV_PIER")
 
 [node name="A_pier" type="Marker2D" parent="NpcAnchors"]
@@ -626,7 +627,7 @@ show_if = {"flag": "car.owned"}
 position = Vector2(160, 340)
 script = ExtResource("5_inspect")
 interaction_id = &"use_my_car"
-area_size = Vector2(60, 12)
+area_size = Vector2(60, 16)
 prompt_key = "PROMPT_CAR"
 dialogue_id = &"car"
 

@@ -110,7 +110,7 @@ collision_offset = Vector2(0, -36)
 position = Vector2(640, 238)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_brook_barn"
-area_size = Vector2(30, 14)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("FLAVOR_FARM_BARN")
 
 [node name="Silo" parent="Entities" instance=ExtResource("3_prop")]
@@ -197,7 +197,7 @@ show_if = {"flag": "farm.well_fixed"}
 position = Vector2(320, 216)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_farm_well"
-area_size = Vector2(30, 12)
+area_size = Vector2(30, 16)
 dialogue_id = &"farm_well"
 
 [node name="WellSpot" parent="Entities" instance=ExtResource("17_spot")]
@@ -217,7 +217,7 @@ collision_offset = Vector2(0, -4)
 position = Vector2(252, 248)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_farm_apple"
-area_size = Vector2(40, 12)
+area_size = Vector2(40, 16)
 dialogue_id = &"farm_apple"
 
 [node name="TinPickup" parent="Entities" instance=ExtResource("16_pickup")]
@@ -787,7 +787,7 @@ collision_offset = Vector2(0, -5)
 position = Vector2(430, 394)
 script = ExtResource("5_inspect")
 interaction_id = &"use_farm_crate"
-area_size = Vector2(30, 12)
+area_size = Vector2(30, 16)
 prompt_key = "PROMPT_CRATE"
 dialogue_id = &"farm_crate"
 
@@ -1028,7 +1028,7 @@ collision_offset = Vector2(0, -15)
 position = Vector2(738, 438)
 script = ExtResource("5_inspect")
 interaction_id = &"use_farm_coop"
-area_size = Vector2(34, 10)
+area_size = Vector2(34, 16)
 prompt_key = "PROMPT_COOP"
 dialogue_id = &"farm_coop"
 
@@ -1364,7 +1364,7 @@ collision_offset = Vector2(0, 0)
 position = Vector2(368, 476)
 script = ExtResource("5_inspect")
 interaction_id = &"read_farm_gate_sign"
-area_size = Vector2(18, 12)
+area_size = Vector2(20, 16)
 prompt_key = "PROMPT_READ"
 lines = PackedStringArray("FLAVOR_FARM_GATE_SIGN")
 
@@ -1434,7 +1434,7 @@ collision_offset = Vector2(0, 0)
 position = Vector2(770, 278)
 script = ExtResource("5_inspect")
 interaction_id = &"read_farm_millwood_sign"
-area_size = Vector2(18, 12)
+area_size = Vector2(20, 16)
 prompt_key = "PROMPT_READ"
 lines = PackedStringArray("FLAVOR_FARM_MILLWOOD_SIGN")
 
@@ -1454,7 +1454,7 @@ show_if = {"flag": "car.owned"}
 position = Vector2(600, 538)
 script = ExtResource("5_inspect")
 interaction_id = &"use_my_car"
-area_size = Vector2(60, 12)
+area_size = Vector2(60, 16)
 prompt_key = "PROMPT_CAR"
 dialogue_id = &"car"
 

@@ -4,7 +4,15 @@
  "palette": "brookside",
  "options": {
   "outdoors": true,
-  "music": "village"
+  "music": "village",
+  "traffic": {
+   "lanes": [
+    {
+     "y": 340,
+     "dir": -1
+    }
+   ]
+  }
  },
  "layout": [
   "gggggggggggggggggggggggggggggggggggggggggggggggggg",

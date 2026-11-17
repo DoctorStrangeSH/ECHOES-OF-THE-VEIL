@@ -25,6 +25,7 @@ script = ExtResource("1_loc")
 location_id = &"market_street"
 name_key = "LOC_MARKET_STREET"
 outdoors = true
+traffic = {"lanes": [{"y": 334, "dir": -1}]}
 
 [node name="Ground" type="TileMapLayer" parent="."]
 script = ExtResource("2_paint")
@@ -393,14 +394,14 @@ show_if = {"period": ["afternoon", "evening"]}
 position = Vector2(328, 262)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_music_store"
-area_size = Vector2(60, 10)
+area_size = Vector2(60, 16)
 lines = PackedStringArray("FLAVOR_MARKET_MUSIC")
 
 [node name="ButcheryLook" type="Area2D" parent="Entities"]
 position = Vector2(456, 262)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_butchery"
-area_size = Vector2(60, 10)
+area_size = Vector2(60, 16)
 lines = PackedStringArray("FLAVOR_MARKET_BUTCHERY")
 
 [node name="BaitShop" parent="Entities" instance=ExtResource("18_screen")]
@@ -413,7 +414,7 @@ prompt_key = "PROMPT_ENTER_SHOP"
 position = Vector2(264, 416)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_candy_cart"
-area_size = Vector2(40, 10)
+area_size = Vector2(40, 16)
 lines = PackedStringArray("FLAVOR_MARKET_CANDY")
 
 [node name="FromOldQuarter" type="Marker2D" parent="SpawnPoints"]
@@ -486,7 +487,7 @@ facing = Vector2(0, 1)
 position = Vector2(560, 262)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_gym"
-area_size = Vector2(40, 10)
+area_size = Vector2(40, 16)
 lines = PackedStringArray("FLAVOR_MARKET_GYM")
 
 [node name="FarmNotice" parent="Entities" instance=ExtResource("3_prop")]
@@ -501,7 +502,7 @@ collision_offset = Vector2(0, 0)
 position = Vector2(627, 306)
 script = ExtResource("5_inspect")
 interaction_id = &"read_farm_notice"
-area_size = Vector2(20, 12)
+area_size = Vector2(20, 16)
 prompt_key = "PROMPT_READ"
 dialogue_id = &"farm_notice"
 
@@ -541,7 +542,7 @@ show_if = {"flag": "car.owned"}
 position = Vector2(300, 352)
 script = ExtResource("5_inspect")
 interaction_id = &"use_my_car"
-area_size = Vector2(60, 12)
+area_size = Vector2(60, 16)
 prompt_key = "PROMPT_CAR"
 dialogue_id = &"car"
 

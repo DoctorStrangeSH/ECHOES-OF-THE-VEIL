@@ -3,7 +3,10 @@ extends CanvasLayer
 ## In-game overlay: interaction prompt, dialogue box with choices, clock,
 ## health, toasts. Presentation only: renders DialogueService/EventHub state.
 
-const CHARS_PER_SECOND := 45.0
+## Lines that end in a choice print this much faster: the question is the
+## point, and the player is waiting to answer it.
+const CHOICE_SPEEDUP := 3.0
+const NARRATOR_INK := Color(0.9, 0.84, 0.72)
 const TOAST_QUEUE_MAX := 4
 
 var _prompt_panel: PanelContainer
@@ -27,6 +30,11 @@ var _toast_label: Label
 var _toast_queue: Array[String] = []
 var _toast_busy := false
 var _choices: PackedStringArray = []
+var _portrait_box: Control
+var _portrait: LayeredCharacterSprite
+var _name_plate: PanelContainer
+var _italic: FontVariation
+var _npc_by_name: Dictionary = {}
 
 var dialogue_open: bool:
 	get:
@@ -35,6 +43,9 @@ var dialogue_open: bool:
 
 func _ready() -> void:
 	layer = 10
+	# Runs while paused only to hide itself: a menu on top should not have the
+	# objective, clock and hints showing through it.
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	_build()
 	DialogueService.line_shown.connect(_on_line_shown)
 	DialogueService.dialogue_ended.connect(_on_dialogue_ended)
@@ -78,7 +89,7 @@ func _update_controls_card(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
-	visible = GameState.is_playing
+	visible = GameState.is_playing and not get_tree().paused
 	if not visible:
 		return
 	var clock := tr("HUD_CLOCK") % [WorldClock.day, WorldClock.time_text(), tr("PERIOD_" + WorldClock.get_period().to_upper())]
@@ -101,8 +112,11 @@ func _process(delta: float) -> void:
 	_keys_hint.visible = not _dialogue_panel.visible
 	_update_controls_card(delta)
 	if _dialogue_panel.visible and _text_label.visible_ratio < 1.0:
+		var cps := GameSettings.chars_per_second()
+		if not _choices.is_empty():
+			cps *= CHOICE_SPEEDUP
 		var total := maxf(1.0, float(_text_label.get_total_character_count()))
-		_text_label.visible_ratio = minf(1.0, _text_label.visible_ratio + delta * CHARS_PER_SECOND / total)
+		_text_label.visible_ratio = 1.0 if cps <= 0.0 else minf(1.0, _text_label.visible_ratio + delta * cps / total)
 		if _text_label.visible_ratio >= 1.0:
 			_reveal_choices()
 
@@ -110,14 +124,20 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if not DialogueService.is_active or not _dialogue_panel.visible:
 		return
-	if event.is_action_pressed(&"interact"):
+	# A left click anywhere but on a choice moves the conversation on, like E.
+	var click: bool = event is InputEventMouseButton and event.pressed and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT
+	if click and _choices_box.visible:
+		for b in _choices_box.get_children():
+			if (b as Control).get_global_rect().has_point((event as InputEventMouseButton).position):
+				return  # the button handles it
+	if event.is_action_pressed(&"interact") or click:
 		get_viewport().set_input_as_handled()
 		if _text_label.visible_ratio < 1.0:
 			_text_label.visible_ratio = 1.0  # first press completes the line
 			_reveal_choices()
 		elif _choices.is_empty():
 			DialogueService.advance()
-		else:
+		elif not click:
 			var focused := get_viewport().gui_get_focus_owner()
 			var idx := _choices_box.get_children().find(focused)
 			DialogueService.choose(maxi(idx, 0))
@@ -156,7 +176,16 @@ func _on_line_shown(speaker: String, text: String, choices: PackedStringArray) -
 	_prompt_panel.visible = false
 	_dialogue_panel.visible = true
 	_speaker_label.text = speaker
-	_speaker_label.visible = not speaker.is_empty()
+	# The narrator has no name plate and speaks in warm italics; people have a
+	# name plate, a portrait and plain white text. One glance tells them apart.
+	var narrator := speaker.is_empty()
+	_name_plate.visible = not narrator
+	_text_label.add_theme_color_override("font_color", NARRATOR_INK if narrator else UiTheme.INK)
+	if narrator:
+		_text_label.add_theme_font_override("font", _italic)
+	else:
+		_text_label.remove_theme_font_override("font")
+	_show_portrait(String(DialogueService._node.get("speaker", "")))
 	_text_label.text = text
 	_text_label.visible = not text.is_empty()
 	_text_label.visible_ratio = 0.0 if not text.is_empty() else 1.0
@@ -174,6 +203,21 @@ func _on_line_shown(speaker: String, text: String, choices: PackedStringArray) -
 		_choices_box.add_child(b)
 	if text.is_empty():
 		_reveal_choices()
+
+
+func _show_portrait(speaker_key: String) -> void:
+	if _npc_by_name.is_empty():
+		for id: StringName in NpcRegistry.defs():
+			_npc_by_name[String(NpcRegistry.get_def(id).get("name", ""))] = id
+	var appearance: CharacterAppearance = null
+	if speaker_key == "player":
+		appearance = GameState.player_appearance
+	elif _npc_by_name.has(speaker_key):
+		appearance = NpcRegistry.appearance_of(NpcRegistry.get_def(_npc_by_name[speaker_key]))
+	_portrait_box.visible = appearance != null
+	if appearance != null:
+		_portrait.appearance = appearance
+		_portrait.play(&"idle", LayeredCharacterSprite.Dir.DOWN, true)
 
 
 func _reveal_choices() -> void:
@@ -230,11 +274,41 @@ func _build() -> void:
 	_dialogue_panel.offset_top = -72
 	_dialogue_panel.offset_bottom = -8
 	_dialogue_panel.grow_vertical = Control.GROW_DIRECTION_BEGIN
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 8)
+	_portrait_box = PanelContainer.new()
+	_portrait_box.custom_minimum_size = Vector2(44, 44)
+	_portrait_box.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+	_portrait_box.clip_contents = true
+	var holder := Control.new()
+	_portrait_box.add_child(holder)
+	_portrait = LayeredCharacterSprite.new()
+	_portrait.scale = Vector2(2.5, 2.5)
+	_portrait.position = Vector2(20, 50)  # head and shoulders in the frame
+	_portrait.set_process(false)
+	holder.add_child(_portrait)
+	row.add_child(_portrait_box)
 	var box := VBoxContainer.new()
-	box.add_theme_constant_override("separation", 2)
+	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	box.add_theme_constant_override("separation", 3)
+	_name_plate = PanelContainer.new()
+	var plate := StyleBoxFlat.new()
+	plate.bg_color = Color(0.16, 0.22, 0.3)
+	plate.set_corner_radius_all(2)
+	plate.content_margin_left = 6
+	plate.content_margin_right = 6
+	plate.content_margin_top = 0
+	plate.content_margin_bottom = 1
+	_name_plate.add_theme_stylebox_override("panel", plate)
+	_name_plate.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 	_speaker_label = Label.new()
 	_speaker_label.add_theme_color_override("font_color", UiTheme.ACCENT)
+	_name_plate.add_child(_speaker_label)
+	_italic = FontVariation.new()
+	_italic.base_font = ThemeDB.fallback_font
+	_italic.variation_transform = Transform2D(Vector2(1, 0), Vector2(0.2, 1), Vector2.ZERO)
 	_text_label = Label.new()
+	_text_label.add_theme_constant_override("line_spacing", 2)
 	_text_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_text_label.custom_minimum_size = Vector2(0, 24)
 	_choices_box = VBoxContainer.new()
@@ -243,11 +317,12 @@ func _build() -> void:
 	_more_label.text = ">"
 	_more_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	_more_label.add_theme_color_override("font_color", UiTheme.INK_DIM)
-	box.add_child(_speaker_label)
+	box.add_child(_name_plate)
 	box.add_child(_text_label)
 	box.add_child(_choices_box)
 	box.add_child(_more_label)
-	_dialogue_panel.add_child(box)
+	row.add_child(box)
+	_dialogue_panel.add_child(row)
 	root.add_child(_dialogue_panel)
 	_dialogue_panel.visible = false
 

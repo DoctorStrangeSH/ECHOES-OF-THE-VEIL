@@ -25,6 +25,7 @@ script = ExtResource("1_loc")
 location_id = &"ropeworks"
 name_key = "LOC_ROPEWORKS"
 outdoors = true
+traffic = {"lanes": [{"y": 334, "dir": -1}, {"y": 366, "dir": 1}]}
 
 [node name="Ground" type="TileMapLayer" parent="."]
 script = ExtResource("2_paint")
@@ -81,7 +82,7 @@ collision_offset = Vector2(0, -25)
 position = Vector2(136, 214)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_rw_shed1"
-area_size = Vector2(40, 14)
+area_size = Vector2(40, 16)
 lines = PackedStringArray("FLAVOR_RW_SHED")
 
 [node name="Shed2" parent="Entities" instance=ExtResource("3_prop")]
@@ -119,7 +120,7 @@ collision_offset = Vector2(0, -25)
 position = Vector2(488, 214)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_rw_shed3"
-area_size = Vector2(40, 14)
+area_size = Vector2(40, 16)
 lines = PackedStringArray("FLAVOR_RW_SHED_END")
 
 [node name="Boiler" parent="Entities" instance=ExtResource("3_prop")]
@@ -134,7 +135,7 @@ collision_offset = Vector2(0, -30)
 position = Vector2(650, 222)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_rw_boiler"
-area_size = Vector2(40, 14)
+area_size = Vector2(40, 16)
 lines = PackedStringArray("FLAVOR_RW_BOILER")
 
 [node name="Office" parent="Entities" instance=ExtResource("3_prop")]
@@ -172,14 +173,14 @@ collision_offset = Vector2(0, -2)
 position = Vector2(40, 280)
 script = ExtResource("5_inspect")
 interaction_id = &"read_rw_sign"
-area_size = Vector2(20, 10)
+area_size = Vector2(20, 16)
 lines = PackedStringArray("FLAVOR_RW_SIGN")
 
 [node name="Noticeboard" type="Area2D" parent="Entities"]
 position = Vector2(740, 236)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_rw_board"
-area_size = Vector2(24, 10)
+area_size = Vector2(24, 16)
 dialogue_id = &"rw_board"
 
 [node name="Board" parent="Entities" instance=ExtResource("3_prop")]
@@ -278,7 +279,7 @@ collision_offset = Vector2(0, -15)
 position = Vector2(120, 476)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_rw_oldmill"
-area_size = Vector2(60, 10)
+area_size = Vector2(60, 16)
 lines = PackedStringArray("FLAVOR_RW_OLDMILL")
 
 [node name="Excavator" parent="Entities" instance=ExtResource("3_prop")]

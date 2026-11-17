@@ -190,14 +190,14 @@ collision_offset = Vector2(0, -10)
 position = Vector2(196, 80)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_gym_treadmill"
-area_size = Vector2(40, 10)
+area_size = Vector2(40, 16)
 lines = PackedStringArray("FLAVOR_GYM_TREADMILL")
 
 [node name="BagLook" type="Area2D" parent="Entities"]
 position = Vector2(48, 168)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_gym_bag"
-area_size = Vector2(40, 10)
+area_size = Vector2(40, 16)
 lines = PackedStringArray("FLAVOR_GYM_BAG")
 
 [node name="A_coach" type="Marker2D" parent="NpcAnchors"]

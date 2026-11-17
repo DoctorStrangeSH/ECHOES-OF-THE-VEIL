@@ -4,7 +4,15 @@
  "palette": "cavenmouth",
  "options": {
   "outdoors": true,
-  "music": "harbour"
+  "music": "harbour",
+  "traffic": {
+   "lanes": [
+    {
+     "y": 330,
+     "dir": -1
+    }
+   ]
+  }
  },
  "layout": [
   "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",

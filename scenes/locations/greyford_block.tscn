@@ -26,6 +26,7 @@ location_id = &"greyford_block"
 name_key = "LOC_GREYFORD_BLOCK"
 enter_dialogue_id = &"intro"
 enter_condition = {"not_flag": "intro.done"}
+traffic = {"lanes": [{"y": 318, "dir": -1}]}
 
 [node name="Ground" type="TileMapLayer" parent="."]
 script = ExtResource("2_paint")
@@ -257,14 +258,6 @@ placeholder_color = Color(0.816,0.439,0.565, 1)
 collision_size = Vector2(30, 10)
 collision_offset = Vector2(0, -5)
 
-[node name="ParkedCar" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(520, 322)
-texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/10_Vehicles_Singles_16x16/ME_Singles_Vehicles_16x16_Car_Left_1.png"
-placeholder_size = Vector2i(64, 48)
-placeholder_color = Color(0.690,0.188,0.188, 1)
-collision_size = Vector2(60, 24)
-collision_offset = Vector2(0, -12)
-
 [node name="BusStop" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(300, 366)
 texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/10_Vehicles_Singles_16x16/ME_Singles_Vehicles_16x16_Bus_Stop_Sign_1.png"
@@ -379,7 +372,7 @@ show_if = {"any": [{"quest_active": "case_rosalind"}, {"quest_done": "case_rosal
 position = Vector2(600, 70)
 script = ExtResource("5_inspect")
 interaction_id = &"ghost_tram_stop"
-area_size = Vector2(28, 14)
+area_size = Vector2(28, 16)
 interaction_priority = 20
 dialogue_id = &"ghost_tram"
 
@@ -430,7 +423,7 @@ show_if = {"any": [{"quest_stage": ["case_bell", "ring"]}, {"quest_done": "case_
 position = Vector2(560, 70)
 script = ExtResource("5_inspect")
 interaction_id = &"old_tram_bell"
-area_size = Vector2(24, 14)
+area_size = Vector2(24, 16)
 interaction_priority = 20
 dialogue_id = &"old_bell"
 
@@ -454,7 +447,7 @@ show_if = {"flag": "world.records_published"}
 position = Vector2(262, 244)
 script = ExtResource("5_inspect")
 interaction_id = &"read_records_flyer"
-area_size = Vector2(18, 12)
+area_size = Vector2(20, 16)
 prompt_key = "PROMPT_READ"
 dialogue_id = &"records_flyer"
 
@@ -478,7 +471,7 @@ show_if = {"remembers": ["jonah_rook", "told_truth_about_rosalind"]}
 position = Vector2(430, 244)
 script = ExtResource("5_inspect")
 interaction_id = &"read_missing_poster"
-area_size = Vector2(18, 12)
+area_size = Vector2(20, 16)
 prompt_key = "PROMPT_READ"
 dialogue_id = &"missing_poster"
 
@@ -490,7 +483,7 @@ show_if = {"remembers": ["jonah_rook", "told_truth_about_rosalind"]}
 position = Vector2(464, 246)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_rook_repairs"
-area_size = Vector2(40, 14)
+area_size = Vector2(40, 16)
 prompt_key = "PROMPT_READ"
 dialogue_id = &"rook_shop"
 
@@ -502,14 +495,14 @@ show_if = {"not": {"all": [{"period": ["afternoon", "evening"]}, {"evidence": "e
 position = Vector2(568, 246)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_condo_yellow"
-area_size = Vector2(18, 14)
+area_size = Vector2(20, 16)
 dialogue_id = &"yellow_condo"
 
 [node name="InfoSignRead" type="Area2D" parent="Entities"]
 position = Vector2(290, 252)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_quarter_sign"
-area_size = Vector2(18, 14)
+area_size = Vector2(20, 16)
 prompt_key = "PROMPT_READ"
 lines = PackedStringArray("QUARTER_SIGN_1", "QUARTER_SIGN_2")
 
@@ -517,14 +510,14 @@ lines = PackedStringArray("QUARTER_SIGN_1", "QUARTER_SIGN_2")
 position = Vector2(328, 238)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_fountain"
-area_size = Vector2(34, 12)
+area_size = Vector2(34, 16)
 lines = PackedStringArray("FOUNTAIN_1")
 
 [node name="ImpossibleDoorUse" type="Area2D" parent="Entities"]
 position = Vector2(324, 152)
 script = ExtResource("5_inspect")
 interaction_id = &"veil_door_plaza"
-area_size = Vector2(20, 14)
+area_size = Vector2(20, 16)
 interaction_priority = 20
 dialogue_id = &"veil_door"
 
@@ -547,7 +540,7 @@ show_if = {"flag": "door.vanished"}
 position = Vector2(328, 188)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_barriers"
-area_size = Vector2(80, 10)
+area_size = Vector2(80, 16)
 prompt_key = "PROMPT_READ"
 dialogue_id = &"barriers"
 
@@ -559,7 +552,7 @@ show_if = {"flag": "door.reported", "all": [{"not_flag": "door.vanished"}]}
 position = Vector2(480, 64)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_harbor"
-area_size = Vector2(64, 10)
+area_size = Vector2(64, 16)
 lines = PackedStringArray("HARBOR_1")
 
 [node name="Barrier1" parent="Entities" instance=ExtResource("3_prop")]
@@ -672,7 +665,7 @@ collision_offset = Vector2(0, 0)
 position = Vector2(30, 86)
 script = ExtResource("5_inspect")
 interaction_id = &"read_point_steps_sign"
-area_size = Vector2(18, 12)
+area_size = Vector2(20, 16)
 prompt_key = "PROMPT_READ"
 lines = PackedStringArray("POINT_STEPS_SIGN")
 
@@ -732,7 +725,7 @@ show_if = {"all": [{"any": [{"quest_active": "case_storeroom"}, {"quest_stage": 
 position = Vector2(422, 250)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_storeroom_wall"
-area_size = Vector2(14, 14)
+area_size = Vector2(20, 16)
 lines = PackedStringArray("STOREROOM_WALL_DAY")
 
 [node name="Condition" type="Node" parent="Entities/StoreroomWall"]
@@ -757,7 +750,7 @@ collision_offset = Vector2(0, 0)
 position = Vector2(548, 78)
 script = ExtResource("5_inspect")
 interaction_id = &"read_harbour_timetable"
-area_size = Vector2(18, 12)
+area_size = Vector2(20, 16)
 prompt_key = "PROMPT_READ"
 dialogue_id = &"harbour_timetable"
 
@@ -890,7 +883,7 @@ show_if = {"flag": "car.owned"}
 position = Vector2(150, 350)
 script = ExtResource("5_inspect")
 interaction_id = &"use_my_car"
-area_size = Vector2(60, 12)
+area_size = Vector2(60, 16)
 prompt_key = "PROMPT_CAR"
 dialogue_id = &"car"
 

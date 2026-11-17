@@ -148,14 +148,14 @@ collision_offset = Vector2(0, -4)
 position = Vector2(64, 60)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_theo_windows"
-area_size = Vector2(30, 12)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("THEO_FLAT_WINDOWS")
 
 [node name="DoorsLook" type="Area2D" parent="Entities"]
 position = Vector2(312, 62)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_theo_doors"
-area_size = Vector2(200, 10)
+area_size = Vector2(200, 16)
 lines = PackedStringArray("THEO_FLAT_DOORS")
 
 [node name="CorridorEnd" type="Area2D" parent="Entities"]
@@ -276,14 +276,14 @@ collision_offset = Vector2(0, -12)
 position = Vector2(184, 74)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_theo_clock"
-area_size = Vector2(16, 10)
+area_size = Vector2(20, 16)
 lines = PackedStringArray("FLAVOR_THEO_CLOCK")
 
 [node name="PhotosLook" type="Area2D" parent="Entities"]
 position = Vector2(152, 74)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_theo_photos"
-area_size = Vector2(30, 10)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("FLAVOR_THEO_PHOTOS")
 
 [node name="Dress79_45" parent="FloorDecor" instance=ExtResource("3_prop")]

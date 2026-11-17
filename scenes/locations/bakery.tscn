@@ -165,14 +165,14 @@ collision_offset = Vector2(0, 0)
 position = Vector2(72, 72)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_bakery_bread"
-area_size = Vector2(90, 10)
+area_size = Vector2(90, 16)
 lines = PackedStringArray("FLAVOR_BAKERY_BREAD")
 
 [node name="OvenLook" type="Area2D" parent="Entities"]
 position = Vector2(192, 70)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_bakery_oven"
-area_size = Vector2(34, 10)
+area_size = Vector2(34, 16)
 lines = PackedStringArray("FLAVOR_BAKERY_OVEN")
 
 [node name="A_counter" type="Marker2D" parent="NpcAnchors"]

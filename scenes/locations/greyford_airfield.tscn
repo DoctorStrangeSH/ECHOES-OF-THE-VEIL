@@ -25,6 +25,7 @@ script = ExtResource("1_loc")
 location_id = &"greyford_airfield"
 name_key = "LOC_AIRFIELD"
 outdoors = true
+traffic = {"lanes": [{"y": 286, "dir": -1}]}
 
 [node name="Ground" type="TileMapLayer" parent="."]
 script = ExtResource("2_paint")
@@ -95,7 +96,7 @@ collision_offset = Vector2(0, -20)
 position = Vector2(470, 222)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_airfield_terminal"
-area_size = Vector2(10, 14)
+area_size = Vector2(20, 16)
 lines = PackedStringArray("FLAVOR_AIRFIELD_TERMINAL")
 
 [node name="Fuel1" parent="Entities" instance=ExtResource("3_prop")]
@@ -209,7 +210,7 @@ show_if = {"flag": "car.owned"}
 position = Vector2(150, 296)
 script = ExtResource("5_inspect")
 interaction_id = &"use_my_car"
-area_size = Vector2(60, 12)
+area_size = Vector2(60, 16)
 prompt_key = "PROMPT_CAR"
 dialogue_id = &"car"
 

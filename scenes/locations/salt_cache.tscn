@@ -68,7 +68,7 @@ pickup_flag = &"salt.charm_taken"
 position = Vector2(40, 80)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_salt_cache_ledger"
-area_size = Vector2(24, 12)
+area_size = Vector2(24, 16)
 lines = PackedStringArray("SALT_CACHE_1", "SALT_CACHE_2")
 
 [node name="Barrel" parent="Entities" instance=ExtResource("3_prop")]

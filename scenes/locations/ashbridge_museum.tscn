@@ -126,21 +126,21 @@ collision_offset = Vector2(0, 0)
 position = Vector2(56, 118)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_mus_a"
-area_size = Vector2(30, 10)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("FLAVOR_MUS_A")
 
 [node name="CaseB" type="Area2D" parent="Entities"]
 position = Vector2(104, 118)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_mus_b"
-area_size = Vector2(30, 10)
+area_size = Vector2(30, 16)
 dialogue_id = &"mus_census"
 
 [node name="CaseC" type="Area2D" parent="Entities"]
 position = Vector2(200, 118)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_mus_c"
-area_size = Vector2(30, 10)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("FLAVOR_MUS_C")
 
 [node name="A_desk" type="Marker2D" parent="NpcAnchors"]

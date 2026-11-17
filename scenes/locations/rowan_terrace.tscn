@@ -25,6 +25,7 @@ script = ExtResource("1_loc")
 location_id = &"rowan_terrace"
 name_key = "LOC_ROWAN_TERRACE"
 outdoors = true
+traffic = {"lanes": [{"y": 334, "dir": -1}, {"y": 366, "dir": 1}]}
 
 [node name="Ground" type="TileMapLayer" parent="."]
 script = ExtResource("2_paint")
@@ -81,7 +82,7 @@ collision_offset = Vector2(0, -30)
 position = Vector2(64, 278)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_rt_10"
-area_size = Vector2(30, 14)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("FLAVOR_RT_10")
 
 [node name="No11" parent="Entities" instance=ExtResource("3_prop")]
@@ -96,7 +97,7 @@ collision_offset = Vector2(0, -30)
 position = Vector2(160, 278)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_rt_11"
-area_size = Vector2(30, 14)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("FLAVOR_RT_11")
 
 [node name="No12" parent="Entities" instance=ExtResource("3_prop")]
@@ -111,7 +112,7 @@ collision_offset = Vector2(0, -30)
 position = Vector2(256, 278)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_rt_12"
-area_size = Vector2(30, 14)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("FLAVOR_RT_12")
 
 [node name="No13" parent="Entities" instance=ExtResource("3_prop")]
@@ -188,7 +189,7 @@ collision_offset = Vector2(0, -30)
 position = Vector2(448, 278)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_rt_14"
-area_size = Vector2(30, 14)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("FLAVOR_RT_14")
 
 [node name="No15" parent="Entities" instance=ExtResource("3_prop")]
@@ -203,7 +204,7 @@ collision_offset = Vector2(0, -35)
 position = Vector2(640, 278)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_rt_15"
-area_size = Vector2(40, 14)
+area_size = Vector2(40, 16)
 lines = PackedStringArray("FLAVOR_RT_15")
 
 [node name="No17" parent="Entities" instance=ExtResource("3_prop")]
@@ -218,7 +219,7 @@ collision_offset = Vector2(0, -30)
 position = Vector2(832, 278)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_rt_17"
-area_size = Vector2(30, 14)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("FLAVOR_RT_SHOP")
 
 [node name="ShopUse" parent="Entities" instance=ExtResource("18_screen")]
@@ -473,7 +474,7 @@ collision_offset = Vector2(0, -2)
 position = Vector2(360, 300)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_rt_chalk"
-area_size = Vector2(40, 10)
+area_size = Vector2(40, 16)
 lines = PackedStringArray("FLAVOR_RT_CHALK")
 
 [node name="A_ivy_gate" type="Marker2D" parent="NpcAnchors"]

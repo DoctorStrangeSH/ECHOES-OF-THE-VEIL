@@ -49,8 +49,6 @@ var _name_edit: LineEdit
 var _pronoun_button: Button
 var _bg_desc: Label
 var _bg_button: Button
-var _preview_dir := 3
-var _preview_timer := 0.0
 
 
 func _ready() -> void:
@@ -69,14 +67,6 @@ func _ready() -> void:
 		_select_defaults()
 	_build()
 	_apply()
-
-
-func _process(delta: float) -> void:
-	_preview_timer += delta
-	if _preview_timer > 1.6:
-		_preview_timer = 0.0
-		_preview_dir = (_preview_dir + 1) % 4
-		_preview.play(&"walk", _preview_dir as LayeredCharacterSprite.Dir)
 
 
 # --- Data ----------------------------------------------------------------------
@@ -131,7 +121,9 @@ func _apply() -> void:
 		appearance.set(row.key, row.current_id())
 	appearance.placeholder_color = PLACEHOLDER_COLORS[_color_idx]
 	_preview.appearance = appearance
-	_preview.play(&"walk", _preview_dir as LayeredCharacterSprite.Dir, true)
+	# A still figure, facing you: easier to judge than one that turns and walks.
+	_preview.play(&"idle", LayeredCharacterSprite.Dir.DOWN, true)
+	_preview.set_process(false)
 	for row in _rows:
 		var style := row.styles[row.style_idx] if not row.styles.is_empty() else ""
 		row.style_label.text = tr("CC_NONE") if style.is_empty() else "%d/%d" % [row.style_idx + (0 if row.optional else 1), row.styles.size() - (1 if row.optional else 0)]
@@ -339,7 +331,9 @@ func _labeled(text: String, control: Control) -> HBoxContainer:
 	var h := HBoxContainer.new()
 	var l := Label.new()
 	l.text = text
-	l.custom_minimum_size = Vector2(52, 0)
+	# Wide enough for the longest label ("Обращение"), so every field
+	# starts at the same x and has the same width.
+	l.custom_minimum_size = Vector2(62, 0)
 	h.add_child(l)
 	control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	h.add_child(control)

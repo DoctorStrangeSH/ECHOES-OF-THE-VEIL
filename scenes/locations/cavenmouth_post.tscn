@@ -141,7 +141,7 @@ collision_offset = Vector2(0, -15)
 position = Vector2(208, 118)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_cav_sacks"
-area_size = Vector2(34, 14)
+area_size = Vector2(34, 16)
 dialogue_id = &"cav_sacks"
 
 [node name="A_counter" type="Marker2D" parent="NpcAnchors"]

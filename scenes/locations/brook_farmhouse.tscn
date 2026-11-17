@@ -190,14 +190,14 @@ collision_offset = Vector2(0, -15)
 position = Vector2(160, 148)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_farm_photo"
-area_size = Vector2(30, 10)
+area_size = Vector2(30, 16)
 dialogue_id = &"farm_photo"
 
 [node name="HearthLook" type="Area2D" parent="Entities"]
 position = Vector2(120, 72)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_farm_hearth"
-area_size = Vector2(30, 10)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("FLAVOR_FARM_HEARTH")
 
 [node name="BedRest" type="Area2D" parent="Entities"]

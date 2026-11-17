@@ -46,6 +46,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			open()
 
 
+const CATEGORIES: Array[String] = ["main", "side", "errand", "incident"]
+const CAT_COLORS := {"main": Color(1.0, 0.82, 0.45), "side": Color(0.55, 0.85, 0.95), "errand": Color(0.7, 0.9, 0.6), "incident": Color(0.95, 0.6, 0.65)}
+
+
 func _can_open() -> bool:
 	return GameState.is_playing and not SceneFlow.is_transitioning and not DialogueService.is_active \
 		and not get_tree().paused
@@ -97,23 +101,38 @@ func _refresh() -> void:
 		_detail.add_child(_label(tr("JOURNAL_EMPTY"), UiTheme.INK_DIM))
 		return
 	var first_button: Button = null
-	for id in Journal.case_order:
-		var b := Button.new()
-		var st := Journal.case_status(id)
-		var mark := "[x] " if st == Journal.STATUS_DONE else ("[-] " if st == Journal.STATUS_FAILED else ("[*] " if id == Journal.pinned else "[ ] "))
-		b.text = mark + tr(Journal.case_defs[id].get("title", ""))
-		if st == Journal.STATUS_FAILED:
-			b.add_theme_color_override("font_color", UiTheme.INK_DIM)
-		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		b.toggle_mode = true
-		b.button_pressed = id == _selected
-		b.pressed.connect(_select.bind(id))
-		_cases_list.add_child(b)
-		if id == _selected:
-			first_button = b
+	# Grouped the way a reader thinks of them: the story, other stories,
+	# small errands, and the Veil's incidents; finished ones sink to the end
+	# of their group.
+	for cat: String in CATEGORIES:
+		var ids: Array = Journal.case_order.filter(func(c: StringName) -> bool: return String(Journal.case_defs[c].get("category", "side")) == cat)
+		if ids.is_empty():
+			continue
+		ids.sort_custom(func(a: StringName, b: StringName) -> bool: return int(Journal.case_status(a) != Journal.STATUS_ACTIVE) < int(Journal.case_status(b) != Journal.STATUS_ACTIVE))
+		var head := _label(tr("JOURNAL_CAT_" + cat.to_upper()), CAT_COLORS[cat], 8)
+		_cases_list.add_child(head)
+		for id: StringName in ids:
+			var b := _case_button(id)
+			_cases_list.add_child(b)
+			if id == _selected:
+				first_button = b
 	if first_button != null:
 		first_button.grab_focus.call_deferred()
 	_show_case(_selected)
+
+
+func _case_button(id: StringName) -> Button:
+	var b := Button.new()
+	var st := Journal.case_status(id)
+	var mark := "✓ " if st == Journal.STATUS_DONE else ("✗ " if st == Journal.STATUS_FAILED else ("★ " if id == Journal.pinned else "• "))
+	b.text = mark + tr(Journal.case_defs[id].get("title", ""))
+	if st != Journal.STATUS_ACTIVE:
+		b.add_theme_color_override("font_color", UiTheme.INK_DIM)
+	b.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	b.toggle_mode = true
+	b.button_pressed = id == _selected
+	b.pressed.connect(_select.bind(id))
+	return b
 
 
 func _toggle_pin(id: StringName) -> void:

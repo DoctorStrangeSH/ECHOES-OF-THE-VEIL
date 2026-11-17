@@ -89,7 +89,7 @@ collision_offset = Vector2(0, -20)
 position = Vector2(208, 166)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_caravan"
-area_size = Vector2(40, 14)
+area_size = Vector2(40, 16)
 lines = PackedStringArray("FLAVOR_CARAVAN")
 
 [node name="AdaFire" parent="Entities" instance=ExtResource("3_prop")]
@@ -207,7 +207,7 @@ collision_offset = Vector2(0, -3)
 position = Vector2(624, 222)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_ford_pier"
-area_size = Vector2(32, 14)
+area_size = Vector2(32, 16)
 prompt_key = "PROMPT_LISTEN"
 dialogue_id = &"ford_pier"
 
@@ -282,7 +282,7 @@ collision_offset = Vector2(0, 0)
 position = Vector2(470, 406)
 script = ExtResource("5_inspect")
 interaction_id = &"read_millwood_sign"
-area_size = Vector2(18, 12)
+area_size = Vector2(20, 16)
 prompt_key = "PROMPT_READ"
 lines = PackedStringArray("FLAVOR_MILLWOOD_SIGN")
 
@@ -354,7 +354,7 @@ collision_offset = Vector2(0, -3)
 position = Vector2(776, 400)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_ford_memorial"
-area_size = Vector2(24, 12)
+area_size = Vector2(24, 16)
 prompt_key = "PROMPT_READ"
 dialogue_id = &"ford_memorial"
 

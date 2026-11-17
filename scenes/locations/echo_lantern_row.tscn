@@ -194,14 +194,14 @@ collision_offset = Vector2(0.5, -10)
 position = Vector2(268, 74)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_echo_radiogram"
-area_size = Vector2(24, 12)
+area_size = Vector2(24, 16)
 lines = PackedStringArray("FLAVOR_ECHO_RADIOGRAM")
 
 [node name="ClockLook" type="Area2D" parent="Entities"]
 position = Vector2(340, 74)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_echo_clock"
-area_size = Vector2(18, 12)
+area_size = Vector2(20, 16)
 lines = PackedStringArray("FLAVOR_ECHO_CLOCK")
 
 [node name="Entrance" type="Marker2D" parent="SpawnPoints"]
@@ -223,7 +223,7 @@ target_spawn_id = &"plaza_door"
 position = Vector2(300, 56)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_echo_photo"
-area_size = Vector2(24, 14)
+area_size = Vector2(24, 16)
 dialogue_id = &"echo_photo"
 
 [node name="Hollow1" parent="Entities" instance=ExtResource("12_enemy")]

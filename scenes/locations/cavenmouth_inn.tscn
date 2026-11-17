@@ -205,7 +205,7 @@ prompt_key = "PROMPT_REST_INN"
 position = Vector2(40, 72)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_cav_fire"
-area_size = Vector2(30, 10)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("FLAVOR_CAV_INN_FIRE")
 
 [node name="A_bar" type="Marker2D" parent="NpcAnchors"]

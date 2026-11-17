@@ -162,7 +162,7 @@ target_spawn_id = &"archive_front"
 position = Vector2(200, 72)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_census_cabinet"
-area_size = Vector2(22, 12)
+area_size = Vector2(22, 16)
 interaction_priority = 20
 dialogue_id = &"census_cabinet"
 
@@ -170,7 +170,7 @@ dialogue_id = &"census_cabinet"
 position = Vector2(96, 148)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_archive_shelves"
-area_size = Vector2(30, 10)
+area_size = Vector2(30, 16)
 dialogue_id = &"archive_shelves"
 
 [node name="A_desk" type="Marker2D" parent="NpcAnchors"]
@@ -341,12 +341,12 @@ collision_offset = Vector2(0, -12)
 position = Vector2(162, 54)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_archive_map"
-area_size = Vector2(32, 10)
+area_size = Vector2(32, 16)
 lines = PackedStringArray("FLAVOR_ARCHIVE_MAP")
 
 [node name="CounterLook" type="Area2D" parent="Entities"]
 position = Vector2(256, 196)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_archive_counter"
-area_size = Vector2(48, 10)
+area_size = Vector2(48, 16)
 lines = PackedStringArray("FLAVOR_ARCHIVE_COUNTER")

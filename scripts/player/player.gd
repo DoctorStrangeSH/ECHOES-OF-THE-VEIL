@@ -29,7 +29,7 @@ var wading := 1.0
 @export var acceleration: float = 900.0
 @export var friction: float = 1200.0
 ## Distance in front of the feet where the interaction sensor sits.
-@export var reach: float = 10.0
+@export var reach: float = 11.0
 
 var facing: Vector2 = Vector2.DOWN
 var combat_enabled := false
@@ -38,6 +38,7 @@ var hurtbox: Hurtbox
 var hitbox: Hitbox
 
 var _focused: Interactable = null
+var _focus_mark: FocusMark = null
 var _dir: LayeredCharacterSprite.Dir = LayeredCharacterSprite.Dir.DOWN
 var _action_anim_time := 0.0  # while > 0, punch/hurt animation owns the sprite
 var _attack_ready_at := 0.0
@@ -384,6 +385,21 @@ func _update_focus() -> void:
 	if best != _focused:
 		_focused = best
 		EventHub.interaction_focus_changed.emit(best.get_prompt() if best != null else "")
+	_place_focus_mark()
+
+
+## A small bobbing pointer over whatever E would use, so it is always clear
+## which of two nearby things you are about to read, open or talk to.
+func _place_focus_mark() -> void:
+	if _focus_mark == null:
+		_focus_mark = FocusMark.new()
+		_focus_mark.top_level = true
+		_focus_mark.z_index = 50
+		add_child(_focus_mark)
+	_focus_mark.visible = _focused != null and is_instance_valid(_focused) and not DialogueService.is_active
+	if _focus_mark.visible:
+		var top := _focused.global_position.y - _focused.area_size.y / 2.0
+		_focus_mark.global_position = Vector2(_focused.global_position.x, minf(top, _focused.global_position.y - 10.0) - 6.0)
 
 
 # --- Combat reactions ----------------------------------------------------------

@@ -105,7 +105,7 @@ collision_offset = Vector2(0, -28)
 position = Vector2(176, 254)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_carrow_cottage"
-area_size = Vector2(40, 14)
+area_size = Vector2(40, 16)
 lines = PackedStringArray("FLAVOR_CARROW_COTTAGE")
 
 [node name="Chapel" parent="Entities" instance=ExtResource("3_prop")]
@@ -120,7 +120,7 @@ collision_offset = Vector2(0, -20)
 position = Vector2(552, 254)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_carrow_chapel"
-area_size = Vector2(30, 14)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("FLAVOR_CARROW_CHAPEL")
 
 [node name="SeaRock1" parent="Entities" instance=ExtResource("3_prop")]

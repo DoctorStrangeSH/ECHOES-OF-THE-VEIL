@@ -148,7 +148,7 @@ show_if = {"flag": "house.cleared"}
 position = Vector2(144, 74)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_new_room_desk"
-area_size = Vector2(30, 12)
+area_size = Vector2(30, 16)
 dialogue_id = &"new_room_desk"
 
 [node name="Condition" type="Node" parent="Entities/DeskLook"]

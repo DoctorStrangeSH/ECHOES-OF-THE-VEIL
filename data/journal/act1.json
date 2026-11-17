@@ -101,7 +101,8 @@
       }
      }
     ]
-   }
+   },
+   "category": "main"
   },
   "case_storeroom": {
    "title": "CASE_SR_TITLE",
@@ -176,7 +177,8 @@
       ]
      }
     ]
-   }
+   },
+   "category": "side"
   },
   "case_larger_house": {
    "title": "CASE_LH2_TITLE",
@@ -245,7 +247,8 @@
       }
      }
     ]
-   }
+   },
+   "category": "side"
   }
  },
  "evidence": {

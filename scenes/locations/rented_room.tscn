@@ -203,7 +203,7 @@ area_size = Vector2(30, 14)
 position = Vector2(184, 72)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_landlord_note"
-area_size = Vector2(44, 14)
+area_size = Vector2(44, 16)
 prompt_key = "PROMPT_READ"
 dialogue_id = &"landlord_note"
 
@@ -211,7 +211,7 @@ dialogue_id = &"landlord_note"
 position = Vector2(120, 66)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_wardrobe"
-area_size = Vector2(28, 10)
+area_size = Vector2(28, 16)
 lines = PackedStringArray("WARDROBE_1")
 
 [node name="Compass" parent="Entities" instance=ExtResource("16_pickup")]
@@ -260,14 +260,14 @@ show_if = {"flag": "letters.lantern"}
 position = Vector2(152, 60)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_room_window"
-area_size = Vector2(28, 10)
+area_size = Vector2(28, 16)
 lines = PackedStringArray("FLAVOR_ROOM_WINDOW")
 
 [node name="ArmchairLook" type="Area2D" parent="Entities"]
 position = Vector2(222, 120)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_room_armchair"
-area_size = Vector2(20, 10)
+area_size = Vector2(20, 16)
 lines = PackedStringArray("FLAVOR_ROOM_ARMCHAIR")
 
 [node name="Stove_232_64" parent="Entities" instance=ExtResource("3_prop")]

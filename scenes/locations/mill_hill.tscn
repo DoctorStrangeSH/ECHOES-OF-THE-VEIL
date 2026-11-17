@@ -26,6 +26,7 @@ location_id = &"mill_hill"
 name_key = "LOC_MILL_HILL"
 outdoors = true
 music = "village"
+traffic = {"lanes": [{"y": 340, "dir": -1}]}
 
 [node name="Ground" type="TileMapLayer" parent="."]
 script = ExtResource("2_paint")
@@ -88,7 +89,7 @@ collision_offset = Vector2(0, -28)
 position = Vector2(100, 286)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_mh_cottage"
-area_size = Vector2(30, 14)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("FLAVOR_MH_COTTAGE")
 
 [node name="Pub" parent="Entities" instance=ExtResource("3_prop")]
@@ -126,7 +127,7 @@ collision_offset = Vector2(0, -40)
 position = Vector2(640, 294)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_mh_vicarage"
-area_size = Vector2(40, 14)
+area_size = Vector2(40, 16)
 lines = PackedStringArray("FLAVOR_MH_VICARAGE")
 
 [node name="Church" parent="Entities" instance=ExtResource("3_prop")]
@@ -141,7 +142,7 @@ collision_offset = Vector2(0, -20)
 position = Vector2(160, 540)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_mh_church"
-area_size = Vector2(30, 14)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("FLAVOR_MH_CHURCH")
 
 [node name="Shop" parent="Entities" instance=ExtResource("3_prop")]
@@ -170,7 +171,7 @@ collision_offset = Vector2(0, -15)
 position = Vector2(760, 540)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_mh_mill"
-area_size = Vector2(30, 14)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("FLAVOR_MH_MILL")
 
 [node name="Well" parent="Entities" instance=ExtResource("3_prop")]
@@ -337,7 +338,7 @@ collision_offset = Vector2(0, -2)
 position = Vector2(40, 312)
 script = ExtResource("5_inspect")
 interaction_id = &"read_mh_sign"
-area_size = Vector2(20, 10)
+area_size = Vector2(20, 16)
 lines = PackedStringArray("FLAVOR_MH_SIGN")
 
 [node name="AbbeySign" parent="Entities" instance=ExtResource("3_prop")]
@@ -352,7 +353,7 @@ collision_offset = Vector2(0, -2)
 position = Vector2(760, 312)
 script = ExtResource("5_inspect")
 interaction_id = &"read_mh_abbey_sign"
-area_size = Vector2(20, 10)
+area_size = Vector2(20, 16)
 lines = PackedStringArray("FLAVOR_MH_ABBEY_SIGN")
 
 [node name="ToMillwood" type="Area2D" parent="Entities"]
