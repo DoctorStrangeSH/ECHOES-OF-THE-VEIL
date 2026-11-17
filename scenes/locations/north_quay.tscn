@@ -69,7 +69,7 @@ collision_offset = Vector2(0, -30)
 position = Vector2(176, 198)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_meridian_annex"
-area_size = Vector2(30, 14)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("QUAY_ANNEX_LOOK")
 
 [node name="LightTower" parent="Entities" instance=ExtResource("3_prop")]
@@ -145,7 +145,7 @@ show_if = {"any": [{"quest_stage": ["case_kindness", "underpass"]}, {"quest_stag
 position = Vector2(540, 196)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_underpass_closed"
-area_size = Vector2(40, 14)
+area_size = Vector2(40, 16)
 lines = PackedStringArray("QUAY_UNDERPASS_CLOSED")
 
 [node name="Condition" type="Node" parent="Entities/UnderpassLook"]
@@ -186,7 +186,7 @@ collision_offset = Vector2(0, -2)
 position = Vector2(320, 60)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_north_harbour"
-area_size = Vector2(200, 10)
+area_size = Vector2(200, 16)
 lines = PackedStringArray("QUAY_HARBOUR_LOOK")
 
 [node name="FromGreyford" type="Marker2D" parent="SpawnPoints"]

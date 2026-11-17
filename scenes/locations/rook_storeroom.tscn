@@ -130,7 +130,7 @@ collision_offset = Vector2(0, -5)
 position = Vector2(176, 146)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_storeroom_crate"
-area_size = Vector2(30, 12)
+area_size = Vector2(30, 16)
 dialogue_id = &"storeroom_crate"
 
 [node name="Condition" type="Node" parent="Entities/StencilLook"]
@@ -149,7 +149,7 @@ collision_offset = Vector2(0, -5)
 position = Vector2(72, 154)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_storeroom_ledger"
-area_size = Vector2(30, 12)
+area_size = Vector2(30, 16)
 dialogue_id = &"storeroom_ledger"
 
 [node name="Condition" type="Node" parent="Entities/LedgerLook"]

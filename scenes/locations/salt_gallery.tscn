@@ -70,7 +70,7 @@ collision_offset = Vector2(0, -5)
 position = Vector2(48, 72)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_salt_sluice"
-area_size = Vector2(32, 14)
+area_size = Vector2(32, 16)
 interaction_priority = 20
 dialogue_id = &"salt_sluice"
 
@@ -78,7 +78,7 @@ dialogue_id = &"salt_sluice"
 position = Vector2(304, 56)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_salt_crack"
-area_size = Vector2(28, 14)
+area_size = Vector2(28, 16)
 interaction_priority = 15
 dialogue_id = &"salt_crack"
 
@@ -121,7 +121,7 @@ facing = Vector2(0, 1)
 position = Vector2(200, 200)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_salt_note"
-area_size = Vector2(24, 12)
+area_size = Vector2(24, 16)
 lines = PackedStringArray("SALT_NOTE_1", "SALT_NOTE_2")
 
 [node name="NoteCrate" parent="Entities" instance=ExtResource("3_prop")]

@@ -122,7 +122,7 @@ spot_id = &"ropewalk_rope"
 position = Vector2(320, 110)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_rw_rope"
-area_size = Vector2(200, 12)
+area_size = Vector2(200, 16)
 lines = PackedStringArray("FLAVOR_RW_ROPE")
 
 [node name="A_ropewalk_far" type="Marker2D" parent="NpcAnchors"]

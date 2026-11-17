@@ -139,7 +139,7 @@ collision_offset = Vector2(0, 0)
 position = Vector2(136, 124)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_n13_photo"
-area_size = Vector2(36, 14)
+area_size = Vector2(36, 16)
 interaction_priority = 20
 dialogue_id = &"n13_photo"
 
@@ -147,7 +147,7 @@ dialogue_id = &"n13_photo"
 position = Vector2(40, 72)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_n13_clock"
-area_size = Vector2(20, 12)
+area_size = Vector2(20, 16)
 lines = PackedStringArray("FLAVOR_N13_CLOCK")
 
 [node name="Echo1" parent="Entities" instance=ExtResource("12_enemy")]

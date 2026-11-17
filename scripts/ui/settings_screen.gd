@@ -57,7 +57,7 @@ func _build() -> void:
 	title.name = "Title"
 	title.add_theme_color_override("font_color", UiTheme.ACCENT)
 	_list.add_child(title)
-	for id: String in ["guidance", "volume", "music", "fullscreen", "language"]:
+	for id: String in ["guidance", "text_speed", "volume", "music", "window_mode", "resolution", "language"]:
 		var b := Button.new()
 		b.pressed.connect(_on_row.bind(id))
 		b.focus_entered.connect(_show_desc.bind(id))
@@ -83,8 +83,12 @@ func _on_row(id: String) -> void:
 			GameSettings.cycle_volume()
 		"music":
 			GameSettings.cycle_music()
-		"fullscreen":
-			GameSettings.toggle_fullscreen()
+		"window_mode":
+			GameSettings.cycle_window_mode()
+		"resolution":
+			GameSettings.cycle_resolution()
+		"text_speed":
+			GameSettings.cycle_text_speed()
 		"language":
 			GameSettings.cycle_language()
 	_refresh()
@@ -92,7 +96,15 @@ func _on_row(id: String) -> void:
 
 
 func _show_desc(id: String) -> void:
-	_desc.text = tr("SETTINGS_GUIDANCE_" + GameSettings.guidance.to_upper() + "_DESC") if id == "guidance" else ""
+	match id:
+		"guidance":
+			_desc.text = tr("SETTINGS_GUIDANCE_" + GameSettings.guidance.to_upper() + "_DESC")
+		"resolution":
+			_desc.text = tr("SETTINGS_RESOLUTION_DESC")
+		"window_mode":
+			_desc.text = tr("SETTINGS_WINDOW_DESC")
+		_:
+			_desc.text = ""
 
 
 func _refresh() -> void:
@@ -101,6 +113,10 @@ func _refresh() -> void:
 	(_rows["guidance"] as Button).text = tr("SETTINGS_GUIDANCE") % tr("SETTINGS_GUIDANCE_" + GameSettings.guidance.to_upper())
 	(_rows["volume"] as Button).text = tr("SETTINGS_VOLUME") % (GameSettings.volume * 10)
 	(_rows["music"] as Button).text = tr("SETTINGS_MUSIC") % (GameSettings.music * 10)
-	(_rows["fullscreen"] as Button).text = tr("SETTINGS_FULLSCREEN") % tr("SETTINGS_ON" if GameSettings.fullscreen else "SETTINGS_OFF")
+	(_rows["window_mode"] as Button).text = tr("SETTINGS_WINDOW_MODE") % tr("SETTINGS_WINDOW_" + GameSettings.window_mode.to_upper())
+	var res := GameSettings.resolution
+	(_rows["resolution"] as Button).text = tr("SETTINGS_RESOLUTION") % ("%d × %d" % [res.x, res.y])
+	(_rows["resolution"] as Button).disabled = GameSettings.window_mode != "windowed"
+	(_rows["text_speed"] as Button).text = tr("SETTINGS_TEXT_SPEED") % tr("SETTINGS_TEXT_" + GameSettings.text_speed.to_upper())
 	(_rows["language"] as Button).text = tr("SETTINGS_LANGUAGE") % ("Русский" if Localization.get_locale().begins_with("ru") else "English")
 	_show_desc("guidance")

@@ -3,7 +3,15 @@
  "name_key": "LOC_AIRFIELD",
  "palette": "greyford_exterior",
  "options": {
-  "outdoors": true
+  "outdoors": true,
+  "traffic": {
+   "lanes": [
+    {
+     "y": 286,
+     "dir": -1
+    }
+   ]
+  }
  },
  "layout": [
   "gggggggggggggggggggggggggggggggggggggggg",

@@ -70,7 +70,7 @@ collision_offset = Vector2(0, -5)
 position = Vector2(56, 72)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_salt_shelf_1"
-area_size = Vector2(30, 12)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("SALT_SHELF_1")
 
 [node name="Shelf2" parent="Entities" instance=ExtResource("3_prop")]
@@ -85,7 +85,7 @@ collision_offset = Vector2(0, -5)
 position = Vector2(96, 72)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_salt_shelf_2"
-area_size = Vector2(30, 12)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("SALT_SHELF_2")
 
 [node name="Shelf3" parent="Entities" instance=ExtResource("3_prop")]
@@ -100,7 +100,7 @@ collision_offset = Vector2(0, -5)
 position = Vector2(136, 72)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_salt_shelf_3"
-area_size = Vector2(30, 12)
+area_size = Vector2(30, 16)
 interaction_priority = 15
 dialogue_id = &"salt_third_volume"
 
@@ -120,7 +120,7 @@ collision_offset = Vector2(0, -5)
 position = Vector2(176, 72)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_salt_shelf_4"
-area_size = Vector2(30, 12)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("SALT_SHELF_4")
 
 [node name="Shelf5" parent="Entities" instance=ExtResource("3_prop")]
@@ -135,7 +135,7 @@ collision_offset = Vector2(0, -5)
 position = Vector2(216, 72)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_salt_shelf_5"
-area_size = Vector2(30, 12)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("SALT_SHELF_5")
 
 [node name="Shelf6" parent="Entities" instance=ExtResource("3_prop")]
@@ -150,7 +150,7 @@ collision_offset = Vector2(0, -5)
 position = Vector2(256, 72)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_salt_shelf_6"
-area_size = Vector2(30, 12)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("SALT_SHELF_6")
 
 [node name="ToShrine" type="Area2D" parent="Entities"]

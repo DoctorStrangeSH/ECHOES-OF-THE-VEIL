@@ -73,7 +73,7 @@ collision_offset = Vector2(0, -18)
 position = Vector2(80, 286)
 script = ExtResource("5_inspect")
 interaction_id = &"lighthouse_door"
-area_size = Vector2(26, 14)
+area_size = Vector2(26, 16)
 dialogue_id = &"lighthouse_door"
 
 [node name="SeaWallLamp" parent="Entities" instance=ExtResource("3_prop")]
@@ -93,7 +93,7 @@ spot_id = &"point_lamp"
 position = Vector2(196, 88)
 script = ExtResource("5_inspect")
 interaction_id = &"watch_the_light"
-area_size = Vector2(40, 14)
+area_size = Vector2(40, 16)
 interaction_priority = 20
 dialogue_id = &"lighthouse_watch"
 
@@ -109,7 +109,7 @@ collision_offset = Vector2(0, 0)
 position = Vector2(520, 242)
 script = ExtResource("5_inspect")
 interaction_id = &"read_point_signpost"
-area_size = Vector2(18, 12)
+area_size = Vector2(20, 16)
 prompt_key = "PROMPT_READ"
 dialogue_id = &"point_signpost"
 
@@ -269,7 +269,7 @@ collision_offset = Vector2(0, 0)
 position = Vector2(150, 92)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_point_rocks"
-area_size = Vector2(50, 12)
+area_size = Vector2(50, 16)
 lines = PackedStringArray("POINT_ROCKS")
 
 [node name="FromGreyford" type="Marker2D" parent="SpawnPoints"]
@@ -306,7 +306,7 @@ anchor_id = &"sea_wall"
 position = Vector2(330, 92)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_lifeboat_locker"
-area_size = Vector2(26, 12)
+area_size = Vector2(26, 16)
 dialogue_id = &"lifeboat_locker"
 
 [node name="Condition" type="Node" parent="Entities/LifeboatLocker"]

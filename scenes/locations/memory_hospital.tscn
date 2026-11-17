@@ -94,7 +94,7 @@ collision_offset = Vector2(0, -20)
 position = Vector2(96, 76)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_t_nurse_log"
-area_size = Vector2(30, 14)
+area_size = Vector2(30, 16)
 dialogue_id = &"t_nurse_log"
 
 [node name="Condition" type="Node" parent="Entities/Testimony1"]
@@ -105,7 +105,7 @@ show_if = {"flag": "boss.matron.defeated"}
 position = Vector2(176, 76)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_t_admissions"
-area_size = Vector2(30, 14)
+area_size = Vector2(30, 16)
 dialogue_id = &"t_admissions"
 
 [node name="Condition" type="Node" parent="Entities/Testimony2"]
@@ -116,7 +116,7 @@ show_if = {"flag": "boss.matron.defeated"}
 position = Vector2(256, 76)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_t_doctor"
-area_size = Vector2(30, 14)
+area_size = Vector2(30, 16)
 dialogue_id = &"t_doctor"
 
 [node name="Condition" type="Node" parent="Entities/Testimony3"]

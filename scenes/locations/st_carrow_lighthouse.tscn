@@ -118,14 +118,14 @@ collision_offset = Vector2(0, -12)
 position = Vector2(180, 108)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_carrow_log"
-area_size = Vector2(34, 10)
+area_size = Vector2(34, 16)
 dialogue_id = &"carrow_log"
 
 [node name="LadderUp" type="Area2D" parent="Entities"]
 position = Vector2(128, 72)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_carrow_ladder"
-area_size = Vector2(20, 10)
+area_size = Vector2(20, 16)
 prompt_key = "PROMPT_CLIMB"
 dialogue_id = &"carrow_lamp"
 

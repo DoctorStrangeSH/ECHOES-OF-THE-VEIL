@@ -75,7 +75,8 @@
       }
      }
     ]
-   }
+   },
+   "category": "main"
   },
   "case_radio": {
    "title": "CASE_RADIO_TITLE",
@@ -129,7 +130,8 @@
       }
      }
     ]
-   }
+   },
+   "category": "errand"
   },
   "case_quiet": {
    "title": "CASE_QUIET_TITLE",
@@ -143,7 +145,8 @@
     "start": [
      "formed"
     ]
-   }
+   },
+   "category": "side"
   },
   "case_lantern_row": {
    "title": "CASE_LR_TITLE",
@@ -152,7 +155,8 @@
    "stages": {
     "start": "CASE_LR_START"
    },
-   "transitions": {}
+   "transitions": {},
+   "category": "side"
   },
   "case_rosalind": {
    "title": "CASE_ROSALIND_TITLE",
@@ -170,7 +174,8 @@
     "start": [
      "page"
     ]
-   }
+   },
+   "category": "side"
   },
   "case_eleventh": {
    "title": "CASE_ELEVENTH_TITLE",
@@ -193,7 +198,8 @@
     "published": "CASE_ELEVENTH_PUBLISHED",
     "sealed": "CASE_ELEVENTH_SEALED",
     "hidden": "CASE_ELEVENTH_HIDDEN"
-   }
+   },
+   "category": "side"
   },
   "case_bell": {
    "title": "CASE_BELL_TITLE",
@@ -230,7 +236,8 @@
       ]
      }
     ]
-   }
+   },
+   "category": "side"
   },
   "case_letters": {
    "title": "CASE_LETTERS_TITLE",
@@ -248,7 +255,8 @@
    "outcomes": {
     "respected": "CASE_LETTERS_RESPECTED",
     "persisted": "CASE_LETTERS_PERSISTED"
-   }
+   },
+   "category": "errand"
   }
  },
  "evidence": {

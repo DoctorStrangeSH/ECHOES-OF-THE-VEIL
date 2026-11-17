@@ -82,7 +82,7 @@ collision_offset = Vector2(0, -20)
 position = Vector2(320, 176)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_abbey_altar"
-area_size = Vector2(40, 12)
+area_size = Vector2(40, 16)
 interaction_priority = 20
 dialogue_id = &"abbey_altar"
 

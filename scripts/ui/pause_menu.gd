@@ -93,7 +93,7 @@ func _refresh_texts() -> void:
 
 func _build() -> void:
 	_dim = ColorRect.new()
-	_dim.color = Color(0, 0, 0, 0.5)
+	_dim.color = Color(0, 0, 0, 0.7)
 	_dim.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_dim.theme = UiTheme.get_theme()
 	add_child(_dim)

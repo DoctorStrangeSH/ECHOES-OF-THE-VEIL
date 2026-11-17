@@ -214,14 +214,14 @@ collision_offset = Vector2(-0.5, -9)
 position = Vector2(144, 80)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_cafe_board"
-area_size = Vector2(60, 10)
+area_size = Vector2(60, 16)
 lines = PackedStringArray("FLAVOR_CAFE_BOARD")
 
 [node name="CafeRadioLook" type="Area2D" parent="Entities"]
 position = Vector2(258, 74)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_cafe_radio"
-area_size = Vector2(24, 10)
+area_size = Vector2(24, 16)
 lines = PackedStringArray("FLAVOR_CAFE_RADIO")
 
 [node name="A_counter" type="Marker2D" parent="NpcAnchors"]

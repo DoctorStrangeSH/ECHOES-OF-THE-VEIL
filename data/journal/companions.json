@@ -73,7 +73,8 @@
       }
      }
     ]
-   }
+   },
+   "category": "side"
   },
   "case_rook_and_rook": {
    "title": "CASE_RR_TITLE",
@@ -143,7 +144,8 @@
       }
      }
     ]
-   }
+   },
+   "category": "side"
   }
  },
  "evidence": {

@@ -34,6 +34,13 @@ static func get_theme() -> Theme:
 	t.set_color("font_hover_color", "Button", Color.WHITE)
 	t.set_color("font_focus_color", "Button", Color.WHITE)
 	t.set_color("font_disabled_color", "Button", Color(0.45, 0.45, 0.5))
+	# Text fields look like the buttons beside them.
+	t.set_stylebox("normal", "LineEdit", normal)
+	t.set_stylebox("focus", "LineEdit", hover)
+	t.set_stylebox("read_only", "LineEdit", disabled)
+	t.set_color("font_color", "LineEdit", INK)
+	t.set_color("font_placeholder_color", "LineEdit", Color(0.5, 0.52, 0.58))
+	t.set_color("caret_color", "LineEdit", ACCENT)
 	_theme = t
 	return t
 

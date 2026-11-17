@@ -649,7 +649,7 @@ clear_flag = &"ford.cleared"
 position = Vector2(464, 200)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_ford_chapel"
-area_size = Vector2(30, 12)
+area_size = Vector2(30, 16)
 interaction_priority = 20
 dialogue_id = &"ford_chapel"
 
@@ -657,7 +657,7 @@ dialogue_id = &"ford_chapel"
 position = Vector2(100, 240)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_ford_mill"
-area_size = Vector2(40, 10)
+area_size = Vector2(40, 16)
 lines = PackedStringArray("FLAVOR_FORD_MILLHOUSE")
 
 [node name="GravesLook" type="Area2D" parent="Entities"]

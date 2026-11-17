@@ -108,7 +108,7 @@ collision_offset = Vector2(0, 0)
 position = Vector2(52, 72)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_rw_cabinet"
-area_size = Vector2(40, 12)
+area_size = Vector2(40, 16)
 interaction_priority = 20
 dialogue_id = &"rw_cabinet"
 
@@ -116,7 +116,7 @@ dialogue_id = &"rw_cabinet"
 position = Vector2(176, 120)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_rw_clock"
-area_size = Vector2(20, 12)
+area_size = Vector2(20, 16)
 lines = PackedStringArray("FLAVOR_RW_CLOCK")
 
 [node name="Entrance" type="Marker2D" parent="SpawnPoints"]

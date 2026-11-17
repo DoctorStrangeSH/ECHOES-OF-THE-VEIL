@@ -34,6 +34,8 @@ const TINT_KEYS := [
 ## Dialogue started on entering when `enter_condition` holds (e.g. an intro).
 @export var enter_dialogue_id: StringName = &""
 @export var enter_condition: Dictionary = {}
+## Moving cars along the street (region option "traffic"; see Traffic).
+@export var traffic: Dictionary = {}
 
 var player: Player
 var _npcs: Dictionary = {}  # npc_id -> Npc
@@ -65,6 +67,12 @@ func _ready() -> void:
 	_refresh_npcs(false)
 	_refresh_follower()
 	_place_satchel()
+	if not traffic.is_empty():
+		var t := Traffic.new()
+		t.name = "Traffic"
+		t.y_sort_enabled = true
+		entities.add_child(t)
+		t.setup(traffic, float(bounds.end.x))
 	Incidents.populate(self)
 	if Crowd.defs().has(location_id):
 		var crowd := Crowd.new()

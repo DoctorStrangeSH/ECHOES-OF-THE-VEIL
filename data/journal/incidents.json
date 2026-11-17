@@ -70,7 +70,8 @@
       }
      }
     ]
-   }
+   },
+   "category": "incident"
   },
   "case_inc_storeroom": {
    "title": "CASE_INC_STOREROOM_TITLE",
@@ -142,7 +143,8 @@
       }
      }
     ]
-   }
+   },
+   "category": "incident"
   },
   "case_inc_last_tram": {
    "title": "CASE_INC_LAST_TRAM_TITLE",
@@ -214,7 +216,8 @@
       }
      }
     ]
-   }
+   },
+   "category": "incident"
   },
   "case_inc_names": {
    "title": "CASE_INC_NAMES_TITLE",
@@ -286,7 +289,8 @@
       }
      }
     ]
-   }
+   },
+   "category": "incident"
   },
   "case_inc_seal": {
    "title": "CASE_INC_SEAL_TITLE",
@@ -358,7 +362,8 @@
       }
      }
     ]
-   }
+   },
+   "category": "incident"
   },
   "case_inc_patrol": {
    "title": "CASE_INC_PATROL_TITLE",
@@ -430,7 +435,8 @@
       }
      }
     ]
-   }
+   },
+   "category": "incident"
   }
  },
  "evidence": {},

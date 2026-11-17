@@ -1340,6 +1340,27 @@ func test_blob_terrain_masks() -> void:
 	check(blob is Dictionary and blob["tiles"].size() == 47 and blob["tiles"].has("255") and blob["tiles"].has("0"), "47-tile blob table")
 
 
+func test_settings_window_and_text_speed() -> void:
+	var saved := [GameSettings.resolution, GameSettings.window_mode, GameSettings.text_speed]
+	for r in GameSettings.RESOLUTIONS:
+		check(r.x * 270 == r.y * 480 and r.x % 480 == 0, "%s is a whole multiple of 480x270" % r)
+	GameSettings.cycle_text_speed()
+	check(GameSettings.TEXT_SPEEDS.has(GameSettings.text_speed), "text speed cycles through known speeds")
+	GameSettings.text_speed = "instant"
+	check(GameSettings.chars_per_second() == 0.0, "instant text has no typing")
+	GameSettings.resolution = saved[0]
+	GameSettings.window_mode = saved[1]
+	GameSettings.text_speed = saved[2]
+	GameSettings.save_settings()
+
+
+func test_every_case_has_a_journal_category() -> void:
+	for id: StringName in Journal.case_defs:
+		var cat := String(Journal.case_defs[id].get("category", ""))
+		check(cat in JournalScreen.CATEGORIES, "%s has a journal category (got '%s')" % [id, cat])
+		check((cat == "main") == bool(Journal.case_defs[id].get("main", false)), "%s: category main matches the main flag" % id)
+
+
 func test_expedition_board_and_rewards() -> void:
 	GameState.reset_for_new_game()
 	check(not Expedition.unlocked() and not Expedition.start(Expedition.offers()[0]), "locked before the ending")

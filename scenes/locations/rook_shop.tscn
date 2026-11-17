@@ -206,28 +206,28 @@ collision_offset = Vector2(0, -5)
 position = Vector2(176, 72)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_shop_workbench"
-area_size = Vector2(30, 10)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("FLAVOR_SHOP_WORKBENCH")
 
 [node name="SignLook" type="Area2D" parent="Entities"]
 position = Vector2(128, 74)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_shop_sign"
-area_size = Vector2(30, 10)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("FLAVOR_SHOP_RADIO")
 
 [node name="ClockLook" type="Area2D" parent="Entities"]
 position = Vector2(262, 74)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_shop_clock"
-area_size = Vector2(16, 10)
+area_size = Vector2(20, 16)
 lines = PackedStringArray("FLAVOR_SHOP_CLOCK")
 
 [node name="DisplayLook" type="Area2D" parent="Entities"]
 position = Vector2(232, 148)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_shop_display"
-area_size = Vector2(30, 10)
+area_size = Vector2(30, 16)
 lines = PackedStringArray("FLAVOR_SHOP_DISPLAY")
 
 [node name="A_counter" type="Marker2D" parent="NpcAnchors"]

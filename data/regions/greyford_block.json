@@ -6,6 +6,14 @@
   "enter_dialogue_id": "intro",
   "enter_condition": {
    "not_flag": "intro.done"
+  },
+  "traffic": {
+   "lanes": [
+    {
+     "y": 318,
+     "dir": -1
+    }
+   ]
   }
  },
  "layout": [
@@ -410,22 +418,6 @@
     -5
    ],
    "color": "#d07090"
-  },
-  {
-   "kind": "prop",
-   "name": "ParkedCar",
-   "tex": "@vehicle/Car_Left_1.png",
-   "x": 520,
-   "y": 322,
-   "col": [
-    60,
-    24
-   ],
-   "off": [
-    0,
-    -12
-   ],
-   "color": "#b03030"
   },
   {
    "kind": "prop",

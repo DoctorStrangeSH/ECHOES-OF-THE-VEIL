@@ -16,7 +16,8 @@
     "seals": [
      "store"
     ]
-   }
+   },
+   "category": "side"
   }
  },
  "evidence": {},

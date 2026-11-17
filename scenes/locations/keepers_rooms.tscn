@@ -101,7 +101,7 @@ script = ExtResource("9_shimmer")
 position = Vector2(192, 82)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_seal_engine"
-area_size = Vector2(34, 12)
+area_size = Vector2(34, 16)
 interaction_priority = 25
 dialogue_id = &"seal_engine"
 
@@ -187,7 +187,7 @@ facing = Vector2(0, 1)
 position = Vector2(60, 82)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_card_index"
-area_size = Vector2(40, 12)
+area_size = Vector2(40, 16)
 dialogue_id = &"agnes_card"
 
 [node name="Condition" type="Node" parent="Entities/CardIndex"]
@@ -278,14 +278,14 @@ collision_offset = Vector2(-0.5, -9)
 position = Vector2(248, 74)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_keepers_clock"
-area_size = Vector2(16, 10)
+area_size = Vector2(20, 16)
 lines = PackedStringArray("FLAVOR_KEEPERS_CLOCK")
 
 [node name="KeepersMapLook" type="Area2D" parent="Entities"]
 position = Vector2(136, 54)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_keepers_map"
-area_size = Vector2(32, 10)
+area_size = Vector2(32, 16)
 lines = PackedStringArray("FLAVOR_KEEPERS_MAP")
 
 [node name="Dress176_45" parent="FloorDecor" instance=ExtResource("3_prop")]
