@@ -1,0 +1,57 @@
+{
+ "thomas_avery": {
+  "name": "NPC_AVERY",
+  "body": "Body_04",
+  "eyes": "Eyes_01",
+  "outfit": "Outfit_14_01",
+  "hairstyle": "Hairstyle_10_05",
+  "accessory": "Accessory_15_Glasses_01",
+  "color": "#505060",
+  "dialogue": "avery",
+  "schedule": [
+   {
+    "period": [
+     "morning",
+     "afternoon"
+    ],
+    "scene": "mill_hill",
+    "anchor": "vicarage_gate",
+    "facing": "down",
+    "activity": "read"
+   },
+   {
+    "period": [
+     "evening",
+     "night"
+    ],
+    "scene": "mill_hill",
+    "anchor": "church_door",
+    "facing": "down",
+    "activity": "look"
+   }
+  ]
+ },
+ "bess_thorne": {
+  "name": "NPC_BESS",
+  "body": "Body_06",
+  "eyes": "Eyes_05",
+  "outfit": "Outfit_22_01",
+  "hairstyle": "Hairstyle_15_03",
+  "color": "#b07050",
+  "dialogue": "bess",
+  "schedule": [
+   {
+    "period": [
+     "morning",
+     "afternoon",
+     "evening",
+     "night"
+    ],
+    "scene": "mill_hill_pub",
+    "anchor": "bar",
+    "facing": "down",
+    "activity": "work"
+   }
+  ]
+ }
+}

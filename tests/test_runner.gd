@@ -1765,6 +1765,21 @@ func test_own_car() -> void:
 	GameState.is_playing = false
 
 
+func test_mill_hill_rosary() -> void:
+	GameState.reset_for_new_game()
+	GameState.is_playing = true
+	var base := Inventory.stat("max_health")
+	Inventory.add(&"brigid_rosary", 1, false)
+	Inventory.equip(&"brigid_rosary")
+	check(is_equal_approx(Inventory.stat("max_health"), base + 1.0), "St Brigid's rosary: one more heart")
+	check(Inventory.def(&"abbess_rosary").get("category", "") == "key", "the abbess's rosary is a key item until decided")
+	check(Journal.case_stage(&"case_abbey_lights") == &"", "the abbey case is not started")
+	Journal.start_case(&"case_abbey_lights")
+	check(Journal.case_stage(&"case_abbey_lights") == &"ask", "the vicar's request starts at the ruins")
+	GameState.reset_for_new_game()
+	GameState.is_playing = false
+
+
 func test_xp_comes_from_play() -> void:
 	GameState.reset_for_new_game()
 	GameState.is_playing = true

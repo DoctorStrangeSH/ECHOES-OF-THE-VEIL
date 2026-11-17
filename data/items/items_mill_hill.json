@@ -1,0 +1,42 @@
+{
+ "abbess_rosary": {
+  "category": "key",
+  "name": "ITEM_ROSARY",
+  "desc": "ITEM_ROSARY_DESC",
+  "color": "#c0b090",
+  "value": 0,
+  "stack": 1
+ },
+ "brigid_rosary": {
+  "category": "trinket",
+  "name": "ITEM_BRIGID_ROSARY",
+  "desc": "ITEM_BRIGID_ROSARY_DESC",
+  "color": "#d0c0a0",
+  "value": 25,
+  "mods": {
+   "max_health": 1
+  }
+ },
+ "ploughmans": {
+  "category": "consumable",
+  "name": "ITEM_PLOUGHMANS",
+  "desc": "ITEM_PLOUGHMANS_DESC",
+  "color": "#c0a060",
+  "value": 5,
+  "stack": 9,
+  "use": {
+   "heal": 3
+  }
+ },
+ "cider": {
+  "category": "consumable",
+  "name": "ITEM_CIDER",
+  "desc": "ITEM_CIDER_DESC",
+  "color": "#e0c040",
+  "value": 3,
+  "stack": 9,
+  "use": {
+   "heal": 1
+  }
+ }
+}

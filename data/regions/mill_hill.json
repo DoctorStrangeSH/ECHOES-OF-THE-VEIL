@@ -1,0 +1,586 @@
+{
+ "id": "mill_hill",
+ "name_key": "LOC_MILL_HILL",
+ "palette": "brookside",
+ "options": {
+  "outdoors": true
+ },
+ "layout": [
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "ggggggggggggggggggggggddgggggggggggggggggggggggggg",
+  "ggggggggggggggggggggggddgggggggggggggggggggggggggg",
+  "ggggggggggggggggggggggddgggggggggggggggggggggggggg",
+  "ggggggggggggggggggggggddgggggggggggggggggggggggggg",
+  "ggggggggggggggggggggggddgggggggggggggggggggggggggg",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg",
+  "ggggggggggggggggggggggggddgggggggggggggggggggggggg"
+ ],
+ "nodes": [
+  {
+   "template": "building",
+   "tex": "@farm/Farmer_House_1_16x16.png",
+   "x": 100,
+   "y": 280,
+   "name": "CottageA",
+   "depth": 56,
+   "inset": 6,
+   "inspect": {
+    "id": "inspect_mh_cottage",
+    "lines": [
+     "FLAVOR_MH_COTTAGE"
+    ],
+    "width": 30
+   }
+  },
+  {
+   "template": "building",
+   "tex": "@house/Post_Apocalyptic_House_1_16x16.png",
+   "x": 352,
+   "y": 280,
+   "name": "Pub",
+   "depth": 60,
+   "inset": 8,
+   "door": {
+    "id": "door_mh_pub",
+    "scene": "mill_hill_pub",
+    "spawn": "entrance",
+    "spawn_id": "pub_front",
+    "x": 368,
+    "prompt": "PROMPT_ENTER_PUB"
+   }
+  },
+  {
+   "template": "building",
+   "tex": "@house/Country_House_16x16.png",
+   "x": 640,
+   "y": 288,
+   "name": "Vicarage",
+   "depth": 80,
+   "inset": 10,
+   "inspect": {
+    "id": "inspect_mh_vicarage",
+    "lines": [
+     "FLAVOR_MH_VICARAGE"
+    ],
+    "width": 40
+   }
+  },
+  {
+   "template": "building",
+   "tex": "@grave/Grace_Chapel.png",
+   "x": 160,
+   "y": 534,
+   "name": "Church",
+   "depth": 40,
+   "inset": 8,
+   "inspect": {
+    "id": "inspect_mh_church",
+    "lines": [
+     "FLAVOR_MH_CHURCH"
+    ],
+    "width": 30
+   }
+  },
+  {
+   "template": "building",
+   "tex": "@house/Post_Apocalyptic_House_2_16x16.png",
+   "x": 560,
+   "y": 544,
+   "name": "Shop",
+   "depth": 60,
+   "inset": 8
+  },
+  {
+   "kind": "screen",
+   "name": "ShopUse",
+   "id": "use_mh_shop",
+   "x": 584,
+   "y": 552,
+   "screen": "shop:mh_shop",
+   "prompt": "PROMPT_ENTER_SHOP"
+  },
+  {
+   "template": "building",
+   "tex": "@house/Post_Apocalyptic_House_Wind_Mill_16x16.png",
+   "x": 760,
+   "y": 534,
+   "name": "Windmill",
+   "depth": 30,
+   "inset": 10,
+   "inspect": {
+    "id": "inspect_mh_mill",
+    "lines": [
+     "FLAVOR_MH_MILL"
+    ],
+    "width": 30
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "Well",
+   "tex": "@farm/Well_Stone_16x16.png",
+   "x": 400,
+   "y": 464,
+   "color": "#808080",
+   "col": [
+    22,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Bench1",
+   "tex": "@city/Bench_2.png",
+   "x": 320,
+   "y": 424,
+   "color": "#8a6a4a",
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Bench2",
+   "tex": "@city/Bench_2.png",
+   "x": 470,
+   "y": 424,
+   "color": "#8a6a4a",
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Bench3",
+   "tex": "@city/Bench_2.png",
+   "x": 320,
+   "y": 534,
+   "color": "#8a6a4a",
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Bench4",
+   "tex": "@city/Bench_2.png",
+   "x": 428,
+   "y": 534,
+   "color": "#8a6a4a",
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree1",
+   "tex": "@ftree/Tree_Birch_Green_Medium_16x16.png",
+   "x": 40,
+   "y": 184,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree2",
+   "tex": "@ftree/Tree_Oak_Green_Big_16x16.png",
+   "x": 220,
+   "y": 164,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree3",
+   "tex": "@ftree/Tree_Birch_Green_Medium_16x16.png",
+   "x": 500,
+   "y": 154,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree4",
+   "tex": "@ftree/Tree_Oak_Green_Big_16x16.png",
+   "x": 40,
+   "y": 560,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree5",
+   "tex": "@ftree/Tree_Birch_Green_Medium_16x16.png",
+   "x": 270,
+   "y": 564,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Tree6",
+   "tex": "@ftree/Tree_Oak_Green_Big_16x16.png",
+   "x": 680,
+   "y": 150,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers1",
+   "tex": "@farm/Grass_Tufts_Flowers_1.png",
+   "x": 70,
+   "y": 444,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers2",
+   "tex": "@farm/Grass_Tufts_Flowers_2.png",
+   "x": 260,
+   "y": 474,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers3",
+   "tex": "@farm/Grass_Tufts_Flowers_3.png",
+   "x": 380,
+   "y": 394,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers4",
+   "tex": "@farm/Grass_Tufts_Flowers_4.png",
+   "x": 520,
+   "y": 484,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers5",
+   "tex": "@farm/Grass_Tufts_Flowers_5.png",
+   "x": 640,
+   "y": 464,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers6",
+   "tex": "@farm/Grass_Tufts_Flowers_6.png",
+   "x": 110,
+   "y": 364,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers7",
+   "tex": "@farm/Grass_Tufts_Flowers_7.png",
+   "x": 450,
+   "y": 194,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers8",
+   "tex": "@farm/Grass_Tufts_Flowers_8.png",
+   "x": 250,
+   "y": 304,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "VillageSign",
+   "tex": "@farm/Sign_1_16x16.png",
+   "x": 40,
+   "y": 304,
+   "color": "#a07040",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "SignLook",
+   "id": "read_mh_sign",
+   "x": 40,
+   "y": 312,
+   "area": [
+    20,
+    10
+   ],
+   "lines": [
+    "FLAVOR_MH_SIGN"
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "AbbeySign",
+   "tex": "@farm/Sign_2_16x16.png",
+   "x": 760,
+   "y": 304,
+   "color": "#a07040",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "AbbeySignLook",
+   "id": "read_mh_abbey_sign",
+   "x": 760,
+   "y": 312,
+   "area": [
+    20,
+    10
+   ],
+   "lines": [
+    "FLAVOR_MH_ABBEY_SIGN"
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ToMillwood",
+   "id": "door_village_millwood",
+   "x": 4,
+   "y": 328,
+   "area": [
+    8,
+    40
+   ],
+   "scene": "millwood",
+   "spawn": "from_village",
+   "prompt": "PROMPT_GO_MILLWOOD"
+  },
+  {
+   "kind": "spawn",
+   "name": "FromMillwood",
+   "id": "from_millwood",
+   "x": 22,
+   "y": 328,
+   "facing": [
+    1,
+    0
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ToAbbey",
+   "id": "door_village_abbey",
+   "x": 796,
+   "y": 328,
+   "area": [
+    8,
+    40
+   ],
+   "scene": "abbey_ruins",
+   "spawn": "from_village",
+   "prompt": "PROMPT_GO_ABBEY"
+  },
+  {
+   "kind": "spawn",
+   "name": "FromAbbey",
+   "id": "from_abbey",
+   "x": 778,
+   "y": 328,
+   "facing": [
+    -1,
+    0
+   ]
+  },
+  {
+   "template": "anchors",
+   "points": {
+    "church_door": [
+     184,
+     552
+    ],
+    "green": [
+     400,
+     494
+    ],
+    "vicarage_gate": [
+     620,
+     304
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,189 @@
+{
+ "id": "mill_hill_pub",
+ "name_key": "LOC_MH_PUB",
+ "palette": "rented_room",
+ "options": {
+  "outdoors": false
+ },
+ "layout": {
+  "generator": "room",
+  "width": 18,
+  "height": 11,
+  "door_x": 8
+ },
+ "nodes": [
+  {
+   "kind": "furn",
+   "furn": "window",
+   "x": 72,
+   "y": 62
+  },
+  {
+   "kind": "furn",
+   "furn": "window",
+   "x": 200,
+   "y": 62
+  },
+  {
+   "kind": "furn",
+   "furn": "bookcase_bottles",
+   "x": 120,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "bookcase_bottles",
+   "x": 152,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "counter_left",
+   "x": 120,
+   "y": 104
+  },
+  {
+   "kind": "furn",
+   "furn": "counter_right",
+   "x": 152,
+   "y": 104
+  },
+  {
+   "kind": "furn",
+   "furn": "fireplace_brick",
+   "x": 40,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "table_wood",
+   "x": 56,
+   "y": 124
+  },
+  {
+   "kind": "furn",
+   "furn": "chair_wood",
+   "x": 36,
+   "y": 122
+  },
+  {
+   "kind": "furn",
+   "furn": "chair_wood_b",
+   "x": 76,
+   "y": 122
+  },
+  {
+   "kind": "furn",
+   "furn": "table_wood_b",
+   "x": 224,
+   "y": 124
+  },
+  {
+   "kind": "furn",
+   "furn": "stool_wood",
+   "x": 204,
+   "y": 124
+  },
+  {
+   "kind": "furn",
+   "furn": "stool_wood_b",
+   "x": 244,
+   "y": 126
+  },
+  {
+   "kind": "furn",
+   "furn": "bed_single",
+   "x": 256,
+   "y": 80
+  },
+  {
+   "kind": "furn",
+   "furn": "grandfather_clock",
+   "x": 184,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "rug_round",
+   "x": 140,
+   "y": 150
+  },
+  {
+   "kind": "rest",
+   "name": "PubBed",
+   "id": "rest_mh_pub",
+   "x": 256,
+   "y": 88,
+   "area": [
+    24,
+    18
+   ],
+   "prompt": "PROMPT_REST_INN"
+  },
+  {
+   "kind": "inspect",
+   "name": "FireLook",
+   "id": "inspect_mh_fire",
+   "x": 40,
+   "y": 72,
+   "area": [
+    30,
+    10
+   ],
+   "lines": [
+    "FLAVOR_MH_PUB_FIRE"
+   ]
+  },
+  {
+   "template": "anchors",
+   "points": {
+    "bar": [
+     136,
+     84
+    ],
+    "table": [
+     100,
+     124
+    ]
+   }
+  },
+  {
+   "kind": "screen",
+   "name": "BarUse",
+   "id": "use_mh_bar",
+   "x": 136,
+   "y": 112,
+   "area": [
+    40,
+    10
+   ],
+   "screen": "shop:mh_pub",
+   "prompt": "PROMPT_ORDER"
+  },
+  {
+   "kind": "spawn",
+   "name": "Entrance",
+   "id": "entrance",
+   "x": 136,
+   "y": 156,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ExitDoor",
+   "id": "door_mh_pub_exit",
+   "x": 136,
+   "y": 172,
+   "area": [
+    30,
+    10
+   ],
+   "scene": "mill_hill",
+   "spawn": "pub_front",
+   "prompt": "PROMPT_EXIT"
+  }
+ ]
+}

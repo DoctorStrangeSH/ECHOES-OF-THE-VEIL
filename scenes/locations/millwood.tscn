@@ -52,8 +52,8 @@ ggggggggggggddgggggggggggggggwwwwwwwwwppwwwwwwwwwwwggggg
 ggggggggggggddggggggggggggggggwwwwwwwwppwwwwwwwwwwgggggg
 ggggggggggggddggggggggggggggggggggggggppgggggggggggggggg
 ggggggggggggddgggggggggggggggggggggggggggggggggggggggggg
-dddddddddddddddddddddddddddddddddddddddddggggggggggggggg
-dddddddddddddddddddddddddddddddddddddddddggggggggggggggg
+dddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+dddddddddddddddddddddddddddddddddddddddddddddddddddddddd
 gggggggggggggggggggggggggggggggggggggggggggggggggggggggg
 gggggggggggggggggggggggggggggggggggggggggggggggggggggggg
 gggggggggggggggggggggggggggggggggggggggggggggggggggggggg
@@ -755,3 +755,18 @@ placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.376,0.502,0.627, 1)
 collision_size = Vector2(10, 6)
 collision_offset = Vector2(0, -3)
+
+[node name="ToMillHill" type="Area2D" parent="Entities"]
+position = Vector2(892, 368)
+script = ExtResource("6_door")
+interaction_id = &"door_millwood_village"
+area_size = Vector2(8, 32)
+prompt_key = "PROMPT_GO_VILLAGE"
+target_scene_id = &"mill_hill"
+target_spawn_id = &"from_millwood"
+
+[node name="FromVillage" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(872, 368)
+script = ExtResource("4_spawn")
+spawn_id = &"from_village"
+facing = Vector2(-1, 0)

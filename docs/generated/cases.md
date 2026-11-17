@@ -384,6 +384,18 @@ flowchart LR
 
 Evidence that advances this case: `e_flash_count`, `e_ship_register`
 
+## case_abbey_lights — Lights in the Abbey
+
+```mermaid
+flowchart LR
+  case_abbey_lights_ask["ask<br/>Go to the abbey ruins east of Mill Hill…"]
+  case_abbey_lights_rosary["rosary<br/>Abbess Cecily gave up the rosary of the…"]
+  case_abbey_lights_ask --> case_abbey_lights_rosary
+  case_abbey_lights_out_kept(["outcome: kept<br/>The rosary is carried now, as…"])
+  case_abbey_lights_out_returned(["outcome: returned<br/>The rosary hangs in the chape…"])
+  case_abbey_lights_START(("start")) --> case_abbey_lights_ask
+```
+
 ## case_drowned_ford — The bell under the water
 
 ```mermaid

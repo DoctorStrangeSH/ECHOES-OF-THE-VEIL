@@ -128,3 +128,7 @@ Travel modes are now a string on each route ("coach", "car", "ferry"); a town ma
 ## D-077 By air (R12d)
 
 The art packs have no aeroplanes, only a helicopter and a landing pad, so "the plane" is an air taxi: a new Greyford district (the airfield, always on the bus map) and an "air" route to Ashbridge, the county town an hour away. Ashbridge is the first place built for scale rather than intimacy (three-storey townhouses, a square with a fountain, the regional Census Bureau still open), and its story points back home: Agnes Venn's census card is under glass in the museum as a "specimen", and it can go to Mara, by argument (Intellect 3) or by a donation.
+
+## D-078 Mill Hill and the abbey (R5c)
+
+The countryside ends in a village rather than a dungeon: Mill Hill lies east of Millwood on foot, small enough to learn in one visit (a green with a well, a pub with a bed, a shop, a chapel, a dead windmill, the vicarage). Its one story sits a lane further east: in the ruins of St Brigid's Abbey (dissolved 1539) the sisters' echoes still keep their last vigil. Clearing them lets Abbess Cecily hand over the rosary of the house, and the player chooses, as at the Drowned Ford, between giving it back (the chapel, resonance) and carrying it (a trinket, +1 heart).

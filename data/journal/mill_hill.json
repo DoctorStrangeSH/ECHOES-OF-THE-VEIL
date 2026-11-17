@@ -1,0 +1,24 @@
+{
+ "cases": {
+  "case_abbey_lights": {
+   "title": "CASE_ABBEY_TITLE",
+   "summary": "CASE_ABBEY_SUMMARY",
+   "first_stage": "ask",
+   "stages": {
+    "ask": "CASE_ABBEY_ASK",
+    "rosary": "CASE_ABBEY_ROSARY"
+   },
+   "outcomes": {
+    "kept": "CASE_ABBEY_KEPT",
+    "returned": "CASE_ABBEY_RETURNED"
+   },
+   "transitions": {
+    "ask": [
+     "rosary"
+    ]
+   }
+  }
+ },
+ "evidence": {},
+ "hypotheses": {}
+}

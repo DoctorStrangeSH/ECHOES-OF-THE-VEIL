@@ -28,8 +28,8 @@
   "ggggggggggggddggggggggggggggggwwwwwwwwppwwwwwwwwwwgggggg",
   "ggggggggggggddggggggggggggggggggggggggppgggggggggggggggg",
   "ggggggggggggddgggggggggggggggggggggggggggggggggggggggggg",
-  "dddddddddddddddddddddddddddddddddddddddddggggggggggggggg",
-  "dddddddddddddddddddddddddddddddddddddddddggggggggggggggg",
+  "dddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+  "dddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
   "gggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
   "gggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
   "gggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
@@ -1276,6 +1276,31 @@
     -3
    ],
    "color": "#6080a0"
+  },
+  {
+   "kind": "door",
+   "name": "ToMillHill",
+   "id": "door_millwood_village",
+   "x": 892,
+   "y": 368,
+   "area": [
+    8,
+    32
+   ],
+   "scene": "mill_hill",
+   "spawn": "from_millwood",
+   "prompt": "PROMPT_GO_VILLAGE"
+  },
+  {
+   "kind": "spawn",
+   "name": "FromVillage",
+   "id": "from_village",
+   "x": 872,
+   "y": 368,
+   "facing": [
+    -1,
+    0
+   ]
   }
  ]
 }
