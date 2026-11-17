@@ -1,0 +1,139 @@
+{
+ "grilled_fish": {
+  "category": "consumable",
+  "name": "ITEM_GRILLED_FISH",
+  "desc": "ITEM_GRILLED_FISH_DESC",
+  "color": "#c08050",
+  "value": 6,
+  "stack": 9,
+  "use": {
+   "heal": 3
+  }
+ },
+ "veg_soup": {
+  "category": "consumable",
+  "name": "ITEM_VEG_SOUP",
+  "desc": "ITEM_VEG_SOUP_DESC",
+  "color": "#c0a040",
+  "value": 7,
+  "stack": 9,
+  "use": {
+   "heal": 3,
+   "meal": {
+    "mods": {
+     "max_health": 1
+    },
+    "minutes": 180,
+    "desc": "MEAL_VEG_SOUP"
+   }
+  }
+ },
+ "mushroom_omelette": {
+  "category": "consumable",
+  "name": "ITEM_MUSHROOM_OMELETTE",
+  "desc": "ITEM_MUSHROOM_OMELETTE_DESC",
+  "color": "#e0d080",
+  "value": 6,
+  "stack": 9,
+  "use": {
+   "heal": 2,
+   "meal": {
+    "mods": {
+     "speed_mult": 1.1
+    },
+    "minutes": 120,
+    "desc": "MEAL_MUSHROOM_OMELETTE"
+   }
+  }
+ },
+ "berry_crumble": {
+  "category": "consumable",
+  "name": "ITEM_BERRY_CRUMBLE",
+  "desc": "ITEM_BERRY_CRUMBLE_DESC",
+  "color": "#a04060",
+  "value": 8,
+  "stack": 9,
+  "use": {
+   "heal": 2,
+   "meal": {
+    "mods": {
+     "dodge_cooldown_mult": 0.8
+    },
+    "minutes": 120,
+    "desc": "MEAL_BERRY_CRUMBLE"
+   }
+  }
+ },
+ "fish_pie": {
+  "category": "consumable",
+  "name": "ITEM_FISH_PIE",
+  "desc": "ITEM_FISH_PIE_DESC",
+  "color": "#d0b070",
+  "value": 12,
+  "stack": 9,
+  "use": {
+   "heal": 4,
+   "meal": {
+    "mods": {
+     "damage_bonus": 1
+    },
+    "minutes": 120,
+    "desc": "MEAL_FISH_PIE"
+   }
+  }
+ },
+ "crab_stew": {
+  "category": "consumable",
+  "name": "ITEM_CRAB_STEW",
+  "desc": "ITEM_CRAB_STEW_DESC",
+  "color": "#c06040",
+  "value": 14,
+  "stack": 9,
+  "use": {
+   "heal": 4,
+   "meal": {
+    "mods": {
+     "flash_radius_mult": 1.2
+    },
+    "minutes": 180,
+    "desc": "MEAL_CRAB_STEW"
+   }
+  }
+ },
+ "strawberry_tea": {
+  "category": "consumable",
+  "name": "ITEM_STRAWBERRY_TEA",
+  "desc": "ITEM_STRAWBERRY_TEA_DESC",
+  "color": "#e06070",
+  "value": 5,
+  "stack": 9,
+  "use": {
+   "heal": 1,
+   "meal": {
+    "mods": {
+     "flash_cooldown_mult": 0.8
+    },
+    "minutes": 120,
+    "desc": "MEAL_STRAWBERRY_TEA"
+   }
+  }
+ },
+ "pumpkin_pie": {
+  "category": "consumable",
+  "name": "ITEM_PUMPKIN_PIE",
+  "desc": "ITEM_PUMPKIN_PIE_DESC",
+  "color": "#e08030",
+  "value": 15,
+  "stack": 9,
+  "use": {
+   "heal": 5,
+   "meal": {
+    "mods": {
+     "max_health": 1
+    },
+    "minutes": 240,
+    "desc": "MEAL_PUMPKIN_PIE"
+   }
+  }
+ }
+}

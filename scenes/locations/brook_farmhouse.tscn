@@ -234,3 +234,9 @@ area_size = Vector2(30, 10)
 prompt_key = "PROMPT_EXIT"
 target_scene_id = &"brook_farm"
 target_spawn_id = &"farmhouse_front"
+
+[node name="StoveUse" parent="Entities" instance=ExtResource("18_screen")]
+position = Vector2(184, 74)
+interaction_id = &"use_farm_stove"
+screen = "cook"
+prompt_key = "PROMPT_COOK"

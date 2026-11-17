@@ -30,6 +30,7 @@ func _ready() -> void:
 	add_child(fishing)
 	add_child(CharacterScreen.new())
 	add_child(SeedMenu.new())
+	add_child(CookMenu.new())
 	pause_menu.setup(hud)
 	journal.setup(hud)
 	SceneFlow.register_root(self)
@@ -62,6 +63,8 @@ func _on_screen_requested(screen: String) -> void:
 		await get_tree().process_frame
 	if screen == "train:gym":
 		_train()
+	elif screen == "cook":
+		CookMenu.instance.open()
 	elif screen == "map:travel":
 		city_map.open(true)
 	elif screen == "world:travel":

@@ -16,6 +16,8 @@ const DEFAULT_WEAPON := &"fists"
 const MULT_STATS: PackedStringArray = ["dodge_cooldown_mult", "dodge_distance_mult", "flash_cooldown_mult", "flash_radius_mult", "speed_mult", "pay_mult"]
 
 var item_defs: Dictionary = {}
+## The last dish eaten (R7b): {"mods": {...}, "until": absolute minute, "desc": key}.
+var meal: Dictionary = {}
 var attunement_defs: Dictionary = {}
 
 var items: Dictionary = {}  # item_id -> count
@@ -30,6 +32,10 @@ func _enter_tree() -> void:
 	attunement_defs = _load(ATTUNEMENTS_PATH)
 
 
+func _ready() -> void:
+	(func() -> void: WorldClock.time_changed.connect(_on_time)).call_deferred()
+
+
 func _load(path: String) -> Dictionary:
 	return DataFiles.defs(path)
 
@@ -38,6 +44,7 @@ func reset() -> void:
 	items.clear()
 	equipped = {"weapon": DEFAULT_WEAPON, "trinket": &""}
 	money = 0
+	meal = {}
 	resonance = 0
 	attunements.clear()
 	changed.emit()
@@ -132,6 +139,11 @@ func use(id: StringName) -> bool:
 		return false  # e.g. repair kits are spent by the repair minigame
 	if effect.has("heal"):
 		EventHub.player_heal_requested_amount.emit(int(effect["heal"]) + int(stat("heal_bonus")))
+	if effect.has("meal"):
+		var m: Dictionary = effect["meal"]
+		meal = {"mods": m.get("mods", {}), "until": WorldClock.absolute_minute() + int(m.get("minutes", 120)), "desc": String(m.get("desc", ""))}
+		EventHub.toast_requested.emit(tr("MEAL_TOAST") % [tr(meal["desc"]), WorldClock.clock_text(int(meal["until"]) % (24 * 60))])
+		EventHub.player_stats_changed.emit()
 	remove(id)
 	Sfx.play(&"use")
 	return true
@@ -199,6 +211,8 @@ func stat(stat_name: String) -> float:
 	for a: StringName in attunements:
 		sources.append(attunement_defs.get(a, {}).get("mods", {}))
 	sources.append_array(Livelihood.home_mods())
+	if meal_active():
+		sources.append(meal.get("mods", {}))
 	for mods: Dictionary in sources:
 		if mods.has(stat_name):
 			v = v * float(mods[stat_name]) if mult else v + float(mods[stat_name])
@@ -206,6 +220,18 @@ func stat(stat_name: String) -> float:
 	if p != null:
 		v = v * float(p) if mult else v + float(p)
 	return v
+
+
+## A meal's bonus lasts until its time runs out.
+func meal_active() -> bool:
+	return not meal.is_empty() and WorldClock.absolute_minute() < int(meal.get("until", 0))
+
+
+func _on_time(_m: int) -> void:
+	if not meal.is_empty() and not meal_active():
+		meal = {}
+		EventHub.player_stats_changed.emit()
+		changed.emit()
 
 
 # --- Save --------------------------------------------------------------------
@@ -220,7 +246,7 @@ func to_dict() -> Dictionary:
 	return {
 		"items": it,
 		"equipped": {"weapon": String(equipped.get("weapon", DEFAULT_WEAPON)), "trinket": String(equipped.get("trinket", ""))},
-		"money": money, "resonance": resonance, "attunements": att,
+		"money": money, "resonance": resonance, "attunements": att, "meal": meal.duplicate(true),
 	}
 
 
@@ -240,6 +266,8 @@ func from_dict(data: Dictionary) -> void:
 		equipped["trinket"] = &""
 	money = int(data.get("money", 0))
 	resonance = int(data.get("resonance", 0))
+	var ml: Variant = data.get("meal", {})
+	meal = ml if ml is Dictionary else {}
 	attunements.clear()
 	for id: Variant in data.get("attunements", []):
 		if attunement_defs.has(StringName(id)):

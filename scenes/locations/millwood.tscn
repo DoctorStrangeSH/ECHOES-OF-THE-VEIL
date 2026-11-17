@@ -771,3 +771,9 @@ position = Vector2(872, 368)
 script = ExtResource("4_spawn")
 spawn_id = &"from_village"
 facing = Vector2(-1, 0)
+
+[node name="CampfireCook" parent="Entities" instance=ExtResource("18_screen")]
+position = Vector2(176, 206)
+interaction_id = &"use_millwood_fire"
+screen = "cook"
+prompt_key = "PROMPT_COOK_FIRE"

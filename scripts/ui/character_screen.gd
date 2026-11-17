@@ -124,6 +124,8 @@ func _build() -> void:
 		if next != "":
 			_box.add_child(_label("   " + tr("TALENT_NEXT") % [tr("TALENT_" + next.get_slice("/", 1).to_upper()), tr("TALENT_" + next.get_slice("/", 1).to_upper() + "_DESC")], UiTheme.INK_DIM, 7))
 	_build_companions()
+	if Inventory.meal_active():
+		_box.add_child(_label(tr("MEAL_LINE") % [tr(String(Inventory.meal.get("desc", ""))), WorldClock.clock_text(int(Inventory.meal["until"]) % (24 * 60))], UiTheme.INK, 8))
 	var close_b := Button.new()
 	close_b.text = tr("CC_BACK")
 	close_b.pressed.connect(close)

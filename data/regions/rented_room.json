@@ -75,8 +75,8 @@
    "kind": "prop",
    "name": "Plant",
    "tex": "@living/13.png",
-   "x": 224,
-   "y": 62,
+   "x": 150,
+   "y": 150,
    "col": [
     12,
     8
@@ -342,6 +342,21 @@
    "lines": [
     "FLAVOR_ROOM_ARMCHAIR"
    ]
+  },
+  {
+   "kind": "furn",
+   "furn": "stove",
+   "x": 232,
+   "y": 64
+  },
+  {
+   "kind": "screen",
+   "name": "StoveUse",
+   "id": "use_home_stove",
+   "x": 232,
+   "y": 74,
+   "screen": "cook",
+   "prompt": "PROMPT_COOK"
   }
  ]
 }
