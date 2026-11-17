@@ -12,7 +12,7 @@
   "TOAST_LOADED_BACKUP": {"en": "Main save was damaged — loaded the backup", "ru": "Основное сохранение повреждено — загружена резервная копия"},
   "TOAST_PATH_BLOCKED": {"en": "The way is blocked", "ru": "Путь закрыт"},
   "TOAST_NO_SAVE": {"en": "No save yet", "ru": "Сохранений пока нет"},
-  "MENU_TAGLINE": {"en": "A mysterious city. A life you can make your own. A past that refuses to stay buried.", "ru": "Загадочный город. Жизнь, которую можно сделать своей. Прошлое, которое не желает оставаться похороненным."},
+  "MENU_TAGLINE": {"en": "A mysterious city. A life you can make your own. A past that refuses to stay buried.", "ru": "Город у моря. Жизнь, которую можно сделать своей. И прошлое, которое не желает лежать в земле."},
   "MENU_NEW_GAME": {"en": "New game", "ru": "Новая игра"},
   "MENU_CONTINUE_GAME": {"en": "Continue", "ru": "Продолжить"},
   "MENU_CONTINUE": {"en": "Resume", "ru": "Вернуться в игру"},

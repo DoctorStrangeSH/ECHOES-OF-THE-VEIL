@@ -33,6 +33,7 @@ extends RefCounted
 ##   {"first_match": [{"if": cond, "do": [effects]}, ...]}  (first branch that holds)
 ##   {"companion": "id" | ""}  (recruit a companion / send them home)  {"bond": ["id", points]}
 ##   {"farm": "collect_eggs" | "buy_hen" | "ship" | "pay"}  {"accept_job": "job"} (start a job without the board)
+##   {"camera_look": [x, y]} (the camera glides to a point; dialogue-only)  {"camera_back": true}
 ##   {"give_xp": n}  {"give_resonance": n}  {"faction": ["keepers", delta]}  {"tell": ["npc", "fact"]}  {"publish": "fact"}
 
 
@@ -206,6 +207,13 @@ static func _apply_one(key: String, arg: Variant, whole: Dictionary) -> void:
 			GameState.change_relationship(StringName(arg[0]), int(arg[1]))
 		"remember":
 			GameState.remember(StringName(arg[0]), String(arg[1]))
+		"camera_look", "camera_back":
+			var pl: Node = Engine.get_main_loop().get_first_node_in_group(&"player") if Engine.get_main_loop() is SceneTree else null
+			if pl != null and pl.has_method("look_at_point"):
+				if key == "camera_look":
+					pl.look_at_point(Vector2(float(arg[0]), float(arg[1])))
+				else:
+					pl.look_at_point(Vector2.INF)
 		"bond":
 			Party.add_bond(StringName(arg[0]), int(arg[1]))
 		"toast":

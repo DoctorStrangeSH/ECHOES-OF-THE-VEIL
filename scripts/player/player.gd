@@ -58,6 +58,8 @@ var _shake := 0.0
 @onready var sprite: LayeredCharacterSprite = $Sprite
 @onready var sensor: Area2D = $InteractionSensor
 @onready var camera: Camera2D = $Camera2D
+## Where a cutscene glance has moved the camera (look_at_point).
+var _look_offset := Vector2.ZERO
 
 
 func _ready() -> void:
@@ -339,10 +341,10 @@ func shake(strength: float) -> void:
 
 func _update_shake(delta: float) -> void:
 	if _shake <= 0.05:
-		camera.offset = Vector2.ZERO
+		camera.offset = _look_offset
 		_shake = 0.0
 		return
-	camera.offset = Vector2(randf_range(-_shake, _shake), randf_range(-_shake, _shake)).round()
+	camera.offset = _look_offset + Vector2(randf_range(-_shake, _shake), randf_range(-_shake, _shake)).round()
 	_shake = move_toward(_shake, 0.0, 18.0 * delta)
 
 
@@ -439,3 +441,19 @@ func _on_died() -> void:
 		return
 	GameState.set_flag(&"veil.just_fainted", true)
 	SceneFlow.travel(&"rented_room", &"bed")
+
+
+## A cutscene glance (story effect camera_look): the camera glides to a world
+## point and stays until camera_back (Vector2.INF) brings it home.
+func look_at_point(point: Vector2) -> void:
+	var target := Vector2.ZERO
+	if point != Vector2.INF:
+		# Frame the point in the upper half (the dialogue panel covers the
+		# bottom), and never past the edges of the map.
+		var half := get_viewport_rect().size * 0.5
+		var c := point + Vector2(0, half.y * 0.35)
+		c.x = clampf(c.x, camera.limit_left + half.x, camera.limit_right - half.x)
+		c.y = clampf(c.y, camera.limit_top + half.y, camera.limit_bottom - half.y)
+		target = c - global_position
+	var tw := create_tween()
+	tw.tween_property(self, "_look_offset", target, 0.9).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)

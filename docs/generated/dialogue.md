@@ -2736,10 +2736,34 @@ flowchart TD
 flowchart TD
   intro_START(("start"))
   intro_START --> intro_1
-  intro_1["1<br/>The bus pulls away. Greyford smells of salt, we…"]
+  intro_START -->|"{background: returning_local}"| intro_1_returning_local
+  intro_START -->|"{background: archivist}"| intro_1_archivist
+  intro_START -->|"{background: repair_technician}"| intro_1_repair_technician
+  intro_START -->|"{background: courier}"| intro_1_courier
+  intro_1_returning_local["1_returning_local<br/>The bus pulls away, and the quiet stays at the …"]
+  intro_1_returning_local --> intro_bg_returning_local
+  intro_bg_returning_local["bg_returning_local<br/>You left this town as a child. The town has man…"]
+  intro_bg_returning_local --> intro_2
+  intro_1_archivist["1_archivist<br/>The bus pulls away, and the quiet stays at the …"]
+  intro_1_archivist --> intro_bg_archivist
+  intro_bg_archivist["bg_archivist<br/>In your bag: a letter from the county archive o…"]
+  intro_bg_archivist --> intro_2
+  intro_1_repair_technician["1_repair_technician<br/>The bus pulls away, and the quiet stays at the …"]
+  intro_1_repair_technician --> intro_bg_repair_technician
+  intro_bg_repair_technician["bg_repair_technician<br/>In your bag: a soldering iron, three screwdrive…"]
+  intro_bg_repair_technician --> intro_2
+  intro_1_courier["1_courier<br/>The bus pulls away, and the quiet stays at the …"]
+  intro_1_courier --> intro_bg_courier
+  intro_bg_courier["bg_courier<br/>Your last delivery was to this address, and nob…"]
+  intro_bg_courier --> intro_2
+  intro_1["1<br/>The bus pulls away, and the quiet stays at the …"]
   intro_1 --> intro_2
-  intro_2["2<br/>Your new address is on a slip of paper: the bro…"]
-  intro_2 --> intro_3
+  intro_2["2<br/>The new address is written on a scrap of paper:…"]
+  intro_2 --> intro_door1
+  intro_door1["door1<br/>In the middle of the square, behind the fountai…"]
+  intro_door1 --> intro_door2
+  intro_door2["door2<br/>People walk round it without looking, the way y…"]
+  intro_door2 --> intro_3
   intro_3["3<br/>(Tab opens your journal. Look closely, talk to …"]
 ```
 
