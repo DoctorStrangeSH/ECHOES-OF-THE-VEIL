@@ -381,6 +381,27 @@
      "opened"
     ]
    }
+  },
+  {
+   "text": "CHATTER_RT_1",
+   "where": [
+    "rowan_terrace"
+   ]
+  },
+  {
+   "text": "CHATTER_RT_2",
+   "where": [
+    "rowan_terrace"
+   ]
+  },
+  {
+   "text": "CHATTER_RT_3",
+   "where": [
+    "rowan_terrace"
+   ],
+   "if": {
+    "flag": "terrace.13.restored"
+   }
   }
  ]
 }

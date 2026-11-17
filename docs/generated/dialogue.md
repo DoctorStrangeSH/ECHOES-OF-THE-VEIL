@@ -2474,6 +2474,142 @@ flowchart TD
   carrow_lamp_n_again["n_again<br/>Greyford's light counts to seven. You know now …"]
 ```
 
+## terrace.json
+
+### ivy
+
+```mermaid
+flowchart TD
+  ivy_START(("start"))
+  ivy_START --> ivy_hub
+  ivy_START -->|"{all: [{has_item: abbott_photo}]}"| ivy_ph1
+  ivy_START -->|"{quest_outcome: [case_number_13, restor…"| ivy_after_r
+  ivy_START -->|"{quest_outcome: [case_number_13, photo]}"| ivy_after_p
+  ivy_START -->|"{not_flag: met.ivy}"| ivy_i1
+  ivy_i1["i1<br/>A small woman in a housecoat stands at her gate…"]
+  ivy_i1 --> ivy_i2
+  ivy_i2["i2<br/>Ivy Pelham: 'Ivy Pelham, number 12. I've lived on this terr…"]
+  ivy_i2 --> ivy_hub
+  ivy_hub["hub<br/>Ivy Pelham: 'Well, don't just stand there letting the heat …"]
+  ivy_hub -->|"'Why is there a gap next to y… ⟨{not_quest_started: case_number_13}⟩"| ivy_g1
+  ivy_hub -->|"'About number 13…' ⟨{quest_active: case_number_13}⟩"| ivy_again
+  ivy_hub -->|"'Tell me about the terrace.'"| ivy_street
+  ivy_hub_end_3(["end"])
+  ivy_hub -->|"'I'll be off.'"| ivy_hub_end_3
+  ivy_g1["g1<br/>Ivy Pelham: She looks at the gap for a long moment, as if c…"]
+  ivy_g1 --> ivy_g2
+  ivy_g2["g2<br/>Ivy Pelham: 'But I was a girl here. Through the wall of my …"]
+  ivy_g2 --> ivy_g3
+  ivy_g3["g3<br/>Ivy Pelham: 'After dark, when the lamps go out, I swear I c…"]
+  ivy_g3 --> ivy_hub
+  ivy_again["again<br/>Ivy Pelham: 'After dark. When the lamps go out. Bring me so…"]
+  ivy_again --> ivy_hub
+  ivy_street["street<br/>Ivy Pelham: 'Built for the rope-works men in 1879, fourteen…"]
+  ivy_street --> ivy_hub
+  ivy_ph1["ph1<br/>You give Ivy the photograph. She holds it at ar…"]
+  ivy_ph1 --> ivy_ph2
+  ivy_ph2["ph2<br/>Ivy Pelham: 'That's her. Gap in her teeth, ribbon coming un…"]
+  ivy_ph2 --> ivy_ph3
+  ivy_ph3["ph3<br/>She props the photograph on her front windowsil…"]
+  ivy_ph3 --> ivy_hub
+  ivy_after_r["after_r<br/>Ivy Pelham: 'Peggy and I have tea on her step at four. She'…"]
+  ivy_after_r --> ivy_hub
+  ivy_after_p["after_p<br/>Ivy Pelham: 'I say good morning to them every day. Harold t…"]
+  ivy_after_p --> ivy_hub
+```
+
+### raj
+
+```mermaid
+flowchart TD
+  raj_START(("start"))
+  raj_START --> raj_hub
+  raj_START -->|"{not_flag: met.raj}"| raj_i1
+  raj_i1["i1<br/>A man in a cardigan leans in the shop doorway, …"]
+  raj_i1 --> raj_i2
+  raj_i2["i2<br/>Raj Singh: 'Sorry, sorry. Raj. Singh's Stores, since my da…"]
+  raj_i2 --> raj_hub
+  raj_hub["hub<br/>Raj Singh: 'What can I get you?'"]
+  raj_hub -->|"'What's the terrace like?'"| raj_t
+  raj_hub -->|"'Is there a number 13 on this…"| raj_n
+  raj_hub_end_2(["end"])
+  raj_hub -->|"'I'll be off.'"| raj_hub_end_2
+  raj_t["t<br/>Raj Singh: 'Good street. People still say hello. They also…"]
+  raj_t --> raj_hub
+  raj_n["n<br/>Raj Singh: 'No. Superstition, Dad said: builders skip 13.'…"]
+  raj_n --> raj_hub
+```
+
+### peggy
+
+```mermaid
+flowchart TD
+  peggy_START(("start"))
+  peggy_START --> peggy_hub
+  peggy_START -->|"{not_flag: met.peggy}"| peggy_i1
+  peggy_i1["i1<br/>On the step of number 13 sits a woman in her se…"]
+  peggy_i1 --> peggy_i2
+  peggy_i2["i2<br/>Peggy Abbott: 'Peggy Abbott. I went in for my tea in 1962 and…"]
+  peggy_i2 --> peggy_i3
+  peggy_i3["i3<br/>Peggy Abbott: 'Ivy's got old too. She cried when she saw me, …"]
+  peggy_i3 --> peggy_hub
+  peggy_hub["hub<br/>Peggy Abbott: 'Do you know what a telly costs now? I've been …"]
+  peggy_hub -->|"'How is your family?'"| peggy_f
+  peggy_hub_end_1(["end"])
+  peggy_hub -->|"'I'll be off.'"| peggy_hub_end_1
+  peggy_f["f<br/>Peggy Abbott: 'Dad's gone to the rope works to ask for his jo…"]
+  peggy_f --> peggy_hub
+```
+
+### rt_gap
+
+```mermaid
+flowchart TD
+  rt_gap_START(("start"))
+  rt_gap_START --> rt_gap_plain
+  rt_gap_START -->|"{flag: terrace.13.restored}"| rt_gap_gone
+  rt_gap_START -->|"{all: [{quest_active: case_number_13}, …"| rt_gap_night
+  rt_gap_START -->|"{quest_active: case_number_13}"| rt_gap_day
+  rt_gap_plain["plain<br/>A gap between number 12 and number 14, just wid…"]
+  rt_gap_day["day<br/>In daylight the gap is only a gap. Ivy said: af…"]
+  rt_gap_night["night<br/>The lamps are out. Between number 12 and number…"]
+  rt_gap_gone["gone<br/>Number 13 stands where it always stood."]
+```
+
+### n13_enter
+
+```mermaid
+flowchart TD
+  n13_enter_START(("start"))
+  n13_enter_START --> n13_enter_e1
+  n13_enter_e1["e1<br/>A kitchen in 1962, warm, smelling of stew. A ta…"]
+  n13_enter_e1 --> n13_enter_e2
+  n13_enter_e2["e2<br/>The family is here, in a way. Shapes at the tab…"]
+```
+
+### n13_photo
+
+```mermaid
+flowchart TD
+  n13_photo_START(("start"))
+  n13_photo_START --> n13_photo_p1
+  n13_photo_START -->|"{quest_done: case_number_13}"| n13_photo_after
+  n13_photo_START -->|"{not_flag: n13.cleared}"| n13_photo_busy
+  n13_photo_busy["busy<br/>A photograph on the table, face down. The shape…"]
+  n13_photo_p1["p1<br/>You turn the photograph over: four Abbotts on t…"]
+  n13_photo_p1 --> n13_photo_p2
+  n13_photo_p2["p2<br/>On the back, a council stamp: RATES ARREARS. PR…"]
+  n13_photo_p2 --> n13_photo_p3
+  n13_photo_p3["p3<br/>The kitchen holds its breath. There is chalk on…"]
+  n13_photo_p3 -->|"Go out and chalk a 13 on the …"| n13_photo_r1
+  n13_photo_p3 -->|"Take the photograph to Ivy. L…"| n13_photo_t1
+  n13_photo_r1["r1<br/>You step outside and chalk a large, unarguable …"]
+  n13_photo_r1 --> n13_photo_r2
+  n13_photo_r2["r2<br/>In the morning, number 13 is simply there, betw…"]
+  n13_photo_t1["t1<br/>You slip the photograph into your coat. The sha…"]
+  n13_photo_after["after<br/>The kitchen is quiet. The calendar has moved on…"]
+```
+
 ## world.json
 
 ### intro

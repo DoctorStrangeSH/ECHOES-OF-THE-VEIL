@@ -25,7 +25,8 @@ def main():
         tmp = os.path.join(OUT, rid + '_full.png')
         br.preview(tmp, spec['palette'], br.layout_of(spec), nodes, clean=True)
         im = Image.open(tmp)
-        im = im.resize((im.width // SCALE, im.height // SCALE), Image.BOX)
+        k = float(d.get('map_size', 1.0))  # a district drawn smaller where the map is crowded
+        im = im.resize((int(im.width / SCALE * k), int(im.height / SCALE * k)), Image.BOX)
         im.save(os.path.join(OUT, rid + '.png'))
         os.remove(tmp)
         print(did, rid, im.size)

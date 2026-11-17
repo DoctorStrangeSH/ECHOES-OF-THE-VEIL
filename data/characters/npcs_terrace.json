@@ -1,0 +1,72 @@
+{
+ "ivy_pelham": {
+  "name": "NPC_IVY",
+  "body": "Body_02",
+  "eyes": "Eyes_03",
+  "outfit": "Outfit_19_03",
+  "hairstyle": "Hairstyle_08_05",
+  "accessory": "Accessory_15_Glasses_02",
+  "color": "#9070a0",
+  "dialogue": "ivy",
+  "schedule": [
+   {
+    "period": [
+     "morning",
+     "afternoon",
+     "evening"
+    ],
+    "scene": "rowan_terrace",
+    "anchor": "ivy_gate",
+    "facing": "down",
+    "activity": "look"
+   }
+  ]
+ },
+ "raj_singh": {
+  "name": "NPC_RAJ",
+  "body": "Body_05",
+  "eyes": "Eyes_02",
+  "outfit": "Outfit_12_02",
+  "hairstyle": "Hairstyle_02_05",
+  "accessory": "Accessory_13_Beard_04",
+  "color": "#a07040",
+  "dialogue": "raj",
+  "schedule": [
+   {
+    "period": [
+     "morning",
+     "afternoon",
+     "evening"
+    ],
+    "scene": "rowan_terrace",
+    "anchor": "shop_door",
+    "facing": "down",
+    "activity": "phone"
+   }
+  ]
+ },
+ "peggy_abbott": {
+  "name": "NPC_PEGGY",
+  "body": "Body_03",
+  "eyes": "Eyes_04",
+  "outfit": "Outfit_06_01",
+  "hairstyle": "Hairstyle_12_02",
+  "color": "#b08060",
+  "dialogue": "peggy",
+  "schedule": [
+   {
+    "period": [
+     "morning",
+     "afternoon"
+    ],
+    "if": {
+     "flag": "terrace.13.restored"
+    },
+    "scene": "rowan_terrace",
+    "anchor": "stoop_13",
+    "facing": "down",
+    "activity": "look"
+   }
+  ]
+ }
+}

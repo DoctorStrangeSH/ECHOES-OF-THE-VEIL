@@ -386,5 +386,16 @@
    "scene": "salt_store",
    "node": "Reviser"
   }
+ },
+ "case_number_13": {
+  "night": {
+   "scene": "rowan_terrace",
+   "node": "GapLook",
+   "period": "night"
+  },
+  "inside": {
+   "scene": "number_13",
+   "node": "Photo"
+  }
  }
 }

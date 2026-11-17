@@ -433,6 +433,12 @@
    "to": "greyford_block"
   }
  ],
+ "number_13": [
+  {
+   "node": "ExitDoor",
+   "to": "rowan_terrace"
+  }
+ ],
  "phantom_platform": [
   {
    "node": "WayBack",
@@ -457,6 +463,7 @@
    "to": "greyford_block"
   }
  ],
+ "rowan_terrace": [],
  "salt_cache": [
   {
    "node": "Exit",
