@@ -30,6 +30,7 @@ combat_enabled = true
 fixed_tint = Color(0.86, 0.9, 1.0, 1.0)
 enter_dialogue_id = &"salt_store_enter"
 enter_condition = {"not_flag": "salt.store_entered"}
+music = "tunnels"
 
 [node name="Ground" type="TileMapLayer" parent="."]
 script = ExtResource("2_paint")

@@ -16,7 +16,8 @@
   "enter_dialogue_id": "abbey_enter",
   "enter_condition": {
    "not_flag": "abbey.entered"
-  }
+  },
+  "music": "abbey"
  },
  "layout": [
   "gggggggggggggggggggggggggggggggggggggggg",

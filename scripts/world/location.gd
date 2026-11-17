@@ -28,6 +28,9 @@ const TINT_KEYS := [
 @export var fixed_tint: Color = Color(0, 0, 0, 0)
 ## Extra tiles of camera room beyond the ground (useful for small rooms).
 @export var camera_margin_tiles: int = 0
+## Music piece for this place (assets/music/<id>.ogg); empty picks by
+## time of day and indoors. Region option "music".
+@export var music: String = ""
 ## Dialogue started on entering when `enter_condition` holds (e.g. an intro).
 @export var enter_dialogue_id: StringName = &""
 @export var enter_condition: Dictionary = {}

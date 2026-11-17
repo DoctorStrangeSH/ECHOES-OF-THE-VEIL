@@ -1472,6 +1472,14 @@ func test_music_has_every_piece_and_picks_by_situation() -> void:
 	check(Music.pick() == "epilogue", "epilogue overrides")
 	Music.override = ""
 	check(AudioServer.get_bus_index(&"Music") >= 0, "music has its own bus")
+	DialogueService.start(&"camp_hester", {"npc": &"hester_ashby"})
+	check(DialogueService.current_music() == "hester", "Hester's talks play her theme")
+	DialogueService.end()
+	check(DialogueService.current_music() == "", "and stop when the talk ends")
+	var mill: PackedScene = load("res://scenes/locations/mill_hill.tscn")
+	var loc := mill.instantiate()
+	check(String(loc.get("music")) == "village", "Mill Hill has its own piece")
+	loc.free()
 
 
 func test_rook_shop_opens_in_the_afternoon() -> void:

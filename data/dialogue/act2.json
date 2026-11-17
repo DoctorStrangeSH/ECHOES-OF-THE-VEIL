@@ -1708,7 +1708,8 @@
     "text": "HEART_JONAH_3_R2",
     "next": "hub"
    }
-  }
+  },
+  "music": "jonah"
  },
  "camp_mara": {
   "start": "hub",
@@ -2010,7 +2011,8 @@
     },
     "node": "not_here"
    }
-  ]
+  ],
+  "music": "mara"
  },
  "harbour_timetable": {
   "entries": [

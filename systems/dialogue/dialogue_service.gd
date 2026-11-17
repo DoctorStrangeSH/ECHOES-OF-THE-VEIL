@@ -81,6 +81,11 @@ func show_lines(lines: PackedStringArray, speaker: String = "") -> void:
 	_begin(&"_lines", {"start": "0", "nodes": nodes}, {})
 
 
+## The piece a dialogue asks for while it runs (its "music" key), or "".
+func current_music() -> String:
+	return String(_def.get("music", "")) if is_active else ""
+
+
 func _begin(id: StringName, def: Dictionary, ctx: Dictionary) -> void:
 	if is_active:
 		end()

@@ -3,7 +3,8 @@
  "name_key": "LOC_CAVENMOUTH",
  "palette": "cavenmouth",
  "options": {
-  "outdoors": true
+  "outdoors": true,
+  "music": "harbour"
  },
  "layout": [
   "ssssssssssssssssssssssssssssssssssssssssssssssssss",

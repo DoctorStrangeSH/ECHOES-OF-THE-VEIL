@@ -2,7 +2,9 @@
  "id": "lighthouse_point",
  "name_key": "LOC_LIGHTHOUSE_POINT",
  "palette": "lighthouse_point",
- "options": {},
+ "options": {
+  "music": "hester"
+ },
  "layout": {
   "generator": "bands",
   "width": 36,

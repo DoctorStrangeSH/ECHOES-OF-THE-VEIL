@@ -231,8 +231,79 @@ def timpani(vel, rng):
     return (np.sin(ph) + 0.4 * np.sin(1.5 * ph)) * np.exp(-t * 3.5) * vel * 0.5
 
 
+def accordion(f, dur, vel, rng):
+    """Two slightly detuned reeds (musette), bellows swell."""
+    tail = 0.15
+    n = int((dur + tail) * SR)
+    t = _t(n)
+    out = np.zeros(n)
+    for det in (-0.12, 0.12):
+        fd = f * 2 ** (det / 12)
+        ph = 2 * np.pi * fd * t + rng.uniform(0, 6.28)
+        saw = np.zeros(n)
+        for k in range(1, 12):
+            if fd * k > 7000:
+                break
+            saw += ((-1) ** (k + 1)) * np.sin(k * ph) / k
+        out += saw
+    out = lowpass(out, 2600 + 1500 * vel)
+    env = adsr(n, 0.04, 0.2, 0.85, 0.12, dur) * (1.0 + 0.06 * np.sin(2 * np.pi * 5.0 * t))
+    return out * env * vel * 0.08
+
+
+def organ(f, dur, vel, rng):
+    """Drawbar flue pipes: 8', 4', 2 2/3', 2' with a slow chorus."""
+    tail = 0.5
+    n = int((dur + tail) * SR)
+    t = _t(n)
+    out = np.zeros(n)
+    for ratio, amp in ((0.5, 0.5), (1.0, 1.0), (2.0, 0.55), (3.0, 0.25), (4.0, 0.2)):
+        if f * ratio < SR / 2.2:
+            out += amp * np.sin(2 * np.pi * f * ratio * t * (1 + 0.0007 * np.sin(2 * np.pi * 0.4 * t)))
+    chiff = rng.normal(0, 1, n) * np.exp(-t * 60) * 0.08
+    env = adsr(n, 0.06, 0.1, 0.95, 0.35, dur)
+    return (out + chiff) * env * vel * 0.09
+
+
+def flute(f, dur, vel, rng):
+    """Breathy sine with a little second harmonic and delayed vibrato."""
+    tail = 0.25
+    n = int((dur + tail) * SR)
+    t = _t(n)
+    vib = 1 + 0.004 * np.sin(2 * np.pi * 5.2 * t) * np.minimum(1.0, t / 0.35)
+    ph = 2 * np.pi * f * np.cumsum(vib) / SR
+    out = np.sin(ph) + 0.18 * np.sin(2 * ph) + 0.05 * np.sin(3 * ph)
+    breath = lowpass(rng.normal(0, 1, n), 3500) * 0.05
+    env = adsr(n, 0.05, 0.1, 0.9, 0.18, dur)
+    return (out + breath) * env * vel * 0.16
+
+
+def choir(f, dur, vel, rng):
+    """'Aah': several detuned voices through two vowel formants."""
+    tail = 1.2
+    n = int((dur + tail) * SR)
+    t = _t(n)
+    src = np.zeros(n)
+    for det in (-0.1, -0.03, 0.04, 0.11):
+        fd = f * 2 ** (det / 12)
+        ph = 2 * np.pi * fd * t + rng.uniform(0, 6.28)
+        vib = 0.003 * np.sin(2 * np.pi * rng.uniform(4.6, 5.6) * t)
+        for k in range(1, 18):
+            if fd * k > 5000:
+                break
+            src += np.sin(k * ph * (1 + vib)) / k
+    from scipy.signal import butter, sosfilt
+    out = np.zeros(n)
+    for fc, bw, g in ((750, 180, 1.0), (1150, 220, 0.6), (2600, 300, 0.25)):
+        sos = butter(2, [max(60, fc - bw) / (SR / 2), (fc + bw) / (SR / 2)], btype='band', output='sos')
+        out += sosfilt(sos, src) * g
+    env = adsr(n, 0.5, 0.4, 0.85, 1.0, dur)
+    return out * env * vel * 0.12
+
+
 VOICES = {"piano": piano, "epiano": epiano, "pad": pad, "bell": bell, "musicbox": musicbox,
-          "pluck": pluck, "bass": bass, "lead": lead, "strings": strings}
+          "pluck": pluck, "bass": bass, "lead": lead, "strings": strings,
+          "accordion": accordion, "organ": organ, "flute": flute, "choir": choir}
 DRUMS = {"kick": kick, "snare": snare, "brush": brush, "hat": hat, "shaker": shaker, "timpani": timpani}
 
 
