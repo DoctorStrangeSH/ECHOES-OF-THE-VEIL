@@ -140,5 +140,8 @@
    "spawn": "museum_front",
    "prompt": "PROMPT_EXIT"
   }
- ]
+ ],
+ "dress": {
+  "theme": "office"
+ }
 }

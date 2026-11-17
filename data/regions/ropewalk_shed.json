@@ -201,5 +201,8 @@
    "spawn": "from_shed",
    "prompt": "PROMPT_EXIT"
   }
- ]
+ ],
+ "dress": {
+  "theme": "bare"
+ }
 }

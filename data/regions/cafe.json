@@ -198,5 +198,8 @@
    "spawn": "cafe_front",
    "prompt": "PROMPT_EXIT"
   }
- ]
+ ],
+ "dress": {
+  "theme": "cafe"
+ }
 }

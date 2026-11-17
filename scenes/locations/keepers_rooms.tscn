@@ -287,3 +287,27 @@ script = ExtResource("5_inspect")
 interaction_id = &"inspect_keepers_map"
 area_size = Vector2(32, 10)
 lines = PackedStringArray("FLAVOR_KEEPERS_MAP")
+
+[node name="Dress176_45" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(176, 45)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/7_Art_Singles/Art_Singles_44.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.478,0.416,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Dress216_36" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(216, 36)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_12.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.478,0.416,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="DressPlant0" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(26, 174)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_14.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.247,0.435,0.310, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)

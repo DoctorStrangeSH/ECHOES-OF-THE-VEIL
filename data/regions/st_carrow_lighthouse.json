@@ -120,5 +120,8 @@
    "spawn": "lighthouse_front",
    "prompt": "PROMPT_EXIT"
   }
- ]
+ ],
+ "dress": {
+  "theme": "home"
+ }
 }

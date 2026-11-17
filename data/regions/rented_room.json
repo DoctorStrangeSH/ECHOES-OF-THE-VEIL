@@ -358,5 +358,8 @@
    "screen": "cook",
    "prompt": "PROMPT_COOK"
   }
- ]
+ ],
+ "dress": {
+  "theme": "home"
+ }
 }

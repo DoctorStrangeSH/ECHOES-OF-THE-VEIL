@@ -163,3 +163,27 @@ area_size = Vector2(30, 10)
 prompt_key = "PROMPT_EXIT"
 target_scene_id = &"cavenmouth"
 target_spawn_id = &"post_front"
+
+[node name="Dress88_41" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(88, 41)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_427.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.478,0.416,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="DressPlant0" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(26, 142)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_14.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.247,0.435,0.310, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="DressPlant1" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(26, 66)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_16.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.247,0.435,0.310, 1)
+collision_size = Vector2(10, 6)
+collision_offset = Vector2(0, -3)

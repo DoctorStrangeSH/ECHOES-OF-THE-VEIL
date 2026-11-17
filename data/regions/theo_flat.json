@@ -328,5 +328,8 @@
     "FLAVOR_THEO_PHOTOS"
    ]
   }
- ]
+ ],
+ "dress": {
+  "theme": "home"
+ }
 }

@@ -106,5 +106,8 @@
    "spawn": "from_office",
    "prompt": "PROMPT_EXIT"
   }
- ]
+ ],
+ "dress": {
+  "theme": "office"
+ }
 }

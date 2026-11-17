@@ -302,5 +302,8 @@
    "kind": "encounter",
    "flag": "echo.cleared"
   }
- ]
+ ],
+ "dress": {
+  "theme": "home"
+ }
 }

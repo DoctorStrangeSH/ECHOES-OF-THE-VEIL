@@ -1330,6 +1330,16 @@ func test_debug_act_starts_reach_every_act() -> void:
 	GameState.reset_for_new_game()
 
 
+func test_blob_terrain_masks() -> void:
+	var rows := PackedStringArray(["sssss", "sggg.", "sggg.", "sssss"])
+	# A 3x2 grass patch on pavement, open to the right ('.' is empty).
+	check(TilePainter.blob_mask(rows, 1, 1, "g") == TilePainter.E | TilePainter.S | TilePainter.SE, "top-left corner tile joins east and south")
+	check(TilePainter.blob_mask(rows, 2, 1, "g") == TilePainter.E | TilePainter.S | TilePainter.W | TilePainter.SE | TilePainter.SW, "top edge tile")
+	check(TilePainter.blob_mask(PackedStringArray(["g"]), 0, 0, "g") == 255, "terrain running off the map has no border")
+	var blob: Variant = DataFiles.read_json("res://data/tiles/blob47.json")
+	check(blob is Dictionary and blob["tiles"].size() == 47 and blob["tiles"].has("255") and blob["tiles"].has("0"), "47-tile blob table")
+
+
 func test_expedition_board_and_rewards() -> void:
 	GameState.reset_for_new_game()
 	check(not Expedition.unlocked() and not Expedition.start(Expedition.offers()[0]), "locked before the ending")

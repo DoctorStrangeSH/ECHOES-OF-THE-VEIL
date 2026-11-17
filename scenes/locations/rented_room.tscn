@@ -283,3 +283,11 @@ position = Vector2(232, 74)
 interaction_id = &"use_home_stove"
 screen = "cook"
 prompt_key = "PROMPT_COOK"
+
+[node name="Dress38_45" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(38, 45)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/7_Art_Singles/Art_Singles_42.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.478,0.416,0.353, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)

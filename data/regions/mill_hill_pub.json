@@ -195,5 +195,8 @@
    "screen": "cards:millstone",
    "prompt": "PROMPT_CARDS"
   }
- ]
+ ],
+ "dress": {
+  "theme": "tavern"
+ }
 }
