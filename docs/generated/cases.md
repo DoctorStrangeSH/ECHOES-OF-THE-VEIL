@@ -422,3 +422,15 @@ flowchart LR
   case_salt_tunnels_START(("start")) --> case_salt_tunnels_seals
 ```
 
+## case_number_13 — Number Thirteen
+
+```mermaid
+flowchart LR
+  case_number_13_night["night<br/>After dark, go to the gap between numbe…"]
+  case_number_13_inside["inside<br/>Inside number 13. Find what the Abbotts…"]
+  case_number_13_night --> case_number_13_inside
+  case_number_13_out_restored(["outcome: restored<br/>Number 13 stands on Rowan Ter…"])
+  case_number_13_out_photo(["outcome: photo<br/>The Abbotts' photograph stand…"])
+  case_number_13_START(("start")) --> case_number_13_night
+```
+

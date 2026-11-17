@@ -1,0 +1,867 @@
+{
+ "id": "rowan_terrace",
+ "name_key": "LOC_ROWAN_TERRACE",
+ "palette": "greyford_exterior",
+ "options": {
+  "outdoors": true
+ },
+ "layout": [
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggooooooggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggooooooggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggooooooggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggooooooggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggooooooggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggooooooggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggooooooggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggooooooggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggooooooggggggggggggggggggggggggggggggggggg",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg",
+  "gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg"
+ ],
+ "nodes": [
+  {
+   "template": "building",
+   "tex": "@house/Victorian_House_7_16x16.png",
+   "x": 64,
+   "y": 272,
+   "name": "No10",
+   "depth": 60,
+   "inset": 6,
+   "inspect": {
+    "id": "inspect_rt_10",
+    "lines": [
+     "FLAVOR_RT_10"
+    ],
+    "width": 30
+   }
+  },
+  {
+   "template": "building",
+   "tex": "@house/Victorian_House_7_16x16.png",
+   "x": 160,
+   "y": 272,
+   "name": "No11",
+   "depth": 60,
+   "inset": 6,
+   "inspect": {
+    "id": "inspect_rt_11",
+    "lines": [
+     "FLAVOR_RT_11"
+    ],
+    "width": 30
+   }
+  },
+  {
+   "template": "building",
+   "tex": "@house/Victorian_House_7_16x16.png",
+   "x": 256,
+   "y": 272,
+   "name": "No12",
+   "depth": 60,
+   "inset": 6,
+   "inspect": {
+    "id": "inspect_rt_12",
+    "lines": [
+     "FLAVOR_RT_12"
+    ],
+    "width": 30
+   }
+  },
+  {
+   "template": "building",
+   "tex": "@house/Victorian_House_7_16x16.png",
+   "x": 352,
+   "y": 272,
+   "name": "No13",
+   "depth": 60,
+   "inset": 6,
+   "door": {
+    "id": "door_rt_13",
+    "scene": "number_13",
+    "spawn": "entrance",
+    "spawn_id": "from_13",
+    "x": 352,
+    "prompt": "PROMPT_ENTER_13"
+   },
+   "show_if": {
+    "flag": "terrace.13.restored"
+   }
+  },
+  {
+   "template": "building",
+   "tex": "@house/Victorian_House_7_16x16.png",
+   "x": 352,
+   "y": 272,
+   "name": "No13Night",
+   "depth": 60,
+   "inset": 6,
+   "show_if": {
+    "all": [
+     {
+      "quest_active": "case_number_13"
+     },
+     {
+      "period": "night"
+     },
+     {
+      "not_flag": "terrace.13.restored"
+     }
+    ]
+   },
+   "door": {
+    "id": "door_rt_13_night",
+    "scene": "number_13",
+    "spawn": "entrance",
+    "spawn_id": "from_13n",
+    "x": 352,
+    "prompt": "PROMPT_DOOR_THAT_ISNT"
+   }
+  },
+  {
+   "template": "building",
+   "tex": "@house/Victorian_House_7_16x16.png",
+   "x": 448,
+   "y": 272,
+   "name": "No14",
+   "depth": 60,
+   "inset": 6,
+   "inspect": {
+    "id": "inspect_rt_14",
+    "lines": [
+     "FLAVOR_RT_14"
+    ],
+    "width": 30
+   }
+  },
+  {
+   "template": "building",
+   "tex": "@house/Victorian_House_5_16x16.png",
+   "x": 640,
+   "y": 272,
+   "name": "No15",
+   "depth": 70,
+   "inset": 6,
+   "inspect": {
+    "id": "inspect_rt_15",
+    "lines": [
+     "FLAVOR_RT_15"
+    ],
+    "width": 40
+   }
+  },
+  {
+   "template": "building",
+   "tex": "@house/Victorian_House_7_16x16.png",
+   "x": 832,
+   "y": 272,
+   "name": "No17",
+   "depth": 60,
+   "inset": 6,
+   "inspect": {
+    "id": "inspect_rt_17",
+    "lines": [
+     "FLAVOR_RT_SHOP"
+    ],
+    "width": 30
+   }
+  },
+  {
+   "kind": "screen",
+   "name": "ShopUse",
+   "id": "use_rt_shop",
+   "x": 832,
+   "y": 280,
+   "screen": "shop:terrace_shop",
+   "prompt": "PROMPT_ENTER_SHOP"
+  },
+  {
+   "kind": "prop",
+   "name": "ShopSign",
+   "tex": "@farm/Sign_1_16x16.png",
+   "x": 880,
+   "y": 276,
+   "color": "#a07040",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "GapWall1",
+   "tex": "@house/Fence_3_Bottom_Left_16x16.png",
+   "x": 312,
+   "y": 240,
+   "color": "#806050",
+   "col": [
+    16,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "show_if": {
+    "not_flag": "terrace.13.restored"
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "GapWall2",
+   "tex": "@house/Fence_3_Bottom_Middle_16x16.png",
+   "x": 328,
+   "y": 240,
+   "color": "#806050",
+   "col": [
+    16,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "show_if": {
+    "not_flag": "terrace.13.restored"
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "GapWall3",
+   "tex": "@house/Fence_3_Bottom_Middle_16x16.png",
+   "x": 344,
+   "y": 240,
+   "color": "#806050",
+   "col": [
+    16,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "show_if": {
+    "not_flag": "terrace.13.restored"
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "GapWall4",
+   "tex": "@house/Fence_3_Bottom_Middle_16x16.png",
+   "x": 360,
+   "y": 240,
+   "color": "#806050",
+   "col": [
+    16,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "show_if": {
+    "not_flag": "terrace.13.restored"
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "GapWall5",
+   "tex": "@house/Fence_3_Bottom_Middle_16x16.png",
+   "x": 376,
+   "y": 240,
+   "color": "#806050",
+   "col": [
+    16,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "show_if": {
+    "not_flag": "terrace.13.restored"
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "GapWall6",
+   "tex": "@house/Fence_3_Bottom_Right_16x16.png",
+   "x": 392,
+   "y": 240,
+   "color": "#806050",
+   "col": [
+    16,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "show_if": {
+    "not_flag": "terrace.13.restored"
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "GapBin",
+   "tex": "@city/Trashbin_7.png",
+   "x": 330,
+   "y": 260,
+   "color": "#8a8a8a",
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ],
+   "show_if": {
+    "not_flag": "terrace.13.restored"
+   }
+  },
+  {
+   "kind": "inspect",
+   "name": "GapLook",
+   "id": "inspect_rt_gap",
+   "x": 352,
+   "y": 262,
+   "area": [
+    60,
+    16
+   ],
+   "dialogue": "rt_gap",
+   "priority": 15,
+   "show_if": {
+    "not_flag": "terrace.13.restored"
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "From13",
+   "id": "from_13",
+   "x": 352,
+   "y": 290,
+   "facing": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp1",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 112,
+   "y": 298,
+   "color": "#707070",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp2",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 400,
+   "y": 298,
+   "color": "#707070",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp3",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 592,
+   "y": 298,
+   "color": "#707070",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Lamp4",
+   "tex": "@city/Street_Lamp_5.png",
+   "x": 784,
+   "y": 298,
+   "color": "#707070",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Phone",
+   "tex": "@city/Phone_Booth_1.png",
+   "x": 200,
+   "y": 392,
+   "color": "#a03030",
+   "col": [
+    18,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "BusStopSign",
+   "tex": "@vehicle/Bus_Stop_Sign_1.png",
+   "x": 560,
+   "y": 392,
+   "color": "#3060a0",
+   "col": [
+    6,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "screen",
+   "name": "BusStopUse",
+   "id": "use_rt_bus",
+   "x": 560,
+   "y": 400,
+   "screen": "map:travel",
+   "prompt": "PROMPT_BUS"
+  },
+  {
+   "kind": "spawn",
+   "name": "BusStopSpawn",
+   "id": "bus_stop",
+   "x": 560,
+   "y": 408,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Bench1",
+   "tex": "@city/Bench_2.png",
+   "x": 640,
+   "y": 392,
+   "color": "#8a8a8a",
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Bin1",
+   "tex": "@city/Trashbin_7.png",
+   "x": 700,
+   "y": 392,
+   "color": "#8a8a8a",
+   "col": [
+    12,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Bush1",
+   "tex": "@garden/Bush_3.png",
+   "x": 60,
+   "y": 430,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Bush2",
+   "tex": "@garden/Bush_4.png",
+   "x": 300,
+   "y": 460,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Bush3",
+   "tex": "@garden/Bush_5.png",
+   "x": 820,
+   "y": 440,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Bush4",
+   "tex": "@garden/Bush_6.png",
+   "x": 900,
+   "y": 470,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Bush5",
+   "tex": "@garden/Bush_7.png",
+   "x": 440,
+   "y": 470,
+   "color": "#3f7f3f",
+   "col": [
+    14,
+    6
+   ],
+   "off": [
+    0,
+    -3
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Shed",
+   "tex": "@garden/Brown_Wood_Storage.png",
+   "x": 120,
+   "y": 470,
+   "color": "#806040",
+   "col": [
+    40,
+    12
+   ],
+   "off": [
+    0,
+    -6
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Birdhouse",
+   "tex": "@garden/Blue_Big_Bird_House.png",
+   "x": 740,
+   "y": 430,
+   "color": "#8a8a8a",
+   "col": [
+    8,
+    4
+   ],
+   "off": [
+    0,
+    -2
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "ChalkLook",
+   "id": "inspect_rt_chalk",
+   "x": 360,
+   "y": 300,
+   "area": [
+    40,
+    10
+   ],
+   "lines": [
+    "FLAVOR_RT_CHALK"
+   ]
+  },
+  {
+   "template": "anchors",
+   "points": {
+    "ivy_gate": [
+     256,
+     292
+    ],
+    "shop_door": [
+     832,
+     292
+    ],
+    "stoop_13": [
+     352,
+     292
+    ],
+    "green": [
+     480,
+     450
+    ]
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "Tree1",
+   "tex": "@ftree/Tree_Oak_Green_Big_16x16.png",
+   "x": 40,
+   "y": 420,
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#3f7f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "Tree2",
+   "tex": "@ftree/Tree_Birch_Green_Medium_16x16.png",
+   "x": 560,
+   "y": 470,
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#3f7f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "Tree3",
+   "tex": "@ftree/Tree_Oak_Green_Big_16x16.png",
+   "x": 910,
+   "y": 430,
+   "col": [
+    14,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#3f7f3f"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers1",
+   "tex": "@farm/Grass_Tufts_Flowers_1.png",
+   "x": 200,
+   "y": 450,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers2",
+   "tex": "@farm/Grass_Tufts_Flowers_2.png",
+   "x": 260,
+   "y": 470,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers3",
+   "tex": "@farm/Grass_Tufts_Flowers_3.png",
+   "x": 660,
+   "y": 450,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers4",
+   "tex": "@farm/Grass_Tufts_Flowers_4.png",
+   "x": 700,
+   "y": 470,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers5",
+   "tex": "@farm/Grass_Tufts_Flowers_5.png",
+   "x": 380,
+   "y": 440,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers6",
+   "tex": "@farm/Grass_Tufts_Flowers_6.png",
+   "x": 860,
+   "y": 460,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Flowers7",
+   "tex": "@farm/Grass_Tufts_Flowers_7.png",
+   "x": 160,
+   "y": 430,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "layer": "FloorDecor",
+   "color": "#5a9a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Bench2",
+   "tex": "@city/Bench_2.png",
+   "x": 440,
+   "y": 456,
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#8a6a4a"
+  },
+  {
+   "kind": "prop",
+   "name": "Cart",
+   "tex": "@garden/Big_Wood_Cart_Full_2.png",
+   "x": 800,
+   "y": 470,
+   "col": [
+    30,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#806040"
+  }
+ ]
+}

@@ -1,5 +1,5 @@
 {
- "_doc": "City map (R2d). Districts: map position (on a 360x200 canvas), the scenes they contain (interiors count as their street), the bus stop spawn, and when the district is known. Bus rides cost a fare and take time.",
+ "_doc": "City map (R2d). Districts: map position (on a 360x200 canvas), the scenes they contain (interiors count as their street), the bus stop spawn, and when the district is known. Bus rides cost a fare and take time. map_size: draw a district smaller than the others (where the map is crowded).",
  "fare": 2,
  "ride_minutes": 20,
  "districts": {
@@ -237,7 +237,7 @@
    "known_if": {},
    "map_at": [
     2,
-    100
+    94
    ],
    "stop_at": [
     320,
@@ -286,6 +286,38 @@
      "hours": "MAP_HOURS_ALWAYS"
     }
    ]
+  },
+  "terraces": {
+   "name": "MAP_TERRACES",
+   "pos": [
+    205,
+    150
+   ],
+   "scenes": [
+    "rowan_terrace",
+    "number_13"
+   ],
+   "stop": [
+    "rowan_terrace",
+    "bus_stop"
+   ],
+   "open_if": {},
+   "known_if": {},
+   "map_at": [
+    2,
+    168
+   ],
+   "stop_at": [
+    560,
+    408
+   ],
+   "places": [
+    {
+     "name": "MAP_PLACE_CORNER_SHOP",
+     "hours": "MAP_HOURS_BAKERY"
+    }
+   ],
+   "map_size": 0.7
   }
  },
  "roads": [
@@ -316,6 +348,14 @@
   [
    "old_quarter",
    "airfield"
+  ],
+  [
+   "terraces",
+   "harbour"
+  ],
+  [
+   "terraces",
+   "gardens"
   ]
  ],
  "map_scale": 0.125,

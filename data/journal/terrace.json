@@ -1,0 +1,24 @@
+{
+ "cases": {
+  "case_number_13": {
+   "title": "CASE_N13_TITLE",
+   "summary": "CASE_N13_SUMMARY",
+   "first_stage": "night",
+   "stages": {
+    "night": "CASE_N13_NIGHT",
+    "inside": "CASE_N13_INSIDE"
+   },
+   "outcomes": {
+    "restored": "CASE_N13_RESTORED",
+    "photo": "CASE_N13_PHOTO"
+   },
+   "transitions": {
+    "night": [
+     "inside"
+    ]
+   }
+  }
+ },
+ "evidence": {},
+ "hypotheses": {}
+}

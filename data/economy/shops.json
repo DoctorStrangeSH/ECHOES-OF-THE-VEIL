@@ -189,5 +189,23 @@
    }
   ],
   "sells_to": true
+ },
+ "terrace_shop": {
+  "name": "SHOP_TERRACE",
+  "buy": [
+   {
+    "item": "sandwich",
+    "price": 3
+   },
+   {
+    "item": "ploughmans",
+    "price": 7
+   },
+   {
+    "item": "cider",
+    "price": 4
+   }
+  ],
+  "sells_to": true
  }
 }

@@ -135,8 +135,9 @@ func _origin() -> Vector2:
 	return Vector2(8, TOP + 8)
 
 
-func _scale() -> float:
-	return float(CityMap.data().get("map_scale", 0.125))
+func _scale(id: String = "") -> float:
+	var k := float(CityMap.districts().get(id, {}).get("map_size", 1.0)) if id != "" else 1.0
+	return float(CityMap.data().get("map_scale", 0.125)) * k
 
 
 func _at(id: String) -> Vector2:
@@ -279,7 +280,7 @@ func _draw_map() -> void:
 		# Bus stop.
 		var stop_at: Variant = CityMap.districts()[id].get("stop_at")
 		if stop_at != null:
-			var sp := r.position + Vector2(float(stop_at[0]), float(stop_at[1])) * _scale()
+			var sp := r.position + Vector2(float(stop_at[0]), float(stop_at[1])) * _scale(id)
 			_root.draw_rect(Rect2(sp - Vector2(4, 4), Vector2(8, 8)), Color(0.25, 0.45, 0.85))
 			_root.draw_string(font, sp + Vector2(-2.5, 3.5), "B", HORIZONTAL_ALIGNMENT_LEFT, -1, 7, Color.WHITE)
 		if id == quest_d:
@@ -288,7 +289,7 @@ func _draw_map() -> void:
 			var pl := SceneFlow.current_location.get("player") as Node2D if SceneFlow.current_location != null else null
 			var pos := r.get_center()
 			if pl != null and CityMap.districts()[id]["scenes"][0] == String(GameState.current_scene_id):
-				pos = r.position + pl.global_position * _scale()
+				pos = r.position + pl.global_position * _scale(id)
 			var pulse := 3.0 + sin(_t * 6.0) * 1.0
 			_root.draw_circle(pos, pulse + 1.5, Color(0.1, 0.08, 0.05))
 			_root.draw_circle(pos, pulse, Color(1.0, 0.85, 0.3))

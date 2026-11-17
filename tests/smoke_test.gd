@@ -719,6 +719,7 @@ func _farm_story() -> void:
 	await _frames(5)
 	await _companion_bonds()
 	await _salt_tunnels()
+	await _number_13()
 	await _millwood_story()
 	await _mill_hill_story()
 	await _cavenmouth_story()
@@ -765,6 +766,42 @@ func _millwood_story() -> void:
 	await _talk(&"ada", {"npc": &"ada_fenwick"}, ["FORD_TO_BELL"])
 	await _finish_dialogue()
 	_assert(Journal.case_status(&"case_drowned_ford") == Journal.STATUS_DONE and Inventory.has(&"ford_bell"), "laid to rest; the clapper")
+
+
+## R2e: Rowan Terrace goes 12, 14; at night a door appears in the gap.
+func _number_13() -> void:
+	_step = "terrace: Ivy"
+	WorldClock.wait_until_hour(10)
+	SceneFlow.travel(&"rowan_terrace", &"bus_stop")
+	await _wait_location(&"rowan_terrace")
+	await _frames(10)
+	_assert(CityMap.district_of(&"rowan_terrace") == "terraces" and CityMap.known("terraces"), "the terrace is on the bus map")
+	await _talk(&"ivy", {"npc": &"ivy_pelham"}, ["IVY_ASK_GAP", "MARKET_BYE"])
+	await _finish_dialogue()
+	_assert(Journal.case_stage(&"case_number_13") == &"night", "Ivy remembers number 13")
+	var door := _find_named("No13Night") as CanvasItem
+	_assert(door != null and not door.visible, "by day the gap is only a gap")
+	WorldClock.wait_until_hour(23)
+	await _frames(10)
+	_assert(door.visible, "after dark, a green door with a brass 13")
+	_step = "terrace: inside number 13"
+	SceneFlow.travel(&"number_13", &"entrance")
+	await _wait_location(&"number_13")
+	await _frames(20)
+	await _finish_dialogue()
+	_assert(Journal.case_stage(&"case_number_13") == &"inside", "inside a kitchen in 1962")
+	await _clear_enemies()
+	await _frames(10)
+	await _talk(&"n13_photo", {}, ["N13_RESTORE"])
+	await _finish_dialogue()
+	_assert(GameState.has_flag(&"terrace.13.restored") and Journal.case_status(&"case_number_13") == Journal.STATUS_DONE, "a chalked 13: the house is back")
+	SceneFlow.travel(&"rowan_terrace", &"from_13")
+	await _wait_location(&"rowan_terrace")
+	await _frames(10)
+	var house := _find_named("No13") as CanvasItem
+	_assert(house != null and house.visible, "number 13 stands between 12 and 14")
+	WorldClock.wait_until_hour(10)
+	_assert(NpcRegistry.resolve(&"peggy_abbott").get("scene", "") == "rowan_terrace", "Peggy Abbott sits on her step")
 
 
 ## R9a: the salt tunnels under the harbour, a dungeon with two branches,

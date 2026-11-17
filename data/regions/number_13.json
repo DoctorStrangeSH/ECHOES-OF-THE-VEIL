@@ -1,0 +1,170 @@
+{
+ "id": "number_13",
+ "name_key": "LOC_NUMBER_13",
+ "palette": "rented_room",
+ "options": {
+  "outdoors": false,
+  "combat_enabled": true,
+  "fixed_tint": {
+   "color": [
+    0.78,
+    0.84,
+    1.0,
+    1.0
+   ]
+  },
+  "enter_dialogue_id": "n13_enter",
+  "enter_condition": {
+   "not_flag": "n13.entered"
+  },
+  "music": "veil"
+ },
+ "layout": {
+  "generator": "room",
+  "width": 18,
+  "height": 11,
+  "door_x": 8
+ },
+ "nodes": [
+  {
+   "kind": "furn",
+   "furn": "window",
+   "x": 72,
+   "y": 62
+  },
+  {
+   "kind": "furn",
+   "furn": "window",
+   "x": 200,
+   "y": 62
+  },
+  {
+   "kind": "furn",
+   "furn": "stove",
+   "x": 120,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "fridge",
+   "x": 168,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "sink",
+   "x": 136,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "table_wood",
+   "x": 136,
+   "y": 120
+  },
+  {
+   "kind": "furn",
+   "furn": "chair_wood",
+   "x": 112,
+   "y": 118
+  },
+  {
+   "kind": "furn",
+   "furn": "chair_wood_b",
+   "x": 160,
+   "y": 118
+  },
+  {
+   "kind": "furn",
+   "furn": "grandfather_clock",
+   "x": 40,
+   "y": 64
+  },
+  {
+   "kind": "furn",
+   "furn": "rug_round",
+   "x": 136,
+   "y": 150
+  },
+  {
+   "kind": "inspect",
+   "name": "Photo",
+   "id": "inspect_n13_photo",
+   "x": 136,
+   "y": 124,
+   "area": [
+    36,
+    14
+   ],
+   "dialogue": "n13_photo",
+   "priority": 20
+  },
+  {
+   "kind": "inspect",
+   "name": "Clock",
+   "id": "inspect_n13_clock",
+   "x": 40,
+   "y": 72,
+   "area": [
+    20,
+    12
+   ],
+   "lines": [
+    "FLAVOR_N13_CLOCK"
+   ]
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo1",
+   "id": "n13_1",
+   "x": 70,
+   "y": 130,
+   "variant": "hollow"
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo2",
+   "id": "n13_2",
+   "x": 220,
+   "y": 110,
+   "variant": "doubled"
+  },
+  {
+   "kind": "enemy",
+   "name": "Echo3",
+   "id": "n13_3",
+   "x": 200,
+   "y": 150,
+   "variant": "clinger"
+  },
+  {
+   "kind": "encounter",
+   "flag": "n13.cleared"
+  },
+  {
+   "kind": "spawn",
+   "name": "Entrance",
+   "id": "entrance",
+   "x": 136,
+   "y": 156,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "ExitDoor",
+   "id": "door_n13_exit",
+   "x": 136,
+   "y": 172,
+   "area": [
+    30,
+    10
+   ],
+   "scene": "rowan_terrace",
+   "spawn": "from_13",
+   "prompt": "PROMPT_EXIT"
+  }
+ ]
+}

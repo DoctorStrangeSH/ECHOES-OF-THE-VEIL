@@ -1,0 +1,428 @@
+{
+ "ivy": {
+  "entries": [
+   {
+    "if": {
+     "all": [
+      {
+       "has_item": "abbott_photo"
+      }
+     ]
+    },
+    "node": "ph1"
+   },
+   {
+    "if": {
+     "quest_outcome": [
+      "case_number_13",
+      "restored"
+     ]
+    },
+    "node": "after_r"
+   },
+   {
+    "if": {
+     "quest_outcome": [
+      "case_number_13",
+      "photo"
+     ]
+    },
+    "node": "after_p"
+   },
+   {
+    "if": {
+     "not_flag": "met.ivy"
+    },
+    "node": "i1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "i1": {
+    "text": "IVY_INTRO_1",
+    "next": "i2",
+    "effects": [
+     {
+      "set_flag": "met.ivy"
+     }
+    ]
+   },
+   "i2": {
+    "text": "IVY_INTRO_2",
+    "next": "hub",
+    "speaker": "NPC_IVY"
+   },
+   "hub": {
+    "speaker": "NPC_IVY",
+    "text": "IVY_HUB",
+    "choices": [
+     {
+      "text": "IVY_ASK_GAP",
+      "if": {
+       "not_quest_started": "case_number_13"
+      },
+      "next": "g1"
+     },
+     {
+      "text": "IVY_ASK_GAP_AGAIN",
+      "if": {
+       "quest_active": "case_number_13"
+      },
+      "next": "again"
+     },
+     {
+      "text": "IVY_ASK_STREET",
+      "next": "street"
+     },
+     {
+      "text": "MARKET_BYE",
+      "next": null
+     }
+    ]
+   },
+   "g1": {
+    "text": "IVY_GAP_1",
+    "next": "g2",
+    "speaker": "NPC_IVY"
+   },
+   "g2": {
+    "text": "IVY_GAP_2",
+    "next": "g3",
+    "speaker": "NPC_IVY"
+   },
+   "g3": {
+    "text": "IVY_GAP_3",
+    "next": "hub",
+    "speaker": "NPC_IVY",
+    "effects": [
+     {
+      "quest_start": "case_number_13"
+     }
+    ]
+   },
+   "again": {
+    "text": "IVY_AGAIN",
+    "next": "hub",
+    "speaker": "NPC_IVY"
+   },
+   "street": {
+    "text": "IVY_STREET",
+    "next": "hub",
+    "speaker": "NPC_IVY"
+   },
+   "ph1": {
+    "text": "IVY_PHOTO_1",
+    "next": "ph2"
+   },
+   "ph2": {
+    "text": "IVY_PHOTO_2",
+    "next": "ph3",
+    "speaker": "NPC_IVY"
+   },
+   "ph3": {
+    "text": "IVY_PHOTO_3",
+    "next": "hub",
+    "effects": [
+     {
+      "take_item": "abbott_photo"
+     },
+     {
+      "relationship": [
+       "ivy_pelham",
+       2
+      ]
+     },
+     {
+      "give_resonance": 10
+     },
+     {
+      "give_xp": 80
+     },
+     {
+      "quest_complete": [
+       "case_number_13",
+       "photo"
+      ]
+     }
+    ]
+   },
+   "after_r": {
+    "text": "IVY_AFTER_R",
+    "next": "hub",
+    "speaker": "NPC_IVY"
+   },
+   "after_p": {
+    "text": "IVY_AFTER_P",
+    "next": "hub",
+    "speaker": "NPC_IVY"
+   }
+  }
+ },
+ "raj": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "met.raj"
+    },
+    "node": "i1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "i1": {
+    "text": "RAJ_INTRO_1",
+    "next": "i2",
+    "effects": [
+     {
+      "set_flag": "met.raj"
+     }
+    ]
+   },
+   "i2": {
+    "text": "RAJ_INTRO_2",
+    "next": "hub",
+    "speaker": "NPC_RAJ"
+   },
+   "hub": {
+    "speaker": "NPC_RAJ",
+    "text": "RAJ_HUB",
+    "choices": [
+     {
+      "text": "RAJ_ASK_TERRACE",
+      "next": "t"
+     },
+     {
+      "text": "RAJ_ASK_13",
+      "next": "n"
+     },
+     {
+      "text": "MARKET_BYE",
+      "next": null
+     }
+    ]
+   },
+   "t": {
+    "text": "RAJ_TERRACE",
+    "next": "hub",
+    "speaker": "NPC_RAJ"
+   },
+   "n": {
+    "text": "RAJ_13",
+    "next": "hub",
+    "speaker": "NPC_RAJ"
+   }
+  }
+ },
+ "peggy": {
+  "entries": [
+   {
+    "if": {
+     "not_flag": "met.peggy"
+    },
+    "node": "i1"
+   }
+  ],
+  "start": "hub",
+  "nodes": {
+   "i1": {
+    "text": "PEGGY_INTRO_1",
+    "next": "i2",
+    "effects": [
+     {
+      "set_flag": "met.peggy"
+     }
+    ]
+   },
+   "i2": {
+    "text": "PEGGY_INTRO_2",
+    "next": "i3",
+    "speaker": "NPC_PEGGY"
+   },
+   "i3": {
+    "text": "PEGGY_INTRO_3",
+    "next": "hub",
+    "speaker": "NPC_PEGGY"
+   },
+   "hub": {
+    "speaker": "NPC_PEGGY",
+    "text": "PEGGY_HUB",
+    "choices": [
+     {
+      "text": "PEGGY_ASK_FAMILY",
+      "next": "f"
+     },
+     {
+      "text": "MARKET_BYE",
+      "next": null
+     }
+    ]
+   },
+   "f": {
+    "text": "PEGGY_FAMILY",
+    "next": "hub",
+    "speaker": "NPC_PEGGY"
+   }
+  }
+ },
+ "rt_gap": {
+  "entries": [
+   {
+    "if": {
+     "flag": "terrace.13.restored"
+    },
+    "node": "gone"
+   },
+   {
+    "if": {
+     "all": [
+      {
+       "quest_active": "case_number_13"
+      },
+      {
+       "period": "night"
+      }
+     ]
+    },
+    "node": "night"
+   },
+   {
+    "if": {
+     "quest_active": "case_number_13"
+    },
+    "node": "day"
+   }
+  ],
+  "start": "plain",
+  "nodes": {
+   "plain": {
+    "text": "RT_GAP_PLAIN",
+    "next": null
+   },
+   "day": {
+    "text": "RT_GAP_DAY",
+    "next": null
+   },
+   "night": {
+    "text": "RT_GAP_NIGHT",
+    "next": null
+   },
+   "gone": {
+    "text": "RT_GAP_GONE",
+    "next": null
+   }
+  }
+ },
+ "n13_enter": {
+  "entries": [],
+  "start": "e1",
+  "nodes": {
+   "e1": {
+    "text": "N13_ENTER_1",
+    "next": "e2",
+    "effects": [
+     {
+      "set_flag": "n13.entered"
+     },
+     {
+      "quest_stage": [
+       "case_number_13",
+       "inside"
+      ]
+     }
+    ]
+   },
+   "e2": {
+    "text": "N13_ENTER_2",
+    "next": null
+   }
+  }
+ },
+ "n13_photo": {
+  "entries": [
+   {
+    "if": {
+     "quest_done": "case_number_13"
+    },
+    "node": "after"
+   },
+   {
+    "if": {
+     "not_flag": "n13.cleared"
+    },
+    "node": "busy"
+   }
+  ],
+  "start": "p1",
+  "nodes": {
+   "busy": {
+    "text": "N13_PHOTO_BUSY",
+    "next": null
+   },
+   "p1": {
+    "text": "N13_PHOTO_1",
+    "next": "p2"
+   },
+   "p2": {
+    "text": "N13_PHOTO_2",
+    "next": "p3"
+   },
+   "p3": {
+    "text": "N13_PHOTO_3",
+    "choices": [
+     {
+      "text": "N13_RESTORE",
+      "next": "r1",
+      "effects": [
+       {
+        "set_flag": "terrace.13.restored"
+       },
+       {
+        "faction": [
+         "unwritten",
+         1
+        ]
+       },
+       {
+        "give_resonance": 25
+       },
+       {
+        "give_xp": 100
+       },
+       {
+        "quest_complete": [
+         "case_number_13",
+         "restored"
+        ]
+       }
+      ]
+     },
+     {
+      "text": "N13_TAKE_PHOTO",
+      "next": "t1",
+      "effects": [
+       {
+        "give_item": "abbott_photo"
+       }
+      ]
+     }
+    ]
+   },
+   "r1": {
+    "text": "N13_RESTORED_1",
+    "next": "r2"
+   },
+   "r2": {
+    "text": "N13_RESTORED_2",
+    "next": null
+   },
+   "t1": {
+    "text": "N13_TAKEN",
+    "next": null
+   },
+   "after": {
+    "text": "N13_AFTER",
+    "next": null
+   }
+  }
+ }
+}
