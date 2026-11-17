@@ -1788,6 +1788,7 @@ flowchart TD
   mara_intro2["intro2<br/>Mara Venn: 'Redevelopment.' They say that word the way peo…"]
   mara_intro2 --> mara_intro3
   mara_intro3["intro3<br/>Mara Venn: If you see anything... strange around here, wri…"]
+  mara_intro3 --> mara_hub
   mara_hub["hub<br/>Mara Venn: Mara looks up from her notebook. 'Yes?'"]
   mara_hub -->|"What was here before the plaz… ⟨{evidence: e_door_observed, not_evidenc…⟩"| mara_plaza1
   mara_hub -->|"Why was the archive closed? ⟨{not_flag: mara.archive_talk}⟩"| mara_archive1
@@ -2030,9 +2031,11 @@ flowchart TD
   halloway_START -->|"{knows: [edda_halloway, rosalind_erased…"| halloway_rosalind
   halloway_START -->|"{has_item: letter_edda}"| halloway_dead_letter1
   halloway_intro1["intro1<br/>Edda Halloway: 'So you're my new lodger. Edda Halloway. Rent o…"]
+  halloway_intro1 --> halloway_hub
   halloway_local1["local1<br/>Edda Halloway: 'Well I never — {name}! You were this high when…"]
   halloway_local1 --> halloway_local2
   halloway_local2["local2<br/>Edda Halloway: 'Funny... I can't remember which street you liv…"]
+  halloway_local2 --> halloway_hub
   halloway_radio1["radio1<br/>Edda Halloway: 'My radio! Oh, Jonah's a dear.' She switches it…"]
   halloway_radio1 --> halloway_radio2
   halloway_radio2["radio2<br/>Static, then a calm voice: '...next stop, Lante…"]
@@ -2042,7 +2045,7 @@ flowchart TD
   halloway_radio4["radio4<br/>Edda Halloway: 'Lantern Row was before the redevelopment. Befo…"]
   halloway_hub["hub<br/>Edda Halloway: 'Settling in, dear?'"]
   halloway_hub -->|"About your note — the tram at… ⟨{evidence: e_landlord_note, not_flag: h…⟩"| halloway_note1
-  halloway_hub -->|"Did you know a street called … ⟨{evidence: e_door_observed, not_evidenc…⟩"| halloway_lr1
+  halloway_hub -->|"There's a door on the square … ⟨{evidence: e_door_observed, not_evidenc…⟩"| halloway_lr1
   halloway_hub -->|"Do you have any copper wire? ⟨{quest_stage: [case_bell, parts], all: …⟩"| halloway_wire1
   halloway_hub -->|"There's a letter for you ⟨{has_item: letter_halloway}⟩"| halloway_letter1
   halloway_hub_end_4(["end"])
@@ -2053,7 +2056,7 @@ flowchart TD
   halloway_hub -->|"Goodbye."| halloway_hub_end_7
   halloway_note1["note1<br/>Edda Halloway: 'Oh, that. Old houses make noises. That's all i…"]
   halloway_note1 --> halloway_hub
-  halloway_lr1["lr1<br/>Edda Halloway: 'Lantern Row.' She says it like a word in anoth…"]
+  halloway_lr1["lr1<br/>Edda Halloway: She is quiet for a moment. 'Lantern Row.' She s…"]
   halloway_wire1["wire1<br/>Edda Halloway: 'Harold's old radio flex. He'd have liked it to…"]
   halloway_wire1 --> halloway_hub
   halloway_letter1["letter1<br/>Edda Halloway: She reads it standing up. 'It's from Bea. My si…"]
@@ -2110,6 +2113,7 @@ flowchart TD
   ivo_intro1["intro1<br/>Ivo Calder: 'Ivo Calder. Residents' association — bins, ben…"]
   ivo_intro1 --> ivo_intro2
   ivo_intro2["intro2<br/>Ivo Calder: 'A word of advice, freely given: Greyford is ki…"]
+  ivo_intro2 --> ivo_hub
   ivo_hub["hub<br/>Ivo Calder: Ivo nods. 'Evening, neighbour.'"]
   ivo_hub -->|"Have you seen the door on the… ⟨{evidence: e_door_observed, not_evidenc…⟩"| ivo_door1
   ivo_hub -->|"Someone draws three lines und… ⟨{hypothesis: greyford_keeps_quiet, not_…⟩"| ivo_sym1
@@ -2179,6 +2183,7 @@ flowchart TD
   nadiya_intro1["intro1<br/>Nadiya Sol: 'Nadiya. Courier — parcels, letters, the occasi…"]
   nadiya_intro1 --> nadiya_intro2
   nadiya_intro2["intro2<br/>Nadiya Sol: 'You've got that new-in-town look. Everyone her…"]
+  nadiya_intro2 --> nadiya_hub
   nadiya_hub["hub<br/>Nadiya Sol: 'Delivering or receiving?'"]
   nadiya_hub -->|"The door on the plaza... ⟨{evidence: e_door_observed, not_flag: n…⟩"| nadiya_door1
   nadiya_hub -->|"What do you deliver at night?"| nadiya_work1
@@ -2776,12 +2781,23 @@ flowchart TD
   rest_ask["ask<br/>The bed creaks the way it creaked for every ten…"]
   rest_ask -->|"Rest a moment (save)"| rest_saved
   rest_ask -->|"Wait until evening (save) ⟨{period: [morning, afternoon]}⟩"| rest_waited
-  rest_ask -->|"Sleep until morning (save) ⟨{period: [evening, night]}⟩"| rest_slept
-  rest_ask_end_3(["end"])
-  rest_ask -->|"Not now"| rest_ask_end_3
+  rest_ask -->|"Sleep until morning (save) ⟨{period: [evening, night], not_flag: ni…⟩"| rest_n1
+  rest_ask -->|"Sleep until morning (save) ⟨{period: [evening, night], not_flag: ni…⟩"| rest_n1_shut
+  rest_ask -->|"Sleep until morning (save) ⟨{period: [evening, night], flag: night.…⟩"| rest_slept
+  rest_ask_end_5(["end"])
+  rest_ask -->|"Not now"| rest_ask_end_5
   rest_saved["saved<br/>You sit on the edge of the bed for a while. The…"]
   rest_waited["waited<br/>You doze off to the radiator's knocking. When y…"]
   rest_slept["slept<br/>You sleep badly. In the dream, a tram bell ring…"]
+  rest_n1["n1<br/>Sleep is slow to come. Through the wall, Mrs Ha…"]
+  rest_n1 --> rest_n1_open
+  rest_n1_open["n1_open<br/>You dream of a kitchen with one wall left undra…"]
+  rest_n1_open --> rest_n1_end
+  rest_n1_shut["n1_shut<br/>Sleep is slow to come. Through the wall, Mrs Ha…"]
+  rest_n1_shut --> rest_n1_shut2
+  rest_n1_shut2["n1_shut2<br/>You dream of the square. The door is still ther…"]
+  rest_n1_shut2 --> rest_n1_end
+  rest_n1_end["n1_end<br/>You wake at seven. There is a thin film of grey…"]
 ```
 
 ### woke_up
@@ -2900,7 +2916,7 @@ flowchart TD
   echo_entrance_START --> echo_entrance_1
   echo_entrance_1["1<br/>The door closes behind you without a sound. The…"]
   echo_entrance_1 --> echo_entrance_2
-  echo_entrance_2["2<br/>Pale shapes drift along the corridor, repeating…"]
+  echo_entrance_2["2<br/>Pale figures drift down the corridor, repeating…"]
 ```
 
 ### ghost_tram
