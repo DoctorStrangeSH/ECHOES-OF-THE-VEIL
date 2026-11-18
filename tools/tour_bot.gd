@@ -261,7 +261,7 @@ func _snap_whole(loc: Node, tag: String) -> void:
 	rect = Rect2(ground.to_global(rect.position * 16.0), rect.size * 16.0)
 	var view := get_viewport().get_visible_rect().size
 	var zoom := minf(view.x / rect.size.x, view.y / rect.size.y)
-	var saved := [cam.zoom, cam.limit_left, cam.limit_top, cam.limit_right, cam.limit_bottom, cam.position_smoothing_enabled, cam.global_position]
+	var saved := [cam.zoom, cam.limit_left, cam.limit_top, cam.limit_right, cam.limit_bottom, cam.position_smoothing_enabled, cam.global_position, cam.offset]
 	var layers := _ui_layers(true)
 	cam.limit_left = -100000
 	cam.limit_top = -100000
@@ -279,6 +279,8 @@ func _snap_whole(loc: Node, tag: String) -> void:
 	cam.limit_right = saved[3]
 	cam.limit_bottom = saved[4]
 	cam.position_smoothing_enabled = saved[5]
+	cam.offset = saved[7]
+	cam.global_position = saved[6]
 	for l in layers:
 		l.visible = true
 		l.process_mode = Node.PROCESS_MODE_INHERIT
