@@ -73,6 +73,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(20, 14)
 collision_offset = Vector2(0, -14)
+casts_shadow = true
 
 [node name="Treadmill_208_72" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(208, 72)
@@ -81,6 +82,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(20, 14)
 collision_offset = Vector2(0, -14)
+casts_shadow = true
 
 [node name="ExerciseBike_240_70" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(240, 70)
@@ -89,6 +91,7 @@ placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(16, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="ExerciseBike_262_70" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(262, 70)
@@ -97,6 +100,7 @@ placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(16, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="DumbbellRack_40_72" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(40, 72)
@@ -105,6 +109,7 @@ placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(29, 10)
 collision_offset = Vector2(0.5, -14)
+casts_shadow = true
 
 [node name="DumbbellRackB_284_72" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(284, 72)
@@ -113,6 +118,7 @@ placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(29, 10)
 collision_offset = Vector2(0.5, -14)
+casts_shadow = true
 
 [node name="BenchPress_72_124" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(72, 124)
@@ -121,6 +127,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(26, 12)
 collision_offset = Vector2(1, -12)
+casts_shadow = true
 
 [node name="WeightMachine_112_124" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(112, 124)
@@ -129,6 +136,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(29, 14)
 collision_offset = Vector2(0.5, -8)
+casts_shadow = true
 
 [node name="LegPress_256_128" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(256, 128)
@@ -137,6 +145,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(18, 14)
 collision_offset = Vector2(0, -7)
+casts_shadow = true
 
 [node name="PunchingBag_36_160" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(36, 160)
@@ -145,6 +154,7 @@ placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(14, 8)
 collision_offset = Vector2(0, -10)
+casts_shadow = true
 
 [node name="PunchingBagB_60_160" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(60, 160)
@@ -153,6 +163,7 @@ placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(14, 8)
 collision_offset = Vector2(0, -10)
+casts_shadow = true
 
 [node name="GymMat_216_150" parent="FloorDecor" instance=ExtResource("3_prop")]
 position = Vector2(216, 150)
@@ -169,6 +180,7 @@ placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(16, 6)
 collision_offset = Vector2(-1, -12)
+casts_shadow = true
 
 [node name="GymBall_270_168" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(270, 168)
@@ -177,6 +189,7 @@ placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(16, 6)
 collision_offset = Vector2(-1, -12)
+casts_shadow = true
 
 [node name="PlantTall_292_120" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(292, 120)
@@ -185,6 +198,7 @@ placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(12, 6)
 collision_offset = Vector2(0, -10)
+casts_shadow = true
 
 [node name="TreadmillLook" type="Area2D" parent="Entities"]
 position = Vector2(196, 80)

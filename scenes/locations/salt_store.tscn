@@ -74,6 +74,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(28, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="Rack5" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(264, 64)
@@ -82,6 +83,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(30, 8)
 collision_offset = Vector2(0, -4)
+casts_shadow = true
 
 [node name="Rack4" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(216, 64)
@@ -90,6 +92,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(30, 8)
 collision_offset = Vector2(0, -4)
+casts_shadow = true
 
 [node name="Rack3" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(168, 64)
@@ -98,6 +101,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(30, 8)
 collision_offset = Vector2(0, -4)
+casts_shadow = true
 
 [node name="Rack2" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(120, 64)
@@ -106,6 +110,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(30, 8)
 collision_offset = Vector2(0, -4)
+casts_shadow = true
 
 [node name="Rack1" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(72, 64)
@@ -114,6 +119,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(30, 8)
 collision_offset = Vector2(0, -4)
+casts_shadow = true
 
 [node name="Reviser" parent="Entities" instance=ExtResource("20_boss_reviser")]
 position = Vector2(176, 124)
@@ -174,6 +180,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.478,0.439,0.408, 1)
 collision_size = Vector2(28, 12)
 collision_offset = Vector2(0, -6)
+casts_shadow = true
 
 [node name="Web" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(24, 64)

@@ -65,6 +65,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.376,0.376,0.439, 1)
 collision_size = Vector2(24, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="SluiceUse" type="Area2D" parent="Entities"]
 position = Vector2(48, 72)
@@ -129,8 +130,9 @@ position = Vector2(200, 196)
 texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_97.png"
 placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.478,0.439,0.408, 1)
-collision_size = Vector2(28, 10)
-collision_offset = Vector2(0, -5)
+collision_size = Vector2(17, 10)
+collision_offset = Vector2(-6.5, -15)
+casts_shadow = true
 
 [node name="Grate1" parent="FloorDecor" instance=ExtResource("3_prop")]
 position = Vector2(120, 160)
@@ -171,13 +173,14 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.478,0.439,0.408, 1)
 collision_size = Vector2(28, 12)
 collision_offset = Vector2(0, -6)
+casts_shadow = true
 
 [node name="Sacks1" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(140, 96)
 texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Pier_Barrel_2.png"
 placeholder_size = Vector2i(16, 16)
 placeholder_color = Color(0.478,0.439,0.408, 1)
-collision_size = Vector2(26, 10)
+collision_size = Vector2(12, 10)
 collision_offset = Vector2(0, -5)
 
 [node name="Sacks2" parent="Entities" instance=ExtResource("3_prop")]
@@ -185,7 +188,7 @@ position = Vector2(400, 236)
 texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Pier_Barrel_2.png"
 placeholder_size = Vector2i(16, 16)
 placeholder_color = Color(0.478,0.439,0.408, 1)
-collision_size = Vector2(26, 10)
+collision_size = Vector2(12, 10)
 collision_offset = Vector2(0, -5)
 
 [node name="Barrel1" parent="Entities" instance=ExtResource("3_prop")]

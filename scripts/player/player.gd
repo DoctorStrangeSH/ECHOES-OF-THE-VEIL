@@ -64,6 +64,7 @@ var _look_offset := Vector2.ZERO
 
 
 func _ready() -> void:
+	add_child(ContactShadow.new(), false, Node.INTERNAL_MODE_FRONT)
 	_swing = WeaponSwing.new()
 	_swing.visible = false
 	add_child(_swing)

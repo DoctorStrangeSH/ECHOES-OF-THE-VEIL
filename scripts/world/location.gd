@@ -201,10 +201,12 @@ func _on_time_changed(_minute: int) -> void:
 # --- Presentation --------------------------------------------------------------
 
 func _update_tint() -> void:
+	var hour := WorldClock.minute_of_day / 60.0
+	if is_inside_tree():
+		Lighting.update(get_tree(), hour, outdoors and fixed_tint.a <= 0.0)
 	if fixed_tint.a > 0.0:
 		_tint.color = fixed_tint
 		return
-	var hour := WorldClock.minute_of_day / 60.0
 	var c: Color = TINT_KEYS[0][1]
 	for i in range(TINT_KEYS.size() - 1):
 		var a: Array = TINT_KEYS[i]

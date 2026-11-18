@@ -67,6 +67,7 @@ placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.627,0.565,0.753, 1)
 collision_size = Vector2(28, 12)
 collision_offset = Vector2(0, -6)
+casts_shadow = true
 
 [node name="Shimmer" type="Node" parent="Entities/Anchor"]
 script = ExtResource("9_shimmer")
@@ -78,6 +79,7 @@ placeholder_size = Vector2i(16, 80)
 placeholder_color = Color(0.439,0.408,0.565, 1)
 collision_size = Vector2(14, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="Pillar2" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(384, 96)
@@ -86,6 +88,7 @@ placeholder_size = Vector2i(16, 80)
 placeholder_color = Color(0.439,0.408,0.565, 1)
 collision_size = Vector2(14, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="Pillar3" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(32, 200)
@@ -94,6 +97,7 @@ placeholder_size = Vector2i(16, 80)
 placeholder_color = Color(0.439,0.408,0.565, 1)
 collision_size = Vector2(14, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="Pillar4" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(384, 200)
@@ -102,6 +106,7 @@ placeholder_size = Vector2i(16, 80)
 placeholder_color = Color(0.439,0.408,0.565, 1)
 collision_size = Vector2(14, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="Director" parent="Entities" instance=ExtResource("20_boss_director")]
 position = Vector2(208, 136)
@@ -132,6 +137,7 @@ placeholder_size = Vector2i(32, 64)
 placeholder_color = Color(0.376,0.376,0.439, 1)
 collision_size = Vector2(40, 12)
 collision_offset = Vector2(0, -6)
+casts_shadow = true
 
 [node name="Condition" type="Node" parent="Entities/Gate"]
 script = ExtResource("10_cond")

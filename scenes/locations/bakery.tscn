@@ -56,6 +56,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(18, 12)
 collision_offset = Vector2(6, -6)
+casts_shadow = true
 
 [node name="BreadShelfB_72_64" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(72, 64)
@@ -64,6 +65,7 @@ placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(14, 12)
 collision_offset = Vector2(0, -6)
+casts_shadow = true
 
 [node name="BreadShelf_104_64" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(104, 64)
@@ -72,6 +74,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(18, 12)
 collision_offset = Vector2(6, -6)
+casts_shadow = true
 
 [node name="Oven_184_62" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(184, 62)
@@ -80,6 +83,7 @@ placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(14, 10)
 collision_offset = Vector2(0, -10)
+casts_shadow = true
 
 [node name="Oven_200_62" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(200, 62)
@@ -88,6 +92,7 @@ placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(14, 10)
 collision_offset = Vector2(0, -10)
+casts_shadow = true
 
 [node name="Fridge_224_64" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(224, 64)
@@ -96,6 +101,7 @@ placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(14, 10)
 collision_offset = Vector2(0, -10)
+casts_shadow = true
 
 [node name="DisplayCounter_136_104" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(136, 104)
@@ -104,6 +110,7 @@ placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(28, 12)
 collision_offset = Vector2(0, -13)
+casts_shadow = true
 
 [node name="TableClothRed_56_124" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(56, 124)
@@ -112,6 +119,7 @@ placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(28, 12)
 collision_offset = Vector2(0, -16)
+casts_shadow = true
 
 [node name="StoolWood_36_124" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(36, 124)
@@ -136,6 +144,7 @@ placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(28, 12)
 collision_offset = Vector2(0, -16)
+casts_shadow = true
 
 [node name="StoolWood_188_140" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(188, 140)
@@ -152,6 +161,7 @@ placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(10, 6)
 collision_offset = Vector2(0, -15)
+casts_shadow = true
 
 [node name="RugYellow_120_148" parent="FloorDecor" instance=ExtResource("3_prop")]
 position = Vector2(120, 148)
@@ -207,6 +217,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(19, 12)
 collision_offset = Vector2(5.5, -16)
+casts_shadow = true
 
 [node name="CounterRight_200_110" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(200, 110)
@@ -215,6 +226,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(19, 12)
 collision_offset = Vector2(-5.5, -16)
+casts_shadow = true
 
 [node name="Dress148_37" parent="FloorDecor" instance=ExtResource("3_prop")]
 position = Vector2(148, 37)
@@ -231,3 +243,4 @@ placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.247,0.435,0.310, 1)
 collision_size = Vector2(10, 6)
 collision_offset = Vector2(0, -3)
+casts_shadow = true

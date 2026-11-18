@@ -74,6 +74,7 @@ placeholder_size = Vector2i(96, 160)
 placeholder_color = Color(0.545,0.435,0.333, 1)
 collision_size = Vector2(96, 150)
 collision_offset = Vector2(0, -75)
+casts_shadow = true
 
 [node name="Condo_5_1" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(208, 240)
@@ -82,6 +83,7 @@ placeholder_size = Vector2i(96, 176)
 placeholder_color = Color(0.373,0.639,0.710, 1)
 collision_size = Vector2(96, 166)
 collision_offset = Vector2(0, -83)
+casts_shadow = true
 
 [node name="Hardware_Store_Example" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(464, 240)
@@ -90,6 +92,7 @@ placeholder_size = Vector2i(128, 144)
 placeholder_color = Color(0.608,0.608,0.659, 1)
 collision_size = Vector2(128, 134)
 collision_offset = Vector2(0, -67)
+casts_shadow = true
 
 [node name="Condo_5_3" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(576, 240)
@@ -98,6 +101,7 @@ placeholder_size = Vector2i(96, 176)
 placeholder_color = Color(0.788,0.698,0.353, 1)
 collision_size = Vector2(96, 166)
 collision_offset = Vector2(0, -83)
+casts_shadow = true
 
 [node name="ImpossibleDoor" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(328, 160)
@@ -106,6 +110,7 @@ placeholder_size = Vector2i(80, 64)
 placeholder_color = Color(0.435,0.498,0.690, 1)
 collision_size = Vector2(76, 36)
 collision_offset = Vector2(0, -32)
+casts_shadow = true
 
 [node name="Shimmer" type="Node" parent="Entities/ImpossibleDoor"]
 script = ExtResource("9_shimmer")
@@ -121,6 +126,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.478,0.655,0.780, 1)
 collision_size = Vector2(28, 16)
 collision_offset = Vector2(0, -8)
+casts_shadow = true
 
 [node name="InfoSign" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(290, 248)
@@ -129,6 +135,7 @@ placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.816,0.816,0.816, 1)
 collision_size = Vector2(10, 4)
 collision_offset = Vector2(0, -2)
+casts_shadow = true
 
 [node name="Mailbox" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(150, 252)
@@ -137,14 +144,16 @@ placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.541,0.353,0.227, 1)
 collision_size = Vector2(12, 6)
 collision_offset = Vector2(0, -3)
+casts_shadow = true
 
 [node name="Trashbin" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(392, 252)
 texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Trashbin_7.png"
 placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.333,0.333,0.333, 1)
-collision_size = Vector2(12, 6)
-collision_offset = Vector2(0, -3)
+collision_size = Vector2(5, 6)
+collision_offset = Vector2(-0.5, -4)
+casts_shadow = true
 
 [node name="StreetLamp1" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(40, 282)
@@ -153,6 +162,10 @@ placeholder_size = Vector2i(16, 64)
 placeholder_color = Color(0.267,0.267,0.333, 1)
 collision_size = Vector2(6, 4)
 collision_offset = Vector2(0, -2)
+light_color = Color(1.00, 0.82, 0.50, 1)
+light_offset = Vector2(0, -54)
+light_radius = 60
+casts_shadow = true
 
 [node name="StreetLamp2" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(248, 282)
@@ -161,6 +174,10 @@ placeholder_size = Vector2i(16, 64)
 placeholder_color = Color(0.267,0.267,0.333, 1)
 collision_size = Vector2(6, 4)
 collision_offset = Vector2(0, -2)
+light_color = Color(1.00, 0.82, 0.50, 1)
+light_offset = Vector2(0, -54)
+light_radius = 60
+casts_shadow = true
 
 [node name="StreetLamp3" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(408, 282)
@@ -169,6 +186,10 @@ placeholder_size = Vector2i(16, 64)
 placeholder_color = Color(0.267,0.267,0.333, 1)
 collision_size = Vector2(6, 4)
 collision_offset = Vector2(0, -2)
+light_color = Color(1.00, 0.82, 0.50, 1)
+light_offset = Vector2(0, -54)
+light_radius = 60
+casts_shadow = true
 
 [node name="StreetLamp4" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(600, 282)
@@ -177,6 +198,10 @@ placeholder_size = Vector2i(16, 64)
 placeholder_color = Color(0.267,0.267,0.333, 1)
 collision_size = Vector2(6, 4)
 collision_offset = Vector2(0, -2)
+light_color = Color(1.00, 0.82, 0.50, 1)
+light_offset = Vector2(0, -54)
+light_radius = 60
+casts_shadow = true
 
 [node name="Tree1" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(40, 404)
@@ -185,6 +210,7 @@ placeholder_size = Vector2i(48, 64)
 placeholder_color = Color(0.247,0.498,0.247, 1)
 collision_size = Vector2(14, 8)
 collision_offset = Vector2(0, -4)
+casts_shadow = true
 
 [node name="Tree2" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(216, 404)
@@ -193,6 +219,7 @@ placeholder_size = Vector2i(48, 64)
 placeholder_color = Color(0.247,0.498,0.247, 1)
 collision_size = Vector2(14, 8)
 collision_offset = Vector2(0, -4)
+casts_shadow = true
 
 [node name="Tree3" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(440, 404)
@@ -201,6 +228,7 @@ placeholder_size = Vector2i(48, 64)
 placeholder_color = Color(0.247,0.498,0.247, 1)
 collision_size = Vector2(14, 8)
 collision_offset = Vector2(0, -4)
+casts_shadow = true
 
 [node name="Tree4" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(616, 404)
@@ -209,6 +237,7 @@ placeholder_size = Vector2i(48, 64)
 placeholder_color = Color(0.247,0.498,0.247, 1)
 collision_size = Vector2(14, 8)
 collision_offset = Vector2(0, -4)
+casts_shadow = true
 
 [node name="Bench1" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(120, 396)
@@ -217,6 +246,7 @@ placeholder_size = Vector2i(48, 32)
 placeholder_color = Color(0.627,0.439,0.251, 1)
 collision_size = Vector2(44, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="Bench2" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(528, 396)
@@ -225,6 +255,7 @@ placeholder_size = Vector2i(48, 32)
 placeholder_color = Color(0.627,0.439,0.251, 1)
 collision_size = Vector2(44, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="Flowers1" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(168, 392)
@@ -265,6 +296,7 @@ placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.188,0.376,0.627, 1)
 collision_size = Vector2(6, 4)
 collision_offset = Vector2(0, -2)
+casts_shadow = true
 
 [node name="Arrival" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(320, 372)
@@ -314,6 +346,7 @@ placeholder_size = Vector2i(48, 48)
 placeholder_color = Color(0.627,0.376,0.188, 1)
 collision_size = Vector2(40, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="Condition" type="Node" parent="Entities/RepairCart"]
 script = ExtResource("10_cond")
@@ -360,6 +393,7 @@ placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.627,0.251,0.251, 1)
 collision_size = Vector2(6, 4)
 collision_offset = Vector2(0, -2)
+casts_shadow = true
 
 [node name="Shimmer" type="Node" parent="Entities/GhostTramStop"]
 script = ExtResource("9_shimmer")
@@ -866,6 +900,7 @@ placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.376,0.502,0.627, 1)
 collision_size = Vector2(10, 6)
 collision_offset = Vector2(0, -3)
+casts_shadow = true
 
 [node name="MyCar" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(150, 344)
@@ -874,6 +909,7 @@ placeholder_size = Vector2i(64, 48)
 placeholder_color = Color(0.251,0.627,0.502, 1)
 collision_size = Vector2(56, 20)
 collision_offset = Vector2(0, -10)
+casts_shadow = true
 
 [node name="Condition" type="Node" parent="Entities/MyCar"]
 script = ExtResource("10_cond")

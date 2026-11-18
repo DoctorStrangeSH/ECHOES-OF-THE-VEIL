@@ -65,6 +65,7 @@ placeholder_size = Vector2i(48, 64)
 placeholder_color = Color(0.478,0.439,0.408, 1)
 collision_size = Vector2(40, 20)
 collision_offset = Vector2(0, -12)
+casts_shadow = true
 
 [node name="ToHarbour" type="Area2D" parent="Entities"]
 position = Vector2(56, 104)
@@ -104,21 +105,23 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.478,0.439,0.408, 1)
 collision_size = Vector2(28, 12)
 collision_offset = Vector2(0, -6)
+casts_shadow = true
 
 [node name="Crate2" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(330, 100)
 texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_97.png"
 placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.478,0.439,0.408, 1)
-collision_size = Vector2(28, 12)
-collision_offset = Vector2(0, -6)
+collision_size = Vector2(17, 12)
+collision_offset = Vector2(-6.5, -16)
+casts_shadow = true
 
 [node name="Sacks" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(290, 200)
 texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/11_Camping_Singles_16x16/ME_Singles_Camping_16x16_Pier_Barrel_2.png"
 placeholder_size = Vector2i(16, 16)
 placeholder_color = Color(0.478,0.439,0.408, 1)
-collision_size = Vector2(26, 10)
+collision_size = Vector2(12, 10)
 collision_offset = Vector2(0, -5)
 
 [node name="Barrel" parent="Entities" instance=ExtResource("3_prop")]
@@ -144,6 +147,7 @@ placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.314,0.314,0.376, 1)
 collision_size = Vector2(16, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="Condition" type="Node" parent="Entities/BarsL"]
 script = ExtResource("10_cond")
@@ -156,6 +160,7 @@ placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.314,0.314,0.376, 1)
 collision_size = Vector2(16, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="Condition" type="Node" parent="Entities/BarsR"]
 script = ExtResource("10_cond")

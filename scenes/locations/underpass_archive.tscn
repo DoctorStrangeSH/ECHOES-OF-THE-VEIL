@@ -91,6 +91,7 @@ placeholder_size = Vector2i(32, 64)
 placeholder_color = Color(0.376,0.376,0.439, 1)
 collision_size = Vector2(28, 40)
 collision_offset = Vector2(0, -20)
+casts_shadow = true
 
 [node name="Condition" type="Node" parent="Entities/Gate"]
 script = ExtResource("10_cond")
