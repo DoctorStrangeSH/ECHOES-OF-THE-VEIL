@@ -65,6 +65,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(30, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="ShelfLook1" type="Area2D" parent="Entities"]
 position = Vector2(56, 72)
@@ -80,6 +81,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(30, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="ShelfLook2" type="Area2D" parent="Entities"]
 position = Vector2(96, 72)
@@ -95,6 +97,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(30, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="ShelfLook3" type="Area2D" parent="Entities"]
 position = Vector2(136, 72)
@@ -115,6 +118,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(30, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="ShelfLook4" type="Area2D" parent="Entities"]
 position = Vector2(176, 72)
@@ -130,6 +134,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(30, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="ShelfLook5" type="Area2D" parent="Entities"]
 position = Vector2(216, 72)
@@ -145,6 +150,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(30, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="ShelfLook6" type="Area2D" parent="Entities"]
 position = Vector2(256, 72)
@@ -179,6 +185,7 @@ placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(28, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="Key" parent="Entities" instance=ExtResource("16_pickup")]
 position = Vector2(440, 136)
@@ -193,6 +200,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.478,0.439,0.408, 1)
 collision_size = Vector2(28, 12)
 collision_offset = Vector2(0, -6)
+casts_shadow = true
 
 [node name="Web" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(488, 64)

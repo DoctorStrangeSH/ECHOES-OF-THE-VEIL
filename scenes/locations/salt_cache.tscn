@@ -55,8 +55,9 @@ position = Vector2(96, 72)
 texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_95.png"
 placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.478,0.439,0.408, 1)
-collision_size = Vector2(28, 10)
-collision_offset = Vector2(0, -5)
+collision_size = Vector2(17, 10)
+collision_offset = Vector2(6.5, -15)
+casts_shadow = true
 
 [node name="Charm" parent="Entities" instance=ExtResource("16_pickup")]
 position = Vector2(96, 88)

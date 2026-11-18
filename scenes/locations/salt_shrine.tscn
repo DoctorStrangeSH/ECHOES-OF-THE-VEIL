@@ -57,6 +57,7 @@ placeholder_size = Vector2i(48, 32)
 placeholder_color = Color(0.439,0.439,0.439, 1)
 collision_size = Vector2(44, 12)
 collision_offset = Vector2(0, -6)
+casts_shadow = true
 
 [node name="Lost" type="Area2D" parent="Entities"]
 position = Vector2(96, 88)
@@ -79,6 +80,9 @@ placeholder_size = Vector2i(16, 16)
 placeholder_color = Color(0.878,0.627,0.251, 1)
 collision_size = Vector2(6, 4)
 collision_offset = Vector2(0, -2)
+light_color = Color(1.00, 0.65, 0.30, 1)
+light_offset = Vector2(0, -11)
+light_radius = 22
 
 [node name="Candle2" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(40, 76)
@@ -87,6 +91,9 @@ placeholder_size = Vector2i(16, 16)
 placeholder_color = Color(0.878,0.627,0.251, 1)
 collision_size = Vector2(6, 4)
 collision_offset = Vector2(0, -2)
+light_color = Color(1.00, 0.65, 0.30, 1)
+light_offset = Vector2(0, -11)
+light_radius = 22
 
 [node name="Entrance" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(96, 116)

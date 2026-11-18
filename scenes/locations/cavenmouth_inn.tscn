@@ -73,6 +73,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(30, 10)
 collision_offset = Vector2(0, -13)
+casts_shadow = true
 
 [node name="BookcaseBottles_152_64" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(152, 64)
@@ -81,6 +82,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(30, 10)
 collision_offset = Vector2(0, -13)
+casts_shadow = true
 
 [node name="CounterLeft_120_104" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(120, 104)
@@ -89,6 +91,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(19, 12)
 collision_offset = Vector2(5.5, -16)
+casts_shadow = true
 
 [node name="CounterRight_152_104" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(152, 104)
@@ -97,6 +100,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(19, 12)
 collision_offset = Vector2(-5.5, -16)
+casts_shadow = true
 
 [node name="Fireplace_40_64" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(40, 64)
@@ -105,6 +109,10 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(30, 12)
 collision_offset = Vector2(0, -14)
+light_color = Color(1.00, 0.55, 0.25, 1)
+light_offset = Vector2(0, -17)
+light_radius = 56
+casts_shadow = true
 
 [node name="TableWood_56_120" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(56, 120)
@@ -113,6 +121,7 @@ placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(28, 12)
 collision_offset = Vector2(0, -12)
+casts_shadow = true
 
 [node name="ChairWood_36_118" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(36, 118)
@@ -121,6 +130,7 @@ placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(10, 6)
 collision_offset = Vector2(0, -12)
+casts_shadow = true
 
 [node name="ChairWoodB_76_118" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(76, 118)
@@ -129,6 +139,7 @@ placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(10, 6)
 collision_offset = Vector2(0, -12)
+casts_shadow = true
 
 [node name="TableWoodB_220_124" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(220, 124)
@@ -137,6 +148,7 @@ placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(28, 12)
 collision_offset = Vector2(0, -12)
+casts_shadow = true
 
 [node name="StoolWood_200_124" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(200, 124)
@@ -161,6 +173,7 @@ placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(14, 30)
 collision_offset = Vector2(0, -25)
+casts_shadow = true
 
 [node name="Nightstand_236_70" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(236, 70)
@@ -169,6 +182,7 @@ placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(13, 8)
 collision_offset = Vector2(0.5, -10)
+casts_shadow = true
 
 [node name="RugCheck_140_150" parent="FloorDecor" instance=ExtResource("3_prop")]
 position = Vector2(140, 150)
@@ -185,6 +199,7 @@ placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(12, 6)
 collision_offset = Vector2(0, -10)
+casts_shadow = true
 
 [node name="GrandfatherClock_184_64" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(184, 64)
@@ -193,6 +208,7 @@ placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(14, 8)
 collision_offset = Vector2(0, -12)
+casts_shadow = true
 
 [node name="InnBed" type="Area2D" parent="Entities"]
 position = Vector2(256, 88)
@@ -254,6 +270,7 @@ placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.247,0.435,0.310, 1)
 collision_size = Vector2(10, 6)
 collision_offset = Vector2(0, -3)
+casts_shadow = true
 
 [node name="DressPlant1" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(262, 158)
@@ -262,3 +279,4 @@ placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.247,0.435,0.310, 1)
 collision_size = Vector2(10, 6)
 collision_offset = Vector2(0, -3)
+casts_shadow = true

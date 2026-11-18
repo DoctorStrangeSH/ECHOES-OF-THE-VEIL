@@ -105,6 +105,7 @@ placeholder_size = Vector2i(48, 32)
 placeholder_color = Color(0.753,0.439,0.188, 1)
 collision_size = Vector2(46, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="MapMonitor" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(150, 120)
@@ -113,6 +114,7 @@ placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.251,0.314,0.439, 1)
 collision_size = Vector2(28, 8)
 collision_offset = Vector2(0, -4)
+casts_shadow = true
 
 [node name="Pillar1" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(448, 176)
@@ -121,6 +123,7 @@ placeholder_size = Vector2i(16, 80)
 placeholder_color = Color(0.439,0.439,0.502, 1)
 collision_size = Vector2(14, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="Pillar2" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(448, 256)
@@ -129,6 +132,7 @@ placeholder_size = Vector2i(16, 80)
 placeholder_color = Color(0.439,0.439,0.502, 1)
 collision_size = Vector2(14, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="Pillar3" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(624, 176)
@@ -137,6 +141,7 @@ placeholder_size = Vector2i(16, 80)
 placeholder_color = Color(0.439,0.439,0.502, 1)
 collision_size = Vector2(14, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="Pillar4" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(624, 256)
@@ -145,14 +150,16 @@ placeholder_size = Vector2i(16, 80)
 placeholder_color = Color(0.439,0.439,0.502, 1)
 collision_size = Vector2(14, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="SosBox" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(680, 124)
 texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_SOS_Box.png"
 placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.753,0.188,0.188, 1)
-collision_size = Vector2(28, 8)
-collision_offset = Vector2(0, -4)
+collision_size = Vector2(16, 8)
+collision_offset = Vector2(1, -5)
+casts_shadow = true
 
 [node name="SosBoxUse" type="Area2D" parent="Entities"]
 position = Vector2(680, 132)
@@ -178,6 +185,7 @@ placeholder_size = Vector2i(32, 64)
 placeholder_color = Color(0.376,0.376,0.439, 1)
 collision_size = Vector2(28, 40)
 collision_offset = Vector2(0, -20)
+casts_shadow = true
 
 [node name="Condition" type="Node" parent="Entities/Gate"]
 script = ExtResource("10_cond")

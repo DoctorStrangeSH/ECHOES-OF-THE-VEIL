@@ -63,8 +63,9 @@ position = Vector2(40, 64)
 texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_55.png"
 placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.376,0.251, 1)
-collision_size = Vector2(28, 8)
-collision_offset = Vector2(0, -4)
+collision_size = Vector2(21, 8)
+collision_offset = Vector2(0.5, -10)
+casts_shadow = true
 
 [node name="Lamp" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(312, 64)
@@ -73,6 +74,10 @@ placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.878,0.816,0.690, 1)
 collision_size = Vector2(8, 6)
 collision_offset = Vector2(0, -3)
+light_color = Color(1.00, 0.85, 0.60, 1)
+light_offset = Vector2(0, -41)
+light_radius = 44
+casts_shadow = true
 
 [node name="Bed" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(32, 180)
@@ -81,6 +86,7 @@ placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.816,0.627,0.690, 1)
 collision_size = Vector2(14, 40)
 collision_offset = Vector2(0, -20)
+casts_shadow = true
 
 [node name="Toys" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(320, 180)
@@ -196,6 +202,9 @@ placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.478,0.416,0.353, 1)
 collision_size = Vector2(0, 0)
 collision_offset = Vector2(0, 0)
+light_color = Color(1.00, 0.80, 0.50, 1)
+light_offset = Vector2(0, -16)
+light_radius = 36
 
 [node name="Dress239_37" parent="FloorDecor" instance=ExtResource("3_prop")]
 position = Vector2(239, 37)
@@ -220,6 +229,7 @@ placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.247,0.435,0.310, 1)
 collision_size = Vector2(10, 6)
 collision_offset = Vector2(0, -3)
+casts_shadow = true
 
 [node name="DressPlant1" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(326, 206)
@@ -228,3 +238,4 @@ placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.247,0.435,0.310, 1)
 collision_size = Vector2(10, 6)
 collision_offset = Vector2(0, -3)
+casts_shadow = true

@@ -55,6 +55,32 @@ def resolve_tex(t):
 FURNITURE = None
 
 
+# Things that give light after dark: texture name fragment -> (colour,
+# height of the light above the base as a fraction of the sprite, radius).
+LIGHTS = [('Street_Lamp', (1.0, 0.82, 0.5), 0.85, 60), ('Light_Tower', (0.95, 0.95, 1.0), 0.9, 80),
+          ('Candle', (1.0, 0.65, 0.3), 0.7, 22), ('Lantern', (1.0, 0.75, 0.4), 0.6, 34),
+          ('Campfire', (1.0, 0.55, 0.25), 0.3, 64), ('Example_Lighthouse', (1.0, 0.9, 0.6), 0.88, 96),
+          ('Living_Room_Singles_31.', (1.0, 0.8, 0.5), 0.8, 40), ('Living_Room_Singles_82.', (1.0, 0.75, 0.5), 0.85, 44),
+          ('Living_Room_Singles_87.', (1.0, 0.85, 0.6), 0.85, 44), ('Bedroom_Singles_541.', (1.0, 0.8, 0.5), 0.8, 34),
+          ('Living_Room_Singles_107.', (1.0, 0.55, 0.25), 0.35, 56), ('Living_Room_Singles_113.', (1.0, 0.55, 0.25), 0.35, 56),
+          ('Bedroom_Singles_471.', (1.0, 0.8, 0.5), 0.5, 36)]
+
+
+def light_of(n):
+    tex = resolve_tex(n['tex'])
+    for frag, col, frac, rad in LIGHTS:
+        if frag in tex:
+            h = n['region'][3] if n.get('region') else n['ph'][1]
+            return col, -round(h * frac), rad
+    return None
+
+
+def casts_shadow(n):
+    """Tall things standing in the world (not flat decor, not hangings)."""
+    h = n['region'][3] if n.get('region') else n['ph'][1]
+    return n.get('layer', 'Entities') == 'Entities' and h >= 24 and n['col'][0] > 0
+
+
 def furn_to_prop(n, ctx):
     """A furniture-library item (data/world/furniture.json) as a prop whose
     collision hugs the sprite's visible pixels."""
@@ -67,6 +93,7 @@ def furn_to_prop(n, ctx):
     f = FURNITURE[fid]
     p = {k: v for k, v in n.items() if k not in ('furn', 'kind', 'depth')}
     p['kind'] = 'prop'
+    p['furn_fit'] = True
     p['tex'] = f['tex']
     p.setdefault('name', fid.title().replace('_', '') + '_%d_%d' % (n['x'], n['y']))
     p.setdefault('color', '#8a7a6a')
@@ -84,6 +111,33 @@ def furn_to_prop(n, ctx):
         p['col'] = [max(4, bw - 2), depth]
         p['off'] = [(bb[0] + bb[2]) / 2 - w / 2, -h + bb[3] - depth / 2]
     return p
+
+
+def fit_small_collision(n):
+    """Low things (flower beds, tombs, crates, signs) block exactly as wide as
+    their solid pixels at the ground, so you neither bump into air beside them
+    nor walk through their edges. Tall things and trees keep their hand-set
+    trunk or base box."""
+    if n['col'][0] <= 0 or n.get('furn_fit') or 'Tree' in n['tex'] or n.get('keep_col'):
+        return n
+    h = n['region'][3] if n.get('region') else n['ph'][1]
+    if h > 32:
+        return n
+    try:
+        import footprint as _fp
+        fp = _fp.footprint(local(resolve_tex(n['tex'])), n.get('region'))
+    except Exception:
+        return n
+    if not fp:
+        return n
+    x0, x1, bottom, w, _h = fp
+    fw = x1 - x0
+    if abs(fw - n['col'][0]) <= 4:
+        return n
+    n = dict(n)
+    n['col'] = [max(4, fw - 2), n['col'][1]]
+    n['off'] = [(x0 + x1) / 2 - w / 2 if not n.get('flip') else w / 2 - (x0 + x1) / 2, n['off'][1] - (h - bottom)]
+    return n
 
 
 def finish_prop(n):
@@ -125,7 +179,7 @@ def expand(nodes, ctx):
                 # Thin strips were easy to miss by a few pixels; anything you
                 # can read or look at is at least 20x16.
                 n = dict(n, area=[max(n['area'][0], 20), max(n['area'][1], 16)])
-            out.append(finish_prop(n) if n['kind'] == 'prop' else n)
+            out.append(fit_small_collision(finish_prop(n)) if n['kind'] == 'prop' else n)
     return out
 
 
@@ -306,6 +360,11 @@ def write_tscn(path, loc_id, name_key, palette, layout, nodes, margin=0, opts=No
                  f'placeholder_color = Color.html("{n["color"]}")' if False else f'placeholder_color = Color({",".join(f"{c/255:.3f}" for c in bytes.fromhex(n["color"][1:]))}, 1)',
                  f'collision_size = {v(*n["col"])}', f'collision_offset = {v(*n["off"])}']
             if n.get('region'): L.append('region = Rect2(%d, %d, %d, %d)' % tuple(n['region']))
+            lt = light_of(n)
+            if lt:
+                L += ['light_color = Color(%.2f, %.2f, %.2f, 1)' % lt[0], f'light_offset = {v(0, lt[1])}', f'light_radius = {lt[2]:g}']
+            if casts_shadow(n):
+                L.append('casts_shadow = true')
             for ch in n['children']:
                 L+=['',f'[node name="{ch}" type="Node" parent="{n["layer"]}/{n["name"]}"]','script = ExtResource("9_shimmer")']
             if n.get('show_if') is not None:

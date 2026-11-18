@@ -77,6 +77,7 @@ placeholder_size = Vector2i(160, 112)
 placeholder_color = Color(0.753,0.188,0.188, 1)
 collision_size = Vector2(120, 40)
 collision_offset = Vector2(0, -20)
+casts_shadow = true
 
 [node name="FlightDesk" parent="Entities" instance=ExtResource("18_screen")]
 position = Vector2(440, 222)
@@ -91,6 +92,7 @@ placeholder_size = Vector2i(96, 96)
 placeholder_color = Color(0.541,0.498,0.600, 1)
 collision_size = Vector2(88, 40)
 collision_offset = Vector2(0, -20)
+casts_shadow = true
 
 [node name="TerminalLook" type="Area2D" parent="Entities"]
 position = Vector2(470, 222)
@@ -104,8 +106,9 @@ position = Vector2(80, 120)
 texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/3_City_Props_Singles_16x16/ME_Singles_City_Props_16x16_Hydrant_1.png"
 placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.753,0.188,0.188, 1)
-collision_size = Vector2(8, 4)
-collision_offset = Vector2(0, -2)
+collision_size = Vector2(11, 4)
+collision_offset = Vector2(-0.5, -4)
+casts_shadow = true
 
 [node name="Cone1" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(104, 60)
@@ -130,6 +133,10 @@ placeholder_size = Vector2i(64, 64)
 placeholder_color = Color(0.502,0.502,0.502, 1)
 collision_size = Vector2(16, 8)
 collision_offset = Vector2(0, -4)
+light_color = Color(0.95, 0.95, 1.00, 1)
+light_offset = Vector2(0, -58)
+light_radius = 80
+casts_shadow = true
 
 [node name="BusStopSign" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(320, 248)
@@ -138,6 +145,7 @@ placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.188,0.376,0.627, 1)
 collision_size = Vector2(6, 4)
 collision_offset = Vector2(0, -2)
+casts_shadow = true
 
 [node name="BusStopUse" parent="Entities" instance=ExtResource("18_screen")]
 position = Vector2(320, 256)
@@ -169,6 +177,7 @@ placeholder_size = Vector2i(80, 96)
 placeholder_color = Color(0.247,0.498,0.247, 1)
 collision_size = Vector2(14, 8)
 collision_offset = Vector2(0, -4)
+casts_shadow = true
 
 [node name="Tree2" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(600, 100)
@@ -177,6 +186,7 @@ placeholder_size = Vector2i(80, 96)
 placeholder_color = Color(0.247,0.498,0.247, 1)
 collision_size = Vector2(14, 8)
 collision_offset = Vector2(0, -4)
+casts_shadow = true
 
 [node name="Tree3" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(44, 200)
@@ -185,6 +195,7 @@ placeholder_size = Vector2i(80, 96)
 placeholder_color = Color(0.247,0.498,0.247, 1)
 collision_size = Vector2(14, 8)
 collision_offset = Vector2(0, -4)
+casts_shadow = true
 
 [node name="Tree4" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(596, 200)
@@ -193,6 +204,7 @@ placeholder_size = Vector2i(80, 96)
 placeholder_color = Color(0.247,0.498,0.247, 1)
 collision_size = Vector2(14, 8)
 collision_offset = Vector2(0, -4)
+casts_shadow = true
 
 [node name="MyCar" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(150, 290)
@@ -201,6 +213,7 @@ placeholder_size = Vector2i(64, 48)
 placeholder_color = Color(0.251,0.627,0.502, 1)
 collision_size = Vector2(56, 20)
 collision_offset = Vector2(0, -10)
+casts_shadow = true
 
 [node name="Condition" type="Node" parent="Entities/MyCar"]
 script = ExtResource("10_cond")

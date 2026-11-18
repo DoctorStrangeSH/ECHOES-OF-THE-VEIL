@@ -73,6 +73,7 @@ placeholder_size = Vector2i(16, 80)
 placeholder_color = Color(0.502,0.502,0.565, 1)
 collision_size = Vector2(14, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="Pillar2" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(96, 184)
@@ -81,6 +82,7 @@ placeholder_size = Vector2i(16, 80)
 placeholder_color = Color(0.502,0.502,0.565, 1)
 collision_size = Vector2(14, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="Pillar3" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(384, 120)
@@ -89,6 +91,7 @@ placeholder_size = Vector2i(16, 80)
 placeholder_color = Color(0.502,0.502,0.565, 1)
 collision_size = Vector2(14, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="Pillar4" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(384, 184)
@@ -97,6 +100,7 @@ placeholder_size = Vector2i(16, 80)
 placeholder_color = Color(0.502,0.502,0.565, 1)
 collision_size = Vector2(14, 10)
 collision_offset = Vector2(0, -5)
+casts_shadow = true
 
 [node name="Bench" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(240, 104)

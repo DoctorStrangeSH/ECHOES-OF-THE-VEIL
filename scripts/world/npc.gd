@@ -38,6 +38,7 @@ func _ready() -> void:
 	collision_mask = 0
 	_configure()
 	if not Engine.is_editor_hint():
+		add_child(ContactShadow.new(), false, Node.INTERNAL_MODE_FRONT)
 		_talk.interacted.connect(_on_talked)
 		DialogueService.dialogue_ended.connect(_on_dialogue_ended)
 
