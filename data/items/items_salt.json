@@ -5,7 +5,8 @@
   "desc": "ITEM_TALLY_KEY_DESC",
   "color": "#a08040",
   "value": 0,
-  "stack": 1
+  "stack": 1,
+  "icon": "raven_icons/raven_16x16.png#2,11"
  },
  "salt_charm": {
   "category": "trinket",
@@ -16,7 +17,8 @@
   "mods": {
    "dodge_cooldown_mult": 0.8,
    "speed_mult": 1.05
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#14,23"
  },
  "silver_tally": {
   "category": "valuable",
@@ -24,6 +26,7 @@
   "desc": "ITEM_SILVER_TALLY_DESC",
   "color": "#c0c0d0",
   "value": 40,
-  "stack": 1
+  "stack": 1,
+  "icon": "raven_icons/raven_16x16.png#3,9"
  }
 }

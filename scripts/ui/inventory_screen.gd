@@ -5,11 +5,13 @@ extends CanvasLayer
 
 const FILTERS: PackedStringArray = ["", "weapon", "trinket", "consumable", "material", "farm", "key"]
 
+const GRID_COLUMNS := 6
 const RARITY_COLORS := {"common": UiTheme.INK, "uncommon": UiTheme.GOOD, "rare": UiTheme.BLUE, "epic": Color(0.45, 0.2, 0.6), "legendary": UiTheme.GOLD}
 var _dim: ColorRect
 var _hero: LayeredCharacterSprite
 var _hero_name: Label
 var _hero_gear: Label
+var _equip := {}
 var _title: Label
 var _summary: Label
 var _tabs: HBoxContainer
@@ -94,7 +96,7 @@ func _refresh() -> void:
 	var trinket_name := tr(Inventory.def(trinket).get("name", "")) if trinket != &"" else tr("CC_NONE")
 	_summary.text = tr("INV_SUMMARY") % [weapon_name, trinket_name, Inventory.money, Inventory.resonance]
 	_hero_name.text = GameState.player_name
-	_hero_gear.text = "%s\n%s\n%s" % [tr("INV_HERO_LEVEL") % Progression.level, weapon_name, trinket_name]
+	_hero_gear.text = tr("INV_HERO_LEVEL") % Progression.level
 	for i in _tabs.get_child_count():
 		var b := _tabs.get_child(i) as Button
 		b.button_pressed = (i == 0 and _tab == "items") or (i == 1 and _tab == "attunements")
@@ -116,31 +118,53 @@ func _refresh() -> void:
 
 
 func _fill_items() -> void:
+	_refresh_equip_slots()
 	var ids := Inventory.list(_filter)
 	if ids.is_empty():
 		_list.add_child(_label(tr("INV_EMPTY"), UiTheme.INK_DIM))
 		return
 	if _selected == &"" or not ids.has(_selected):
 		_selected = ids[0]
+	# A bag of squares: click to look, double-click to use or wear, drag to
+	# rearrange or onto the hero to wear.
+	var grid := GridContainer.new()
+	grid.columns = GRID_COLUMNS
+	grid.add_theme_constant_override("h_separation", 2)
+	grid.add_theme_constant_override("v_separation", 2)
+	_list.add_child(grid)
 	for id in ids:
-		var d := Inventory.def(id)
-		var b := Button.new()
-		var equipped_mark := " [E]" if Inventory.equipped.values().has(id) else ""
-		var n := Inventory.count(id)
-		b.text = tr(d.get("name", "")) + (" ×%d" % n if n > 1 else "") + equipped_mark
-		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		if d.has("icon"):
-			b.icon = AssetLibrary.load_texture(String(d["icon"]))
-			b.add_theme_constant_override("icon_max_width", 14)
-		if d.has("rarity"):
-			b.add_theme_color_override("font_color", RARITY_COLORS.get(String(d["rarity"]), UiTheme.INK))
-		b.toggle_mode = true
-		b.button_pressed = id == _selected
-		b.pressed.connect(_select.bind(id))
-		_list.add_child(b)
+		var slot := InvSlot.new().setup(id)
+		slot.button_pressed = id == _selected
+		if Inventory.equipped.values().has(id):
+			slot.modulate = Color(1, 1, 1, 0.55)  # being worn: shown on the hero
+		slot.picked.connect(_select)
+		slot.activated.connect(_activate)
+		grid.add_child(slot)
 		if id == _selected:
-			b.grab_focus.call_deferred()
+			slot.grab_focus.call_deferred()
+	# Empty squares to the end of the row and one more row: room to drop.
+	var pad := GRID_COLUMNS - ids.size() % GRID_COLUMNS + GRID_COLUMNS
+	for i in pad:
+		var empty := InvSlot.new().setup(&"")
+		empty.disabled = true
+		grid.add_child(empty)
 	_show_item(_selected)
+
+
+func _refresh_equip_slots() -> void:
+	for slot_name: String in _equip:
+		var sl: InvSlot = _equip[slot_name]
+		sl.item = Inventory.equipped.get(slot_name, &"")
+		sl.refresh()
+
+
+## Double-click: wear it, take it off, or use it.
+func _activate(id: StringName) -> void:
+	var cat := String(Inventory.def(id).get("category", ""))
+	if cat in ["weapon", "trinket"]:
+		_on_equip(id, Inventory.equipped.get(cat) == id)
+	elif cat == "consumable":
+		Inventory.use(id)
 
 
 func _show_item(id: StringName) -> void:
@@ -170,6 +194,7 @@ func _show_item(id: StringName) -> void:
 		b.text = tr("INV_USE")
 		b.pressed.connect(func() -> void: Inventory.use(id))
 		_detail.add_child(b)
+	_detail.add_child(_label(tr("INV_MOUSE_HINT"), UiTheme.INK_DIM, 7))
 
 
 func _on_equip(id: StringName, is_on: bool) -> void:
@@ -292,8 +317,20 @@ func _build() -> void:
 	_hero_gear.add_theme_color_override("font_color", UiTheme.INK_DIM)
 	_hero_gear.custom_minimum_size = Vector2(68, 0)
 	doll_box.add_child(_hero_gear)
+	var worn := HBoxContainer.new()
+	worn.alignment = BoxContainer.ALIGNMENT_CENTER
+	worn.add_theme_constant_override("separation", 4)
+	doll_box.add_child(worn)
+	for slot_name: String in ["weapon", "trinket"]:
+		var sl := InvSlot.new().setup(Inventory.equipped.get(slot_name, &""), slot_name)
+		sl.picked.connect(func(id: StringName) -> void:
+			if id != &"":
+				_select(id))
+		sl.activated.connect(_activate)
+		worn.add_child(sl)
+		_equip[slot_name] = sl
 	var left := ScrollContainer.new()
-	left.custom_minimum_size = Vector2(130, 0)
+	left.custom_minimum_size = Vector2(6 * 26 + 6, 0)
 	left.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	cols.add_child(left)
 	_list = VBoxContainer.new()

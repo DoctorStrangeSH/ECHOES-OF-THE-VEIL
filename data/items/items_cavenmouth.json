@@ -5,7 +5,8 @@
   "desc": "ITEM_LETTER_EDDA_DESC",
   "color": "#e0d0a0",
   "value": 0,
-  "stack": 1
+  "stack": 1,
+  "icon": "raven_icons/raven_16x16.png#13,5"
  },
  "letter_theo": {
   "category": "key",
@@ -13,7 +14,8 @@
   "desc": "ITEM_LETTER_THEO_DESC",
   "color": "#e0d0a0",
   "value": 0,
-  "stack": 1
+  "stack": 1,
+  "icon": "raven_icons/raven_16x16.png#14,5"
  },
  "letter_jonah": {
   "category": "key",
@@ -21,7 +23,8 @@
   "desc": "ITEM_LETTER_JONAH_DESC",
   "color": "#e0d0a0",
   "value": 0,
-  "stack": 1
+  "stack": 1,
+  "icon": "raven_icons/raven_16x16.png#15,5"
  },
  "fish_and_chips": {
   "category": "consumable",
@@ -32,7 +35,8 @@
   "stack": 9,
   "use": {
    "heal": 2
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#13,25"
  },
  "seaside_rock": {
   "category": "consumable",
@@ -43,7 +47,8 @@
   "stack": 9,
   "use": {
    "heal": 1
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#0,17"
  },
  "car_keys": {
   "category": "key",
@@ -51,7 +56,8 @@
   "desc": "ITEM_CAR_KEYS_DESC",
   "color": "#c0c0c0",
   "value": 0,
-  "stack": 1
+  "stack": 1,
+  "icon": "raven_icons/raven_16x16.png#1,11"
  },
  "agnes_card": {
   "category": "key",
@@ -59,6 +65,7 @@
   "desc": "ITEM_AGNES_CARD_DESC",
   "color": "#e0d8c0",
   "value": 0,
-  "stack": 1
+  "stack": 1,
+  "icon": "raven_icons/raven_16x16.png#4,19"
  }
 }

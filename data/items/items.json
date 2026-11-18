@@ -17,7 +17,8 @@
    "reach": 11,
    "knockback": 130,
    "style": "fists"
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#14,14"
  },
  "wrench": {
   "category": "weapon",
@@ -65,7 +66,8 @@
   "value": 8,
   "mods": {
    "max_health": 1
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#2,8"
  },
  "brass_compass": {
   "category": "trinket",
@@ -75,7 +77,8 @@
   "value": 10,
   "mods": {
    "dodge_cooldown_mult": 0.7
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#3,8"
  },
  "paper_lantern": {
   "category": "trinket",
@@ -85,7 +88,8 @@
   "value": 10,
   "mods": {
    "flash_cooldown_mult": 0.65
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#5,5"
  },
  "tea_flask": {
   "category": "consumable",
@@ -96,7 +100,8 @@
   "stack": 9,
   "use": {
    "heal": 2
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#1,3"
  },
  "sandwich": {
   "category": "consumable",
@@ -107,7 +112,8 @@
   "stack": 9,
   "use": {
    "heal": 1
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#14,31"
  },
  "ledger_page": {
   "category": "key",
@@ -116,7 +122,8 @@
   "color": "#e8e0c8",
   "value": 0,
   "stack": 1,
-  "evidence": "e_census_page"
+  "evidence": "e_census_page",
+  "icon": "raven_icons/raven_16x16.png#1,19"
  },
  "agnes_file": {
   "category": "key",
@@ -125,7 +132,8 @@
   "color": "#d8c8a0",
   "value": 0,
   "stack": 1,
-  "evidence": "e_agnes_file"
+  "evidence": "e_agnes_file",
+  "icon": "raven_icons/raven_16x16.png#0,18"
  },
  "bell_clapper": {
   "category": "key",
@@ -133,7 +141,8 @@
   "desc": "ITEM_CLAPPER_DESC",
   "color": "#c09040",
   "value": 0,
-  "stack": 1
+  "stack": 1,
+  "icon": "raven_icons/raven_16x16.png#6,7"
  },
  "copper_wire": {
   "category": "key",
@@ -141,7 +150,8 @@
   "desc": "ITEM_COPPER_WIRE_DESC",
   "color": "#c06030",
   "value": 0,
-  "stack": 1
+  "stack": 1,
+  "icon": "raven_icons/raven_16x16.png#15,12"
  },
  "tram_relay": {
   "category": "key",
@@ -149,7 +159,8 @@
   "desc": "ITEM_RELAY_DESC",
   "color": "#607080",
   "value": 0,
-  "stack": 1
+  "stack": 1,
+  "icon": "raven_icons/raven_16x16.png#1,0"
  },
  "letter_halloway": {
   "category": "key",
@@ -157,7 +168,8 @@
   "desc": "ITEM_LETTER_HALLOWAY_DESC",
   "color": "#e8e0d0",
   "value": 0,
-  "stack": 1
+  "stack": 1,
+  "icon": "raven_icons/raven_16x16.png#13,5"
  },
  "letter_lantern": {
   "category": "key",
@@ -165,7 +177,8 @@
   "desc": "ITEM_LETTER_LANTERN_DESC",
   "color": "#e8e0d0",
   "value": 0,
-  "stack": 1
+  "stack": 1,
+  "icon": "raven_icons/raven_16x16.png#14,5"
  },
  "letter_ivo": {
   "category": "key",
@@ -173,7 +186,8 @@
   "desc": "ITEM_LETTER_IVO_DESC",
   "color": "#e8e0d0",
   "value": 0,
-  "stack": 1
+  "stack": 1,
+  "icon": "raven_icons/raven_16x16.png#15,5"
  },
  "letter_reply": {
   "category": "key",
@@ -182,7 +196,8 @@
   "color": "#d0e0e8",
   "value": 0,
   "stack": 1,
-  "evidence": "e_lantern_reply"
+  "evidence": "e_lantern_reply",
+  "icon": "raven_icons/raven_16x16.png#13,5"
  },
  "scrap": {
   "category": "material",
@@ -190,7 +205,8 @@
   "desc": "ITEM_SCRAP_DESC",
   "color": "#8a8a90",
   "value": 1,
-  "stack": 99
+  "stack": 99,
+  "icon": "raven_icons/raven_16x16.png#9,12"
  },
  "repair_kit": {
   "category": "consumable",
@@ -201,6 +217,7 @@
   "stack": 20,
   "use": {
    "repair_bonus": 0.08
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#12,7"
  }
 }

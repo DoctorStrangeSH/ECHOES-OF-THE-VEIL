@@ -8,7 +8,8 @@
   "stack": 9,
   "use": {
    "heal": 3
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#13,25"
  },
  "veg_soup": {
   "category": "consumable",
@@ -26,7 +27,8 @@
     "minutes": 180,
     "desc": "MEAL_VEG_SOUP"
    }
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#0,29"
  },
  "mushroom_omelette": {
   "category": "consumable",
@@ -44,7 +46,8 @@
     "minutes": 120,
     "desc": "MEAL_MUSHROOM_OMELETTE"
    }
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#2,33"
  },
  "berry_crumble": {
   "category": "consumable",
@@ -62,7 +65,8 @@
     "minutes": 120,
     "desc": "MEAL_BERRY_CRUMBLE"
    }
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#9,32"
  },
  "fish_pie": {
   "category": "consumable",
@@ -80,7 +84,8 @@
     "minutes": 120,
     "desc": "MEAL_FISH_PIE"
    }
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#13,32"
  },
  "crab_stew": {
   "category": "consumable",
@@ -98,7 +103,8 @@
     "minutes": 180,
     "desc": "MEAL_CRAB_STEW"
    }
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#5,29"
  },
  "strawberry_tea": {
   "category": "consumable",
@@ -116,7 +122,8 @@
     "minutes": 120,
     "desc": "MEAL_STRAWBERRY_TEA"
    }
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#1,33"
  },
  "pumpkin_pie": {
   "category": "consumable",
@@ -134,6 +141,7 @@
     "minutes": 240,
     "desc": "MEAL_PUMPKIN_PIE"
    }
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#4,33"
  }
 }

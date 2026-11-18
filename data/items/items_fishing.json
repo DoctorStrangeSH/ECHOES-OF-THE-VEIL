@@ -8,7 +8,8 @@
   "stack": 20,
   "use": {
    "heal": 1
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#8,22"
  },
  "cod": {
   "category": "fish",
@@ -16,7 +17,8 @@
   "desc": "FISH_COD_DESC",
   "color": "#b0a070",
   "value": 9,
-  "stack": 20
+  "stack": 20,
+  "icon": "raven_icons/raven_16x16.png#9,22"
  },
  "plaice": {
   "category": "fish",
@@ -24,7 +26,8 @@
   "desc": "FISH_PLAICE_DESC",
   "color": "#c09060",
   "value": 10,
-  "stack": 20
+  "stack": 20,
+  "icon": "raven_icons/raven_16x16.png#15,22"
  },
  "sea_bass": {
   "category": "fish",
@@ -32,7 +35,8 @@
   "desc": "FISH_SEA_BASS_DESC",
   "color": "#a0b0c0",
   "value": 16,
-  "stack": 20
+  "stack": 20,
+  "icon": "raven_icons/raven_16x16.png#11,22"
  },
  "conger": {
   "category": "fish",
@@ -43,7 +47,8 @@
   "stack": 20,
   "use": {
    "heal": 2
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#5,21"
  },
  "harbour_crab": {
   "category": "fish",
@@ -51,7 +56,8 @@
   "desc": "FISH_CRAB_DESC",
   "color": "#d06040",
   "value": 5,
-  "stack": 20
+  "stack": 20,
+  "icon": "raven_icons/raven_16x16.png#2,22"
  },
  "herring_1962": {
   "category": "fish",
@@ -59,7 +65,8 @@
   "desc": "FISH_HERRING_1962_DESC",
   "color": "#c0e8ff",
   "value": 40,
-  "stack": 20
+  "stack": 20,
+  "icon": "raven_icons/raven_16x16.png#12,22"
  },
  "perch": {
   "category": "fish",
@@ -67,7 +74,8 @@
   "desc": "FISH_PERCH_DESC",
   "color": "#90a050",
   "value": 5,
-  "stack": 20
+  "stack": 20,
+  "icon": "raven_icons/raven_16x16.png#13,21"
  },
  "roach": {
   "category": "fish",
@@ -75,7 +83,8 @@
   "desc": "FISH_ROACH_DESC",
   "color": "#b0b0c0",
   "value": 4,
-  "stack": 20
+  "stack": 20,
+  "icon": "raven_icons/raven_16x16.png#12,21"
  },
  "pike": {
   "category": "fish",
@@ -83,7 +92,8 @@
   "desc": "FISH_PIKE_DESC",
   "color": "#607a40",
   "value": 20,
-  "stack": 20
+  "stack": 20,
+  "icon": "raven_icons/raven_16x16.png#10,22"
  },
  "carp": {
   "category": "fish",
@@ -91,7 +101,8 @@
   "desc": "FISH_CARP_DESC",
   "color": "#c0a050",
   "value": 15,
-  "stack": 20
+  "stack": 20,
+  "icon": "raven_icons/raven_16x16.png#14,21"
  },
  "bell_carp": {
   "category": "fish",
@@ -99,7 +110,8 @@
   "desc": "FISH_BELL_CARP_DESC",
   "color": "#d0d8ff",
   "value": 50,
-  "stack": 20
+  "stack": 20,
+  "icon": "raven_icons/raven_16x16.png#14,22"
  },
  "fishing_rod": {
   "category": "key",
@@ -116,6 +128,7 @@
   "desc": "FISH_LOBSTER_DESC",
   "color": "#c04030",
   "value": 22,
-  "stack": 20
+  "stack": 20,
+  "icon": "raven_icons/raven_16x16.png#5,22"
  }
 }

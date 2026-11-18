@@ -41,7 +41,7 @@ func _defaults() -> Dictionary:
 		&"interact": [_key(KEY_E), _key(KEY_ENTER), _button(JOY_BUTTON_A)],
 		&"sprint": [_key(KEY_SHIFT), _button(JOY_BUTTON_RIGHT_SHOULDER)],
 		&"attack": [_key(KEY_J), _mouse(MOUSE_BUTTON_LEFT), _button(JOY_BUTTON_X)],
-		&"dodge": [_key(KEY_K), _key(KEY_SPACE), _mouse(MOUSE_BUTTON_RIGHT), _button(JOY_BUTTON_B)],
+		&"dodge": [_key(KEY_SPACE), _key(KEY_K), _button(JOY_BUTTON_B)],
 		&"ability": [_key(KEY_Q), _key(KEY_L), _button(JOY_BUTTON_Y)],
 		&"quick_heal": [_key(KEY_R), _button(JOY_BUTTON_LEFT_SHOULDER)],
 		&"journal": [_key(KEY_TAB), _button(JOY_BUTTON_BACK)],

@@ -1,3 +1,11 @@
 {
- "sea_glass": {"category": "material", "name": "ITEM_SEA_GLASS", "desc": "ITEM_SEA_GLASS_DESC", "color": "#7ac0b0", "value": 2, "stack": 99}
+ "sea_glass": {
+  "category": "material",
+  "name": "ITEM_SEA_GLASS",
+  "desc": "ITEM_SEA_GLASS_DESC",
+  "color": "#7ac0b0",
+  "value": 2,
+  "stack": 99,
+  "icon": "raven_icons/raven_16x16.png#9,10"
+ }
 }
