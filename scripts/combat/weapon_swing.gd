@@ -7,8 +7,11 @@ var _tween: Tween
 
 
 func show_attack(icon: String, style: String, facing: Vector2, duration: float, finisher: bool) -> void:
-	var tex := AssetLibrary.load_texture(icon) if icon != "" else null
-	if tex == null or style == "fists":
+	if style == "fists" or icon == "" or icon.contains("#"):
+		visible = false
+		return
+	var tex := AssetLibrary.load_texture(icon)
+	if tex == null:
 		visible = false
 		return
 	texture = tex

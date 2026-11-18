@@ -1361,6 +1361,25 @@ func test_every_case_has_a_journal_category() -> void:
 		check((cat == "main") == bool(Journal.case_defs[id].get("main", false)), "%s: category main matches the main flag" % id)
 
 
+func test_inventory_order_and_icons() -> void:
+	Inventory.reset()
+	Inventory.add(&"tea_flask", 1, false)
+	Inventory.add(&"sandwich", 1, false)
+	Inventory.add(&"cod", 1, false)
+	check(Array(Inventory.list()) == [Inventory.DEFAULT_WEAPON, &"tea_flask", &"sandwich", &"cod"], "bag keeps the order things arrived in")
+	Inventory.move(&"cod", &"tea_flask")
+	check(Array(Inventory.list()) == [Inventory.DEFAULT_WEAPON, &"cod", &"tea_flask", &"sandwich"], "dragging puts an item before another")
+	var saved := Inventory.to_dict()
+	Inventory.reset()
+	Inventory.from_dict(saved)
+	check(Inventory.list()[1] == &"cod", "the arrangement survives a save")
+	Inventory.remove(&"cod")
+	check(not Inventory.order.has(&"cod"), "used-up items leave the arrangement")
+	for id: StringName in Inventory.item_defs:
+		check(Inventory.def(id).has("icon"), "%s has an icon" % id)
+	Inventory.reset()
+
+
 func test_expedition_board_and_rewards() -> void:
 	GameState.reset_for_new_game()
 	check(not Expedition.unlocked() and not Expedition.start(Expedition.offers()[0]), "locked before the ending")

@@ -5,7 +5,8 @@
   "desc": "ITEM_ROSARY_DESC",
   "color": "#c0b090",
   "value": 0,
-  "stack": 1
+  "stack": 1,
+  "icon": "raven_icons/raven_16x16.png#15,7"
  },
  "brigid_rosary": {
   "category": "trinket",
@@ -15,7 +16,8 @@
   "value": 25,
   "mods": {
    "max_health": 1
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#4,7"
  },
  "ploughmans": {
   "category": "consumable",
@@ -26,7 +28,8 @@
   "stack": 9,
   "use": {
    "heal": 3
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#0,31"
  },
  "cider": {
   "category": "consumable",
@@ -37,6 +40,7 @@
   "stack": 9,
   "use": {
    "heal": 1
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#6,31"
  }
 }

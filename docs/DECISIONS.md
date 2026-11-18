@@ -204,3 +204,9 @@ The interface now uses LimeZu's Modern UI pack (Style 1): paper panels in wooden
 Journal, Things, Character, Map and Game (save, load, settings, quit) are tabs of one window, the same size whichever is open (GameMenu). Tab, I, C, M and Esc open it on their tab and switch tabs while it is open; the same key again, Esc or the ✕ closes it. A row of small buttons in the corner of the screen opens the same tabs (and the wait menu) with the mouse, each labelled with its key. The Things tab shows the hero as they look now, with name, level and what they carry; "Attunements" is "Созвучия" in Russian, so it no longer reads like "Settings".
 
 Mouse: a click on the ground walks there (hold to keep walking towards the pointer), a click on anything usable walks up to it and uses it, the pointer turns into a hand over such things, and a click in a conversation finishes the line or moves on. In the Veil a click on open ground strikes towards the pointer and the right button dashes that way. Every window is clickable.
+
+## D-094 The mouse is for windows and for aiming (R13c)
+
+Playtest correction to D-093: walking stays on WASD and using things on the interact key; click-to-walk and click-to-use are gone, and so is the hand over things in the world. The mouse is for windows, for conversations (a click finishes the line or moves on) and for aiming: in the Veil a left click strikes towards the pointer. The dash moved off the right button, which is kept free; it is Space (or K).
+
+The Things tab became a bag of squares with pictures: click one to read about it, double-click to use or wear it, drag it onto another square to rearrange the bag (the arrangement is saved, Inventory.order), onto the hero's weapon or amulet slot to wear it, or out of those slots to take it off. Every item has an icon now: 68 more come from the Clockwork Raven sheet, addressed as "sheet.png#col,row" (Inventory.icon_of).

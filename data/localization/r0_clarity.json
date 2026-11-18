@@ -80,5 +80,8 @@
   "HUD_BAR_CHARACTER": {"en": "Character", "ru": "Герой"},
   "HUD_BAR_MAP": {"en": "Map", "ru": "Карта"},
   "HUD_BAR_WAIT": {"en": "Wait", "ru": "Ждать"},
-  "HUD_BAR_GAME": {"en": "Menu", "ru": "Меню"}
+  "HUD_BAR_GAME": {"en": "Menu", "ru": "Меню"},
+  "INV_SLOT_WEAPON": {"en": "Weapon: drag one here", "ru": "Оружие: перетащите сюда"},
+  "INV_SLOT_TRINKET": {"en": "Amulet: drag one here", "ru": "Амулет: перетащите сюда"},
+  "INV_MOUSE_HINT": {"en": "Double-click to use or wear. Drag to rearrange, or onto the hero's slots.", "ru": "Двойной щелчок — использовать или надеть. Перетаскивайте вещи, чтобы разложить их, или на ячейки героя."}
 }

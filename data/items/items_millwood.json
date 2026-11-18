@@ -29,7 +29,8 @@
   "desc": "ITEM_FORD_REGISTER_DESC",
   "color": "#6080a0",
   "value": 0,
-  "stack": 1
+  "stack": 1,
+  "icon": "raven_icons/raven_16x16.png#2,18"
  },
  "ford_bell": {
   "category": "trinket",
@@ -40,6 +41,7 @@
   "mods": {
    "flash_cooldown_mult": 0.85,
    "flash_radius_mult": 1.1
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#6,7"
  }
 }

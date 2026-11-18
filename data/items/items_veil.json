@@ -5,7 +5,8 @@
   "desc": "ITEM_VEIL_SHARD_DESC",
   "color": "#b0c8ff",
   "value": 0,
-  "stack": 999
+  "stack": 999,
+  "icon": "raven_icons/raven_16x16.png#12,10"
  },
  "shard_lantern": {
   "category": "trinket",
@@ -16,7 +17,8 @@
   "mods": {
    "flash_cooldown_mult": 0.75,
    "flash_radius_mult": 1.15
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#10,5"
  },
  "shard_ribbon": {
   "category": "trinket",
@@ -26,7 +28,8 @@
   "value": 0,
   "mods": {
    "max_health": 2
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#4,16"
  },
  "shard_compass": {
   "category": "trinket",
@@ -37,7 +40,8 @@
   "mods": {
    "dodge_cooldown_mult": 0.75,
    "dodge_distance_mult": 1.2
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#15,20"
  },
  "bound_index": {
   "category": "trinket",
@@ -49,6 +53,7 @@
    "max_health": 2,
    "finisher_bonus": 1,
    "flash_cooldown_mult": 0.85
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#3,18"
  }
 }

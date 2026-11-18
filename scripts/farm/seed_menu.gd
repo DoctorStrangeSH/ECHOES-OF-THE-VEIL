@@ -60,7 +60,7 @@ func open(plot_id: StringName) -> void:
 		b.text = tr("FARM_SEED_ROW") % [tr(String(d.get("name", ""))), Inventory.count(s), int(c.get("days", 1))]
 		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		if d.has("icon"):
-			b.icon = AssetLibrary.load_texture(String(d["icon"]))
+			b.icon = Inventory.icon_of(s)
 			b.add_theme_constant_override("icon_max_width", 14)
 		b.pressed.connect(_plant.bind(s))
 		_box.add_child(b)

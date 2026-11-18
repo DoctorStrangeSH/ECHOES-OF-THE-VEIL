@@ -5,6 +5,7 @@
   "desc": "ITEM_ABBOTT_PHOTO_DESC",
   "color": "#c0b0a0",
   "value": 0,
-  "stack": 1
+  "stack": 1,
+  "icon": "raven_icons/raven_16x16.png#1,18"
  }
 }

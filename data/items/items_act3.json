@@ -4,6 +4,7 @@
   "name": "ITEM_RESONATOR",
   "desc": "ITEM_RESONATOR_DESC",
   "color": "#a0d0ff",
-  "evidence": "e_resonator"
+  "evidence": "e_resonator",
+  "icon": "raven_icons/raven_16x16.png#14,20"
  }
 }

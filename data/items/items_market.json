@@ -8,7 +8,8 @@
   "stack": 9,
   "use": {
    "heal": 1
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#0,32"
  },
  "meat_pie": {
   "category": "consumable",
@@ -19,7 +20,8 @@
   "stack": 9,
   "use": {
    "heal": 3
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#5,32"
  },
  "ice_cream": {
   "category": "consumable",
@@ -30,7 +32,8 @@
   "stack": 9,
   "use": {
    "heal": 1
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#3,32"
  },
  "cocoa": {
   "category": "consumable",
@@ -41,6 +44,7 @@
   "stack": 9,
   "use": {
    "heal": 2
-  }
+  },
+  "icon": "raven_icons/raven_16x16.png#0,33"
  }
 }
