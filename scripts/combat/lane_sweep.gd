@@ -14,6 +14,10 @@ var _t := 0.0
 var _hit_done := false
 
 
+func _enter_tree() -> void:
+	add_to_group(&"threat")
+
+
 func _process(delta: float) -> void:
 	_t += delta
 	queue_redraw()
@@ -51,3 +55,14 @@ func _draw() -> void:
 		var body := Rect2(minf(head, tail), -half_height + 2, absf(head - tail), half_height * 2.0 - 4)
 		draw_rect(body, Color(0.75, 0.9, 1.0, 0.55))
 		draw_rect(body, Color(0.9, 1.0, 1.0, 0.9), false, 1.0)
+
+
+## A dodge now is perfect: the sweep is reaching `at`.
+func is_threatening(at: Vector2) -> bool:
+	if _hit_done or _t < delay - 0.22:
+		return false
+	var local := at - global_position
+	if absf(local.y) > half_height + 6.0:
+		return false
+	var head := _head_x()
+	return absf(local.x - head) < 48.0 or _t < delay

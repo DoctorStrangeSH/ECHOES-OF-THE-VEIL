@@ -39,3 +39,6 @@ signal car_parked(at: Vector2, dir: String)
 
 ## A dodge in the last instant before a blow (R15a).
 signal perfect_dodge
+
+## A boss's balance: fill 0..1, and whether it is thrown off balance now.
+signal boss_poise_changed(fill: float, open: bool)

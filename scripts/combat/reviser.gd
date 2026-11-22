@@ -10,6 +10,9 @@ extends CharacterBody2D
 
 enum State { DORMANT, STALK, LUNGE, REWRITE, SUMMON, STUNNED, DEAD }
 
+const TELL := 0.45
+var _aim := Vector2.ZERO
+
 const ECHO_SCENE := preload("res://scenes/combat/echo_enemy.tscn")
 const MOTE_SCENE := preload("res://scenes/combat/resonance_mote.tscn")
 
@@ -44,6 +47,7 @@ func _ready() -> void:
 		queue_free()
 		return
 	add_to_group(&"boss")
+	add_to_group(&"threat")
 	collision_layer = 1 << 3
 	collision_mask = 1
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
@@ -63,6 +67,7 @@ func _ready() -> void:
 	hurt.add_child(EchoEnemy._rect_shape(Vector2(18, 36), Vector2(0, -18)))
 	add_child(hurt)
 	hurt.hit.connect(_on_hit)
+	BossPoise.attach(self, hurt, health.max_health)
 	_hitbox = Hitbox.new()
 	_hitbox.team = &"enemy"
 	_hitbox.damage = 1
@@ -125,7 +130,11 @@ func _physics_process(delta: float) -> void:
 	match state:
 		State.STALK:
 			velocity = to_player.normalized() * (34.0 + 8.0 * phase())
+			# The lunge is drawn on the ground a moment before it comes (R15b).
+			_aim = to_player.normalized() if _timer <= TELL else Vector2.ZERO
+			queue_redraw()
 			if _timer <= 0.0:
+				_aim = Vector2.ZERO
 				_lunge_dir = to_player.normalized()
 				_enter(State.LUNGE, 0.4)
 				Sfx.play(&"swing", 0.05)
@@ -237,3 +246,24 @@ func _on_died() -> void:
 	var t := create_tween()
 	t.tween_property(self, "modulate:a", 0.0, 1.2)
 	t.tween_callback(queue_free)
+
+
+## Thrown off balance (BossPoise): the channel breaks, he stops.
+func break_open(seconds: float) -> void:
+	if state in [State.DORMANT, State.DEAD]:
+		return
+	if state == State.REWRITE:
+		grid.clear_all()
+	_enter(State.STUNNED, seconds)
+
+
+## A dodge now is perfect: the lunge is upon `at`.
+func is_threatening(at: Vector2) -> bool:
+	var near := global_position.distance_to(at) < 44.0
+	return (state == State.LUNGE and near) or (state == State.STALK and _timer <= 0.2 and near)
+
+
+func _draw() -> void:
+	if _aim != Vector2.ZERO and state == State.STALK:
+		var k := 1.0 - clampf(_timer / TELL, 0.0, 1.0)
+		draw_line(Vector2(0, -2), Vector2(0, -2) + _aim * 76.0, Color(1, 0.3, 0.3, 0.15 + 0.5 * k), 8.0)

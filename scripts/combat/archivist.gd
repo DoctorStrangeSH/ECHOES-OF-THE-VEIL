@@ -60,6 +60,7 @@ func _ready() -> void:
 	_hurt.add_child(EchoEnemy._rect_shape(Vector2(20, 40), Vector2(0, -20)))
 	add_child(_hurt)
 	_hurt.hit.connect(_on_hit)
+	BossPoise.attach(self, _hurt, health.max_health)
 	water = FloodWater.new()
 	water.size = arena_size
 	water.islands = islands
@@ -208,3 +209,10 @@ func _on_died() -> void:
 	var t := create_tween()
 	t.tween_property(self, "modulate:a", 0.0, 1.2)
 	t.tween_callback(queue_free)
+
+
+## Thrown off balance (BossPoise): she stays down at the surface a while.
+func break_open(seconds: float) -> void:
+	if state in [State.DORMANT, State.DEAD]:
+		return
+	_enter(State.STUNNED, seconds)

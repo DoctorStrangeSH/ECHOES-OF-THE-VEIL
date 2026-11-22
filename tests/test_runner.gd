@@ -789,6 +789,42 @@ func test_combat_depth() -> void:
 	await get_tree().process_frame
 
 
+func test_boss_balance_and_threats() -> void:
+	var room := Node2D.new()
+	add_child(room)
+	var boss := (load("res://scenes/combat/census_taker.tscn") as PackedScene).instantiate() as CensusTaker
+	GameState.set_flag(&"boss.census_taker.defeated", false)
+	room.add_child(boss)
+	var poise := boss.get_node("Poise") as BossPoise
+	check(poise != null and poise.max_value >= 4.0, "a boss has a balance")
+	boss.engage()
+	var hurt: Hurtbox = null
+	for c in boss.get_children():
+		if c is Hurtbox:
+			hurt = c
+	boss.health.invulnerability_time = 0.0
+	var hp := boss.health.health
+	while not poise.is_open() and boss.health.health > 3:
+		hurt.receive(1, boss.global_position + Vector2(0, 20), 210.0)
+	check(poise.is_open() and boss.state == CensusTaker.State.STUNNED, "hard hits throw him off balance")
+	var before := boss.health.health
+	hurt.receive(1, boss.global_position + Vector2(0, 20), 100.0)
+	check(before - boss.health.health == 2, "off balance, every hit does one more")
+	check(hp > boss.health.health, "and the hits hurt")
+	# Threats a perfect dodge reads.
+	var m := StampMarker.new()
+	m.delay = 0.5
+	room.add_child(m)
+	check(m.is_in_group(&"threat") and not m.is_threatening(Vector2.ZERO), "a stamp far from landing is no threat yet")
+	m._t = 0.4
+	check(m.is_threatening(Vector2(5, 0)) and not m.is_threatening(Vector2(80, 0)), "about to land, under it")
+	boss.state = CensusTaker.State.CHARGING
+	check(boss.is_threatening(boss.global_position + Vector2(20, 0)), "a charge upon you is a threat")
+	room.queue_free()
+	GameState.set_flag(&"boss.census_taker.defeated", false)
+	await get_tree().process_frame
+
+
 func test_campaign_acts_start_in_order() -> void:
 	GameState.reset_for_new_game()
 	GameState.is_playing = true
