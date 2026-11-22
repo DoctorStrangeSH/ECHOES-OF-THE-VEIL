@@ -25,21 +25,23 @@ script = ExtResource("1_loc")
 location_id = &"rook_shop"
 name_key = "LOC_ROOK_SHOP"
 outdoors = false
+in_place = true
 
 [node name="Ground" type="TileMapLayer" parent="."]
 script = ExtResource("2_paint")
 palette_id = "echo_corridor"
-layout = "##################
-#WWWWWWWWWWWWWWWW#
-#wwwwwwwwwwwwwwww#
-#ffffffffffffffff#
-#ffffffffffffffff#
-#ffffffffffffffff#
-#ffffffffffffffff#
-#ffffffffffffffff#
-#ffffffffffffffff#
-#ffffffffffffffff#
-########ff########"
+layout = "########
+#WWWWWW#
+#wwwwww#
+#ffffff#
+#ffffff#
+#ffffff#
+#ffffff#
+#ffffff#
+#ffffff#
+#ffffff#
+#ffffff#
+###ff###"
 
 [node name="FloorDecor" type="Node2D" parent="."]
 
@@ -50,8 +52,8 @@ y_sort_enabled = true
 
 [node name="NpcAnchors" type="Node2D" parent="."]
 
-[node name="ShelfGoods_32_64" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(32, 64)
+[node name="ShelfGoods_24_64" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(24, 64)
 texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/16_Grocery_Store_Singles_Shadowless/Grocery_Store_Singles_Shadowless_98.png"
 placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
@@ -59,35 +61,8 @@ collision_size = Vector2(14, 10)
 collision_offset = Vector2(0, -16)
 casts_shadow = true
 
-[node name="ShelfGoodsB_48_64" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(48, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/16_Grocery_Store_Singles_Shadowless/Grocery_Store_Singles_Shadowless_103.png"
-placeholder_size = Vector2i(16, 48)
-placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(14, 10)
-collision_offset = Vector2(0, -16)
-casts_shadow = true
-
-[node name="ShelfGoodsC_64_64" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(64, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/16_Grocery_Store_Singles_Shadowless/Grocery_Store_Singles_Shadowless_106.png"
-placeholder_size = Vector2i(16, 48)
-placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(14, 10)
-collision_offset = Vector2(0, -16)
-casts_shadow = true
-
-[node name="BookcaseJars_96_64" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(96, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/5_Classroom_and_Library_Singles_Shadowless/Classroom_and_Library_Singles_Shadowless_45.png"
-placeholder_size = Vector2i(32, 48)
-placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(30, 10)
-collision_offset = Vector2(0, -14)
-casts_shadow = true
-
-[node name="Radiogram_128_64" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(128, 64)
+[node name="Radiogram_40_64" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(40, 64)
 texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/2_Living_Room_Singles_Shadowless/Living_Room_Singles_Shadowless_89.png"
 placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
@@ -95,8 +70,17 @@ collision_size = Vector2(13, 8)
 collision_offset = Vector2(0.5, -13)
 casts_shadow = true
 
-[node name="Workbench_176_64" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(176, 64)
+[node name="BookcaseJars_64_64" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(64, 64)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/5_Classroom_and_Library_Singles_Shadowless/Classroom_and_Library_Singles_Shadowless_45.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(30, 10)
+collision_offset = Vector2(0, -14)
+casts_shadow = true
+
+[node name="Workbench_96_64" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(96, 64)
 texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/5_Classroom_and_Library_Singles_Shadowless/Classroom_and_Library_Singles_Shadowless_28.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
@@ -104,35 +88,8 @@ collision_size = Vector2(22, 10)
 collision_offset = Vector2(3, -8)
 casts_shadow = true
 
-[node name="BookcaseBottles_224_64" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(224, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/5_Classroom_and_Library_Singles_Shadowless/Classroom_and_Library_Singles_Shadowless_44.png"
-placeholder_size = Vector2i(32, 48)
-placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(30, 10)
-collision_offset = Vector2(0, -14)
-casts_shadow = true
-
-[node name="Ladder_250_64" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(250, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/5_Classroom_and_Library_Singles_Shadowless/Classroom_and_Library_Singles_Shadowless_41.png"
-placeholder_size = Vector2i(16, 32)
-placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(10, 4)
-collision_offset = Vector2(-2, -13)
-casts_shadow = true
-
-[node name="GrandfatherClock_262_64" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(262, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/2_Living_Room_Singles_Shadowless/Living_Room_Singles_Shadowless_90.png"
-placeholder_size = Vector2i(16, 48)
-placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(14, 8)
-collision_offset = Vector2(0, -13)
-casts_shadow = true
-
-[node name="CounterLeft_128_124" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(128, 124)
+[node name="CounterLeft_48_118" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(48, 118)
 texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/5_Classroom_and_Library_Singles_Shadowless/Classroom_and_Library_Singles_Shadowless_49.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
@@ -140,8 +97,8 @@ collision_size = Vector2(19, 12)
 collision_offset = Vector2(5.5, -17)
 casts_shadow = true
 
-[node name="CounterRight_160_124" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(160, 124)
+[node name="CounterRight_80_118" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(80, 118)
 texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/5_Classroom_and_Library_Singles_Shadowless/Classroom_and_Library_Singles_Shadowless_52.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
@@ -149,8 +106,8 @@ collision_size = Vector2(19, 12)
 collision_offset = Vector2(-5.5, -17)
 casts_shadow = true
 
-[node name="ShelfBoxes_40_132" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(40, 132)
+[node name="ShelfBoxes_32_156" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(32, 156)
 texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/16_Grocery_Store_Singles_Shadowless/Grocery_Store_Singles_Shadowless_250.png"
 placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
@@ -158,24 +115,8 @@ collision_size = Vector2(23, 10)
 collision_offset = Vector2(0.5, -7)
 casts_shadow = true
 
-[node name="Crate_36_160" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(36, 160)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/14_Basement_Singles_Shadowless/Basement_Singles_Shadowless_40.png"
-placeholder_size = Vector2i(32, 16)
-placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(20, 10)
-collision_offset = Vector2(4, -5)
-
-[node name="CrateOpen_68_160" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(68, 160)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/14_Basement_Singles_Shadowless/Basement_Singles_Shadowless_43.png"
-placeholder_size = Vector2i(32, 16)
-placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(20, 10)
-collision_offset = Vector2(-4, -5)
-
-[node name="DisplayCounter_232_140" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(232, 140)
+[node name="DisplayCounter_96_150" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(96, 150)
 texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/16_Grocery_Store_Singles_Shadowless/Grocery_Store_Singles_Shadowless_147.png"
 placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
@@ -183,93 +124,75 @@ collision_size = Vector2(28, 12)
 collision_offset = Vector2(0, -14)
 casts_shadow = true
 
-[node name="BasketProduce_260_160" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(260, 160)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/16_Grocery_Store_Singles_Shadowless/Grocery_Store_Singles_Shadowless_117.png"
-placeholder_size = Vector2i(16, 32)
+[node name="Crate_32_174" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(32, 174)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/14_Basement_Singles_Shadowless/Basement_Singles_Shadowless_40.png"
+placeholder_size = Vector2i(32, 16)
 placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(12, 6)
+collision_size = Vector2(20, 10)
+collision_offset = Vector2(4, -5)
+
+[node name="GrandfatherClock_24_112" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(24, 112)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/2_Living_Room_Singles_Shadowless/Living_Room_Singles_Shadowless_90.png"
+placeholder_size = Vector2i(16, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(14, 8)
 collision_offset = Vector2(0, -13)
 casts_shadow = true
 
-[node name="RugCheck_144_164" parent="FloorDecor" instance=ExtResource("3_prop")]
-position = Vector2(144, 164)
+[node name="RugCheck_64_170" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(64, 170)
 texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/4_Bedroom_Singles_Shadowless/Bedroom_Singles_Shadowless_385.png"
 placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(0, 0)
 collision_offset = Vector2(0, 0)
 
-[node name="PlantTall_262_120" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(262, 120)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/2_Living_Room_Singles_Shadowless/Living_Room_Singles_Shadowless_17.png"
-placeholder_size = Vector2i(16, 48)
-placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(12, 6)
-collision_offset = Vector2(0, -10)
-casts_shadow = true
-
-[node name="Stool_200_104" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(200, 104)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/14_Basement_Singles_Shadowless/Basement_Singles_Shadowless_105.png"
-placeholder_size = Vector2i(16, 32)
-placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(10, 4)
-collision_offset = Vector2(0, -6)
-casts_shadow = true
-
 [node name="WorkbenchLook" type="Area2D" parent="Entities"]
-position = Vector2(176, 72)
+position = Vector2(96, 72)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_shop_workbench"
 area_size = Vector2(30, 16)
 lines = PackedStringArray("FLAVOR_SHOP_WORKBENCH")
 
 [node name="SignLook" type="Area2D" parent="Entities"]
-position = Vector2(128, 74)
+position = Vector2(40, 74)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_shop_sign"
-area_size = Vector2(30, 16)
+area_size = Vector2(20, 16)
 lines = PackedStringArray("FLAVOR_SHOP_RADIO")
 
 [node name="ClockLook" type="Area2D" parent="Entities"]
-position = Vector2(262, 74)
+position = Vector2(24, 118)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_shop_clock"
 area_size = Vector2(20, 16)
 lines = PackedStringArray("FLAVOR_SHOP_CLOCK")
 
 [node name="DisplayLook" type="Area2D" parent="Entities"]
-position = Vector2(232, 148)
+position = Vector2(96, 156)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_shop_display"
 area_size = Vector2(30, 16)
 lines = PackedStringArray("FLAVOR_SHOP_DISPLAY")
 
 [node name="A_counter" type="Marker2D" parent="NpcAnchors"]
-position = Vector2(144, 104)
+position = Vector2(64, 96)
 script = ExtResource("11_anchor")
 anchor_id = &"counter"
 
 [node name="Entrance" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(144, 154)
+position = Vector2(64, 164)
 script = ExtResource("4_spawn")
 spawn_id = &"entrance"
 facing = Vector2(0, -1)
 
 [node name="ExitDoor" type="Area2D" parent="Entities"]
-position = Vector2(144, 172)
+position = Vector2(64, 186)
 script = ExtResource("6_door")
 interaction_id = &"door_shop_exit"
 area_size = Vector2(30, 10)
 prompt_key = "PROMPT_EXIT"
 target_scene_id = &"greyford_block"
 target_spawn_id = &"shop_front"
-
-[node name="Dress151_45" parent="FloorDecor" instance=ExtResource("3_prop")]
-position = Vector2(151, 45)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/7_Art_Singles_Shadowless/Art_Singles_Shadowless_44.png"
-placeholder_size = Vector2i(16, 32)
-placeholder_color = Color(0.478,0.416,0.353, 1)
-collision_size = Vector2(0, 0)
-collision_offset = Vector2(0, 0)

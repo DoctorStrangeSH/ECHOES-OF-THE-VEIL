@@ -89,7 +89,7 @@ func travel(scene_id: StringName, spawn_id: StringName) -> void:
 	# back to the street without a cut.
 	if open_world != null and is_instance_valid(open_world) and current_location != null:
 		var here := GameState.current_scene_id
-		if open_world.room != null and OpenWorld.has_region(scene_id):
+		if open_world.room != null and scene_id == open_world._room_street:
 			GameState.current_spawn_id = spawn_id
 			open_world.leave_room(spawn_id)
 			_after_enter(scene_id)

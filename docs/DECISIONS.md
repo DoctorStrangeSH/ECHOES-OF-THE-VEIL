@@ -242,3 +242,9 @@ Only rooms redrawn to fit their house use it. The rented room is the first: 6×7
 LimeZu's default interior singles carry an opaque grey floor shadow drawn for one particular floor colour; on our floors it showed as a dark slab under beds, wardrobes and armchairs (review item 7). All interior aliases now point at the pack's `Theme_Sorter_Shadowless_Singles`. Numbering drifts between the two sets near the end of the bedroom sheet, so references were matched by pixels and renumbered where needed, and the dressing pass in build_regions.py maps its wall hangings and plants the same way (`shadowless()`). The one sprite with no shadowless twin (basement 241) keeps its full original path.
 
 Settings opened from the Game tab were drawn on the same layer as that tab and under it, so they could not be seen (review item 21). The settings screen now sits above the tabbed window, uses the same window frame, lays its rows out in two columns so everything including Back fits at the base resolution, and the Game tab's buttons hide while it is open. Esc closes settings first, then the window.
+
+## D-100 Shops and the archive open in place (R14e)
+
+The archive, Rook's shop, the bakery, the café and the gym are redrawn to their houses' footprints (8 tiles wide, 11–12 deep, doorway under the street door) in the dense LimeZu manner and marked `in_place`. Every look-at, anchor and door of the old rooms is kept, moved to the new layout. Theo's flat stays a separate scene: its endless corridor is the point.
+
+A house can be several pictures stacked (the market's ground floor, middle floor and roof), so the house now grows from the picture above the door to every tall picture stacked on it that is about as wide; all of them fade, and the room stands on the ground-floor picture. Travelling from a room to a different street closes the room first instead of walking out onto its own street.
