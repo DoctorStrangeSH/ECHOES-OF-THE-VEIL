@@ -38,7 +38,7 @@ flowchart TD
   theo_dead_letter1 --> theo_dead_letter2
   theo_dead_letter2["dead_letter2<br/>Theo Marsh: Ellie. «Wait by the door, I won't be long.» I w…"]
   theo_dead_letter2 --> theo_dead_letter3
-  theo_dead_letter3["dead_letter3<br/>Theo Marsh: I'll keep it in my breast pocket. Then if the d…"]
+  theo_dead_letter3["dead_letter3<br/>Theo Marsh: Theo folds the letter carefully. 'I'll keep it …"]
 ```
 
 ### theo_corridor
@@ -895,18 +895,18 @@ flowchart TD
   imogen_START -->|"{not_flag: met.imogen}"| imogen_i1
   imogen_i1["i1<br/>A woman in tortoiseshell glasses looks up from …"]
   imogen_i1 --> imogen_i2
-  imogen_i2["i2<br/>Dr Imogen Hale: Dr Imogen Hale, curator. Welcome. Please don't …"]
+  imogen_i2["i2<br/>Dr Imogen Hale: 'Dr Imogen Hale, curator. Welcome.' She adjusts…"]
   imogen_i2 --> imogen_hub
   imogen_hub["hub<br/>Dr Imogen Hale: The curator marks her place in the catalogue wi…"]
   imogen_hub -->|"What's in the museum?"| imogen_museum
   imogen_hub -->|"What's Ashbridge like?"| imogen_city
   imogen_hub_end_2(["end"])
   imogen_hub -->|"'I'll be off.'"| imogen_hub_end_2
-  imogen_museum["museum<br/>Dr Imogen Hale: The sea, the land, and the paperwork in between…"]
+  imogen_museum["museum<br/>Dr Imogen Hale: 'The sea, the land, and the paperwork in betwee…"]
   imogen_museum --> imogen_hub
-  imogen_city["city<br/>Dr Imogen Hale: The county town. Everything that happens on the…"]
+  imogen_city["city<br/>Dr Imogen Hale: 'The county town. Everything that happens on th…"]
   imogen_city --> imogen_hub
-  imogen_ask1["ask1<br/>Dr Imogen Hale: The Venn card? It's on loan from the Bureau, a …"]
+  imogen_ask1["ask1<br/>Dr Imogen Hale: 'The Venn card? It's on loan from the Bureau — …"]
   imogen_ask1 --> imogen_ask2
   imogen_ask2["ask2<br/>Dr Imogen Hale: Dr Hale listens without interrupting, which in …"]
   imogen_ask2 -->|"(Intellect 3) It isn't a spec… ⟨{stat_at_least: [intellect, 3]}⟩"| imogen_yes1
@@ -914,7 +914,7 @@ flowchart TD
   imogen_ask2_end_2(["end"])
   imogen_ask2 -->|"Never mind."| imogen_ask2_end_2
   imogen_yes1["yes1<br/>Dr Imogen Hale: You're right, of course. I wrote the label myse…"]
-  imogen_yes2["yes2<br/>Dr Imogen Hale: A donation to the acquisitions fund, and in ret…"]
+  imogen_yes2["yes2<br/>Dr Imogen Hale: 'A donation to the acquisitions fund, and in re…"]
 ```
 
 ### mus_census
@@ -962,16 +962,16 @@ flowchart TD
   bridget_intro1 --> bridget_intro2
   bridget_intro2["intro2<br/>Bridget Knowles: Come in, come in, let the wind stay outside. Br…"]
   bridget_intro2 --> bridget_hub
-  bridget_hub["hub<br/>Bridget Knowles: Bridget sets down a glass that is already dry. …"]
+  bridget_hub["hub<br/>Bridget Knowles: Bridget sets down a glass that is long since dr…"]
   bridget_hub_end_0(["end"])
   bridget_hub -->|"'What have you got today?'"| bridget_hub_end_0
   bridget_hub -->|"What's Cavenmouth like?"| bridget_town
   bridget_hub -->|"Can I stay the night?"| bridget_room
   bridget_hub_end_3(["end"])
   bridget_hub -->|"'I'll be off.'"| bridget_hub_end_3
-  bridget_town["town<br/>Bridget Knowles: People say Cavenmouth is where folk come to get…"]
+  bridget_town["town<br/>Bridget Knowles: 'People say folk come to Cavenmouth to get away…"]
   bridget_town --> bridget_hub
-  bridget_room["room<br/>Bridget Knowles: The bed by the window is yours whenever you lik…"]
+  bridget_room["room<br/>Bridget Knowles: 'The bed by the window is yours whenever you li…"]
   bridget_room --> bridget_hub
 ```
 
@@ -987,28 +987,28 @@ flowchart TD
   walter_START -->|"{not_flag: met.walter}"| walter_intro1
   walter_intro1["intro1<br/>A thin old man in round glasses is sorting enve…"]
   walter_intro1 --> walter_intro2
-  walter_intro2["intro2<br/>Walter Finch: Walter Finch, postmaster, forty-one years. Stam…"]
+  walter_intro2["intro2<br/>Walter Finch: 'Walter Finch, postmaster, forty-one years at t…"]
   walter_intro2 --> walter_hub
   walter_hub["hub<br/>Walter Finch: Walter straightens a pile of envelopes that is …"]
   walter_hub -->|"What are the sacks in the cor… ⟨{not_quest_started: case_dead_letters}⟩"| walter_sack1
   walter_hub_end_1(["end"])
   walter_hub -->|"'I'll be off.'"| walter_hub_end_1
-  walter_sack1["sack1<br/>Walter Finch: Those? Undeliverable mail. Letters to Greyford,…"]
+  walter_sack1["sack1<br/>Walter Finch: 'Those? Undeliverable mail. Letters to Greyford…"]
   walter_sack1 --> walter_sack2
-  walter_sack2["sack2<br/>Walter Finch: Regulations say I should burn them after a year…"]
+  walter_sack2["sack2<br/>Walter Finch: 'Regulations say they're to be burned after a y…"]
   walter_sack2 --> walter_sack3
-  walter_sack3["sack3<br/>Walter Finch: You live in Greyford, don't you? You have the l…"]
+  walter_sack3["sack3<br/>Walter Finch: 'You live in Greyford, don't you? You have the …"]
   walter_sack3 -->|"I'll take them."| walter_take
   walter_sack3 -->|"Not now."| walter_hub
-  walter_take["take<br/>Walter Finch: Mrs Halloway, Mr Marsh, Mr Rook. Mind the corne…"]
+  walter_take["take<br/>Walter Finch: 'Mrs Halloway, Mr Marsh, Mr Rook. Mind the corn…"]
   walter_take --> walter_hub
-  walter_wait["wait<br/>Walter Finch: Three letters, three doors. I have waited forty…"]
+  walter_wait["wait<br/>Walter Finch: 'Three letters, three doors. I've waited forty …"]
   walter_wait --> walter_hub
-  walter_ret1["ret1<br/>Walter Finch: All three? Into their hands? Walter takes off h…"]
+  walter_ret1["ret1<br/>Walter Finch: 'All three? Into their hands?' Walter takes off…"]
   walter_ret1 --> walter_ret2
-  walter_ret2["ret2<br/>Walter Finch: Forty years I held that sack the way one holds …"]
+  walter_ret2["ret2<br/>Walter Finch: 'Forty years I've held that sack the way you ho…"]
   walter_ret2 --> walter_hub
-  walter_after["after<br/>Walter Finch: Lighter by three. I weigh it every morning, you…"]
+  walter_after["after<br/>Walter Finch: 'Lighter by three. I weigh it every morning, yo…"]
   walter_after --> walter_hub
 ```
 
@@ -1095,19 +1095,19 @@ flowchart TD
   hugh_tin3["tin3<br/>Hugh Penny: 'You hear her. I can see it in your face.' He g…"]
   hugh_tin3 -->|"She doesn't want the farm sol…"| hugh_truth1
   hugh_tin3 -->|"Maybe the letters should stay…"| hugh_stay1
-  hugh_truth1["truth1<br/>Hugh Penny: Like a dead woman's things. Yes. That's exactly…"]
+  hugh_truth1["truth1<br/>Hugh Penny: 'Like a dead woman's things.' Hugh sits down on…"]
   hugh_truth1 --> hugh_truth2
   hugh_truth2["truth2<br/>Hugh Penny: Hugh is quiet a long time. 'Here's what. I'll t…"]
   hugh_truth2 --> hugh_buy
-  hugh_stay1["stay1<br/>Hugh Penny: Here. On her shelf. Where she hid them in the f…"]
+  hugh_stay1["stay1<br/>Hugh Penny: 'Here...' He puts the letters on the shelf over…"]
   hugh_stay1 --> hugh_stay2
   hugh_stay2["stay2<br/>Hugh Penny: 'Maybe so.' He very nearly smiles. 'I'll read t…"]
   hugh_stay2 --> hugh_buy
-  hugh_buy["buy<br/>Hugh Penny: So, shall we shake on it? The price stands as w…"]
+  hugh_buy["buy<br/>Hugh Penny: Hugh holds out a big, scarred hand. 'So, shall …"]
   hugh_buy -->|"Pay £120 ⟨{all: [{flag_equals: [farm.price, 120]}…⟩"| hugh_deal1
   hugh_buy -->|"Pay £90 ⟨{all: [{flag_equals: [farm.price, 90]},…⟩"| hugh_deal1
   hugh_buy -->|"I need to get the money toget…"| hugh_wait_money
-  hugh_wait_money["wait_money<br/>Hugh Penny: The land will wait. It knows how."]
+  hugh_wait_money["wait_money<br/>Hugh Penny: 'The land'll wait.' Hugh shrugs. 'It knows how.'"]
   hugh_deal1["deal1<br/>Hugh puts a bunch of keys in your palm. They're…"]
   hugh_deal1 --> hugh_deal2
   hugh_deal2["deal2<br/>Hugh Penny: 'The watering can's yours now. Seeds under the …"]
@@ -1232,7 +1232,7 @@ flowchart TD
   nell_START -->|"{not_flag: met.nell}"| nell_i1
   nell_i1["i1<br/>A woman in a rubber apron guts a fish in three …"]
   nell_i1 --> nell_hub
-  nell_hub["hub<br/>Nell Goodwin: Fresh this morning, all of it, except me. What'…"]
+  nell_hub["hub<br/>Nell Goodwin: Nell wipes her knife on her apron. 'Everything'…"]
   nell_hub_end_0(["end"])
   nell_hub -->|"'What have you got today?'"| nell_hub_end_0
   nell_hub -->|"What bites round here?"| nell_fish
@@ -1240,7 +1240,7 @@ flowchart TD
   nell_hub -->|"About the knocking under the … ⟨{quest_active: case_salt_tunnels}⟩"| nell_k_again
   nell_hub_end_4(["end"])
   nell_hub -->|"'I'll be off.'"| nell_hub_end_4
-  nell_fish["fish<br/>Nell Goodwin: Mackerel by day, cod whenever it likes, conger …"]
+  nell_fish["fish<br/>Nell Goodwin: 'Mackerel by day, cod when it feels like it, co…"]
   nell_fish --> nell_hub
   nell_k1["k1<br/>Nell Goodwin: 'Haven't. Three nights now. Three knocks under …"]
   nell_k1 --> nell_k2
@@ -1267,7 +1267,7 @@ flowchart TD
   agatha_START -->|"{not_flag: met.agatha}"| agatha_i1
   agatha_i1["i1<br/>A woman in a seaman's beanie stands at the offi…"]
   agatha_i1 --> agatha_i2
-  agatha_i2["i2<br/>Agatha Moss: Agatha Moss, harbourmaster. If you've come abou…"]
+  agatha_i2["i2<br/>Agatha Moss: 'Agatha Moss, harbourmaster. If you've come abo…"]
   agatha_i2 --> agatha_hub
   agatha_hub["hub<br/>Agatha Moss: Agatha taps the barometer. It still says «Chang…"]
   agatha_hub -->|"When will the ferry run?"| agatha_ferry
@@ -1276,13 +1276,13 @@ flowchart TD
   agatha_hub -->|"Tell me about the harbour."| agatha_harbour
   agatha_hub_end_4(["end"])
   agatha_hub -->|"'I'll be off.'"| agatha_hub_end_4
-  agatha_ferry["ferry<br/>Agatha Moss: St Carrow's an island two hours out. Fishermen,…"]
+  agatha_ferry["ferry<br/>Agatha Moss: 'St Carrow's an island two hours out. Fishermen…"]
   agatha_ferry --> agatha_hub
-  agatha_harbour["harbour<br/>Agatha Moss: Forty boats when I was a girl. Eleven now. The …"]
+  agatha_harbour["harbour<br/>Agatha Moss: 'Forty boats here when I was a girl. Eleven now…"]
   agatha_harbour --> agatha_hub
-  agatha_fix["fix<br/>Agatha Moss: The part came on Tuesday, in a crate addressed …"]
+  agatha_fix["fix<br/>Agatha Moss: 'The part came on Tuesday — in a crate addresse…"]
   agatha_fix --> agatha_hub
-  agatha_running["running<br/>Agatha Moss: Running, thanks to you. Tickets at the board by…"]
+  agatha_running["running<br/>Agatha Moss: 'Running, thanks to you. Tickets at the board b…"]
   agatha_running --> agatha_hub
 ```
 
@@ -1886,7 +1886,7 @@ flowchart TD
   mara_agnes_card1 --> mara_agnes_card2
   mara_agnes_card2["agnes_card2<br/>Mara Venn: «She sang.» Someone in that office knew her. So…"]
   mara_agnes_card2 --> mara_agnes_card3
-  mara_agnes_card3["agnes_card3<br/>Mara Venn: This goes on the wall, next to her photograph. …"]
+  mara_agnes_card3["agnes_card3<br/>Mara Venn: Mara holds the card in both hands. 'This goes o…"]
 ```
 
 ### jonah
@@ -2007,12 +2007,12 @@ flowchart TD
   jonah_dead_letter1 --> jonah_dead_letter2
   jonah_dead_letter2["dead_letter2<br/>Jonah Rook: That's her hand. Rosalind made her R's like lit…"]
   jonah_dead_letter2 --> jonah_dead_letter3
-  jonah_dead_letter3["dead_letter3<br/>Jonah Rook: I'm going to fix every radio in this town for f…"]
-  jonah_car1["car1<br/>Jonah Rook: A car? Funny it should come up. Dad's old estat…"]
+  jonah_dead_letter3["dead_letter3<br/>Jonah Rook: Jonah tucks the letter into an inside pocket an…"]
+  jonah_car1["car1<br/>Jonah Rook: 'A car? Funny you should mention it.' Jonah wip…"]
   jonah_car1 --> jonah_car2
-  jonah_car2["car2<br/>Jonah Rook: I've kept it running. I didn't have the heart t…"]
+  jonah_car2["car2<br/>Jonah Rook: 'I've kept her running. Couldn't bring myself t…"]
   jonah_car2 --> jonah_car3
-  jonah_car3["car3<br/>Jonah Rook: A hundred and twenty, and you let me check the …"]
+  jonah_car3["car3<br/>Jonah Rook: 'A hundred and twenty, and once a month I get t…"]
   jonah_car3 -->|"Deal. (£120) ⟨{money_at_least: 120}⟩"| jonah_car_bought
   jonah_car3 -->|"Let me think about it."| jonah_hub
   jonah_car_bought["car_bought<br/>Jonah Rook: Jonah drops the keys into your palm and holds o…"]
@@ -2092,9 +2092,9 @@ flowchart TD
   halloway_kn_leave3["kn_leave3<br/>Edda Halloway: 'I don't think I can watch this.' She leaves th…"]
   halloway_dead_letter1["dead_letter1<br/>Mrs Halloway knows the hand before she has her …"]
   halloway_dead_letter1 --> halloway_dead_letter2
-  halloway_dead_letter2["dead_letter2<br/>Edda Halloway: Bea. My sister. She writes that the bakery is c…"]
+  halloway_dead_letter2["dead_letter2<br/>Edda Halloway: Mrs Halloway reads, her lips moving. 'Bea. My s…"]
   halloway_dead_letter2 --> halloway_dead_letter3
-  halloway_dead_letter3["dead_letter3<br/>Edda Halloway: Thank you. No, don't go. Sit with me a minute. …"]
+  halloway_dead_letter3["dead_letter3<br/>Edda Halloway: 'Thank you.' She catches your hand. 'No, don't …"]
 ```
 
 ### ivo
@@ -2553,7 +2553,7 @@ flowchart TD
   oona_START -->|"{not_flag: met.oona}"| oona_i1
   oona_i1["i1<br/>A grey-haired woman in a fisherman's jumper sit…"]
   oona_i1 --> oona_i2
-  oona_i2["i2<br/>Oona Pryce: Oona Pryce. Keeper, like my mother and her fath…"]
+  oona_i2["i2<br/>Oona Pryce: 'Oona Pryce. Keeper, like my mother, and her fa…"]
   oona_i2 --> oona_hub
   oona_hub["hub<br/>Oona Pryce: Oona breathes on the lens and rubs it again."]
   oona_hub -->|"Tell me about the lighthouse."| oona_light
@@ -2561,11 +2561,11 @@ flowchart TD
   oona_hub -->|"Last night Greyford counted t… ⟨{flag: carrow.answered}⟩"| oona_answered
   oona_hub_end_3(["end"])
   oona_hub -->|"'I'll be off.'"| oona_hub_end_3
-  oona_light["light<br/>Oona Pryce: Ours is the older light. When I was a girl, Gre…"]
+  oona_light["light<br/>Oona Pryce: 'Ours is the older light. When I was a girl, Gr…"]
   oona_light --> oona_hub
-  oona_island["island<br/>Oona Pryce: Twelve fishermen, one chapel, no secrets. Well,…"]
+  oona_island["island<br/>Oona Pryce: 'Twelve fishermen, one chapel, no secrets. Well…"]
   oona_island --> oona_hub
-  oona_answered["answered<br/>Oona Pryce: I saw. Seven, and then our eighth, from across …"]
+  oona_answered["answered<br/>Oona Pryce: 'I saw. Seven — and then our eighth, from this …"]
   oona_answered --> oona_hub
 ```
 
