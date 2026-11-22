@@ -298,3 +298,7 @@ The side lines tied to the companions and the point: Hester and the light that c
 ## D-109 The prose pass, part 7: Quiet Brook farm (R16g)
 
 Hugh Penny, Martha's account of him, Margaret at the well, the tin under the apple tree and the sale of the farm — rewritten by the same rules (37 strings). The farm's lines had lost their quotation marks: speech is quoted again, with the narrator's gestures outside the quotes.
+
+## D-110 The prose pass, part 8: Mill Hill and Millwood (R16h)
+
+Mill Hill (Avery, Bess, the abbey) was already written in the voice the pass aims for and gets only a few touches. Millwood — Ada Fenwick, the drowned village of Mill Ford, the bell and the parish register — had lost its quotation marks and its gestures, and is rewritten (26 strings in all). The Salt Stair was read through and is left as it is: it already meets every rule of the pass.
