@@ -36,6 +36,19 @@ def check(key, lang, s, errors, warnings):
             errors.append(f'{where}: unbalanced {a}{b}')
     if s.count('"') % 2:
         errors.append(f'{where}: odd number of "')
+    if lang == 'ru':
+        # Quotes inside quotes are „лапки“ (style guide), never «« »».
+        depth = 0
+        for ch in s:
+            if ch == '«':
+                depth += 1
+                if depth > 1:
+                    errors.append(f'{where}: «» inside «»; use „“ for a quote within a quote')
+                    break
+            elif ch == '»':
+                depth = max(0, depth - 1)
+        if re.search(r'Лантерн|ЛАНТЕРН', s):
+            errors.append(f'{where}: Lantern Row is «Фонарный ряд» in Russian')
     d = DOUBLE_WORD.search(s)
     if d and d.group(1).lower() not in ('ha', 'ха', 'no', 'нет', 'да', 'yes', 'tick', 'тик', 'ш'):
         errors.append(f'{where}: doubled word "{d.group(0)}"')

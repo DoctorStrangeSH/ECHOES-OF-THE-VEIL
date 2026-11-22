@@ -306,3 +306,9 @@ Mill Hill (Avery, Bess, the abbey) was already written in the voice the pass aim
 ## D-111 The prose pass, part 9: speech quoted along the coast (R16i)
 
 A check of every dialogue line with a speaker found 53 still written without quotation marks, mostly in the later regions: Ashbridge (Dr Hale, Mara's card), Cavenmouth (Bridget, Walter and the undeliverable letters), St Carrow (Oona), the harbour (Nell, Agatha), the market, Jonah's car, Hugh's last lines. Speech is quoted and given a gesture where it carries weight (41 strings; the lines that are pure narration, such as "Walter straightens a pile of envelopes", stay as they are). The Ropeworks and Rowan Terrace were read through and already meet the pass; one typo fixed. Mrs Halloway now says «вы» to the player in her letter scene too, as everywhere else.
+
+## D-112 The prose pass, part 10: the sweep, and the pass closed (R16j)
+
+The remaining files — street chatter, the companions' heart scenes, the chronicle, side cases and incidents, the market, the park, Ashbridge, Cavenmouth, St Carrow, weapons, fish and expedition items — were read through and already meet the rules of the pass; they were written after the voice settled. The sweep fixed what was left: one more «ЛАНТЕРН-РОУ» in the journal, and two lines with «» inside «». `text_lint.py` now treats both as errors (a quote within a quote is „лапки“; Lantern Row is «Фонарный ряд»), so neither comes back.
+
+With this the prose pass (R16a–R16j) is complete: about 450 strings rewritten in both languages, every spoken line quoted, the naming unified (Keepers, Городское обновление, Фонарный ряд), and the style guide holds the rules for anything new.
