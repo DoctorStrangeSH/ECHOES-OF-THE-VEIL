@@ -1785,13 +1785,13 @@ flowchart TD
   mara_START -->|"{hypothesis: lantern_row_fragment, not_…"| mara_decide
   mara_START -->|"{flag: rel.mara_venn.friend, quest_done…"| mara_eleventh1
   mara_START -->|"{has_item: agnes_card}"| mara_agnes_card1
-  mara_intro1["intro1<br/>Mara Venn: You're the new tenant in the brown house on the…"]
+  mara_intro1["intro1<br/>Mara Venn: 'You're the new tenant in the brown house on th…"]
   mara_intro1 --> mara_intro2
-  mara_intro2["intro2<br/>Mara Venn: 'Redevelopment.' They say that word the way peo…"]
+  mara_intro2["intro2<br/>Mara Venn: ''Redevelopment.'' She says the word the way pe…"]
   mara_intro2 --> mara_intro3
-  mara_intro3["intro3<br/>Mara Venn: If you see anything... strange around here, wri…"]
+  mara_intro3["intro3<br/>Mara Venn: 'If you see anything... odd here, write it down…"]
   mara_intro3 --> mara_hub
-  mara_hub["hub<br/>Mara Venn: Mara looks up from her notebook. 'Yes?'"]
+  mara_hub["hub<br/>Mara Venn: Mara finishes her line before she looks up. 'Ye…"]
   mara_hub -->|"What was here before the plaz… ⟨{evidence: e_door_observed, not_evidenc…⟩"| mara_plaza1
   mara_hub -->|"Why was the archive closed? ⟨{not_flag: mara.archive_talk}⟩"| mara_archive1
   mara_hub -->|"Show her the 1962 survey plan ⟨{evidence: e_city_map, not_flag: mara.s…⟩"| mara_map1
@@ -1806,25 +1806,25 @@ flowchart TD
   mara_hub -->|"I found Agnes's card. ⟨{quest_stage: [case_agnes, tell]}⟩"| mara_agt
   mara_hub_end_12(["end"])
   mara_hub -->|"Goodbye."| mara_hub_end_12
-  mara_plaza1["plaza1<br/>Mara Venn: 'Before the plaza? A car park. Before that—' Sh…"]
+  mara_plaza1["plaza1<br/>Mara Venn: 'Before the plaza? A car park. And before the c…"]
   mara_plaza1 --> mara_plaza2
   mara_plaza2["plaza2<br/>Mara Venn: 'The rate books list a street. Lantern Row. Nin…"]
   mara_plaza2 --> mara_plaza3
-  mara_plaza3["plaza3<br/>Mara Venn: 'Funny thing. Nobody I ask remembers it. Not ev…"]
+  mara_plaza3["plaza3<br/>Mara Venn: 'And here's the funny thing: nobody I ask remem…"]
   mara_plaza3 --> mara_hub
   mara_archive1["archive1<br/>Mara Venn: 'Officially: asbestos. Unofficially: the week b…"]
   mara_archive1 --> mara_archive2
-  mara_archive2["archive2<br/>Mara Venn: 'They sent them back. Lighter.'"]
+  mara_archive2["archive2<br/>Mara Venn: 'Then they sent them back. Thinner. I weighed t…"]
   mara_archive2 --> mara_hub
-  mara_map1["map1<br/>Mara Venn: 'Where did you get this? It's a survey plan — L…"]
+  mara_map1["map1<br/>Mara Venn: 'Where did you get this?' She unfolds it as if …"]
   mara_map1 --> mara_hub
-  mara_decide["decide<br/>Mara Venn: 'You've got that look. You found out something …"]
+  mara_decide["decide<br/>Mara Venn: Mara closes her notebook on one finger. 'You've…"]
   mara_decide -->|"Tell her everything"| mara_tell1
   mara_decide -->|"Keep it to yourself for now"| mara_keep1
-  mara_tell1["tell1<br/>Mara Venn: She listens without interrupting. 'A piece of L…"]
+  mara_tell1["tell1<br/>Mara Venn: She listens without interrupting and doesn't wr…"]
   mara_tell1 --> mara_tell2
   mara_tell2["tell2<br/>Mara Venn: 'If you go through, I want to know everything. …"]
-  mara_keep1["keep1<br/>Mara Venn: 'Suit yourself.' She doesn't sound offended. Sh…"]
+  mara_keep1["keep1<br/>Mara Venn: 'As you like.' She isn't offended. She seems to…"]
   mara_reported["reported<br/>Mara Venn: 'You called Civic Renewal.' It isn't a question…"]
   mara_echo_shared["echo_shared<br/>Mara Venn: 'Well? Dates, times, exact words.' You tell her…"]
   mara_echo_shared --> mara_echo_shared2
@@ -1906,27 +1906,27 @@ flowchart TD
   jonah_START -->|"{quest_done: case_bell, not_flag: jonah…"| jonah_bell_after
   jonah_START -->|"{repair_level_at_least: 3, flag: rel.jo…"| jonah_stall1
   jonah_START -->|"{has_item: letter_jonah}"| jonah_dead_letter1
-  jonah_intro1["intro1<br/>Jonah Rook: 'Jonah Rook. I repair things nobody makes any m…"]
+  jonah_intro1["intro1<br/>Jonah Rook: A tall man in an oily apron wipes his hands on …"]
   jonah_intro1 --> jonah_intro2
-  jonah_intro2["intro2<br/>Jonah Rook: 'You're new? Then you're exactly who I need. I'…"]
+  jonah_intro2["intro2<br/>Jonah Rook: 'New in town? Then you're just who I need. I've…"]
   jonah_intro2 --> jonah_offer
-  jonah_offer["offer<br/>Jonah Rook: 'Mrs Halloway's radio is fixed. Could you take …"]
+  jonah_offer["offer<br/>Jonah Rook: He nods at a box tied up with string. 'Mrs Hall…"]
   jonah_offer -->|"Sure, I'll take it."| jonah_accept1
   jonah_offer -->|"(Repair technician) Let me ch… ⟨{background: repair_technician}⟩"| jonah_tech1
   jonah_offer -->|"Not right now."| jonah_decline1
-  jonah_accept1["accept1<br/>Jonah Rook: 'Lifesaver. Don't let her tip you — she can't a…"]
-  jonah_tech1["tech1<br/>You open the back. Someone has soldered the dia…"]
+  jonah_accept1["accept1<br/>Jonah Rook: 'You're a lifesaver. And don't take a tip off h…"]
+  jonah_tech1["tech1<br/>You take the back off. It's all neat inside, ex…"]
   jonah_tech1 --> jonah_tech2
-  jonah_tech2["tech2<br/>Jonah Rook: Jonah frowns. 'I didn't do that.' A pause. 'Lea…"]
-  jonah_decline1["decline1<br/>Jonah Rook: 'No worries. I'll be around.'"]
+  jonah_tech2["tech2<br/>Jonah Rook: Jonah looks at the joint for a long time. 'That…"]
+  jonah_decline1["decline1<br/>Jonah Rook: 'No rush. I'm close by — just follow the hammer…"]
   jonah_remind["remind<br/>Jonah Rook: 'Radio still in one piece? Mrs Halloway's by th…"]
   jonah_remind --> jonah_hub
-  jonah_reward1["reward1<br/>Jonah Rook: 'She called me. Said the radio 'talked about La…"]
+  jonah_reward1["reward1<br/>Jonah Rook: Jonah puts down his screwdriver. 'She rang me. …"]
   jonah_reward1 --> jonah_reward2
-  jonah_reward2["reward2<br/>Jonah Rook: 'My sister used to say that name. Before.' He s…"]
+  jonah_reward2["reward2<br/>Jonah Rook: 'My sister used to say that. Before.' He stops …"]
   jonah_reward2 --> jonah_reward3
-  jonah_reward3["reward3<br/>Jonah Rook: 'Here. This was lining the radio's box — an old…"]
-  jonah_hub["hub<br/>Jonah Rook: 'Need something fixed?'"]
+  jonah_reward3["reward3<br/>Jonah Rook: 'Here. This was lining the box — an old map, I'…"]
+  jonah_hub["hub<br/>Jonah Rook: 'Something to mend? Or just come in to warm up …"]
   jonah_hub -->|"What's this 'tram inspection'?"| jonah_tram1
   jonah_hub_end_1(["end"])
   jonah_hub -->|"Let's trade."| jonah_hub_end_1
@@ -1945,9 +1945,9 @@ flowchart TD
   jonah_hub -->|"Do you know anyone selling a … ⟨{all: [{not_flag: car.owned}, {relation…⟩"| jonah_car1
   jonah_hub_end_15(["end"])
   jonah_hub -->|"Goodbye."| jonah_hub_end_15
-  jonah_tram1["tram1<br/>Jonah Rook: 'The line closed in '89. But when it rains, peo…"]
+  jonah_tram1["tram1<br/>Jonah Rook: 'They closed the line in eighty-nine. Took up t…"]
   jonah_tram1 --> jonah_tram2
-  jonah_tram2["tram2<br/>Jonah Rook: 'So I go and check. Every time. Nothing's ever …"]
+  jonah_tram2["tram2<br/>Jonah Rook: 'So I go and check. Every time.' He smiles with…"]
   jonah_tram2 --> jonah_hub
   jonah_sister1["sister1<br/>Jonah Rook: Jonah watches you for a long moment. 'You've be…"]
   jonah_sister1 --> jonah_sister2
@@ -2032,20 +2032,20 @@ flowchart TD
   halloway_START -->|"{not_flag: met.edda_halloway}"| halloway_intro1
   halloway_START -->|"{knows: [edda_halloway, rosalind_erased…"| halloway_rosalind
   halloway_START -->|"{has_item: letter_edda}"| halloway_dead_letter1
-  halloway_intro1["intro1<br/>Edda Halloway: 'So you're my new lodger. Edda Halloway. Rent o…"]
+  halloway_intro1["intro1<br/>Edda Halloway: A small woman in a hat with cherries on it hold…"]
   halloway_intro1 --> halloway_hub
-  halloway_local1["local1<br/>Edda Halloway: 'Well I never — {name}! You were this high when…"]
+  halloway_local1["local1<br/>Edda Halloway: 'Goodness — {name}! You were only this high whe…"]
   halloway_local1 --> halloway_local2
-  halloway_local2["local2<br/>Edda Halloway: 'Funny... I can't remember which street you liv…"]
+  halloway_local2["local2<br/>Edda Halloway: The palm slowly drops. 'Funny, though... I've l…"]
   halloway_local2 --> halloway_hub
-  halloway_radio1["radio1<br/>Edda Halloway: 'My radio! Oh, Jonah's a dear.' She switches it…"]
+  halloway_radio1["radio1<br/>Edda Halloway: 'My wireless! Oh, Jonah's a treasure.' She clic…"]
   halloway_radio1 --> halloway_radio2
-  halloway_radio2["radio2<br/>Static, then a calm voice: '...next stop, Lante…"]
+  halloway_radio2["radio2<br/>Crackle, hiss — and then a calm voice, the kind…"]
   halloway_radio2 --> halloway_radio3
   halloway_radio3["radio3<br/>Mrs Halloway turns it off very quickly, the way…"]
   halloway_radio3 --> halloway_radio4
   halloway_radio4["radio4<br/>Edda Halloway: 'Lantern Row was before the redevelopment. Befo…"]
-  halloway_hub["hub<br/>Edda Halloway: 'Settling in, dear?'"]
+  halloway_hub["hub<br/>Edda Halloway: 'Settling in, dear? If you need anything, I'm n…"]
   halloway_hub -->|"About your note — the tram at… ⟨{evidence: e_landlord_note, not_flag: h…⟩"| halloway_note1
   halloway_hub -->|"There's a door on the square … ⟨{evidence: e_door_observed, not_evidenc…⟩"| halloway_lr1
   halloway_hub -->|"Do you have any copper wire? ⟨{quest_stage: [case_bell, parts], all: …⟩"| halloway_wire1
@@ -2056,7 +2056,7 @@ flowchart TD
   halloway_hub -->|"Mrs Halloway... does the name… ⟨{flag: ward.bea_message, not_flag: hall…⟩"| halloway_bea1
   halloway_hub_end_7(["end"])
   halloway_hub -->|"Goodbye."| halloway_hub_end_7
-  halloway_note1["note1<br/>Edda Halloway: 'Oh, that. Old houses make noises. That's all i…"]
+  halloway_note1["note1<br/>Edda Halloway: 'Oh, that.' She suddenly takes a great interest…"]
   halloway_note1 --> halloway_hub
   halloway_lr1["lr1<br/>Edda Halloway: She is quiet for a moment. 'Lantern Row.' She s…"]
   halloway_wire1["wire1<br/>Edda Halloway: 'Harold's old radio flex. He'd have liked it to…"]
@@ -2112,9 +2112,9 @@ flowchart TD
   ivo_START -->|"{knows: [ivo_calder, reported_door], no…"| ivo_reported
   ivo_START -->|"{knows: [ivo_calder, opened_door], not_…"| ivo_echo
   ivo_START -->|"{flag: world.records_published, not_fla…"| ivo_records
-  ivo_intro1["intro1<br/>Ivo Calder: 'Ivo Calder. Residents' association — bins, ben…"]
+  ivo_intro1["intro1<br/>Ivo Calder: A man in a neat overcoat lifts his hat exactly …"]
   ivo_intro1 --> ivo_intro2
-  ivo_intro2["intro2<br/>Ivo Calder: 'A word of advice, freely given: Greyford is ki…"]
+  ivo_intro2["intro2<br/>Ivo Calder: 'And a word of advice, free, since you're new: …"]
   ivo_intro2 --> ivo_hub
   ivo_hub["hub<br/>Ivo Calder: Ivo nods. 'Evening, neighbour.'"]
   ivo_hub -->|"Have you seen the door on the… ⟨{evidence: e_door_observed, not_evidenc…⟩"| ivo_door1
@@ -2126,7 +2126,7 @@ flowchart TD
   ivo_hub -->|"Did you know Agnes Venn? ⟨{quest_stage: [case_agnes, tell], not_e…⟩"| ivo_agnes
   ivo_hub_end_7(["end"])
   ivo_hub -->|"Goodbye."| ivo_hub_end_7
-  ivo_door1["door1<br/>Ivo Calder: He is quiet for a while. 'Doors like that close…"]
+  ivo_door1["door1<br/>Ivo Calder: For a long time he looks not at you but somewhe…"]
   ivo_door1 --> ivo_door2
   ivo_door2["door2<br/>Ivo Calder: 'Whatever's on the other side has waited a long…"]
   ivo_door2 --> ivo_hub
@@ -2182,9 +2182,9 @@ flowchart TD
   nadiya_START -->|"{quest_stage: [case_letters, deliver], …"| nadiya_letters_back
   nadiya_START -->|"{quest_stage: [case_letters, report]}"| nadiya_report1
   nadiya_START -->|"{flag: met.nadiya_sol, quest_done: case…"| nadiya_letters1
-  nadiya_intro1["intro1<br/>Nadiya Sol: 'Nadiya. Courier — parcels, letters, the occasi…"]
+  nadiya_intro1["intro1<br/>Nadiya Sol: A girl on a bicycle brakes so hard her satchel …"]
   nadiya_intro1 --> nadiya_intro2
-  nadiya_intro2["intro2<br/>Nadiya Sol: 'You've got that new-in-town look. Everyone her…"]
+  nadiya_intro2["intro2<br/>Nadiya Sol: 'You look like someone who's just arrived. Ever…"]
   nadiya_intro2 --> nadiya_hub
   nadiya_hub["hub<br/>Nadiya Sol: 'Delivering or receiving?'"]
   nadiya_hub -->|"The door on the plaza... ⟨{evidence: e_door_observed, not_flag: n…⟩"| nadiya_door1
@@ -2238,7 +2238,7 @@ flowchart TD
   pike_START(("start"))
   pike_START --> pike_hub
   pike_START -->|"{not_flag: met.dana_pike}"| pike_intro1
-  pike_intro1["intro1<br/>Warden Dana Pike: 'Dana Pike, Civic Renewal Office. I keep an eye…"]
+  pike_intro1["intro1<br/>Warden Dana Pike: A woman in a grey raincoat, a folder under her …"]
   pike_intro1 --> pike_intro2
   pike_intro2["intro2<br/>Warden Dana Pike: 'If you notice anything structurally... unusual…"]
   pike_intro2 --> pike_hub
@@ -2291,7 +2291,7 @@ flowchart TD
   echo_woman_START -->|"{evidence: e_echo_resident}"| echo_woman_after
   echo_woman_1["1<br/>A woman in a green cardigan sits at a kitchen t…"]
   echo_woman_1 --> echo_woman_2
-  echo_woman_2["2<br/>Woman in green: '{name}. You came back. You always come back — …"]
+  echo_woman_2["2<br/>Woman in green: '{name}.' She isn't the least surprised. 'You c…"]
   echo_woman_2 --> echo_woman_3
   echo_woman_3["3<br/>Woman in green: 'This is number eleven, Lantern Row. Or it was,…"]
   echo_woman_3 -->|"Who are you?"| echo_woman_who
@@ -2300,7 +2300,7 @@ flowchart TD
   echo_woman_who --> echo_woman_end
   echo_woman_name["name<br/>Woman in green: 'You lived three doors down. Before.' The tea i…"]
   echo_woman_name --> echo_woman_end
-  echo_woman_end["end<br/>Woman in green: 'Go back now. The door won't hold much longer —…"]
+  echo_woman_end["end<br/>Woman in green: 'Go now. The door won't hold much longer, and y…"]
   echo_woman_after["after<br/>Woman in green: She is already looking at something you can't s…"]
 ```
 
@@ -2747,31 +2747,35 @@ flowchart TD
   intro_START -->|"{background: archivist}"| intro_1_archivist
   intro_START -->|"{background: repair_technician}"| intro_1_repair_technician
   intro_START -->|"{background: courier}"| intro_1_courier
-  intro_1_returning_local["1_returning_local<br/>The bus pulls away, and the quiet stays at the …"]
+  intro_1_returning_local["1_returning_local<br/>The bus pulls away, and the last of it — a sigh…"]
   intro_1_returning_local --> intro_bg_returning_local
-  intro_bg_returning_local["bg_returning_local<br/>You left this town as a child. The town has man…"]
-  intro_bg_returning_local --> intro_2
-  intro_1_archivist["1_archivist<br/>The bus pulls away, and the quiet stays at the …"]
+  intro_bg_returning_local["bg_returning_local<br/>You left here as a child. The town noticed neit…"]
+  intro_bg_returning_local --> intro_1b
+  intro_1_archivist["1_archivist<br/>The bus pulls away, and the last of it — a sigh…"]
   intro_1_archivist --> intro_bg_archivist
-  intro_bg_archivist["bg_archivist<br/>In your bag: a letter from the county archive o…"]
-  intro_bg_archivist --> intro_2
-  intro_1_repair_technician["1_repair_technician<br/>The bus pulls away, and the quiet stays at the …"]
+  intro_bg_archivist["bg_archivist<br/>In your bag is a letter from the county archive…"]
+  intro_bg_archivist --> intro_1b
+  intro_1_repair_technician["1_repair_technician<br/>The bus pulls away, and the last of it — a sigh…"]
   intro_1_repair_technician --> intro_bg_repair_technician
   intro_bg_repair_technician["bg_repair_technician<br/>In your bag: a soldering iron, three screwdrive…"]
-  intro_bg_repair_technician --> intro_2
-  intro_1_courier["1_courier<br/>The bus pulls away, and the quiet stays at the …"]
+  intro_bg_repair_technician --> intro_1b
+  intro_1_courier["1_courier<br/>The bus pulls away, and the last of it — a sigh…"]
   intro_1_courier --> intro_bg_courier
-  intro_bg_courier["bg_courier<br/>Your last delivery was to this address, and nob…"]
-  intro_bg_courier --> intro_2
-  intro_1["1<br/>The bus pulls away, and the quiet stays at the …"]
-  intro_1 --> intro_2
-  intro_2["2<br/>The new address is written on a scrap of paper:…"]
+  intro_bg_courier["bg_courier<br/>Your last parcel was addressed here, and nobody…"]
+  intro_bg_courier --> intro_1b
+  intro_1["1<br/>The bus pulls away, and the last of it — a sigh…"]
+  intro_1 --> intro_1b
+  intro_2["2<br/>The address is on a scrap of paper: the brown h…"]
   intro_2 --> intro_door1
-  intro_door1["door1<br/>In the middle of the square, behind the fountai…"]
-  intro_door1 --> intro_door2
+  intro_door1["door1<br/>The square beyond the fountain is nearly empty.…"]
+  intro_door1 --> intro_door1b
   intro_door2["door2<br/>People walk round it without looking, the way y…"]
   intro_door2 --> intro_3
   intro_3["3<br/>(Tab opens your journal. Look closely, talk to …"]
+  intro_1b["1b<br/>Fog is coming up from the harbour. It takes its…"]
+  intro_1b --> intro_2
+  intro_door1b["door1b<br/>You would swear it wasn't there a moment ago. U…"]
+  intro_door1b --> intro_door2
 ```
 
 ### rest
@@ -2790,7 +2794,7 @@ flowchart TD
   rest_ask -->|"Not now"| rest_ask_end_5
   rest_saved["saved<br/>You sit on the edge of the bed for a while. The…"]
   rest_waited["waited<br/>You doze off to the radiator's knocking. When y…"]
-  rest_slept["slept<br/>You sleep badly. In the dream, a tram bell ring…"]
+  rest_slept["slept<br/>You sleep badly. All night a tram bell rings so…"]
   rest_n1["n1<br/>Sleep is slow to come. Through the wall, Mrs Ha…"]
   rest_n1 --> rest_n1_open
   rest_n1_open["n1_open<br/>You dream of a kitchen with one wall left undra…"]
@@ -2808,9 +2812,9 @@ flowchart TD
 flowchart TD
   woke_up_START(("start"))
   woke_up_START --> woke_up_1
-  woke_up_1["1<br/>You wake on your own bed, coat still on. Your k…"]
+  woke_up_1["1<br/>You wake on your own bed with your coat still o…"]
   woke_up_1 --> woke_up_2
-  woke_up_2["2<br/>Whatever was in that corridor, it is still ther…"]
+  woke_up_2["2<br/>Whatever waits in that corridor is still there.…"]
 ```
 
 ### landlord_note
@@ -2837,7 +2841,7 @@ flowchart TD
   rook_shop_START -->|"{evidence: e_rook_note}"| rook_shop_again
   rook_shop_1["1<br/>ROOK REPAIRS & HARDWARE. Closed."]
   rook_shop_1 --> rook_shop_2
-  rook_shop_2["2<br/>A note is taped to the glass: 'Back after the t…"]
+  rook_shop_2["2<br/>A note is taped to the glass: 'Back after I've …"]
   rook_shop_again["again<br/>'Back after the tram inspection. — J.'"]
 ```
 
@@ -2862,13 +2866,13 @@ flowchart TD
   veil_door_START --> veil_door_repeat1
   veil_door_START -->|"{not_evidence: e_door_observed}"| veil_door_first1
   veil_door_START -->|"{hypothesis: lantern_row_fragment}"| veil_door_ready
-  veil_door_first1["first1<br/>A doorway stands alone in the middle of the pla…"]
+  veil_door_first1["first1<br/>Close up, the door is stranger still. A square …"]
   veil_door_first1 --> veil_door_first2
   veil_door_first2["first2<br/>Through the little window: a corridor with gree…"]
   veil_door_first2 --> veil_door_first3
-  veil_door_first3["first3<br/>Someone on the other side says a name. Yours. A…"]
+  veil_door_first3["first3<br/>On the other side, someone says a name. Yours. …"]
   veil_door_first3 --> veil_door_first4
-  veil_door_first4["first4<br/>You blink — and for a moment the plaza remember…"]
+  veil_door_first4["first4<br/>You blink — and for a moment the whole square r…"]
   veil_door_repeat1["repeat1<br/>The door is still here. Nobody else on the plaz…"]
   veil_door_repeat1 --> veil_door_repeat2
   veil_door_repeat2["repeat2<br/>The handle is warm. You don't understand enough…"]
@@ -2904,7 +2908,7 @@ flowchart TD
   echo_photo_START(("start"))
   echo_photo_START --> echo_photo_1
   echo_photo_START -->|"{evidence: e_echo_photo}"| echo_photo_again
-  echo_photo_1["1<br/>A framed photo of a street party under paper la…"]
+  echo_photo_1["1<br/>A framed photograph: a street party under paper…"]
   echo_photo_1 --> echo_photo_2
   echo_photo_2["2<br/>— except one child at the edge, who looks exact…"]
   echo_photo_again["again<br/>The child in the photo is still looking at you,…"]
@@ -2916,9 +2920,9 @@ flowchart TD
 flowchart TD
   echo_entrance_START(("start"))
   echo_entrance_START --> echo_entrance_1
-  echo_entrance_1["1<br/>The door closes behind you without a sound. The…"]
+  echo_entrance_1["1<br/>The door closes behind you without a sound. It …"]
   echo_entrance_1 --> echo_entrance_2
-  echo_entrance_2["2<br/>Pale figures drift down the corridor, repeating…"]
+  echo_entrance_2["2<br/>Pale figures drift down the corridor, hanging u…"]
 ```
 
 ### ghost_tram
