@@ -290,3 +290,7 @@ Act III — the north quay, the Keepers' hall and the Seal, Nadiya's plan and Dr
 ## D-107 The prose pass, part 5: Acts IV and V, the endings (R16e)
 
 Act IV (the three doors into the night of 11 November 1962, the testimonies, Dr Vale and the Index, the alderman's moving page), Act V (who comes down to the anchor, Wren, the heart and its three choices) and every ending and epilogue line — rewritten by the same rules (56 strings). Fixed on the way: Dr Vale spoke of herself in the masculine in one line; the organisation is «Городское обновление» everywhere in Russian (the calque «Гражданское обновление» survived in five lines); the second ending's title is «Новые Хранители» / "The New Keepers", matching the Keepers' name.
+
+## D-108 The prose pass, part 6: the lighthouse, Agnes, Rosalind's crossing (R16f)
+
+The side lines tied to the companions and the point: Hester and the light that counts to seven, the port register, Mara's grandmother Agnes and her card, and Rosalind's crossing up into Greyford with the repair stamp — rewritten by the same rules (36 strings).
