@@ -1523,7 +1523,7 @@ flowchart TD
   avery_i1 --> avery_i2
   avery_i2["i2<br/>Rev. Thomas Avery: 'Thomas Avery. Vicar, for my sins, which the pa…"]
   avery_i2 --> avery_hub
-  avery_hub["hub<br/>Rev. Thomas Avery: 'Well? I have tea, time, and a sermon I'd rathe…"]
+  avery_hub["hub<br/>Rev. Thomas Avery: Avery keeps his place in the book with a finger…"]
   avery_hub -->|"'Has anything strange happene… ⟨{not_quest_started: case_abbey_lights}⟩"| avery_l1
   avery_hub -->|"'About the lights in the abbe… ⟨{quest_active: case_abbey_lights}⟩"| avery_again
   avery_hub -->|"'Tell me about Mill Hill.'"| avery_village
@@ -1535,7 +1535,7 @@ flowchart TD
   avery_l2 --> avery_l3
   avery_l3["l3<br/>Rev. Thomas Avery: 'I'm not brave enough to go in, and I'm too hon…"]
   avery_l3 --> avery_hub
-  avery_again["again<br/>Rev. Thomas Avery: 'East along the lane, past the windmill. Go by …"]
+  avery_again["again<br/>Rev. Thomas Avery: 'East along the path, past the windmill.' He gl…"]
   avery_again --> avery_hub
   avery_village["village<br/>Rev. Thomas Avery: 'Two hundred souls, one pub, one shop, one chur…"]
   avery_village --> avery_hub
@@ -1567,7 +1567,7 @@ flowchart TD
   bess_START -->|"{not_flag: met.bess}"| bess_i1
   bess_i1["i1<br/>Behind the bar a broad woman dries a glass that…"]
   bess_i1 --> bess_i2
-  bess_i2["i2<br/>Bess Thorne: 'Bess. This is the Millstone. Food's honest, ci…"]
+  bess_i2["i2<br/>Bess Thorne: 'Bess. This is the Millstone. Honest food, loca…"]
   bess_i2 --> bess_hub
   bess_hub["hub<br/>Bess Thorne: 'Something to eat, something to drink, or somet…"]
   bess_hub -->|"'Why is the millstone over th…"| bess_name
@@ -1622,11 +1622,11 @@ flowchart TD
   ada_START -->|"{quest_stage: [case_drowned_ford, below…"| ada_below
   ada_START -->|"{quest_stage: [case_drowned_ford, liste…"| ada_listen
   ada_START -->|"{not_flag: met.ada}"| ada_intro1
-  ada_intro1["intro1<br/>By the caravan, on an upturned crate, an elderl…"]
+  ada_intro1["intro1<br/>By the caravan an old woman in a man's oilskin …"]
   ada_intro1 --> ada_intro2
-  ada_intro2["intro2<br/>Ada Fenwick: Don't be scared, I don't bite. Ada Fenwick. I u…"]
+  ada_intro2["intro2<br/>Ada Fenwick: 'Don't fret, I don't bite. Ada Fenwick. Used to…"]
   ada_intro2 --> ada_intro3
-  ada_intro3["intro3<br/>Ada Fenwick: You're from Hugh's farm? Then maybe you'll hear…"]
+  ada_intro3["intro3<br/>Ada Fenwick: 'You're from Hugh's farm? Then maybe you'll hea…"]
   ada_intro3 --> ada_hub
   ada_hub["hub<br/>Ada looks up from her net."]
   ada_hub -->|"What bell? ⟨{not_quest_started: case_drowned_ford}⟩"| ada_bell1
@@ -1634,36 +1634,36 @@ flowchart TD
   ada_hub -->|"What's there in the woods?"| ada_forest
   ada_hub_end_3(["end"])
   ada_hub -->|"'I'll be off.'"| ada_hub_end_3
-  ada_bell1["bell1<br/>Ada Fenwick: There's a village under the lake. Mill Ford. Fo…"]
+  ada_bell1["bell1<br/>Ada Fenwick: 'There's a village under the lake. Mill Ford. F…"]
   ada_bell1 --> ada_bell2
-  ada_bell2["bell2<br/>Ada Fenwick: I opened the sluices. I was nineteen, and they …"]
+  ada_bell2["bell2<br/>Ada Fenwick: 'I opened the sluices. I was nineteen, and they…"]
   ada_bell2 --> ada_bell3
-  ada_bell3["bell3<br/>Ada Fenwick: Go to the end of the pier when it's dark. Liste…"]
+  ada_bell3["bell3<br/>Ada Fenwick: 'Go to the end of the jetty after dark. Listen.…"]
   ada_bell3 --> ada_hub
-  ada_bell_again["bell_again<br/>Ada Fenwick: Mill Ford, under the water. The bell rings at n…"]
+  ada_bell_again["bell_again<br/>Ada Fenwick: 'Mill Ford, under the water. The bell rings at …"]
   ada_bell_again --> ada_hub
-  ada_forest["forest<br/>Ada Fenwick: Mushrooms under the pines, blackberries along t…"]
+  ada_forest["forest<br/>Ada Fenwick: 'Mushrooms under the pines, brambles by the pat…"]
   ada_forest --> ada_hub
-  ada_listen["listen<br/>Ada Fenwick: The end of the pier, when it's dark. The bell d…"]
+  ada_listen["listen<br/>Ada Fenwick: 'End of the jetty, after dark. The bell doesn't…"]
   ada_listen --> ada_hub
-  ada_below["below<br/>Ada Fenwick: So the bell called. Go while it's calling. Down…"]
+  ada_below["below<br/>Ada Fenwick: Ada gets up off the crate. 'So the bell called.…"]
   ada_below --> ada_hub
-  ada_reg1["reg1<br/>Ada takes the sodden book in both hands, the wa…"]
+  ada_reg1["reg1<br/>Ada takes the wet book in both hands, the way y…"]
   ada_reg1 --> ada_reg2
-  ada_reg2["reg2<br/>Ada Fenwick: There they are. All of them. The town struck th…"]
+  ada_reg2["reg2<br/>Ada Fenwick: 'There they are. All of them.' Her voice cracks…"]
   ada_reg2 --> ada_reg3
-  ada_reg3["reg3<br/>Ada Fenwick: What to do with it is yours to decide. Your han…"]
+  ada_reg3["reg3<br/>Ada Fenwick: 'What to do with it is yours to say.' She holds…"]
   ada_reg3 -->|"Take it to the town archive. …"| ada_arch1
   ada_reg3 -->|"Give it back to the chapel. L…"| ada_rest1
-  ada_arch1["arch1<br/>Ada Fenwick: The archive... To that woman, Mara? They say sh…"]
+  ada_arch1["arch1<br/>Ada Fenwick: 'To the archive... to that woman, Mara?' Ada co…"]
   ada_arch1 --> ada_arch2
-  ada_arch2["arch2<br/>Ada Fenwick: All right. I'll take it myself. Sixty years sin…"]
-  ada_rest1["rest1<br/>Ada Fenwick: Give it back... Yes. They never asked strangers…"]
+  ada_arch2["arch2<br/>Ada Fenwick: 'All right. I'll take it myself. Sixty years I …"]
+  ada_rest1["rest1<br/>Ada Fenwick: 'Give it back...' Ada looks at the water a long…"]
   ada_rest1 --> ada_rest2
-  ada_rest2["rest2<br/>Ada Fenwick: Tonight I'll go down to the water one last time…"]
-  ada_after_rem["after_rem<br/>Ada Fenwick: Town isn't how I remembered it. But the directo…"]
+  ada_rest2["rest2<br/>Ada Fenwick: 'Tonight I'll go down to the water one last tim…"]
+  ada_after_rem["after_rem<br/>Ada Fenwick: 'Town's nothing like I remembered.' Ada smiles.…"]
   ada_after_rem --> ada_hub
-  ada_after_rest["after_rest<br/>Ada Fenwick: The bell doesn't ring any more. I sleep at nigh…"]
+  ada_after_rest["after_rest<br/>Ada Fenwick: 'The bell doesn't ring any more. I sleep at nig…"]
   ada_after_rest --> ada_hub
 ```
 
@@ -1677,7 +1677,7 @@ flowchart TD
   ford_pier_START -->|"{all: [{quest_stage: [case_drowned_ford…"| ford_pier_bell1
   ford_pier_START -->|"{quest_stage: [case_drowned_ford, liste…"| ford_pier_day
   ford_pier_open["open<br/>The boards underfoot are wet, though there are …"]
-  ford_pier_bell1["bell1<br/>At first, nothing. Only the water rubbing again…"]
+  ford_pier_bell1["bell1<br/>At first, nothing. Only water rubbing at the pi…"]
   ford_pier_bell1 --> ford_pier_bell2
   ford_pier_bell2["bell2<br/>Then a stroke. Dull and heavy, it comes not thr…"]
   ford_pier_day["day<br/>Near the shore the lake is clear and calm; furt…"]
@@ -1703,7 +1703,7 @@ flowchart TD
 flowchart TD
   ford_enter_START(("start"))
   ford_enter_START --> ford_enter_e1
-  ford_enter_e1["e1<br/>You do not drown. The water parts before every …"]
+  ford_enter_e1["e1<br/>You don't drown. The water parts before each st…"]
   ford_enter_e1 --> ford_enter_e2
   ford_enter_e2["e2<br/>And from everywhere, the ones who were forgotte…"]
 ```
