@@ -25,21 +25,23 @@ script = ExtResource("1_loc")
 location_id = &"gym"
 name_key = "LOC_GYM"
 outdoors = false
+in_place = true
 
 [node name="Ground" type="TileMapLayer" parent="."]
 script = ExtResource("2_paint")
 palette_id = "echo_corridor"
-layout = "####################
-#WWWWWWWWWWWWWWWWWW#
-#wwwwwwwwwwwwwwwwww#
-#ffffffffffffffffff#
-#ffffffffffffffffff#
-#ffffffffffffffffff#
-#ffffffffffffffffff#
-#ffffffffffffffffff#
-#ffffffffffffffffff#
-#ffffffffffffffffff#
-#########ff#########"
+layout = "########
+#WWWWWW#
+#wwwwww#
+#ffffff#
+#ffffff#
+#ffffff#
+#ffffff#
+#ffffff#
+#ffffff#
+#ffffff#
+#ffffff#
+#####ff#"
 
 [node name="FloorDecor" type="Node2D" parent="."]
 
@@ -50,60 +52,8 @@ y_sort_enabled = true
 
 [node name="NpcAnchors" type="Node2D" parent="."]
 
-[node name="GymMirror_72_60" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(72, 60)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/8_Gym_Singles_Shadowless/Gym_Singles_Shadowless_118.png"
-placeholder_size = Vector2i(32, 32)
-placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(0, 0)
-collision_offset = Vector2(0, 0)
-
-[node name="GymMirror_120_60" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(120, 60)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/8_Gym_Singles_Shadowless/Gym_Singles_Shadowless_118.png"
-placeholder_size = Vector2i(32, 32)
-placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(0, 0)
-collision_offset = Vector2(0, 0)
-
-[node name="Treadmill_184_72" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(184, 72)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/8_Gym_Singles_Shadowless/Gym_Singles_Shadowless_186.png"
-placeholder_size = Vector2i(32, 48)
-placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(20, 14)
-collision_offset = Vector2(0, -14)
-casts_shadow = true
-
-[node name="Treadmill_208_72" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(208, 72)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/8_Gym_Singles_Shadowless/Gym_Singles_Shadowless_186.png"
-placeholder_size = Vector2i(32, 48)
-placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(20, 14)
-collision_offset = Vector2(0, -14)
-casts_shadow = true
-
-[node name="ExerciseBike_240_70" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(240, 70)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/8_Gym_Singles_Shadowless/Gym_Singles_Shadowless_188.png"
-placeholder_size = Vector2i(32, 32)
-placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(16, 10)
-collision_offset = Vector2(0, -5)
-casts_shadow = true
-
-[node name="ExerciseBike_262_70" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(262, 70)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/8_Gym_Singles_Shadowless/Gym_Singles_Shadowless_188.png"
-placeholder_size = Vector2i(32, 32)
-placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(16, 10)
-collision_offset = Vector2(0, -5)
-casts_shadow = true
-
-[node name="DumbbellRack_40_72" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(40, 72)
+[node name="DumbbellRack_32_72" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(32, 72)
 texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/8_Gym_Singles_Shadowless/Gym_Singles_Shadowless_166.png"
 placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
@@ -111,17 +61,26 @@ collision_size = Vector2(29, 10)
 collision_offset = Vector2(0.5, -14)
 casts_shadow = true
 
-[node name="DumbbellRackB_284_72" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(284, 72)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/8_Gym_Singles_Shadowless/Gym_Singles_Shadowless_169.png"
-placeholder_size = Vector2i(32, 32)
+[node name="Treadmill_64_72" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(64, 72)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/8_Gym_Singles_Shadowless/Gym_Singles_Shadowless_186.png"
+placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(29, 10)
-collision_offset = Vector2(0.5, -14)
+collision_size = Vector2(20, 14)
+collision_offset = Vector2(0, -14)
 casts_shadow = true
 
-[node name="BenchPress_72_124" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(72, 124)
+[node name="Treadmill_96_72" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(96, 72)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/8_Gym_Singles_Shadowless/Gym_Singles_Shadowless_186.png"
+placeholder_size = Vector2i(32, 48)
+placeholder_color = Color(0.541,0.478,0.416, 1)
+collision_size = Vector2(20, 14)
+collision_offset = Vector2(0, -14)
+casts_shadow = true
+
+[node name="BenchPress_32_124" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(32, 124)
 texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/8_Gym_Singles_Shadowless/Gym_Singles_Shadowless_97.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
@@ -129,8 +88,8 @@ collision_size = Vector2(26, 12)
 collision_offset = Vector2(1, -13)
 casts_shadow = true
 
-[node name="WeightMachine_112_124" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(112, 124)
+[node name="WeightMachine_96_124" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(96, 124)
 texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/8_Gym_Singles_Shadowless/Gym_Singles_Shadowless_92.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
@@ -138,17 +97,16 @@ collision_size = Vector2(29, 14)
 collision_offset = Vector2(0.5, -9)
 casts_shadow = true
 
-[node name="LegPress_256_128" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(256, 128)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/8_Gym_Singles_Shadowless/Gym_Singles_Shadowless_95.png"
-placeholder_size = Vector2i(32, 48)
+[node name="GymMat_56_150" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(56, 150)
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/8_Gym_Singles_Shadowless/Gym_Singles_Shadowless_197.png"
+placeholder_size = Vector2i(32, 16)
 placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(18, 14)
-collision_offset = Vector2(0, -8)
-casts_shadow = true
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
 
-[node name="PunchingBag_36_160" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(36, 160)
+[node name="PunchingBag_24_164" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(24, 164)
 texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/8_Gym_Singles_Shadowless/Gym_Singles_Shadowless_64.png"
 placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
@@ -156,8 +114,8 @@ collision_size = Vector2(14, 8)
 collision_offset = Vector2(0, -11)
 casts_shadow = true
 
-[node name="PunchingBagB_60_160" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(60, 160)
+[node name="PunchingBagB_44_164" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(44, 164)
 texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/8_Gym_Singles_Shadowless/Gym_Singles_Shadowless_66.png"
 placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
@@ -165,79 +123,36 @@ collision_size = Vector2(14, 8)
 collision_offset = Vector2(0, -11)
 casts_shadow = true
 
-[node name="GymMat_216_150" parent="FloorDecor" instance=ExtResource("3_prop")]
-position = Vector2(216, 150)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/8_Gym_Singles_Shadowless/Gym_Singles_Shadowless_197.png"
-placeholder_size = Vector2i(32, 16)
-placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(0, 0)
-collision_offset = Vector2(0, 0)
-
-[node name="GymBall_290_160" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(290, 160)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/8_Gym_Singles_Shadowless/Gym_Singles_Shadowless_74.png"
-placeholder_size = Vector2i(32, 32)
-placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(16, 6)
-collision_offset = Vector2(-1, -12)
-casts_shadow = true
-
-[node name="GymBall_270_168" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(270, 168)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/8_Gym_Singles_Shadowless/Gym_Singles_Shadowless_74.png"
-placeholder_size = Vector2i(32, 32)
-placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(16, 6)
-collision_offset = Vector2(-1, -12)
-casts_shadow = true
-
-[node name="PlantTall_292_120" parent="Entities" instance=ExtResource("3_prop")]
-position = Vector2(292, 120)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/2_Living_Room_Singles_Shadowless/Living_Room_Singles_Shadowless_17.png"
-placeholder_size = Vector2i(16, 48)
-placeholder_color = Color(0.541,0.478,0.416, 1)
-collision_size = Vector2(12, 6)
-collision_offset = Vector2(0, -10)
-casts_shadow = true
-
 [node name="TreadmillLook" type="Area2D" parent="Entities"]
-position = Vector2(196, 80)
+position = Vector2(80, 80)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_gym_treadmill"
 area_size = Vector2(40, 16)
 lines = PackedStringArray("FLAVOR_GYM_TREADMILL")
 
 [node name="BagLook" type="Area2D" parent="Entities"]
-position = Vector2(48, 168)
+position = Vector2(34, 170)
 script = ExtResource("5_inspect")
 interaction_id = &"inspect_gym_bag"
 area_size = Vector2(40, 16)
 lines = PackedStringArray("FLAVOR_GYM_BAG")
 
 [node name="A_coach" type="Marker2D" parent="NpcAnchors"]
-position = Vector2(160, 104)
+position = Vector2(64, 104)
 script = ExtResource("11_anchor")
 anchor_id = &"coach"
 
 [node name="Entrance" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(160, 154)
+position = Vector2(96, 164)
 script = ExtResource("4_spawn")
 spawn_id = &"entrance"
 facing = Vector2(0, -1)
 
 [node name="ExitDoor" type="Area2D" parent="Entities"]
-position = Vector2(160, 172)
+position = Vector2(96, 186)
 script = ExtResource("6_door")
 interaction_id = &"door_gym_exit"
 area_size = Vector2(30, 10)
 prompt_key = "PROMPT_EXIT"
 target_scene_id = &"market_street"
 target_spawn_id = &"gym_front"
-
-[node name="Dress154_45" parent="FloorDecor" instance=ExtResource("3_prop")]
-position = Vector2(154, 45)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/7_Art_Singles_Shadowless/Art_Singles_Shadowless_45.png"
-placeholder_size = Vector2i(16, 32)
-placeholder_color = Color(0.478,0.416,0.353, 1)
-collision_size = Vector2(0, 0)
-collision_offset = Vector2(0, 0)

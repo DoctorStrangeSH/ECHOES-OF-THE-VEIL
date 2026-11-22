@@ -442,8 +442,12 @@ func _close_room(animate: bool) -> void:
 ## The building around the door lifts away: every tall thing of the street
 ## whose picture covers a point just above the door.
 func _fade_building(door: Node2D, animate: bool) -> Rect2:
+	# The house: the tall thing just above the door, then every piece stacked
+	# on it (a shop's middle floors and roof are pictures of their own).
 	var probe := door.global_position - Vector2(0, 20)
 	var house := Rect2()
+	var props: Array[WorldProp] = []
+	var rects: Array[Rect2] = []
 	for p: Dictionary in _pieces.values():
 		if p["node"] == null or not p["region"]:
 			continue
@@ -451,16 +455,41 @@ func _fade_building(door: Node2D, animate: bool) -> Rect2:
 			var prop := n as WorldProp
 			var tex := AssetLibrary.load_texture(prop.texture_path)
 			var size := prop.region.size if prop.region.has_area() else (Vector2(tex.get_size()) if tex != null else Vector2(prop.placeholder_size))
+			if size.y < 48.0:
+				continue
 			var rect := Rect2(prop.global_position - Vector2(size.x / 2.0, size.y), size)
-			if rect.grow(2).has_point(probe):
-				if rect.get_area() > house.get_area():
-					house = rect
-				_faded.append(prop)
-				if animate:
-					prop.create_tween().tween_property(prop, "modulate:a", 0.0, ROOM_FADE)
-				else:
-					prop.modulate.a = 0.0
-	return house
+			props.append(prop)
+			rects.append(rect)
+			if rect.grow(2).has_point(probe) and rect.get_area() > house.get_area():
+				house = rect
+	if not house.has_area():
+		return house
+	var grown := true
+	var taken := {}
+	while grown:
+		grown = false
+		for i in props.size():
+			if taken.has(i):
+				continue
+			var r := rects[i]
+			var overlap := minf(r.end.x, house.end.x) - maxf(r.position.x, house.position.x)
+			if r.size.x >= house.size.x * 0.6 and overlap >= minf(r.size.x, house.size.x) * 0.8 and r.grow(2).intersects(house):
+				taken[i] = true
+				house = house.merge(r)
+				grown = true
+	for i: int in taken:
+		var prop := props[i]
+		_faded.append(prop)
+		if animate:
+			prop.create_tween().tween_property(prop, "modulate:a", 0.0, ROOM_FADE)
+		else:
+			prop.modulate.a = 0.0
+	# The ground floor is what the room stands on.
+	var base := Rect2()
+	for i: int in taken:
+		if rects[i].end.y >= house.end.y - 1.0 and rects[i].get_area() > base.get_area():
+			base = rects[i]
+	return base if base.has_area() else house
 
 
 func _dim_world(on: bool, animate: bool) -> void:

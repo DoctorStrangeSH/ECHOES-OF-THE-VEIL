@@ -3,143 +3,102 @@
  "name_key": "LOC_CAFE",
  "palette": "rented_room",
  "options": {
-  "outdoors": false
+  "outdoors": false,
+  "in_place": true
  },
  "layout": {
   "generator": "room",
-  "width": 18,
-  "height": 11,
-  "door_x": 8
+  "width": 8,
+  "height": 12,
+  "door_x": 3
  },
  "nodes": [
   {
    "kind": "furn",
    "furn": "window",
-   "x": 48,
+   "x": 32,
    "y": 62
-  },
-  {
-   "kind": "furn",
-   "furn": "window",
-   "x": 240,
-   "y": 62
-  },
-  {
-   "kind": "furn",
-   "furn": "display_counter",
-   "x": 112,
-   "y": 72
-  },
-  {
-   "kind": "furn",
-   "furn": "display_counter",
-   "x": 144,
-   "y": 72
   },
   {
    "kind": "furn",
    "furn": "coffee_machine",
-   "x": 176,
+   "x": 64,
    "y": 62
   },
   {
    "kind": "furn",
    "furn": "fridge_b",
-   "x": 200,
+   "x": 80,
    "y": 64
   },
   {
    "kind": "furn",
    "furn": "radiogram",
-   "x": 258,
+   "x": 104,
    "y": 66
   },
   {
    "kind": "furn",
-   "furn": "table_cloth_pink",
-   "x": 56,
-   "y": 112
+   "furn": "display_counter",
+   "x": 40,
+   "y": 96
   },
   {
    "kind": "furn",
-   "furn": "stool_wood",
-   "x": 36,
-   "y": 112
-  },
-  {
-   "kind": "furn",
-   "furn": "stool_wood_b",
-   "x": 76,
-   "y": 114
+   "furn": "display_counter",
+   "x": 72,
+   "y": 96
   },
   {
    "kind": "furn",
    "furn": "table_cloth_pink",
-   "x": 232,
-   "y": 112
-  },
-  {
-   "kind": "furn",
-   "furn": "stool_wood",
-   "x": 212,
-   "y": 112
+   "x": 32,
+   "y": 132
   },
   {
    "kind": "furn",
    "furn": "stool_wood_b",
-   "x": 252,
-   "y": 114
-  },
-  {
-   "kind": "furn",
-   "furn": "table_cloth_white",
    "x": 56,
-   "y": 156
+   "y": 134
+  },
+  {
+   "kind": "furn",
+   "furn": "table_cloth_pink",
+   "x": 96,
+   "y": 132
   },
   {
    "kind": "furn",
    "furn": "stool_wood",
-   "x": 36,
-   "y": 156
-  },
-  {
-   "kind": "furn",
-   "furn": "table_cloth_white",
-   "x": 232,
-   "y": 156
-  },
-  {
-   "kind": "furn",
-   "furn": "stool_wood_b",
-   "x": 252,
-   "y": 158
-  },
-  {
-   "kind": "furn",
-   "furn": "plant_big",
-   "x": 258,
-   "y": 150
+   "x": 72,
+   "y": 132
   },
   {
    "kind": "furn",
    "furn": "rug_pink",
-   "x": 144,
-   "y": 140
+   "x": 64,
+   "y": 164
   },
   {
    "kind": "furn",
    "furn": "lamp_cream",
-   "x": 30,
-   "y": 80
+   "x": 24,
+   "y": 172
+  },
+  {
+   "kind": "furn",
+   "furn": "plant_small",
+   "x": 104,
+   "y": 174
   },
   {
    "kind": "inspect",
    "name": "BoardLook",
    "id": "inspect_cafe_board",
-   "x": 144,
-   "y": 80,
+   "x": 48,
+   "y": 58,
    "area": [
-    60,
+    40,
     10
    ],
    "lines": [
@@ -150,7 +109,7 @@
    "kind": "inspect",
    "name": "CafeRadioLook",
    "id": "inspect_cafe_radio",
-   "x": 258,
+   "x": 104,
    "y": 74,
    "area": [
     24,
@@ -164,12 +123,12 @@
    "template": "anchors",
    "points": {
     "counter": [
-     128,
-     90
+     56,
+     78
     ],
     "regular": [
-     232,
-     128
+     72,
+     142
     ]
    }
   },
@@ -177,8 +136,8 @@
    "kind": "spawn",
    "name": "Entrance",
    "id": "entrance",
-   "x": 144,
-   "y": 154,
+   "x": 64,
+   "y": 164,
    "facing": [
     0,
     -1
@@ -188,8 +147,8 @@
    "kind": "door",
    "name": "ExitDoor",
    "id": "door_cafe_exit",
-   "x": 144,
-   "y": 172,
+   "x": 64,
+   "y": 186,
    "area": [
     30,
     10
