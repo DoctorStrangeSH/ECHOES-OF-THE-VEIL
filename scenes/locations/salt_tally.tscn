@@ -60,7 +60,7 @@ y_sort_enabled = true
 
 [node name="Shelf1" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(56, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_57.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/5_Classroom_and_Library_Singles_Shadowless/Classroom_and_Library_Singles_Shadowless_57.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(30, 10)
@@ -76,7 +76,7 @@ lines = PackedStringArray("SALT_SHELF_1")
 
 [node name="Shelf2" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(96, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_64.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/5_Classroom_and_Library_Singles_Shadowless/Classroom_and_Library_Singles_Shadowless_64.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(30, 10)
@@ -92,7 +92,7 @@ lines = PackedStringArray("SALT_SHELF_2")
 
 [node name="Shelf3" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(136, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_71.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/5_Classroom_and_Library_Singles_Shadowless/Classroom_and_Library_Singles_Shadowless_71.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(30, 10)
@@ -113,7 +113,7 @@ show_if = {"not_flag": "salt.shrine_open"}
 
 [node name="Shelf4" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(176, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_58.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/5_Classroom_and_Library_Singles_Shadowless/Classroom_and_Library_Singles_Shadowless_58.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(30, 10)
@@ -129,7 +129,7 @@ lines = PackedStringArray("SALT_SHELF_4")
 
 [node name="Shelf5" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(216, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_65.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/5_Classroom_and_Library_Singles_Shadowless/Classroom_and_Library_Singles_Shadowless_65.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(30, 10)
@@ -145,7 +145,7 @@ lines = PackedStringArray("SALT_SHELF_5")
 
 [node name="Shelf6" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(256, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_72.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/5_Classroom_and_Library_Singles_Shadowless/Classroom_and_Library_Singles_Shadowless_72.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(30, 10)
@@ -180,7 +180,7 @@ facing = Vector2(0, 1)
 
 [node name="Desk" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(440, 120)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_25.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/5_Classroom_and_Library_Singles_Shadowless/Classroom_and_Library_Singles_Shadowless_25.png"
 placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(28, 10)
@@ -195,7 +195,7 @@ pickup_flag = &"salt.key_taken"
 
 [node name="Coffin" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(470, 236)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_49.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/11_Halloween_Singles_Shadowless/Halloween_Singles_Shadowless_49.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.478,0.439,0.408, 1)
 collision_size = Vector2(28, 12)
@@ -204,7 +204,7 @@ casts_shadow = true
 
 [node name="Web" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(488, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_24.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/11_Halloween_Singles_Shadowless/Halloween_Singles_Shadowless_24.png"
 placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.478,0.439,0.408, 1)
 collision_size = Vector2(0, 0)

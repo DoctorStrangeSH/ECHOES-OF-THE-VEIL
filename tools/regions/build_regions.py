@@ -16,7 +16,7 @@ Usage:
   python3 tools/regions/build_regions.py --check         # fail if scenes are stale
   python3 tools/regions/build_regions.py --format        # rewrite specs canonically
 """
-import argparse, json, os, sys
+import argparse, glob, json, os, sys
 from PIL import Image
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -197,6 +197,43 @@ _P = {'pic': [_ART + '7_Art_Singles/Art_Singles_%d.png' % i for i in range(41, 4
       'frame': [_ART + '4_Bedroom_Singles/Bedroom_Singles_%d.png' % i for i in (427, 428)],
       'lamp': [_ART + '4_Bedroom_Singles/Bedroom_Singles_471.png'],
       'plant': [_ART + '2_Living_Room_Singles/Living_Room_Singles_%d.png' % i for i in (13, 14, 16, 17, 18)]}
+
+
+def shadowless(p):
+    """The same LimeZu single without the grey floor shadow baked under it
+    (that shadow is drawn for one floor colour and shows as a dark patch on
+    every other). Numbering drifts between the two sets, so match by pixels."""
+    if 'Theme_Sorter_Singles/' not in p:
+        return p
+    d, name = p.split('Theme_Sorter_Singles/')[1].split('/')
+    sd = glob.glob(ART + '/modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/' + d + '*')
+    if not sd:
+        return p
+    o = Image.open(local(p)).convert('RGBA')
+
+    def score(q):
+        s2 = Image.open(q).convert('RGBA')
+        if s2.size != o.size:
+            return 0
+        a, b = s2.tobytes(), o.tobytes()
+        n = m = 0
+        for i in range(0, len(a), 4):
+            if a[i + 3]:
+                n += 1
+                if b[i + 3] and abs(a[i] - b[i]) + abs(a[i + 1] - b[i + 1]) + abs(a[i + 2] - b[i + 2]) < 40:
+                    m += 1
+        return m / n if n else 0
+    same = sd[0] + '/' + name.replace('_Singles_', '_Singles_Shadowless_')
+    if os.path.exists(same) and score(same) > 0.97:
+        best = same
+    else:
+        best = max(glob.glob(sd[0] + '/*.png'), key=score)
+        if score(best) <= 0.97:
+            return p
+    return best[len(ART) + 1:]
+
+
+_P = {k: [shadowless(x) for x in v] for k, v in _P.items()}
 THEMES = {
     'home': ['pic', 'shelf', 'collage', 'pic', 'lamp', 'shelf', 'pic', 'lights'],
     'shop': ['board', 'shelf', 'pic', 'bunting', 'shelf', 'pic'],

@@ -52,7 +52,7 @@ y_sort_enabled = true
 
 [node name="Window_48_62" parent="FloorDecor" instance=ExtResource("3_prop")]
 position = Vector2(48, 62)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_421.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/4_Bedroom_Singles_Shadowless/Bedroom_Singles_Shadowless_421.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(0, 0)
@@ -60,7 +60,7 @@ collision_offset = Vector2(0, 0)
 
 [node name="Window_240_62" parent="FloorDecor" instance=ExtResource("3_prop")]
 position = Vector2(240, 62)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_421.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/4_Bedroom_Singles_Shadowless/Bedroom_Singles_Shadowless_421.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(0, 0)
@@ -68,25 +68,25 @@ collision_offset = Vector2(0, 0)
 
 [node name="DisplayCounter_112_72" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(112, 72)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/16_Grocery_Store_Singles/Grocery_Store_Singles_147.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/16_Grocery_Store_Singles_Shadowless/Grocery_Store_Singles_Shadowless_147.png"
 placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(28, 12)
-collision_offset = Vector2(0, -13)
+collision_offset = Vector2(0, -14)
 casts_shadow = true
 
 [node name="DisplayCounter_144_72" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(144, 72)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/16_Grocery_Store_Singles/Grocery_Store_Singles_147.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/16_Grocery_Store_Singles_Shadowless/Grocery_Store_Singles_Shadowless_147.png"
 placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(28, 12)
-collision_offset = Vector2(0, -13)
+collision_offset = Vector2(0, -14)
 casts_shadow = true
 
 [node name="CoffeeMachine_176_62" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(176, 62)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_177.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/12_Kitchen_Singles_Shadowless/Kitchen_Singles_Shadowless_177.png"
 placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(12, 6)
@@ -95,25 +95,25 @@ casts_shadow = true
 
 [node name="FridgeB_200_64" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(200, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_164.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/12_Kitchen_Singles_Shadowless/Kitchen_Singles_Shadowless_164.png"
 placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(11, 10)
-collision_offset = Vector2(-1.5, -5)
+collision_offset = Vector2(-1.5, -6)
 casts_shadow = true
 
 [node name="Radiogram_258_66" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(258, 66)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_89.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/2_Living_Room_Singles_Shadowless/Living_Room_Singles_Shadowless_89.png"
 placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(13, 8)
-collision_offset = Vector2(0.5, -12)
+collision_offset = Vector2(0.5, -13)
 casts_shadow = true
 
 [node name="TableClothPink_56_112" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(56, 112)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_337.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/12_Kitchen_Singles_Shadowless/Kitchen_Singles_Shadowless_337.png"
 placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(28, 12)
@@ -122,7 +122,7 @@ casts_shadow = true
 
 [node name="StoolWood_36_112" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(36, 112)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_272.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/12_Kitchen_Singles_Shadowless/Kitchen_Singles_Shadowless_272.png"
 placeholder_size = Vector2i(16, 16)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(12, 4)
@@ -130,7 +130,7 @@ collision_offset = Vector2(0, -3)
 
 [node name="StoolWoodB_76_114" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(76, 114)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_276.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/12_Kitchen_Singles_Shadowless/Kitchen_Singles_Shadowless_276.png"
 placeholder_size = Vector2i(16, 16)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(12, 4)
@@ -138,7 +138,7 @@ collision_offset = Vector2(0, -3)
 
 [node name="TableClothPink_232_112" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(232, 112)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_337.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/12_Kitchen_Singles_Shadowless/Kitchen_Singles_Shadowless_337.png"
 placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(28, 12)
@@ -147,7 +147,7 @@ casts_shadow = true
 
 [node name="StoolWood_212_112" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(212, 112)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_272.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/12_Kitchen_Singles_Shadowless/Kitchen_Singles_Shadowless_272.png"
 placeholder_size = Vector2i(16, 16)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(12, 4)
@@ -155,7 +155,7 @@ collision_offset = Vector2(0, -3)
 
 [node name="StoolWoodB_252_114" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(252, 114)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_276.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/12_Kitchen_Singles_Shadowless/Kitchen_Singles_Shadowless_276.png"
 placeholder_size = Vector2i(16, 16)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(12, 4)
@@ -163,7 +163,7 @@ collision_offset = Vector2(0, -3)
 
 [node name="TableClothWhite_56_156" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(56, 156)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_338.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/12_Kitchen_Singles_Shadowless/Kitchen_Singles_Shadowless_338.png"
 placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(28, 12)
@@ -172,7 +172,7 @@ casts_shadow = true
 
 [node name="StoolWood_36_156" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(36, 156)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_272.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/12_Kitchen_Singles_Shadowless/Kitchen_Singles_Shadowless_272.png"
 placeholder_size = Vector2i(16, 16)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(12, 4)
@@ -180,7 +180,7 @@ collision_offset = Vector2(0, -3)
 
 [node name="TableClothWhite_232_156" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(232, 156)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_338.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/12_Kitchen_Singles_Shadowless/Kitchen_Singles_Shadowless_338.png"
 placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(28, 12)
@@ -189,7 +189,7 @@ casts_shadow = true
 
 [node name="StoolWoodB_252_158" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(252, 158)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_276.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/12_Kitchen_Singles_Shadowless/Kitchen_Singles_Shadowless_276.png"
 placeholder_size = Vector2i(16, 16)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(12, 4)
@@ -197,16 +197,16 @@ collision_offset = Vector2(0, -3)
 
 [node name="PlantBig_258_150" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(258, 150)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_13.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/2_Living_Room_Singles_Shadowless/Living_Room_Singles_Shadowless_13.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(16, 8)
-collision_offset = Vector2(0, -12)
+collision_offset = Vector2(0, -13)
 casts_shadow = true
 
 [node name="RugPink_144_140" parent="FloorDecor" instance=ExtResource("3_prop")]
 position = Vector2(144, 140)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/4_Bedroom_Singles/Bedroom_Singles_382.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/4_Bedroom_Singles_Shadowless/Bedroom_Singles_Shadowless_382.png"
 placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(0, 0)
@@ -214,14 +214,11 @@ collision_offset = Vector2(0, 0)
 
 [node name="LampCream_30_80" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(30, 80)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_87.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/2_Living_Room_Singles_Shadowless/Living_Room_Singles_Shadowless_87.png"
 placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.541,0.478,0.416, 1)
 collision_size = Vector2(13, 4)
-collision_offset = Vector2(-0.5, -9)
-light_color = Color(1.00, 0.85, 0.60, 1)
-light_offset = Vector2(0, -41)
-light_radius = 44
+collision_offset = Vector2(-0.5, -10)
 casts_shadow = true
 
 [node name="BoardLook" type="Area2D" parent="Entities"]
@@ -265,7 +262,7 @@ target_spawn_id = &"cafe_front"
 
 [node name="Dress80_45" parent="FloorDecor" instance=ExtResource("3_prop")]
 position = Vector2(80, 45)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/7_Art_Singles/Art_Singles_45.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/7_Art_Singles_Shadowless/Art_Singles_Shadowless_45.png"
 placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.478,0.416,0.353, 1)
 collision_size = Vector2(0, 0)

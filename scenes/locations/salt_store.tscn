@@ -69,7 +69,7 @@ collision_offset = Vector2(0, -4)
 
 [node name="CratesL" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(36, 208)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_92.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/11_Halloween_Singles_Shadowless/Halloween_Singles_Shadowless_92.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(28, 10)
@@ -78,7 +78,7 @@ casts_shadow = true
 
 [node name="Rack5" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(264, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_47.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/5_Classroom_and_Library_Singles_Shadowless/Classroom_and_Library_Singles_Shadowless_47.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(30, 8)
@@ -87,7 +87,7 @@ casts_shadow = true
 
 [node name="Rack4" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(216, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_46.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/5_Classroom_and_Library_Singles_Shadowless/Classroom_and_Library_Singles_Shadowless_46.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(30, 8)
@@ -96,7 +96,7 @@ casts_shadow = true
 
 [node name="Rack3" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(168, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_45.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/5_Classroom_and_Library_Singles_Shadowless/Classroom_and_Library_Singles_Shadowless_45.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(30, 8)
@@ -105,7 +105,7 @@ casts_shadow = true
 
 [node name="Rack2" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(120, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_44.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/5_Classroom_and_Library_Singles_Shadowless/Classroom_and_Library_Singles_Shadowless_44.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(30, 8)
@@ -114,7 +114,7 @@ casts_shadow = true
 
 [node name="Rack1" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(72, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_43.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/5_Classroom_and_Library_Singles_Shadowless/Classroom_and_Library_Singles_Shadowless_43.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.502,0.376,0.251, 1)
 collision_size = Vector2(30, 8)
@@ -150,7 +150,7 @@ show_if = {"flag": "boss.storekeeper.defeated"}
 
 [node name="LadderProp" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(320, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_188.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/11_Halloween_Singles_Shadowless/Halloween_Singles_Shadowless_188.png"
 placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.478,0.439,0.408, 1)
 collision_size = Vector2(0, 0)
@@ -175,7 +175,7 @@ show_if = {"flag": "boss.storekeeper.defeated"}
 
 [node name="Crates2" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(300, 200)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_94.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/11_Halloween_Singles_Shadowless/Halloween_Singles_Shadowless_94.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.478,0.439,0.408, 1)
 collision_size = Vector2(28, 12)
@@ -184,7 +184,7 @@ casts_shadow = true
 
 [node name="Web" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(24, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_24.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/11_Halloween_Singles_Shadowless/Halloween_Singles_Shadowless_24.png"
 placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.478,0.439,0.408, 1)
 collision_size = Vector2(0, 0)

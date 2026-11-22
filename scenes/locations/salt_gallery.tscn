@@ -60,7 +60,7 @@ y_sort_enabled = true
 
 [node name="Sluice" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(48, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_177.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/11_Halloween_Singles_Shadowless/Halloween_Singles_Shadowless_177.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.376,0.376,0.439, 1)
 collision_size = Vector2(24, 10)
@@ -127,7 +127,7 @@ lines = PackedStringArray("SALT_NOTE_1", "SALT_NOTE_2")
 
 [node name="NoteCrate" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(200, 196)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_97.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/11_Halloween_Singles_Shadowless/Halloween_Singles_Shadowless_97.png"
 placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.478,0.439,0.408, 1)
 collision_size = Vector2(17, 10)
@@ -152,7 +152,7 @@ collision_offset = Vector2(0, 0)
 
 [node name="Web1" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(24, 80)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_25.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/11_Halloween_Singles_Shadowless/Halloween_Singles_Shadowless_25.png"
 placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.478,0.439,0.408, 1)
 collision_size = Vector2(0, 0)
@@ -160,7 +160,7 @@ collision_offset = Vector2(0, 0)
 
 [node name="Web2" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(488, 80)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_27.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/11_Halloween_Singles_Shadowless/Halloween_Singles_Shadowless_27.png"
 placeholder_size = Vector2i(16, 48)
 placeholder_color = Color(0.478,0.439,0.408, 1)
 collision_size = Vector2(0, 0)
@@ -168,7 +168,7 @@ collision_offset = Vector2(0, 0)
 
 [node name="Crates1" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(440, 96)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_94.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/11_Halloween_Singles_Shadowless/Halloween_Singles_Shadowless_94.png"
 placeholder_size = Vector2i(32, 48)
 placeholder_color = Color(0.478,0.439,0.408, 1)
 collision_size = Vector2(28, 12)

@@ -154,27 +154,27 @@
   "depth": 8
  },
  "wardrobe_tall": {
-  "tex": "@bedroom/532.png",
+  "tex": "@bedroom/531.png",
   "depth": 10
  },
  "wardrobe_tall_b": {
-  "tex": "@bedroom/534.png",
+  "tex": "@bedroom/533.png",
   "depth": 10
  },
  "shelf_toys": {
-  "tex": "@bedroom/538.png",
+  "tex": "@bedroom/537.png",
   "depth": 10
  },
  "shelf_clutter": {
-  "tex": "@bedroom/539.png",
+  "tex": "@bedroom/538.png",
   "depth": 10
  },
  "cabinet_white": {
-  "tex": "@bedroom/540.png",
+  "tex": "@bedroom/539.png",
   "depth": 10
  },
  "lamp_small": {
-  "tex": "@bedroom/541.png",
+  "tex": "@bedroom/540.png",
   "depth": 4
  },
  "school_desk": {
@@ -310,7 +310,7 @@
   "depth": 10
  },
  "ping_pong": {
-  "tex": "@basement/241.png",
+  "tex": "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_241.png",
   "depth": 40
  },
  "stove": {

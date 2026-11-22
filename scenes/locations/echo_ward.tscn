@@ -299,7 +299,7 @@ anchor_id = &"bench"
 
 [node name="HospitalDoorFrame" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(120, 352)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_240.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/14_Basement_Singles_Shadowless/Basement_Singles_Shadowless_240.png"
 placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.753,0.753,1.000, 1)
 collision_size = Vector2(0, 0)
@@ -333,7 +333,7 @@ facing = Vector2(0, -1)
 
 [node name="HomeDoorFrame" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(420, 352)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_240.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/14_Basement_Singles_Shadowless/Basement_Singles_Shadowless_240.png"
 placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.753,0.753,1.000, 1)
 collision_size = Vector2(0, 0)
@@ -367,7 +367,7 @@ facing = Vector2(0, -1)
 
 [node name="StationDoorFrame" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(540, 352)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_240.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/14_Basement_Singles_Shadowless/Basement_Singles_Shadowless_240.png"
 placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.753,0.753,1.000, 1)
 collision_size = Vector2(0, 0)
@@ -401,7 +401,7 @@ facing = Vector2(0, -1)
 
 [node name="RiftFrame" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(220, 352)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_240.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/14_Basement_Singles_Shadowless/Basement_Singles_Shadowless_240.png"
 placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.878,0.753,1.000, 1)
 collision_size = Vector2(0, 0)

@@ -62,11 +62,11 @@ y_sort_enabled = true
 
 [node name="Anchor" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(208, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_1.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/14_Basement_Singles_Shadowless/Basement_Singles_Shadowless_1.png"
 placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.627,0.565,0.753, 1)
-collision_size = Vector2(28, 12)
-collision_offset = Vector2(0, -6)
+collision_size = Vector2(18, 12)
+collision_offset = Vector2(0, -7)
 casts_shadow = true
 
 [node name="Shimmer" type="Node" parent="Entities/Anchor"]

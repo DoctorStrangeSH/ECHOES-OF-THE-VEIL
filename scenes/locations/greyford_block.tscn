@@ -324,7 +324,7 @@ facing = Vector2(0, 1)
 
 [node name="JobBoard" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(548, 236)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_33.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/5_Classroom_and_Library_Singles_Shadowless/Classroom_and_Library_Singles_Shadowless_33.png"
 placeholder_size = Vector2i(32, 16)
 placeholder_color = Color(0.690,0.502,0.314, 1)
 collision_size = Vector2(0, 0)

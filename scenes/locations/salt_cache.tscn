@@ -52,7 +52,7 @@ y_sort_enabled = true
 
 [node name="Chest" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(96, 72)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_95.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/11_Halloween_Singles_Shadowless/Halloween_Singles_Shadowless_95.png"
 placeholder_size = Vector2i(32, 32)
 placeholder_color = Color(0.478,0.439,0.408, 1)
 collision_size = Vector2(17, 10)
@@ -82,7 +82,7 @@ collision_offset = Vector2(0, -4)
 
 [node name="Web" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(160, 64)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_26.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/11_Halloween_Singles_Shadowless/Halloween_Singles_Shadowless_26.png"
 placeholder_size = Vector2i(16, 32)
 placeholder_color = Color(0.478,0.439,0.408, 1)
 collision_size = Vector2(0, 0)
