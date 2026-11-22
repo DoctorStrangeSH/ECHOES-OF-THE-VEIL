@@ -10,6 +10,7 @@ var direction := Vector2.RIGHT
 
 
 func _ready() -> void:
+	add_to_group(&"memory_shard")
 	super._ready()
 	team = &"enemy"
 	damage = 1

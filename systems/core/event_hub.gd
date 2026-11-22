@@ -36,3 +36,6 @@ signal screen_requested(screen: String)
 
 ## The player got out of their car (world position, which way it faces).
 signal car_parked(at: Vector2, dir: String)
+
+## A dodge in the last instant before a blow (R15a).
+signal perfect_dodge

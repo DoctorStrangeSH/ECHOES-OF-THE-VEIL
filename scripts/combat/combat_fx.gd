@@ -3,6 +3,32 @@ extends RefCounted
 ## Shared "game feel" helpers: hit-stop, floating damage numbers, afterimages.
 
 static var _hitstop_depth := 0
+## Slow motion (a perfect dodge): real-time end and the scale it runs at.
+static var _slow_until := 0.0
+static var _slow_scale := 1.0
+static var _slow_id := 0
+
+
+static func _calm_scale() -> float:
+	return _slow_scale if Time.get_ticks_msec() / 1000.0 < _slow_until else 1.0
+
+
+## The world slows down for a moment of real time; hit-stops still work in it.
+static func slowmo(seconds: float, scale: float = 0.35) -> void:
+	var tree := Engine.get_main_loop() as SceneTree
+	if tree == null:
+		return
+	_slow_id += 1
+	var id := _slow_id
+	_slow_until = Time.get_ticks_msec() / 1000.0 + seconds
+	_slow_scale = scale
+	if _hitstop_depth <= 0:
+		Engine.time_scale = scale
+	await tree.create_timer(seconds, true, false, true).timeout
+	if id == _slow_id:
+		_slow_until = 0.0
+		if _hitstop_depth <= 0:
+			Engine.time_scale = 1.0
 
 
 ## Freezes the game briefly on impact. Overlapping calls extend, never stack.
@@ -16,7 +42,7 @@ static func hitstop(duration: float = 0.05) -> void:
 	_hitstop_depth -= 1
 	if _hitstop_depth <= 0:
 		_hitstop_depth = 0
-		Engine.time_scale = 1.0
+		Engine.time_scale = _calm_scale()
 
 
 ## Rising number above a hit. `parent` should be the location (world space).
@@ -25,12 +51,12 @@ static func damage_number(parent: Node, at: Vector2, amount: int, color: Color =
 
 
 ## A short floating word above a spot (damage numbers, "guarded").
-static func text_pop(parent: Node, at: Vector2, text: String, color: Color = Color(1, 0.95, 0.8)) -> void:
+static func text_pop(parent: Node, at: Vector2, text: String, color: Color = Color(1, 0.95, 0.8), size: int = 8) -> void:
 	if parent == null:
 		return
 	var l := Label.new()
 	l.text = text
-	l.add_theme_font_size_override("font_size", 8)
+	l.add_theme_font_size_override("font_size", size)
 	l.add_theme_color_override("font_color", color)
 	l.add_theme_color_override("font_outline_color", Color.BLACK)
 	l.add_theme_constant_override("outline_size", 3)

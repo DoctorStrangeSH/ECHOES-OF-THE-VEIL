@@ -9,5 +9,11 @@
   "ENEMY_FLICKER_HINT": {"en": "when it glows, it steps out of the air behind you. Dodge as the glow fades", "ru": "когда засветится, шагнёт из воздуха вам за спину. Уходите рывком, как только свет погаснет"},
   "ENEMY_CALLER_HINT": {"en": "it keeps calling small echoes to its side. Reach it first", "ru": "всё время зовёт к себе мелких эхо. Сначала доберитесь до неё"},
   "ENEMY_MOURNER_HINT": {"en": "it heals the echoes around it, and the Lantern Flash doesn't stop it. Finish it first", "ru": "лечит эхо вокруг себя, и вспышка фонаря её не останавливает. Сначала — её"},
-  "COMBAT_GUARDED": {"en": "guarded", "ru": "отбито"}
+  "COMBAT_GUARDED": {"en": "guarded", "ru": "отбито"},
+  "COMBAT_BROKEN": {"en": "off balance!", "ru": "сбит!"},
+  "COMBAT_PERFECT": {"en": "Echo!", "ru": "Отзвук!"},
+  "COMBAT_COUNTER": {"en": "counter", "ru": "ответ"},
+  "COMBAT_STREAK": {"en": "streak ×%d", "ru": "связка ×%d"},
+  "COMBAT_STREAK_LOST": {"en": "streak broken", "ru": "связка прервана"},
+  "COMBAT_MOVES_HINT": {"en": "Hold the attack for a heavy blow all around. Dodge in the last instant before an echo strikes — time slows and your next blow hits twice as hard. Hits without being hurt make a streak: echoes leave more Resonance.", "ru": "Удерживайте удар — тяжёлый удар по кругу. Рывок в последний миг перед ударом эха — время замедляется, и следующий ваш удар вдвое сильнее. Удары без пропущенных — это связка: эхо оставляет больше Резонанса."}
 }
