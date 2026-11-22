@@ -123,12 +123,19 @@ func _stream(at: Vector2, now: bool) -> void:
 			loc.position = r.position
 			add_child(loc)
 			p["node"] = loc
-		elif p["node"] != null and not far.intersects(r) and p["node"] != active:
+		elif p["node"] != null and not far.intersects(r) and p["node"] != active and String(id) != String(_room_street):
 			(p["node"] as Node).queue_free()
 			p["node"] = null
 
 
 func _track_active() -> void:
+	if room != null:
+		# Walked out through the doorway: back on the street.
+		var b := Rect2(room._bounds_px())
+		b.position += room.global_position
+		if not b.grow(2).has_point(player.global_position):
+			leave_room(_room_exit_spawn, true)
+		return
 	var at := player.global_position
 	for id: String in _pieces:
 		var p: Dictionary = _pieces[id]
@@ -160,7 +167,7 @@ func _set_active(loc: Location, id: StringName) -> void:
 func _update_light() -> void:
 	var hour := WorldClock.minute_of_day / 60.0
 	var tinted := active != null and active.fixed_tint.a > 0.0
-	Lighting.update(get_tree(), hour, not tinted)
+	Lighting.update(get_tree(), hour, not tinted and room == null)
 	if tinted:
 		_tint.color = active.fixed_tint
 		return
@@ -172,7 +179,9 @@ func _update_light() -> void:
 		if hour >= float(a[0]) and hour <= float(b[0]):
 			c = (a[1] as Color).lerp(b[1], (hour - float(a[0])) / maxf(0.001, float(b[0]) - float(a[0])))
 			break
-	if WorldClock.weather == "rain":
+	if room != null:
+		c = c.lerp(Color(1, 0.96, 0.9), 0.65)  # lamps are on indoors
+	elif WorldClock.weather == "rain":
 		c = c * Color(0.82, 0.86, 0.95)
 	_tint.color = c
 
@@ -205,6 +214,8 @@ func _add_bounds(r: Rect2) -> void:
 
 ## Local position of the player in the current place (what saves store).
 func local_player_position() -> Vector2:
+	if room != null:
+		return player.global_position - room.global_position
 	return player.global_position - (active.global_position if active != null else Vector2.ZERO)
 
 
@@ -257,3 +268,212 @@ func _place_car(at: Vector2, dir: String) -> void:
 		player.global_position = at
 		player.start_driving())
 	_parked = car
+
+
+# --- Rooms in place ------------------------------------------------------------
+# A building's own rooms open where the building stands: the roof and walls
+# fade away, the street around is dimmed, and the room is there, with the
+# town still going on in the shadows outside. Rooms of the Veil (fights,
+# strange light) still open as scenes of their own.
+
+const ROOM_FADE := 0.45
+const DIM := 0.62
+
+var room: Location = null
+var room_id: StringName = &""
+var _room_street: StringName = &""
+var _room_door_at := Vector2.ZERO
+var _room_exit_spawn: StringName = &""
+var _faded: Array[CanvasItem] = []
+var _dim: ColorRect
+
+static var _room_ok := {}
+
+
+## Whether a scene opens in place: an interior redrawn to fit its house
+## (`"in_place": true` in its region options), with no fights or fixed tint.
+static func is_room(id: StringName) -> bool:
+	if _room_ok.has(id):
+		return _room_ok[id]
+	var ok := false
+	if not has_region(id):
+		var d: Variant = DataFiles.read_json("res://data/regions/%s.json" % id)
+		if d is Dictionary:
+			var o: Dictionary = d.get("options", {})
+			ok = bool(o.get("in_place", false)) and not bool(o.get("outdoors", true)) and not bool(o.get("combat_enabled", false)) and not o.has("fixed_tint")
+	_room_ok[id] = ok
+	return ok
+
+
+## The street door (world position) that leads into a room, looking in the
+## loaded street pieces; preferring `near` when several do.
+func _street_door(id: StringName, near: Variant = null) -> DoorInteractable:
+	var best: DoorInteractable = null
+	for p: Dictionary in _pieces.values():
+		if p["node"] == null or not p["region"]:
+			continue
+		for d in (p["node"] as Node).find_children("*", "DoorInteractable", true, false):
+			var door := d as DoorInteractable
+			if door.target_scene_id != id:
+				continue
+			if best == null or (near is Vector2 and door.global_position.distance_to(near) < best.global_position.distance_to(near)):
+				best = door
+	return best
+
+
+## The street a room's front door is on (from the region data, before
+## anything is loaded).
+static var _streets := {}
+
+
+func _street_of(id: StringName) -> StringName:
+	if _streets.has(id):
+		return _streets[id]
+	_streets[id] = &""
+	for rid: String in spec()["regions"]:
+		var d: Variant = DataFiles.read_json("res://data/regions/%s.json" % rid)
+		if d is Dictionary:
+			for n: Dictionary in d.get("nodes", []):
+				if n.get("kind", "") == "door" and String(n.get("scene", "")) == String(id):
+					_streets[id] = StringName(rid)
+					return _streets[id]
+	return &""
+
+
+func can_open_room(id: StringName) -> bool:
+	if not is_room(id):
+		return false
+	return is_room(id) and _street_of(id) != &""
+
+
+## Opens a room in place. `door` is the street door used (null when arriving
+## by loading a save or a story jump); `local_pos` a saved position in it.
+func enter_room(id: StringName, spawn_id: StringName, local_pos: Variant = null, door: DoorInteractable = null, animate := true) -> void:
+	if room != null:
+		_close_room(false)
+	var street := _street_of(id)
+	if door == null:
+		place_player(street, &"", null, Vector2.DOWN)
+		door = _street_door(id)
+	if door == null:
+		push_warning("OpenWorld: no street door into %s" % id)
+		return
+	room_id = id
+	_room_street = street
+	_room_door_at = door.global_position
+	var r: Location = load(String(SceneFlow.LOCATIONS[id])).instantiate()
+	r.chunk_mode = true
+	r.room_mode = true
+	# Line the room's way out up with the street door.
+	var exit_local := Vector2.ZERO
+	for d in r.find_children("*", "DoorInteractable", true, false):
+		if has_region((d as DoorInteractable).target_scene_id):
+			_room_exit_spawn = (d as DoorInteractable).target_spawn_id
+			exit_local = (d as Node2D).position
+			var parent := (d as Node).get_parent()
+			while parent != r and parent is Node2D:
+				exit_local += (parent as Node2D).position
+				parent = parent.get_parent()
+			break
+	r.position = (_room_door_at - Vector2(0, 10) - exit_local).round()
+	add_child(r)
+	room = r
+	var house := _fade_building(door, animate)
+	if house.has_area():
+		# The room stands where the house stands: centred on it, its floor
+		# ending at the house's front.
+		var b := Rect2(r._bounds_px())
+		r.position = Vector2(round(house.get_center().x - b.size.x / 2.0), house.end.y - b.end.y).round()
+	_dim_world(true, animate)
+	if animate:
+		r.modulate.a = 0.0
+		r.create_tween().tween_property(r, "modulate:a", 1.0, ROOM_FADE)
+	player.enter_room_layer(r)
+	var at: Vector2
+	var face := Vector2.UP
+	if local_pos is Vector2:
+		at = r.global_position + Vector2(local_pos)
+	else:
+		var sp := r.find_spawn(spawn_id)
+		at = sp.global_position if sp != null else _room_door_at - Vector2(0, 24)
+		face = sp.facing if sp != null else Vector2.UP
+	player.place(at, face)
+	_set_active(r, id)
+
+
+## Back out to the street through the room's door.
+func leave_room(spawn_id: StringName, walked_out := false) -> void:
+	var street := _room_street
+	_close_room(true)
+	var loc: Location = _pieces[String(street)]["node"]
+	var sp := loc.find_spawn(spawn_id) if loc != null else null
+	GameState.current_scene_id = street
+	GameState.current_spawn_id = spawn_id
+	if not walked_out:
+		player.place(sp.global_position if sp != null else _room_door_at + Vector2(0, 16), sp.facing if sp != null else Vector2.DOWN)
+	_set_active(loc, street)
+
+
+func _close_room(animate: bool) -> void:
+	if room == null:
+		return
+	player.leave_room_layer()
+	var r := room
+	room = null
+	room_id = &""
+	if animate:
+		var tw := r.create_tween()
+		tw.tween_property(r, "modulate:a", 0.0, ROOM_FADE * 0.7)
+		tw.tween_callback(r.queue_free)
+	else:
+		r.queue_free()
+	for c in _faded:
+		if is_instance_valid(c):
+			if animate:
+				c.create_tween().tween_property(c, "modulate:a", 1.0, ROOM_FADE)
+			else:
+				c.modulate.a = 1.0
+	_faded.clear()
+	_dim_world(false, animate)
+	if active == r:
+		active = null
+
+
+## The building around the door lifts away: every tall thing of the street
+## whose picture covers a point just above the door.
+func _fade_building(door: Node2D, animate: bool) -> Rect2:
+	var probe := door.global_position - Vector2(0, 20)
+	var house := Rect2()
+	for p: Dictionary in _pieces.values():
+		if p["node"] == null or not p["region"]:
+			continue
+		for n in (p["node"] as Node).find_children("*", "WorldProp", true, false):
+			var prop := n as WorldProp
+			var tex := AssetLibrary.load_texture(prop.texture_path)
+			var size := prop.region.size if prop.region.has_area() else (Vector2(tex.get_size()) if tex != null else Vector2(prop.placeholder_size))
+			var rect := Rect2(prop.global_position - Vector2(size.x / 2.0, size.y), size)
+			if rect.grow(2).has_point(probe):
+				if rect.get_area() > house.get_area():
+					house = rect
+				_faded.append(prop)
+				if animate:
+					prop.create_tween().tween_property(prop, "modulate:a", 0.0, ROOM_FADE)
+				else:
+					prop.modulate.a = 0.0
+	return house
+
+
+func _dim_world(on: bool, animate: bool) -> void:
+	if _dim == null:
+		_dim = ColorRect.new()
+		_dim.color = Color(0.02, 0.02, 0.05, 0.0)
+		_dim.z_index = 1
+		_dim.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		var ws: Array = spec()["size"]
+		_dim.size = Vector2(float(ws[0]), float(ws[1])) * 16.0
+		add_child(_dim)
+	var a := DIM if on else 0.0
+	if animate:
+		_dim.create_tween().tween_property(_dim, "color:a", a, ROOM_FADE)
+	else:
+		_dim.color.a = a

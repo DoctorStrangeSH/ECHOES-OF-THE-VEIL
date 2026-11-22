@@ -44,6 +44,11 @@ var player: Player
 ## traffic and crowd. Doors that lead to other pieces of the world switch off:
 ## you walk there instead.
 var chunk_mode := false
+## A room shown in place inside its building in the open world (roof lifted,
+## the street dimmed around it). Its walls, props and people are on their own
+## physics layer, so the street under it does not get in the way.
+var room_mode := false
+const LAYER_ROOM := 1 << 5
 var _npcs: Dictionary = {}  # npc_id -> Npc
 var _follower: Npc = null
 var _anchors: Dictionary = {}  # anchor_id -> NpcAnchor
@@ -107,11 +112,22 @@ func _ready_as_chunk() -> void:
 	for node in get_tree().get_nodes_in_group(&"npc_anchor"):
 		if is_ancestor_of(node):
 			_anchors[(node as NpcAnchor).anchor_id] = node
-	for node in find_children("*", "DoorInteractable", true, false):
-		var door := node as DoorInteractable
-		if OpenWorld.has_region(door.target_scene_id):
-			door.enabled = false
-			door.visible = false
+	if room_mode:
+		z_index = 2
+		ground.z_index = 0
+		$FloorDecor.z_index = 0
+		var ts := ground.tile_set
+		if ts != null and ts.get_physics_layers_count() > 0:
+			ts.set_physics_layer_collision_layer(0, LAYER_ROOM)
+		for body in find_children("*", "CollisionObject2D", true, false):
+			if body is StaticBody2D or body is CharacterBody2D:
+				(body as CollisionObject2D).collision_layer = LAYER_ROOM
+	else:
+		for node in find_children("*", "DoorInteractable", true, false):
+			var door := node as DoorInteractable
+			if OpenWorld.has_region(door.target_scene_id):
+				door.enabled = false
+				door.visible = false
 	_refresh_npcs(false)
 	_place_satchel()
 	if not traffic.is_empty():
@@ -227,6 +243,8 @@ func _refresh_npcs(animate: bool = true) -> void:
 			npc._target = npc.position
 			npc.set_activity(String(entry.get("activity", "")))
 			_npcs[id] = npc
+			if room_mode:
+				npc.collision_layer = LAYER_ROOM
 			if animate:
 				npc.fade_in()
 
