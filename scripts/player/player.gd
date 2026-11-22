@@ -44,6 +44,8 @@ var hitbox: Hitbox
 var _focused: Interactable = null
 var _focus_mark: FocusMark = null
 var driving := false
+## While in a room shown in place, only that room's things can be used.
+var focus_root: Node = null
 var _car: Sprite2D
 var _car_dir := "Left"
 var _dir: LayeredCharacterSprite.Dir = LayeredCharacterSprite.Dir.DOWN
@@ -452,6 +454,8 @@ func _update_focus() -> void:
 	if not _is_blocked() and not driving:
 		var best_score := -INF
 		for area in sensor.get_overlapping_areas():
+			if focus_root != null and is_instance_valid(focus_root) and not focus_root.is_ancestor_of(area):
+				continue
 			var it := area as Interactable
 			if it == null or not it.can_interact(self):
 				continue
@@ -551,3 +555,16 @@ func look_at_point(point: Vector2) -> void:
 		target = c - global_position
 	var tw := create_tween()
 	tw.tween_property(self, "_look_offset", target, 0.9).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+
+## Walls and furniture of an in-place room instead of the street.
+func enter_room_layer(room: Node) -> void:
+	focus_root = room
+	collision_mask = Location.LAYER_ROOM
+	z_index = 2
+
+
+func leave_room_layer() -> void:
+	focus_root = null
+	collision_mask = LAYER_WORLD | LAYER_NPC
+	z_index = 0

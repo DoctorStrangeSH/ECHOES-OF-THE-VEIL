@@ -1837,6 +1837,14 @@ func test_world_map_routes() -> void:
 	check(WorldMap.routes_from("cavenmouth").any(func(x: Dictionary) -> bool: return String(x["dest"]) == "greyford"), "and comes back")
 
 
+func test_rooms_in_place() -> void:
+	check(OpenWorld.is_room(&"rented_room"), "the rented room opens inside its house")
+	check(not OpenWorld.is_room(&"salt_stair") and not OpenWorld.is_room(&"greyford_block"), "Veil places and streets do not")
+	var w := OpenWorld.new()
+	check(w.can_open_room(&"rented_room") and w._street_of(&"rented_room") == &"greyford_block", "its front door is on the old quarter")
+	w.free()
+
+
 func test_fishing() -> void:
 	GameState.reset_for_new_game()
 	GameState.is_playing = true

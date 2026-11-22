@@ -85,10 +85,28 @@ func travel(scene_id: StringName, spawn_id: StringName) -> void:
 		push_error("SceneFlow: unknown location '%s'" % scene_id)
 		EventHub.toast_requested.emit(tr("TOAST_PATH_BLOCKED"))
 		return
+	# In the open world a building's rooms open in place and its door leads
+	# back to the street without a cut.
+	if open_world != null and is_instance_valid(open_world) and current_location != null:
+		var here := GameState.current_scene_id
+		if open_world.room != null and OpenWorld.has_region(scene_id):
+			GameState.current_spawn_id = spawn_id
+			open_world.leave_room(spawn_id)
+			_after_enter(scene_id)
+			return
+		if open_world.room == null and OpenWorld.has_region(here) and open_world.can_open_room(scene_id):
+			GameState.current_spawn_id = spawn_id
+			open_world.enter_room(scene_id, spawn_id, null, open_world._street_door(scene_id, open_world.player.global_position))
+			_after_enter(scene_id)
+			return
 	GameState.current_scene_id = scene_id
 	GameState.current_spawn_id = spawn_id
 	GameState.pending_position = null
 	await _enter_location(scene_id)
+
+
+func _after_enter(scene_id: StringName) -> void:
+	GameState.set_flag(StringName("visited." + String(scene_id)))
 
 
 func _enter_location(scene_id: StringName) -> void:
@@ -114,14 +132,20 @@ func _swap_to_menu() -> void:
 
 
 func _swap_to_location(scene_id: StringName) -> void:
-	if OpenWorld.has_region(scene_id):
+	var as_room := not OpenWorld.has_region(scene_id) and OpenWorld.is_room(scene_id) and _street_known(scene_id)
+	if OpenWorld.has_region(scene_id) or as_room:
 		if open_world == null or not is_instance_valid(open_world):
 			_clear_world()
 			_root.hide_menu()
 			open_world = OpenWorld.new()
 			open_world.name = "OpenWorld"
 			_root.world.add_child(open_world)
-		open_world.place_player(scene_id, GameState.current_spawn_id, GameState.pending_position, GameState.pending_facing)
+		if as_room:
+			open_world.enter_room(scene_id, GameState.current_spawn_id, GameState.pending_position, null, false)
+		else:
+			if open_world.room != null:
+				open_world._close_room(false)
+			open_world.place_player(scene_id, GameState.current_spawn_id, GameState.pending_position, GameState.pending_facing)
 		GameState.pending_position = null
 		GameState.is_playing = true
 		return
@@ -131,6 +155,15 @@ func _swap_to_location(scene_id: StringName) -> void:
 	current_location = scene.instantiate()
 	_root.world.add_child(current_location)
 	GameState.is_playing = true
+
+
+func _street_known(scene_id: StringName) -> bool:
+	if open_world != null and is_instance_valid(open_world):
+		return open_world.can_open_room(scene_id)
+	var probe := OpenWorld.new()
+	var ok := probe.can_open_room(scene_id)
+	probe.free()
+	return ok
 
 
 func _clear_world() -> void:
