@@ -118,6 +118,27 @@ static func describe(g: Dictionary) -> String:
 	return line
 
 
+## The open-world place a scene belongs to: itself, or the nearest one its
+## doors lead out to (an interior's street).
+static func outdoor_of(scene: StringName) -> StringName:
+	_load()
+	if OpenWorld.has_region(scene):
+		return scene
+	var seen := {String(scene): true}
+	var queue: Array[String] = [String(scene)]
+	while not queue.is_empty():
+		var cur: String = queue.pop_front()
+		for door: Dictionary in _doors.get(cur, []):
+			var nxt := String(door["to"])
+			if seen.has(nxt):
+				continue
+			if OpenWorld.has_region(StringName(nxt)):
+				return StringName(nxt)
+			seen[nxt] = true
+			queue.append(nxt)
+	return &""
+
+
 ## The next door node to take from `from` towards `to` ("" if none or there).
 static func next_door(from: StringName, to: StringName) -> String:
 	_load()
@@ -152,6 +173,12 @@ static func world_target(location: Node, g: Dictionary) -> Node2D:
 	if scene == &"":
 		return null
 	if scene != here:
+		# In the open world: point at the street the target is on, until you
+		# are there; from there the door leads in.
+		if SceneFlow.open_world != null and OpenWorld.has_region(here):
+			var street := outdoor_of(scene)
+			if street != &"" and street != here:
+				return SceneFlow.open_world.guide_marker(street)
 		var door := next_door(here, scene)
 		return _visible_node(location, [door]) if door != "" else null
 	if g.has("npc"):

@@ -38,6 +38,12 @@ const TINT_KEYS := [
 @export var traffic: Dictionary = {}
 
 var player: Player
+## Set by OpenWorld before the place is added: this is a piece of the open
+## world, not a scene of its own. The world owns the player, the camera, the
+## light and the map edges; the place keeps its ground, props, people,
+## traffic and crowd. Doors that lead to other pieces of the world switch off:
+## you walk there instead.
+var chunk_mode := false
 var _npcs: Dictionary = {}  # npc_id -> Npc
 var _follower: Npc = null
 var _anchors: Dictionary = {}  # anchor_id -> NpcAnchor
@@ -50,6 +56,9 @@ var _npc_refresh_pending := false
 
 func _ready() -> void:
 	entities.y_sort_enabled = true
+	if chunk_mode:
+		_ready_as_chunk()
+		return
 	var bounds := _bounds_px()
 	_add_edge_walls(bounds)
 	_tint = CanvasModulate.new()
@@ -89,6 +98,58 @@ func _ready() -> void:
 		EventHub.toast_requested.emit(tr(name_key))
 	if enter_dialogue_id != &"" and StoryRules.evaluate(enter_condition):
 		_start_enter_dialogue.call_deferred()
+
+
+func _ready_as_chunk() -> void:
+	y_sort_enabled = true
+	ground.z_index = -10
+	$FloorDecor.z_index = -5
+	for node in get_tree().get_nodes_in_group(&"npc_anchor"):
+		if is_ancestor_of(node):
+			_anchors[(node as NpcAnchor).anchor_id] = node
+	for node in find_children("*", "DoorInteractable", true, false):
+		var door := node as DoorInteractable
+		if OpenWorld.has_region(door.target_scene_id):
+			door.enabled = false
+			door.visible = false
+	_refresh_npcs(false)
+	_place_satchel()
+	if not traffic.is_empty():
+		var t := Traffic.new()
+		t.name = "Traffic"
+		t.y_sort_enabled = true
+		entities.add_child(t)
+		t.setup(traffic, float(_bounds_px().end.x))
+	Incidents.populate(self)
+	if Crowd.defs().has(location_id):
+		var crowd := Crowd.new()
+		crowd.name = "Crowd"
+		add_child(crowd)
+		crowd.setup(location_id, entities)
+	WorldClock.period_changed.connect(_on_story_changed)
+	EventHub.flag_changed.connect(_on_flag_changed)
+	Journal.case_changed.connect(_on_story_changed)
+	DialogueService.dialogue_ended.connect(_on_dialogue_ended)
+
+
+## The world calls this when the player walks into this place.
+func became_active(world_player: Player) -> void:
+	player = world_player
+	Party.companion_changed.connect(_on_companion_changed)
+	_refresh_follower()
+	if not name_key.is_empty():
+		EventHub.toast_requested.emit(tr(name_key))
+	if enter_dialogue_id != &"" and StoryRules.evaluate(enter_condition):
+		_start_enter_dialogue.call_deferred()
+
+
+## ...and this when the player walks out of it.
+func became_inactive() -> void:
+	if Party.companion_changed.is_connected(_on_companion_changed):
+		Party.companion_changed.disconnect(_on_companion_changed)
+	if _follower != null and is_instance_valid(_follower):
+		_follower.queue_free()
+	_follower = null
 
 
 func _start_enter_dialogue() -> void:
@@ -195,7 +256,8 @@ func _on_flag_changed(_id: StringName, _value: Variant) -> void:
 
 
 func _on_time_changed(_minute: int) -> void:
-	_update_tint()
+	if _tint != null:
+		_update_tint()
 
 
 # --- Presentation --------------------------------------------------------------

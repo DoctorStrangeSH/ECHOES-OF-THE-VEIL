@@ -25,6 +25,9 @@ const NW := 128
 	set(value):
 		palette_id = value
 		_queue_paint()
+## Rings of cells around the layout that are only context: they decide how
+## terrain edges join (open-world chunks) but are not painted.
+@export var context_margin: int = 0
 @export_multiline var layout: String = "":
 	set(value):
 		layout = value
@@ -57,9 +60,10 @@ func paint() -> void:
 	var rows := layout.split("\n")
 	var blob_layer := _overlay("BlobLayer", tile_set)
 	var decor_layer := _overlay("DecorLayer", tile_set)
-	for y in rows.size():
+	var m := context_margin
+	for y in range(m, rows.size() - m):
 		var row: String = rows[y]
-		for x in row.length():
+		for x in range(m, row.length() - m):
 			var ch := row[x]
 			if ch in EMPTY_CHARS:
 				continue

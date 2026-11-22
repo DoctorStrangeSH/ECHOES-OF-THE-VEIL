@@ -167,7 +167,13 @@ func to_dict(player_node: Node2D = null) -> Dictionary:
 	var pos: Variant = null
 	var facing := pending_facing
 	if player_node != null:
-		pos = [player_node.global_position.x, player_node.global_position.y]
+		# Saves keep the position inside the current place, also in the open
+		# world, where that place is only part of the map.
+		var origin := Vector2.ZERO
+		var loc: Variant = SceneFlow.current_location
+		if loc is Node2D and is_instance_valid(loc):
+			origin = (loc as Node2D).global_position
+		pos = [player_node.global_position.x - origin.x, player_node.global_position.y - origin.y]
 		if "facing" in player_node:
 			facing = player_node.facing
 	var flag_data := {}
