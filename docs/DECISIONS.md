@@ -294,3 +294,7 @@ Act IV (the three doors into the night of 11 November 1962, the testimonies, Dr 
 ## D-108 The prose pass, part 6: the lighthouse, Agnes, Rosalind's crossing (R16f)
 
 The side lines tied to the companions and the point: Hester and the light that counts to seven, the port register, Mara's grandmother Agnes and her card, and Rosalind's crossing up into Greyford with the repair stamp — rewritten by the same rules (36 strings).
+
+## D-109 The prose pass, part 7: Quiet Brook farm (R16g)
+
+Hugh Penny, Martha's account of him, Margaret at the well, the tin under the apple tree and the sale of the farm — rewritten by the same rules (37 strings). The farm's lines had lost their quotation marks: speech is quoted again, with the narrator's gestures outside the quotes.
