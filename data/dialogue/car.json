@@ -7,6 +7,15 @@
     "text": "CAR_SIT",
     "choices": [
      {
+      "text": "CAR_TAKE_WHEEL",
+      "effects": [
+       {
+        "open_screen": "drive"
+       }
+      ],
+      "next": null
+     },
+     {
       "text": "CAR_DRIVE_TOWN",
       "effects": [
        {

@@ -940,11 +940,13 @@ flowchart TD
   car_START --> car_c1
   car_c1["c1<br/>The seat creaks like an old armchair. The car s…"]
   car_c1_end_0(["end"])
-  car_c1 -->|"Around town"| car_c1_end_0
+  car_c1 -->|"Drive (E gets you out whereve…"| car_c1_end_0
   car_c1_end_1(["end"])
-  car_c1 -->|"Along the coast road"| car_c1_end_1
+  car_c1 -->|"Around town"| car_c1_end_1
   car_c1_end_2(["end"])
-  car_c1 -->|"Stay here"| car_c1_end_2
+  car_c1 -->|"Along the coast road"| car_c1_end_2
+  car_c1_end_3(["end"])
+  car_c1 -->|"Stay here"| car_c1_end_3
 ```
 
 ## cavenmouth.json

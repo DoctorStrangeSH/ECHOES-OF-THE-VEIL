@@ -1531,7 +1531,8 @@
    ],
    "color": "#40a080",
    "show_if": {
-    "flag": "car.owned"
+    "flag": "car.owned",
+    "not_flag": "car.away"
    }
   },
   {
@@ -1547,7 +1548,8 @@
    "dialogue": "car",
    "prompt": "PROMPT_CAR",
    "show_if": {
-    "flag": "car.owned"
+    "flag": "car.owned",
+    "not_flag": "car.away"
    }
   }
  ]

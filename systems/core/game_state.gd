@@ -166,6 +166,9 @@ func has_flag(flag_id: StringName) -> bool:
 func to_dict(player_node: Node2D = null) -> Dictionary:
 	var pos: Variant = null
 	var facing := pending_facing
+	if player_node != null and player_node.get("driving") == true:
+		# Saved behind the wheel: the car waits right here after loading.
+		set_flag(&"car.spot", [player_node.global_position.x, player_node.global_position.y + 2.0, String(player_node.get("_car_dir"))])
 	if player_node != null:
 		# Saves keep the position inside the current place, also in the open
 		# world, where that place is only part of the map.

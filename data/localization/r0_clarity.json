@@ -83,5 +83,8 @@
   "HUD_BAR_GAME": {"en": "Menu", "ru": "Меню"},
   "INV_SLOT_WEAPON": {"en": "Weapon: drag one here", "ru": "Оружие: перетащите сюда"},
   "INV_SLOT_TRINKET": {"en": "Amulet: drag one here", "ru": "Амулет: перетащите сюда"},
-  "INV_MOUSE_HINT": {"en": "Double-click to use or wear. Drag to rearrange, or onto the hero's slots.", "ru": "Двойной щелчок — использовать или надеть. Перетаскивайте вещи, чтобы разложить их, или на ячейки героя."}
+  "INV_MOUSE_HINT": {"en": "Double-click to use or wear. Drag to rearrange, or onto the hero's slots.", "ru": "Двойной щелчок — использовать или надеть. Перетаскивайте вещи, чтобы разложить их, или на ячейки героя."},
+  "CAR_TAKE_WHEEL": {"en": "Drive (E gets you out wherever you stop)", "ru": "Сесть за руль (E — выйти, где остановитесь)"},
+  "TOAST_DRIVING": {"en": "Behind the wheel. E to get out.", "ru": "Вы за рулём. E — выйти из машины."},
+  "PROMPT_PARKED_CAR": {"en": "Your car", "ru": "Ваша машина"}
 }

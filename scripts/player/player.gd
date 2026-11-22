@@ -22,6 +22,10 @@ const FLASH_RADIUS := 50.0
 const FLASH_STUN := 1.6
 const FLASH_COOLDOWN := 6.0
 
+## Behind the wheel of your own car in the open world (see Driving).
+const DRIVE_SPEED := 210.0
+const CAR_ART := "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/10_Vehicles_Singles_16x16/ME_Singles_Vehicles_16x16_Car_%s_3.png"
+
 @export var walk_speed: float = 72.0
 @export var sprint_speed: float = 118.0
 ## Set by hazards such as flood water (1.0 = normal).
@@ -39,6 +43,9 @@ var hitbox: Hitbox
 
 var _focused: Interactable = null
 var _focus_mark: FocusMark = null
+var driving := false
+var _car: Sprite2D
+var _car_dir := "Left"
 var _dir: LayeredCharacterSprite.Dir = LayeredCharacterSprite.Dir.DOWN
 var _action_anim_time := 0.0  # while > 0, punch/hurt animation owns the sprite
 var _attack_ready_at := 0.0
@@ -137,6 +144,8 @@ func _physics_process(delta: float) -> void:
 		input = Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")
 	# get_vector already clamps diagonals to length 1 (no faster diagonal movement).
 	var speed := (sprint_speed if Input.is_action_pressed(&"sprint") else walk_speed) * Inventory.stat("speed_mult")
+	if driving:
+		speed = DRIVE_SPEED
 	if _action_anim_time > 0.0:
 		_action_anim_time -= delta
 		speed *= 0.35  # committed to the swing
@@ -150,8 +159,10 @@ func _physics_process(delta: float) -> void:
 			_afterimage_timer = 0.035
 			CombatFx.afterimage(sprite, get_parent())
 	elif input != Vector2.ZERO:
-		velocity = velocity.move_toward(input * speed, acceleration * delta)
-		if _action_anim_time <= 0.0:
+		velocity = velocity.move_toward(input * speed, acceleration * delta * (0.6 if driving else 1.0))
+		if driving:
+			_steer_car(input)
+		elif _action_anim_time <= 0.0:
 			_face(input)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
@@ -170,6 +181,11 @@ func _physics_process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if _is_blocked():
+		return
+	if driving:
+		if event.is_action_pressed(&"interact"):
+			get_viewport().set_input_as_handled()
+			stop_driving()
 		return
 	if event is InputEventMouseButton and event.pressed:
 		_on_mouse_click(event as InputEventMouseButton)
@@ -191,6 +207,54 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed(&"quick_heal"):
 		get_viewport().set_input_as_handled()
 		_quick_heal()
+
+
+# --- Driving ---------------------------------------------------------------------
+
+## Gets into your own car: you see the car instead of yourself, it is much
+## faster than walking, and the interact key gets you out where you are,
+## leaving the car parked there for next time.
+func start_driving() -> void:
+	if driving:
+		return
+	driving = true
+	_car = Sprite2D.new()
+	_car.centered = false
+	add_child(_car)
+	_steer_car(Vector2(facing.x if absf(facing.x) > 0.1 else -1.0, 0.0))
+	sprite.visible = false
+	_focused = null
+	EventHub.interaction_focus_changed.emit("")
+	EventHub.toast_requested.emit(tr("TOAST_DRIVING"))
+
+
+func stop_driving() -> void:
+	if not driving:
+		return
+	driving = false
+	velocity = Vector2.ZERO
+	sprite.visible = true
+	if _car != null:
+		_car.queue_free()
+		_car = null
+	EventHub.car_parked.emit(global_position + Vector2(0, 2), _car_dir)
+
+
+func _steer_car(input: Vector2) -> void:
+	var d := _car_dir
+	if absf(input.x) >= absf(input.y):
+		d = "Left" if input.x < 0.0 else "Right"
+	else:
+		d = "Up" if input.y < 0.0 else "Down"
+	if d == _car_dir and _car.texture != null:
+		return
+	_car_dir = d
+	var tex := AssetLibrary.load_texture(CAR_ART % d)
+	if tex == null:
+		tex = AssetLibrary.placeholder(Vector2i(48, 32) if d in ["Left", "Right"] else Vector2i(32, 48), Color(0.3, 0.6, 0.5))
+	_car.texture = tex
+	var sz := tex.get_size()
+	_car.offset = Vector2(-sz.x / 2.0, -sz.y + 4.0)
 
 
 # --- Mouse -----------------------------------------------------------------------
@@ -385,7 +449,7 @@ func _is_blocked() -> bool:
 
 func _update_focus() -> void:
 	var best: Interactable = null
-	if not _is_blocked():
+	if not _is_blocked() and not driving:
 		var best_score := -INF
 		for area in sensor.get_overlapping_areas():
 			var it := area as Interactable

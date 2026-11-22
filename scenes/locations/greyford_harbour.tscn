@@ -430,7 +430,7 @@ casts_shadow = true
 
 [node name="Condition" type="Node" parent="Entities/MyCar"]
 script = ExtResource("10_cond")
-show_if = {"flag": "car.owned"}
+show_if = {"flag": "car.owned", "not_flag": "car.away"}
 
 [node name="MyCarUse" type="Area2D" parent="Entities"]
 position = Vector2(180, 346)
@@ -442,7 +442,7 @@ dialogue_id = &"car"
 
 [node name="Condition" type="Node" parent="Entities/MyCarUse"]
 script = ExtResource("10_cond")
-show_if = {"flag": "car.owned"}
+show_if = {"flag": "car.owned", "not_flag": "car.away"}
 
 [node name="A_stall" type="Marker2D" parent="NpcAnchors"]
 position = Vector2(176, 298)
