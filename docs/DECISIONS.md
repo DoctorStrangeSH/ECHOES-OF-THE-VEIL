@@ -278,3 +278,7 @@ Found on the way: in the open world a cutscene's `camera_look` point was read as
 ## D-104 The prose pass, part 2: Act I (R16b)
 
 Act I — Theo's growing flat and the nursery, Jonah's storeroom and the ledger, Mrs Halloway's pencil map, Ivo on the Ward, Mara on the surveyors' mark, the rain tram and its platform — rewritten by the same rules (38 strings). The tram stop and route map now say «Фонарный ряд», as the style guide requires, instead of the transliteration that had survived there. `tools/narrative_apply.py` applies a part (a table of key → (ru, en)) to whichever localization file holds each key.
+
+## D-105 The prose pass, part 3: Act II (R16c)
+
+Act II — the way into the Ward with Ivo, Nadiya or alone, the Ward itself, the alderman, Bea, Abel, Ellie, Dr Vale, the depot, the Conductor's platform, Rosalind and her reunion with Jonah, the companions' camp talk, and the Ward threads in Greyford (Pike, Mrs Halloway and Thursdays) — rewritten by the same rules (61 strings).
