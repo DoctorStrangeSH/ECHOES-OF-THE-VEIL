@@ -12,27 +12,27 @@ flowchart TD
   theo_START --> theo_hub
   theo_START -->|"{not_flag: met.theo_marsh}"| theo_intro1
   theo_START -->|"{has_item: letter_theo}"| theo_dead_letter1
-  theo_intro1["intro1<br/>Theo Marsh: 'Excuse me. You look like someone who notices t…"]
+  theo_intro1["intro1<br/>Theo Marsh: An old man in a knitted cardigan is working a t…"]
   theo_intro1 --> theo_intro2
-  theo_intro2["intro2<br/>Theo Marsh: 'Theo Marsh. Yellow building, ground floor. My …"]
+  theo_intro2["intro2<br/>Theo Marsh: 'Theo Marsh. The yellow house, ground floor. My…"]
   theo_intro2 --> theo_hub
-  theo_hub["hub<br/>Theo Marsh: 'The kettle's on. It's a long walk to the kitch…"]
+  theo_hub["hub<br/>Theo Marsh: 'The kettle's on.' He sighs. 'It's just a long …"]
   theo_hub -->|"How many rooms now? ⟨{quest_stage: [case_larger_house, measu…⟩"| theo_rooms
   theo_hub -->|"What's behind the newest door? ⟨{quest_stage: [case_larger_house, room]}⟩"| theo_newroom
   theo_hub -->|"I've been in the newest room. ⟨{quest_stage: [case_larger_house, tell]}⟩"| theo_tell1
   theo_hub -->|"How is the flat? ⟨{quest_done: case_larger_house}⟩"| theo_after
   theo_hub_end_4(["end"])
   theo_hub -->|"Goodbye."| theo_hub_end_4
-  theo_rooms["rooms<br/>Theo Marsh: 'Four when my wife was alive. Then five. I've s…"]
+  theo_rooms["rooms<br/>Theo Marsh: 'Four, while my wife was alive. Then five.' The…"]
   theo_rooms --> theo_hub
-  theo_newroom["newroom<br/>Theo Marsh: 'I don't go in. Something in there is crying, a…"]
+  theo_newroom["newroom<br/>Theo Marsh: 'I don't go in there.' He answers too quickly. …"]
   theo_newroom --> theo_hub
   theo_tell1["tell1<br/>Theo Marsh: He sits down very carefully, as if the chair mi…"]
   theo_tell1 -->|"It's a child's room. I think …"| theo_lost
   theo_tell1 -->|"Old plans and a settling buil…"| theo_settled
-  theo_lost["lost<br/>Theo Marsh: 'A girl.' His hands remember before he does: th…"]
-  theo_settled["settled<br/>Theo Marsh: 'Plans. Of course.' Relief, and something under…"]
-  theo_after["after<br/>Theo Marsh: 'No new rooms since you came. I sleep with the …"]
+  theo_lost["lost<br/>Theo Marsh: 'A little girl.' His hands remember before he d…"]
+  theo_settled["settled<br/>Theo Marsh: 'Plans. Of course.' Relief — and something unde…"]
+  theo_after["after<br/>Theo Marsh: 'No new rooms since you came.' He smiles and do…"]
   theo_after --> theo_hub
   theo_dead_letter1["dead_letter1<br/>Theo holds the envelope between two fingers, th…"]
   theo_dead_letter1 --> theo_dead_letter2
@@ -49,7 +49,7 @@ flowchart TD
   theo_corridor_START --> theo_corridor_idle
   theo_corridor_START -->|"{quest_stage: [case_larger_house, measu…"| theo_corridor_count1
   theo_corridor_idle["idle<br/>The end of the corridor. The wallpaper here is …"]
-  theo_corridor_count1["count1<br/>You pace it back: forty strides. The building i…"]
+  theo_corridor_count1["count1<br/>You pace it back: forty steps. The whole house …"]
   theo_corridor_count1 --> theo_corridor_count2
   theo_corridor_count2["count2<br/>At the far end, where there was wall a moment a…"]
 ```
@@ -60,7 +60,7 @@ flowchart TD
 flowchart TD
   new_room_enter_START(("start"))
   new_room_enter_START --> new_room_enter_1
-  new_room_enter_1["1<br/>A child's bedroom, warm, lamp lit. It has been …"]
+  new_room_enter_1["1<br/>A nursery. Warm, a night-light on, paper stars …"]
 ```
 
 ### new_room_bed
@@ -69,7 +69,7 @@ flowchart TD
 flowchart TD
   new_room_bed_START(("start"))
   new_room_bed_START --> new_room_bed_1
-  new_room_bed_1["1<br/>A small bed, made with care. A name is stitched…"]
+  new_room_bed_1["1<br/>A small bed, made without a single crease. A na…"]
   new_room_bed_1 --> new_room_bed_2
   new_room_bed_2["2<br/>Painted on the headboard, small, where a parent…"]
 ```
@@ -82,10 +82,10 @@ flowchart TD
   new_room_desk_START --> new_room_desk_idle
   new_room_desk_START -->|"{quest_stage: [case_two_maps, map]}"| new_room_desk_map1
   new_room_desk_START -->|"{evidence: e_two_maps}"| new_room_desk_seen
-  new_room_desk_idle["idle<br/>A child's desk with crayons worn to stubs, ever…"]
+  new_room_desk_idle["idle<br/>A child's desk, the crayons worn to stubs — eve…"]
   new_room_desk_map1["map1<br/>Under the blotter, folded eight times: a map of…"]
   new_room_desk_map1 --> new_room_desk_map2
-  new_room_desk_map2["map2<br/>Underneath, in pencil, other streets: Lantern R…"]
+  new_room_desk_map2["map2<br/>Underneath, in pencil, are other streets: Lante…"]
   new_room_desk_seen["seen<br/>The blotter lies square on the desk, and now th…"]
 ```
 
@@ -95,7 +95,7 @@ flowchart TD
 flowchart TD
   storeroom_enter_START(("start"))
   storeroom_enter_START --> storeroom_enter_1
-  storeroom_enter_1["1<br/>Shelves, crates, the smell of oil and dust. Eve…"]
+  storeroom_enter_1["1<br/>Shelves, crates, a smell of machine oil and dus…"]
 ```
 
 ### storeroom_crate
@@ -115,7 +115,7 @@ flowchart TD
 flowchart TD
   storeroom_ledger_START(("start"))
   storeroom_ledger_START --> storeroom_ledger_1
-  storeroom_ledger_1["1<br/>A stock ledger. 3 March 1989, the last entry, i…"]
+  storeroom_ledger_1["1<br/>A stock ledger. The last entry, 3 March 1989, i…"]
 ```
 
 ## act2.json
@@ -1851,7 +1851,7 @@ flowchart TD
   mara_seal1["seal1<br/>Mara Venn: You read it together. Afterwards she puts it ba…"]
   mara_lie1["lie1<br/>Mara Venn: 'Empty.' She looks at you for a long time. 'Tha…"]
   mara_lie_found["lie_found<br/>Mara Venn: 'You knew.' She has a newspaper folded in her h…"]
-  mara_mark1["mark1<br/>Mara Venn: 'Three lines to a point: it's a surveyor's mark…"]
+  mara_mark1["mark1<br/>Mara Venn: 'Three lines to a point — a surveyors' mark. In…"]
   mara_mark1 --> mara_hub
   mara_join["join<br/>Mara Venn: 'I'll bring a notebook. Things that aren't writ…"]
   mara_kn_stay1["kn_stay1<br/>Mara Venn: Mara is turning a pencil over and over. 'The el…"]
@@ -1985,13 +1985,13 @@ flowchart TD
   jonah_stall2["stall2<br/>Jonah Rook: 'Take it. Sell repair kits on the plaza. Fair p…"]
   jonah_ship["ship<br/>Jonah Rook: 'Grandad crewed trawlers. There was one boat he…"]
   jonah_ship --> jonah_hub
-  jonah_strange1["strange1<br/>Jonah Rook: 'Funny you ask. My storeroom's gone. The door's…"]
+  jonah_strange1["strange1<br/>Jonah Rook: Jonah stops hammering. 'Funny you should ask. M…"]
   jonah_strange1 --> jonah_strange2
-  jonah_strange2["strange2<br/>Jonah Rook: 'Thirty years that was Dad's stock room. At nig…"]
+  jonah_strange2["strange2<br/>Jonah Rook: 'Thirty years that was Dad's storeroom. And at …"]
   jonah_strange2 --> jonah_hub
   jonah_sr1["sr1<br/>Jonah Rook: You tell him about the crates. ROOK & DAUGHTER.…"]
   jonah_sr1 --> jonah_sr2
-  jonah_sr2["sr2<br/>Jonah Rook: 'Dad never had a daughter. Not on paper.' He op…"]
+  jonah_sr2["sr2<br/>Jonah Rook: 'Dad never had a daughter. On paper.' He opens …"]
   jonah_sr2 --> jonah_hub
   jonah_join["join<br/>Jonah Rook: 'Shop can mind itself. You can't.' He picks up …"]
   jonah_anchor_yes["anchor_yes<br/>Jonah Rook: 'You found my sister. I'd follow you into worse…"]
@@ -2065,17 +2065,17 @@ flowchart TD
   halloway_letter1 --> halloway_letter2
   halloway_letter2["letter2<br/>Edda Halloway: 'She says she's happy. That I mustn't come look…"]
   halloway_rosalind["rosalind<br/>Edda Halloway: 'Jonah told me about his sister. About the page…"]
-  halloway_map1["map1<br/>Edda Halloway: She unfolds the map and smiles at the ink stree…"]
+  halloway_map1["map1<br/>Edda Halloway: She unfolds the map and smiles at the inked str…"]
   halloway_map1 --> halloway_map2
-  halloway_map2["map2<br/>Edda Halloway: 'That's my hand. That's how I make my sevens.' …"]
+  halloway_map2["map2<br/>Edda Halloway: 'That's my handwriting. I cross my sevens like …"]
   halloway_map2 --> halloway_map3
-  halloway_map3["map3<br/>Edda Halloway: 'Some mornings my pencils are blunt and I can't…"]
+  halloway_map3["map3<br/>Edda Halloway: 'Some mornings my pencils are blunt and I don't…"]
   halloway_map3 -->|"Nothing. This stays between u…"| halloway_kept
   halloway_map3 -->|"Mara should see it. She keeps…"| halloway_shared
   halloway_map3 -->|"Who else comes into your flat?"| halloway_who
-  halloway_kept["kept<br/>Edda Halloway: 'Thank you, dear.' She puts the map inside her …"]
-  halloway_shared["shared<br/>Edda Halloway: 'If you think it's right.' She hands it over an…"]
-  halloway_who["who<br/>Edda Halloway: 'Nobody. Well — Mr Calder, for tea, on Sundays.…"]
+  halloway_kept["kept<br/>Edda Halloway: 'Thank you, dear.' She slips the map into her r…"]
+  halloway_shared["shared<br/>Edda Halloway: 'If you think that's right.' She holds out the …"]
+  halloway_who["who<br/>Edda Halloway: 'Nobody. Well — Mr Calder, for tea on Sundays. …"]
   halloway_bea1["bea1<br/>Edda Halloway: She is buttering toast. She stops. 'Thursdays,'…"]
   halloway_bea1 --> halloway_bea2
   halloway_bea2["bea2<br/>Edda Halloway: 'I'll leave the back door on the latch on Thurs…"]
@@ -2140,7 +2140,7 @@ flowchart TD
   ivo_letter1 -->|"Leave it there"| ivo_letter1_end_1
   ivo_letter2["letter2<br/>Ivo Calder: A long silence. 'I write to them too. Every win…"]
   ivo_records["records<br/>Ivo Calder: 'The archive files are in the papers.' He looks…"]
-  ivo_ward1["ward1<br/>Ivo Calder: Ivo is quiet for long enough that a tram would …"]
+  ivo_ward1["ward1<br/>Ivo Calder: Ivo is silent so long that a tram could have pa…"]
   ivo_ward1 --> ivo_ward2
   ivo_ward2["ward2<br/>Ivo Calder: He looks at the harbour for a long time. 'The t…"]
   ivo_ward2 -->|"Take me there. ⟨{not_flag: act1.ivo_tends_halloway}⟩"| ivo_ward_ok
@@ -2934,7 +2934,7 @@ flowchart TD
   ghost_tram_START -->|"{evidence: e_tram_stop}"| ghost_tram_again
   ghost_tram_1["1<br/>A bell rings out over the water. A tram that is…"]
   ghost_tram_1 --> ghost_tram_2
-  ghost_tram_2["2<br/>The sign reads LANTERN ROW. Under it, someone h…"]
+  ghost_tram_2["2<br/>The sign reads LANTERN ROW. Under it someone ha…"]
   ghost_tram_2 --> ghost_tram_ask
   ghost_tram_again["again<br/>The bell rings. The doors are open. Nobody else…"]
   ghost_tram_again --> ghost_tram_ask
@@ -2951,9 +2951,9 @@ flowchart TD
 flowchart TD
   platform_enter_START(("start"))
   platform_enter_START --> platform_enter_1
-  platform_enter_1["1<br/>The doors fold open onto a platform lit by lamp…"]
+  platform_enter_1["1<br/>The doors open onto a platform lit by lamps tha…"]
   platform_enter_1 --> platform_enter_2
-  platform_enter_2["2<br/>Somewhere ahead, a pen scratches. Someone is st…"]
+  platform_enter_2["2<br/>Somewhere ahead a pen is scratching — evenly, t…"]
   platform_enter_2 --> platform_enter_3
   platform_enter_3["3<br/>(Space / K — dodge. Q — Lantern Flash stuns ech…"]
 ```
@@ -2964,7 +2964,7 @@ flowchart TD
 flowchart TD
   platform_map_START(("start"))
   platform_map_START --> platform_map_1
-  platform_map_1["1<br/>A route map. Every stop has a name you know — e…"]
+  platform_map_1["1<br/>A route map. You know every stop on it but one,…"]
   platform_map_1 --> platform_map_2
   platform_map_2["2<br/>Someone has written in the margin, in careful c…"]
 ```
