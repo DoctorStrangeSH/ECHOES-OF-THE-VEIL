@@ -70,7 +70,7 @@
   "CASE_ROSALIND_TOLD": {"en": "You showed Jonah the page. Rosalind was real, and now he knows someone erased her on purpose.", "ru": "Вы показали Джоне страницу. Розалинда была настоящей — и теперь он знает, что её стёрли намеренно."},
   "CASE_ROSALIND_SPARED": {"en": "You told Jonah you found nothing. The page is still in your pocket.", "ru": "Вы сказали Джоне, что ничего не нашли. Страница всё ещё у вас в кармане."},
   "EV_TRAM_STOP_TITLE": {"en": "The ghost tram stop", "ru": "Призрачная остановка"},
-  "EV_TRAM_STOP_BODY": {"en": "A stop sign at the harbour reading LANTERN ROW. It is there only after dark or in the rain, and a bell rings.", "ru": "Знак остановки у гавани с надписью ЛАНТЕРН-РОУ. Он появляется только в темноте или в дождь, и звенит колокольчик."},
+  "EV_TRAM_STOP_BODY": {"en": "A stop sign at the harbour reading LANTERN ROW. It is there only after dark or in the rain, and a bell rings.", "ru": "Знак остановки у гавани с надписью ФОНАРНЫЙ РЯД. Он появляется только в темноте или в дождь, и звенит колокольчик."},
   "EV_CENSUS_PAGE_TITLE": {"en": "Census ledger page, 1989", "ru": "Страница переписи, 1989"},
   "EV_CENSUS_PAGE_BODY": {"en": "\"ROOK, Rosalind — reclassified: NOT RESIDENT.\" A neat signature. A stamp that looks like three lines meeting at a point.", "ru": "«РУК, Розалинда — переквалифицирована: НЕ ПРОЖИВАЕТ». Аккуратная подпись. Штамп, похожий на три линии, сходящиеся в точке."},
   "SRC_LEDGER": {"en": "Census Office ledger", "ru": "книга Бюро переписи"},
