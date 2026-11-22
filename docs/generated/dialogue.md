@@ -361,11 +361,11 @@ flowchart TD
   rosalind_apart["apart<br/>Rosalind Rook: 'Both right.' She turns the ticket over. 'Then …"]
   rosalind_after_reunited["after_reunited<br/>Rosalind Rook: 'He comes down every evening now. We argue abou…"]
   rosalind_after_apart["after_apart<br/>Rosalind Rook: 'Not yet. But now I count days instead of stock…"]
-  rosalind_up1["up1<br/>Rosalind Rook: Rosalind sees the stamp in Jonah's hand and sta…"]
+  rosalind_up1["up1<br/>Rosalind Rook: Rosalind sees the stamp in Jonah's hand and jum…"]
   rosalind_up1 --> rosalind_up2
-  rosalind_up2["up2<br/>She closes her fingers around it with his. The …"]
+  rosalind_up2["up2<br/>She closes her hand over the stamp and her brot…"]
   rosalind_up2 --> rosalind_up3
-  rosalind_up3["up3<br/>Rosalind Rook: At the shop she stands in the doorway for a lon…"]
+  rosalind_up3["up3<br/>Rosalind Rook: In the workshop she stands in the doorway a lon…"]
   rosalind_up_wait["up_wait<br/>Rosalind Rook: 'Jonah said there's a way up. Bring him, and Da…"]
 ```
 
@@ -1031,7 +1031,7 @@ flowchart TD
 flowchart TD
   agnes_card_START(("start"))
   agnes_card_START --> agnes_card_1
-  agnes_card_1["1<br/>The Keepers' card index: two hundred drawers, a…"]
+  agnes_card_1["1<br/>The Keepers' index: two hundred drawers, alphab…"]
   agnes_card_1 --> agnes_card_2
   agnes_card_2["2<br/>Below, in a different machine: 'Reclassified 19…"]
 ```
@@ -1295,11 +1295,11 @@ flowchart TD
   hester_START(("start"))
   hester_START --> hester_hub
   hester_START -->|"{not_flag: met.hester_ashby}"| hester_intro1
-  hester_intro1["intro1<br/>Hester Ashby: 'You're not from the council. Good.' A woman in…"]
+  hester_intro1["intro1<br/>Hester Ashby: A woman in an oilskin, who looks older than the…"]
   hester_intro1 --> hester_intro2
-  hester_intro2["intro2<br/>Hester Ashby: 'It does. That's the trouble. Since the spring …"]
+  hester_intro2["intro2<br/>Hester Ashby: 'It runs. That's the trouble. Since spring it's…"]
   hester_intro2 --> hester_hub
-  hester_hub["hub<br/>Hester Ashby: 'Mind the rocks. They've been moving.'"]
+  hester_hub["hub<br/>Hester Ashby: Hester doesn't take her eyes off the water. 'Mi…"]
   hester_hub -->|"What does the light count? ⟨{quest_stage: [case_lighthouse, ask]}⟩"| hester_light1
   hester_hub -->|"Where should I watch from? ⟨{quest_stage: [case_lighthouse, watch]}⟩"| hester_watch
   hester_hub -->|"Seven of what? ⟨{quest_stage: [case_lighthouse, registr…⟩"| hester_register
@@ -1309,22 +1309,22 @@ flowchart TD
   hester_hub -->|"Would you walk with me for a … ⟨{can_join: hester_ashby, not: {companio…⟩"| hester_join
   hester_hub_end_7(["end"])
   hester_hub -->|"Goodbye."| hester_hub_end_7
-  hester_light1["light1<br/>Hester Ashby: 'Seven sweeps, then it stops dead. Points at no…"]
+  hester_light1["light1<br/>Hester Ashby: 'Seven sweeps, and it stops dead. Stares at not…"]
   hester_light1 --> hester_light2
-  hester_light2["light2<br/>Hester Ashby: 'The council engineer says it's a relay. I say …"]
+  hester_light2["light2<br/>Hester Ashby: 'The council engineer says it's the relay. I sa…"]
   hester_light2 --> hester_hub
   hester_watch["watch<br/>Hester Ashby: 'End of the sea wall. Night. Count, and don't l…"]
   hester_watch --> hester_hub
-  hester_register["register<br/>Hester Ashby: 'A lighthouse counts ships home. Every ship tha…"]
+  hester_register["register<br/>Hester Ashby: 'The light counts ships coming home. Every one …"]
   hester_register --> hester_hub
   hester_answer1["answer1<br/>Hester Ashby: She doesn't ask. She waits, the way the beam wa…"]
   hester_answer1 -->|"The Margaret Ellery. Seven cr…"| hester_real
   hester_answer1 -->|"It's a fault. The automation.…"| hester_fault
   hester_real["real<br/>Hester Ashby: 'Seven.' She closes her eyes. 'Then it isn't br…"]
-  hester_fault["fault<br/>Hester Ashby: 'A fault.' She nods slowly, like someone puttin…"]
-  hester_point1["point1<br/>Hester Ashby: 'A ferry ran from the point. Seven minutes acro…"]
+  hester_fault["fault<br/>Hester Ashby: 'A fault.' She nods slowly — the way you set do…"]
+  hester_point1["point1<br/>Hester Ashby: 'There used to be a ferry from the point. Seven…"]
   hester_point1 --> hester_hub
-  hester_after["after<br/>Hester Ashby: 'It still counts. Some nights I count along. It…"]
+  hester_after["after<br/>Hester Ashby: 'It still counts. Some nights I count along wit…"]
   hester_after --> hester_hub
   hester_join["join<br/>Hester Ashby: 'Forty years I've not been further than the mar…"]
 ```
@@ -1338,12 +1338,12 @@ flowchart TD
   lighthouse_watch_START -->|"{quest_stage: [case_lighthouse, watch],…"| lighthouse_watch_count1
   lighthouse_watch_START -->|"{quest_stage: [case_lighthouse, watch]}"| lighthouse_watch_wait
   lighthouse_watch_START -->|"{flag: world.lamp_counts, period: night}"| lighthouse_watch_after_real
-  lighthouse_watch_idle["idle<br/>The end of the sea wall. The lighthouse turns i…"]
+  lighthouse_watch_idle["idle<br/>The end of the breakwater. The lighthouse sweep…"]
   lighthouse_watch_wait["wait<br/>In daylight the lamp is just glass. Hester said…"]
-  lighthouse_watch_count1["count1<br/>You count. One sweep, two... seven. Then the be…"]
+  lighthouse_watch_count1["count1<br/>You count. One sweep of the beam, two... seven.…"]
   lighthouse_watch_count1 --> lighthouse_watch_count2
-  lighthouse_watch_count2["count2<br/>Seven again. Out on the water, for the length o…"]
-  lighthouse_watch_after_real["after_real<br/>Seven sweeps, a pause. Somewhere out there, sev…"]
+  lighthouse_watch_count2["count2<br/>Seven again. And for the space of one breath, l…"]
+  lighthouse_watch_after_real["after_real<br/>Seven sweeps, a pause. Somewhere out in the dar…"]
 ```
 
 ### lighthouse_door
@@ -1352,7 +1352,7 @@ flowchart TD
 flowchart TD
   lighthouse_door_START(("start"))
   lighthouse_door_START --> lighthouse_door_1
-  lighthouse_door_1["1<br/>The lighthouse door is locked. A council padloc…"]
+  lighthouse_door_1["1<br/>The lighthouse door is locked. The council's pa…"]
 ```
 
 ### point_signpost
@@ -1870,17 +1870,17 @@ flowchart TD
   mara_anchor_yes --> mara_hub
   mara_anchor_no["anchor_no<br/>Mara Venn: 'I'll read about it afterwards.' Mara doesn't l…"]
   mara_anchor_no --> mara_hub
-  mara_ag1["ag1<br/>Mara Venn: 'Every day since the archive.' Mara doesn't loo…"]
+  mara_ag1["ag1<br/>Mara Venn: 'Every day since that night — at the archive.' …"]
   mara_ag1 --> mara_ag2
   mara_ag2["ag2<br/>Mara Venn: 'The Keepers kept a card index of everyone the …"]
   mara_ag2 --> mara_hub
-  mara_agt["agt<br/>Mara Venn: Mara puts her pen down, which she never does. '…"]
+  mara_agt["agt<br/>Mara Venn: Mara puts her pen down on the table — something…"]
   mara_agt -->|"She started the Ward's regist… ⟨{evidence: e_agnes_ivo}⟩"| mara_ag_keeper
   mara_agt -->|"She signed the lists, and the…"| mara_ag_both
   mara_agt -->|"It doesn't matter now. Let he…"| mara_ag_dismiss
-  mara_ag_keeper["ag_keeper<br/>Mara Venn: Mara laughs, and it breaks halfway. 'She kept a…"]
-  mara_ag_both["ag_both<br/>Mara Venn: 'Both.' She nods slowly. 'I can live with both.…"]
-  mara_ag_dismiss["ag_dismiss<br/>Mara Venn: 'Let her go.' Mara looks at you for a long mome…"]
+  mara_ag_keeper["ag_keeper<br/>Mara Venn: Mara laughs, and the laugh breaks in the middle…"]
+  mara_ag_both["ag_both<br/>Mara Venn: 'Both.' She nods slowly. 'I can live with that.…"]
+  mara_ag_dismiss["ag_dismiss<br/>Mara Venn: 'Let her go.' Mara looks at you for a long time…"]
   mara_inc_lanterns["inc_lanterns<br/>Mara Venn: Quiet? Good. I was starting to think the ending…"]
   mara_agnes_card1["agnes_card1<br/>Mara turns the card over twice, as if the back …"]
   mara_agnes_card1 --> mara_agnes_card2
@@ -1983,7 +1983,7 @@ flowchart TD
   jonah_stall1["stall1<br/>Jonah Rook: 'You've fixed half the street.' He looks almost…"]
   jonah_stall1 --> jonah_stall2
   jonah_stall2["stall2<br/>Jonah Rook: 'Take it. Sell repair kits on the plaza. Fair p…"]
-  jonah_ship["ship<br/>Jonah Rook: 'Grandad crewed trawlers. There was one boat he…"]
+  jonah_ship["ship<br/>Jonah Rook: 'Grandad worked the trawlers. There was one boa…"]
   jonah_ship --> jonah_hub
   jonah_strange1["strange1<br/>Jonah Rook: Jonah stops hammering. 'Funny you should ask. M…"]
   jonah_strange1 --> jonah_strange2
@@ -1998,7 +1998,7 @@ flowchart TD
   jonah_anchor_yes --> jonah_hub
   jonah_anchor_no["anchor_no<br/>Jonah Rook: Jonah doesn't look up from the bench. 'I've a w…"]
   jonah_anchor_no --> jonah_hub
-  jonah_rr1["rr1<br/>Jonah Rook: 'She asks every evening. Just once, to see the …"]
+  jonah_rr1["rr1<br/>Jonah Rook: 'She asks every evening — just once, to see the…"]
   jonah_rr1 --> jonah_rr2
   jonah_rr2["rr2<br/>Jonah Rook: 'Dad's repair stamp. ROOK & DAUGHTER. It was in…"]
   jonah_rr2 --> jonah_hub
@@ -2164,7 +2164,7 @@ flowchart TD
   ivo_anchor_yes --> ivo_hub
   ivo_anchor_no["anchor_no<br/>Ivo Calder: 'The Keepers don't follow people they don't tru…"]
   ivo_anchor_no --> ivo_hub
-  ivo_agnes["agnes<br/>Ivo Calder: 'Agnes came to us in the winter of '63 with a l…"]
+  ivo_agnes["agnes<br/>Ivo Calder: 'In the winter of sixty-three Agnes came to us …"]
   ivo_agnes --> ivo_hub
   ivo_inc_last_tram["inc_last_tram<br/>Ivo Calder: No bell tonight, then. I'll strike it from the …"]
   ivo_inc_seal["inc_seal<br/>Ivo Calder: Readings are falling. The seal holds. This is w…"]
@@ -2274,11 +2274,11 @@ flowchart TD
   pike_ward_rep --> pike_hub
   pike_ward_deny["ward_deny<br/>Warden Dana Pike: 'Of course.' She writes that down too."]
   pike_ward_deny --> pike_hub
-  pike_stamp1["stamp1<br/>Warden Dana Pike: 'Lost property keeps everything from a bricking…"]
+  pike_stamp1["stamp1<br/>Warden Dana Pike: Pike leafs through a ledger. 'Lost property kee…"]
   pike_stamp1 -->|"You owe Civic Renewal a favou… ⟨{faction_at_least: [civic, 1]}⟩"| pike_stamp_ok
   pike_stamp1 -->|"Pay the fee (£30). ⟨{money_at_least: 30}⟩"| pike_stamp_ok
   pike_stamp1 -->|"Not now."| pike_hub
-  pike_stamp_ok["stamp_ok<br/>Warden Dana Pike: She hands it over in a paper bag with a form st…"]
+  pike_stamp_ok["stamp_ok<br/>Warden Dana Pike: She hands the stamp over in a paper bag with a …"]
   pike_stamp_ok --> pike_hub
 ```
 
@@ -3001,7 +3001,7 @@ flowchart TD
   archive_shelves_START --> archive_shelves_1
   archive_shelves_START -->|"{quest_stage: [case_lighthouse, registr…"| archive_shelves_register1
   archive_shelves_1["1<br/>Redevelopment files, 1960–1975. Every folder is…"]
-  archive_shelves_register1["register1<br/>On the bottom shelf: harbour registers, one fat…"]
+  archive_shelves_register1["register1<br/>On the bottom shelf: the port registers, a thic…"]
   archive_shelves_register1 --> archive_shelves_register2
   archive_shelves_register2["register2<br/>The index at the back still remembers: MARGARET…"]
 ```
