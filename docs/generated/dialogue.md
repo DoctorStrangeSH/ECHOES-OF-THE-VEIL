@@ -197,13 +197,13 @@ flowchart TD
   alderman_depot2 --> alderman_hub
   alderman_after["after<br/>Alderman Penhallow: 'The trams don't run any more.' He looks at the…"]
   alderman_after --> alderman_hub
-  alderman_index1["index1<br/>Alderman Penhallow: The Alderman opens the Ward register on the hal…"]
+  alderman_index1["index1<br/>Alderman Penhallow: The alderman opens the Ward's book on the steps…"]
   alderman_index1 --> alderman_index2
   alderman_index2["index2<br/>The names unwrite themselves and rewrite as one…"]
   alderman_index2 --> alderman_index3
   alderman_index3["index3<br/>Alderman Penhallow: 'That's what we asked for. That night, every on…"]
   alderman_index3 --> alderman_hub
-  alderman_anchor_yes["anchor_yes<br/>Alderman Penhallow: 'The Ward will come. Two hundred and fourteen o…"]
+  alderman_anchor_yes["anchor_yes<br/>Alderman Penhallow: The alderman lifts his chain, and all across th…"]
   alderman_anchor_yes --> alderman_hub
   alderman_anchor_no["anchor_no<br/>Alderman Penhallow: 'The Ward doesn't know you well enough to go do…"]
   alderman_anchor_no --> alderman_hub
@@ -307,7 +307,7 @@ flowchart TD
   vale_refuse --> vale_hub
   vale_res["res<br/>Dr Sera Vale: 'I see.' Dr Vale looks at the flooded steps lik…"]
   vale_res --> vale_hub
-  vale_nodes1["nodes1<br/>Dr Sera Vale: 'Found the Index. Under everything — the town, …"]
+  vale_nodes1["nodes1<br/>Dr Sera Vale: Dr Vale almost runs to meet you. 'I've found th…"]
   vale_nodes1 --> vale_nodes2
   vale_nodes2["nodes2<br/>Dr Sera Vale: 'We've switched on three of its nodes. Down the…"]
   vale_nodes2 --> vale_hub
@@ -317,10 +317,10 @@ flowchart TD
   vale_final1 -->|"The Keepers will take it from…"| vale_stopped
   vale_turned["turned<br/>Dr Sera Vale: She reads Annie's diary twice. Then she takes t…"]
   vale_continued["continued<br/>Dr Sera Vale: 'Carefully,' she agrees, and you can hear her d…"]
-  vale_stopped["stopped<br/>Dr Sera Vale: 'The Keepers.' She laughs once. 'The people who…"]
-  vale_anchor_yes["anchor_yes<br/>Dr Sera Vale: 'I know how the Lattice reads. I'll call out wh…"]
+  vale_stopped["stopped<br/>Dr Sera Vale: 'The Keepers.' A short laugh. 'The key goes to …"]
+  vale_anchor_yes["anchor_yes<br/>Dr Sera Vale: Dr Vale clicks her instrument on. 'I know how t…"]
   vale_anchor_yes --> vale_hub
-  vale_anchor_no["anchor_no<br/>Dr Sera Vale: 'Meridian's lawyers would never let me. And I'm…"]
+  vale_anchor_no["anchor_no<br/>Dr Sera Vale: 'Meridian's lawyers won't let me.' She looks aw…"]
   vale_anchor_no --> vale_hub
   vale_inc_patrol["inc_patrol<br/>Dr Sera Vale: Both sides saw it done. That's worth more than …"]
 ```
@@ -390,9 +390,9 @@ flowchart TD
   camp_jonah_how["how<br/>Jonah Rook: 'Half of me wants to find her. The other half's…"]
   camp_jonah_how --> camp_jonah_hub
   camp_jonah_home["home<br/>Jonah Rook: 'Shout if anything needs fixing.'"]
-  camp_jonah_anchor_yes["anchor_yes<br/>Jonah Rook: 'You found my sister. I'd follow you into worse…"]
+  camp_jonah_anchor_yes["anchor_yes<br/>Jonah Rook: Jonah is already tightening the strap of his ba…"]
   camp_jonah_anchor_yes --> camp_jonah_hub
-  camp_jonah_anchor_no["anchor_no<br/>Jonah Rook: 'I've got a shop and a lot of questions about y…"]
+  camp_jonah_anchor_no["anchor_no<br/>Jonah Rook: Jonah doesn't look up from the bench. 'I've a w…"]
   camp_jonah_anchor_no --> camp_jonah_hub
   camp_jonah_h1a["h1a<br/>Jonah Rook: 'After Ros went, the kitchen set wouldn't stop …"]
   camp_jonah_h1a --> camp_jonah_h1b
@@ -447,9 +447,9 @@ flowchart TD
   camp_mara_how --> camp_mara_hub
   camp_mara_home["home<br/>Mara Venn: 'I'll be at the archive. Write things down.'"]
   camp_mara_not_here["not_here<br/>Mara Venn: Mara shakes her head. 'Not here. Meet me under …"]
-  camp_mara_anchor_yes["anchor_yes<br/>Mara Venn: 'Somebody has to write down what happens. It sh…"]
+  camp_mara_anchor_yes["anchor_yes<br/>Mara Venn: Mara closes her notebook and puts it in an insi…"]
   camp_mara_anchor_yes --> camp_mara_hub
-  camp_mara_anchor_no["anchor_no<br/>Mara Venn: 'I'll read about it afterwards. I'm not sure I …"]
+  camp_mara_anchor_no["anchor_no<br/>Mara Venn: 'I'll read about it afterwards.' Mara doesn't l…"]
   camp_mara_anchor_no --> camp_mara_hub
   camp_mara_h1a["h1a<br/>Mara Venn: 'At seven. Gran gave me a shoebox of blank inde…"]
   camp_mara_h1a --> camp_mara_h1b
@@ -573,7 +573,7 @@ flowchart TD
 flowchart TD
   hospital_enter_START(("start"))
   hospital_enter_START --> hospital_enter_1
-  hospital_enter_1["1<br/>The night of 11 November 1962, as St Agnes reme…"]
+  hospital_enter_1["1<br/>The night of 11 November 1962, as St Agnes' Hos…"]
   hospital_enter_1 --> hospital_enter_2
   hospital_enter_2["2<br/>Someone in a starched cap is going through the …"]
 ```
@@ -584,9 +584,9 @@ flowchart TD
 flowchart TD
   home_enter_START(("start"))
   home_enter_START --> home_enter_1
-  home_enter_1["1<br/>A kitchen on Lantern Row. Supper half laid. Pen…"]
+  home_enter_1["1<br/>A kitchen on Lantern Row. Supper half laid, the…"]
   home_enter_1 --> home_enter_2
-  home_enter_2["2<br/>A man in a lodger's cardigan is rearranging the…"]
+  home_enter_2["2<br/>A man in a lodger's cardigan rearranges the cha…"]
 ```
 
 ### station_enter
@@ -595,7 +595,7 @@ flowchart TD
 flowchart TD
   station_enter_START(("start"))
   station_enter_START --> station_enter_1
-  station_enter_1["1<br/>Lantern Row station at 11:51. The platform is f…"]
+  station_enter_1["1<br/>Lantern Row station, 11:51. The platform is ful…"]
   station_enter_1 --> station_enter_2
   station_enter_2["2<br/>The stationmaster turns the board from 11:52 to…"]
 ```
@@ -649,7 +649,7 @@ flowchart TD
   t_doctor_START(("start"))
   t_doctor_START --> t_doctor_1
   t_doctor_START -->|"{flag: site.hospital.done}"| t_doctor_done
-  t_doctor_1["1<br/>Dr Hale's statement, dated 1987: 'A gas leak ca…"]
+  t_doctor_1["1<br/>Dr Hale's statement, 1987: 'A gas leak caused m…"]
   t_doctor_1 --> t_doctor_judge
   t_doctor_judge["judge<br/>How do you judge this account?"]
   t_doctor_judge_end_0(["end"])
@@ -660,7 +660,7 @@ flowchart TD
   t_doctor_judge -->|"Unreliable — the witness can'…"| t_doctor_judge_end_2
   t_doctor_judge_end_3(["end"])
   t_doctor_judge -->|"Decide later."| t_doctor_judge_end_3
-  t_doctor_done["done<br/>Dr Hale's statement, dated 1987: 'A gas leak ca…"]
+  t_doctor_done["done<br/>Dr Hale's statement, 1987: 'A gas leak caused m…"]
 ```
 
 ### recon_memory_hospital
@@ -725,7 +725,7 @@ flowchart TD
   t_neighbour_START(("start"))
   t_neighbour_START --> t_neighbour_1
   t_neighbour_START -->|"{flag: site.home.done}"| t_neighbour_done
-  t_neighbour_1["1<br/>A neighbour's account, given gladly: 'Emigrated…"]
+  t_neighbour_1["1<br/>The neighbour is happy to talk. 'Emigrated, the…"]
   t_neighbour_1 --> t_neighbour_judge
   t_neighbour_judge["judge<br/>How do you judge this account?"]
   t_neighbour_judge_end_0(["end"])
@@ -736,7 +736,7 @@ flowchart TD
   t_neighbour_judge -->|"Unreliable — the witness can'…"| t_neighbour_judge_end_2
   t_neighbour_judge_end_3(["end"])
   t_neighbour_judge -->|"Decide later."| t_neighbour_judge_end_3
-  t_neighbour_done["done<br/>A neighbour's account, given gladly: 'Emigrated…"]
+  t_neighbour_done["done<br/>The neighbour is happy to talk. 'Emigrated, the…"]
 ```
 
 ### recon_memory_home
@@ -748,7 +748,7 @@ flowchart TD
   recon_memory_home_START -->|"{flag: site.home.done}"| recon_memory_home_after
   recon_memory_home_START -->|"{judged: [e_t_child_diary, e_t_eviction…"| recon_memory_home_r1
   recon_memory_home_wait["wait<br/>The night won't come together yet. Judge every …"]
-  recon_memory_home_after["after<br/>The kitchen, as you put it back together. Seven…"]
+  recon_memory_home_after["after<br/>The kitchen as you put it back together. Seven …"]
   recon_memory_home_r1["r1<br/>You lay the three accounts side by side and let…"]
 ```
 
@@ -801,7 +801,7 @@ flowchart TD
   t_porter_START(("start"))
   t_porter_START --> t_porter_1
   t_porter_START -->|"{flag: site.station.done}"| t_porter_done
-  t_porter_1["1<br/>The porter, sure of it: 'The 11:52 never ran. T…"]
+  t_porter_1["1<br/>The porter is certain. 'The 11:52 never ran. Th…"]
   t_porter_1 --> t_porter_judge
   t_porter_judge["judge<br/>How do you judge this account?"]
   t_porter_judge_end_0(["end"])
@@ -812,7 +812,7 @@ flowchart TD
   t_porter_judge -->|"Unreliable — the witness can'…"| t_porter_judge_end_2
   t_porter_judge_end_3(["end"])
   t_porter_judge -->|"Decide later."| t_porter_judge_end_3
-  t_porter_done["done<br/>The porter, sure of it: 'The 11:52 never ran. T…"]
+  t_porter_done["done<br/>The porter is certain. 'The 11:52 never ran. Th…"]
 ```
 
 ### recon_memory_station
@@ -824,7 +824,7 @@ flowchart TD
   recon_memory_station_START -->|"{flag: site.station.done}"| recon_memory_station_after
   recon_memory_station_START -->|"{judged: [e_t_station_log, e_t_letter, …"| recon_memory_station_r1
   recon_memory_station_wait["wait<br/>The night won't come together yet. Judge every …"]
-  recon_memory_station_after["after<br/>The platform, as you put it back together. The …"]
+  recon_memory_station_after["after<br/>The platform as you put it back together. The c…"]
   recon_memory_station_r1["r1<br/>You lay the three accounts side by side and let…"]
 ```
 
@@ -836,13 +836,13 @@ flowchart TD
 flowchart TD
   anchor_enter_START(("start"))
   anchor_enter_START --> anchor_enter_1
-  anchor_enter_1["1<br/>Under the Seal Engine, under the Keepers' hall,…"]
+  anchor_enter_1["1<br/>Beneath the Seal, beneath the Keepers' hall, be…"]
   anchor_enter_1 --> anchor_enter_2
   anchor_enter_2["2<br/>Director Elias Wren: 'Elias Wren. Civic Renewal.' He doesn't turn ro…"]
   anchor_enter_2 --> anchor_enter_3
-  anchor_enter_3["3<br/>Director Elias Wren: 'Forty thousand people live on top of this. I c…"]
+  anchor_enter_3["3<br/>Director Elias Wren: 'Forty thousand people live above this. Tonight…"]
   anchor_enter_3 --> anchor_enter_4
-  anchor_enter_4["4<br/>Director Elias Wren: He turns, finally, and the anchor turns with hi…"]
+  anchor_enter_4["4<br/>Director Elias Wren: At last he turns — and the anchor turns with hi…"]
 ```
 
 ### anchor_heart
@@ -854,11 +854,11 @@ flowchart TD
   anchor_heart_START -->|"{quest_stage: [case_anchor, confront], …"| anchor_heart_h1
   anchor_heart_START -->|"{quest_stage: [case_anchor, choose]}"| anchor_heart_choose
   anchor_heart_START -->|"{quest_done: case_anchor}"| anchor_heart_after
-  anchor_heart_idle["idle<br/>The anchor hums one note under every other note…"]
-  anchor_heart_after["after<br/>The anchor hums. It sounds different now. You c…"]
-  anchor_heart_h1["h1<br/>Director Elias Wren: Wren is on his knees by the anchor, coat torn, …"]
+  anchor_heart_idle["idle<br/>The anchor hums one note — the one that lies be…"]
+  anchor_heart_after["after<br/>The anchor hums. It sounds different now. You d…"]
+  anchor_heart_h1["h1<br/>Director Elias Wren: Wren is on his knees by the anchor. His coat is…"]
   anchor_heart_h1 --> anchor_heart_h2
-  anchor_heart_h2["h2<br/>Your hand on the anchor. It shows you everythin…"]
+  anchor_heart_h2["h2<br/>Your palm is on the anchor. It shows you everyt…"]
   anchor_heart_h2 --> anchor_heart_choose
   anchor_heart_choose["choose<br/>What happens to the Index?"]
   anchor_heart_choose -->|"Release it. Let every communi…"| anchor_heart_said_open
@@ -867,8 +867,8 @@ flowchart TD
   anchor_heart_choose -->|"Try to make them share it. ⟨{not: {faction_at_least: [unwritten, 4]…⟩"| anchor_heart_accord_no
   anchor_heart_accord_no["accord_no<br/>The anchor shows you why it won't hold: not eno…"]
   anchor_heart_accord_no --> anchor_heart_choose
-  anchor_heart_said_open["said_open<br/>You open your hand. The hum climbs until it isn…"]
-  anchor_heart_said_custodians["said_custodians<br/>You close your hand around it, slowly. The note…"]
+  anchor_heart_said_open["said_open<br/>You open your hand. The hum rises until it is n…"]
+  anchor_heart_said_custodians["said_custodians<br/>You slowly close your hand. The note steadies. …"]
   anchor_heart_said_accord["said_accord<br/>Other hands join yours on the brass — the ones …"]
 ```
 
@@ -879,8 +879,8 @@ flowchart TD
   wren_START(("start"))
   wren_START --> wren_before
   wren_START -->|"{quest_done: case_anchor}"| wren_after
-  wren_before["before<br/>Director Elias Wren: 'Decide. I'll accept whatever you choose. I'm v…"]
-  wren_after["after<br/>Director Elias Wren: 'I'll testify. Every minute, every name. It won…"]
+  wren_before["before<br/>Director Elias Wren: 'Decide.' Wren closes his eyes. 'I'll accept wh…"]
+  wren_after["after<br/>Director Elias Wren: 'I'll testify. Every minute, every name.' He bu…"]
 ```
 
 ## ashbridge.json
@@ -1866,9 +1866,9 @@ flowchart TD
   mara_kn_leave3["kn_leave3<br/>Mara Venn: 'I see.' She closes the notebook. 'Then I'll ta…"]
   mara_hand1["hand1<br/>Mara Venn: Mara looks for a long time. 'Those sevens. I've…"]
   mara_hand1 --> mara_hub
-  mara_anchor_yes["anchor_yes<br/>Mara Venn: 'Somebody has to write down what happens. It sh…"]
+  mara_anchor_yes["anchor_yes<br/>Mara Venn: Mara closes her notebook and puts it in an insi…"]
   mara_anchor_yes --> mara_hub
-  mara_anchor_no["anchor_no<br/>Mara Venn: 'I'll read about it afterwards. I'm not sure I …"]
+  mara_anchor_no["anchor_no<br/>Mara Venn: 'I'll read about it afterwards.' Mara doesn't l…"]
   mara_anchor_no --> mara_hub
   mara_ag1["ag1<br/>Mara Venn: 'Every day since the archive.' Mara doesn't loo…"]
   mara_ag1 --> mara_ag2
@@ -1994,9 +1994,9 @@ flowchart TD
   jonah_sr2["sr2<br/>Jonah Rook: 'Dad never had a daughter. On paper.' He opens …"]
   jonah_sr2 --> jonah_hub
   jonah_join["join<br/>Jonah Rook: 'The workshop can look after itself. Somebody h…"]
-  jonah_anchor_yes["anchor_yes<br/>Jonah Rook: 'You found my sister. I'd follow you into worse…"]
+  jonah_anchor_yes["anchor_yes<br/>Jonah Rook: Jonah is already tightening the strap of his ba…"]
   jonah_anchor_yes --> jonah_hub
-  jonah_anchor_no["anchor_no<br/>Jonah Rook: 'I've got a shop and a lot of questions about y…"]
+  jonah_anchor_no["anchor_no<br/>Jonah Rook: Jonah doesn't look up from the bench. 'I've a w…"]
   jonah_anchor_no --> jonah_hub
   jonah_rr1["rr1<br/>Jonah Rook: 'She asks every evening. Just once, to see the …"]
   jonah_rr1 --> jonah_rr2
@@ -2160,7 +2160,7 @@ flowchart TD
   ivo_kn_leave2 --> ivo_kn_leave3
   ivo_kn_leave3["kn_leave3<br/>Ivo Calder: 'You won't forgive this. You shouldn't.' He put…"]
   ivo_pact_key["pact_key<br/>Ivo Calder: Ivo presses an old brass key into your hand. 'T…"]
-  ivo_anchor_yes["anchor_yes<br/>Ivo Calder: 'The Keepers will hold the seal while you do wh…"]
+  ivo_anchor_yes["anchor_yes<br/>Ivo Calder: Ivo puts on his hat — slowly, as if for the las…"]
   ivo_anchor_yes --> ivo_hub
   ivo_anchor_no["anchor_no<br/>Ivo Calder: 'The Keepers don't follow people they don't tru…"]
   ivo_anchor_no --> ivo_hub
@@ -2225,7 +2225,7 @@ flowchart TD
   nadiya_plan1 --> nadiya_plan2
   nadiya_plan2["plan2<br/>Nadiya Sol: 'They took it through the old underpass when th…"]
   nadiya_plan2 --> nadiya_hub
-  nadiya_anchor_yes["anchor_yes<br/>Nadiya Sol: 'The Open Hand will hold the tram lines. Nobody…"]
+  nadiya_anchor_yes["anchor_yes<br/>Nadiya Sol: Nadiya whistles through two fingers, and somewh…"]
   nadiya_anchor_yes --> nadiya_hub
   nadiya_anchor_no["anchor_no<br/>Nadiya Sol: 'You haven't given the Open Hand much reason to…"]
   nadiya_anchor_no --> nadiya_hub

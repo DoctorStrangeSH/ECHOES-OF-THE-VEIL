@@ -42,7 +42,7 @@
   "JONAH_RR_2": {"en": "\"Dad's repair stamp. ROOK & DAUGHTER. It was in the storeroom — if the storeroom's still anywhere.\"", "ru": "«Папин ремонтный штамп. «РУК И ДОЧЬ». Он был в кладовой — если кладовая ещё где-нибудь есть»."},
   "PIKE_ASK_STAMP": {"en": "Did the council keep anything from Rook Repairs' storeroom?", "ru": "Совет сохранил что-нибудь из кладовой мастерской Рука?"},
   "PIKE_STAMP_1": {"en": "\"Lost property keeps everything from a bricking-up. Including,\" she checks a ledger, \"one brass repair stamp. There's a release fee.\"", "ru": "«Бюро находок хранит всё, что осталось после замуровки. Включая, — она сверяется с журналом, — один латунный ремонтный штамп. За выдачу полагается сбор»."},
-  "PIKE_STAMP_FAVOUR": {"en": "You owe Civic Renewal a favour, not a fee.", "ru": "Гражданское обновление должно мне услугу, а не сбор."},
+  "PIKE_STAMP_FAVOUR": {"en": "You owe Civic Renewal a favour, not a fee.", "ru": "Городское обновление должно мне услугу, а не сбор."},
   "PIKE_STAMP_PAY": {"en": "Pay the fee (£30).", "ru": "Заплатить сбор (£30)."},
   "PIKE_STAMP_LATER": {"en": "Not now.", "ru": "Не сейчас."},
   "PIKE_STAMP_OK": {"en": "She hands it over in a paper bag with a form stapled to it. \"Sign here. Don't lose it again.\"", "ru": "Она отдаёт его в бумажном пакете с прикреплённым бланком. «Распишитесь. И больше не теряйте»."},
