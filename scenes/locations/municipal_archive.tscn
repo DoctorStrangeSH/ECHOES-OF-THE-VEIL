@@ -173,7 +173,7 @@ area_size = Vector2(28, 16)
 dialogue_id = &"archive_shelves"
 
 [node name="A_desk" type="Marker2D" parent="NpcAnchors"]
-position = Vector2(88, 90)
+position = Vector2(88, 84)
 script = ExtResource("11_anchor")
 anchor_id = &"desk"
 

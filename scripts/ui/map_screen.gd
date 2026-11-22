@@ -42,9 +42,16 @@ func _ready() -> void:
 	panel.custom_minimum_size = Vector2(160, 226)
 	panel.size = Vector2(160, 226)
 	_root.add_child(panel)
+	# A long district card scrolls inside the panel instead of running off
+	# the bottom of the screen.
+	var scroll := ScrollContainer.new()
+	scroll.custom_minimum_size = Vector2(150, 214)
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	panel.add_child(scroll)
 	_info = VBoxContainer.new()
 	_info.add_theme_constant_override("separation", 2)
-	panel.add_child(_info)
+	_info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(_info)
 	_hint = Label.new()
 	_hint.position = Vector2(8, 254)
 	UiTheme.hud_label(_hint, UiTheme.HUD_DIM)
@@ -165,7 +172,7 @@ func _line(text: String, color: Color, size := 8) -> Label:
 	var l := Label.new()
 	l.text = text
 	l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	l.custom_minimum_size = Vector2(150, 0)
+	l.custom_minimum_size = Vector2(142, 0)
 	l.add_theme_font_size_override("font_size", size)
 	l.add_theme_color_override("font_color", color)
 	_info.add_child(l)

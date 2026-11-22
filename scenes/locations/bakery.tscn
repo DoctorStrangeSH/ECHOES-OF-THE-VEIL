@@ -172,7 +172,7 @@ area_size = Vector2(34, 16)
 lines = PackedStringArray("FLAVOR_BAKERY_OVEN")
 
 [node name="A_counter" type="Marker2D" parent="NpcAnchors"]
-position = Vector2(88, 90)
+position = Vector2(88, 76)
 script = ExtResource("11_anchor")
 anchor_id = &"counter"
 
