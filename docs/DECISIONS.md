@@ -302,3 +302,7 @@ Hugh Penny, Martha's account of him, Margaret at the well, the tin under the app
 ## D-110 The prose pass, part 8: Mill Hill and Millwood (R16h)
 
 Mill Hill (Avery, Bess, the abbey) was already written in the voice the pass aims for and gets only a few touches. Millwood — Ada Fenwick, the drowned village of Mill Ford, the bell and the parish register — had lost its quotation marks and its gestures, and is rewritten (26 strings in all). The Salt Stair was read through and is left as it is: it already meets every rule of the pass.
+
+## D-111 The prose pass, part 9: speech quoted along the coast (R16i)
+
+A check of every dialogue line with a speaker found 53 still written without quotation marks, mostly in the later regions: Ashbridge (Dr Hale, Mara's card), Cavenmouth (Bridget, Walter and the undeliverable letters), St Carrow (Oona), the harbour (Nell, Agatha), the market, Jonah's car, Hugh's last lines. Speech is quoted and given a gesture where it carries weight (41 strings; the lines that are pure narration, such as "Walter straightens a pile of envelopes", stay as they are). The Ropeworks and Rowan Terrace were read through and already meet the pass; one typo fixed. Mrs Halloway now says «вы» to the player in her letter scene too, as everywhere else.
