@@ -1,0 +1,111 @@
+{
+ "_doc": "The open world (R14a, D-096). Outdoor places of the real world sit on one big map at these tile positions (top-left corner), lined up so that their main roads meet: one long avenue from Cavenmouth in the west through Greyford to the farms and the abbey in the east. Everything between and around them is countryside, sea or road built by tools/world/build_world.py, which continues each place's own edges outwards (roads and pavements along the avenue, sea north of the coast, grass elsewhere) and dresses the open ground with trees, bushes and flowers. St Carrow is an island in the bay: ferry only. Interiors and the Veil stay their own scenes behind doors. sea: tile rects that are open water.",
+ "tile": 16,
+ "size": [
+  760,
+  172
+ ],
+ "chunk": [
+  64,
+  44
+ ],
+ "regions": {
+  "cavenmouth": [
+   0,
+   102
+  ],
+  "lighthouse_point": [
+   78,
+   97
+  ],
+  "rowan_terrace": [
+   116,
+   101
+  ],
+  "ropeworks": [
+   176,
+   101
+  ],
+  "greyford_harbour": [
+   232,
+   101
+  ],
+  "greyford_block": [
+   274,
+   102
+  ],
+  "north_quay": [
+   314,
+   83
+  ],
+  "market_street": [
+   314,
+   101
+  ],
+  "greyford_park": [
+   274,
+   129
+  ],
+  "ashbridge": [
+   364,
+   100
+  ],
+  "greyford_airfield": [
+   454,
+   104
+  ],
+  "brook_farm": [
+   544,
+   89
+  ],
+  "millwood": [
+   594,
+   98
+  ],
+  "mill_hill": [
+   650,
+   101
+  ],
+  "abbey_ruins": [
+   700,
+   106
+  ],
+  "st_carrow": [
+   238,
+   30
+  ]
+ },
+ "sea": [
+  [
+   0,
+   0,
+   760,
+   30
+  ],
+  [
+   76,
+   30,
+   300,
+   66
+  ],
+  [
+   0,
+   30,
+   76,
+   70
+  ],
+  [
+   376,
+   30,
+   120,
+   52
+  ]
+ ],
+ "islands": [
+  "st_carrow"
+ ],
+ "names": {
+  "road": "LOC_WORLD_ROAD",
+  "coast": "LOC_WORLD_COAST"
+ }
+}

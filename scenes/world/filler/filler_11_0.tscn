@@ -1,0 +1,476 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/location.gd" id="1_loc"]
+[ext_resource type="Script" path="res://scripts/world/tile_painter.gd" id="2_paint"]
+[ext_resource type="PackedScene" path="res://scenes/props/world_prop.tscn" id="3_prop"]
+[ext_resource type="Script" path="res://scripts/world/spawn_point.gd" id="4_spawn"]
+[ext_resource type="Script" path="res://scripts/interaction/inspect_interactable.gd" id="5_inspect"]
+[ext_resource type="Script" path="res://scripts/interaction/door_interactable.gd" id="6_door"]
+[ext_resource type="Script" path="res://scripts/interaction/rest_interactable.gd" id="7_rest"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="8_npc"]
+[ext_resource type="Script" path="res://scripts/world/veil_shimmer.gd" id="9_shimmer"]
+[ext_resource type="Script" path="res://scripts/world/conditional_visibility.gd" id="10_cond"]
+[ext_resource type="Script" path="res://scripts/world/npc_anchor.gd" id="11_anchor"]
+[ext_resource type="PackedScene" path="res://scenes/combat/echo_enemy.tscn" id="12_enemy"]
+[ext_resource type="Script" path="res://scripts/combat/encounter.gd" id="13_encounter"]
+[ext_resource type="PackedScene" path="res://scenes/combat/census_taker.tscn" id="14_boss"]
+[ext_resource type="Script" path="res://scripts/combat/boss_arena.gd" id="15_arena"]
+[ext_resource type="PackedScene" path="res://scenes/world/item_pickup.tscn" id="16_pickup"]
+[ext_resource type="PackedScene" path="res://scenes/world/repair_spot.tscn" id="17_spot"]
+[ext_resource type="PackedScene" path="res://scenes/world/screen_interactable.tscn" id="18_screen"]
+[ext_resource type="PackedScene" path="res://scenes/world/junk_pile.tscn" id="19_junk"]
+
+[node name="Filler110" type="Node2D"]
+script = ExtResource("1_loc")
+location_id = &"filler_11_0"
+name_key = ""
+outdoors = true
+
+[node name="Ground" type="TileMapLayer" parent="."]
+script = ExtResource("2_paint")
+palette_id = "open_world"
+context_margin = 1
+layout = "                                                          
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww 
+ggggggggggggggggggggggggggggggggggggggggggggggggggggggggg 
+ggggggggggggggggggggggggggggggggggggggggggggggggggggggggg 
+ggggggggggggggggggggggggggggggggggggggggggggggggggggggggg 
+ggggggggggggggggggggggggggggggggggggggggggggggggggggggggg 
+ggggggggggggggggggggggggggggggggggggggggggggggggggggggggg 
+ggggggggggggggggggggggggggggggggggggggggggggggggggggggggg 
+ggggggggggggggggggggggggggggggggggggggggggggggggggggggggg 
+ggggggggggggggggggggggggggggggggggggggggggggggggggggggggg 
+ggggggggggggggggggggggggggggggggggggggggggggggggggggggggg 
+ggggggggggggggggggggggggggggggggggggggggggggggggggggggggg 
+ggggggggggggggggggggggggggggggggggggggggggggggggggggggggg 
+ggggggggggggggggggggggggggggggggggggggggggggggggggggggggg 
+ggggggggggggggggggggggggggggggggggggggggggggggggggggggggg 
+ggggggggggggggggggggggggggggggggggggggggggggggggggggggggg 
+ggggggggggggggggggggggggggggggggggggggggggggggggggggggggg "
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="NpcAnchors" type="Node2D" parent="."]
+
+[node name="N26" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(216, 718)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Pine_Green_Big_16x16.png"
+placeholder_size = Vector2i(64, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+casts_shadow = true
+
+[node name="N27" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(216, 622)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Oak_Green_Huge_16x16.png"
+placeholder_size = Vector2i(112, 128)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+casts_shadow = true
+
+[node name="N28" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(216, 654)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Pine_Dark_Green_Big_16x16.png"
+placeholder_size = Vector2i(64, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+casts_shadow = true
+
+[node name="N29" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(216, 686)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Pine_Green_Big_16x16.png"
+placeholder_size = Vector2i(64, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+casts_shadow = true
+
+[node name="N30" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(248, 686)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Oak_Green_Big_16x16.png"
+placeholder_size = Vector2i(80, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+casts_shadow = true
+
+[node name="N31" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(264, 638)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Birch_Green_Big_16x16.png"
+placeholder_size = Vector2i(48, 80)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+casts_shadow = true
+
+[node name="N85" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(296, 638)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Oak_Blue_Green_Big_16x16.png"
+placeholder_size = Vector2i(80, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+casts_shadow = true
+
+[node name="N86" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(248, 574)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Oak_Green_Huge_16x16.png"
+placeholder_size = Vector2i(112, 128)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+casts_shadow = true
+
+[node name="N87" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(296, 606)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Birch_Green_Big_16x16.png"
+placeholder_size = Vector2i(48, 80)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+casts_shadow = true
+
+[node name="N88" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(328, 574)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Oak_Green_Huge_16x16.png"
+placeholder_size = Vector2i(112, 128)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+casts_shadow = true
+
+[node name="N89" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(216, 558)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Oak_Green_Huge_16x16.png"
+placeholder_size = Vector2i(112, 128)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+casts_shadow = true
+
+[node name="N418" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(456, 590)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Pine_Green_Big_16x16.png"
+placeholder_size = Vector2i(64, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+casts_shadow = true
+
+[node name="N419" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(536, 622)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Birch_Green_Big_16x16.png"
+placeholder_size = Vector2i(48, 80)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+casts_shadow = true
+
+[node name="N420" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(520, 574)
+texture_path = "modern_farm/16x16/Single_Files_16x16/Trees_16x16/Tree_Pine_Dark_Green_Big_16x16.png"
+placeholder_size = Vector2i(64, 96)
+placeholder_color = Color(0.247,0.498,0.247, 1)
+collision_size = Vector2(14, 8)
+collision_offset = Vector2(0, -4)
+casts_shadow = true
+
+[node name="N663" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(264, 527)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Small_Pink_Flower.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.753,0.376,0.502, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="N664" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(600, 527)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Medium_Pink_Flower.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.753,0.376,0.502, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="N665" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(744, 527)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Bush_6.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.310,0.561,0.310, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+casts_shadow = true
+
+[node name="N672" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(120, 543)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Small_Red_Flower.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.753,0.376,0.502, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="N673" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(376, 543)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Bush_2.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.310,0.561,0.310, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="N674" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(616, 543)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Small_Pink_Flower.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.753,0.376,0.502, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="N687" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(392, 575)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Bush_4.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.310,0.561,0.310, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="N688" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(712, 575)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Bush_7.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.310,0.561,0.310, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+casts_shadow = true
+
+[node name="N689" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(792, 575)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Medium_Red_Flower.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.753,0.376,0.502, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="N699" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(280, 591)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Medium_Red_Flower.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.753,0.376,0.502, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="N700" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(360, 591)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Bush_4.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.310,0.561,0.310, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="N709" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(472, 607)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Bush_9.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.310,0.561,0.310, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+casts_shadow = true
+
+[node name="N710" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(760, 607)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Small_Light_Blue_Flower.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.753,0.376,0.502, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="N719" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(328, 623)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Small_Pink_Flower.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.753,0.376,0.502, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="N720" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(360, 623)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Small_Light_Blue_Flower.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.753,0.376,0.502, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="N727" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(40, 639)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Small_Pink_Flower.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.753,0.376,0.502, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="N728" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(72, 639)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Bush_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.310,0.561,0.310, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="N729" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(872, 639)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Bush_3.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.310,0.561,0.310, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="N740" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(104, 655)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Small_White_Flower.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.753,0.376,0.502, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="N741" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(152, 655)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Medium_Red_Flower.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.753,0.376,0.502, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="N742" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(680, 655)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Bush_6.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.310,0.561,0.310, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+casts_shadow = true
+
+[node name="N743" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(792, 655)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Small_Red_Flower.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.753,0.376,0.502, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="N754" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(632, 671)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Bush_5.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.310,0.561,0.310, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="N755" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(712, 671)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Small_Red_Flower.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.753,0.376,0.502, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="N767" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(40, 687)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Medium_White_Flower.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.753,0.376,0.502, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="N768" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(392, 687)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Bush_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.310,0.561,0.310, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="N769" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(504, 687)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Small_Pink_Flower.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.753,0.376,0.502, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="N770" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(792, 687)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Bush_6.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.310,0.561,0.310, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+casts_shadow = true
+
+[node name="N781" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(408, 703)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Bush_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.310,0.561,0.310, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="N782" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(728, 703)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Bush_8.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.310,0.561,0.310, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+casts_shadow = true
+
+[node name="N783" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(888, 703)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Bush_8.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.310,0.561,0.310, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+casts_shadow = true
+
+[node name="N792" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(440, 719)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/17_Garden_Singles_16x16/ME_Singles_Garden_16x16_Medium_Pink_Flower.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.753,0.376,0.502, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)

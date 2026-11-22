@@ -19,6 +19,9 @@ const FADE_TIME := 0.25
 
 var is_transitioning := false
 var current_location: Node = null
+## The open world while the player is in it (current_location is then the
+## place they stand in, a piece of it).
+var open_world: OpenWorld = null
 
 var _root = null  # GameRoot (untyped: uses its world/show_menu/hide_menu API)
 var _fade: ColorRect
@@ -111,6 +114,17 @@ func _swap_to_menu() -> void:
 
 
 func _swap_to_location(scene_id: StringName) -> void:
+	if OpenWorld.has_region(scene_id):
+		if open_world == null or not is_instance_valid(open_world):
+			_clear_world()
+			_root.hide_menu()
+			open_world = OpenWorld.new()
+			open_world.name = "OpenWorld"
+			_root.world.add_child(open_world)
+		open_world.place_player(scene_id, GameState.current_spawn_id, GameState.pending_position, GameState.pending_facing)
+		GameState.pending_position = null
+		GameState.is_playing = true
+		return
 	_clear_world()
 	_root.hide_menu()
 	var scene: PackedScene = load(LOCATIONS[scene_id])
@@ -120,9 +134,13 @@ func _swap_to_location(scene_id: StringName) -> void:
 
 
 func _clear_world() -> void:
-	if current_location != null and is_instance_valid(current_location):
+	if open_world != null and is_instance_valid(open_world):
+		open_world.get_parent().remove_child(open_world)
+		open_world.queue_free()
+	elif current_location != null and is_instance_valid(current_location):
 		current_location.get_parent().remove_child(current_location)
 		current_location.queue_free()
+	open_world = null
 	current_location = null
 
 
