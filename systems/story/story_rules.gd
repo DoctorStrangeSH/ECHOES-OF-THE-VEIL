@@ -211,7 +211,11 @@ static func _apply_one(key: String, arg: Variant, whole: Dictionary) -> void:
 			var pl: Node = Engine.get_main_loop().get_first_node_in_group(&"player") if Engine.get_main_loop() is SceneTree else null
 			if pl != null and pl.has_method("look_at_point"):
 				if key == "camera_look":
-					pl.look_at_point(Vector2(float(arg[0]), float(arg[1])))
+					# Points are written in the place's own coordinates; in the open
+					# world the place sits somewhere along the coast.
+					var here: Node2D = SceneFlow.current_location
+					var origin := here.global_position if here != null and is_instance_valid(here) else Vector2.ZERO
+					pl.look_at_point(origin + Vector2(float(arg[0]), float(arg[1])))
 				else:
 					pl.look_at_point(Vector2.INF)
 		"bond":
