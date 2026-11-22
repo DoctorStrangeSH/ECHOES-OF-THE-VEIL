@@ -128,17 +128,17 @@ flowchart TD
   ward_enter_START --> ward_enter_alone1
   ward_enter_START -->|"{flag: ward.ivo_invite}"| ward_enter_ivo1
   ward_enter_START -->|"{flag: ward.nadiya_invite}"| ward_enter_nad1
-  ward_enter_ivo1["ivo1<br/>Ivo is waiting at the harbour stop, collar up. …"]
+  ward_enter_ivo1["ivo1<br/>Ivo is waiting at the stop with his collar up. …"]
   ward_enter_ivo1 --> ward_enter_ivo2
-  ward_enter_ivo2["ivo2<br/>Ivo Calder: 'Don't promise anybody anything in here. They'l…"]
+  ward_enter_ivo2["ivo2<br/>Ivo Calder: 'Promise nobody anything here.' He lets go of y…"]
   ward_enter_ivo2 --> ward_enter_common
-  ward_enter_nad1["nad1<br/>Nadiya knocks three times on the timetable. It …"]
+  ward_enter_nad1["nad1<br/>Nadiya knocks three times on the timetable. The…"]
   ward_enter_nad1 --> ward_enter_nad2
   ward_enter_nad2["nad2<br/>Nadiya Sol: 'Welcome to the Ward. Everyone here was somebod…"]
   ward_enter_nad2 --> ward_enter_common
-  ward_enter_alone1["alone1<br/>The pasted strip on the timetable is warm. You …"]
+  ward_enter_alone1["alone1<br/>The strip of paper is warm, like someone's palm…"]
   ward_enter_alone1 --> ward_enter_common
-  ward_enter_common["common<br/>A street that was removed in 1962 is still here…"]
+  ward_enter_common["common<br/>The street that was cleared away in 1962 is sti…"]
 ```
 
 ### depot_enter
@@ -149,7 +149,7 @@ flowchart TD
   depot_enter_START --> depot_enter_1
   depot_enter_1["1<br/>The depot smells of brake dust and wet tickets.…"]
   depot_enter_1 --> depot_enter_2
-  depot_enter_2["2<br/>Between the pillars, passengers are still waiti…"]
+  depot_enter_2["2<br/>Passengers are still waiting between the pillar…"]
 ```
 
 ### platform_conductor
@@ -158,7 +158,7 @@ flowchart TD
 flowchart TD
   platform_conductor_START(("start"))
   platform_conductor_START --> platform_conductor_1
-  platform_conductor_1["1<br/>Platform Eleven. A conductor in a peaked cap wa…"]
+  platform_conductor_1["1<br/>Platform eleven. The Conductor, in his cap, wal…"]
   platform_conductor_1 --> platform_conductor_2
   platform_conductor_2["2<br/>The Conductor: 'Tickets. Every one of them. Nobody leaves this…"]
 ```
@@ -171,13 +171,13 @@ flowchart TD
   alderman_START --> alderman_hub
   alderman_START -->|"{quest_stage: [case_inc_names, report]}"| alderman_inc_names
   alderman_START -->|"{not_flag: met.alderman}"| alderman_intro1
-  alderman_intro1["intro1<br/>Alderman Penhallow: 'A visitor from the echo.' A man in a mayoral c…"]
+  alderman_intro1["intro1<br/>Alderman Penhallow: A man in an alderman's chain, polished to the l…"]
   alderman_intro1 --> alderman_intro2
-  alderman_intro2["intro2<br/>Alderman Penhallow: He opens a register on the hall steps. 'Two hun…"]
+  alderman_intro2["intro2<br/>Alderman Penhallow: He opens a book right there on the steps. 'Two …"]
   alderman_intro2 --> alderman_intro3
-  alderman_intro3["intro3<br/>Alderman Penhallow: 'If you want to understand us, hear three peopl…"]
+  alderman_intro3["intro3<br/>Alderman Penhallow: 'If you want to understand us, listen to three …"]
   alderman_intro3 --> alderman_hub
-  alderman_hub["hub<br/>Alderman Penhallow: 'The Ward is listening.'"]
+  alderman_hub["hub<br/>Alderman Penhallow: The alderman closes his book on one finger, the…"]
   alderman_hub -->|"How does the Ward work?"| alderman_lore
   alderman_hub -->|"I've heard Bea, Abel and Elli… ⟨{quest_stage: [case_misplaced, resident…⟩"| alderman_depot1
   alderman_hub -->|"The depot again? ⟨{quest_stage: [case_misplaced, depot]}⟩"| alderman_depot2
@@ -189,13 +189,13 @@ flowchart TD
   alderman_hub -->|"Goodbye."| alderman_hub_end_7
   alderman_lore["lore<br/>Alderman Penhallow: 'Badly, and every day. Nobody ages, nothing bre…"]
   alderman_lore --> alderman_hub
-  alderman_depot1["depot1<br/>Alderman Penhallow: 'Then you know we don't agree about anything. E…"]
+  alderman_depot1["depot1<br/>Alderman Penhallow: 'Then you know we agree on nothing. Except this…"]
   alderman_depot1 --> alderman_depot2b
-  alderman_depot2b["depot2b<br/>Alderman Penhallow: 'The ones who go missing here go to the depot. …"]
+  alderman_depot2b["depot2b<br/>Alderman Penhallow: 'The ones who vanish here go to the depot. The …"]
   alderman_depot2b --> alderman_hub
-  alderman_depot2["depot2<br/>Alderman Penhallow: 'The ones who go missing here go to the depot. …"]
+  alderman_depot2["depot2<br/>Alderman Penhallow: 'The ones who vanish here go to the depot. The …"]
   alderman_depot2 --> alderman_hub
-  alderman_after["after<br/>Alderman Penhallow: 'The trams have stopped. Some of us miss them. …"]
+  alderman_after["after<br/>Alderman Penhallow: 'The trams don't run any more.' He looks at the…"]
   alderman_after --> alderman_hub
   alderman_index1["index1<br/>Alderman Penhallow: The Alderman opens the Ward register on the hal…"]
   alderman_index1 --> alderman_index2
@@ -217,18 +217,18 @@ flowchart TD
   bea_START(("start"))
   bea_START --> bea_hub
   bea_START -->|"{not_flag: ward.heard_bea}"| bea_intro1
-  bea_intro1["intro1<br/>Bea Halloway: 'Edda's lodger! You've got her look — tired and…"]
+  bea_intro1["intro1<br/>Bea Halloway: Flour to the elbows, and Mrs Halloway's eyes, o…"]
   bea_intro1 --> bea_intro2
-  bea_intro2["intro2<br/>Bea Halloway: 'I want to go back. Not for always — for a Thur…"]
+  bea_intro2["intro2<br/>Bea Halloway: 'I want to go back. Not for ever — for one Thur…"]
   bea_intro2 --> bea_hub
-  bea_hub["hub<br/>Bea Halloway: 'Bread's fresh. It always is.'"]
+  bea_hub["hub<br/>Bea Halloway: 'The bread's fresh.' Bea smiles with one corner…"]
   bea_hub -->|"I'll tell Edda you're here. ⟨{not_flag: ward.bea_message, all: [{not…⟩"| bea_edda
   bea_hub -->|"Greyford isn't ready for that… ⟨{not_flag: ward.bea_message, all: [{not…⟩"| bea_wait
   bea_hub_end_2(["end"])
   bea_hub -->|"Goodbye."| bea_hub_end_2
-  bea_edda["edda<br/>Bea Halloway: 'Tell her Thursdays. She'll know.' She wipes he…"]
+  bea_edda["edda<br/>Bea Halloway: 'Tell her: Thursdays. She'll understand.' Bea w…"]
   bea_edda --> bea_hub
-  bea_wait["wait<br/>Bea Halloway: 'Sixty years I've been ready.' But she nods. 'A…"]
+  bea_wait["wait<br/>Bea Halloway: 'I've been ready for sixty years.' But she nods…"]
   bea_wait --> bea_hub
 ```
 
@@ -239,18 +239,18 @@ flowchart TD
   abel_START(("start"))
   abel_START --> abel_hub
   abel_START -->|"{not_flag: ward.heard_abel}"| abel_intro1
-  abel_intro1["intro1<br/>Abel Crane: A man mending a net that has no holes. 'Abel Cr…"]
+  abel_intro1["intro1<br/>Abel Crane: An old man is mending a net with no holes in it…"]
   abel_intro1 --> abel_intro2
-  abel_intro2["intro2<br/>Abel Crane: 'Your lot keep wanting to fix things. Don't. We…"]
+  abel_intro2["intro2<br/>Abel Crane: 'You lot from over there always want to fix som…"]
   abel_intro2 --> abel_hub
-  abel_hub["hub<br/>Abel Crane: 'Still here?'"]
+  abel_hub["hub<br/>Abel Crane: Abel looks up from the net. 'Still here?'"]
   abel_hub -->|"I'll leave you be. ⟨{not_flag: ward.abel_left}⟩"| abel_leave
   abel_hub -->|"The keeper at the point still… ⟨{flag: world.lamp_counts, not_flag: war…⟩"| abel_hester
   abel_hub_end_2(["end"])
   abel_hub -->|"Goodbye."| abel_hub_end_2
-  abel_leave["leave<br/>Abel Crane: 'Good.' He means it kindly, which is worse."]
+  abel_leave["leave<br/>Abel Crane: 'That's good of you.' He says it kindly, and th…"]
   abel_leave --> abel_hub
-  abel_hester["hester<br/>Abel Crane: He stops mending. 'Seven, pause, seven.' A long…"]
+  abel_hester["hester<br/>Abel Crane: The needle stops. 'Seven, a pause, seven.' A lo…"]
   abel_hester --> abel_hub
 ```
 
@@ -261,18 +261,18 @@ flowchart TD
   ellie_START(("start"))
   ellie_START --> ellie_hub
   ellie_START -->|"{not_flag: ward.heard_ellie}"| ellie_intro1
-  ellie_intro1["intro1<br/>Ellie Marsh: A woman about your age, with Theo's careful han…"]
+  ellie_intro1["intro1<br/>Ellie Marsh: On the steps of the green door sits a woman of …"]
   ellie_intro1 --> ellie_intro2
-  ellie_intro2["intro2<br/>Ellie Marsh: 'There's another number eleven in your Greyford…"]
+  ellie_intro2["intro2<br/>Ellie Marsh: 'In your Greyford there's another number eleven…"]
   ellie_intro2 --> ellie_hub
-  ellie_hub["hub<br/>Ellie Marsh: 'It's my door.'"]
+  ellie_hub["hub<br/>Ellie Marsh: Ellie doesn't get up from the steps. 'This is m…"]
   ellie_hub -->|"His name is Theo. He left you… ⟨{flag: world.theo_remembers, not_flag: …⟩"| ellie_theo
   ellie_hub -->|"Someone else lives there now.… ⟨{not_flag: world.theo_remembers, all: […⟩"| ellie_angry
   ellie_hub_end_2(["end"])
   ellie_hub -->|"Goodbye."| ellie_hub_end_2
-  ellie_theo["theo<br/>Ellie Marsh: 'Dad.' Not a question. She holds very still, th…"]
+  ellie_theo["theo<br/>Ellie Marsh: 'Dad.' It isn't a question. She goes very still…"]
   ellie_theo --> ellie_hub
-  ellie_angry["angry<br/>Ellie Marsh: 'His home.' She laughs without anything in it. …"]
+  ellie_angry["angry<br/>Ellie Marsh: 'His house.' She laughs, and the laugh comes ou…"]
   ellie_angry --> ellie_hub
 ```
 
@@ -286,7 +286,7 @@ flowchart TD
   vale_START -->|"{not_flag: met.sera_vale}"| vale_intro1
   vale_intro1["intro1<br/>Dr Sera Vale: A woman in a good coat holds a brass instrument…"]
   vale_intro1 --> vale_intro2
-  vale_intro2["intro2<br/>Dr Sera Vale: 'The Veil gradient in this street is remarkable…"]
+  vale_intro2["intro2<br/>Dr Sera Vale: 'The Veil gradient on this street is remarkable…"]
   vale_intro2 --> vale_hub
   vale_hub["hub<br/>Dr Sera Vale: 'Mind the cables.'"]
   vale_hub -->|"What does Meridian want with …"| vale_ask
@@ -299,11 +299,11 @@ flowchart TD
   vale_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| vale_anchor_no
   vale_hub_end_8(["end"])
   vale_hub -->|"Goodbye."| vale_hub_end_8
-  vale_ask["ask<br/>Dr Sera Vale: 'To measure it. Then to make it safe. Then — I'…"]
+  vale_ask["ask<br/>Dr Sera Vale: 'Measure it. Then make it safe. And then — I'll…"]
   vale_ask --> vale_hub
-  vale_help["help<br/>Dr Sera Vale: The instrument hums against your palm. The lamp…"]
+  vale_help["help<br/>Dr Sera Vale: The instrument hums in your palm. All along the…"]
   vale_help --> vale_hub
-  vale_refuse["refuse<br/>Dr Sera Vale: 'They're both. That's what makes it interesting…"]
+  vale_refuse["refuse<br/>Dr Sera Vale: 'They're both. That's what makes them interesti…"]
   vale_refuse --> vale_hub
   vale_res["res<br/>Dr Sera Vale: 'Is it.' She looks at the flooded steps like an…"]
   vale_res --> vale_hub
@@ -338,17 +338,17 @@ flowchart TD
   rosalind_START -->|"{quest_stage: [case_misplaced, bring], …"| rosalind_reunite1
   rosalind_START -->|"{quest_stage: [case_misplaced, bring]}"| rosalind_wait
   rosalind_START -->|"{flag: rosalind.reunited}"| rosalind_after_reunited
-  rosalind_meet1["meet1<br/>Rosalind Rook: On the platform bench, a woman with red hair un…"]
+  rosalind_meet1["meet1<br/>Rosalind Rook: On a bench sits a woman with red hair under a k…"]
   rosalind_meet1 --> rosalind_meet2
-  rosalind_meet2["meet2<br/>Rosalind Rook: 'Rosalind Rook. I came down here looking for my…"]
+  rosalind_meet2["meet2<br/>Rosalind Rook: 'Rosalind Rook. I came down here for my brother…"]
   rosalind_meet2 --> rosalind_meet3
-  rosalind_meet3["meet3<br/>Rosalind Rook: You tell her: Jonah is alive, upstairs, in Grey…"]
+  rosalind_meet3["meet3<br/>Rosalind Rook: You tell her: Jonah is alive, up in Greyford, m…"]
   rosalind_meet3 --> rosalind_choice
   rosalind_choice["choice<br/>Rosalind Rook: 'What do I do?'"]
   rosalind_choice -->|"He's right here. Jonah? ⟨{companion: jonah_rook}⟩"| rosalind_reunite1
   rosalind_choice -->|"I'll bring him to you. ⟨{quest_stage: [case_misplaced, rosalind…⟩"| rosalind_bring
   rosalind_choice -->|"Maybe you're both right. You …"| rosalind_apart
-  rosalind_bring["bring<br/>Rosalind Rook: 'I'll be here. I'm good at waiting on platforms…"]
+  rosalind_bring["bring<br/>Rosalind Rook: 'I'll be here.' She tucks the ticket into her m…"]
   rosalind_wait["wait<br/>Rosalind Rook: 'Is he coming?'"]
   rosalind_wait_end_0(["end"])
   rosalind_wait -->|"Soon."| rosalind_wait_end_0
@@ -357,10 +357,10 @@ flowchart TD
   rosalind_reunite1 --> rosalind_reunite2
   rosalind_reunite2["reunite2<br/>Jonah Rook: 'You counted the stock.' His voice breaks on th…"]
   rosalind_reunite2 --> rosalind_reunite3
-  rosalind_reunite3["reunite3<br/>Rosalind Rook: 'Every night.' She laughs, and then she is cryi…"]
+  rosalind_reunite3["reunite3<br/>Rosalind Rook: 'Every evening.' She laughs, then cries, and he…"]
   rosalind_apart["apart<br/>Rosalind Rook: 'Both right.' She turns the ticket over. 'Then …"]
   rosalind_after_reunited["after_reunited<br/>Rosalind Rook: 'He comes down every evening now. We argue abou…"]
-  rosalind_after_apart["after_apart<br/>Rosalind Rook: 'Not yet. But I'm counting the days instead of …"]
+  rosalind_after_apart["after_apart<br/>Rosalind Rook: 'Not yet. But now I count days instead of stock…"]
   rosalind_up1["up1<br/>Rosalind Rook: Rosalind sees the stamp in Jonah's hand and sta…"]
   rosalind_up1 --> rosalind_up2
   rosalind_up2["up2<br/>She closes her fingers around it with his. The …"]
@@ -443,7 +443,7 @@ flowchart TD
   camp_mara_hub -->|"Will you stand with me at the… ⟨{quest_stage: [case_anchor, gather], no…⟩"| camp_mara_anchor_no
   camp_mara_hub_end_7(["end"])
   camp_mara_hub -->|"Let's keep going."| camp_mara_hub_end_7
-  camp_mara_how["how<br/>Mara Venn: 'Every record I've ever kept is wrong by two hu…"]
+  camp_mara_how["how<br/>Mara Venn: 'Every archive I have ever kept is wrong by two…"]
   camp_mara_how --> camp_mara_hub
   camp_mara_home["home<br/>Mara Venn: 'I'll be at the archive. Write things down.'"]
   camp_mara_not_here["not_here<br/>Mara Venn: 'Not here. Meet me under the archive. There's s…"]
@@ -491,7 +491,7 @@ flowchart TD
   harbour_timetable_START --> harbour_timetable_plain
   harbour_timetable_START -->|"{quest_stage: [case_misplaced, ward], p…"| harbour_timetable_strip
   harbour_timetable_plain["plain<br/>The harbour timetable. Buses, the last tram sto…"]
-  harbour_timetable_strip["strip<br/>The harbour timetable. Under the last stop some…"]
+  harbour_timetable_strip["strip<br/>The timetable by the harbour, bleached by salt.…"]
 ```
 
 ## act3.json
@@ -1853,7 +1853,7 @@ flowchart TD
   mara_lie_found["lie_found<br/>Mara Venn: 'You knew.' She has a newspaper folded in her h…"]
   mara_mark1["mark1<br/>Mara Venn: 'Three lines to a point — a surveyors' mark. In…"]
   mara_mark1 --> mara_hub
-  mara_join["join<br/>Mara Venn: 'I'll bring a notebook. Things that aren't writ…"]
+  mara_join["join<br/>Mara Venn: 'I'll bring the notebook.' She's already button…"]
   mara_kn_stay1["kn_stay1<br/>Mara Venn: Mara is turning a pencil over and over. 'The el…"]
   mara_kn_stay1 --> mara_kn_stay2
   mara_kn_stay2["kn_stay2<br/>Mara Venn: 'It wasn't. My grandmother was a Keeper. I've k…"]
@@ -1993,7 +1993,7 @@ flowchart TD
   jonah_sr1 --> jonah_sr2
   jonah_sr2["sr2<br/>Jonah Rook: 'Dad never had a daughter. On paper.' He opens …"]
   jonah_sr2 --> jonah_hub
-  jonah_join["join<br/>Jonah Rook: 'Shop can mind itself. You can't.' He picks up …"]
+  jonah_join["join<br/>Jonah Rook: 'The workshop can look after itself. Somebody h…"]
   jonah_anchor_yes["anchor_yes<br/>Jonah Rook: 'You found my sister. I'd follow you into worse…"]
   jonah_anchor_yes --> jonah_hub
   jonah_anchor_no["anchor_no<br/>Jonah Rook: 'I've got a shop and a lot of questions about y…"]
@@ -2076,9 +2076,9 @@ flowchart TD
   halloway_kept["kept<br/>Edda Halloway: 'Thank you, dear.' She slips the map into her r…"]
   halloway_shared["shared<br/>Edda Halloway: 'If you think that's right.' She holds out the …"]
   halloway_who["who<br/>Edda Halloway: 'Nobody. Well — Mr Calder, for tea on Sundays. …"]
-  halloway_bea1["bea1<br/>Edda Halloway: She is buttering toast. She stops. 'Thursdays,'…"]
+  halloway_bea1["bea1<br/>Edda Halloway: Mrs Halloway is buttering toast. The knife stop…"]
   halloway_bea1 --> halloway_bea2
-  halloway_bea2["bea2<br/>Edda Halloway: 'I'll leave the back door on the latch on Thurs…"]
+  halloway_bea2["bea2<br/>Edda Halloway: 'On Thursdays I'll leave the back door unlocked…"]
   halloway_bea2 --> halloway_hub
   halloway_kn_stay1["kn_stay1<br/>Edda Halloway: Mrs Halloway has brought a flask of tea and doe…"]
   halloway_kn_stay1 --> halloway_kn_stay2
@@ -2142,12 +2142,12 @@ flowchart TD
   ivo_records["records<br/>Ivo Calder: 'The archive files are in the papers.' He looks…"]
   ivo_ward1["ward1<br/>Ivo Calder: Ivo is silent so long that a tram could have pa…"]
   ivo_ward1 --> ivo_ward2
-  ivo_ward2["ward2<br/>Ivo Calder: He looks at the harbour for a long time. 'The t…"]
+  ivo_ward2["ward2<br/>Ivo Calder: Ivo looks out at the harbour for a long time; t…"]
   ivo_ward2 -->|"Take me there. ⟨{not_flag: act1.ivo_tends_halloway}⟩"| ivo_ward_ok
   ivo_ward2 -->|"Like you tidy Mrs Halloway's … ⟨{flag: act1.ivo_tends_halloway}⟩"| ivo_ward_no
   ivo_ward_ok["ward_ok<br/>Ivo Calder: 'Harbour stop, after dark. I'll be there. Come …"]
   ivo_ward_ok --> ivo_hub
-  ivo_ward_no["ward_no<br/>Ivo Calder: Something closes in his face. 'Not with you ask…"]
+  ivo_ward_no["ward_no<br/>Ivo Calder: Something in his face shuts like a shutter. 'No…"]
   ivo_ward_no --> ivo_hub
   ivo_kn_stay1["kn_stay1<br/>Ivo Calder: Ivo doesn't stand up. 'Forty years I've tended …"]
   ivo_kn_stay1 --> ivo_kn_stay2
@@ -2219,7 +2219,7 @@ flowchart TD
   nadiya_reply2 -->|"'One letter isn't all of them…"| nadiya_persist1
   nadiya_respect1["respect1<br/>Nadiya Sol: 'Restoration without consent is just another ce…"]
   nadiya_persist1["persist1<br/>Nadiya Sol: 'Right. Seven isn't nineteen.' She sounds sure.…"]
-  nadiya_ward_nad["ward_nad<br/>Nadiya Sol: 'Course I do. I deliver there.' She taps her ba…"]
+  nadiya_ward_nad["ward_nad<br/>Nadiya Sol: 'Course I do. I deliver there.' She pats her sa…"]
   nadiya_ward_nad --> nadiya_hub
   nadiya_plan1["plan1<br/>Nadiya Sol: 'Meridian built a resonator. Tune it to the Kee…"]
   nadiya_plan1 --> nadiya_plan2
@@ -2267,10 +2267,10 @@ flowchart TD
   pike_relay_no["relay_no<br/>Warden Dana Pike: 'Requisition form 14-C. Six to eight weeks.' Sh…"]
   pike_relay_no --> pike_hub
   pike_file1["file1<br/>Warden Dana Pike: She reads the name and goes very still. 'Where …"]
-  pike_ward_pike["ward_pike<br/>Warden Dana Pike: Pike's pen stops. 'The council has heard about …"]
+  pike_ward_pike["ward_pike<br/>Warden Dana Pike: Pike's pen stops above her folder. 'The Council…"]
   pike_ward_pike -->|"It's real. I'll show you on a…"| pike_ward_rep
   pike_ward_pike -->|"I haven't seen anything."| pike_ward_deny
-  pike_ward_rep["ward_rep<br/>Warden Dana Pike: 'Thank you. It will be handled properly.' She m…"]
+  pike_ward_rep["ward_rep<br/>Warden Dana Pike: 'Thank you. It will all be done properly.' She …"]
   pike_ward_rep --> pike_hub
   pike_ward_deny["ward_deny<br/>Warden Dana Pike: 'Of course.' She writes that down too."]
   pike_ward_deny --> pike_hub
