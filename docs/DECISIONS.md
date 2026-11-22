@@ -248,3 +248,15 @@ Settings opened from the Game tab were drawn on the same layer as that tab and u
 The archive, Rook's shop, the bakery, the café and the gym are redrawn to their houses' footprints (8 tiles wide, 11–12 deep, doorway under the street door) in the dense LimeZu manner and marked `in_place`. Every look-at, anchor and door of the old rooms is kept, moved to the new layout. Theo's flat stays a separate scene: its endless corridor is the point.
 
 A house can be several pictures stacked (the market's ground floor, middle floor and roof), so the house now grows from the picture above the door to every tall picture stacked on it that is about as wide; all of them fade, and the room stands on the ground-floor picture. Travelling from a room to a different street closes the room first instead of walking out onto its own street.
+
+## D-101 Combat depth: heavy blow, the Echo, poise, streaks, tells (R15a)
+
+Review item 14 asked for combat that holds attention. The fights already had a combo, dodge, the Lantern Flash and echo traits; what they lacked was a reason to read the enemy and a reward for doing it well. Five additions, all on the existing hitbox/hurtbox model:
+
+- **Tells.** An echo's wind-up now draws its lunge on the ground (a red band the length of the blow, brightening as it comes) and pops a "!" above it; ranged echoes draw a thin line towards you.
+- **The Echo (perfect dodge).** A dodge within the last 0.18 s of a wind-up, or during a lunge that has not landed, or with a shard about to hit, slows time to 0.3 for 0.45 s of real time, grants half a second of safety and arms a counter: the next blow within 1.5 s does double and knocks hard. `CombatFx.slowmo` coexists with hit-stop.
+- **Heavy blow.** Holding the attack past 0.3 s charges (the hero glows and pulses when full at 0.8 s); releasing a full charge strikes everything within 26 px for the weapon's best combo hit + 1 + finisher bonus, with heavy knockback. A tap still attacks at once, so nothing gets slower.
+- **Poise.** Echoes have poise (data `poise`, default max health + 1). Hits wear it down, hard hits (knockback ≥ 200: finishers, counters, heavy blows) by two more; at zero the echo is knocked off balance for 1.3 s (0.65 s if it resists stuns), and every hit on it does one more. Poise refills after 2 s without being hit.
+- **Streak.** Hits landed without being hurt count up (shown every five); each full five means one more Resonance from every echo killed, up to three. Getting hurt breaks it.
+
+The first echo met teaches all of it in one toast; the controls card says "hold: heavy".

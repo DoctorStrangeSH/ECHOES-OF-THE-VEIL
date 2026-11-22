@@ -13,8 +13,10 @@ extends CharacterBody2D
 ##   summon        - {"variant", "every", "max"}: calls more echoes while it lives
 ##   mend          - {"every", "radius", "amount"}: heals the echoes around it
 ##   resist_stun   - the Lantern Flash does not stop it
-## Readable state machine: drift -> chase -> wind-up (clear glow telegraph) ->
-## lunge/shoot -> recover. Hit flash, knockback, stun from the Lantern Flash.
+## Readable state machine: drift -> chase -> wind-up (glow, a "!" and the
+## lunge's path drawn on the ground) -> lunge/shoot -> recover.
+## Poise (R15a): hits wear it down (hard hits more); at zero the echo is
+## knocked off balance — dazed, open, and every hit on it does one more. Hit flash, knockback, stun from the Lantern Flash.
 ## Stays defeated once beaten (flag "defeated.<enemy_id>"). Drops Resonance.
 
 enum State { DRIFT, CHASE, WINDUP, LUNGE, RECOVER, HURT, STUNNED, DEAD }
@@ -72,6 +74,14 @@ var _hitbox: Hitbox
 var _home := Vector2.ZERO
 var _flash := 0.0
 var _bar: Node2D
+var poise_max := 3
+var poise := 3.0
+var _last_hit_at := 0.0
+var _tell: Line2D
+const POISE_REGEN_DELAY := 2.0
+const BROKEN_TIME := 1.3
+## How long before a blow lands a dodge still counts as perfect.
+const PERFECT_WINDOW := 0.18
 
 @onready var sprite: LayeredCharacterSprite = $Sprite
 
@@ -114,6 +124,18 @@ func _ready() -> void:
 	_hitbox.knockback = 160.0
 	_hitbox.add_child(_rect_shape(Vector2(14, 14), Vector2(0, -8)))
 	add_child(_hitbox)
+
+	poise_max = int(variants().get(StringName(variant), {}).get("poise", max_health + 1))
+	poise = poise_max
+	_tell = Line2D.new()
+	_tell.width = 7.0
+	_tell.default_color = Color(1.0, 0.25, 0.2, 0.0)
+	_tell.begin_cap_mode = Line2D.LINE_CAP_ROUND
+	_tell.end_cap_mode = Line2D.LINE_CAP_ROUND
+	_tell.position = Vector2(0, -2)
+	_tell.visible = false
+	add_child(_tell)
+	move_child(_tell, 0)  # under the echo, over the floor
 
 	_bar = EnemyHealthBar.new()
 	_bar.position = Vector2(0, -36 * sprite.scale.y)
@@ -195,8 +217,10 @@ func _physics_process(delta: float) -> void:
 		State.WINDUP:
 			var k := 1.0 - clampf(_timer / windup_time, 0.0, 1.0)
 			sprite.modulate = base_tint.lerp(WINDUP_TINT, k)
+			_tell.default_color.a = 0.12 + 0.4 * k
 			if _timer <= 0.0:
 				sprite.modulate = base_tint
+				_tell.visible = false
 				if ranged:
 					_shoot(player)
 					state = State.RECOVER
@@ -219,6 +243,10 @@ func _physics_process(delta: float) -> void:
 			if _timer <= 0.0:
 				state = State.CHASE
 				sprite.modulate = base_tint
+	if state != State.WINDUP:
+		_tell.visible = false
+	if state != State.STUNNED and Time.get_ticks_msec() / 1000.0 - _last_hit_at > POISE_REGEN_DELAY:
+		poise = minf(poise_max, poise + delta * poise_max * 0.5)
 	velocity = desired * (0.5 if is_slowed() else 1.0)
 	if _knockback.length_squared() > 1.0:
 		velocity += _knockback
@@ -265,6 +293,13 @@ func _start_windup(to_player: Vector2) -> void:
 	_dir = LayeredCharacterSprite.dir_from_vector(to_player, _dir)
 	_hitbox.position = _lunge_dir * 10.0
 	sprite.play(&"idle", _dir)
+	# The blow is drawn on the ground before it comes.
+	var reach := lunge_speed * lunge_time if not ranged else minf(to_player.length(), 90.0)
+	_tell.points = PackedVector2Array([Vector2.ZERO, _lunge_dir * reach])
+	_tell.width = 7.0 if not ranged else 2.0
+	_tell.default_color.a = 0.12
+	_tell.visible = true
+	CombatFx.text_pop(get_parent(), global_position + Vector2(0, -6), "!", Color(1, 0.4, 0.3), 14)
 	if ranged:
 		Sfx.play(&"stamp_warn", 0.1, -6.0)
 
@@ -299,6 +334,33 @@ func _on_hit(damage: int, from_position: Vector2, knockback: float) -> void:
 	sprite.play(&"hurt", _dir, true)
 	(_bar as EnemyHealthBar).show_health(health.health, health.max_health)
 	CombatFx.damage_number(get_parent(), global_position, damage)
+	_last_hit_at = Time.get_ticks_msec() / 1000.0
+	if state != State.STUNNED and not health.is_dead():
+		poise -= damage + (2 if knockback >= 200.0 else 0)
+		if poise <= 0.0:
+			break_poise()
+
+
+## Off balance: dazed for a moment and open to every hit.
+func break_poise() -> void:
+	poise = poise_max
+	state = State.STUNNED
+	_timer = BROKEN_TIME * (0.5 if resist_stun else 1.0)
+	_hitbox.position = Vector2.ZERO
+	_tell.visible = false
+	Sfx.play(&"hit_heavy", 0.1, -4.0)
+	CombatFx.text_pop(get_parent(), global_position + Vector2(0, -8), tr("COMBAT_BROKEN"), Color(1, 0.85, 0.4))
+
+
+## Whether a blow from this echo is about to land on `at` (a dodge now is
+## perfect).
+func is_threatening(at: Vector2) -> bool:
+	if state == State.DEAD or ranged:
+		return false
+	var near := global_position.distance_to(at) < attack_range + 22.0
+	if state == State.WINDUP:
+		return near and _timer <= PERFECT_WINDOW
+	return state == State.LUNGE and not _hit_this_lunge and near
 
 
 func _on_died() -> void:
@@ -326,7 +388,11 @@ func _on_died() -> void:
 
 
 func _drop_rewards() -> void:
-	for i in resonance_drop:
+	var bonus := 0
+	var p := get_tree().get_first_node_in_group(&"player")
+	if p != null and resonance_drop > 0 and resonance_drop_override != 0:
+		bonus = mini(3, int(p.get("streak")) / 5)  # a clean run of hits pays
+	for i in resonance_drop + bonus:
 		var mote: ResonanceMote = MOTE_SCENE.instantiate()
 		mote.global_position = global_position + Vector2(randf_range(-8, 8), randf_range(-6, 2))
 		get_parent().add_child.call_deferred(mote)
@@ -340,6 +406,9 @@ func _drop_rewards() -> void:
 ## The first time the player meets a new kind of echo, a line on how to
 ## fight it (variants with a "hint").
 func _announce() -> void:
+	if not GameState.has_flag(&"seen.combat_moves"):
+		GameState.set_flag(&"seen.combat_moves", true)
+		EventHub.toast_requested.emit(tr("COMBAT_MOVES_HINT"))
 	var v: Dictionary = variants().get(StringName(variant), {})
 	if not v.has("hint"):
 		return
@@ -352,7 +421,9 @@ func _announce() -> void:
 
 ## Guard: light hits from the side it faces glance off.
 func _modify_damage(damage: int, from_position: Vector2) -> int:
-	if not guard or damage >= 2 or state in [State.STUNNED, State.DEAD]:
+	if state == State.STUNNED:
+		return damage + 1  # off balance: open to everything
+	if not guard or damage >= 2 or state == State.DEAD:
 		return damage
 	var facing := _facing_vector()
 	var from := (from_position - global_position).normalized()

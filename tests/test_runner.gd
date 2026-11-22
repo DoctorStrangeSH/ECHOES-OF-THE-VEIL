@@ -754,6 +754,41 @@ func test_echo_traits() -> void:
 	await get_tree().process_frame
 
 
+func test_combat_depth() -> void:
+	var scene := load("res://scenes/combat/echo_enemy.tscn") as PackedScene
+	var room := Node2D.new()
+	add_child(room)
+	var e := scene.instantiate() as EchoEnemy
+	e.variant = "hollow"
+	room.add_child(e)
+	check(e.poise_max >= 1 and e.poise == e.poise_max, "an echo starts with full poise")
+	# Light hits wear poise down; a hard hit (strong knockback) more.
+	var hb := e.find_child("Hurtbox", true, false) as Hurtbox
+	e.health.max_health = 50
+	e.health.health = 50
+	e.health.invulnerability_time = 0.0
+	hb.receive(1, e.global_position + Vector2(0, 20), 140.0)
+	check(e.state != EchoEnemy.State.STUNNED, "one light hit does not break it")
+	hb.receive(2, e.global_position + Vector2(0, 20), 210.0)
+	check(e.state == EchoEnemy.State.STUNNED, "a finisher on a worn echo knocks it off balance")
+	check(e._modify_damage(1, Vector2.ZERO) == 2, "off balance, every hit does one more")
+	# The tell and the perfect-dodge window.
+	e.state = EchoEnemy.State.CHASE
+	e._start_windup(Vector2(0, 20))
+	check(e._tell.visible, "the wind-up draws the blow on the ground")
+	check(not e.is_threatening(e.global_position + Vector2(0, 20)), "too early is not a perfect dodge")
+	e._timer = EchoEnemy.PERFECT_WINDOW * 0.5
+	check(e.is_threatening(e.global_position + Vector2(0, 20)), "the last instant is")
+	check(not e.is_threatening(e.global_position + Vector2(0, 200)), "not from across the room")
+	# Slow motion ends by itself.
+	CombatFx.slowmo(0.1, 0.3)
+	check(is_equal_approx(Engine.time_scale, 0.3), "the Echo slows time")
+	await get_tree().create_timer(0.15, true, false, true).timeout
+	check(is_equal_approx(Engine.time_scale, 1.0), "and lets it go")
+	room.queue_free()
+	await get_tree().process_frame
+
+
 func test_campaign_acts_start_in_order() -> void:
 	GameState.reset_for_new_game()
 	GameState.is_playing = true

@@ -4,6 +4,10 @@ extends CharacterBody2D
 ## Town: 8-direction movement, sprint, interaction.
 ## Veil locations (combat_enabled): weapon combo (3 hits, finisher), dodge with
 ## short i-frames, "Lantern Flash" stun ability, quick heal, hit-stop and shake.
+## R15a: hold the attack for a heavy blow all around; a dodge in the last
+## instant before an echo's blow is perfect (the Echo: time slows and the
+## next blow is a counter for double); a run of hits without being hurt is a
+## streak, and a streak makes echoes drop more Resonance.
 ## Stats come from the equipped weapon/trinket and Attunements (Inventory.stat).
 ## Owner: player. Manual tests: docs/technical/m3-test-plan.md.
 
@@ -21,6 +25,10 @@ const DODGE_COOLDOWN := 0.75
 const FLASH_RADIUS := 50.0
 const FLASH_STUN := 1.6
 const FLASH_COOLDOWN := 6.0
+const CHARGE_START := 0.3
+const CHARGE_FULL := 0.8
+const HEAVY_RADIUS := 26.0
+const COUNTER_TIME := 1.5
 
 ## Behind the wheel of your own car in the open world (see Driving).
 const DRIVE_SPEED := 210.0
@@ -58,6 +66,11 @@ var _swing: WeaponSwing
 var _combo_expires_at := 0.0
 var _knockback := Vector2.ZERO
 var _fainting := false
+var _hold_start := -1.0
+var _charge := 0.0
+var _counter_until := 0.0
+## Hits landed in a row without being hurt.
+var streak := 0
 var _dodge_time := 0.0
 var _dodge_dir := Vector2.ZERO
 var _dodge_ready_at := 0.0
@@ -179,6 +192,7 @@ func _physics_process(delta: float) -> void:
 	_update_shake(delta)
 	if combat_enabled:
 		_report_cooldowns()
+		_update_charge()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -199,6 +213,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	elif event.is_action_pressed(&"attack"):
 		get_viewport().set_input_as_handled()
+		_hold_start = _now()
 		_attack()
 	elif event.is_action_pressed(&"dodge"):
 		get_viewport().set_input_as_handled()
@@ -296,6 +311,9 @@ func _attack() -> void:
 	if is_finisher:
 		damage += int(Inventory.stat("finisher_bonus"))
 	damage += int(Inventory.stat("damage_bonus"))
+	var countering := _take_counter()
+	if countering:
+		damage *= 2
 	var cooldown := float(w.get("cooldown", 0.36)) * (1.35 if is_finisher else 1.0)
 	_attack_ready_at = now + cooldown
 	_combo_expires_at = now + cooldown + COMBO_WINDOW
@@ -305,7 +323,7 @@ func _attack() -> void:
 	hitbox.position = facing * (weapon_reach * 0.9) + Vector2(0, -10)
 	hitbox.scale = Vector2.ONE * clampf(weapon_reach / 12.0, 0.8, 1.5)
 	hitbox.damage = damage
-	hitbox.knockback = float(w.get("knockback", 140)) * (1.5 if is_finisher else 1.0)
+	hitbox.knockback = float(w.get("knockback", 140)) * (1.5 if is_finisher or countering else 1.0)
 	sprite.play(&"punch", _dir, true)
 	Sfx.play(&"swing", 0.1)
 	var style := String(w.get("style", "fists"))
@@ -325,9 +343,10 @@ func _attack() -> void:
 		return
 	var hits := hitbox.strike()
 	if hits > 0:
-		Sfx.play(&"hit_heavy" if is_finisher else &"hit")
-		CombatFx.hitstop(0.07 if is_finisher else 0.04)
-		shake(3.0 if is_finisher else 1.5)
+		Sfx.play(&"hit_heavy" if is_finisher or countering else &"hit")
+		CombatFx.hitstop(0.07 if is_finisher or countering else 0.04)
+		shake(3.0 if is_finisher or countering else 1.5)
+		_add_streak(hits)
 
 
 func _dodge() -> void:
@@ -342,6 +361,7 @@ func _dodge() -> void:
 	_knockback = Vector2.ZERO
 	health.grant_invulnerability(DODGE_IFRAMES)
 	Sfx.play(&"dodge")
+	_check_perfect_dodge()
 	if Progression.has_special("echo_strike"):
 		_echo_strike_until = now + DODGE_TIME + 1.5
 	if Progression.has_special("veil_step"):
@@ -484,9 +504,120 @@ func _place_focus_mark() -> void:
 		_focus_mark.global_position = Vector2(_focused.global_position.x, minf(top, _focused.global_position.y - 10.0) - 6.0)
 
 
+# --- Heavy blow, perfect dodge, streak (R15a) ------------------------------------
+
+func _update_charge() -> void:
+	if _hold_start < 0.0:
+		return
+	if Input.is_action_pressed(&"attack") and not _is_blocked() and _dodge_time <= 0.0:
+		var t := _now() - _hold_start
+		if t > CHARGE_START:
+			var was := _charge
+			_set_charge(clampf((t - CHARGE_START) / (CHARGE_FULL - CHARGE_START), 0.0, 1.0))
+			if was < 1.0 and _charge >= 1.0:
+				Sfx.play(&"flash", 0.1, -12.0)
+				CombatFx.flash_ring(get_parent(), global_position + Vector2(0, -8), 12.0, Color(1, 0.85, 0.5, 0.8))
+		return
+	var full := _charge >= 1.0
+	_hold_start = -1.0
+	_set_charge(0.0)
+	if full and not _is_blocked():
+		_heavy()
+
+
+func _set_charge(c: float) -> void:
+	_charge = c
+	var a := sprite.modulate.a
+	if c <= 0.0:
+		sprite.modulate = Color(1, 1, 1, a)
+	else:
+		var pulse := 0.5 + 0.5 * sin(_now() * (14.0 if c >= 1.0 else 6.0))
+		var tint := Color(1, 1, 1).lerp(Color(1.45, 1.3, 1.05), c * (0.55 + 0.45 * pulse))
+		sprite.modulate = Color(tint.r, tint.g, tint.b, a)
+
+
+## A heavy blow all around: more damage, hard knockback, knocks echoes off
+## balance.
+func _heavy() -> void:
+	var now := _now()
+	var w := Inventory.weapon()
+	var combo: Array = w.get("combo", [1, 1, 2])
+	var damage := int(combo.max()) + 1 + int(Inventory.stat("damage_bonus")) + int(Inventory.stat("finisher_bonus"))
+	var countering := _take_counter()
+	if countering:
+		damage *= 2
+	_attack_ready_at = now + 0.45
+	_combo_index = 0
+	_action_anim_time = 0.4
+	sprite.play(&"punch", _dir, true)
+	Sfx.play(&"swing", 0.1, 2.0)
+	CombatFx.flash_ring(get_parent(), global_position + Vector2(0, -8), HEAVY_RADIUS + 8.0, Color(1, 0.8, 0.45, 0.85))
+	var q := PhysicsShapeQueryParameters2D.new()
+	var circle := CircleShape2D.new()
+	circle.radius = HEAVY_RADIUS
+	q.shape = circle
+	q.transform = Transform2D(0.0, global_position + Vector2(0, -8))
+	q.collision_mask = Hurtbox.LAYER_COMBAT
+	q.collide_with_areas = true
+	q.collide_with_bodies = false
+	var hits := 0
+	for r in get_world_2d().direct_space_state.intersect_shape(q, 16):
+		var hb := r["collider"] as Hurtbox
+		if hb != null and hb.team != &"player" and hb.receive(damage, global_position, 280.0):
+			hits += 1
+	if hits > 0:
+		Sfx.play(&"hit_heavy")
+		CombatFx.hitstop(0.09)
+		shake(4.0)
+		_add_streak(hits)
+
+
+func _take_counter() -> bool:
+	if _now() >= _counter_until:
+		return false
+	_counter_until = 0.0
+	CombatFx.text_pop(get_parent(), global_position + Vector2(0, -6), tr("COMBAT_COUNTER"), Color(0.6, 0.9, 1.0))
+	return true
+
+
+## A dodge in the last instant before a blow lands: the Echo.
+func _check_perfect_dodge() -> void:
+	var threat := false
+	for e in get_tree().get_nodes_in_group(&"echo_enemy"):
+		if e.has_method("is_threatening") and e.is_threatening(global_position):
+			threat = true
+			break
+	if not threat:
+		for s in get_tree().get_nodes_in_group(&"memory_shard"):
+			if (s as Node2D).global_position.distance_to(global_position + Vector2(0, -8)) < 26.0:
+				threat = true
+				break
+	if not threat:
+		return
+	_counter_until = _now() + COUNTER_TIME
+	health.grant_invulnerability(0.5)
+	Sfx.play(&"flash", 0.1, -6.0)
+	CombatFx.flash_ring(get_parent(), global_position + Vector2(0, -8), 30.0, Color(0.6, 0.85, 1.0, 0.8))
+	CombatFx.text_pop(get_parent(), global_position, tr("COMBAT_PERFECT"), Color(0.6, 0.9, 1.0), 11)
+	CombatFx.slowmo(0.45, 0.3)
+	EventHub.perfect_dodge.emit()
+
+
+func _add_streak(hits: int) -> void:
+	var before := streak / 5
+	streak += hits
+	if streak / 5 > before:
+		CombatFx.text_pop(get_parent(), global_position + Vector2(0, -10), tr("COMBAT_STREAK") % streak, Color(1, 0.9, 0.5), 10)
+
+
 # --- Combat reactions ----------------------------------------------------------
 
 func _on_hit(damage: int, from_position: Vector2, knockback: float) -> void:
+	if streak >= 5:
+		CombatFx.text_pop(get_parent(), global_position, tr("COMBAT_STREAK_LOST"), Color(0.8, 0.8, 0.85))
+	streak = 0
+	_hold_start = -1.0
+	_set_charge(0.0)
 	var away := (global_position - from_position).normalized()
 	if away == Vector2.ZERO:
 		away = -facing
