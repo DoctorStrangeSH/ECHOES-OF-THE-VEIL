@@ -254,6 +254,7 @@ func _place_car(at: Vector2, dir: String) -> void:
 	car.collision_offset = Vector2(0, -6)
 	car.casts_shadow = true
 	car.position = at
+	car.add_to_group(&"traffic_blocker")
 	add_child(car)
 	var use := Interactable.new()
 	use.interaction_id = &"use_parked_car"

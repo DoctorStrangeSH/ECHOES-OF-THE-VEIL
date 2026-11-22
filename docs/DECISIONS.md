@@ -312,3 +312,11 @@ A check of every dialogue line with a speaker found 53 still written without quo
 The remaining files — street chatter, the companions' heart scenes, the chronicle, side cases and incidents, the market, the park, Ashbridge, Cavenmouth, St Carrow, weapons, fish and expedition items — were read through and already meet the rules of the pass; they were written after the voice settled. The sweep fixed what was left: one more «ЛАНТЕРН-РОУ» in the journal, and two lines with «» inside «». `text_lint.py` now treats both as errors (a quote within a quote is „лапки“; Lantern Row is «Фонарный ряд»), so neither comes back.
 
 With this the prose pass (R16a–R16j) is complete: about 450 strings rewritten in both languages, every spoken line quoted, the naming unified (Keepers, Городское обновление, Фонарный ряд), and the style guide holds the rules for anything new.
+
+## D-113 Loose ends from the review (R17a)
+
+- **Map tab.** A long district card ran off the bottom of the screen; the card now scrolls inside its panel.
+- **Traffic and the parked car.** The player's parked car is a traffic blocker: cars stop for it as they stop for the player, and a car stuck behind it for three seconds turns off down a side street (fades away) instead of queueing for ever. Cars no longer drive through it.
+- **People in rooms that open in place.** Every schedule anchor exists in the redrawn rooms (checked); the baker's, Rook's and the archivist's places stood inside their counters and desks and are moved behind them, so the person shows above the counter.
+- **Walter's dialogue.** Read through: every path returns to the hub, and the hub always has a way out; the loop the tour bot reported was its own choice-cycling.
+- **The tour bot in the open world.** Its pictures and interactions already work in world coordinates; a run over the old quarter, the market street, the bakery and the rented room (rooms in place included) visits everything with no errors.

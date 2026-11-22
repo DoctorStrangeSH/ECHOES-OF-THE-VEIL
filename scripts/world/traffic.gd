@@ -3,8 +3,8 @@ extends Node2D
 ## Cars and the odd bus driving along a street (region option "traffic":
 ## {"lanes": [{"y": 318, "dir": -1}, ...]}). Each lane runs the whole width of
 ## the map; vehicles enter off-screen, keep their distance, wait for anyone
-## standing in the road and leave at the other end. Purely decorative: they
-## never hit anyone.
+## standing in the road or parked in it, and leave at the other end. Purely
+## decorative: they never hit anyone.
 
 const CARS := 26
 const SPEED := Vector2(46.0, 66.0)
@@ -35,24 +35,45 @@ func _process(delta: float) -> void:
 			_timers[i] = _rng.randf_range(3.0, 9.0)
 			var d := int(lanes[i].get("dir", -1))
 			_spawn(i, width + 60.0 if d < 0 else -60.0)
+	# Cars stop for the player and for anything parked in the road (the
+	# player's own car, left where it was stopped).
+	var blockers: Array[Node2D] = []
 	var player := get_tree().get_first_node_in_group(&"player") as Node2D
+	if player != null:
+		blockers.append(player)
+	for b in get_tree().get_nodes_in_group(&"traffic_blocker"):
+		if b is Node2D and is_instance_valid(b):
+			blockers.append(b)
 	for v: Dictionary in _vehicles.duplicate():
 		var node: Node2D = v["node"]
 		var lane: Dictionary = lanes[v["lane"]]
 		var d := float(lane.get("dir", -1))
 		var front: float = node.position.x + d * float(v["length"]) / 2.0
 		var blocked := false
-		if player != null:
-			var py := player.global_position.y - global_position.y
-			var ahead: float = (player.global_position.x - global_position.x - front) * d
-			if py > float(lane["y"]) - 26.0 and py < float(lane["y"]) + 8.0 and ahead > -4.0 and ahead < WAIT_FOR_PLAYER:
+		var by_car := false
+		for b: Node2D in blockers:
+			var half := 22.0 if b != player else 0.0
+			var py := b.global_position.y - global_position.y
+			var ahead: float = (b.global_position.x - global_position.x - front) * d - half
+			if py > float(lane["y"]) - 26.0 and py < float(lane["y"]) + 8.0 and ahead > -4.0 - half * 2.0 and ahead < WAIT_FOR_PLAYER:
 				blocked = true
+				by_car = b != player
+				break
 		for o: Dictionary in _vehicles:
 			if o == v or o["lane"] != v["lane"]:
 				continue
 			var gap: float = ((o["node"] as Node2D).position.x - node.position.x) * d - (o["length"] + v["length"]) / 2.0
 			if gap > -4.0 and gap < GAP:
 				blocked = true
+		# Stuck behind a parked car: after a moment it turns off down a side
+		# street (fades away) rather than queueing for ever.
+		v["stuck"] = float(v.get("stuck", 0.0)) + delta if by_car else 0.0
+		if float(v["stuck"]) > 3.0:
+			_vehicles.erase(v)
+			var tw := node.create_tween()
+			tw.tween_property(node, "modulate:a", 0.0, 0.6)
+			tw.tween_callback(node.queue_free)
+			continue
 		v["speed"] = move_toward(v["speed"], 0.0 if blocked else v["cruise"], delta * (140.0 if blocked else 40.0))
 		node.position.x += d * v["speed"] * delta
 		if node.position.x < -120.0 or node.position.x > width + 120.0:
