@@ -70,6 +70,13 @@ func _ready() -> void:
 	player.set_camera_limits(Rect2i(bounds))
 	WorldClock.time_changed.connect(func(_m: int) -> void: _update_light())
 	_update_light()
+	EventHub.car_parked.connect(_on_car_parked)
+	SceneFlow.transition_started.connect(func() -> void:
+		if player != null and is_instance_valid(player) and player.driving:
+			player.stop_driving())
+	var spot: Variant = GameState.get_flag(&"car.spot")
+	if GameState.has_flag(&"car.away") and spot is Array and (spot as Array).size() >= 3:
+		_place_car(Vector2(float(spot[0]), float(spot[1])), String(spot[2]))
 
 
 ## Puts the player in a place (at a spawn point or a saved local position),
@@ -214,3 +221,39 @@ func guide_marker(id: StringName) -> Node2D:
 	if not p.is_empty():
 		(_markers[id] as Node2D).global_position = (p["rect"] as Rect2).get_center()
 	return _markers[id]
+
+
+var _parked: Node2D
+
+
+## Your car stays where you got out of it.
+func _on_car_parked(at: Vector2, dir: String) -> void:
+	GameState.set_flag(&"car.away")
+	GameState.set_flag(&"car.spot", [at.x, at.y, dir])
+	_place_car(at, dir)
+
+
+func _place_car(at: Vector2, dir: String) -> void:
+	if _parked != null and is_instance_valid(_parked):
+		_parked.queue_free()
+	var car: WorldProp = load("res://scenes/props/world_prop.tscn").instantiate()
+	car.texture_path = Player.CAR_ART % dir
+	car.placeholder_size = Vector2i(48, 32)
+	car.collision_size = Vector2(40, 12) if dir in ["Left", "Right"] else Vector2(24, 20)
+	car.collision_offset = Vector2(0, -6)
+	car.casts_shadow = true
+	car.position = at
+	add_child(car)
+	var use := Interactable.new()
+	use.interaction_id = &"use_parked_car"
+	use.prompt_key = "PROMPT_PARKED_CAR"
+	use.interaction_priority = 10
+	use.area_size = Vector2(48, 16)
+	use.position = Vector2(0, 6)
+	car.add_child(use)
+	use.interacted.connect(func(_a: Node) -> void:
+		car.queue_free()
+		_parked = null
+		player.global_position = at
+		player.start_driving())
+	_parked = car

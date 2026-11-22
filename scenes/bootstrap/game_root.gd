@@ -86,6 +86,14 @@ func _on_screen_requested(screen: String) -> void:
 		world_map.open("ferry")
 	elif screen == "world:air":
 		world_map.open("air")
+	elif screen == "drive":
+		var pl := get_tree().get_first_node_in_group(&"player") as Player
+		if pl != null and SceneFlow.open_world != null:
+			GameState.set_flag(&"car.away")
+			pl.start_driving()
+		else:
+			CityMap.driving = true
+			city_map.open(true)
 	elif screen == "map:drive":
 		if WorldMap.city_of(GameState.current_scene_id) != WorldMap.HOME:
 			world_map.open("car")  # out of town the car only knows the coast road
