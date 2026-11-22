@@ -36,6 +36,7 @@ func _ready() -> void:
 		queue_free()
 		return
 	add_to_group(&"boss")
+	add_to_group(&"threat")
 	collision_layer = 1 << 3  # solid like an NPC: the player cannot walk through him
 	collision_mask = 1
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
@@ -56,6 +57,7 @@ func _ready() -> void:
 	hurt.add_child(EchoEnemy._rect_shape(Vector2(20, 40), Vector2(0, -20)))
 	add_child(hurt)
 	hurt.hit.connect(_on_hit)
+	BossPoise.attach(self, hurt, health.max_health)
 	_hitbox = Hitbox.new()
 	_hitbox.team = &"enemy"
 	_hitbox.damage = 2
@@ -230,3 +232,17 @@ func _draw() -> void:
 	if _aim_line and state == State.AIMING:
 		var k := 1.0 - clampf(_timer / 0.8, 0.0, 1.0)
 		draw_line(Vector2(0, -6), Vector2(0, -6) + _charge_dir * 170.0, Color(1, 0.3, 0.3, 0.3 + 0.6 * k), 2.0 + 4.0 * k)
+
+
+## Thrown off balance (BossPoise): whatever he was doing, he stops.
+func break_open(seconds: float) -> void:
+	if state in [State.DORMANT, State.DEAD]:
+		return
+	_aim_line = false
+	_enter(State.STUNNED, seconds)
+
+
+## A dodge now is perfect: the charge is upon `at`.
+func is_threatening(at: Vector2) -> bool:
+	var near := global_position.distance_to(at) < 46.0
+	return (state == State.CHARGING and near) or (state == State.AIMING and _timer <= 0.2 and near)

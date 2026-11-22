@@ -10,6 +10,10 @@ var _t := 0.0
 var _landed := false
 
 
+func _enter_tree() -> void:
+	add_to_group(&"threat")
+
+
 func _process(delta: float) -> void:
 	_t += delta
 	queue_redraw()
@@ -38,3 +42,8 @@ func _draw() -> void:
 		var a := 1.0 - clampf((_t - delay) / 0.25, 0.0, 1.0)
 		draw_rect(Rect2(-radius * 0.7, -radius * 0.45, radius * 1.4, radius * 0.9), Color(0.85, 0.1, 0.15, 0.8 * a))
 		draw_rect(Rect2(-radius * 0.7, -radius * 0.45, radius * 1.4, radius * 0.9), Color(0.2, 0, 0, a), false, 1.0)
+
+
+## A dodge now is perfect: the stamp is about to land on `at`.
+func is_threatening(at: Vector2) -> bool:
+	return not _landed and delay - _t <= 0.22 and at.distance_to(global_position) <= radius + 6.0

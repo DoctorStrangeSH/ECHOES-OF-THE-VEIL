@@ -583,15 +583,10 @@ func _take_counter() -> bool:
 ## A dodge in the last instant before a blow lands: the Echo.
 func _check_perfect_dodge() -> void:
 	var threat := false
-	for e in get_tree().get_nodes_in_group(&"echo_enemy"):
-		if e.has_method("is_threatening") and e.is_threatening(global_position):
+	for t in get_tree().get_nodes_in_group(&"threat"):
+		if t.has_method("is_threatening") and t.is_threatening(global_position):
 			threat = true
 			break
-	if not threat:
-		for s in get_tree().get_nodes_in_group(&"memory_shard"):
-			if (s as Node2D).global_position.distance_to(global_position + Vector2(0, -8)) < 26.0:
-				threat = true
-				break
 	if not threat:
 		return
 	_counter_until = _now() + COUNTER_TIME

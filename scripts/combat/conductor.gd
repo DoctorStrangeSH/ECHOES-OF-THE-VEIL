@@ -39,6 +39,7 @@ func _ready() -> void:
 		queue_free()
 		return
 	add_to_group(&"boss")
+	add_to_group(&"threat")
 	collision_layer = 1 << 3
 	collision_mask = 1
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
@@ -58,6 +59,7 @@ func _ready() -> void:
 	hurt.add_child(EchoEnemy._rect_shape(Vector2(20, 40), Vector2(0, -20)))
 	add_child(hurt)
 	hurt.hit.connect(_on_hit)
+	BossPoise.attach(self, hurt, health.max_health)
 	_hitbox = Hitbox.new()
 	_hitbox.team = &"enemy"
 	_hitbox.damage = 1
@@ -243,3 +245,15 @@ func _on_died() -> void:
 	var t := create_tween()
 	t.tween_property(self, "modulate:a", 0.0, 1.2)
 	t.tween_callback(queue_free)
+
+
+## Thrown off balance (BossPoise): whatever he was doing, he stops.
+func break_open(seconds: float) -> void:
+	if state in [State.DORMANT, State.DEAD]:
+		return
+	_enter(State.STUNNED, seconds)
+
+
+## A dodge now is perfect: he is close enough to strike.
+func is_threatening(at: Vector2) -> bool:
+	return state == State.CHECKING and global_position.distance_to(at) < 26.0

@@ -11,6 +11,7 @@ var direction := Vector2.RIGHT
 
 func _ready() -> void:
 	add_to_group(&"memory_shard")
+	add_to_group(&"threat")
 	super._ready()
 	team = &"enemy"
 	damage = 1
@@ -35,3 +36,9 @@ func _break() -> void:
 	set_physics_process(false)
 	monitoring = false
 	queue_free()
+
+
+## A dodge now is perfect: the shard is about to hit `at`.
+func is_threatening(at: Vector2) -> bool:
+	var to := at + Vector2(0, -8) - global_position
+	return to.length() < 30.0 and to.dot(direction) > 0.0

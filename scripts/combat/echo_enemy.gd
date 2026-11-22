@@ -92,6 +92,7 @@ func _ready() -> void:
 		return
 	_apply_variant()
 	add_to_group(&"echo_enemy")
+	add_to_group(&"threat")
 	collision_layer = 0
 	collision_mask = 1  # world only: echoes pass through the player's body
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING

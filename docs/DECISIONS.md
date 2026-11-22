@@ -260,3 +260,11 @@ Review item 14 asked for combat that holds attention. The fights already had a c
 - **Streak.** Hits landed without being hurt count up (shown every five); each full five means one more Resonance from every echo killed, up to three. Getting hurt breaks it.
 
 The first echo met teaches all of it in one toast; the controls card says "hold: heavy".
+
+## D-102 Bosses: balance, readable lunges, the Echo against everything (R15b)
+
+R15a's moves now reach the five bosses and their hazards.
+
+- **Balance.** `BossPoise` attaches to every boss: hits fill a gold bar under the boss's health (hard hits by two more), and a full bar throws the boss off balance for 2.2 s, whatever it was doing (`break_open` on each boss: a stamp charge, a cast or a channel is broken), with every hit doing one more meanwhile. The bar holds about 28 % of the boss's health (at least 4) and settles back when the boss is left alone for 3 s. The Lantern Flash keeps its short, state-limited stun; balance is the way to a long opening.
+- **The Echo against everything.** Anything about to hurt the player joins the group `threat` and answers `is_threatening(at)`: echoes, shards, stamp markers in their last 0.22 s, a lane sweep reaching you, the Census-Taker's charge, the Reviser's lunge, the Director and Conductor close enough to strike. A dodge then is perfect, as against echoes.
+- **The Reviser's lunge** was the one boss attack without a tell; it is now drawn on the ground for its last 0.45 s of stalking.
