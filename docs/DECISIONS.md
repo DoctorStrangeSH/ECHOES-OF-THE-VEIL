@@ -282,3 +282,7 @@ Act I — Theo's growing flat and the nursery, Jonah's storeroom and the ledger,
 ## D-105 The prose pass, part 3: Act II (R16c)
 
 Act II — the way into the Ward with Ivo, Nadiya or alone, the Ward itself, the alderman, Bea, Abel, Ellie, Dr Vale, the depot, the Conductor's platform, Rosalind and her reunion with Jonah, the companions' camp talk, and the Ward threads in Greyford (Pike, Mrs Halloway and Thursdays) — rewritten by the same rules (61 strings).
+
+## D-106 The prose pass, part 4: Act III (R16d)
+
+Act III — the north quay, the Keepers' hall and the Seal, Nadiya's plan and Dr Vale's offer, the flooded underpass and the Archivist, the resonator and the four ways of settling it, and the three confessions (Ivo, Mara, Mrs Halloway) — rewritten by the same rules (35 strings). The hall under the archive is now the Keepers' hall in both languages, as the style guide names them, instead of a stray "Custodians".

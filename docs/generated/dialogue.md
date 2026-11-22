@@ -305,7 +305,7 @@ flowchart TD
   vale_help --> vale_hub
   vale_refuse["refuse<br/>Dr Sera Vale: 'They're both. That's what makes them interesti…"]
   vale_refuse --> vale_hub
-  vale_res["res<br/>Dr Sera Vale: 'Is it.' She looks at the flooded steps like an…"]
+  vale_res["res<br/>Dr Sera Vale: 'I see.' Dr Vale looks at the flooded steps lik…"]
   vale_res --> vale_hub
   vale_nodes1["nodes1<br/>Dr Sera Vale: 'Found the Index. Under everything — the town, …"]
   vale_nodes1 --> vale_nodes2
@@ -446,7 +446,7 @@ flowchart TD
   camp_mara_how["how<br/>Mara Venn: 'Every archive I have ever kept is wrong by two…"]
   camp_mara_how --> camp_mara_hub
   camp_mara_home["home<br/>Mara Venn: 'I'll be at the archive. Write things down.'"]
-  camp_mara_not_here["not_here<br/>Mara Venn: 'Not here. Meet me under the archive. There's s…"]
+  camp_mara_not_here["not_here<br/>Mara Venn: Mara shakes her head. 'Not here. Meet me under …"]
   camp_mara_anchor_yes["anchor_yes<br/>Mara Venn: 'Somebody has to write down what happens. It sh…"]
   camp_mara_anchor_yes --> camp_mara_hub
   camp_mara_anchor_no["anchor_no<br/>Mara Venn: 'I'll read about it afterwards. I'm not sure I …"]
@@ -502,13 +502,13 @@ flowchart TD
 flowchart TD
   keepers_enter_START(("start"))
   keepers_enter_START --> keepers_enter_1
-  keepers_enter_1["1<br/>Under the archive there is an older hall: the C…"]
+  keepers_enter_1["1<br/>Under the archive there is an older room — the …"]
   keepers_enter_1 --> keepers_enter_2
-  keepers_enter_2["2<br/>Ivo Calder: Ivo is waiting at the table. 'The Seal Engine. …"]
+  keepers_enter_2["2<br/>Ivo Calder: Ivo is waiting at the table, hands folded. 'The…"]
   keepers_enter_2 --> keepers_enter_3
-  keepers_enter_3["3<br/>Ivo Calder: 'Half. Forever. That's the pact. Somebody had t…"]
+  keepers_enter_3["3<br/>Ivo Calder: 'Halfway. For ever. That's the bargain.' He str…"]
   keepers_enter_3 --> keepers_enter_4
-  keepers_enter_4["4<br/>Ivo Calder: 'And now the Open Hand wants to break it. Nadiy…"]
+  keepers_enter_4["4<br/>Ivo Calder: 'And now the Open Hand want to tear it up. Nadi…"]
 ```
 
 ### seal_engine
@@ -519,17 +519,17 @@ flowchart TD
   seal_engine_START --> seal_engine_idle
   seal_engine_START -->|"{quest_stage: [case_kindness, decide]}"| seal_engine_decide1
   seal_engine_START -->|"{quest_done: case_kindness}"| seal_engine_after
-  seal_engine_idle["idle<br/>The Seal Engine hums one low note. The floor hu…"]
-  seal_engine_after["after<br/>The engine hums under the floor. Somewhere abov…"]
-  seal_engine_decide1["decide1<br/>The resonator and the Seal Engine hum the same …"]
+  seal_engine_idle["idle<br/>The Seal hums its one low note. The floor hums …"]
+  seal_engine_after["after<br/>Under the floor the machine hums. Somewhere abo…"]
+  seal_engine_decide1["decide1<br/>The resonator and the Seal hum one note now, lo…"]
   seal_engine_decide1 -->|"Give it to the Keepers. The s…"| seal_engine_kept
   seal_engine_decide1 -->|"Give it to Nadiya. Open the W…"| seal_engine_opened
   seal_engine_decide1 -->|"Return it to Dr Vale. Let Mer…"| seal_engine_sold
   seal_engine_decide1 -->|"Break it. Nobody should hold …"| seal_engine_broken
-  seal_engine_kept["kept<br/>You set the resonator into a slot in the engine…"]
-  seal_engine_opened["opened<br/>Nadiya takes it as if it were made of glass. 'N…"]
-  seal_engine_sold["sold<br/>Dr Vale signs a receipt and counts out notes. '…"]
-  seal_engine_broken["broken<br/>It breaks like a bell: once, and then for a lon…"]
+  seal_engine_kept["kept<br/>You fit the resonator into a socket made exactl…"]
+  seal_engine_opened["opened<br/>Nadiya takes the resonator as if it were glass …"]
+  seal_engine_sold["sold<br/>Dr Vale signs a receipt and counts out notes wi…"]
+  seal_engine_broken["broken<br/>The resonator breaks like a bell: once, and for…"]
 ```
 
 ### underpass_enter
@@ -538,9 +538,9 @@ flowchart TD
 flowchart TD
   underpass_enter_START(("start"))
   underpass_enter_START --> underpass_enter_1
-  underpass_enter_1["1<br/>The underpass is flooded in channels, neat as a…"]
+  underpass_enter_1["1<br/>The underpass is flooded in straight channels, …"]
   underpass_enter_1 --> underpass_enter_2
-  underpass_enter_2["2<br/>You open one. The files inside are bone dry. Bi…"]
+  underpass_enter_2["2<br/>You open one. The papers inside are perfectly d…"]
 ```
 
 ### archivist_enter
@@ -549,9 +549,9 @@ flowchart TD
 flowchart TD
   archivist_enter_START(("start"))
   archivist_enter_START --> archivist_enter_1
-  archivist_enter_1["1<br/>A man in a clerk's sleeve-guards stands in the …"]
+  archivist_enter_1["1<br/>In the middle of a dry room, black water lappin…"]
   archivist_enter_1 --> archivist_enter_2
-  archivist_enter_2["2<br/>The Archivist of Fl…: 'Every record I keep is dry. Every record I kee…"]
+  archivist_enter_2["2<br/>The Archivist of Fl…: He doesn't look up. 'Every record I keep is dry…"]
 ```
 
 ### resonator_found
@@ -560,9 +560,9 @@ flowchart TD
 flowchart TD
   resonator_found_START(("start"))
   resonator_found_START --> resonator_found_1
-  resonator_found_1["1<br/>Among the dry files: a brass device the size of…"]
+  resonator_found_1["1<br/>Among the dry files lies a brass instrument the…"]
   resonator_found_1 --> resonator_found_2
-  resonator_found_2["2<br/>It is warm in your hands, warmer than brass has…"]
+  resonator_found_2["2<br/>It is warm in your hands — warmer than brass sh…"]
 ```
 
 ## act4.json
@@ -1856,14 +1856,14 @@ flowchart TD
   mara_join["join<br/>Mara Venn: 'I'll bring the notebook.' She's already button…"]
   mara_kn_stay1["kn_stay1<br/>Mara Venn: Mara is turning a pencil over and over. 'The el…"]
   mara_kn_stay1 --> mara_kn_stay2
-  mara_kn_stay2["kn_stay2<br/>Mara Venn: 'It wasn't. My grandmother was a Keeper. I've k…"]
+  mara_kn_stay2["kn_stay2<br/>Mara Venn: 'That wasn't true. My grandmother was a Keeper.…"]
   mara_kn_stay2 --> mara_kn_stay3
-  mara_kn_stay3["kn_stay3<br/>Mara Venn: 'I'm not asking you to trust me. I'm asking you…"]
+  mara_kn_stay3["kn_stay3<br/>Mara Venn: 'I'm not asking you to trust me. I'm asking to …"]
   mara_kn_leave1["kn_leave1<br/>Mara Venn: Mara is turning a pencil over and over. 'The el…"]
   mara_kn_leave1 --> mara_kn_leave2
-  mara_kn_leave2["kn_leave2<br/>Mara Venn: 'It wasn't. My grandmother was a Keeper. I've k…"]
+  mara_kn_leave2["kn_leave2<br/>Mara Venn: 'That wasn't true. My grandmother was a Keeper.…"]
   mara_kn_leave2 --> mara_kn_leave3
-  mara_kn_leave3["kn_leave3<br/>Mara Venn: 'Right.' She closes the notebook. 'Then I'll ge…"]
+  mara_kn_leave3["kn_leave3<br/>Mara Venn: 'I see.' She closes the notebook. 'Then I'll ta…"]
   mara_hand1["hand1<br/>Mara Venn: Mara looks for a long time. 'Those sevens. I've…"]
   mara_hand1 --> mara_hub
   mara_anchor_yes["anchor_yes<br/>Mara Venn: 'Somebody has to write down what happens. It sh…"]
@@ -2082,14 +2082,14 @@ flowchart TD
   halloway_bea2 --> halloway_hub
   halloway_kn_stay1["kn_stay1<br/>Edda Halloway: Mrs Halloway has brought a flask of tea and doe…"]
   halloway_kn_stay1 --> halloway_kn_stay2
-  halloway_kn_stay2["kn_stay2<br/>Edda Halloway: 'Mr Calder asked me to forget, in 1987, and I a…"]
+  halloway_kn_stay2["kn_stay2<br/>Edda Halloway: 'In eighty-seven Mr Calder asked me to forget, …"]
   halloway_kn_stay2 --> halloway_kn_stay3
-  halloway_kn_stay3["kn_stay3<br/>Edda Halloway: 'You kept my map secret. I'll keep you company …"]
+  halloway_kn_stay3["kn_stay3<br/>Edda Halloway: 'You kept my map a secret.' At last she pours t…"]
   halloway_kn_leave1["kn_leave1<br/>Edda Halloway: Mrs Halloway has brought a flask of tea and doe…"]
   halloway_kn_leave1 --> halloway_kn_leave2
-  halloway_kn_leave2["kn_leave2<br/>Edda Halloway: 'Mr Calder asked me to forget, in 1987, and I a…"]
+  halloway_kn_leave2["kn_leave2<br/>Edda Halloway: 'In eighty-seven Mr Calder asked me to forget, …"]
   halloway_kn_leave2 --> halloway_kn_leave3
-  halloway_kn_leave3["kn_leave3<br/>Edda Halloway: 'I don't think I can watch.' She leaves the fla…"]
+  halloway_kn_leave3["kn_leave3<br/>Edda Halloway: 'I don't think I can watch this.' She leaves th…"]
   halloway_dead_letter1["dead_letter1<br/>Mrs Halloway knows the hand before she has her …"]
   halloway_dead_letter1 --> halloway_dead_letter2
   halloway_dead_letter2["dead_letter2<br/>Edda Halloway: Bea. My sister. She writes that the bakery is c…"]
@@ -2149,12 +2149,12 @@ flowchart TD
   ivo_ward_ok --> ivo_hub
   ivo_ward_no["ward_no<br/>Ivo Calder: Something in his face shuts like a shutter. 'No…"]
   ivo_ward_no --> ivo_hub
-  ivo_kn_stay1["kn_stay1<br/>Ivo Calder: Ivo doesn't stand up. 'Forty years I've tended …"]
+  ivo_kn_stay1["kn_stay1<br/>Ivo Calder: Ivo doesn't get up. 'Forty years I've tended th…"]
   ivo_kn_stay1 --> ivo_kn_stay2
   ivo_kn_stay2["kn_stay2<br/>Ivo Calder: 'I knew about the Ward before you ever saw the …"]
   ivo_kn_stay2 --> ivo_kn_stay3
-  ivo_kn_stay3["kn_stay3<br/>Ivo Calder: 'Hate me tomorrow. Tonight, decide well. I'll s…"]
-  ivo_kn_leave1["kn_leave1<br/>Ivo Calder: Ivo doesn't stand up. 'Forty years I've tended …"]
+  ivo_kn_stay3["kn_stay3<br/>Ivo Calder: 'Hate me tomorrow. Tonight, choose well.' He ta…"]
+  ivo_kn_leave1["kn_leave1<br/>Ivo Calder: Ivo doesn't get up. 'Forty years I've tended th…"]
   ivo_kn_leave1 --> ivo_kn_leave2
   ivo_kn_leave2["kn_leave2<br/>Ivo Calder: 'I knew about the Ward before you ever saw the …"]
   ivo_kn_leave2 --> ivo_kn_leave3
@@ -2221,9 +2221,9 @@ flowchart TD
   nadiya_persist1["persist1<br/>Nadiya Sol: 'Right. Seven isn't nineteen.' She sounds sure.…"]
   nadiya_ward_nad["ward_nad<br/>Nadiya Sol: 'Course I do. I deliver there.' She pats her sa…"]
   nadiya_ward_nad --> nadiya_hub
-  nadiya_plan1["plan1<br/>Nadiya Sol: 'Meridian built a resonator. Tune it to the Kee…"]
+  nadiya_plan1["plan1<br/>Nadiya Sol: Nadiya talks fast, as if afraid she'll change h…"]
   nadiya_plan1 --> nadiya_plan2
-  nadiya_plan2["plan2<br/>Nadiya Sol: 'They moved it through the old underpass when t…"]
+  nadiya_plan2["plan2<br/>Nadiya Sol: 'They took it through the old underpass when th…"]
   nadiya_plan2 --> nadiya_hub
   nadiya_anchor_yes["anchor_yes<br/>Nadiya Sol: 'The Open Hand will hold the tram lines. Nobody…"]
   nadiya_anchor_yes --> nadiya_hub
