@@ -62,7 +62,7 @@ y_sort_enabled = true
 
 [node name="FilesWest" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(96, 190)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_41.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/14_Basement_Singles_Shadowless/Basement_Singles_Shadowless_41.png"
 placeholder_size = Vector2i(32, 16)
 placeholder_color = Color(0.690,0.541,0.314, 1)
 collision_size = Vector2(0, 0)
@@ -70,7 +70,7 @@ collision_offset = Vector2(0, 0)
 
 [node name="FilesNorth" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(224, 116)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_41.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/14_Basement_Singles_Shadowless/Basement_Singles_Shadowless_41.png"
 placeholder_size = Vector2i(32, 16)
 placeholder_color = Color(0.690,0.541,0.314, 1)
 collision_size = Vector2(0, 0)
@@ -78,7 +78,7 @@ collision_offset = Vector2(0, 0)
 
 [node name="FilesEast" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(352, 190)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_41.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/14_Basement_Singles_Shadowless/Basement_Singles_Shadowless_41.png"
 placeholder_size = Vector2i(32, 16)
 placeholder_color = Color(0.690,0.541,0.314, 1)
 collision_size = Vector2(0, 0)

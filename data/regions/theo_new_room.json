@@ -44,7 +44,7 @@
   {
    "kind": "prop",
    "name": "Wardrobe",
-   "tex": "@bedroom/515.png",
+   "tex": "@bedroom/519.png",
    "x": 184,
    "y": 64,
    "col": [
@@ -60,7 +60,7 @@
   {
    "kind": "prop",
    "name": "Dollhouse",
-   "tex": "@bedroom/507.png",
+   "tex": "@bedroom/506.png",
    "x": 88,
    "y": 64,
    "col": [
@@ -124,7 +124,7 @@
   {
    "kind": "prop",
    "name": "NightLamp",
-   "tex": "@bedroom/541.png",
+   "tex": "@bedroom/540.png",
    "x": 56,
    "y": 64,
    "col": [
@@ -139,7 +139,7 @@
   },
   {
    "template": "scatter",
-   "tex": "@bedroom/463.png",
+   "tex": "@bedroom/462.png",
    "name": "Garland",
    "points": [
     [

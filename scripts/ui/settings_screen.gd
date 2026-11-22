@@ -11,7 +11,7 @@ var _rows: Dictionary = {}
 
 
 func _ready() -> void:
-	layer = 30
+	layer = 32  # above the tabbed game window it is opened from
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_build()
 	visible = false
@@ -44,29 +44,39 @@ func _build() -> void:
 	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
 	dim.theme = UiTheme.get_theme()
 	add_child(dim)
+	# The same window as the game's tabs, so nothing is left half-hidden
+	# behind it, wherever settings are opened from.
 	_panel = PanelContainer.new()
-	_panel.custom_minimum_size = Vector2(300, 0)
 	dim.add_child(_panel)
-	_panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER, Control.PRESET_MODE_MINSIZE)
-	_panel.grow_horizontal = Control.GROW_DIRECTION_BOTH
-	_panel.grow_vertical = Control.GROW_DIRECTION_BOTH
+	GameMenu.place_window(_panel)
+	var center := CenterContainer.new()
+	_panel.add_child(center)
 	_list = VBoxContainer.new()
-	_list.add_theme_constant_override("separation", 4)
-	_panel.add_child(_list)
+	_list.custom_minimum_size = Vector2(380, 0)
+	_list.add_theme_constant_override("separation", 6)
+	center.add_child(_list)
 	var title := Label.new()
 	title.name = "Title"
 	title.add_theme_color_override("font_color", UiTheme.ACCENT)
 	_list.add_child(title)
+	# Two columns, so everything fits in the window with room to read.
+	var grid := GridContainer.new()
+	grid.columns = 2
+	grid.add_theme_constant_override("h_separation", 6)
+	grid.add_theme_constant_override("v_separation", 4)
+	_list.add_child(grid)
 	for id: String in ["guidance", "text_speed", "volume", "music", "window_mode", "resolution", "language"]:
 		var b := Button.new()
+		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		b.pressed.connect(_on_row.bind(id))
 		b.focus_entered.connect(_show_desc.bind(id))
-		_list.add_child(b)
+		b.mouse_entered.connect(_show_desc.bind(id))
+		grid.add_child(b)
 		_rows[id] = b
 	_desc = Label.new()
 	_desc.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_desc.custom_minimum_size = Vector2(290, 40)
-	_desc.add_theme_font_size_override("font_size", 8)
+	_desc.custom_minimum_size = Vector2(380, 30)
+	_desc.add_theme_font_size_override("font_size", 9)
 	_desc.add_theme_color_override("font_color", UiTheme.INK_DIM)
 	_list.add_child(_desc)
 	var back := Button.new()

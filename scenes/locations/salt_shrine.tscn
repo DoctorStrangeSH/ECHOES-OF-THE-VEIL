@@ -52,7 +52,7 @@ y_sort_enabled = true
 
 [node name="Tomb" parent="Entities" instance=ExtResource("3_prop")]
 position = Vector2(96, 80)
-texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Singles/11_Halloween_Singles/Halloween_Singles_218.png"
+texture_path = "modern_interiors/1_Interiors/16x16/Theme_Sorter_Shadowless_Singles/11_Halloween_Singles_Shadowless/Halloween_Singles_Shadowless_218.png"
 placeholder_size = Vector2i(48, 32)
 placeholder_color = Color(0.439,0.439,0.439, 1)
 collision_size = Vector2(44, 12)

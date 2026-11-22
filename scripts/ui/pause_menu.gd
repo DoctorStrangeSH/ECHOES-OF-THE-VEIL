@@ -79,8 +79,10 @@ func _on_language() -> void:
 		_settings = SettingsScreen.new()
 		add_child(_settings)
 		_settings.closed.connect(func() -> void:
+			_panel.visible = true
 			_refresh_texts()
 			(_buttons.get_child(5) as Button).grab_focus())
+	_panel.visible = false
 	_settings.open()
 
 
