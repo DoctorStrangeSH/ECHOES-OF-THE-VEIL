@@ -574,6 +574,94 @@ def preview(out, palette, layout, nodes, clean=False):
     img.resize((img.width*2,img.height*2),Image.NEAREST).save(out)
 
 
+# Arena dressing ("scatter"): the Veil's fighting floors stay open in the
+# middle, but nobody leaves a platform or a basement that bare. Seats,
+# machines and luggage stand along the edges; litter, cracks and papers lie
+# about the floor (decals, no collision). Deterministic for a given place.
+_SUB = '@subway/'
+SCATTER_KITS = {
+    'station': {
+        'edge': ['Black_Triple_Wait_Seat_1', 'Orange_Triple_Wait_Seat_1', 'Drink_Machine_Front', 'Coffee_Machine_Front',
+                 'Plant_Vase_1', 'Black_Couple_Wait_Seat_1', 'Brown_Baggage_1', 'Black_Baggage', 'Orange_Couple_Wait_Seat_2',
+                 'Plant_Vase_2', 'Green_Baggage', 'Brown_Baggage_2'],
+        'decal': ['Crack_1', 'Crack_2', 'Crack_3', 'Crack_4', 'Crack_5', 'Ground_Paper_1', 'Ground_Paper_2', 'Pressed_Can_1',
+                  'Pressed_Can_2', 'Plastic_Bag_1', 'Plastic_Bag_3', 'Bottle_1', 'Example_Crack_4'],
+        'alias': _SUB, 'every': 5, 'density': 0.09,
+    },
+    'archive': {
+        'edge': ['@basement/%d.png' % i for i in (17, 40, 1, 18, 43, 64, 16, 41, 2, 44, 39, 3)],
+        'decal': ['Ground_Paper_1', 'Ground_Paper_2', 'Ground_Paper_1', 'Crack_2', 'Crack_6', 'Example_Crack_3', 'Plastic_Bag_2'],
+        'alias': _SUB, 'every': 4, 'density': 0.12,
+    },
+}
+
+
+def scatter(nodes, layout, opts, rid):
+    kit = SCATTER_KITS[opts.get('kit', 'station')]
+    rows = layout.split('\n')
+    H, W = len(rows), max(len(r) for r in rows)
+    floor_ch = set(opts.get('floor', 'gpf'))
+    floor = {(x, y) for y, r in enumerate(rows) for x, ch in enumerate(r) if ch in floor_ch}
+    seed = sum(map(ord, rid)) + int(opts.get('seed', 0))
+    rng = __import__('random').Random(seed)
+    # Keep clear of everything already placed or used.
+    keep = []
+    for n in nodes:
+        x, y = n.get('x'), n.get('y')
+        if x is None or y is None:
+            continue
+        if n['kind'] == 'prop':
+            w, h = n.get('ph', (16, 16))
+            keep.append((x - w / 2 - 4, y - h - 4, x + w / 2 + 4, y + 6))
+        else:
+            keep.append((x - 24, y - 24, x + 24, y + 24))
+
+    def clear(box):
+        return all(box[2] <= k[0] or box[0] >= k[2] or box[3] <= k[1] or box[1] >= k[3] for k in keep)
+
+    def tex(name):
+        return name if name.startswith('@') else kit['alias'] + name + '.png'
+
+    raw = []
+    # Edge pieces: along the floor's bottom edge (cells with a wall below)
+    # and its left and right ends, one every few tiles.
+    edge_cells = sorted(c for c in floor if (c[0], c[1] + 1) not in floor)
+    side_cells = sorted(c for c in floor if ((c[0] - 1, c[1]) not in floor and c[0] - 1 >= 0 and rows[c[1]][c[0] - 1] == '#')
+                        or ((c[0] + 1, c[1]) not in floor and c[0] + 1 < W and rows[c[1]][c[0] + 1:c[0] + 2] == '#'))
+    k = rng.randrange(len(kit['edge']))
+    last = -99
+    for (cx, cy) in edge_cells + side_cells:
+        if abs(cx - last) < kit['every'] and (cx, cy) in edge_cells:
+            continue
+        if rng.random() < 0.35:
+            continue
+        name = kit['edge'][k % len(kit['edge'])]
+        k += 1
+        t = tex(name)
+        w, h = size(resolve_tex(t))
+        x, y = cx * 16 + 8, cy * 16 + 15
+        box = (x - w / 2, y - h, x + w / 2, y + 2)
+        if not clear(box):
+            continue
+        if not all(((int(bx) // 16), cy) in floor for bx in (box[0] + 1, box[2] - 1)):
+            continue
+        keep.append(box)
+        raw.append({'kind': 'prop', 'name': 'Scatter%d_%d' % (x, y), 'tex': t, 'x': x, 'y': y,
+                    'col': [max(4, w - 4), 6], 'off': [0, -3]})
+        last = cx
+    # Floor litter.
+    for (cx, cy) in sorted(floor):
+        if rng.random() > kit['density']:
+            continue
+        name = kit['decal'][rng.randrange(len(kit['decal']))]
+        x, y = cx * 16 + rng.randrange(2, 14), cy * 16 + rng.randrange(6, 16)
+        if not clear((x - 6, y - 10, x + 6, y)):
+            continue
+        raw.append({'kind': 'prop', 'name': 'Litter%d_%d' % (x, y), 'tex': tex(name), 'x': x, 'y': y,
+                    'col': [0, 0], 'off': [0, 0], 'layer': 'FloorDecor'})
+    return expand(raw, rid)
+
+
 def load_spec(rid):
     return json.load(open(os.path.join(REGIONS, rid + '.json')))
 
@@ -590,6 +678,8 @@ def build(rid, out_path, want_preview=False):
     lay = layout_of(spec)
     if spec.get('dress'):
         nodes += dress(nodes, lay, spec['dress'], rid)
+    if spec.get('scatter'):
+        nodes += scatter(nodes, lay, spec['scatter'], rid)
     write_tscn(out_path, rid, spec['name_key'], spec['palette'], lay, nodes,
                margin=spec.get('camera_margin_tiles', 0), opts=options_of(spec))
     if want_preview:

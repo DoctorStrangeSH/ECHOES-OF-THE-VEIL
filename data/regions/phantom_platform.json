@@ -2,7 +2,22 @@
  "id": "phantom_platform",
  "name_key": "LOC_PHANTOM_PLATFORM",
  "palette": "tram_platform",
- "options": {"outdoors": false, "combat_enabled": true, "fixed_tint": {"color": [0.78, 0.82, 0.95, 1.0]}, "enter_dialogue_id": "platform_enter", "enter_condition": {"not_flag": "platform.entered"}},
+ "options": {
+  "outdoors": false,
+  "combat_enabled": true,
+  "fixed_tint": {
+   "color": [
+    0.78,
+    0.82,
+    0.95,
+    1.0
+   ]
+  },
+  "enter_dialogue_id": "platform_enter",
+  "enter_condition": {
+   "not_flag": "platform.entered"
+  }
+ },
  "layout": [
   "############################################",
   "############################################",
@@ -24,33 +39,377 @@
   "##pp########################################"
  ],
  "nodes": [
-  {"kind": "prop", "name": "TramCar1", "tex": "@EXT/20_Subway_and_Train_Station_16x16.png", "x": 96, "y": 96, "col": [0, 0], "off": [0, 0], "color": "#a04a3a", "region": [176, 785, 160, 63]},
-  {"kind": "prop", "name": "TramCar2", "tex": "@EXT/20_Subway_and_Train_Station_16x16.png", "x": 256, "y": 96, "col": [0, 0], "off": [0, 0], "color": "#a04a3a", "children": ["Shimmer"], "region": [176, 785, 160, 63]},
-  {"kind": "prop", "name": "Bench1", "tex": "@subway/Three_Seats_Green_Bench_Frontal_1.png", "x": 72, "y": 150, "col": [46, 8], "off": [0, -4], "color": "#3a7a5a"},
-  {"kind": "prop", "name": "Bench2", "tex": "@subway/Three_Seats_Green_Bench_Frontal_1.png", "x": 200, "y": 150, "col": [46, 8], "off": [0, -4], "color": "#3a7a5a"},
-  {"kind": "prop", "name": "Seats", "tex": "@subway/Orange_Triple_Wait_Seat_1.png", "x": 300, "y": 236, "col": [46, 10], "off": [0, -5], "color": "#c07030"},
-  {"kind": "prop", "name": "MapMonitor", "tex": "@subway/Map_Monitor.png", "x": 150, "y": 120, "col": [28, 8], "off": [0, -4], "color": "#405070"},
-  {"kind": "prop", "name": "Pillar1", "tex": "@subway/Big_Pillar.png", "x": 448, "y": 176, "col": [14, 10], "off": [0, -5], "color": "#707080"},
-  {"kind": "prop", "name": "Pillar2", "tex": "@subway/Big_Pillar.png", "x": 448, "y": 256, "col": [14, 10], "off": [0, -5], "color": "#707080"},
-  {"kind": "prop", "name": "Pillar3", "tex": "@subway/Big_Pillar.png", "x": 624, "y": 176, "col": [14, 10], "off": [0, -5], "color": "#707080"},
-  {"kind": "prop", "name": "Pillar4", "tex": "@subway/Big_Pillar.png", "x": 624, "y": 256, "col": [14, 10], "off": [0, -5], "color": "#707080"},
-  {"kind": "prop", "name": "SosBox", "tex": "@subway/SOS_Box.png", "x": 680, "y": 124, "col": [28, 8], "off": [0, -4], "color": "#c03030"},
-  {"kind": "inspect", "name": "SosBoxUse", "id": "platform_sos_box", "x": 680, "y": 132, "area": [30, 12], "dialogue": "sos_box"},
-  {"kind": "pickup", "name": "Clapper", "x": 600, "y": 230, "item": "bell_clapper", "flag": "pickup.bell_clapper", "show_if": {"quest_active": "case_bell"}},
-  {"kind": "prop", "name": "Gate", "tex": "@subway/Turnstile_Closed.png", "x": 360, "y": 212, "col": [28, 40], "off": [0, -20], "color": "#606070", "show_if": {"flag": "boss.census_taker.engaged", "not_flag": "boss.census_taker.defeated"}},
-  {"kind": "spawn", "name": "Entrance", "id": "entrance", "x": 48, "y": 250, "facing": [0, -1]},
-  {"kind": "door", "name": "WayBack", "id": "door_platform_exit", "x": 48, "y": 276, "area": [30, 10], "scene": "greyford_block", "spawn": "harbor_stop", "prompt": "PROMPT_LEAVE_ECHO"},
-  {"kind": "inspect", "name": "PosterLook", "id": "inspect_platform_map", "x": 150, "y": 126, "area": [30, 12], "dialogue": "platform_map", "prompt": "PROMPT_READ"},
-  {"kind": "pickup", "name": "SignalRod", "x": 200, "y": 170, "item": "signal_rod", "flag": "pickup.signal_rod"},
-  {"kind": "junk", "name": "JunkPlatform", "id": "junk_platform", "x": 40, "y": 140},
-  {"kind": "pickup", "name": "TeaFlask", "x": 300, "y": 252, "item": "tea_flask", "flag": "pickup.platform_tea"},
-  {"kind": "enemy", "name": "Hollow1", "id": "platform_hollow_1", "x": 120, "y": 200},
-  {"kind": "enemy", "name": "Hollow2", "id": "platform_hollow_2", "x": 260, "y": 190},
-  {"kind": "enemy", "name": "Clinger1", "id": "platform_clinger_1", "x": 180, "y": 240, "variant": "clinger"},
-  {"kind": "enemy", "name": "Clinger2", "id": "platform_clinger_2", "x": 320, "y": 170, "variant": "clinger"},
-  {"kind": "enemy", "name": "Wailer1", "id": "platform_wailer_1", "x": 300, "y": 130, "variant": "wailer"},
-  {"kind": "boss", "name": "CensusTaker", "x": 560, "y": 190},
-  {"kind": "arena", "boss": "CensusTaker", "flag": "boss.census_taker.engaged", "x": 552, "y": 200, "size": [320, 140]},
-  {"kind": "pickup", "name": "RelayOnTrack", "x": 424, "y": 96, "item": "tram_relay", "flag": "pickup.tram_relay_platform", "show_if": {"quest_active": "case_bell", "not_flag": "pickup.tram_relay_platform", "all": [{"not": {"has_item": "tram_relay"}}]}}
- ]
+  {
+   "kind": "prop",
+   "name": "TramCar1",
+   "tex": "@EXT/20_Subway_and_Train_Station_16x16.png",
+   "x": 96,
+   "y": 96,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "color": "#a04a3a",
+   "region": [
+    176,
+    785,
+    160,
+    63
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "TramCar2",
+   "tex": "@EXT/20_Subway_and_Train_Station_16x16.png",
+   "x": 256,
+   "y": 96,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "color": "#a04a3a",
+   "children": [
+    "Shimmer"
+   ],
+   "region": [
+    176,
+    785,
+    160,
+    63
+   ]
+  },
+  {
+   "kind": "prop",
+   "name": "Bench1",
+   "tex": "@subway/Three_Seats_Green_Bench_Frontal_1.png",
+   "x": 72,
+   "y": 150,
+   "col": [
+    46,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#3a7a5a"
+  },
+  {
+   "kind": "prop",
+   "name": "Bench2",
+   "tex": "@subway/Three_Seats_Green_Bench_Frontal_1.png",
+   "x": 200,
+   "y": 150,
+   "col": [
+    46,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#3a7a5a"
+  },
+  {
+   "kind": "prop",
+   "name": "Seats",
+   "tex": "@subway/Orange_Triple_Wait_Seat_1.png",
+   "x": 300,
+   "y": 236,
+   "col": [
+    46,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#c07030"
+  },
+  {
+   "kind": "prop",
+   "name": "MapMonitor",
+   "tex": "@subway/Map_Monitor.png",
+   "x": 150,
+   "y": 120,
+   "col": [
+    28,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#405070"
+  },
+  {
+   "kind": "prop",
+   "name": "Pillar1",
+   "tex": "@subway/Big_Pillar.png",
+   "x": 448,
+   "y": 176,
+   "col": [
+    14,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#707080"
+  },
+  {
+   "kind": "prop",
+   "name": "Pillar2",
+   "tex": "@subway/Big_Pillar.png",
+   "x": 448,
+   "y": 256,
+   "col": [
+    14,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#707080"
+  },
+  {
+   "kind": "prop",
+   "name": "Pillar3",
+   "tex": "@subway/Big_Pillar.png",
+   "x": 624,
+   "y": 176,
+   "col": [
+    14,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#707080"
+  },
+  {
+   "kind": "prop",
+   "name": "Pillar4",
+   "tex": "@subway/Big_Pillar.png",
+   "x": 624,
+   "y": 256,
+   "col": [
+    14,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#707080"
+  },
+  {
+   "kind": "prop",
+   "name": "SosBox",
+   "tex": "@subway/SOS_Box.png",
+   "x": 680,
+   "y": 124,
+   "col": [
+    28,
+    8
+   ],
+   "off": [
+    0,
+    -4
+   ],
+   "color": "#c03030"
+  },
+  {
+   "kind": "inspect",
+   "name": "SosBoxUse",
+   "id": "platform_sos_box",
+   "x": 680,
+   "y": 132,
+   "area": [
+    30,
+    12
+   ],
+   "dialogue": "sos_box"
+  },
+  {
+   "kind": "pickup",
+   "name": "Clapper",
+   "x": 600,
+   "y": 230,
+   "item": "bell_clapper",
+   "flag": "pickup.bell_clapper",
+   "show_if": {
+    "quest_active": "case_bell"
+   }
+  },
+  {
+   "kind": "prop",
+   "name": "Gate",
+   "tex": "@subway/Turnstile_Closed.png",
+   "x": 360,
+   "y": 212,
+   "col": [
+    28,
+    40
+   ],
+   "off": [
+    0,
+    -20
+   ],
+   "color": "#606070",
+   "show_if": {
+    "flag": "boss.census_taker.engaged",
+    "not_flag": "boss.census_taker.defeated"
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "Entrance",
+   "id": "entrance",
+   "x": 48,
+   "y": 250,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "WayBack",
+   "id": "door_platform_exit",
+   "x": 48,
+   "y": 276,
+   "area": [
+    30,
+    10
+   ],
+   "scene": "greyford_block",
+   "spawn": "harbor_stop",
+   "prompt": "PROMPT_LEAVE_ECHO"
+  },
+  {
+   "kind": "inspect",
+   "name": "PosterLook",
+   "id": "inspect_platform_map",
+   "x": 150,
+   "y": 126,
+   "area": [
+    30,
+    12
+   ],
+   "dialogue": "platform_map",
+   "prompt": "PROMPT_READ"
+  },
+  {
+   "kind": "pickup",
+   "name": "SignalRod",
+   "x": 200,
+   "y": 170,
+   "item": "signal_rod",
+   "flag": "pickup.signal_rod"
+  },
+  {
+   "kind": "junk",
+   "name": "JunkPlatform",
+   "id": "junk_platform",
+   "x": 40,
+   "y": 140
+  },
+  {
+   "kind": "pickup",
+   "name": "TeaFlask",
+   "x": 300,
+   "y": 252,
+   "item": "tea_flask",
+   "flag": "pickup.platform_tea"
+  },
+  {
+   "kind": "enemy",
+   "name": "Hollow1",
+   "id": "platform_hollow_1",
+   "x": 120,
+   "y": 200
+  },
+  {
+   "kind": "enemy",
+   "name": "Hollow2",
+   "id": "platform_hollow_2",
+   "x": 260,
+   "y": 190
+  },
+  {
+   "kind": "enemy",
+   "name": "Clinger1",
+   "id": "platform_clinger_1",
+   "x": 180,
+   "y": 240,
+   "variant": "clinger"
+  },
+  {
+   "kind": "enemy",
+   "name": "Clinger2",
+   "id": "platform_clinger_2",
+   "x": 320,
+   "y": 170,
+   "variant": "clinger"
+  },
+  {
+   "kind": "enemy",
+   "name": "Wailer1",
+   "id": "platform_wailer_1",
+   "x": 300,
+   "y": 130,
+   "variant": "wailer"
+  },
+  {
+   "kind": "boss",
+   "name": "CensusTaker",
+   "x": 560,
+   "y": 190
+  },
+  {
+   "kind": "arena",
+   "boss": "CensusTaker",
+   "flag": "boss.census_taker.engaged",
+   "x": 552,
+   "y": 200,
+   "size": [
+    320,
+    140
+   ]
+  },
+  {
+   "kind": "pickup",
+   "name": "RelayOnTrack",
+   "x": 424,
+   "y": 96,
+   "item": "tram_relay",
+   "flag": "pickup.tram_relay_platform",
+   "show_if": {
+    "quest_active": "case_bell",
+    "not_flag": "pickup.tram_relay_platform",
+    "all": [
+     {
+      "not": {
+       "has_item": "tram_relay"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "scatter": {
+  "kit": "station"
+ }
 }

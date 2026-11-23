@@ -148,3 +148,93 @@ area_size = Vector2(30, 10)
 prompt_key = "PROMPT_LEAVE_MEMORY"
 target_scene_id = &"echo_ward"
 target_spawn_id = &"from_memory_station"
+
+[node name="Scatter136_207" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(136, 207)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Plant_Vase_1.png"
+placeholder_size = Vector2i(16, 32)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+casts_shadow = true
+
+[node name="Scatter216_207" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(216, 207)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Black_Couple_Wait_Seat_1.png"
+placeholder_size = Vector2i(32, 32)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(28, 6)
+collision_offset = Vector2(0, -3)
+casts_shadow = true
+
+[node name="Scatter312_207" parent="Entities" instance=ExtResource("3_prop")]
+position = Vector2(312, 207)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Brown_Baggage_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(12, 6)
+collision_offset = Vector2(0, -3)
+
+[node name="Litter7_171" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(7, 171)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Example_Crack_4.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Litter22_157" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(22, 157)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Crack_2.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Litter214_123" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(214, 123)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Crack_5.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Litter217_157" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(217, 157)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Ground_Paper_1.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Litter268_143" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(268, 143)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Pressed_Can_2.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Litter330_103" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(330, 103)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Crack_1.png"
+placeholder_size = Vector2i(32, 16)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Litter339_94" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(339, 94)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Crack_4.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)
+
+[node name="Litter338_207" parent="FloorDecor" instance=ExtResource("3_prop")]
+position = Vector2(338, 207)
+texture_path = "modern_exteriors/Modern_Exteriors_16x16/ME_Theme_Sorter_16x16/20_Subway_and_Train_Station_Singles_16x16/ME_Singles_Subway_and_Train_Station_16x16_Plastic_Bag_3.png"
+placeholder_size = Vector2i(16, 16)
+placeholder_color = Color(0.541,0.498,0.600, 1)
+collision_size = Vector2(0, 0)
+collision_offset = Vector2(0, 0)

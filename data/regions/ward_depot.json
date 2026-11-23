@@ -228,5 +228,8 @@
     "flag": "depot.cleared"
    }
   }
- ]
+ ],
+ "scatter": {
+  "kit": "station"
+ }
 }

@@ -320,3 +320,9 @@ With this the prose pass (R16a–R16j) is complete: about 450 strings rewritten 
 - **People in rooms that open in place.** Every schedule anchor exists in the redrawn rooms (checked); the baker's, Rook's and the archivist's places stood inside their counters and desks and are moved behind them, so the person shows above the counter.
 - **Walter's dialogue.** Read through: every path returns to the hub, and the hub always has a way out; the loop the tour bot reported was its own choice-cycling.
 - **The tour bot in the open world.** Its pictures and interactions already work in world coordinates; a run over the old quarter, the market street, the bakery and the rented room (rooms in place included) visits everything with no errors.
+
+## D-114 A full tour, and the Veil's arenas furnished (R17b)
+
+The tour bot walked all 54 places in two states of the story (start and Act III) in the open world, using everything it could reach: every place visited, no script errors. Its one finding was the open world asking for the region file of a generated place (the expedition room) when deciding whether it opens in place; generated places are now skipped quietly.
+
+Its density figures put the Veil's arenas at the bottom (60–90 % bare floor), and the pictures agreed: platforms and basements that were just floor. Arenas can now ask for `"scatter": {"kit": ...}` (build_regions.py): props along the floor's edges — waiting seats, drink and coffee machines, luggage, plants on the platforms; boxes, barrels, cabinets and a ladder shelf in the underpass — and litter on the floor as decals with no collision (cracks, papers, cans, bags). The middle stays open for the fight. Six arenas use it: the depot platform, the Ward depot, the memory station, the phantom platform, the underpass archive and the flooded underpass. The archive's tall plant overlapped the reading desk after the refit and is gone.
