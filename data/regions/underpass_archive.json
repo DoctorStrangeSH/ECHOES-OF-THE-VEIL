@@ -2,17 +2,181 @@
  "id": "underpass_archive",
  "name_key": "LOC_UNDERPASS_ARCHIVE",
  "palette": "underpass",
- "options": {"outdoors": false, "combat_enabled": true, "fixed_tint": {"color": [0.72, 0.82, 1.0, 1.0]}, "enter_dialogue_id": "archivist_enter", "enter_condition": {"not_flag": "boss.archivist.defeated", "not_evidence": "e_archivist_seen"}},
- "layout": {"generator": "bands", "width": 28, "bands": [["#", 2], ["g", 13], ["#", 1]], "carve": [["g", 0, 8, 1, 2]]},
+ "options": {
+  "outdoors": false,
+  "combat_enabled": true,
+  "fixed_tint": {
+   "color": [
+    0.72,
+    0.82,
+    1.0,
+    1.0
+   ]
+  },
+  "enter_dialogue_id": "archivist_enter",
+  "enter_condition": {
+   "not_flag": "boss.archivist.defeated",
+   "not_evidence": "e_archivist_seen"
+  }
+ },
+ "layout": {
+  "generator": "bands",
+  "width": 28,
+  "bands": [
+   [
+    "#",
+    2
+   ],
+   [
+    "g",
+    13
+   ],
+   [
+    "#",
+    1
+   ]
+  ],
+  "carve": [
+   [
+    "g",
+    0,
+    8,
+    1,
+    2
+   ]
+  ]
+ },
  "nodes": [
-  {"kind": "prop", "name": "FilesWest", "tex": "@basement/41.png", "x": 96, "y": 190, "col": [0, 0], "off": [0, 0], "color": "#b08a50"},
-  {"kind": "prop", "name": "FilesNorth", "tex": "@basement/41.png", "x": 224, "y": 116, "col": [0, 0], "off": [0, 0], "color": "#b08a50"},
-  {"kind": "prop", "name": "FilesEast", "tex": "@basement/41.png", "x": 352, "y": 190, "col": [0, 0], "off": [0, 0], "color": "#b08a50"},
-  {"kind": "prop", "name": "Gate", "tex": "@subway/Turnstile_Closed.png", "x": 28, "y": 152, "col": [28, 40], "off": [0, -20], "color": "#606070", "show_if": {"flag": "boss.archivist.engaged", "not_flag": "boss.archivist.defeated"}},
-  {"kind": "boss", "name": "Archivist", "x": 224, "y": 136, "scene": "res://scenes/combat/archivist.tscn"},
-  {"kind": "arena", "boss": "Archivist", "flag": "boss.archivist.engaged", "x": 224, "y": 136, "size": [370, 180]},
-  {"kind": "inspect", "name": "ResonatorLook", "id": "inspect_resonator", "x": 224, "y": 140, "area": [30, 16], "dialogue": "resonator_found", "priority": 30, "show_if": {"flag": "boss.archivist.defeated", "not_evidence": "e_resonator"}},
-  {"kind": "spawn", "name": "FromHall", "id": "from_hall", "x": 20, "y": 136, "facing": [1, 0]},
-  {"kind": "door", "name": "WayBack", "id": "door_archive_hall", "x": 5, "y": 136, "area": [10, 30], "scene": "flooded_underpass", "spawn": "from_archive", "prompt": "PROMPT_LEAVE_ECHO"}
- ]
+  {
+   "kind": "prop",
+   "name": "FilesWest",
+   "tex": "@basement/41.png",
+   "x": 96,
+   "y": 190,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "color": "#b08a50"
+  },
+  {
+   "kind": "prop",
+   "name": "FilesNorth",
+   "tex": "@basement/41.png",
+   "x": 224,
+   "y": 116,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "color": "#b08a50"
+  },
+  {
+   "kind": "prop",
+   "name": "FilesEast",
+   "tex": "@basement/41.png",
+   "x": 352,
+   "y": 190,
+   "col": [
+    0,
+    0
+   ],
+   "off": [
+    0,
+    0
+   ],
+   "color": "#b08a50"
+  },
+  {
+   "kind": "prop",
+   "name": "Gate",
+   "tex": "@subway/Turnstile_Closed.png",
+   "x": 28,
+   "y": 152,
+   "col": [
+    28,
+    40
+   ],
+   "off": [
+    0,
+    -20
+   ],
+   "color": "#606070",
+   "show_if": {
+    "flag": "boss.archivist.engaged",
+    "not_flag": "boss.archivist.defeated"
+   }
+  },
+  {
+   "kind": "boss",
+   "name": "Archivist",
+   "x": 224,
+   "y": 136,
+   "scene": "res://scenes/combat/archivist.tscn"
+  },
+  {
+   "kind": "arena",
+   "boss": "Archivist",
+   "flag": "boss.archivist.engaged",
+   "x": 224,
+   "y": 136,
+   "size": [
+    370,
+    180
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "ResonatorLook",
+   "id": "inspect_resonator",
+   "x": 224,
+   "y": 140,
+   "area": [
+    30,
+    16
+   ],
+   "dialogue": "resonator_found",
+   "priority": 30,
+   "show_if": {
+    "flag": "boss.archivist.defeated",
+    "not_evidence": "e_resonator"
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "FromHall",
+   "id": "from_hall",
+   "x": 20,
+   "y": 136,
+   "facing": [
+    1,
+    0
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "WayBack",
+   "id": "door_archive_hall",
+   "x": 5,
+   "y": 136,
+   "area": [
+    10,
+    30
+   ],
+   "scene": "flooded_underpass",
+   "spawn": "from_archive",
+   "prompt": "PROMPT_LEAVE_ECHO"
+  }
+ ],
+ "scatter": {
+  "kit": "archive"
+ }
 }

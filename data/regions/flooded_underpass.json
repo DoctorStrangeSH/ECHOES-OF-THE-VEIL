@@ -2,19 +2,212 @@
  "id": "flooded_underpass",
  "name_key": "LOC_FLOODED_UNDERPASS",
  "palette": "underpass",
- "options": {"outdoors": false, "combat_enabled": true, "fixed_tint": {"color": [0.7, 0.8, 0.95, 1.0]}, "enter_dialogue_id": "underpass_enter", "enter_condition": {"not_flag": "underpass.entered"}},
- "layout": {"generator": "bands", "width": 30, "bands": [["#", 2], ["g", 11], ["#", 1]], "carve": [["w", 8, 2, 2, 4], ["w", 8, 8, 2, 5], ["w", 19, 2, 2, 5], ["w", 19, 9, 2, 4], ["p", 3, 13, 2, 1], ["g", 29, 6, 1, 2]]},
+ "options": {
+  "outdoors": false,
+  "combat_enabled": true,
+  "fixed_tint": {
+   "color": [
+    0.7,
+    0.8,
+    0.95,
+    1.0
+   ]
+  },
+  "enter_dialogue_id": "underpass_enter",
+  "enter_condition": {
+   "not_flag": "underpass.entered"
+  }
+ },
+ "layout": {
+  "generator": "bands",
+  "width": 30,
+  "bands": [
+   [
+    "#",
+    2
+   ],
+   [
+    "g",
+    11
+   ],
+   [
+    "#",
+    1
+   ]
+  ],
+  "carve": [
+   [
+    "w",
+    8,
+    2,
+    2,
+    4
+   ],
+   [
+    "w",
+    8,
+    8,
+    2,
+    5
+   ],
+   [
+    "w",
+    19,
+    2,
+    2,
+    5
+   ],
+   [
+    "w",
+    19,
+    9,
+    2,
+    4
+   ],
+   [
+    "p",
+    3,
+    13,
+    2,
+    1
+   ],
+   [
+    "g",
+    29,
+    6,
+    1,
+    2
+   ]
+  ]
+ },
  "nodes": [
-  {"template": "row", "prop": {"tex": "@subway/Big_Pillar.png", "color": "#708090", "col": [14, 10], "off": [0, -5]}, "at": [[64, 80], [232, 176], [400, 80]], "name": "Pillar"},
-  {"kind": "enemy", "name": "Hollow1", "id": "underpass_hollow_1", "x": 200, "y": 96},
-  {"kind": "enemy", "name": "Hollow2", "id": "underpass_hollow_2", "x": 380, "y": 180},
-  {"kind": "enemy", "name": "Wailer1", "id": "underpass_wailer_1", "x": 260, "y": 60, "variant": "wailer"},
-  {"kind": "enemy", "name": "Wailer2", "id": "underpass_wailer_2", "x": 420, "y": 140, "variant": "wailer"},
-  {"kind": "enemy", "name": "Clinger1", "id": "underpass_clinger", "x": 110, "y": 170, "variant": "clinger"},
-  {"kind": "encounter", "flag": "underpass.cleared"},
-  {"kind": "spawn", "name": "Entrance", "id": "entrance", "x": 64, "y": 196, "facing": [0, -1]},
-  {"kind": "spawn", "name": "FromArchive", "id": "from_archive", "x": 448, "y": 112, "facing": [-1, 0]},
-  {"kind": "door", "name": "WayBack", "id": "door_underpass_exit", "x": 64, "y": 216, "area": [30, 10], "scene": "north_quay", "spawn": "underpass_front", "prompt": "PROMPT_LEAVE_ECHO"},
-  {"kind": "door", "name": "ToArchive", "id": "door_underpass_archive", "x": 472, "y": 112, "area": [14, 30], "scene": "underpass_archive", "spawn": "from_hall", "prompt": "PROMPT_FLOODED_ARCHIVE", "show_if": {"flag": "underpass.cleared"}}
- ]
+  {
+   "template": "row",
+   "prop": {
+    "tex": "@subway/Big_Pillar.png",
+    "color": "#708090",
+    "col": [
+     14,
+     10
+    ],
+    "off": [
+     0,
+     -5
+    ]
+   },
+   "at": [
+    [
+     64,
+     80
+    ],
+    [
+     232,
+     176
+    ],
+    [
+     400,
+     80
+    ]
+   ],
+   "name": "Pillar"
+  },
+  {
+   "kind": "enemy",
+   "name": "Hollow1",
+   "id": "underpass_hollow_1",
+   "x": 200,
+   "y": 96
+  },
+  {
+   "kind": "enemy",
+   "name": "Hollow2",
+   "id": "underpass_hollow_2",
+   "x": 380,
+   "y": 180
+  },
+  {
+   "kind": "enemy",
+   "name": "Wailer1",
+   "id": "underpass_wailer_1",
+   "x": 260,
+   "y": 60,
+   "variant": "wailer"
+  },
+  {
+   "kind": "enemy",
+   "name": "Wailer2",
+   "id": "underpass_wailer_2",
+   "x": 420,
+   "y": 140,
+   "variant": "wailer"
+  },
+  {
+   "kind": "enemy",
+   "name": "Clinger1",
+   "id": "underpass_clinger",
+   "x": 110,
+   "y": 170,
+   "variant": "clinger"
+  },
+  {
+   "kind": "encounter",
+   "flag": "underpass.cleared"
+  },
+  {
+   "kind": "spawn",
+   "name": "Entrance",
+   "id": "entrance",
+   "x": 64,
+   "y": 196,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "spawn",
+   "name": "FromArchive",
+   "id": "from_archive",
+   "x": 448,
+   "y": 112,
+   "facing": [
+    -1,
+    0
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "WayBack",
+   "id": "door_underpass_exit",
+   "x": 64,
+   "y": 216,
+   "area": [
+    30,
+    10
+   ],
+   "scene": "north_quay",
+   "spawn": "underpass_front",
+   "prompt": "PROMPT_LEAVE_ECHO"
+  },
+  {
+   "kind": "door",
+   "name": "ToArchive",
+   "id": "door_underpass_archive",
+   "x": 472,
+   "y": 112,
+   "area": [
+    14,
+    30
+   ],
+   "scene": "underpass_archive",
+   "spawn": "from_hall",
+   "prompt": "PROMPT_FLOODED_ARCHIVE",
+   "show_if": {
+    "flag": "underpass.cleared"
+   }
+  }
+ ],
+ "scatter": {
+  "kit": "archive"
+ }
 }

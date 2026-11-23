@@ -38,12 +38,6 @@
    "y": 148
   },
   {
-   "kind": "furn",
-   "furn": "plant_tall",
-   "x": 104,
-   "y": 110
-  },
-  {
    "kind": "prop",
    "name": "Shelf1",
    "tex": "@library/57.png",

@@ -2,18 +2,203 @@
  "id": "memory_station",
  "name_key": "LOC_MEMORY_STATION",
  "palette": "tram_platform",
- "options": {"outdoors": false, "combat_enabled": true, "fixed_tint": {"color": [0.85, 0.85, 1.0, 1.0]}, "enter_dialogue_id": "station_enter", "enter_condition": {"not_flag": "memory_station.entered"}},
- "layout": {"generator": "bands", "width": 22, "bands": [["#", 2], ["r", 2], ["y", 1], ["g", 8], ["#", 1]], "carve": [["p", 10, 13, 2, 1]]},
+ "options": {
+  "outdoors": false,
+  "combat_enabled": true,
+  "fixed_tint": {
+   "color": [
+    0.85,
+    0.85,
+    1.0,
+    1.0
+   ]
+  },
+  "enter_dialogue_id": "station_enter",
+  "enter_condition": {
+   "not_flag": "memory_station.entered"
+  }
+ },
+ "layout": {
+  "generator": "bands",
+  "width": 22,
+  "bands": [
+   [
+    "#",
+    2
+   ],
+   [
+    "r",
+    2
+   ],
+   [
+    "y",
+    1
+   ],
+   [
+    "g",
+    8
+   ],
+   [
+    "#",
+    1
+   ]
+  ],
+  "carve": [
+   [
+    "p",
+    10,
+    13,
+    2,
+    1
+   ]
+  ]
+ },
  "nodes": [
-  {"kind": "prop", "name": "BenchW", "tex": "@subway/Three_Seats_Green_Bench_Frontal_1.png", "x": 56, "y": 180, "col": [44, 10], "off": [0, -5], "color": "#407050"},
-  {"kind": "prop", "name": "BenchE", "tex": "@subway/Three_Seats_Green_Bench_Frontal_1.png", "x": 296, "y": 180, "col": [44, 10], "off": [0, -5], "color": "#407050"},
-  {"kind": "inspect", "name": "Testimony1", "id": "inspect_t_station_log", "x": 96, "y": 76, "area": [30, 14], "dialogue": "t_station_log", "show_if": {"flag": "boss.stationmaster.defeated"}},
-  {"kind": "inspect", "name": "Testimony2", "id": "inspect_t_letter", "x": 176, "y": 76, "area": [30, 14], "dialogue": "t_letter", "show_if": {"flag": "boss.stationmaster.defeated"}},
-  {"kind": "inspect", "name": "Testimony3", "id": "inspect_t_porter", "x": 256, "y": 76, "area": [30, 14], "dialogue": "t_porter", "show_if": {"flag": "boss.stationmaster.defeated"}},
-  {"kind": "boss", "name": "Reviser", "x": 176, "y": 124, "scene": "res://scenes/combat/reviser.tscn", "set": {"boss_id": "stationmaster", "name_key": "BOSS_STATIONMASTER", "premade": "Premade_Character_18", "pattern": "checker", "summon_variant": "wailer"}},
-  {"kind": "arena", "boss": "Reviser", "flag": "boss.stationmaster.engaged", "x": 176, "y": 124, "size": [288, 128]},
-  {"kind": "inspect", "name": "Reconstruct", "id": "inspect_recon_memory_station", "x": 176, "y": 124, "area": [40, 20], "dialogue": "recon_memory_station", "priority": 30, "show_if": {"flag": "boss.stationmaster.defeated"}},
-  {"kind": "spawn", "name": "Entrance", "id": "entrance", "x": 176, "y": 196, "facing": [0, -1]},
-  {"kind": "door", "name": "WayBack", "id": "door_memory_station_exit", "x": 176, "y": 212, "area": [30, 10], "scene": "echo_ward", "spawn": "from_memory_station", "prompt": "PROMPT_LEAVE_MEMORY"}
- ]
+  {
+   "kind": "prop",
+   "name": "BenchW",
+   "tex": "@subway/Three_Seats_Green_Bench_Frontal_1.png",
+   "x": 56,
+   "y": 180,
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#407050"
+  },
+  {
+   "kind": "prop",
+   "name": "BenchE",
+   "tex": "@subway/Three_Seats_Green_Bench_Frontal_1.png",
+   "x": 296,
+   "y": 180,
+   "col": [
+    44,
+    10
+   ],
+   "off": [
+    0,
+    -5
+   ],
+   "color": "#407050"
+  },
+  {
+   "kind": "inspect",
+   "name": "Testimony1",
+   "id": "inspect_t_station_log",
+   "x": 96,
+   "y": 76,
+   "area": [
+    30,
+    14
+   ],
+   "dialogue": "t_station_log",
+   "show_if": {
+    "flag": "boss.stationmaster.defeated"
+   }
+  },
+  {
+   "kind": "inspect",
+   "name": "Testimony2",
+   "id": "inspect_t_letter",
+   "x": 176,
+   "y": 76,
+   "area": [
+    30,
+    14
+   ],
+   "dialogue": "t_letter",
+   "show_if": {
+    "flag": "boss.stationmaster.defeated"
+   }
+  },
+  {
+   "kind": "inspect",
+   "name": "Testimony3",
+   "id": "inspect_t_porter",
+   "x": 256,
+   "y": 76,
+   "area": [
+    30,
+    14
+   ],
+   "dialogue": "t_porter",
+   "show_if": {
+    "flag": "boss.stationmaster.defeated"
+   }
+  },
+  {
+   "kind": "boss",
+   "name": "Reviser",
+   "x": 176,
+   "y": 124,
+   "scene": "res://scenes/combat/reviser.tscn",
+   "set": {
+    "boss_id": "stationmaster",
+    "name_key": "BOSS_STATIONMASTER",
+    "premade": "Premade_Character_18",
+    "pattern": "checker",
+    "summon_variant": "wailer"
+   }
+  },
+  {
+   "kind": "arena",
+   "boss": "Reviser",
+   "flag": "boss.stationmaster.engaged",
+   "x": 176,
+   "y": 124,
+   "size": [
+    288,
+    128
+   ]
+  },
+  {
+   "kind": "inspect",
+   "name": "Reconstruct",
+   "id": "inspect_recon_memory_station",
+   "x": 176,
+   "y": 124,
+   "area": [
+    40,
+    20
+   ],
+   "dialogue": "recon_memory_station",
+   "priority": 30,
+   "show_if": {
+    "flag": "boss.stationmaster.defeated"
+   }
+  },
+  {
+   "kind": "spawn",
+   "name": "Entrance",
+   "id": "entrance",
+   "x": 176,
+   "y": 196,
+   "facing": [
+    0,
+    -1
+   ]
+  },
+  {
+   "kind": "door",
+   "name": "WayBack",
+   "id": "door_memory_station_exit",
+   "x": 176,
+   "y": 212,
+   "area": [
+    30,
+    10
+   ],
+   "scene": "echo_ward",
+   "spawn": "from_memory_station",
+   "prompt": "PROMPT_LEAVE_MEMORY"
+  }
+ ],
+ "scatter": {
+  "kit": "station"
+ }
 }

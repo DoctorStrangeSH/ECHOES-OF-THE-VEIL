@@ -298,7 +298,8 @@ static func is_room(id: StringName) -> bool:
 		return _room_ok[id]
 	var ok := false
 	if not has_region(id):
-		var d: Variant = DataFiles.read_json("res://data/regions/%s.json" % id)
+		var path := "res://data/regions/%s.json" % id
+		var d: Variant = DataFiles.read_json(path) if FileAccess.file_exists(path) else null  # generated places have no region file
 		if d is Dictionary:
 			var o: Dictionary = d.get("options", {})
 			ok = bool(o.get("in_place", false)) and not bool(o.get("outdoors", true)) and not bool(o.get("combat_enabled", false)) and not o.has("fixed_tint")
